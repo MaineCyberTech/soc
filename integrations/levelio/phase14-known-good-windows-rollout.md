@@ -25,3 +25,12 @@ Status: RECORDED - production-validated path
   agent.conf localfile.
 
 ## No secrets
+
+## macOS gotcha (fixed 2026-08-16)
+
+- Wazuh macOS packages are ARCH-SPECIFIC: the URL must be
+  wazuh-agent-<ver>-1.intel64.pkg (Intel) or wazuh-agent-<ver>-1.arm64.pkg
+  (Apple Silicon). The old script used the Linux-style name (-1.pkg) which
+  returned 403 and the silent curl produced an empty file -> installer error.
+- Fix: install-wazuh-macos.sh now resolves arch via uname -m and fails fast on
+  download errors (curl -fsSL + empty-file check).
