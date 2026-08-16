@@ -33,3 +33,10 @@ dump rc=0
 -rw-r--r-- 1 user user 151604388 Aug 15 04:35 /opt/mct-security-stack/ops/backups/vm103/misp-db-20260815-043501.sql.gz
 OK: pulled
 Done
+== MISP DB dump (VM103) 20260816-043501 ==
+dump rc=0
+-rw-r--r-- 1 root root 151622281 Aug 16 04:35 /var/backups/mct/misp-db-20260816-043501.sql.gz
+-- pull to Wazuh host --
+-rw-r--r-- 1 user user 151622281 Aug 16 04:35 /opt/mct-security-stack/ops/backups/vm103/misp-db-20260816-043501.sql.gz
+OK: pulled
+Done

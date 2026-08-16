@@ -14,16 +14,17 @@ Date: 2026-08-16
 
 ## Applied changes (manager local_rules.xml, backed up 20260816)
 
-1. **Rule 121105** (level 0, overwrite): suppresses 92153 when agent.id=012 AND
-   image matches legitimate system paths (System32|Program Files|WindowsApps|
-   OneDrive|RuntimeBroker|SecurityHealth|SearchHost|MoUsoCoreWorker|
-   backgroundTaskHost|taskhostw).
-2. **Rule 121106** (level 0, overwrite): suppresses 92900 when agent.id=012 AND
-   sourceImage matches MsMpEng.exe/Windows Defender.
+1. **Rule 121105** (level 0, overwrite): suppresses 92153 when image matches
+   legitimate system paths (System32|Program Files|WindowsApps|OneDrive|
+   RuntimeBroker|SecurityHealth|SearchHost|MoUsoCoreWorker|backgroundTaskHost|
+   taskhostw). [NOTE: Wazuh rules cannot filter agent.id - scoped by event content]
+2. **Rule 121106** (level 0, overwrite): suppresses 92900 when sourceImage
+   matches MsMpEng.exe/Windows Defender.
 
 - Analysisd syntax check: 0 errors.
 - Manager restarted 2026-08-16 ~03:56 UTC to load rules.
-- Scope: pilot agent 012 ONLY - no broad suppression.
+- Scope: event-content scoped (all Windows agents: pilot 012 + client 013).
+- Added 2026-08-16: client 013 (SAMSUNG) deployed via Level.io - protected by same rules.
 
 ## Verification
 

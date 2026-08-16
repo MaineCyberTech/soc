@@ -10,7 +10,6 @@ Scope: PILOT ONLY - agent 012 (MCT-WIN11PILOT)
 ```xml
 <rule id="121105" level="0" overwrite="yes">
   <if_sid>92153</if_sid>
-  <field name="agent.id">^012$</field>
   <field name="win.eventdata.image" type="pcre2">(?i)(System32|Program Files|WindowsApps|OneDrive|RuntimeBroker|SecurityHealth|SearchHost|MoUsoCoreWorker|backgroundTaskHost|taskhostw)</field>
   <description>Suppressed: VaultCli FP from legitimate Windows processes (pilot agent 012)</description>
   <options>no_full_log</options>
@@ -22,17 +21,19 @@ Scope: PILOT ONLY - agent 012 (MCT-WIN11PILOT)
 ```xml
 <rule id="121106" level="0" overwrite="yes">
   <if_sid>92900</if_sid>
-  <field name="agent.id">^012$</field>
   <field name="win.eventdata.sourceImage" type="pcre2">(?i)MsMpEng\.exe|Windows Defender</field>
   <description>Suppressed: Lsass access by Defender (pilot agent 012)</description>
   <options>no_full_log</options>
 </rule>
 ```
 
-## Design rationale
+## Design rationale (updated 2026-08-16 - client 013 deployed)
 
-- Agent-scoped (^012$): no impact on other agents/clients.
-- Image-scoped: only legit system paths/processes suppressed.
+- Wazuh rules CANNOT filter on agent.id/agent.name (syntax error) - the rules
+  are scoped by EVENT CONTENT instead (legit system images / Defender source).
+- This protects ALL Windows agents (pilot 012 + client 013) from FPs.
+- Any NON-system image (e.g. C:\Temp\evil.exe loading VaultCli) still fires 92153.
+- Any non-Defender source accessing lsass still fires 92900.
 - Any NON-system image (e.g. C:\Temp\evil.exe) loading VaultCli still fires 92153.
 - Any non-Defender source accessing lsass still fires 92900.
 
