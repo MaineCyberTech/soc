@@ -14,7 +14,7 @@ networks:
 
 services:
   shuffle-frontend:
-    image: ghcr.io/shuffle/shuffle-frontend:latest
+    image: ghcr.io/shuffle/shuffle-frontend@sha256:4d700a6f0822cb081822bd2fa6c633080553bdd4313aed2c4bdce75b87e82836
     container_name: shuffle-frontend
     hostname: shuffle-frontend
     ports:
@@ -31,7 +31,7 @@ services:
     profiles: ["shuffle"]
 
   shuffle-backend:
-    image: ghcr.io/shuffle/shuffle-backend:latest
+    image: ghcr.io/shuffle/shuffle-backend@sha256:d4a5d2bf1f956955b68b099ba1c38997e4b257b2518215e0427f433515bea5c8
     container_name: shuffle-backend
     hostname: ${SHUFFLE_BACKEND_HOSTNAME:-shuffle-backend}
     ports:
@@ -63,7 +63,7 @@ services:
     profiles: ["shuffle"]
 
   shuffle-orborus:
-    image: ghcr.io/shuffle/shuffle-orborus:latest
+    image: ghcr.io/shuffle/shuffle-orborus@sha256:94e61e7916aea28351fce3851f26f14fb85204f1567a8807d137321418366dba
     container_name: shuffle-orborus
     hostname: shuffle-orborus
     networks:

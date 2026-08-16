@@ -94,7 +94,7 @@ services:
       - psql_socket_vol:/var/run/postgresql
 
   gvmd:
-    image: registry.community.greenbone.net/community/gvmd:stable
+    image: registry.community.greenbone.net/community/gvmd@sha256:cb82c501ca93809405a8d0ed4c21846703466802ce6462536e985625f102b497
     deploy:
       restart_policy:
         condition: any

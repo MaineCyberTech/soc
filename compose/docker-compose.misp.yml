@@ -66,7 +66,7 @@ services:
     profiles: ["misp"]
 
   misp-core:
-    image: ghcr.io/misp/misp-docker/misp-core:latest
+    image: ghcr.io/misp/misp-docker/misp-core@sha256:0eaa4e423d5cd965b7b76aa5665e81d5c05a35bc46a4ffec2ca52e0cfe627e86
     restart: unless-stopped
     depends_on:
       misp-db:

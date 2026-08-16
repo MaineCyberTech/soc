@@ -35,7 +35,7 @@ services:
     profiles: ["iris"]
 
   dfir-iris:
-    image: dfir-iris/dfir-iris:latest
+    image: ghcr.io/dfir-iris/iriswebapp_app@sha256:d7d23026bdde593278075821d3abc8649fe28d618d5784cc9875bd7a3d05699b
     restart: unless-stopped
     depends_on:
       - iris-db
