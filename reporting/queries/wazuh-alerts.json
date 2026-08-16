@@ -1,0 +1,26 @@
+{
+  "name": "wazuh-alerts-top",
+  "index": "wazuh-alerts-*",
+  "purpose": "Top Wazuh alerts by rule and agent for the reporting period",
+  "time_field": "timestamp",
+  "query": {
+    "size": 0,
+    "aggs": {
+      "by_rule": {
+        "terms": { "field": "rule.id", "size": 20 },
+        "aggs": {
+          "description": {
+            "terms": { "field": "rule.description", "size": 1 }
+          }
+        }
+      },
+      "by_agent": {
+        "terms": { "field": "agent.name", "size": 20 }
+      },
+      "by_level": {
+        "terms": { "field": "rule.level", "size": 20 }
+      }
+    }
+  },
+  "range_days": 30
+}

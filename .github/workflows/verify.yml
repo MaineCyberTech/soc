@@ -1,0 +1,52 @@
+name: Verify MCT SOC Repo
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Bash syntax check
+        run: |
+          find . -path './.git' -prune -o -name '*.sh' -type f -print | while read -r f; do bash -n "$f"; done
+
+      - name: Python syntax check
+        run: |
+          find . -path './.git' -prune -o -name '*.py' -type f -print | while read -r f; do python3 -m py_compile "$f"; done
+
+      - name: PowerShell present check
+        run: |
+          PS=$(find . -path './.git' -prune -o -name '*.ps1' -type f -print | wc -l)
+          echo "PowerShell files present: $PS"
+          if [ "$PS" -gt 0 ]; then
+            echo "NOTE: PS1 scripts require endpoint/runtime validation - not executed in CI."
+            echo "See scripts/endpoint-deploy/ for Windows endpoint scripts."
+          fi
+
+      - name: Stack layout check (repo-only)
+        run: |
+          if [ -x scripts/verify/verify-stack-layout.sh ]; then bash scripts/verify/verify-stack-layout.sh; fi
+
+      - name: Stale phase reference check (repo-only)
+        run: |
+          if [ -x scripts/verify/verify-no-stale-phase-refs.sh ]; then bash scripts/verify/verify-no-stale-phase-refs.sh; fi
+
+      - name: Secret pattern scan (repo-only, no values)
+        run: |
+          if [ -x ops/scripts/secret-pattern-scan.sh ]; then bash ops/scripts/secret-pattern-scan.sh "$PWD"; fi
+
+      - name: Live architecture check (SKIP in CI - requires docker stack)
+        run: |
+          echo "verify-current-architecture.sh requires the live docker stack and is NOT run in CI."
+          echo "Run locally: bash scripts/verify/verify-current-architecture.sh"
+
+      - name: Live portable repo check (SKIP in CI - requires creds)
+        run: |
+          echo "verify-portable-repo.sh requires creds.env and is NOT run in CI."
+          echo "Run locally: bash scripts/verify/verify-portable-repo.sh"

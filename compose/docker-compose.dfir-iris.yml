@@ -1,0 +1,64 @@
+name: mct-security-stack
+
+# DFIR-IRIS case management stack.
+# Default: bind only to 127.0.0.1. Remote access via Cloudflare Access tunnel only.
+# Resource-aware memory limits — host has ~1.6G available RAM.
+
+networks:
+  mct-security:
+    external: true
+
+services:
+  iris-db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: iris
+      POSTGRES_PASSWORD: ${DFIR_IRIS_DB_PASSWORD:?set in .env}
+      POSTGRES_DB: iris
+    volumes:
+      - iris-db:/var/lib/postgresql/data
+    networks:
+      - mct-security
+    mem_limit: 512m
+    profiles: ["iris"]
+
+  iris-redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes", "--requirepass", "${DFIR_IRIS_REDIS_PASSWORD:?set in .env}"]
+    volumes:
+      - iris-redis:/data
+    networks:
+      - mct-security
+    mem_limit: 128m
+    profiles: ["iris"]
+
+  dfir-iris:
+    image: dfir-iris/dfir-iris:latest
+    restart: unless-stopped
+    depends_on:
+      - iris-db
+      - iris-redis
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      IRIS_SECRET_KEY: ${DFIR_IRIS_SECRET_KEY:?set in .env}
+      IRIS_POSTGRES_DB_NAME: iris
+      IRIS_POSTGRES_DB_USER: iris
+      IRIS_POSTGRES_DB_PASSWORD: ${DFIR_IRIS_DB_PASSWORD:?set in .env}
+      IRIS_POSTGRES_HOST: iris-db
+      IRIS_POSTGRES_PORT: 5432
+      IRIS_REDIS_HOST: iris-redis
+      IRIS_REDIS_PORT: 6379
+      IRIS_REDIS_PASSWORD: ${DFIR_IRIS_REDIS_PASSWORD:?set in .env}
+      IRIS_ALLOWED_HOSTS: ${DFIR_IRIS_ALLOWED_HOSTS:-127.0.0.1,localhost}
+      IRIS_TIMEZONE: America/New_York
+    networks:
+      - mct-security
+    mem_limit: 512m
+    profiles: ["iris"]
+
+volumes:
+  iris-db:
+  iris-redis:

@@ -1,0 +1,101 @@
+<Sysmon schemaversion="4.90">
+  <!-- MCT Sysmon config - conservative baseline aligned to MCT detection backlog.
+       Covers: process creation, network, DNS, file create, registry, services,
+       scheduled tasks, driver loads, process access (lsass), remote thread.
+       Log-only philosophy: collection first, rules later (see sysmon-rule-plan.md). -->
+  <EventFiltering>
+    <!-- Process creation (Event 1): exclude known-quiet system binaries -->
+    <ProcessCreate onmatch="exclude">
+      <Image condition="is">C:\Windows\System32\conhost.exe</Image>
+      <Image condition="is">C:\Windows\System32\svchost.exe</Image>
+      <Image condition="is">C:\Windows\System32\fontdrvhost.exe</Image>
+      <Image condition="is">C:\Windows\System32\dllhost.exe</Image>
+      <Image condition="is">C:\Windows\System32\RuntimeBroker.exe</Image>
+      <Image condition="is">C:\Windows\System32\backgroundTaskHost.exe</Image>
+      <Image condition="is">C:\Windows\System32\cmd.exe</Image>
+      <Image condition="is">C:\Windows\System32\SearchIndexer.exe</Image>
+      <Image condition="is">C:\Windows\System32\spoolsv.exe</Image>
+      <Image condition="is">C:\Windows\System32\winlogon.exe</Image>
+      <Image condition="is">C:\Windows\System32\lsass.exe</Image>
+      <Image condition="is">C:\Windows\System32\services.exe</Image>
+      <Image condition="is">C:\Windows\System32\csrss.exe</Image>
+      <Image condition="is">C:\Windows\System32\smss.exe</Image>
+      <Image condition="is">C:\Windows\System32\wininit.exe</Image>
+      <Image condition="is">C:\Windows\System32\Taskmgr.exe</Image>
+      <Image condition="is">C:\Windows\System32\ctfmon.exe</Image>
+      <Image condition="is">C:\Windows\System32\WerFault.exe</Image>
+      <Image condition="is">C:\Windows\System32\CompatTelRunner.exe</Image>
+      <Image condition="is">C:\Windows\System32\AppHostRegistrationVerifier.exe</Image>
+      <Image condition="is">C:\Windows\System32\wbem\WmiPrvSE.exe</Image>
+      <Image condition="is">C:\Windows\System32\sihost.exe</Image>
+      <Image condition="is">C:\Windows\System32\taskhostw.exe</Image>
+      <Image condition="is">C:\Windows\System32\LogonUI.exe</Image>
+      <Image condition="is">C:\Windows\System32\SettingSyncHost.exe</Image>
+      <Image condition="is">C:\Windows\System32\AudioDG.exe</Image>
+      <Image condition="is">C:\Windows\System32\Sppsvc.exe</Image>
+    </ProcessCreate>
+
+    <!-- Network connections (Event 3): log all, analysts filter -->
+    <NetworkConnect onmatch="include">
+      <Image condition="isnot">C:\Windows\System32\svchost.exe</Image>
+    </NetworkConnect>
+
+    <!-- Process access / injection (Events 8/10): only lsass access + remote threads -->
+    <ProcessAccess onmatch="include">
+      <TargetImage condition="is">C:\Windows\System32\lsass.exe</TargetImage>
+    </ProcessAccess>
+    <CreateRemoteThread onmatch="include">
+      <SourceImage condition="isnot">C:\Windows\System32\svchost.exe</SourceImage>
+    </CreateRemoteThread>
+
+    <!-- Image loads (Event 7): log all (driver/module load visibility) -->
+
+    <!-- File create (Event 11): docs in unusual paths -->
+    <FileCreate onmatch="include">
+      <TargetFilename condition="end with">.docx</TargetFilename>
+      <TargetFilename condition="end with">.xlsx</TargetFilename>
+      <TargetFilename condition="end with">.pdf</TargetFilename>
+      <TargetFilename condition="end with">.zip</TargetFilename>
+      <TargetFilename condition="end with">.rar</TargetFilename>
+      <TargetFilename condition="end with">.lnk</TargetFilename>
+      <TargetFilename condition="end with">.scr</TargetFilename>
+      <TargetFilename condition="end with">.hta</TargetFilename>
+      <TargetFilename condition="end with">.iso</TargetFilename>
+      <TargetFilename condition="end with">.vbs</TargetFilename>
+      <TargetFilename condition="end with">.ps1</TargetFilename>
+      <TargetFilename condition="end with">.bat</TargetFilename>
+      <TargetFilename condition="end with">.cmd</TargetFilename>
+      <TargetFilename condition="contains">\AppData\Local\Temp</TargetFilename>
+      <TargetFilename condition="contains">\ProgramData\</TargetFilename>
+      <TargetFilename condition="contains">\Users\Public\</TargetFilename>
+    </FileCreate>
+
+    <!-- Registry (Events 12-14): persistence-relevant keys only -->
+    <RegistryEvent onmatch="include">
+      <TargetObject condition="contains">\CurrentVersion\Run</TargetObject>
+      <TargetObject condition="contains">\CurrentVersion\RunOnce</TargetObject>
+      <TargetObject condition="contains">\CurrentVersion\RunServices</TargetObject>
+      <TargetObject condition="contains">\CurrentVersion\Explorer\Shell Folders</TargetObject>
+      <TargetObject condition="contains">\CurrentVersion\Image File Execution Options</TargetObject>
+      <TargetObject condition="contains">\CurrentVersion\Policies\Explorer\Run</TargetObject>
+      <TargetObject condition="contains">\Services\</TargetObject>
+      <TargetObject condition="contains">\CurrentVersion\Windows Defender\Exclusions</TargetObject>
+      <TargetObject condition="contains">\CurrentVersion\Windows Defender\Real-Time Protection</TargetObject>
+      <TargetObject condition="contains">\CurrentVersion\AppInit_DLLs</TargetObject>
+      <TargetObject condition="contains">\CurrentVersion\Winlogon</TargetObject>
+      <TargetObject condition="contains">\CurrentVersion\Authentication\Credential Providers</TargetObject>
+    </RegistryEvent>
+
+    <!-- DNS query (Event 22): all -->
+    <DnsQuery onmatch="include">
+      <QueryName condition="isnot">localhost</QueryName>
+    </DnsQuery>
+
+    <!-- Driver load (Event 6): all (unsigned/unusual driver visibility) -->
+
+    <!-- File create time change (Event 25): timestomping -->
+    <FileCreateTime onmatch="include">
+      <Image condition="isnot">C:\Windows\System32\svchost.exe</Image>
+    </FileCreateTime>
+  </EventFiltering>
+</Sysmon>

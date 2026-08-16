@@ -1,0 +1,19 @@
+{
+  "webhook": "flow-unknown-exporter",
+  "version": "1.0",
+  "trigger": "Wazuh custom flow rules (unknown-exporter family)",
+  "payload_fields": [
+    "exporter_ip",
+    "exporter_name",
+    "flow_protocol",
+    "agent_name",
+    "timestamp"
+  ],
+  "example": {
+    "exporter_ip": "192.168.222.50",
+    "exporter_name": "unknown-switch",
+    "flow_protocol": "netflow_v5",
+    "agent_name": "wazuh-master",
+    "timestamp": "2026-08-10T00:00:00Z"
+  }
+}

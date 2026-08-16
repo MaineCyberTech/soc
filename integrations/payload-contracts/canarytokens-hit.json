@@ -1,0 +1,13 @@
+{
+  "contract": "canarytokens-hit",
+  "source": "Canarytokens (canarytokens.org or self-hosted)",
+  "trigger": "Token fired (file opened, URL visited, DNS queried, creds used)",
+  "destination": "Shuffle webhook -> DFIR-IRIS (Class A)",
+  "auth_method": "Webhook token <REDACTED_TOKEN>",
+  "payload_fields": ["token_type", "token_value", "src_ip", "user_agent", "host", "timestamp"],
+  "retry_behavior": "Canarytokens retries webhook; Shuffle retries 3x",
+  "failure_mode": "Webhook down: email fallback to SOC inbox; log for replay",
+  "test_event": "Trigger test token; expect IRIS alert severity 4 with template opencanary-hit",
+  "data_retention": "Token events retained in Shuffle logs + IRIS case",
+  "owner_runbook": "integrations/opencanary/canarytokens.md"
+}

@@ -1,0 +1,36 @@
+name: mct-security-stack
+
+# OpenCanary deception layer. Lightweight; safe to run on the phase 2 host.
+# Sends alerts to the Wazuh master syslog input (514/udp on 127.0.0.1 or the
+# existing flow-relay host). Bind only the canary ports needed per service plan.
+
+networks:
+  mct-security:
+    external: true
+  multi-node_default:
+    external: true
+
+services:
+  opencanary:
+    image: thinkst/opencanary:latest
+    restart: unless-stopped
+    environment:
+      OPENCANARY_SYSLOG_ADDRESS: ${OPENCANARY_SYSLOG_TARGET:-multi-node-wazuh.master-1}:514
+    ports:
+      - "21:21"
+      - "23:23"
+      - "3306:3306"
+      - "1433:1433"
+      - "9100:9100"
+      - "8008:8008"
+    volumes:
+      - /opt/mct-security-stack/data/opencanary/opencanary.conf:/root/.opencanary.conf:ro
+      - opencanary-logs:/var/log/opencanary
+    networks:
+      - mct-security
+      - multi-node_default
+    mem_limit: 128m
+    profiles: ["opencanary"]
+
+volumes:
+  opencanary-logs:

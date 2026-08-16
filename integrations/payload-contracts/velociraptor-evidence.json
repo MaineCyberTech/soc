@@ -1,0 +1,13 @@
+{
+  "contract": "velociraptor-evidence",
+  "source": "Velociraptor server",
+  "trigger": "Hunt/collection completed on an affected client",
+  "destination": "DFIR-IRIS case (evidence attachment)",
+  "auth_method": "IRIS API key <REDACTED_IRIS_API_KEY> (manual upload default)",
+  "payload_fields": ["hunt_id", "client_hostname", "collection_zip_path", "sha256", "case_id"],
+  "retry_behavior": "Manual retry; partial zip may exist for streaming collections",
+  "failure_mode": "Zip too large: store in backup share, reference path in case; client offline: retry later",
+  "test_event": "Run Generic.Client.Info hunt on pilot client; export zip; attach to test IRIS case",
+  "data_retention": "Collections archived with case closeout (ops/backups or S3 DR bundle)",
+  "owner_runbook": "integrations/velociraptor/dfir-iris-evidence-workflow.md"
+}

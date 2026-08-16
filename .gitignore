@@ -1,0 +1,28 @@
+# Secrets — never commit
+.env
+*.env
+!*.env.example
+creds.env
+*.key
+*.pem
+!config/examples/*.example*
+
+# Local data and backups
+data/
+ops/backups/
+ops/reports/*.tmp
+reporting/output/
+*.tar.gz
+*.sql.gz
+*.zip
+*.pcap
+*.evtx
+
+# Generated per-client artifacts (contain live private keys)
+scripts/endpoint-deploy/client.config.yaml
+ops/reports/shuffle-periodic-repair.log
+
+# Editor and OS noise
+.DS_Store
+*.swp
+*~

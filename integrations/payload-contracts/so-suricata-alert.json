@@ -1,0 +1,13 @@
+{
+  "contract": "so-suricata-alert",
+  "source": "Security Onion (Suricata)",
+  "trigger": "Suricata signature match (category exploitation/C2 or severity high)",
+  "destination": "Shuffle webhook -> DFIR-IRIS",
+  "auth_method": "Bridge token <REDACTED_TOKEN> (secret store)",
+  "payload_fields": ["signature_id", "signature_category", "srcip", "dstip", "proto", "timestamp", "severity"],
+  "retry_behavior": "Bridge queues events; Shuffle retries 3x",
+  "failure_mode": "Bridge down: no events; healthcheck monitors bridge liveness; alert stays in SO Elasticsearch",
+  "test_event": "Inject test Suricata alert JSON to bridge webhook; expect IRIS alert severity 4 for C2",
+  "data_retention": "SO retains PCAP/alerts per its retention; IRIS case keeps summary",
+  "owner_runbook": "ops/runbooks/incident-triage.md, integrations/shuffle/workflows/security-onion-alert-to-iris.md"
+}

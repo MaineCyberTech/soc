@@ -1,0 +1,13 @@
+{
+  "contract": "wazuh-to-misp",
+  "source": "Wazuh (analyst-confirmed IOCs from alerts)",
+  "trigger": "Analyst approves candidate IOC after alert review",
+  "destination": "MISP API (event create with attributes)",
+  "auth_method": "MISP API key <REDACTED_TOKEN> (secret store)",
+  "payload_fields": ["ioc_value", "ioc_type", "confidence_tag", "source_rule", "event_org"],
+  "retry_behavior": "Queue candidates locally; retry on next sync",
+  "failure_mode": "MISP down: candidates stay in queue file; duplicates merged by MISP correlation",
+  "test_event": "Create test event with ip-src attribute via API; verify in MISP GUI",
+  "data_retention": "MISP events per expiry policy (scanners 30d, others 90d)",
+  "owner_runbook": "integrations/misp/wazuh-to-misp-candidate-ioc.md"
+}

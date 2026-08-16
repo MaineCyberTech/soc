@@ -1,0 +1,1 @@
+{"source":"phase3-smoke-test","type":"wazuh-high-severity","rule_id":"120000","rule_level":10,"srcip":"203.0.113.10","agent_name":"smoke-test","description":"Phase 3 safe smoke test payload"}

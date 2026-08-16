@@ -1,0 +1,20 @@
+<!-- OpenCanary Wazuh decoder plan (PLANNED — validate with wazuh-logtest before deploy).
+     OpenCanary syslog JSON events look like:
+     {"src_host": "...", "dst_host": "...", "dst_port": 22, "logdata": {"src_ip": "...", "password": "...", "username": "..."}, "logtype": 2001, "node_id": "opencanary-mct-01", "timestamp": "2026-08-10T00:00:00Z", "dst_host": "..."}
+     Add to config/wazuh_cluster/etc/decoders/local_decoder.xml (append, keep existing decoders). -->
+<decoder name="opencanary-json">
+  <prematch>opencanary</prematch>
+</decoder>
+
+<decoder name="opencanary-json-detail">
+  <parent>opencanary-json</parent>
+  <json>logdata</json>
+</decoder>
+
+<!-- Alternative simple decoder if JSON parse is flaky:
+<decoder name="opencanary-syslog">
+  <prematch>opencanary</prematch>
+  <regex>opencanary\s+(\S+)\s+(\S+)</regex>
+  <order>srcip,event</order>
+</decoder>
+-->

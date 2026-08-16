@@ -1,0 +1,21 @@
+# Phase 5 backup cron - FINAL (approved for installation by operator)
+# Installed: pending operator approval (pack rule: "do not install unless approved")
+# Logs go to ops/reports/*.log
+
+# Daily IRIS DB dump 04:30
+30 4 * * * /opt/mct-security-stack/ops/scripts/iris-db-dump.sh >> /opt/mct-security-stack/ops/reports/iris-db-cron.log 2>&1
+
+# Daily VM103 MISP dump 04:35 (SSH to VM103, ~2-3 min)
+35 4 * * * /opt/mct-security-stack/ops/scripts/vm103-misp-db-dump.sh >> /opt/mct-security-stack/ops/reports/vm103-misp-cron.log 2>&1
+
+# Weekly Greenbone dump Sun 05:15 (large, 10-15 min - nohup pattern)
+15 5 * * 0 /opt/mct-security-stack/ops/scripts/vm103-greenbone-backup.sh >> /opt/mct-security-stack/ops/reports/vm103-greenbone-cron.log 2>&1
+
+# Weekly Shuffle workflow export Sun 05:45
+45 5 * * 0 /opt/mct-security-stack/ops/scripts/shuffle-workflow-export.sh >> /opt/mct-security-stack/ops/reports/shuffle-export-cron.log 2>&1
+
+# Daily VM103 backup freshness check 06:15
+15 6 * * * /opt/mct-security-stack/ops/scripts/phase5-backup-freshness-check.sh >> /opt/mct-security-stack/ops/reports/phase5-freshness-cron.log 2>&1
+
+# Weekly backup retention prune Sun 06:00 (after greenbone dump)
+0 6 * * 0 /opt/mct-security-stack/ops/scripts/prune-phase5-backups.sh >> /opt/mct-security-stack/ops/reports/backup-prune-cron.log 2>&1

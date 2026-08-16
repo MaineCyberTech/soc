@@ -1,0 +1,21 @@
+{
+  "webhook": "opencanary-hit",
+  "version": "1.0",
+  "trigger": "Wazuh opencanary rules after syslog intake",
+  "payload_fields": [
+    "canary_service",
+    "src_host",
+    "dst_host",
+    "event",
+    "credential_attempted",
+    "timestamp"
+  ],
+  "example": {
+    "canary_service": "ssh",
+    "src_host": "203.0.113.20",
+    "dst_host": "canary01",
+    "event": "login_attempt",
+    "credential_attempted": "admin",
+    "timestamp": "2026-08-10T00:00:00Z"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "elastiflow-summary",
+  "index": "elastiflow-flow-ecs-*",
+  "purpose": "Flow summary: top clients, destinations, services, bytes",
+  "time_field": "@timestamp",
+  "query": {
+    "size": 0,
+    "aggs": {
+      "top_sources": {
+        "terms": { "field": "client.as.organization.name", "size": 20 },
+        "aggs": {
+          "src_ip": { "terms": { "field": "client.ip", "size": 5 } },
+          "bytes": { "sum": { "field": "network.bytes" } }
+        }
+      },
+      "top_destinations": {
+        "terms": { "field": "server.ip", "size": 20 },
+        "aggs": { "bytes": { "sum": { "field": "network.bytes" } } }
+      },
+      "top_services": {
+        "terms": { "field": "server.port", "size": 20 },
+        "aggs": { "bytes": { "sum": { "field": "network.bytes" } } }
+      },
+      "total_bytes": { "sum": { "field": "network.bytes" } },
+      "total_flows": { "value_count": { "field": "_id" } }
+    }
+  },
+  "range_days": 30
+}

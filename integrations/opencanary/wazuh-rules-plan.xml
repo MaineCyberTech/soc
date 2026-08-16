@@ -1,0 +1,121 @@
+
+<!-- OpenCanary deception rules (MCT Security Stack) -->
+<!-- Events arrive as JSON syslog from the opencanary container (172.18.0.10),
+     parsed by the built-in json decoder. Field: data.node_id, data.logtype,
+     data.src_host. All hits are Class A. -->
+<group name="opencanary,deception,">
+
+  <rule id="121000" level="12">
+    <decoded_as>json</decoded_as>
+    <field name="node_id">^opencanary</field>
+    <description>OpenCanary deception event</description>
+    <group>opencanary,deception,</group>
+  </rule>
+
+  <rule id="121001" level="0">
+    <if_sid>121000</if_sid>
+    <field name="logtype">^1001$</field>
+    <description>OpenCanary: service started (informational)</description>
+    <group>opencanary,deception,</group>
+  </rule>
+
+  <rule id="121002" level="12">
+    <if_sid>121000</if_sid>
+    <field name="logtype">^2001$</field>
+    <description>OpenCanary: SSH login attempt - $(data.src_host)</description>
+    <group>opencanary,deception,ssh,</group>
+  </rule>
+
+  <rule id="121003" level="12">
+    <if_sid>121000</if_sid>
+    <field name="logtype">^2002$</field>
+    <description>OpenCanary: SSH session opened - $(data.src_host)</description>
+    <group>opencanary,deception,ssh,</group>
+  </rule>
+
+  <rule id="121004" level="12">
+    <if_sid>121000</if_sid>
+    <field name="logtype">^3001$</field>
+    <description>OpenCanary: HTTP request - $(data.src_host)</description>
+    <group>opencanary,deception,http,</group>
+  </rule>
+
+  <rule id="121005" level="12">
+    <if_sid>121000</if_sid>
+    <field name="logtype">^4001$</field>
+    <description>OpenCanary: SMB connection - $(data.src_host)</description>
+    <group>opencanary,deception,smb,</group>
+  </rule>
+
+  <rule id="121006" level="12">
+    <if_sid>121000</if_sid>
+    <field name="logtype">^5001$</field>
+    <description>OpenCanary: FTP connection - $(data.src_host)</description>
+    <group>opencanary,deception,ftp,</group>
+  </rule>
+
+  <rule id="121007" level="12">
+    <if_sid>121000</if_sid>
+    <field name="logtype">^6001$</field>
+    <description>OpenCanary: MySQL connection - $(data.src_host)</description>
+    <group>opencanary,deception,mysql,</group>
+  </rule>
+
+  <rule id="121008" level="12">
+    <if_sid>121000</if_sid>
+    <field name="logtype">^7001$</field>
+    <description>OpenCanary: MSSQL connection - $(data.src_host)</description>
+    <group>opencanary,deception,mssql,</group>
+  </rule>
+
+  <rule id="121009" level="12">
+    <if_sid>121000</if_sid>
+    <field name="logtype">^8001$</field>
+    <description>OpenCanary: RDP connection - $(data.src_host)</description>
+    <group>opencanary,deception,rdp,</group>
+  </rule>
+
+  <rule id="121010" level="12">
+    <if_sid>121000</if_sid>
+    <field name="logtype">^11001$</field>
+    <description>OpenCanary: Telnet login attempt - $(data.src_host)</description>
+    <group>opencanary,deception,telnet,</group>
+  </rule>
+
+  <rule id="121011" level="12">
+    <if_sid>121000</if_sid>
+    <field name="logtype">^16001$</field>
+    <description>OpenCanary: tcpbanner hit - $(data.src_host)</description>
+    <group>opencanary,deception,</group>
+  </rule>
+
+  <rule id="121012" level="12">
+    <if_sid>121000</if_sid>
+    <field name="logtype">^18001$</field>
+    <description>OpenCanary: connection made - $(data.src_host)</description>
+    <group>opencanary,deception,</group>
+  </rule>
+
+  <rule id="121013" level="12">
+    <if_sid>121000</if_sid>
+    <field name="logtype">^20001$</field>
+    <description>OpenCanary: port scan detected - $(data.src_host)</description>
+    <group>opencanary,deception,portscan,</group>
+  </rule>
+
+  <rule id="121014" level="12">
+    <if_sid>121000</if_sid>
+    <description>OpenCanary: other deception event - $(data.src_host)</description>
+    <group>opencanary,deception,</group>
+  </rule>
+
+  <!-- Greenbone scanner (192.168.222.154) probes the canary ports during
+       scheduled scans - documented noise, suppressed. -->
+  <rule id="121099" level="0">
+    <if_sid>121000</if_sid>
+    <field name="src_host">192.168.222.154</field>
+    <description>OpenCanary: hit from Greenbone scanner (documented)</description>
+    <group>opencanary,deception,</group>
+  </rule>
+
+</group>

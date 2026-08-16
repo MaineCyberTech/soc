@@ -1,0 +1,27 @@
+{
+  "webhook": "wazuh-high-severity",
+  "version": "1.0",
+  "trigger": "OpenSearch Alerting monitor or Wazuh API push",
+  "payload_fields": [
+    "rule_id",
+    "rule_level",
+    "rule_description",
+    "rule_groups",
+    "agent_name",
+    "agent_id",
+    "srcip",
+    "dstip",
+    "timestamp"
+  ],
+  "example": {
+    "rule_id": "120000",
+    "rule_level": 10,
+    "rule_description": "Example high severity alert",
+    "rule_groups": ["ssh", "authentication_failed"],
+    "agent_name": "example-agent",
+    "agent_id": "001",
+    "srcip": "203.0.113.10",
+    "dstip": "192.168.222.149",
+    "timestamp": "2026-08-10T00:00:00Z"
+  }
+}

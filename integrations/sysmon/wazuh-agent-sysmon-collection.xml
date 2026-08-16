@@ -1,0 +1,12 @@
+<!-- Sysmon event collection for Wazuh Windows agents.
+     ADDITIVE: append to the Windows agent group ossec.conf only.
+     Do not modify Linux agent group configuration.
+     File: /var/ossec/etc/ossec.conf on the agent OR via Wazuh group:
+       /opt/wazuh-docker/multi-node/config/wazuh_cluster/etc/shared/windows/agent.conf -->
+<localfile>
+  <location>Microsoft-Windows-Sysmon/Operational</location>
+  <log_format>eventchannel</log_format>
+</localfile>
+
+<!-- Optional: drop noisy events at collection time (additive, test first).
+     Example: exclude known-safe process event IDs from the agent parser. -->

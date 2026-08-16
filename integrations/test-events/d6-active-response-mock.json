@@ -1,0 +1,11 @@
+{
+  "source": "phase4-drill-d6",
+  "type": "active-response-mock",
+  "rule_id": 651,
+  "rule_description": "Host Blocked by firewall-drop Active Response",
+  "agent_name": "mock-agent",
+  "srcip": "203.0.113.88",
+  "ar_command": "firewall-drop",
+  "block_seconds": 600,
+  "note": "Synthetic record - replay via logtest with location /var/ossec/logs/active-responses.log; no real block performed"
+}

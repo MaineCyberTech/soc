@@ -1,0 +1,23 @@
+{
+  "name": "agent-health",
+  "index": "wazuh-monitoring-*",
+  "purpose": "Agent health: active agents (lastKeepAlive based)",
+  "time_field": "timestamp",
+  "query": {
+    "size": 0,
+    "aggs": {
+      "by_status": {
+        "terms": {
+          "field": "status",
+          "size": 10
+        }
+      },
+      "unique_agents": {
+        "cardinality": {
+          "field": "name"
+        }
+      }
+    }
+  },
+  "range_days": 30
+}

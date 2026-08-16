@@ -1,0 +1,31 @@
+{
+  "name": "sca-failures",
+  "index": "wazuh-states-sca-*",
+  "purpose": "SCA failed checks by policy and agent",
+  "time_field": "timestamp",
+  "query": {
+    "size": 0,
+    "aggs": {
+      "by_policy": {
+        "terms": { "field": "sca.policy", "size": 20 },
+        "aggs": {
+          "failures": {
+            "filter": { "term": { "sca.check.result": "failed" } }
+          }
+        }
+      },
+      "by_agent": {
+        "terms": { "field": "agent.name", "size": 20 },
+        "aggs": {
+          "failed": {
+            "filter": { "term": { "sca.check.result": "failed" } }
+          },
+          "passed": {
+            "filter": { "term": { "sca.check.result": "passed" } }
+          }
+        }
+      }
+    }
+  },
+  "range_days": 30
+}

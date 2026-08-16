@@ -1,0 +1,31 @@
+name: mct-security-stack
+
+# Velociraptor server (DFIR/hunts).
+# Config is generated once with `velociraptor config generate` into data/velociraptor/.
+# Frontend/GUI bound to 127.0.0.1 only. Clients connect over the internal network
+# or via the existing Cloudflare Tunnel TCP route for remote endpoints.
+
+networks:
+  mct-security:
+    external: true
+
+services:
+  velociraptor:
+    image: velociraptor:latest
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8089:8000"
+      - "127.0.0.1:8889:8889"
+    volumes:
+      - ./data/velociraptor:/etc/velociraptor
+      - velociraptor-home:/root
+    command:
+      - "--config"
+      - "/etc/velociraptor/server.config.yaml"
+    networks:
+      - mct-security
+    mem_limit: 512m
+    profiles: ["velociraptor"]
+
+volumes:
+  velociraptor-home:

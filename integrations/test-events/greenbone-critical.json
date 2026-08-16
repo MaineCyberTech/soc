@@ -1,0 +1,1 @@
+{"source":"phase3-smoke-test","type":"greenbone-critical","vuln_id":"TEST-CVE-2026-0001","severity":"critical","target":"192.168.222.149","internet_facing":false}

@@ -1,0 +1,13 @@
+{
+  "contract": "misp-to-wazuh-cdb",
+  "source": "MISP (PyMISP pull, tags action:block, confidence >= medium)",
+  "trigger": "Scheduled CDB export (daily) or on-demand",
+  "destination": "Wazuh CDB list /var/ossec/etc/lists/malicious-iocs.cdb (master+worker)",
+  "auth_method": "MISP API key <REDACTED_TOKEN> (secret store, env only)",
+  "payload_fields": ["ioc_value", "ioc_type", "tags", "expiry"],
+  "retry_behavior": "Cron failure -> alerting; last CDB stays active until expiry",
+  "failure_mode": "CDB syntax error: analysisd rejects list on restart — validate before restart, keep backup list",
+  "test_event": "Add test IOC in MISP -> run script -> verify CDB entry + ossec-test match",
+  "data_retention": "CDB entries expire per MISP expiry dates; script drops expired",
+  "owner_runbook": "ops/runbooks/misp.md, integrations/misp/misp-to-wazuh-cdb.md"
+}

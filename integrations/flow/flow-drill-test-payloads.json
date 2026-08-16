@@ -1,0 +1,31 @@
+{
+  "source": "phase4-drill-d3-d4",
+  "type": "flow-test-payload",
+  "tests": [
+    {
+      "name": "d3-unusual-port",
+      "monitor": "flow-unusual-ports",
+      "trigger": "Unusual ports (severity 2)",
+      "flow": {
+        "src_ip": "203.0.113.30",
+        "dst_port": 4444,
+        "proto": "tcp",
+        "bytes": 1024,
+        "exporter": "192.168.222.1"
+      },
+      "expected": "Class B -> Shuffle -> IRIS alert",
+      "safe_note": "RFC5737 test IP; payload only - do not generate real 4444 traffic"
+    },
+    {
+      "name": "d4-unknown-exporter",
+      "monitor": "flow-unknown-exporter",
+      "trigger": "Unknown exporter (severity 1)",
+      "flow": {
+        "host_ip": "203.0.113.99",
+        "note": "NOT in approved exporters [192.168.222.1, 23.150.201.36, 23.150.201.165]"
+      },
+      "expected": "Class A -> Shuffle -> IRIS immediate",
+      "safe_note": "RFC5737 test IP; do not add as real exporter"
+    }
+  ]
+}

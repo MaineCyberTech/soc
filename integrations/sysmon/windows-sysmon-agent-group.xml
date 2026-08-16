@@ -1,0 +1,23 @@
+<!-- Sysmon event collection for Windows agent group: windows-sysmon-pilot.
+     ADDITIVE to the agent group ossec.conf. Do not touch Linux groups.
+     Deploy via Wazuh UI: Agents -> Groups -> windows-sysmon-pilot -> Files. -->
+<agent_config>
+  <localfile>
+    <location>Microsoft-Windows-Sysmon/Operational</location>
+    <log_format>eventchannel</log_format>
+  </localfile>
+  <localfile>
+    <location>Security</location>
+    <log_format>eventchannel</log_format>
+  </localfile>
+  <localfile>
+    <location>System</location>
+    <log_format>eventchannel</log_format>
+  </localfile>
+  <syscollector>
+    <interval>1h</interval>
+    <processes>yes</processes>
+    <ports>yes</ports>
+    <packages>yes</packages>
+  </syscollector>
+</agent_config>

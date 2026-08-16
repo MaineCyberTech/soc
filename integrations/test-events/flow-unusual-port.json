@@ -1,0 +1,1 @@
+{"source":"phase3-smoke-test","type":"flow-unusual-port","flow":{"src_ip":"203.0.113.30","dst_port":4444,"proto":"tcp","bytes":1024},"exporter":"test-exporter"}

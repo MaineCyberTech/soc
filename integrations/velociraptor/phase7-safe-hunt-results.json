@@ -1,0 +1,648 @@
+[
+ {
+  "Computer Info": null,
+  "Network Info": null,
+  "_Source": "Generic.Client.Info/WindowsInfo"
+ },
+ {
+  "Param": "Hostname",
+  "Value": "docker",
+  "_Source": "Generic.Client.Info/DetailedInfo"
+ },
+ {
+  "Param": "Uptime",
+  "Value": 242962,
+  "_Source": "Generic.Client.Info/DetailedInfo"
+ },
+ {
+  "Param": "BootTime",
+  "Value": 1786257628,
+  "_Source": "Generic.Client.Info/DetailedInfo"
+ },
+ {
+  "Param": "OS",
+  "Value": "linux",
+  "_Source": "Generic.Client.Info/DetailedInfo"
+ },
+ {
+  "Param": "Platform",
+  "Value": "debian",
+  "_Source": "Generic.Client.Info/DetailedInfo"
+ },
+ {
+  "Param": "PlatformFamily",
+  "Value": "debian",
+  "_Source": "Generic.Client.Info/DetailedInfo"
+ },
+ {
+  "Param": "PlatformVersion",
+  "Value": "13.6",
+  "_Source": "Generic.Client.Info/DetailedInfo"
+ },
+ {
+  "Param": "KernelVersion",
+  "Value": "6.12.101+deb13-amd64",
+  "_Source": "Generic.Client.Info/DetailedInfo"
+ },
+ {
+  "Param": "VirtualizationSystem",
+  "Value": "kvm",
+  "_Source": "Generic.Client.Info/DetailedInfo"
+ }
+][
+ {
+  "Param": "VirtualizationRole",
+  "Value": "guest",
+  "_Source": "Generic.Client.Info/DetailedInfo"
+ },
+ {
+  "Param": "CompilerVersion",
+  "Value": "go1.25.3",
+  "_Source": "Generic.Client.Info/DetailedInfo"
+ },
+ {
+  "Param": "HostID",
+  "Value": "7ab8a048-caaa-450d-8adf-377463022099",
+  "_Source": "Generic.Client.Info/DetailedInfo"
+ },
+ {
+  "Param": "Exe",
+  "Value": "/usr/local/bin/velociraptor",
+  "_Source": "Generic.Client.Info/DetailedInfo"
+ },
+ {
+  "Param": "CWD",
+  "Value": "/tmp/opencode",
+  "_Source": "Generic.Client.Info/DetailedInfo"
+ },
+ {
+  "Param": "IsAdmin",
+  "Value": true,
+  "_Source": "Generic.Client.Info/DetailedInfo"
+ },
+ {
+  "Param": "ClientStart",
+  "Value": "2026-08-12T02:09:49.278700193Z",
+  "_Source": "Generic.Client.Info/DetailedInfo"
+ },
+ {
+  "Param": "LocalTZ",
+  "Value": "UTC",
+  "_Source": "Generic.Client.Info/DetailedInfo"
+ },
+ {
+  "Param": "LocalTZOffset",
+  "Value": 0,
+  "_Source": "Generic.Client.Info/DetailedInfo"
+ },
+ {
+  "Param": "Fqdn",
+  "Value": "docker",
+  "_Source": "Generic.Client.Info/DetailedInfo"
+ }
+][
+ {
+  "Param": "Architecture",
+  "Value": "amd64",
+  "_Source": "Generic.Client.Info/DetailedInfo"
+ },
+ {
+  "Computer Info": {
+   "TotalPhysicalMemory": 10017525760,
+   "TotalFreeMemory": 185982976,
+   "TotalSharedMemory": 22511616,
+   "TotalSwap": 8589930496,
+   "FreeSwap": 3486244864
+  },
+  "Network Info": [
+   {
+    "Name": "ens18",
+    "MACAddress": "02:34:bd:21:a3:f8",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "192.168.222.149/24",
+     "fe80::34:bdff:fe21:a3f8/64"
+    ]
+   },
+   {
+    "Name": "br-fde6df06b7b6",
+    "MACAddress": "42:f8:61:52:99:86",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "172.18.0.1/16",
+     "fe80::40f8:61ff:fe52:9986/64"
+    ]
+   },
+   {
+    "Name": "docker0",
+    "MACAddress": "fe:e7:64:44:c9:71",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "172.17.0.1/16",
+     "fe80::fce7:64ff:fe44:c971/64"
+    ]
+   },
+   {
+    "Name": "br-a2e58ba5942a",
+    "MACAddress": "e6:89:ae:d2:50:2b",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "172.19.0.1/16",
+     "fe80::e489:aeff:fed2:502b/64"
+    ]
+   },
+   {
+    "Name": "veth0d024d9",
+    "MACAddress": "b6:f6:59:e9:a8:d3",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::b4f6:59ff:fee9:a8d3/64"
+    ]
+   },
+   {
+    "Name": "veth1f27785",
+    "MACAddress": "7e:e5:af:51:df:30",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::7ce5:afff:fe51:df30/64"
+    ]
+   },
+   {
+    "Name": "veth328eaba",
+    "MACAddress": "3a:72:d6:22:3e:c8",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::3872:d6ff:fe22:3ec8/64"
+    ]
+   },
+   {
+    "Name": "veth3253545",
+    "MACAddress": "2e:2e:fa:69:03:bc",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::2c2e:faff:fe69:3bc/64"
+    ]
+   },
+   {
+    "Name": "veth2701819",
+    "MACAddress": "06:a2:1c:5c:04:7a",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::4a2:1cff:fe5c:47a/64"
+    ]
+   },
+   {
+    "Name": "veth0e68a6e",
+    "MACAddress": "ba:76:ff:90:71:15",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::b876:ffff:fe90:7115/64"
+    ]
+   },
+   {
+    "Name": "br-e640d29a50d0",
+    "MACAddress": "42:62:17:52:3f:7b",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "172.20.0.1/16",
+     "fe80::4062:17ff:fe52:3f7b/64"
+    ]
+   },
+   {
+    "Name": "veth7fd962f",
+    "MACAddress": "96:e0:1b:49:83:a3",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::94e0:1bff:fe49:83a3/64"
+    ]
+   },
+   {
+    "Name": "veth57f9b1d",
+    "MACAddress": "d6:3c:1d:db:09:39",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::d43c:1dff:fedb:939/64"
+    ]
+   },
+   {
+    "Name": "vethc2d413f",
+    "MACAddress": "da:67:f6:4b:8e:cf",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::d867:f6ff:fe4b:8ecf/64"
+    ]
+   },
+   {
+    "Name": "docker_gwbridge",
+    "MACAddress": "82:35:a2:90:b1:de",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "172.21.0.1/16",
+     "fe80::8035:a2ff:fe90:b1de/64"
+    ]
+   },
+   {
+    "Name": "veth44ea679",
+    "MACAddress": "a6:f3:da:35:52:26",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::a4f3:daff:fe35:5226/64"
+    ]
+   },
+   {
+    "Name": "br-bd4a8b6d0ef1",
+    "MACAddress": "42:35:40:d1:68:e4",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "192.168.102.1/24",
+     "fe80::4035:40ff:fed1:68e4/64"
+    ]
+   },
+   {
+    "Name": "vethb7f3ab2",
+    "MACAddress": "fa:da:64:3c:03:37",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::f8da:64ff:fe3c:337/64"
+    ]
+   },
+   {
+    "Name": "vethba22f1d",
+    "MACAddress": "72:18:9b:20:79:0e",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::7018:9bff:fe20:790e/64"
+    ]
+   },
+   {
+    "Name": "br-1479c9821b36",
+    "MACAddress": "46:f4:5e:9b:d3:0b",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "172.23.0.1/16",
+     "fe80::44f4:5eff:fe9b:d30b/64"
+    ]
+   },
+   {
+    "Name": "br-27a70d8d5cb1",
+    "MACAddress": "96:27:7f:59:ea:70",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "172.22.0.1/16",
+     "fe80::9427:7fff:fe59:ea70/64"
+    ]
+   },
+   {
+    "Name": "veth508be6d",
+    "MACAddress": "96:8c:ce:25:ef:46",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::948c:ceff:fe25:ef46/64"
+    ]
+   },
+   {
+    "Name": "veth69f98a3",
+    "MACAddress": "2e:0c:11:93:c4:76",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::2c0c:11ff:fe93:c476/64"
+    ]
+   },
+   {
+    "Name": "veth3a77469",
+    "MACAddress": "d6:55:7c:21:80:a4",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::d455:7cff:fe21:80a4/64"
+    ]
+   },
+   {
+    "Name": "vethbcf8d26",
+    "MACAddress": "c2:67:55:00:09:59",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::c067:55ff:fe00:959/64"
+    ]
+   },
+   {
+    "Name": "veth68a82e8",
+    "MACAddress": "ea:d3:10:75:d6:77",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::e8d3:10ff:fe75:d677/64"
+    ]
+   },
+   {
+    "Name": "veth9d2bcef",
+    "MACAddress": "4e:96:3e:e9:0a:82",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::4c96:3eff:fee9:a82/64"
+    ]
+   },
+   {
+    "Name": "vethbe62f30",
+    "MACAddress": "8e:d4:29:73:fd:d9",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::8cd4:29ff:fe73:fdd9/64"
+    ]
+   },
+   {
+    "Name": "veth3627d9c",
+    "MACAddress": "46:d4:75:0e:0a:d4",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::44d4:75ff:fe0e:ad4/64"
+    ]
+   },
+   {
+    "Name": "veth019ff93",
+    "MACAddress": "8a:1d:61:86:cc:80",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::881d:61ff:fe86:cc80/64"
+    ]
+   },
+   {
+    "Name": "vethf1bf71a",
+    "MACAddress": "36:a2:bd:e6:96:3d",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::34a2:bdff:fee6:963d/64"
+    ]
+   },
+   {
+    "Name": "vethfc87370",
+    "MACAddress": "5e:6b:44:3d:bf:87",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::5c6b:44ff:fe3d:bf87/64"
+    ]
+   },
+   {
+    "Name": "vethda8cecd",
+    "MACAddress": "0e:f6:56:70:b7:8f",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::cf6:56ff:fe70:b78f/64"
+    ]
+   },
+   {
+    "Name": "veth69fceb1",
+    "MACAddress": "e6:37:00:4d:69:65",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::e437:ff:fe4d:6965/64"
+    ]
+   },
+   {
+    "Name": "veth8c2bedc",
+    "MACAddress": "be:03:bb:bb:1a:b7",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::bc03:bbff:febb:1ab7/64"
+    ]
+   },
+   {
+    "Name": "veth391e47a",
+    "MACAddress": "92:e8:7e:25:0f:42",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::90e8:7eff:fe25:f42/64"
+    ]
+   },
+   {
+    "Name": "vethcefd8e4",
+    "MACAddress": "d6:36:77:06:16:ef",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::d436:77ff:fe06:16ef/64"
+    ]
+   },
+   {
+    "Name": "veth4ef4ce0",
+    "MACAddress": "06:7a:58:9b:b1:2a",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::47a:58ff:fe9b:b12a/64"
+    ]
+   },
+   {
+    "Name": "vethacaa464",
+    "MACAddress": "f6:73:56:41:5d:d0",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::f473:56ff:fe41:5dd0/64"
+    ]
+   },
+   {
+    "Name": "vethf6c95c3",
+    "MACAddress": "ee:4b:64:0f:20:9b",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::ec4b:64ff:fe0f:209b/64"
+    ]
+   },
+   {
+    "Name": "veth968c7c4",
+    "MACAddress": "ae:8b:05:06:ee:f9",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::ac8b:5ff:fe06:eef9/64"
+    ]
+   },
+   {
+    "Name": "vethf1cb182",
+    "MACAddress": "ba:cc:60:a8:c1:e5",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::b8cc:60ff:fea8:c1e5/64"
+    ]
+   },
+   {
+    "Name": "veth865153b",
+    "MACAddress": "46:c0:46:37:fd:ab",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::44c0:46ff:fe37:fdab/64"
+    ]
+   },
+   {
+    "Name": "vethfec141c",
+    "MACAddress": "96:03:14:c5:b2:00",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::9403:14ff:fec5:b200/64"
+    ]
+   },
+   {
+    "Name": "vethc475006",
+    "MACAddress": "92:93:f4:66:75:6e",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::9093:f4ff:fe66:756e/64"
+    ]
+   },
+   {
+    "Name": "vetheb968a0",
+    "MACAddress": "66:cc:82:be:36:80",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::64cc:82ff:febe:3680/64"
+    ]
+   },
+   {
+    "Name": "veth63f5313",
+    "MACAddress": "ca:d8:1b:5b:87:fd",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::c8d8:1bff:fe5b:87fd/64"
+    ]
+   },
+   {
+    "Name": "veth96286b1",
+    "MACAddress": "1e:23:6b:38:a8:e3",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::1c23:6bff:fe38:a8e3/64"
+    ]
+   },
+   {
+    "Name": "veth8442cd5",
+    "MACAddress": "ca:0e:78:3e:b5:4c",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::c80e:78ff:fe3e:b54c/64"
+    ]
+   },
+   {
+    "Name": "veth30d09ce",
+    "MACAddress": "d6:00:7a:5b:a2:eb",
+    "Up": "Y",
+    "PointToPoint": "N",
+    "IPAddresses": [
+     "fe80::d400:7aff:fe5b:a2eb/64"
+    ]
+   }
+  ],
+  "_Source": "Generic.Client.Info/LinuxInfo"
+ },
+ {
+  "Name": "velociraptor",
+  "BuildTime": "2026-08-10T00:58:52Z",
+  "Version": "0.77.2",
+  "build_url": "",
+  "install_time": 0,
+  "Labels": null,
+  "Hostname": "docker",
+  "OS": "linux",
+  "Architecture": "amd64",
+  "Platform": "debian",
+  "PlatformVersion": "13.6",
+  "KernelVersion": "6.12.101+deb13-amd64",
+  "Fqdn": "docker",
+  "MACAddresses": [
+   "02:34:bd:21:a3:f8",
+   "42:f8:61:52:99:86",
+   "fe:e7:64:44:c9:71",
+   "e6:89:ae:d2:50:2b",
+   "b6:f6:59:e9:a8:d3",
+   "7e:e5:af:51:df:30",
+   "3a:72:d6:22:3e:c8",
+   "2e:2e:fa:69:03:bc",
+   "06:a2:1c:5c:04:7a",
+   "ba:76:ff:90:71:15",
+   "42:62:17:52:3f:7b",
+   "96:e0:1b:49:83:a3",
+   "d6:3c:1d:db:09:39",
+   "da:67:f6:4b:8e:cf",
+   "82:35:a2:90:b1:de",
+   "a6:f3:da:35:52:26",
+   "42:35:40:d1:68:e4",
+   "fa:da:64:3c:03:37",
+   "72:18:9b:20:79:0e",
+   "46:f4:5e:9b:d3:0b",
+   "96:27:7f:59:ea:70",
+   "96:8c:ce:25:ef:46",
+   "2e:0c:11:93:c4:76",
+   "d6:55:7c:21:80:a4",
+   "c2:67:55:00:09:59",
+   "ea:d3:10:75:d6:77",
+   "4e:96:3e:e9:0a:82",
+   "8e:d4:29:73:fd:d9",
+   "46:d4:75:0e:0a:d4",
+   "8a:1d:61:86:cc:80",
+   "36:a2:bd:e6:96:3d",
+   "5e:6b:44:3d:bf:87",
+   "0e:f6:56:70:b7:8f",
+   "e6:37:00:4d:69:65",
+   "be:03:bb:bb:1a:b7",
+   "92:e8:7e:25:0f:42",
+   "d6:36:77:06:16:ef",
+   "06:7a:58:9b:b1:2a",
+   "f6:73:56:41:5d:d0",
+   "ee:4b:64:0f:20:9b",
+   "ae:8b:05:06:ee:f9",
+   "ba:cc:60:a8:c1:e5",
+   "46:c0:46:37:fd:ab",
+   "96:03:14:c5:b2:00",
+   "92:93:f4:66:75:6e",
+   "66:cc:82:be:36:80",
+   "ca:d8:1b:5b:87:fd",
+   "1e:23:6b:38:a8:e3",
+   "ca:0e:78:3e:b5:4c",
+   "d6:00:7a:5b:a2:eb"
+  ],
+  "_Source": "Generic.Client.Info/BasicInformation"
+ }
+]

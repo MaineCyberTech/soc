@@ -1,0 +1,12 @@
+# MCT Security Stack - .gitignore example
+.env
+.env.cloudflare
+ops/creds.env
+ops/backups/
+data/
+*.key
+*.pem
+!config/examples/*.example*
+*.tar.gz
+*.sql.gz
+reporting/output/client/*-scorecard-*.md

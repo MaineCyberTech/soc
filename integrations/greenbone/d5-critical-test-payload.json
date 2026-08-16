@@ -1,0 +1,16 @@
+{
+  "source": "phase4-drill-d5",
+  "type": "greenbone-critical-test",
+  "asset": "192.168.222.149",
+  "severity": "critical",
+  "cvss": 9.8,
+  "cve": "CVE-2026-0000",
+  "finding": "Phase 4 drill D5 synthetic critical finding - NOT a real vulnerability",
+  "internet_facing": false,
+  "timestamp": "2026-08-11T00:00:00Z",
+  "expected": {
+    "route": "webhook -> Shuffle critical-vuln-to-case -> IRIS case (critical-vulnerability template)",
+    "class": "A if internet_facing else B",
+    "notify_only": true
+  }
+}

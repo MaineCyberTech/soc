@@ -1,0 +1,19 @@
+{
+  "size": 0,
+  "query": {
+    "range": {
+      "timestamp": { "gte": "now-24h" }
+    }
+  },
+  "aggs": {
+    "by_rule": {
+      "terms": { "field": "rule.id", "size": 40 },
+      "aggs": {
+        "levels": { "terms": { "field": "rule.level", "size": 5 } },
+        "groups": { "terms": { "field": "rule.groups", "size": 5 } },
+        "agents": { "terms": { "field": "agent.name", "size": 5 } },
+        "locations": { "terms": { "field": "location", "size": 5 } }
+      }
+    }
+  }
+}

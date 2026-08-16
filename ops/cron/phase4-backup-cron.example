@@ -1,0 +1,17 @@
+# Phase 4 backup cron proposal - NOT INSTALLED (operator approval required)
+# Place entries in user crontab (crontab -e) or /etc/cron.d/ as root.
+
+# VM103 MISP DB dump - daily 02:30
+30 2 * * * /opt/mct-security-stack/ops/scripts/vm103-misp-db-dump.sh >> /opt/mct-security-stack/ops/reports/vm103-backup.log 2>&1
+
+# VM103 Greenbone gvmd dump - weekly Sun 03:00 (large, 10-15 min)
+0 3 * * 0 /opt/mct-security-stack/ops/scripts/vm103-greenbone-backup.sh >> /opt/mct-security-stack/ops/reports/vm103-backup.log 2>&1
+
+# Shuffle workflow export - weekly Sun 03:30
+30 3 * * 0 /opt/mct-security-stack/ops/scripts/shuffle-workflow-export.sh >> /opt/mct-security-stack/ops/reports/vm103-backup.log 2>&1
+
+# VM103 backup freshness check - daily 06:00 (with full-stack healthcheck)
+0 6 * * * /opt/mct-security-stack/ops/scripts/vm103-backup-freshness-check.sh >> /opt/mct-security-stack/ops/reports/vm103-backup.log 2>&1
+
+# IRIS DB dump (from Phase 3) - daily 02:45
+45 2 * * * /opt/mct-security-stack/ops/scripts/iris-db-dump.sh >> /opt/mct-security-stack/ops/reports/iris-backup.log 2>&1

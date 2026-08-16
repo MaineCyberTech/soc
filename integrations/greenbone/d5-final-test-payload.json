@@ -1,0 +1,17 @@
+{
+  "source": "phase5-d5-final",
+  "type": "greenbone-critical",
+  "asset": "192.168.222.149",
+  "severity": "critical",
+  "cvss": 9.8,
+  "cve": "CVE-2026-0000",
+  "finding": "Phase 5 D5 final validation - synthetic critical finding, NOT a real vulnerability",
+  "internet_facing": false,
+  "timestamp": "2026-08-11T07:00:00Z",
+  "expected": {
+    "shuffle_workflow": "greenbone-critical-to-case (or wazuh-high-severity-to-iris reuse)",
+    "iris_template": "critical-vulnerability",
+    "class": "B (internet_facing=false)",
+    "notify_only": true
+  }
+}

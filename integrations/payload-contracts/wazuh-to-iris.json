@@ -1,0 +1,13 @@
+{
+  "contract": "wazuh-to-iris",
+  "source": "Wazuh/OpenSearch via Shuffle",
+  "trigger": "Alert level >= 8 or class A/B rule family",
+  "destination": "DFIR-IRIS API /api/alert",
+  "auth_method": "Bearer <REDACTED_IRIS_API_KEY> (secret store)",
+  "payload_fields": ["rule_id", "rule_level", "rule_description", "rule_groups", "agent_name", "srcip", "dstip", "timestamp"],
+  "retry_behavior": "3 attempts with backoff, then local log file",
+  "failure_mode": "IRIS down: alert logged locally; replay from OpenSearch archive",
+  "test_event": "POST payload-contracts/wazuh-high-severity.json to Shuffle webhook; expect IRIS alert",
+  "data_retention": "IRIS per retention policy; OpenSearch wazuh-alerts-* per cluster retention",
+  "owner_runbook": "ops/runbooks/dfir-iris.md, ops/runbooks/incident-triage.md"
+}

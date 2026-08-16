@@ -1,0 +1,22 @@
+name: mct-security-stack
+
+networks:
+  mct-security:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/24
+
+# Base compose for the phase 2 stack.
+# Individual services are added by their own compose files and started only
+# when their phase prompt is complete. This file is never 'up' on its own.
+
+services:
+  # Intentional placeholder so `docker compose config` validates the file.
+  phase2-placeholder:
+    image: alpine:3.20
+    command: ["sh", "-c", "echo Phase 2 base compose loaded; sleep 5"]
+    networks:
+      - mct-security
+    profiles:
+      - placeholder

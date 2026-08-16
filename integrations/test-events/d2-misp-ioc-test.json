@@ -1,0 +1,12 @@
+{
+  "source": "phase4-drill-d2",
+  "type": "misp-ioc-match",
+  "ioc_value": "203.0.113.77",
+  "confidence": "high",
+  "action": "block",
+  "rule_expected": "121100",
+  "level_expected": 12,
+  "class": "A",
+  "test_note": "RFC5737 documentation IP - safe test only, no real traffic impact",
+  "expected_path": "MISP -> CDB -> Wazuh rule 121100 -> Shuffle -> IRIS"
+}

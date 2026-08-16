@@ -1,0 +1,1 @@
+{"source":"phase3-smoke-test","type":"misp-ioc-match","ioc_value":"203.0.113.40","confidence":"high","action":"monitor","rule_id":"121100"}

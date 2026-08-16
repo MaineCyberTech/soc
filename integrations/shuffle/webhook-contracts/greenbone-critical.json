@@ -1,0 +1,23 @@
+{
+  "webhook": "greenbone-critical",
+  "version": "1.0",
+  "trigger": "Greenbone API pull (daily) or Wazuh vuln rules",
+  "payload_fields": [
+    "asset",
+    "severity",
+    "cvss",
+    "cve",
+    "finding",
+    "internet_facing",
+    "timestamp"
+  ],
+  "example": {
+    "asset": "192.168.222.149",
+    "severity": "critical",
+    "cvss": 9.8,
+    "cve": "CVE-2026-0000",
+    "finding": "Example critical vulnerability",
+    "internet_facing": false,
+    "timestamp": "2026-08-10T00:00:00Z"
+  }
+}

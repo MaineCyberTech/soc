@@ -1,0 +1,40 @@
+== Phase 5 backup freshness ==
+[OK]   IRIS DB dump (newest < 26h): iris-db-20260811-224405.sql.gz
+[OK]   MISP DB dump (newest < 26h): misp-db-20260812-021131.sql.gz
+[OK]   Greenbone dump (newest < 170h): greenbone-gvmd-20260811-060311.sql.gz
+[OK]   Shuffle export (newest < 170h): shuffle-workflows-20260811-061156.json
+[OK]   OpenSearch local (newest < 6h): snap-001-qFi6TXSUIowdvWRHTA.dat
+
+Result: PASS
+== Phase 5 backup freshness ==
+[OK]   IRIS DB dump (newest < 26h): iris-db-20260812-043001.sql.gz
+[OK]   MISP DB dump (newest < 26h): misp-db-20260812-021131.sql.gz
+[OK]   Greenbone dump (newest < 170h): greenbone-gvmd-20260811-060311.sql.gz
+[OK]   Shuffle export (newest < 170h): shuffle-workflows-20260811-061156.json
+[OK]   OpenSearch local (newest < 6h): snap-TSaLLcb0Tau20reKE7-NcA.dat
+
+Result: PASS
+== Phase 5 backup freshness ==
+[OK]   IRIS DB dump (newest < 26h): iris-db-20260812-043001.sql.gz
+[OK]   MISP DB dump (newest < 26h): misp-db-20260812-043501.sql.gz
+[OK]   Greenbone dump (newest < 170h): greenbone-gvmd-20260811-060311.sql.gz
+[OK]   Shuffle export (newest < 170h): shuffle-workflows-20260811-061156.json
+[OK]   OpenSearch local (newest < 6h): snap-nBN5fLPNRwGYJ5wbV8rT-Q.dat
+
+Result: PASS
+== Phase 5 backup freshness ==
+[OK]   IRIS DB dump (newest < 26h): iris-db-20260813-043001.sql.gz
+[OK]   MISP DB dump (newest < 26h): misp-db-20260814-043501.sql.gz
+[OK]   Greenbone dump (newest < 170h): greenbone-gvmd-20260811-060311.sql.gz
+[OK]   Shuffle export (newest < 170h): shuffle-workflows-20260811-061156.json
+[OK]   OpenSearch local (newest < 6h): snap-8c_n3s1pRqGKlGdj6-sUNw.dat
+
+Result: PASS
+== Phase 5 backup freshness ==
+[OK]   IRIS DB dump (newest < 26h): iris-db-20260815-043002.sql.gz
+[OK]   MISP DB dump (newest < 26h): misp-db-20260814-043501.sql.gz
+[OK]   Greenbone dump (newest < 170h): greenbone-gvmd-20260811-060311.sql.gz
+[OK]   Shuffle export (newest < 170h): shuffle-workflows-20260811-061156.json
+[OK]   OpenSearch local (newest < 6h): snap-h9P2Pmj0QcyqZS4XEUP-bg.dat
+
+Result: PASS
