@@ -1,0 +1,32 @@
+{
+  "manifest_version": "1",
+  "artifacts": [
+    {
+      "name": "wazuh-agent-deb",
+      "source": "https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.14.7-1_amd64.deb",
+      "version": "4.14.7",
+      "sha256": "<fill after download>",
+      "cached": false,
+      "cache_path": "/opt/mct-cache/endpoint/",
+      "license": "GPL-2.0"
+    },
+    {
+      "name": "sysmon-zip",
+      "source": "https://download.sysinternals.com/files/Sysmon.zip",
+      "version": "latest",
+      "sha256": "<fill after download>",
+      "cached": false,
+      "cache_path": "/opt/mct-cache/endpoint/",
+      "license": "Sysinternals EULA - cache only, do not vendor"
+    },
+    {
+      "name": "velociraptor-linux-amd64",
+      "source": "https://github.com/Velocidex/velociraptor/releases/download/v0.77.2/velociraptor-v0.77.2-linux-amd64",
+      "version": "0.77.2",
+      "sha256": "<fill after download>",
+      "cached": false,
+      "cache_path": "/opt/mct-cache/endpoint/",
+      "license": "AGPL-3.0"
+    }
+  ]
+}

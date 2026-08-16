@@ -44,6 +44,13 @@ step "powershell present check"
 PS=$(find . -path './.git' -prune -o -name '*.ps1' -type f -print | wc -l)
 echo "PowerShell files present: $PS (need endpoint/runtime validation, not run in CI)"
 
+step "level.io variable tests"
+if [ -x scripts/ci/run-levelio-variable-tests.sh ]; then
+  bash scripts/ci/run-levelio-variable-tests.sh || FAIL=1
+else
+  echo "[SKIP] run-levelio-variable-tests.sh not present"
+fi
+
 echo
 if [ $FAIL -eq 0 ]; then
   echo "[CI] RESULT: PASS"
