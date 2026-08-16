@@ -34,3 +34,11 @@ Status: RECORDED - production-validated path
   returned 403 and the silent curl produced an empty file -> installer error.
 - Fix: install-wazuh-macos.sh now resolves arch via uname -m and fails fast on
   download errors (curl -fsSL + empty-file check).
+
+## Level.io execution-mode gotcha (fixed 2026-08-16)
+
+- Level.io may run scripts via stdin / bash -c where BASH_SOURCE is EMPTY.
+  The old scripts failed with "BASH_SOURCE[0]: unbound variable" -> lib not
+  loaded -> all helpers missing -> WAZUH_VERSION empty -> wrong pkg URL.
+- Fix: install scripts now fall back to $0 and the repo-known lib path, and
+  fail with a clear error if lib/mct-env.sh cannot be loaded.
