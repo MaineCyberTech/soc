@@ -1,42 +1,29 @@
-# Phase 13 Client Rollout Result (Level.io)
+# Phase 13/16 Client Rollout Result (Level.io)
 
-Date: 2026-08-16
-Status: **CLIENT DEPLOYED + VERIFIED**
+Date: 2026-08-16 (updated)
+Status: **3 CLIENT ENDPOINTS DEPLOYED + VERIFIED**
 
-## Client endpoint
+## Endpoints
 
-| Item | Value |
-|---|---|
-| Agent ID | 013 |
-| Hostname | SAMSUNG |
-| OS | Microsoft Windows 11 Pro (10.0.26200) |
-| IP | 192.168.111.166 (client network) |
-| Status | Active (registered 2026-08-16 04:26 UTC) |
-| Group | windows-clients |
-| Version | Wazuh v4.14.7 |
+| Agent | Hostname | OS | IP | Status | Group |
+|---|---|---|---|---|---|
+| 013 | SAMSUNG | Windows 11 | .166 | active (powered off at check) | windows-clients |
+| 014 | DESKTOP-MI54LFT | Windows 11 | .162 | active | windows-clients |
+| 015 | Julians-Air | macOS | .77 | ACTIVE | default* |
 
-## Deployment verification
+*015 enrolled to default group (Level.io action did not pass WAZUH_AGENT_GROUP);
+mac-clients group can be created + agent reassigned if desired.
 
-| Check | Result |
-|---|---|
-| Agent enrolled + Active | PASS |
-| Group assignment | PASS (windows-clients) |
-| Event flow | PASS (1004 events/15m: Sysmon 21, System, App, Security) |
-| Sysmon collection | PASS (fixed: channel added to shared windows-clients group config 2026-08-16) |
-| Alert quality | PASS (0 real threats; 3x SCA CIS summary = informational) |
-| FP suppressions | Extended to all Windows agents (event-content scoped, 121105/121106) |
+## Deployment fixes applied (macOS path)
 
-## Level.io variable-driven deployment
+1. Arch-specific pkg URL (intel64/arm64) - was 403 on generic name.
+2. curl fail-fast + empty-file check (silent 403 masked before).
+3. Self-contained helpers inlined (lib/mct-env.sh never reaches endpoint).
+4. BASH_SOURCE unbound fix for stdin exec mode.
 
-- The Level.io automation enrolled the client successfully (name, group,
-  manager all correct) - variable model works.
+## Validation
 
-## Fixes applied post-rollout
-
-1. Sysmon channel collection added to windows-clients shared agent.conf
-   (client had agent + Windows channels but no Sysmon forwarding).
-2. FP suppression rules 121105/121106 de-scoped from agent-012-only to
-   event-content scoped (Wazuh rules cannot filter on agent.id) - now protect
-   the client too.
+- 015 ACTIVE, keepalive fresh, "New wazuh agent connected" event received.
+- macOS unified logging collection active (quiet workstation = low volume).
 
 ## No secrets

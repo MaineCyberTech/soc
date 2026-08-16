@@ -1,1 +1,1 @@
-/opt/mct-security-stack/ops/reports/full-stack-health-20260816-073155.md
+/opt/mct-security-stack/ops/reports/full-stack-health-20260816-073247.md
