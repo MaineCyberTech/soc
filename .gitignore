@@ -26,3 +26,7 @@ ops/reports/shuffle-periodic-repair.log
 .DS_Store
 *.swp
 *~
+
+# Operational logs
+ops/reports/*.log
+ops/reports/vm103-*.log

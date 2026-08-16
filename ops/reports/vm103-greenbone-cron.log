@@ -1,6 +1,0 @@
-== Greenbone backup (VM103) 20260816-051501 ==
--rw-r--r-- 1 root root 1824684115 Aug 16 05:16 /var/backups/mct/greenbone-gvmd-20260816-051501.sql.gz
--- pull to Wazuh host --
--rw-r--r-- 1 user user 1824684115 Aug 16 05:21 /opt/mct-security-stack/ops/backups/vm103/greenbone-gvmd-20260816-051501.sql.gz
-OK: pulled
-Done
