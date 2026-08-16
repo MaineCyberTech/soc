@@ -75,9 +75,23 @@ echo "=== MCT endpoint install (macOS) started $(date -u +%FT%TZ) ==="
 if [ -x /Library/Ossec/bin/wazuh-agent ] || ls /Library/Ossec >/dev/null 2>&1; then
   echo "Wazuh agent already installed - skipping install"
 else
-  echo "installing Wazuh agent (pkg) $WAZUH_VERSION"
-  curl -sL -o /tmp/wazuh-agent.pkg \
-    "https://packages.wazuh.com/4.x/macos/wazuh-agent-$WAZUH_VERSION-1.pkg"
+  # macOS packages are arch-specific: <ver>-1.intel64.pkg or <ver>-1.arm64.pkg
+  MAC_ARCH=$(uname -m)
+  case "$MAC_ARCH" in
+    arm64) PKG_ARCH=arm64 ;;
+    x86_64) PKG_ARCH=intel64 ;;
+    *) echo "ERROR: unsupported macOS arch $MAC_ARCH"; exit 1 ;;
+  esac
+  PKG_URL="https://packages.wazuh.com/4.x/macos/wazuh-agent-$WAZUH_VERSION-1.$PKG_ARCH.pkg"
+  echo "installing Wazuh agent (pkg) $WAZUH_VERSION ($PKG_ARCH) from $PKG_URL"
+  if ! curl -fsSL --retry 2 -o /tmp/wazuh-agent.pkg "$PKG_URL"; then
+    echo "ERROR: failed to download $PKG_URL (curl rc=$?)"
+    exit 1
+  fi
+  if [ ! -s /tmp/wazuh-agent.pkg ]; then
+    echo "ERROR: downloaded package is empty (0 bytes)"
+    exit 1
+  fi
   installer -pkg /tmp/wazuh-agent.pkg -target / || { echo "ERROR: pkg install failed"; exit 1; }
   rm -f /tmp/wazuh-agent.pkg
 fi
