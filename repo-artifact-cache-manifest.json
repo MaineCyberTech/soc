@@ -36,9 +36,9 @@
       "name": "wazuh-agent-pkg",
       "source": "https://packages.wazuh.com/4.x/",
       "version": "4.14.7",
-      "sha256": "<fill after download>",
-      "cached": false,
-      "cache_path": "/opt/mct-cache/endpoint/",
+      "sha256": "deb: 5276281b... / rpm: a5ef9637...",
+      "cached": true,
+      "cache_path": "/opt/mct-cache/wazuh-agents/",
       "license": "GPL-2.0"
     },
     {
