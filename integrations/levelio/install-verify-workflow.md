@@ -3,10 +3,25 @@
 ## Flow
 
 1. Trigger: run installer on target device (manual or automation on enrollment).
-2. Installer exits: 0 = success, 1 = failure (clear error message).
+2. Installer exits: 0 = success, 1 = failure, 2 = missing/unresolved variable
+   (clear error message).
 3. Verify: run verify script (PASS/FAIL per check, exit 1 on any FAIL).
 4. Report: level.io script output shows [PASS]/[FAIL]; alert on non-zero exit.
 5. Confirm in Wazuh: Agents -> new agent Active; group assignment correct.
+
+## Passing variables (Phase 13 corrected model)
+
+- Script variables are OUTPUT slots - not inputs.
+- Render automation variables/custom fields into args or env:
+  ```text
+  bash install-wazuh-linux.sh \
+    --manager {{WAZUH_MANAGER}} \
+    --reg-password {{WAZUH_REG_PASSWORD}} \
+    --group {{WAZUH_AGENT_GROUP}} \
+    --dry-run
+  ```
+- Run --dry-run first on one device; verify resolved config (secrets redacted).
+- Unresolved `{{VAR}}` placeholders fail fast (exit 2) - never silently used.
 
 ## level.io automation
 
