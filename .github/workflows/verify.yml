@@ -31,14 +31,17 @@ jobs:
 
       - name: Stack layout check (repo-only)
         run: |
+          export MCT_STACK_ROOT="$PWD"
           if [ -x scripts/verify/verify-stack-layout.sh ]; then bash scripts/verify/verify-stack-layout.sh; fi
 
       - name: Stale phase reference check (repo-only)
         run: |
+          export MCT_STACK_ROOT="$PWD"
           if [ -x scripts/verify/verify-no-stale-phase-refs.sh ]; then bash scripts/verify/verify-no-stale-phase-refs.sh; fi
 
       - name: Secret pattern scan (repo-only, no values)
         run: |
+          export MCT_STACK_ROOT="$PWD"
           if [ -x ops/scripts/secret-pattern-scan.sh ]; then bash ops/scripts/secret-pattern-scan.sh "$PWD"; fi
 
       - name: Live architecture check (SKIP in CI - requires docker stack)
