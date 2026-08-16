@@ -1,0 +1,12 @@
+# Brand / organization customization (white-label layer)
+# Copy to config/brand.yml and fill in real values. Never commit real values.
+
+brand_name: "Maine Cyber Tech"
+legal_company_name: "Maine Cyber Tech LLC"
+support_email: "support@example.com"
+support_phone: "000-000-0000"
+website_url: "https://example.com"
+report_logo_path: "assets/logo.png"
+report_primary_color: "#0f172a"
+report_secondary_color: "#2563eb"
+service_package: "Managed Security Monitoring - Starter"

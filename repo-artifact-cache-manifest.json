@@ -1,0 +1,72 @@
+{
+  "manifest_version": "1.0",
+  "updated": "2026-08-16",
+  "artifacts": [
+    {
+      "name": "velociraptor-binary",
+      "source": "https://github.com/Velocidex/velociraptor/releases/download/v0.77.2/",
+      "version": "0.77.2",
+      "sha256": "6c4c23c466d892788ff56ddcd3a31f844e4c0d797ade454c5e2625eb9e427077",
+      "cached": true,
+      "cache_path": "/usr/local/bin/velociraptor",
+      "license": "AGPL-3.0",
+      "notes": "native server + client binary on Wazuh host"
+    },
+    {
+      "name": "dfir-iris-app",
+      "source": "ghcr.io/dfir-iris/iriswebapp_app:latest",
+      "version": "latest",
+      "sha256": "sha256:d7d23026bdde593278075821d3abc8649fe28d618d5784cc9875bd7a3d05699b",
+      "cached": true,
+      "cache_path": "docker (running)",
+      "license": "GPL-3.0",
+      "notes": "digest captured 2026-08-16; pin in compose"
+    },
+    {
+      "name": "shuffle-backend",
+      "source": "ghcr.io/shuffle/shuffle-backend:latest",
+      "version": "latest",
+      "sha256": "sha256:d4a5d2bf1f956955b68b099ba1c38997e4b257b2518215e0427f433515bea5c8",
+      "cached": true,
+      "cache_path": "docker (running)",
+      "license": "AGPL-3.0",
+      "notes": "digest captured 2026-08-16"
+    },
+    {
+      "name": "wazuh-agent-pkg",
+      "source": "https://packages.wazuh.com/4.x/",
+      "version": "4.14.7",
+      "sha256": "<fill after download>",
+      "cached": false,
+      "cache_path": "/opt/mct-cache/endpoint/",
+      "license": "GPL-2.0"
+    },
+    {
+      "name": "sysmon-zip",
+      "source": "https://download.sysinternals.com/files/Sysmon.zip",
+      "version": "latest",
+      "sha256": "<fill after download>",
+      "cached": false,
+      "cache_path": "/opt/mct-cache/endpoint/",
+      "license": "Sysinternals EULA - cache only"
+    },
+    {
+      "name": "misp-core",
+      "source": "ghcr.io/misp/misp-docker/misp-core:latest",
+      "version": "latest",
+      "sha256": "<fill from VM103 docker inspect>",
+      "cached": true,
+      "cache_path": "docker (VM103)",
+      "license": "AGPL-3.0"
+    },
+    {
+      "name": "greenbone-gvmd",
+      "source": "registry.community.greenbone.net/community/gvmd:stable",
+      "version": "stable",
+      "sha256": "<fill from VM103 docker inspect>",
+      "cached": true,
+      "cache_path": "docker (VM103)",
+      "license": "GPL-2.0"
+    }
+  ]
+}

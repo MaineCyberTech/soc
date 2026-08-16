@@ -1,0 +1,13 @@
+# Per-client tenant profile (white-label layer)
+# Copy to config/clients/<client-slug>.yml. Never commit real values.
+
+client_slug: "example-client"
+tenant_prefix: "client-example"
+agent_group_prefix: "client-example"
+billing_label: "Example Client - Managed Security"
+escalation_contacts:
+  - name: "Primary Contact"
+    email: "primary@example.com"
+    phone: "000-000-0000"
+scan_authorized: false
+deception_authorized: false

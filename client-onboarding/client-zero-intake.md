@@ -1,3 +1,5 @@
+> LEGACY placeholder (pre-first-client, phases 6-9). Current client: SAMSUNG/013. Kept for provenance.
+
 # Client Zero Intake
 
 Client: Maine Cyber Tech (Internal)

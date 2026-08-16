@@ -76,3 +76,13 @@ Keep `data/velociraptor` (config/CA) unless deliberately destroying. Never touch
 - At least one test client enrolled and reporting.
 - Five starter hunts exist (see hunt map).
 - Evidence export path documented.
+
+## SOURCE OF TRUTH (2026-08-16, Phase 15 audit)
+
+- **Velociraptor SERVER runs as a NATIVE binary on the Wazuh host**
+  (`/usr/local/bin/velociraptor --config ... server.config.yaml frontend -v`,
+  ports :8002 frontend, :8889 GUI). The compose file
+  (compose/docker-compose.velociraptor.yml) is NOT used for the server and is
+  considered deprecated for server deployment.
+- Clients: 5 enrolled (lab); client.config.yaml is generated per endpoint via
+  scripts/endpoint-deploy/prepare-velociraptor-client.sh and excluded from git.

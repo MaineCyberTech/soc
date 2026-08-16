@@ -30,3 +30,7 @@ ops/reports/shuffle-periodic-repair.log
 # Operational logs
 ops/reports/*.log
 ops/reports/vm103-*.log
+
+# White-label real values (never commit)
+config/brand.yml
+config/clients/

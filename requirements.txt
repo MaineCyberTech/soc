@@ -1,0 +1,7 @@
+# MCT Security Stack - Python dependencies (optional tooling)
+# Core stack scripts use ONLY the Python standard library.
+# These are for optional integration tooling:
+
+pymisp>=2.4.150        # MISP IOC sync (ops/scripts/misp-to-wazuh-cdb.py, VM103)
+requests>=2.31.0       # MISP API client dependency
+pyyaml>=6.0            # config parsing (endpoint tooling)
