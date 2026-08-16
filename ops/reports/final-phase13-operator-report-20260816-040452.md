@@ -11,15 +11,18 @@ Level.io variable problem (root cause found + refactor + proven harness), and
 continued operational follow-ups. The Level.io issue is RESOLVED: scripts now
 read inputs via CLI flags or env, treat unresolved {{placeholders}} as missing
 (fail-fast), and the simulation harness passes 4/4. GitHub: main branch pushed
-(5 commits), CI passing on all commits, release tag pending approval. Windows
-FP suppressions applied (pilot-only, agent 012). Greenbone scheduled proof
-still timing-dependent (06:00 UTC). No client engaged - outreach kit ready.
+(7 commits), CI passing on all commits, release tag pending approval. Windows
+FP suppressions applied (event-content scoped, protects all Windows agents).
+Greenbone scheduled proof still timing-dependent (06:00 UTC). **FIRST CLIENT
+DEPLOYED via Level.io: agent 013 SAMSUNG (Windows 11 Pro) is Active, enrolled
+to windows-clients, Sysmon collection enabled, 0 threats detected.**
 
 ## GitHub publish status
 
 - **PUSHED**: https://github.com/MaineCyberTech/soc (branch main)
-- 5 commits: f14ba1b (initial 987 files), 0f22899 (CI MCT_STACK_ROOT fix),
-  eb00166 (reports), d4a20be (Level.io fix), ba1f9c7 (Phase 13 work)
+- 7 commits: f14ba1b (initial 987 files), 0f22899 (CI MCT_STACK_ROOT fix),
+  eb00166 (reports), d4a20be (Level.io fix), ba1f9c7 (Phase 13 work),
+  e3b88bf (final report), f67e759 (client 013 rollout fixes)
 - SSH: deploy key ~/.ssh/github (ed25519) added to repo
 - Remote: git@github.com:MaineCyberTech/soc.git (org casing MaineCyberTech)
 - Reports: phase13-github-publish.md, phase13-git-staged-review.md,
@@ -62,10 +65,21 @@ still timing-dependent (06:00 UTC). No client engaged - outreach kit ready.
 
 ## First client engagement status
 
-- No client engaged. Outreach kit created: phase13-sales-outreach-kit.md,
-  phase13-outreach-email.md, phase13-one-page-pilot-offer.md.
-- Intake/deployment/baseline: placeholders + exact blockers (no client, no
-  signed authorization). Level.io deployment ready (variable-driven).
+- **CLIENT DEPLOYED (2026-08-16 04:26 UTC)**: agent 013 "SAMSUNG" enrolled via
+  Level.io - Windows 11 Pro (10.0.26200), IP 192.168.111.166 (client network),
+  Active, group windows-clients, Wazuh v4.14.7.
+- **Deployment verification**: 1004 events/15m (Sysmon 21, System, Application,
+  Security); 0 real threats; 3x level-9 alerts are SCA CIS benchmark summaries
+  (informational).
+- **Post-rollout fixes**: (1) Sysmon channel added to shared windows-clients
+  group config (client had agent + Windows channels but no Sysmon forwarding -
+  now flowing); (2) FP suppression rules de-scoped from agent-012-only to
+  event-content (Wazuh rules cannot filter agent.id - syntax error) - now
+  protects the client too.
+- Outreach kit created: phase13-sales-outreach-kit.md, phase13-outreach-email.md,
+  phase13-one-page-pilot-offer.md.
+- Rollout result: integrations/levelio/phase13-client-rollout-result.md.
+- Baseline/scorecard: sample-ready (no client baselines yet).
 
 ## Greenbone scheduled proof
 
@@ -82,9 +96,13 @@ still timing-dependent (06:00 UTC). No client engaged - outreach kit ready.
 
 ## Windows FP tuning
 
-- **Suppressions APPLIED** (operator-approved, pilot-only agent 012):
+- **Suppressions APPLIED** (operator-approved):
   - Rule 121105: VaultCli (92153) suppressed for legit system images
   - Rule 121106: Defender-Lsass (92900) suppressed
+- **Scope note (updated)**: initially scoped to agent 012 via agent.id - Wazuh
+  rules cannot filter agent.id (syntax error). Rules are now scoped by EVENT
+  CONTENT (legit system images / Defender source), protecting all Windows
+  agents (pilot 012 + client 013). Non-system images still fire.
 - Verified loaded (0 errors), manager restarted. No new FPs post-restart.
 - Re-measure in 7 days; target < 10 level>=9/day.
 - Reports: phase13-windows-fp-tuning.md, integrations/sysmon/phase13-pilot-suppressions.md.
@@ -100,16 +118,19 @@ still timing-dependent (06:00 UTC). No client engaged - outreach kit ready.
 - 3rd dry run executed (health PASS, capacity stable, backups validated -
   first post-fix cron archive 146KB, endpoints 6/6, FP suppression noted,
   vuln 0 exploitable, billing 0 billable).
+- **Updated post-client**: endpoints now 7 agents total (6 lab + client 013
+  SAMSUNG active); billable = 1 (client endpoint) once billing cycle starts.
 - Reports: phase13-monthly-ops-run.md, phase13-endpoint-billing-count.md,
   phase13-monthly-scorecard.md.
 
 ## Remaining risks
 
 1. **Greenbone scheduled run proof** - verify after 06:00 UTC 2026-08-16.
-2. **No client** - outreach kit ready; needs engagement.
+2. **Client baseline/scorecard** - 013 deployed; baseline + first scorecard
+   cycle not yet captured.
 3. **Release tag v1.0.0** - approval-gated, not created.
 4. **Thin pool 87.84% WARN** - stable; vm-202 canary watch item.
-5. **Windows FPs** - suppression applied; 7-day re-measure pending.
+5. **Windows FPs** - suppression applied; 7-day re-measure pending (client included).
 6. **DR S3 config bundle 403** - accepted local-only; keys pending.
 7. **Canarytoken T1** - hosted account blocker.
 8. **W1/W2 dashboards** - definitions staged; UI import needed (no API tooling).
@@ -119,12 +140,13 @@ still timing-dependent (06:00 UTC). No client engaged - outreach kit ready.
 1. **GitHub ops**: create tag v1.0.0 + GitHub release with portable bundle asset;
    add CI badge + release automation.
 2. **Greenbone**: append scheduled-run proof; first full weekly cycle.
-3. **Client launch**: send outreach email; intake -> authorization -> Level.io
-   deployment (variable-driven) -> baseline -> first real monthly cycle.
-4. **Windows**: 7-day FP re-measure; build W1/W2 in dashboard UI; then PS
-   ScriptBlockLogging + D5/D6.
-5. **Level.io**: run Windows simulation on a Windows host; document
-   automation-variable setup for first client.
+3. **Client ops (first real client)**: capture client baseline (endpoints,
+   alerts, vulns if authorized) -> start 30-day scorecard cycle -> first
+   monthly billing (1 endpoint).
+4. **Windows**: 7-day FP re-measure (pilot + client); build W1/W2 in dashboard
+   UI; then PS ScriptBlockLogging + D5/D6.
+5. **Level.io**: run Windows simulation on a Windows host; confirm client
+   Sysmon config propagation over next days.
 6. **Capacity**: weekly thin-pool reports (scripted); resize vm-202 if > 95%.
 7. **DR S3**: obtain keys -> bundle SUCCESS -> full DR validation.
 8. **Canarytoken T1**: create hosted account -> validate chain.
@@ -139,9 +161,12 @@ still timing-dependent (06:00 UTC). No client engaged - outreach kit ready.
 - GitHub: ops/runbooks/github-release-process.md + github-tag-and-release.md,
   ~/.ssh/github (deploy key), remote origin set
 - Client: phase13-sales-outreach-kit.md, phase13-outreach-email.md,
-  phase13-one-page-pilot-offer.md, intake/auth/endpoints placeholders
-- Windows: integrations/sysmon/phase13-pilot-suppressions.md +
-  phase13-dashboard-w1-w2.md
+  phase13-one-page-pilot-offer.md, intake/auth/endpoints placeholders,
+  **phase13-client-rollout-result.md (client 013 SAMSUNG deployed + verified)**
+- Windows: integrations/sysmon/phase13-pilot-suppressions.md (event-content
+  scoped) + phase13-dashboard-w1-w2.md
+- Manager config: windows-clients shared agent.conf (Sysmon channel added),
+  local_rules.xml (suppression rules 121105/121106, backup 20260816)
 - Reports: 20+ phase13-*.md under ops/reports/
 
 ## No secrets
