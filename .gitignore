@@ -34,3 +34,4 @@ ops/reports/vm103-*.log
 # White-label real values (never commit)
 config/brand.yml
 config/clients/
+__pycache__/
