@@ -1,41 +1,40 @@
 # MCT Security Stack - Release Notes
 
-## Release 20260816-014828 (Phase 12)
+## v1.0.0 (2026-08-16) - First Release
+
+### Highlights
+
+- Portable, reproducible SOC stack: Wazuh cluster (master+worker), indexer,
+  dashboard, Security Onion packet ingestion (agent 008), ElastiFlow,
+  OpenCanary, Shuffle SOAR, DFIR-IRIS, MISP, Greenbone, Velociraptor.
+- GitHub CI (verify.yml) gating: syntax, stack layout, stale-refs, secret scan.
+- Level.io endpoint deployment: variable-driven (CLI/env), fail-fast on
+  unresolved placeholders, simulation harness (4/4 PASS).
+- First client endpoint operational: agent 013 SAMSUNG (Windows 11 Pro),
+  windows-clients group, Sysmon collection enabled.
+- Windows FP suppressions (VaultCli 92153, Defender-Lsass 92900) - event-content
+  scoped, protects all Windows agents.
+- Portable release bundle: 1015 files, secret-gated (0 leaks), sha256-verified.
 
 ### Contents
 
-- Portable repo docs: README, REPO-MAP, ARCHITECTURE, PORTS, PORTABILITY, SECURITY
-- Config: .env.example, .gitignore, .gitignore.example, config/examples (incl. secrets.example.env - placeholders only)
-- Scripts: bootstrap (3), verify (6), CI (run-local-ci, build-release-bundle), endpoint-deploy (no client.config.yaml - excluded)
-- Compose: dfir-iris, greenbone, misp, opencanary, shuffle, velociraptor, phase2 (archived)
-- Integrations: dfir-iris, greenbone, misp, opencanary, shuffle, velociraptor, wazuh, flow, payload-contracts
-- Ops: runbooks, scripts, checklists, cron, reports (full history, no backups)
-- Reporting: generators, output, queries, templates
-- Client-onboarding: intake, authorization, templates, communication playbook
-- Service-packaging: offers, billing review
-- Evidence: historical reports archive (122 reports, banners)
-
-### Excluded (safety)
-
-- .git, ops/backups (2.6G), data/ (77M)
-- .env, creds.env, client.config.yaml (live Velociraptor keys)
-- *.key, *.pem, *.sql.gz, *.tar.gz, *.zip, *.pcap, *.evtx
-- shuffle-periodic-repair.log (operational log)
+- Repo docs: README, REPO-MAP, ARCHITECTURE, PORTS, PORTABILITY, SECURITY
+- Scripts: bootstrap, verify, CI, endpoint-deploy, ops scripts
+- Compose: dfir-iris, greenbone, misp, opencanary, shuffle, velociraptor
+- Integrations: 10 subsystems + payload contracts
+- Ops: runbooks, checklists, reports, cron
+- Reporting: generators, templates, client-safe output
+- Evidence: 122 historical reports (banners applied)
 
 ### Verification
 
-- sha256: 8d4dc40291a6d1906540bf774da4b44f8380a3050050273bda10a89c2b45ca7d
-- Sensitive-file scan: 0 leaks
-- Local CI: PASS (61 sh bash -n, 245 py compile, 4 verify scripts)
+- GitHub Actions: PASS (all commits)
+- Local CI: PASS
+- Secret scan: 16 reference-only hits (0 live secrets)
+- Portable bundle: 536K, 0 sensitive files
 
-### Usage
+### Artifacts
 
-```bash
-tar xzf mct-security-stack-release-20260816-014828.tar.gz
-cd mct-security-stack-release-20260816-014828  # or git checkout from mainecybertech/soc
-# See README.md and PORTABILITY.md for deployment guidance
-```
-
-### Upstream
-
-- Repository: git@github.com:mainecybertech/soc.git (pending operator approval for first push)
+- Portable bundle: /home/user/mct-security-releases/mct-security-stack-release-20260816-014828.tar.gz
+  (sha256 8d4dc40291a6d1906540bf774da4b44f8380a3050050273bda10a89c2b45ca7d)
+- Repository: https://github.com/MaineCyberTech/soc
