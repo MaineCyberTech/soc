@@ -25,9 +25,23 @@
 
 set -uo pipefail
 
-SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+# BASH_SOURCE may be empty when run via stdin/bash -c (Level.io style).
+# Fall back to $0 and to the repo-known path so lib/mct-env.sh always loads.
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" 2>/dev/null && pwd || echo /tmp)"
+LIB_CANDIDATES=(
+  "$SCRIPT_DIR/lib/mct-env.sh"
+  "/opt/mct-security-stack/scripts/endpoint-deploy/lib/mct-env.sh"
+)
+MCT_ENV_LIB=""
+for c in "${LIB_CANDIDATES[@]}"; do
+  [ -f "$c" ] && MCT_ENV_LIB="$c" && break
+done
+if [ -z "$MCT_ENV_LIB" ]; then
+  echo "ERROR: lib/mct-env.sh not found (SCRIPT_DIR=$SCRIPT_DIR)" >&2
+  exit 2
+fi
 # shellcheck source=lib/mct-env.sh
-. "$SCRIPT_DIR/lib/mct-env.sh"
+. "$MCT_ENV_LIB"
 
 LOG=/var/log/mct-endpoint-install.log
 DRY_RUN=0
