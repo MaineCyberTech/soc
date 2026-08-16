@@ -38,3 +38,11 @@ Result: PASS
 [OK]   OpenSearch local (newest < 6h): snap-h9P2Pmj0QcyqZS4XEUP-bg.dat
 
 Result: PASS
+== Phase 5 backup freshness ==
+[OK]   IRIS DB dump (newest < 26h): iris-db-20260816-043001.sql.gz
+[OK]   MISP DB dump (newest < 26h): misp-db-20260815-043501.sql.gz
+[OK]   Greenbone dump (newest < 170h): greenbone-gvmd-20260816-051501.sql.gz
+[OK]   Shuffle export (newest < 170h): shuffle-workflows-20260816-054501.json
+[OK]   OpenSearch local (newest < 6h): snap-fjwliiHyQrKKfe8PzmwH4w.dat
+
+Result: PASS

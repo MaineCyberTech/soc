@@ -36,3 +36,13 @@ P13 suppressions (field-based child rules + overwrite rules) did NOT work:
 - Re-measure over next 7 days: target < 10 level>=9/day.
 
 ## No secrets
+
+## UPDATE (06:20 UTC) - root cause found + fixed
+
+- Agent 013 + 012 events were analyzed on WORKER01, not the master.
+- Suppressions were only on the master -> never applied to the analyzed events.
+- FIX: custom_rules/suppressions.xml deployed to BOTH master + worker, with
+  `<rule_dir>etc/custom_rules</rule_dir>` added AFTER ruleset/rules in both
+  ossec.conf files. Field-scoped rules (121105/121106) loaded correctly.
+- Both nodes restarted 06:15; both Windows agents idle since - final alert-level
+  proof pending next real events. Re-measure continues over 7 days.

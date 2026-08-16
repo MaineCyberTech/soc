@@ -9,3 +9,14 @@
   kept: 2, pruned: 0
 
 Done (applied)
+== Backup retention prune (APPLY) ==
+--- IRIS DB dumps (keep 14d, pattern: iris-db-*.sql.gz) ---
+  kept: 8, pruned: 0
+--- MISP DB dumps (keep 14d, pattern: misp-db-*.sql.gz) ---
+  kept: 7, pruned: 0
+--- Greenbone dumps (keep 35d, pattern: greenbone-gvmd-*.sql.gz) ---
+  kept: 2, pruned: 0
+--- Shuffle exports (keep 56d, pattern: shuffle-workflows-*.json) ---
+  kept: 4, pruned: 0
+
+Done (applied)
