@@ -23,10 +23,47 @@ param(
     [string]$INSTALL_SYSMON = $(if ($env:INSTALL_SYSMON) { $env:INSTALL_SYSMON } else { "yes" }),
     [string]$INSTALL_VELOCIRAPTOR = $(if ($env:INSTALL_VELOCIRAPTOR) { $env:INSTALL_VELOCIRAPTOR } else { "no" }),
     [string]$VELO_CONFIG_URL = $env:VELO_CONFIG_URL,
-    [string]$VELO_CONFIG_B64 = $env:VELO_CONFIG_B64
+    [string]$VELO_CONFIG_B64 = $env:VELO_CONFIG_B64,
+    [switch]$DryRun = $false,
+    [switch]$PrintConfigRedacted = $false
 )
 
 $ErrorActionPreference = "Stop"
+
+# Unresolved Level.io placeholders are treated as missing ({{VAR}}).
+function Test-MctValue {
+    param([string]$Value)
+    if ([string]::IsNullOrEmpty($Value)) { return $false }
+    if ($Value -match "\{\{.*\}\}") { return $false }
+    return $true
+}
+
+if (-not (Test-MctValue $WAZUH_MANAGER) -or $WAZUH_MANAGER -eq "142.105.190.25" -and -not (Test-MctValue $env:WAZUH_MANAGER)) {
+    Write-Output "WARN: WAZUH_MANAGER not set - using default (non-LAN deployments must set it)"
+}
+if (-not (Test-MctValue $WAZUH_REG_PASSWORD)) {
+    Write-Output "ERROR: WAZUH_REG_PASSWORD is required (registration password enabled on master)"
+    Write-Output "  Set it in Level.io as an encrypted automation variable and pass via"
+    Write-Output "  -WAZUH_REG_PASSWORD or WAZUH_REG_PASSWORD env."
+    exit 2
+}
+
+if ($DryRun -or $PrintConfigRedacted) {
+    Write-Output "== MCT endpoint install (Windows) config =="
+    Write-Output "  WAZUH_MANAGER = $(if (Test-MctValue $WAZUH_MANAGER) { $WAZUH_MANAGER } else { '<unset>' }) (non-secret)"
+    Write-Output "  WAZUH_AGENT_GROUP = $WAZUH_AGENT_GROUP"
+    Write-Output "  WAZUH_AGENT_NAME = $WAZUH_AGENT_NAME"
+    Write-Output "  WAZUH_VERSION = $WAZUH_VERSION"
+    Write-Output "  INSTALL_SYSMON = $INSTALL_SYSMON"
+    Write-Output "  INSTALL_VELOCIRAPTOR = $INSTALL_VELOCIRAPTOR"
+    Write-Output "  WAZUH_REG_PASSWORD = $(if (Test-MctValue $WAZUH_REG_PASSWORD) { '<set:redacted>' } else { '<unset>' })"
+    Write-Output "  VELO_CONFIG_B64 = $(if (Test-MctValue $VELO_CONFIG_B64) { '<set:redacted>' } else { '<unset>' })"
+    if ($DryRun) {
+        Write-Output "DRY RUN - no changes made."
+        exit 0
+    }
+}
+
 $logDir = "C:\ProgramData\MCT"
 $log = "$logDir\mct-endpoint-install.log"
 New-Item -ItemType Directory -Force -Path $logDir | Out-Null

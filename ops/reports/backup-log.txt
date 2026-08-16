@@ -17,3 +17,4 @@
 /opt/mct-security-stack/ops/backups/phase2-config-20260813-040001.tar.gz
 /opt/mct-security-stack/ops/backups/phase2-config-20260814-040001.tar.gz
 /opt/mct-security-stack/ops/backups/phase2-config-20260815-040001.tar.gz
+/opt/mct-security-stack/ops/backups/phase2-config-20260816-040001.tar.gz
