@@ -25,23 +25,72 @@
 
 set -uo pipefail
 
-# BASH_SOURCE may be empty when run via stdin/bash -c (Level.io style).
-# Fall back to $0 and to the repo-known path so lib/mct-env.sh always loads.
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" 2>/dev/null && pwd || echo /tmp)"
-LIB_CANDIDATES=(
-  "$SCRIPT_DIR/lib/mct-env.sh"
-  "/opt/mct-security-stack/scripts/endpoint-deploy/lib/mct-env.sh"
-)
-MCT_ENV_LIB=""
-for c in "${LIB_CANDIDATES[@]}"; do
-  [ -f "$c" ] && MCT_ENV_LIB="$c" && break
-done
-if [ -z "$MCT_ENV_LIB" ]; then
-  echo "ERROR: lib/mct-env.sh not found (SCRIPT_DIR=$SCRIPT_DIR)" >&2
-  exit 2
-fi
-# shellcheck source=lib/mct-env.sh
-. "$MCT_ENV_LIB"
+# ------------------------------------------------------------------ helpers
+# Self-contained variable helpers (inlined so the script runs anywhere,
+# including Level.io endpoints where lib/mct-env.sh is not present).
+mct_is_unset() {
+  local value="${1:-}"
+  if [ -z "$value" ]; then return 0; fi
+  if [[ "$value" == *"{{"*"}}"* ]]; then return 0; fi
+  return 1
+}
+
+mct_get_var() {
+  local name="$1"
+  local default="${2:-}"
+  local value="${!name:-}"
+  if mct_is_unset "$value"; then
+    printf '%s' "$default"
+  else
+    printf '%s' "$value"
+  fi
+}
+
+mct_require_var() {
+  local name="$1"
+  local label="${2:-$1}"
+  local value="${!name:-}"
+  if mct_is_unset "$value"; then
+    echo "ERROR: required variable $name ($label) is missing or unresolved" >&2
+    echo "  Set it in Level.io (automation var/custom field) and render it into" >&2
+    echo "  this script as an argument or environment variable." >&2
+    exit 2
+  fi
+  printf '%s' "$value"
+}
+
+mct_redact() {
+  local value="${1:-}"
+  if mct_is_unset "$value"; then
+    printf '<unset>'
+  else
+    printf '<set:redacted>'
+  fi
+}
+
+mct_print_config() {
+  local secret=0
+  local name value
+  for name in "$@"; do
+    if [ "$name" = "--secret" ]; then secret=1; continue; fi
+    value="${!name:-}"
+    if [ "$secret" -eq 1 ]; then
+      printf '  %s=%s\n' "$name" "$(mct_redact "$value")"
+    elif mct_is_unset "$value"; then
+      printf '  %s=<unset>\n' "$name"
+    else
+      printf '  %s=%s\n' "$name" "$value"
+    fi
+  done
+}
+
+mct_is_yes() {
+  case "${1:-}" in
+    yes|YES|true|TRUE|1) return 0 ;;
+    *) return 1 ;;
+  esac
+}
+# ------------------------------------------------------------------ /helpers
 
 LOG=/var/log/mct-endpoint-install.log
 DRY_RUN=0
