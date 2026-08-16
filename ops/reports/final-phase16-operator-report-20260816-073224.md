@@ -11,8 +11,12 @@ snapshot cleanup EXECUTED (approved; 43->14 snapshots, freed 4.3G), Windows FP
 suppression VALIDATED with real events (effective + safely scoped), Docker
 digest pinning applied to 6 images with CI check, internal cache bootstrapped
 with first artifact, and white-label generator wired producing branded samples.
-Client ops stable: 2 billable endpoints (013 powered-off at check - normal;
-014 active). Healthcheck 0 FAIL, CI green, 10 commits pushed.
+**THIRD CLIENT ENDPOINT DEPLOYED: Julians-Air (macOS, agent 015) via Level.io**
+- the first macOS endpoint - after fixing three deployment bugs (arch-specific
+pkg URL, silent curl failure, non-self-contained scripts). Moved to new
+mac-clients group. Client fleet: 3 billable endpoints (013 SAMSUNG powered-off
+at check - normal; 014 active; 015 active). Healthcheck 0 FAIL, CI green,
+14 commits pushed.
 
 ## ES snapshot retention cleanup
 
@@ -22,17 +26,41 @@ Client ops stable: 2 billable endpoints (013 powered-off at check - normal;
 - Approval marker on file; apply script created with dry-run + S3 health gates.
 - Local retention now meets policy (14).
 
-## Client 013/014 health
+## Client 013/014/015 health
 
 - 013 SAMSUNG: disconnected (device powered off 06:41 - normal workstation);
   1,301 events/24h, no threats.
 - 014 DESKTOP-MI54LFT: ACTIVE, 521 events/24h, Sysmon flowing, no threats.
-- Queue-full alerts noted (agent buffer tuning backlog, no data loss).
+- **015 Julians-Air (macOS): DEPLOYED via Level.io 07:44 UTC - ACTIVE,**
+  **v4.14.7, 192.168.111.77, unified logging flowing (66 events/5m at check),**
+  **no threats.**
+- Queue-full alerts noted on 013/014 (agent buffer tuning backlog, no data loss).
+
+## macOS deployment fixes (Level.io, applied during 015 rollout)
+
+Three bugs found + fixed in the endpoint scripts during live deployment:
+1. **Arch-specific pkg URL**: macOS packages are wazuh-agent-<ver>-1.arm64.pkg /
+   -1.intel64.pkg; the Linux-style name (-1.pkg) returned 403. Script now
+   resolves arch via uname -m.
+2. **Silent curl failure**: -sL masked the 403 and created a 0-byte file.
+   Now curl -fsSL --retry 2 + empty-file check + clear error.
+3. **Non-self-contained scripts**: lib/mct-env.sh never reaches the endpoint
+   (Level.io copies only the script). Helpers now INLINED in
+   install-wazuh-macos.sh + install-wazuh-linux.sh. Also fixed BASH_SOURCE
+   unbound under stdin/bash -c execution.
+
+## mac-clients group
+
+- Created (manager fs + API sync); agent 015 assigned + removed from default.
+- Group config: macOS unified logging localfile.
+- Doc: integrations/levelio/mac-clients-group-config.md.
+- Level.io macOS actions should pass WAZUH_AGENT_GROUP=mac-clients.
 
 ## Billing and scorecard checkpoint
 
-- Billable: 2 (013, 014). Internal: 6 excluded.
+- Billable: **3 (013, 014, 015)**. Internal: 6 excluded. Total agents: 9.
 - Scorecard cycle to 09-15; progress + billing checkpoints written.
+- Billing record updated with Julians-Air (015, macOS, from 08-16 07:44).
 
 ## Windows FP validation
 
@@ -92,8 +120,8 @@ Client ops stable: 2 billable endpoints (013 powered-off at check - normal;
 
 ## Monthly client ops
 
-- Client-aware run complete: 8 agents, 2 billable, no threats, backups valid,
-  Greenbone proven, scorecard cycle on track.
+- Client-aware run complete: **9 agents (6 internal + 3 client)**, no threats,
+  backups valid, Greenbone proven, scorecard cycle on track.
 
 ## Remaining risks
 
@@ -101,24 +129,28 @@ Client ops stable: 2 billable endpoints (013 powered-off at check - normal;
 2. DR config bundle 403 (keys needed).
 3. 29 unpinned docker images (backlog).
 4. Canarytoken T1 account.
-5. Agent queue-full tuning (both client endpoints).
+5. Agent queue-full tuning (013/014).
 6. 013 device power cycles (normal).
 7. Thin pool 87.84% WARN (stable).
+8. macOS telemetry volume low (unified logging, quiet workstation) - monitor
+   first weeks for coverage quality.
 
 ## Recommended Phase 17 roadmap
 
 1. **Client ops**: signed scan auth -> Greenbone client schedule -> first full
-   scorecard (09-15) -> first invoice (2 endpoints).
-2. **Windows**: complete 7-day re-measure (07-23); add explorer.exe to
+   scorecard (09-15) -> first invoice (**3 endpoints**).
+2. **macOS**: confirm WAZUH_AGENT_GROUP=mac-clients in Level.io action;
+   monitor unified-logging coverage; macOS-specific detections backlog.
+3. **Windows**: complete 7-day re-measure (07-23); add explorer.exe to
    suppression (optional); build W1/W2 dashboards; then PS logging + D-rules.
-3. **Docker**: pin remaining 29 refs; flip CI check to hard-fail.
-4. **Cache**: cache wazuh agent pkg + sysmon with checksums; docker save/load
+4. **Docker**: pin remaining 29 refs; flip CI check to hard-fail.
+5. **Cache**: cache wazuh agent pkg + sysmon with checksums; docker save/load
    snapshot for DR.
-5. **White-label**: real brand.yml + client profile; render production artifacts.
-6. **DR S3**: new keys -> config bundle SUCCESS -> full DR validation.
-7. **ES retention**: add weekly retention cron (keep 14).
-8. **Canarytoken T1**: hosted account -> validate chain.
-9. **Agent buffer**: tune queue settings for client endpoints.
+6. **White-label**: real brand.yml + client profile; render production artifacts.
+7. **DR S3**: new keys -> config bundle SUCCESS -> full DR validation.
+8. **ES retention**: add weekly retention cron (keep 14).
+9. **Canarytoken T1**: hosted account -> validate chain.
+10. **Agent buffer**: tune queue settings for client endpoints.
 
 ## Files added (summary)
 
@@ -128,10 +160,13 @@ Client ops stable: 2 billable endpoints (013 powered-off at check - normal;
   canarytoken, monthly ops, final).
 - Scripts: es-snapshot-retention-apply.sh, check-unpinned-docker-images.sh,
   scripts/reporting/render-branded-template.py.
-- Docs: docs/INTERNAL-CACHE-LAYOUT.md.
+- Docs: docs/INTERNAL-CACHE-LAYOUT.md, integrations/levelio/mac-clients-group-config.md.
 - Cache: /opt/mct-cache (9 dirs + velociraptor + checksum).
 - Client: endpoint health summary, scorecard/billing checkpoints, branded
-  kickoff email, whitelabel sample scorecard.
+  kickoff email, whitelabel sample scorecard, billing record (3 endpoints).
+- Endpoint scripts (fixed during 015 rollout): install-wazuh-macos.sh +
+  install-wazuh-linux.sh - arch-specific pkg URL, curl fail-fast,
+  self-contained inline helpers, stdin-exec compatible.
 
 ## No secrets
 
