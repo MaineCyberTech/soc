@@ -44,6 +44,9 @@ step "powershell present check"
 PS=$(find . -path './.git' -prune -o -name '*.ps1' -type f -print | wc -l)
 echo "PowerShell files present: $PS (need endpoint/runtime validation, not run in CI)"
 
+step "unpinned docker image check (informational)"
+bash ops/scripts/check-unpinned-docker-images.sh || echo "[NOTE] unpinned refs remain (backlog)"
+
 step "level.io variable tests"
 if [ -x scripts/ci/run-levelio-variable-tests.sh ]; then
   bash scripts/ci/run-levelio-variable-tests.sh || FAIL=1
