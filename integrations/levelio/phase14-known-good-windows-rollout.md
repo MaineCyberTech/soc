@@ -42,3 +42,13 @@ Status: RECORDED - production-validated path
   loaded -> all helpers missing -> WAZUH_VERSION empty -> wrong pkg URL.
 - Fix: install scripts now fall back to $0 and the repo-known lib path, and
   fail with a clear error if lib/mct-env.sh cannot be loaded.
+
+## Self-contained scripts (fixed 2026-08-16)
+
+- Install scripts previously sourced lib/mct-env.sh - but Level.io copies ONLY
+  the single script to the endpoint, so the lib was never present there.
+- Fix: the helper functions are now INLINED in install-wazuh-linux.sh and
+  install-wazuh-macos.sh (fully self-contained). lib/mct-env.sh remains for
+  repo-side test harnesses.
+- Verified: works via stdin (Level.io exec mode) with no repo/lib present;
+  fail-fast exit 2 on missing required vars; dry-run exit 0.
