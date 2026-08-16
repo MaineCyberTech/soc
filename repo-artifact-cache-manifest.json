@@ -8,7 +8,7 @@
       "version": "0.77.2",
       "sha256": "6c4c23c466d892788ff56ddcd3a31f844e4c0d797ade454c5e2625eb9e427077",
       "cached": true,
-      "cache_path": "/usr/local/bin/velociraptor",
+      "cache_path": "/opt/mct-cache/velociraptor/velociraptor-v0.77.2-linux-amd64",
       "license": "AGPL-3.0",
       "notes": "native server + client binary on Wazuh host"
     },
