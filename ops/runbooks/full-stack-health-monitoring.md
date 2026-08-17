@@ -45,3 +45,10 @@ the healthcheck now verifies the SO VM + Suricata packet ingest instead.
 - Hourly: cron wrapper of `full-stack-healthcheck.sh` (log to ops/reports).
 - Daily: operator review of `full-stack-health-latest.md`.
 - After any restart/upgrade: run healthcheck + shuffle healthcheck + smoke test.
+
+## Zeek-forward log rotation (2026-08-17)
+
+- Config: /etc/logrotate.d/zeek-forward (copytruncate, 200M, rotate 3).
+- Safe with open service handle + agent tail position (verified: rotation did
+  not interrupt ZEEK flow to indexer).
+- Threshold: 200MB triggers rotation; daily + size both enforced.
