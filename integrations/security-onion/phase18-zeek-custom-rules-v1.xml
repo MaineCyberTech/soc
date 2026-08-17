@@ -70,9 +70,13 @@
   <rule id="122006" level="4">
     <if_sid>122000</if_sid>
     <field name="zeek.proto">udp</field>
+    <field name="zeek.resp_p" negate="yes">53</field>
+    <field name="zeek.resp_p" negate="yes">123</field>
     <field name="zeek.resp_p" negate="yes">1900</field>
+    <field name="zeek.resp_p" negate="yes">443</field>
     <field name="zeek.resp_p" negate="yes">5353</field>
     <field name="zeek.resp_p" negate="yes">5355</field>
+    <field name="zeek.resp_p" negate="yes">51820</field>
     <description>Zeek: UDP connection to port $(zeek.resp_p) from $(zeek.orig_h)</description>
     <group>mct,zeek,udp,</group>
   </rule>

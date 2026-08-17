@@ -17,3 +17,10 @@ Date: 2026-08-17
 - Re-check 24h post-deploy.
 
 ## No secrets
+
+## UPDATE (1h post-deploy): noise found + tightened
+
+- Rule 122006 (UDP) fired 2,286/1h - TOO NOISY.
+- FIX: excluded DNS(53)/NTP(123)/QUIC(443)/SSDP(1900)/mDNS(5353)/LLMNR(5355)/
+  WireGuard(51820).
+- Re-measure after fix.
