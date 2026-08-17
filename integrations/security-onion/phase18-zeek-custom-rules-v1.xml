@@ -1,0 +1,80 @@
+
+<!-- Phase 18 Zeek custom rules v1 (mct,zeek group).
+     Match current decoder fields: zeek.orig_h, zeek.orig_p, zeek.resp_h,
+     zeek.resp_p, zeek.proto, zeek.ts, zeek.uid.
+     Base rule 122000 anchors ALL zeek-conn events (level 3, no alert spam);
+     children fire only on narrow high-value patterns.
+     Rule IDs: 122000-122006 (local range). -->
+<group name="mct,zeek,network,">
+
+  <!-- Base: every zeek-conn event lands here (level 3 - visible, not alerting) -->
+  <rule id="122000" level="3">
+    <decoded_as>zeek-conn</decoded_as>
+    <description>Zeek: connection event from $(zeek.orig_h) to $(zeek.resp_h):$(zeek.resp_p)/$(zeek.proto)</description>
+    <group>mct,zeek,</group>
+  </rule>
+
+  <!-- External SSH attempt (resp port 22/2222) -->
+  <rule id="122001" level="8">
+    <if_sid>122000</if_sid>
+    <field name="zeek.proto">tcp</field>
+    <field name="zeek.resp_p">22</field>
+    <field name="zeek.resp_p">2222</field>
+    <description>Zeek: SSH connection attempt to port $(zeek.resp_p) from $(zeek.orig_h)</description>
+    <group>mct,zeek,ssh,</group>
+  </rule>
+
+  <!-- External SMB attempt (port 445) -->
+  <rule id="122002" level="8">
+    <if_sid>122000</if_sid>
+    <field name="zeek.proto">tcp</field>
+    <field name="zeek.resp_p">^445$</field>
+    <description>Zeek: SMB connection attempt (port 445) from $(zeek.orig_h)</description>
+    <group>mct,zeek,smb,</group>
+  </rule>
+
+  <!-- External RDP attempt (port 3389) -->
+  <rule id="122003" level="8">
+    <if_sid>122000</if_sid>
+    <field name="zeek.proto">tcp</field>
+    <field name="zeek.resp_p">^3389$</field>
+    <description>Zeek: RDP connection attempt (port 3389) from $(zeek.orig_h)</description>
+    <group>mct,zeek,rdp,</group>
+  </rule>
+
+  <!-- Sensitive/admin port connection (database, management) -->
+  <rule id="122004" level="5">
+    <if_sid>122000</if_sid>
+    <field name="zeek.proto">tcp</field>
+    <field name="zeek.resp_p">135</field>
+    <field name="zeek.resp_p">139</field>
+    <field name="zeek.resp_p">1433</field>
+    <field name="zeek.resp_p">3306</field>
+    <field name="zeek.resp_p">5432</field>
+    <field name="zeek.resp_p">5900</field>
+    <field name="zeek.resp_p">8080</field>
+    <field name="zeek.resp_p">8443</field>
+    <description>Zeek: connection to sensitive port $(zeek.resp_p) from $(zeek.orig_h)</description>
+    <group>mct,zeek,adminports,</group>
+  </rule>
+
+  <!-- Observed internal subnets (baseline visibility; adjust list as scope known) -->
+  <rule id="122005" level="3">
+    <if_sid>122000</if_sid>
+    <field name="zeek.orig_h" type="pcre2">^192\.168\.(29|30|31|111|222)\.|^10\.(10|11)\.202\.</field>
+    <description>Zeek: traffic from known internal subnet $(zeek.orig_h)</description>
+    <group>mct,zeek,subnet,</group>
+  </rule>
+
+  <!-- UDP to non-multicast port (flood/scan candidate; SSDP/mDNS excluded) -->
+  <rule id="122006" level="4">
+    <if_sid>122000</if_sid>
+    <field name="zeek.proto">udp</field>
+    <field name="zeek.resp_p" negate="yes">1900</field>
+    <field name="zeek.resp_p" negate="yes">5353</field>
+    <field name="zeek.resp_p" negate="yes">5355</field>
+    <description>Zeek: UDP connection to port $(zeek.resp_p) from $(zeek.orig_h)</description>
+    <group>mct,zeek,udp,</group>
+  </rule>
+
+</group>
