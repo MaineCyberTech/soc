@@ -1,0 +1,99 @@
+<!-- Phase 19 Zeek custom rules v2 (mct,zeek group) - DEPLOYED (v2.1).
+     Derived from phase18-zeek-custom-rules-v1.xml after 24h noise re-check
+     (see ops/reports/phase19-zeek-24h-noise-recheck.md and
+     integrations/security-onion/phase19-zeek-rule-tuning-decision.md).
+
+     v2 change summary:
+     - Base rule 122000 now excludes broadcast/multicast destinations so benign LAN
+       discovery (mDNS 224.0.0.251/ff02::fb, SSDP 239.255.255.250, UDP broadcast
+       to 255.255.255.255) no longer anchors alerts or children.
+     - 122005 restricts to unicast internal-subnet traffic.
+     - 122006 adds destination guard + excludes discovery ports 10001/56700.
+
+     v2.1 fix (logtest-verified): ALL port fields converted to ANCHORED pcre2.
+       v1/v2 multi-value <field name="zeek.resp_p"> entries used substring regex
+       semantics in wazuh-analysisd 4.14.7: repeated same-name fields behaved as
+       AND-of-substrings, so 122001 only fired for 2222 (22 is substring of 2222)
+       and 122004 NEVER fired. Negates were substring-matched too (e.g. port 12345
+       was excluded because it contains "123"). Anchored pcre2 restores exact,
+       correct matching.
+
+     Match current decoder fields: zeek.orig_h, zeek.orig_p, zeek.resp_h,
+     zeek.resp_p, zeek.proto, zeek.ts, zeek.uid.
+     Rule IDs: 122000-122006 (local range). -->
+<group name="mct,zeek,network,">
+
+  <!-- Base: every zeek-conn event lands here (level 3 - visible, not alerting).
+       Unicast-only: excludes IPv4 broadcast (255.255.255.255), IPv4 multicast
+       (224.0.0.0/4 incl. 239.x SSDP and 233.x), and IPv6 multicast (ff00::/8). -->
+  <rule id="122000" level="3">
+    <decoded_as>zeek-conn</decoded_as>
+    <field name="zeek.resp_h" type="pcre2" negate="yes">^(255\.255\.255\.255|224\.|239\.|233\.|ff[0-9a-fA-F]{2}:)|\.255$</field>
+    <description>Zeek: unicast connection event from $(zeek.orig_h) to $(zeek.resp_h):$(zeek.resp_p)/$(zeek.proto)</description>
+    <group>mct,zeek,</group>
+  </rule>
+
+  <!-- External SSH attempt (resp port 22/2222) -->
+  <rule id="122001" level="8">
+    <if_sid>122000</if_sid>
+    <field name="zeek.proto">tcp</field>
+    <field name="zeek.resp_p" type="pcre2">^(22|2222)$</field>
+    <description>Zeek: SSH connection attempt to port $(zeek.resp_p) from $(zeek.orig_h)</description>
+    <group>mct,zeek,ssh,</group>
+  </rule>
+
+  <!-- External SMB attempt (port 445) -->
+  <rule id="122002" level="8">
+    <if_sid>122000</if_sid>
+    <field name="zeek.proto">tcp</field>
+    <field name="zeek.resp_p" type="pcre2">^445$</field>
+    <description>Zeek: SMB connection attempt (port 445) from $(zeek.orig_h)</description>
+    <group>mct,zeek,smb,</group>
+  </rule>
+
+  <!-- External RDP attempt (port 3389) -->
+  <rule id="122003" level="8">
+    <if_sid>122000</if_sid>
+    <field name="zeek.proto">tcp</field>
+    <field name="zeek.resp_p" type="pcre2">^3389$</field>
+    <description>Zeek: RDP connection attempt (port 3389) from $(zeek.orig_h)</description>
+    <group>mct,zeek,rdp,</group>
+  </rule>
+
+  <!-- Sensitive/admin port connection (database, management) -->
+  <rule id="122004" level="5">
+    <if_sid>122000</if_sid>
+    <field name="zeek.proto">tcp</field>
+    <field name="zeek.resp_p" type="pcre2">^(135|139|1433|3306|5432|5900|8080|8443)$</field>
+    <description>Zeek: connection to sensitive port $(zeek.resp_p) from $(zeek.orig_h)</description>
+    <group>mct,zeek,adminports,</group>
+  </rule>
+
+  <!-- Observed internal subnets (baseline visibility; unicast-only) -->
+  <rule id="122005" level="3">
+    <if_sid>122000</if_sid>
+    <field name="zeek.orig_h" type="pcre2">^192\.168\.(29|30|31|111|222)\.|^10\.(10|11)\.202\.</field>
+    <field name="zeek.resp_h" type="pcre2" negate="yes">^(255\.255\.255\.255|224\.|239\.|233\.|ff[0-9a-fA-F]{2}:)|\.255$</field>
+    <description>Zeek: unicast traffic from known internal subnet $(zeek.orig_h)</description>
+    <group>mct,zeek,subnet,</group>
+  </rule>
+
+  <!-- UDP to non-standard unicast port (flood/scan candidate; discovery excluded) -->
+  <rule id="122006" level="4">
+    <if_sid>122000</if_sid>
+    <field name="zeek.proto">udp</field>
+    <field name="zeek.resp_p" type="pcre2" negate="yes">^53$</field>
+    <field name="zeek.resp_p" type="pcre2" negate="yes">^123$</field>
+    <field name="zeek.resp_p" type="pcre2" negate="yes">^1900$</field>
+    <field name="zeek.resp_p" type="pcre2" negate="yes">^443$</field>
+    <field name="zeek.resp_p" type="pcre2" negate="yes">^5353$</field>
+    <field name="zeek.resp_p" type="pcre2" negate="yes">^5355$</field>
+    <field name="zeek.resp_p" type="pcre2" negate="yes">^51820$</field>
+    <field name="zeek.resp_p" type="pcre2" negate="yes">^10001$</field>
+    <field name="zeek.resp_p" type="pcre2" negate="yes">^56700$</field>
+    <field name="zeek.resp_h" type="pcre2" negate="yes">^(255\.255\.255\.255|224\.|239\.|233\.|ff[0-9a-fA-F]{2}:)|\.255$</field>
+    <description>Zeek: UDP connection to unicast port $(zeek.resp_p) from $(zeek.orig_h)</description>
+    <group>mct,zeek,udp,</group>
+  </rule>
+
+</group>
