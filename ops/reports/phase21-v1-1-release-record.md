@@ -1,7 +1,7 @@
 # Phase 21 v1.1.0 Release Record
 
 Date: 2026-08-19
-Status: **TAG + BUNDLE PUBLISHED - GITHUB RELEASE OBJECT PENDING OPERATOR PAT** (same as v1.0.0 process).
+Status: **COMPLETE - v1.1.0 PUBLISHED** (release object + asset created 2026-08-19 07:27 UTC via operator PAT, in-memory).
 
 ## Done
 
@@ -15,17 +15,15 @@ Status: **TAG + BUNDLE PUBLISHED - GITHUB RELEASE OBJECT PENDING OPERATOR PAT** 
 | Bundle mirrored | `/opt/mct-security-stack-backups/releases/` (P14 pattern) |
 | Release notes | RELEASE-NOTES.md updated (v1.1.0 section); release body prepared at /tmp/release-body-v110.md |
 
-## Pending (single step - operator PAT, in-memory)
+## Pending
 
-Create the GitHub release object + attach the asset (mirrors P14 which used an operator-provided
-PAT in-memory, never persisted):
+- None - release complete. (PAT was used in-memory only; never persisted or committed.)
 
-```bash
-export GITHUB_TOKEN='<operator PAT>'
-gh release create v1.1.0 /home/user/mct-security-releases/mct-security-stack-release-20260819-072400.tar.gz \
-  --repo MaineCyberTech/soc --title "MCT Security Stack v1.1.0" --notes-file /tmp/release-body-v110.md
-# or via API: curl -X POST -H "Authorization: token $GITHUB_TOKEN" ... (see checklist)
-```
+## Published release (verified)
+
+- URL: https://github.com/MaineCyberTech/soc/releases/tag/v1.1.0
+- Release object: id 372865326, published 2026-08-19T07:27:33Z.
+- Asset: `mct-security-stack-release-20260819-072400.tar.gz` (3,746,989 bytes, state uploaded).
 
 ## Post-release
 
