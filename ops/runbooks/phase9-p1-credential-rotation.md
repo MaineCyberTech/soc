@@ -11,8 +11,8 @@
 1. Obtain new value via secure channel (operator).
 2. Edit the store:
    - DO Spaces: ops/creds.env (DO_SPACES_ACCESS_KEY / DO_SPACES_SECRET_KEY)
-   - Wazuh admin: ops/creds.env (WAZUH_ADMIN_PASSWORD) - also used by indexer
-     internal users (admin:P@ssw0rd@ in compose) - coordinate indexer user update
+    - Wazuh admin: ops/creds.env (WAZUH_ADMIN_PASSWORD) - also used by indexer
+      internal users (admin: from ${INDEXER_PASSWORD}/WAZUH_ADMIN_PASSWORD in compose) - coordinate indexer user update
    - Cloudflare: .env.cloudflare (TUNNEL_TOKEN)
 3. Restart dependents:
    - DO: no restart needed (scripts read creds.env each run); re-run dr-s3-bundle.sh

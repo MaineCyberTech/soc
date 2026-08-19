@@ -3,6 +3,7 @@
 # Usage: bash capacity-threshold-check.sh   (or cron)
 set -uo pipefail
 source /opt/wazuh-docker/multi-node/ops/creds.env 2>/dev/null
+: "${PVE_PASSWORD:?PVE_PASSWORD not set in creds.env}"
 
 DISK_WARN=80    # % root disk
 DISK_CRIT=90
@@ -28,10 +29,10 @@ if [ "$SWS" -ge "$SWAP_CRIT" ]; then echo "[FAIL] swap critical"; FAILS=1;
 elif [ "$SWS" -ge "$SWAP_WARN" ]; then echo "[WARN] swap high"; FAILS=1; fi
 
 # Thin pool on .222 (via ssh if reachable)
-if command -v sshpass >/dev/null && SSHPASS="${PVE_PASSWORD:-P@ssw0rd@}" sshpass -e ssh -o StrictHostKeyChecking=no \
+if command -v sshpass >/dev/null && SSHPASS="${PVE_PASSWORD}" sshpass -e ssh -o StrictHostKeyChecking=no \
    -o UserKnownHostsFile=/dev/null -o ConnectTimeout=5 root@192.168.222.222 \
    "lvs pve/data -o data_percent --noheadings 2>/dev/null" 2>/dev/null | grep -q .; then
-  TP=$(SSHPASS="${PVE_PASSWORD:-P@ssw0rd@}" sshpass -e ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null \
+  TP=$(SSHPASS="${PVE_PASSWORD}" sshpass -e ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null \
        root@192.168.222.222 "lvs pve/data -o data_percent --noheadings --nosuffix 2>/dev/null" 2>/dev/null | tr -d ' ')
   echo "[thin] .222 pool: ${TP}% (warn ${THIN_WARN}, crit ${THIN_CRIT})"
   TP_INT=${TP%.*}

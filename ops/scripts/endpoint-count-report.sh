@@ -4,6 +4,7 @@
 # Never prints secrets.
 set -uo pipefail
 source /opt/wazuh-docker/multi-node/ops/creds.env 2>/dev/null
+: "${WAZUH_WUI_PASSWORD:?WAZUH_WUI_PASSWORD not set in creds.env}"
 
 echo "=== Endpoint count report $(date -u '+%Y-%m-%d %H:%M') ==="
 echo
@@ -15,7 +16,7 @@ docker exec multi-node-wazuh.master-1 /var/ossec/bin/agent_control -l 2>/dev/nul
 
 echo
 echo "--- Wazuh agent counts (via API) ---"
-TOKEN=$(curl -sk -m 10 -u "wazuh-wui:${WAZUH_WUI_PASSWORD:-MyS3cr37P450r.*-}" -X POST "https://localhost:55000/security/user/authenticate" 2>/dev/null | python3 -c "import json,sys; print(json.load(sys.stdin).get('data',{}).get('token',''))" 2>/dev/null)
+TOKEN=$(curl -sk -m 10 -u "wazuh-wui:${WAZUH_WUI_PASSWORD}" -X POST "https://localhost:55000/security/user/authenticate" 2>/dev/null | python3 -c "import json,sys; print(json.load(sys.stdin).get('data',{}).get('token',''))" 2>/dev/null)
 if [ -n "$TOKEN" ]; then
   curl -sk -m 10 "https://localhost:55000/agents?pretty=false" -H "Authorization: Bearer $TOKEN" 2>/dev/null | python3 -c "
 import json,sys

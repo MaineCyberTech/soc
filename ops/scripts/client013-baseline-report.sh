@@ -12,10 +12,11 @@ OUT="$REPORT_DIR/client013-baseline-$TS.md"
 mkdir -p "$REPORT_DIR"
 
 [ -f "$CREDS" ] && . "$CREDS" 2>/dev/null || true
+: "${WAZUH_WUI_PASSWORD:?WAZUH_WUI_PASSWORD not set in creds.env}"
 API="https://127.0.0.1:55000"
 IDX="https://127.0.0.1:9200"
 
-TOKEN=$(curl -sk -u "wazuh-wui:${WAZUH_WUI_PASSWORD:-MyS3cr37P450r.*-}" "$API/security/user/authenticate" 2>/dev/null \
+TOKEN=$(curl -sk -u "wazuh-wui:${WAZUH_WUI_PASSWORD}" "$API/security/user/authenticate" 2>/dev/null \
   | python3 -c "import json,sys; print(json.load(sys.stdin)['data']['token'])" 2>/dev/null)
 
 AGENT=$(curl -sk -H "Authorization: Bearer $TOKEN" "$API/agents?search=SAMSUNG" 2>/dev/null \

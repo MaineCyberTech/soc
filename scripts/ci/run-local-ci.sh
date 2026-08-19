@@ -26,19 +26,20 @@ step "secret-pattern-scan (no values printed)"
 bash ops/scripts/secret-pattern-scan.sh "$ROOT" || FAIL=1
 
 step "bash syntax check"
-BFAIL=0
-find . -path './.git' -prune -o -name '*.sh' -type f -print | while read -r f; do
-  bash -n "$f" || { echo "SYNTAX FAIL: $f"; }
-done
-# bash -n exit status of find loop: collect via temp
+BASH_TMP=$(mktemp)
 find . -path './.git' -prune -o -name '*.sh' -type f -print0 | while IFS= read -r -d '' f; do
-  bash -n "$f" 2>/dev/null || echo "SYNTAX FAIL: $f"
+  bash -n "$f" 2>/dev/null || echo "SYNTAX FAIL: $f" >> "$BASH_TMP"
 done
+if [ -s "$BASH_TMP" ]; then cat "$BASH_TMP"; FAIL=1; fi
+rm -f "$BASH_TMP"
 
 step "python syntax check"
+PY_TMP=$(mktemp)
 find . -path './.git' -prune -o -name '*.py' -type f -print0 | while IFS= read -r -d '' f; do
-  python3 -m py_compile "$f" 2>/dev/null || echo "PYTHON FAIL: $f"
+  python3 -m py_compile "$f" 2>/dev/null || echo "PYTHON FAIL: $f" >> "$PY_TMP"
 done
+if [ -s "$PY_TMP" ]; then cat "$PY_TMP"; FAIL=1; fi
+rm -f "$PY_TMP"
 
 step "powershell present check"
 PS=$(find . -path './.git' -prune -o -name '*.ps1' -type f -print | wc -l)
