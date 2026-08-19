@@ -35,3 +35,5 @@ ops/reports/vm103-*.log
 config/brand.yml
 config/clients/
 __pycache__/
+ops/reports/full-stack-health-latest.md
+ops/reports/backup-log.txt

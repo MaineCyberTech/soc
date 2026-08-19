@@ -1,1 +1,0 @@
-/opt/mct-security-stack/ops/reports/full-stack-health-20260817-055621.md
