@@ -1,0 +1,13 @@
+{
+  "name": "zeek-detections-dashboard",
+  "index": "wazuh-alerts-*",
+  "time_field": "timestamp",
+  "panels": [
+    {"title": "Zeek alert volume by rule (122000-122006)", "agg": {"terms": {"field": "rule.id", "size": 10}}, "filter": {"terms": {"rule.id": ["122000","122001","122002","122003","122004","122005","122006"]}}},
+    {"title": "Zeek Class A (SSH/SMB/RDP) events", "agg": {"terms": {"field": "rule.id", "size": 5}}, "filter": {"terms": {"rule.id": ["122001","122002","122003"]}}},
+    {"title": "Top Zeek sources", "agg": {"terms": {"field": "data.zeek.orig_h", "size": 10}}, "filter": {"exists": {"field": "data.zeek.orig_h"}}},
+    {"title": "Top Zeek destinations", "agg": {"terms": {"field": "data.zeek.resp_h", "size": 10}}, "filter": {"exists": {"field": "data.zeek.resp_h"}}},
+    {"title": "Zeek traffic by protocol", "agg": {"terms": {"field": "data.zeek.proto", "size": 5}}, "filter": {"exists": {"field": "data.zeek.proto"}}},
+    {"title": "Zeek event rate (1h)", "agg": {"date_histogram": {"field": "timestamp", "fixed_interval": "1h"}}, "filter": {"terms": {"rule.id": ["122000","122001","122002","122003","122004","122005","122006"]}}}
+  ]
+}

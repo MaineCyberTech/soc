@@ -20,6 +20,16 @@ jobs:
         run: |
           find . -path './.git' -prune -o -name '*.py' -type f -print | while read -r f; do PYTHONPYCACHEPREFIX="$(mktemp -d)" python3 -m py_compile "$f"; done
 
+      - name: ShellCheck (bash lint; installed-on-runner only)
+        if: ${{ runner.os == 'Linux' }}
+        run: |
+          if command -v shellcheck >/dev/null 2>&1; then
+            find . -path './.git' -prune -o -name '*.sh' -type f -print0 \
+              | xargs -0 -r shellcheck -x -S warning -e SC1090,SC1091,SC2154,SC2086,SC2002,SC2317,SC2164,SC2162,SC2091
+            echo "shellcheck done (exclusions documented in phase24-30 report)"
+          else
+            echo "shellcheck not available on runner - skipped (non-blocking)"
+          fi
       - name: PowerShell present check
         run: |
           PS=$(find . -path './.git' -prune -o -name '*.ps1' -type f -print | wc -l)

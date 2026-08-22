@@ -41,6 +41,8 @@ resp=$(curl -sk -m 30 -u "admin:${WAZUH_ADMIN_PASSWORD:-}" \
   -H 'Content-Type: application/json' \
   -d "$QUERY" \
   "https://127.0.0.1:9200/wazuh-alerts-*/_search" 2>/dev/null) || resp=""
+QUERY_FAILED=0
+[ -n "$resp" ] || QUERY_FAILED=1
 
 {
   echo "# Alert Volume by Rule - last ${HOURS}h - $TS"
@@ -65,3 +67,9 @@ except Exception as e:
 " 
 } > "$OUT"
 echo "Wrote $OUT"
+# Phase 24: exit nonzero when the query failed (automation-detectable)
+if [ "${QUERY_FAILED:-0}" -eq 1 ]; then
+  echo "ALERT-VOLUME QUERY FAILED - report written with error row (see $OUT)"
+  exit 1
+fi
+exit 0

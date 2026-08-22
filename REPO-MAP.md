@@ -1,6 +1,6 @@
 # MCT Security Stack - Repo Map
 
-Date: 2026-08-16
+Date: 2026-08-22
 Root: /opt/mct-security-stack
 
 ## Layout
@@ -16,6 +16,13 @@ mct-security-stack/
   .gitignore.example        - ignore rules
   config/
     examples/               - secrets.example.env, sample configs
+    wazuh_cluster/          - canonical sanitized wazuh_manager.conf (Phase 24)
+  docs/                     - governance + deep docs (17 files)
+    SECRET-HANDLING.md        - secret rules + inventory
+    WAZUH-DOCKER-SECRET-ABSTRACTION.md
+    CONTAINER-IMAGE-POLICY.md - R/F/V/C image classification
+    CLIENT-ARTIFACT-GOVERNANCE.md
+    WHITELABEL-GOVERNANCE.md
   scripts/
     bootstrap/              - check-prereqs, create-directories, render-env-summary
     verify/                 - verify-stack-layout, verify-current-architecture,
@@ -35,7 +42,6 @@ mct-security-stack/
   client-onboarding/        - intake, scope, auth, escalation, comm templates
   service-packaging/        - offers, billing, SLA, review flow
   evidence/                 - historical timestamped reports (archive)
-  checklists/               - generic checklists
   compose/                  - compose fragments (not secrets)
 ```
 

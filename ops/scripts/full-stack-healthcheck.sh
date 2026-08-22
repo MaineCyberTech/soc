@@ -101,4 +101,11 @@ if [[ -f /etc/cron.d/wazuh-backups ]] && grep -q 'elastic-snapshot' /etc/cron.d/
 
 ln -sf "$REPORT" "$LATEST"
 echo "Wrote $LATEST ($REPORT)"
-grep -cE '\*\*FAIL\*\*' "$REPORT" | xargs -I{} echo "FAIL count: {}"
+FAILS=$(grep -cE '\*\*FAIL\*\*' "$REPORT" || true)
+echo "FAIL count: $FAILS"
+# Phase 24: exit nonzero when any component FAILs (automation-detectable health)
+if [ "${FAILS:-0}" -gt 0 ]; then
+  echo "HEALTHCHECK FAIL - $FAILS component(s) failed (see $REPORT)"
+  exit 1
+fi
+exit 0

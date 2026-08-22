@@ -48,6 +48,13 @@ echo "PowerShell files present: $PS (need endpoint/runtime validation, not run i
 step "unpinned docker image check (informational)"
 bash ops/scripts/check-unpinned-docker-images.sh || echo "[NOTE] unpinned refs remain (backlog)"
 
+step "shellcheck (if installed - lint, non-blocking)"
+if command -v shellcheck >/dev/null 2>&1; then
+  find . -path './.git' -prune -o -name '*.sh' -type f -print0 | xargs -0 -r shellcheck -x -S warning -e SC1090,SC1091,SC2154,SC2086,SC2002,SC2317,SC2164,SC2162,SC2091 || echo "[NOTE] shellcheck findings (review, non-blocking)"
+else
+  echo "[SKIP] shellcheck not installed"
+fi
+
 step "level.io variable tests"
 if [ -x scripts/ci/run-levelio-variable-tests.sh ]; then
   bash scripts/ci/run-levelio-variable-tests.sh || FAIL=1

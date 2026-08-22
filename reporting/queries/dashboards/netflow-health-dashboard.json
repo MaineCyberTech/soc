@@ -1,0 +1,12 @@
+{
+  "name": "netflow-health-dashboard",
+  "index": "elastiflow-flow-*",
+  "time_field": "@timestamp",
+  "panels": [
+    {"title": "Flow volume (1h)", "agg": {"date_histogram": {"field": "@timestamp", "fixed_interval": "1h"}}},
+    {"title": "Top source /24 (unknown-subnet watch)", "agg": {"terms": {"script": {"lang": "painless", "source": "def ips=params._source['source.ip']; if (ips==null) return 'none'; def p=ips.splitOnToken('.'); return p.length<3 ? 'none' : p[0]+'.'+p[1]+'.'+p[2]+'.0'"}, "size": 15}}},
+    {"title": "Top exporters", "agg": {"terms": {"field": "host.name", "size": 5}}},
+    {"title": "Top destination /24", "agg": {"terms": {"script": {"lang": "painless", "source": "def ips=params._source['destination.ip']; if (ips==null) return 'none'; def p=ips.splitOnToken('.'); return p.length<3 ? 'none' : p[0]+'.'+p[1]+'.'+p[2]+'.0'"}, "size": 10}}},
+    {"title": "Flow locality split", "agg": {"terms": {"field": "flow.locality", "size": 5}}}
+  ]
+}

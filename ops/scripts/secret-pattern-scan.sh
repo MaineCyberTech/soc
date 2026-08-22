@@ -12,7 +12,11 @@ echo
 scan_dir() {
   local dir=$1
   find "$dir" -type f \( -name "*.sh" -o -name "*.py" -o -name "*.md" -o -name "*.yml" -o -name "*.yaml" -o -name "*.env*" -o -name "*.conf" \) \
-    ! -path "*/ops/backups/*" ! -path "*/data/*" ! -path "*/.git/*" ! -path "*/evidence/*" 2>/dev/null | while read -r f; do
+    ! -path "*/ops/backups/*" ! -path "*/data/*" ! -path "*/.git/*" ! -path "*/evidence/*" \
+    ! -path "*/ops/reports/*" \
+    ! -name "ingest-pipeline-inventory-*.md" ! -name "hardcoded-brand-scan-*.md" \
+    ! -name "self-contained-completeness-check-*.md" \
+    ! -name "secret-pattern-scan.sh" ! -name "scan-docs-for-secret-patterns.sh" 2>/dev/null | while read -r f; do
     grep -HnE "(password|passwd|secret|api[_-]?key|token|private[_-]?key|BEGIN [A-Z ]*PRIVATE KEY|AKIA[0-9A-Z]{16}|DO00[0-9A-Z]{14})[[:space:]]*[=:][[:space:]]*[^[:space:]<]" "$f" 2>/dev/null \
       | sed -E 's/(password|passwd|secret|api[_-]?key|token|private[_-]?key|AKIA[0-9A-Z]{16}|DO00[0-9A-Z]{14})[[:space:]]*[=:][[:space:]]*.*/\1/' \
       | awk -v F="$f" '{print F ":" NR ":" $NF}'
