@@ -12,7 +12,7 @@ networks:
 
 services:
   opencanary:
-    image: thinkst/opencanary:latest
+    image: thinkst/opencanary:latest@sha256:db6bf96d01528928d425be4321ff7d35adf8b1e69c4f02821f6498f3f9b0702e
     restart: unless-stopped
     environment:
       OPENCANARY_SYSLOG_ADDRESS: ${OPENCANARY_SYSLOG_TARGET:-multi-node-wazuh.master-1}:514
