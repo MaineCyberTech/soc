@@ -1,5 +1,26 @@
 # MCT Security Stack - Release Notes
 
+## v1.2.0 (planned - approval-gated; not released)
+
+> Draft summary for the Phase 23 release. Tag/release requires operator approval (see
+> ops/reports/phase23-v120-readiness.md). No automatic release.
+
+### Highlights (Phase 23)
+
+- macOS agent 015 unified-log flood RESOLVED (bounded filtered ULS predicate; reconnect
+  08-22 validated: archives ~0, 0 queue-full, bounded telemetry flowing). Predicate covers
+  sudo/loginwindow/securityd/sshd/tccd/screensharingd/logout/session.
+- Windows 014 Sysmon EventID 7: include-oriented design review (LOLBin/unsigned/non-system
+  module conditions) - apply pending endpoint access; throttle bounds impact meanwhile.
+- Disk relief: docker prune D1+D2 (85% -> 83%); OpenSearch nodes below low watermark; no
+  write blocks; swap root-cause documented (transient flood pressure, now idle si=0).
+- Credential env-abstraction complete (wazuh-docker ${VAR} refs + protected .env); rotations
+  staged (VT key, indexer) pending replacements/approval.
+- Image pinning + classification policy enforced (0 violations).
+- Evidence banner reconciliation: 122/122 reports bannered (v1.0.0 claim now true).
+- Documentation governance: ARCHITECTURE/STACK-OVERVIEW refreshed; client-artifact +
+  white-label governance docs; client-dir internal artifacts moved.
+
 ## v1.1.0 (2026-08-19) - Published
 
 > Released 2026-08-19 07:27 UTC. Tag `v1.1.0`, release object + portable bundle asset uploaded
