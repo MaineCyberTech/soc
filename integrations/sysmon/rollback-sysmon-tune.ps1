@@ -1,9 +1,9 @@
 <#
 .SYNOPSIS
-  MCT Sysmon EventID 7 tuning - apply mode (no arguments required; Level.io/RMM-safe).
+  MCT Sysmon EventID 7 tuning - rollback mode (no arguments required; Level.io/RMM-safe).
 
 .DESCRIPTION
-  Creates the include-oriented policy file (embedded XML), backs up + hashes the current config, loads the policy, reloads Sysmon, and verifies the service. Preserves EventID 1/10. This script is self-contained (policy XML embedded) and requires no parameters -
+  Restores the newest timestamped backup of sysmon-config.xml and reloads Sysmon. This script is self-contained (policy XML embedded) and requires no parameters -
   intended for runners like Level.io that execute scripts without arguments.
 
   Log: C:\Windows\Sysmon\mct-sysmon-tune.log  (no secrets)
@@ -14,7 +14,7 @@ $SysmonCfg = "C:\Windows\Sysmon\sysmon-config.xml"
 $PolicyPath = "C:\Windows\Sysmon\mct-eid7-policy.xml"
 $BackupDir = "C:\Windows\Sysmon\mct-backups"
 $LogFile = "C:\Windows\Sysmon\mct-sysmon-tune.log"
-$Mode = "apply"
+$Mode = "rollback"
 $Log = @()
 
 function Write-LogLine([string]$Msg) {
