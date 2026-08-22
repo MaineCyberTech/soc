@@ -1,9 +1,9 @@
 # MCT Security Stack - Release Notes
 
-## v1.1.0 (planned - not yet released; approval-gated)
+## v1.1.0 (2026-08-19) - Published
 
-> Draft summary for the Phase 21 release. Tag/release creation requires CI + secret-scan pass
-> and operator approval (see ops/checklists/v1-1-release-checklist.md). Push pending.
+> Released 2026-08-19 07:27 UTC. Tag `v1.1.0`, release object + portable bundle asset uploaded
+> (see ops/reports/phase21-v1-1-release-record.md and ops/checklists/v1-1-release-checklist.md).
 
 ### Highlights (Phases 18-21)
 

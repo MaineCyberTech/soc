@@ -18,7 +18,7 @@ jobs:
 
       - name: Python syntax check
         run: |
-          find . -path './.git' -prune -o -name '*.py' -type f -print | while read -r f; do python3 -m py_compile "$f"; done
+          find . -path './.git' -prune -o -name '*.py' -type f -print | while read -r f; do PYTHONPYCACHEPREFIX="$(mktemp -d)" python3 -m py_compile "$f"; done
 
       - name: PowerShell present check
         run: |

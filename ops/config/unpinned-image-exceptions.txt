@@ -1,0 +1,25 @@
+# Unpinned image exceptions (Phase 22 classification policy).
+# Feed-tracking (F): vendor feed/data images that float by design.
+# Versioned-exception (V): versioned/stable tags or locally built images.
+# Cache-only (C): images delivered via the local cache.
+registry.community.greenbone.net/community/vulnerability-tests F
+registry.community.greenbone.net/community/notus-data F
+registry.community.greenbone.net/community/scap-data F
+registry.community.greenbone.net/community/cert-bund-data F
+registry.community.greenbone.net/community/dfn-cert-data F
+registry.community.greenbone.net/community/data-objects F
+registry.community.greenbone.net/community/report-formats F
+registry.community.greenbone.net/community/gpg-data F
+registry.community.greenbone.net/community/openvas-scanner:stable V
+registry.community.greenbone.net/community/ospd-openvas:stable V
+registry.community.greenbone.net/community/gsad:stable V
+registry.community.greenbone.net/community/gsa:stable-slim V
+registry.community.greenbone.net/community/pg-gvm:stable V
+registry.community.greenbone.net/community/pg-gvm-migrator:stable V
+registry.community.greenbone.net/community/gvm-config:latest V
+registry.community.greenbone.net/community/gvm-tools V
+registry.community.greenbone.net/community/nginx:latest V
+registry.community.greenbone.net/community/redis-server V
+ghcr.io/misp/misp-docker/misp-modules:latest V
+velociraptor:latest C
+balabit/syslog-ng:latest V

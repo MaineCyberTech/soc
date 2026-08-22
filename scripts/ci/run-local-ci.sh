@@ -36,7 +36,7 @@ rm -f "$BASH_TMP"
 step "python syntax check"
 PY_TMP=$(mktemp)
 find . -path './.git' -prune -o -name '*.py' -type f -print0 | while IFS= read -r -d '' f; do
-  python3 -m py_compile "$f" 2>/dev/null || echo "PYTHON FAIL: $f" >> "$PY_TMP"
+  PYTHONPYCACHEPREFIX="$(mktemp -d)" python3 -m py_compile "$f" 2>/dev/null || echo "PYTHON FAIL: $f" >> "$PY_TMP"
 done
 if [ -s "$PY_TMP" ]; then cat "$PY_TMP"; FAIL=1; fi
 rm -f "$PY_TMP"

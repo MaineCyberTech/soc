@@ -1,3 +1,5 @@
+# OpenCanary Wazuh Decoder Plan (PLANNED)
+
 <!-- OpenCanary Wazuh decoder plan (PLANNED — validate with wazuh-logtest before deploy).
      OpenCanary syslog JSON events look like:
      {"src_host": "...", "dst_host": "...", "dst_port": 22, "logdata": {"src_ip": "...", "password": "...", "username": "..."}, "logtype": 2001, "node_id": "opencanary-mct-01", "timestamp": "2026-08-10T00:00:00Z", "dst_host": "..."}

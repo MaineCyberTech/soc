@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/MaineCyberTech/soc/actions/workflows/verify.yml/badge.svg)](https://github.com/MaineCyberTech/soc/actions/workflows/verify.yml)
 
-Additive open-source SOC build-out beside the existing Wazuh multi-node deployment. **FULLY DEPLOYED and verified 2026-08-10.**
+Additive open-source SOC build-out beside the existing Wazuh multi-node deployment. **FULLY DEPLOYED and verified. Current release: v1.1.0 (2026-08-19).**
 
 ## Layout
 
