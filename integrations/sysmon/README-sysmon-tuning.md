@@ -24,11 +24,17 @@ never globally disabled.
 Designed for RMM runners that execute scripts without parameters (e.g. Level.io
 `ScriptBlock::Create(stdin)`). Each file embeds everything it needs; rename/copy as-is.
 
+**Robustness (Phase 24 fix):** the Sysmon executable is resolved **dynamically** - from the
+registered service binary path first, then common install paths, then PATH. The **effective
+current config is captured via `Sysmon64 -s`** (a path-independent dump), so backup and
+rollback work even when Sysmon is installed outside `C:\Windows\Sysmon\` or the config file
+path is unknown.
+
 | Script | Action | Changes made |
 |---|---|---|
-| `check-sysmon-tune.ps1` | Report state | NONE (service, config hashes, backups, EID7 channel activity) |
-| `apply-sysmon-tune.ps1` | Apply tuning | Creates `C:\Windows\Sysmon\mct-eid7-policy.xml` (embedded), backs up + hashes current config, loads policy, reloads Sysmon, verifies service |
-| `rollback-sysmon-tune.ps1` | Restore prior config | Restores newest timestamped backup and reloads Sysmon |
+| `check-sysmon-tune.ps1` | Report state | NONE (service, resolved exe, config hash, backups, EID7 channel activity) |
+| `apply-sysmon-tune.ps1` | Apply tuning | Dumps effective config (backup), creates `C:\Windows\Sysmon\mct-eid7-policy.xml` (embedded), loads policy, reloads Sysmon, verifies service |
+| `rollback-sysmon-tune.ps1` | Restore prior config | Restores newest backup (effective-config dump or file copy) and reloads Sysmon |
 
 ## Usage
 

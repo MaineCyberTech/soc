@@ -3,19 +3,21 @@
   MCT Sysmon EventID 7 tuning - rollback mode (no arguments required; Level.io/RMM-safe).
 
 .DESCRIPTION
-  Restores the newest timestamped backup of sysmon-config.xml and reloads Sysmon. This script is self-contained (policy XML embedded) and requires no parameters -
-  intended for runners like Level.io that execute scripts without arguments.
+  Restores the newest backup (effective-config dump or file copy) and reloads Sysmon. This script is self-contained (policy XML embedded) and requires no parameters.
+
+  - Sysmon executable is RESOLVED dynamically (service registration -> common paths -> PATH).
+  - The effective current config is captured via "Sysmon64 -s" dump (path-independent
+    backup), so rollback works even if the config file location differs.
 
   Log: C:\Windows\Sysmon\mct-sysmon-tune.log  (no secrets)
 #>
 $ErrorActionPreference = "Stop"
-$SysmonExe = "C:\Windows\Sysmon\Sysmon64.exe"
-$SysmonCfg = "C:\Windows\Sysmon\sysmon-config.xml"
-$PolicyPath = "C:\Windows\Sysmon\mct-eid7-policy.xml"
 $BackupDir = "C:\Windows\Sysmon\mct-backups"
 $LogFile = "C:\Windows\Sysmon\mct-sysmon-tune.log"
 $Mode = "rollback"
 $Log = @()
+$Script:SysmonExe = ""
+$Script:SysmonCfg = ""
 
 function Write-LogLine([string]$Msg) {
     $Line = "[$(Get-Date -Format 'yyyy-MM-dd HH:mm:ssZ')] $Msg"
@@ -24,14 +26,63 @@ function Write-LogLine([string]$Msg) {
 }
 
 function Get-SysmonHash([string]$Path) {
-    if (-not (Test-Path $Path)) { return "<missing>" }
+    if (-not $Path -or -not (Test-Path $Path)) { return "<missing>" }
     return (Get-FileHash -Algorithm SHA256 -Path $Path).Hash.Substring(0, 16)
 }
 
-function Test-SysmonService {
-    $svc = Get-Service -Name "Sysmon64" -ErrorAction SilentlyContinue
-    if ($svc -and $svc.Status -eq "Running") { return "RUNNING" }
-    return "NOT RUNNING / MISSING"
+function Resolve-SysmonExe {
+    # 1) registered service binary path (authoritative)
+    try {
+        $svc = Get-CimInstance Win32_Service -Filter "Name='Sysmon64'" -ErrorAction SilentlyContinue
+        if ($svc -and $svc.PathName) {
+            $p = ($svc.PathName -replace '^"([^"]+)".*$', '$1') -replace '^([^ ]+).*$', '$1'
+            if (Test-Path $p) { return $p }
+        }
+    } catch {}
+    # 2) common install paths
+    foreach ($cand in @('C:\Windows\Sysmon\Sysmon64.exe',
+                        'C:\Windows\Sysmon64.exe',
+                        'C:\Program Files\Sysmon\Sysmon64.exe',
+                        'C:\Program Files\Sysmon\sysmon64.exe',
+                        'C:\Tools\Sysmon\Sysmon64.exe',
+                        'C:\Level\Sysmon\Sysmon64.exe')) {
+        if (Test-Path $cand) { return $cand }
+    }
+    # 3) PATH lookup
+    $cmd = Get-Command Sysmon64.exe -ErrorAction SilentlyContinue
+    if ($cmd) { return $cmd.Source }
+    return ""
+}
+
+function Resolve-SysmonCfg {
+    $exeDir = Split-Path $Script:SysmonExe -Parent
+    foreach ($cand in @((Join-Path $exeDir 'sysmon-config.xml'),
+                        (Join-Path $exeDir 'Sysmon.xml'),
+                        'C:\Windows\Sysmon\sysmon-config.xml',
+                        'C:\Windows\sysmon-config.xml',
+                        'C:\Windows\System32\sysmon-config.xml')) {
+        if (Test-Path $cand) { return $cand }
+    }
+    return (Join-Path $exeDir 'sysmon-config.xml')
+}
+
+function Dump-EffectiveConfig {
+    # "Sysmon64 -s" prints the current effective config (path-independent backup)
+    $dump = Join-Path $BackupDir "effective-config-$(Get-Date -Format 'yyyyMMddTHHmmssZ').xml"
+    New-Item -ItemType Directory -Force -Path $BackupDir | Out-Null
+    & $Script:SysmonExe -s *> $dump
+    if ((Test-Path $dump) -and (Get-Item $dump).Length -gt 100) {
+        Write-LogLine "Effective config dumped: $dump (sha256 $((Get-SysmonHash $dump)))"
+        return $dump
+    }
+    Write-LogLine "WARN: 'sysmon -s' produced no dump (older Sysmon? fallback to file copy)"
+    if (Test-Path $Script:SysmonCfg) {
+        $bak = Join-Path $BackupDir "sysmon-config-$(Get-Date -Format 'yyyyMMddTHHmmssZ').xml"
+        Copy-Item $Script:SysmonCfg $bak -Force
+        Write-LogLine "Config file backup: $bak (sha256 $((Get-SysmonHash $bak)))"
+        return $bak
+    }
+    return ""
 }
 
 function Write-PolicyFile {
@@ -81,39 +132,35 @@ function Write-PolicyFile {
     }
 }
 
-function Backup-CurrentConfig {
-    if (-not (Test-Path $SysmonCfg)) { Write-LogLine "WARN: no deployed config at $SysmonCfg - nothing to back up"; return "" }
-    New-Item -ItemType Directory -Force -Path $BackupDir | Out-Null
-    $ts = Get-Date -Format "yyyyMMddTHHmmssZ"
-    $bak = Join-Path $BackupDir "sysmon-config.$ts.xml"
-    Copy-Item -Path $SysmonCfg -Destination $bak -Force
-    Write-LogLine "Backup written: $bak (sha256 $((Get-SysmonHash $bak)))"
-    return $bak
-}
-
 function Invoke-Apply {
     Write-LogLine "== apply =="
+    $Script:SysmonExe = Resolve-SysmonExe
+    if (-not $Script:SysmonExe) { Write-LogLine "ERROR: Sysmon64.exe not found (service missing?) - install Sysmon first"; exit 3 }
+    Write-LogLine "Sysmon executable: $Script:SysmonExe"
+    $Script:SysmonCfg = Resolve-SysmonCfg
+    Write-LogLine "Config path (detected): $Script:SysmonCfg (sha256 $((Get-SysmonHash $Script:SysmonCfg)))"
+    $bak = Dump-EffectiveConfig
     Write-PolicyFile
-    Write-LogLine "Current deployed config sha256: $(Get-SysmonHash $SysmonCfg)"
-    $bak = Backup-CurrentConfig
-    Copy-Item -Path $PolicyPath -Destination $SysmonCfg -Force
-    Write-LogLine "Loaded include-oriented policy -> $SysmonCfg"
-    & $SysmonExe -c $SysmonCfg
-    if ($LASTEXITCODE -ne 0) {
-        Write-LogLine "ERROR: Sysmon rejected the config (exit $LASTEXITCODE) - rollback recommended (use rollback-sysmon-tune.ps1)"
-        exit 1
-    }
+    & $Script:SysmonExe -c $PolicyPath
+    if ($LASTEXITCODE -ne 0) { Write-LogLine "ERROR: Sysmon rejected the policy (exit $LASTEXITCODE) - rollback recommended (rollback-sysmon-tune.ps1)"; exit 1 }
     Write-LogLine "Sysmon reload OK; service: $(Test-SysmonService)"
-    Write-LogLine "New deployed config sha256: $(Get-SysmonHash $SysmonCfg)"
+    Write-LogLine "Deployed config sha256: $(Get-SysmonHash $Script:SysmonCfg)"
     Write-LogLine "Validation (SOC-side): EID7 >=99% drop, EID1/10 flowing, buffer clean - confirm in Wazuh."
 }
 
 function Invoke-Check {
     Write-LogLine "== check =="
-    Write-LogLine "Sysmon service: $(Test-SysmonService)"
+    $Script:SysmonExe = Resolve-SysmonExe
+    if (-not $Script:SysmonExe) { Write-LogLine "Sysmon executable: NOT FOUND (install Sysmon first)"; } else { Write-LogLine "Sysmon executable: $Script:SysmonExe" }
+    $Script:SysmonCfg = Resolve-SysmonCfg
+    Write-LogLine "Service: $(Test-SysmonService)"
+    Write-LogLine "Config path (detected): $Script:SysmonCfg (sha256 $((Get-SysmonHash $Script:SysmonCfg)))"
     Write-LogLine "Policy file sha256: $(Get-SysmonHash $PolicyPath)"
-    Write-LogLine "Deployed config sha256: $(Get-SysmonHash $SysmonCfg)"
-    Write-LogLine "Backups present: $((Get-ChildItem -Path $BackupDir -Filter 'sysmon-config.*.xml' -ErrorAction SilentlyContinue | Measure-Object).Count)"
+    Write-LogLine "Backups present: $((Get-ChildItem -Path $BackupDir -Filter '*config*.xml' -ErrorAction SilentlyContinue | Measure-Object).Count)"
+    if ($Script:SysmonExe) {
+        & $Script:SysmonExe -s *> (Join-Path $env:TEMP 'mct-sysmon-s.txt')
+        Write-LogLine "Effective config dump size: $((Get-Item (Join-Path $env:TEMP 'mct-sysmon-s.txt') -ErrorAction SilentlyContinue).Length) bytes"
+    }
     try {
         $null = Get-WinEvent -FilterHashtable @{LogName = "Microsoft-Windows-Sysmon/Operational"; Id = 7 } -MaxEvents 1 -ErrorAction SilentlyContinue
         Write-LogLine "EID7 events: recent activity present"
@@ -123,15 +170,23 @@ function Invoke-Check {
 
 function Invoke-Rollback {
     Write-LogLine "== rollback =="
-    $target = (Get-ChildItem -Path $BackupDir -Filter "sysmon-config.*.xml" -ErrorAction SilentlyContinue |
+    $Script:SysmonExe = Resolve-SysmonExe
+    if (-not $Script:SysmonExe) { Write-LogLine "ERROR: Sysmon64.exe not found"; exit 3 }
+    $target = (Get-ChildItem -Path $BackupDir -Filter "*.xml" -ErrorAction SilentlyContinue |
         Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName
     if (-not $target) { Write-LogLine "ERROR: no backup found to restore"; exit 3 }
-    Copy-Item -Path $target -Destination $SysmonCfg -Force
-    Write-LogLine "Restored $target"
-    & $SysmonExe -c $SysmonCfg
-    if ($LASTEXITCODE -ne 0) { Write-LogLine "ERROR: rollback config rejected (exit $LASTEXITCODE)"; exit 1 }
-    Write-LogLine "Rollback OK; service: $(Test-SysmonService)"
+    & $Script:SysmonExe -c $target
+    if ($LASTEXITCODE -ne 0) { Write-LogLine "ERROR: restore rejected (exit $LASTEXITCODE)"; exit 1 }
+    Write-LogLine "Restored: $target ; service: $(Test-SysmonService)"
 }
+
+function Test-SysmonService {
+    $svc = Get-Service -Name "Sysmon64" -ErrorAction SilentlyContinue
+    if ($svc -and $svc.Status -eq "Running") { return "RUNNING" }
+    return "NOT RUNNING / MISSING"
+}
+
+$PolicyPath = "C:\Windows\Sysmon\mct-eid7-policy.xml"
 
 switch ($Mode) {
     "apply" { Invoke-Apply }
