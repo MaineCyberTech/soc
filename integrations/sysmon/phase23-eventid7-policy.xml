@@ -1,0 +1,35 @@
+<!--
+  Phase 23 EventID 7 include-oriented policy (phase23-eventid7-policy.xml).
+  Collects ImageLoad events ONLY for suspicious combinations (LOLBin loading processes,
+  unsigned modules, modules staged in non-system paths). EID1/3/5/6/8/10/11/12/13/14/15/
+  17/18/22/25 remain collected per baseline. Never disable EventID 1/10.
+  Deploy: .\Sysmon64.exe -c phase23-eventid7-policy.xml
+  Rollback: .\Sysmon64.exe -c <prior>.xml  (prior config exported before change)
+-->
+<Sysmon schemaversion="4.90">
+  <EventFiltering>
+    <!-- EventID 7 include-oriented rule group (or: any condition logs the event) -->
+    <RuleGroup name="group=image-load-include" groupRelation="or">
+      <ImageLoad onmatch="include">
+        <!-- LOLBin loading processes (scriptlet/execution abuse with module loads) -->
+        <Image condition="contains">rundll32.exe</Image>
+        <Image condition="contains">regsvr32.exe</Image>
+        <Image condition="contains">mshta.exe</Image>
+        <Image condition="contains">wscript.exe</Image>
+        <Image condition="contains">cscript.exe</Image>
+        <Image condition="contains">wmic.exe</Image>
+        <Image condition="contains">certutil.exe</Image>
+        <Image condition="contains">cmd.exe</Image>
+        <Image condition="contains">pwsh.exe</Image>
+        <!-- Unsigned module loads -->
+        <Signature condition="equals">Unsigned</Signature>
+        <!-- Modules staged outside system directories -->
+        <ImageLoaded condition="contains">\AppData\</ImageLoaded>
+        <ImageLoaded condition="contains">\Temp\</ImageLoaded>
+        <ImageLoaded condition="contains">\Downloads\</ImageLoaded>
+        <ImageLoaded condition="contains">\ProgramData\</ImageLoaded>
+        <ImageLoaded condition="begin with">C:\Windows\Temp\</ImageLoaded>
+      </ImageLoad>
+    </RuleGroup>
+  </EventFiltering>
+</Sysmon>

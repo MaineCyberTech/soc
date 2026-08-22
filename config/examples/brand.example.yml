@@ -1,8 +1,8 @@
 # Brand / organization customization (white-label layer)
 # Copy to config/brand.yml and fill in real values. Never commit real values.
 
-brand_name: "Maine Cyber Tech"
-legal_company_name: "Maine Cyber Tech LLC"
+brand_name: "<Your Brand>"
+legal_company_name: "<Your Legal Company>"
 support_email: "support@example.com"
 support_phone: "000-000-0000"
 website_url: "https://example.com"

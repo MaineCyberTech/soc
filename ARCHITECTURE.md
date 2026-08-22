@@ -1,30 +1,49 @@
 # MCT Security Stack - Architecture
 
-Date: 2026-08-16 (source of truth - supersedes older phase docs)
+Date: 2026-08-22 (source of truth - supersedes older phase docs)
 
 ## Overview
 
 Multi-node Wazuh SIEM + supporting services for MSSP operations. Security Onion
 provides packet ingestion feeding Wazuh. All paths under /opt/wazuh-docker/multi-node
-(Wazuh) and /opt/mct-security-stack (stack services).
+(Wazuh) and /opt/mct-security-stack (stack services). Current release: v1.1.0 (2026-08-19).
 
 ## Components
 
 | Component | Role | Location |
 |---|---|---|
 | Wazuh master/worker | SIEM (analysisd, remoted, rules) | containers, nginx LB on 1514 |
-| Wazuh indexer x3 | OpenSearch storage | containers (green cluster) |
+| Wazuh indexer x3 | OpenSearch storage (green; ISM retention: alerts 30d, archives 14d) | containers |
 | Wazuh dashboard | UI | container (behind Cloudflare) |
 | nginx agent LB | hash-LB agents 1514 -> master/worker | container |
-| ElastiFlow + flow-relay | netflow 2055 -> OpenSearch -> syslog 15140 | containers |
-| Security Onion | **packet ingestion** -> Wazuh via agent 008 | VM 192.168.222.116 |
+| ElastiFlow + flow-relay | netflow 2055 -> OpenSearch -> syslog 15140 (14d retention) | containers |
+| Security Onion | **packet ingestion** -> Wazuh via agent 008 (Zeek + Suricata; eve.json symlink/updater) | VM 192.168.222.116 |
 | OpenCanary (local) | deception | container on host |
 | OpenCanary (VM 202) | deception | 192.168.222.241 |
 | Shuffle | SOAR (workflows -> IRIS) | containers |
 | DFIR-IRIS | case management | containers (8443) |
-| Velociraptor | DFIR client hunts | host service, frontend 8002 |
+| Velociraptor | DFIR client hunts | **native host service** (systemd velociraptor.service), 8889 |
 | MISP + Greenbone | VM 103 (192.168.222.154) | IOC sharing + vulnerability mgmt |
 | Cloudflare tunnel | public exposure (dashboard) | wazuh-cloudflared |
+
+## Endpoints
+
+| id | Name | Platform | Group | Status |
+|---|---|---|---|---|
+| 013 | SAMSUNG | Windows 11 Pro | windows-clients | offline (power, unconfirmed) |
+| 014 | DESKTOP-MI54LFT | Windows | windows-clients | active (Sysmon EID7 tuning pending) |
+| 015 | Julians-Air | macOS | mac-clients | **active (bounded ULS since 08-22)** |
+| 011 | mct-linux-client01 | Linux | linux-clients | active |
+| 012 | MCT-WIN11PILOT | Windows | windows-clients | active |
+| 008 | securityonion | Oracle Linux | default | active |
+| 006/007 | infra | Linux | - | active |
+
+## Detection posture (Phase 23)
+
+- Zeek custom rules 122000-122006 (v2.2): noise-controlled (~316/day); **Class A (SSH/SMB/RDP)
+  routing ready, approval-gated**.
+- Suricata: ingest proven, quiet; severity 1-2 rules staged.
+- Secret abstraction: compose `${VAR}` refs + protected .env; image policy (R/F/V/C) enforced.
 
 ## Key flows
 

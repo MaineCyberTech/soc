@@ -3,7 +3,7 @@ set -euo pipefail
 MODE="${1:---check}"
 CONF="${WAZUH_OSSEC_CONF:-/Library/Ossec/etc/ossec.conf}"
 BACKUP_DIR="${WAZUH_BACKUP_DIR:-/Library/Ossec/etc/mct-backups}"
-QUERY='process == "sudo" OR process == "loginwindow" OR process == "securityd" OR subsystem BEGINSWITH "com.apple.Authorization" OR subsystem BEGINSWITH "com.apple.SystemConfiguration"'
+QUERY='process == "sudo" OR process == "loginwindow" OR process == "securityd" OR process == "sshd" OR process == "tccd" OR process == "screensharingd" OR process == "logoutd" OR eventMessage CONTAINS "logout" OR eventMessage CONTAINS "session" OR subsystem BEGINSWITH "com.apple.Authorization" OR subsystem BEGINSWITH "com.apple.SystemConfiguration" OR subsystem BEGINSWITH "com.apple.loginwindow"'
 check(){
   echo "Config: $CONF"; [ -f "$CONF" ] || { echo "ERROR: config not found" >&2; exit 3; }
   grep -n '<location>macos</location>\|MCT-PHASE22-BOUNDED-MACOS\|<query>' "$CONF" || true

@@ -1,3 +1,7 @@
+> **HISTORICAL EVIDENCE (2026-08-15).** This document is a point-in-time record
+> and does NOT describe the current MCT Security Stack. For current state, see
+> ARCHITECTURE.md / REPO-MAP.md and ops/reports/ (current).
+
 # Full Stack Health - 20260815-022639
 
 | Component | Status | Evidence | Action Needed |

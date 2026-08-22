@@ -1,3 +1,7 @@
+> **HISTORICAL EVIDENCE (2026-08-16).** This document is a point-in-time record
+> and does NOT describe the current MCT Security Stack. For current state, see
+> ARCHITECTURE.md / REPO-MAP.md and ops/reports/ (current).
+
 # Phase 7 Blocker Status
 
 Date: 2026-08-12
