@@ -9,6 +9,11 @@
   EventID 1/10. Never disables all EventID 7. Every change is preceded by a timestamped
   config backup + SHA256 hash; rollback restores the prior config.
 
+  RMM-SAFE: if executed via a wrapper that passes no arguments (e.g. Level.io
+  ScriptBlock::Create([Console]::In.ReadToEnd()) with an empty command), Mode defaults to
+  "check" - a non-destructive report. Apply/rollback must be requested explicitly
+  (-Mode apply | -Mode rollback, or the first positional argument).
+
   Modes:
     check    - report current Sysmon config hash, service state, and recent EID7 volume.
     apply    - backup + hash, copy policy to Sysmon dir, reload config, verify service.
@@ -35,13 +40,21 @@
 #>
 [CmdletBinding()]
 param(
-    [Parameter(Mandatory = $true)]
+    # RMM-safe: when executed via a wrapper that passes NO arguments (e.g. Level.io
+    # ScriptBlock::Create(stdin) without args), Mode defaults to "check" (non-destructive).
     [ValidateSet("check", "apply", "rollback")]
-    [string]$Mode,
+    [string]$Mode = "check",
 
     [string]$ConfigPath = "C:\Windows\Sysmon\mct-eid7-policy.xml",
     [string]$BackupPath = ""
 )
+
+# Positional fallback: allow `.\apply-sysmon-tune.ps1 apply` (args[0]) under wrappers
+# that forward positional args instead of named parameters.
+if ($Mode -eq "check" -and $args.Count -gt 0 -and $args[0] -match '^(check|apply|rollback)$') {
+    $Mode = $args[0]
+    $script:ModeFromArgs = $true
+}
 
 $ErrorActionPreference = "Stop"
 $SysmonExe = "C:\Windows\Sysmon\Sysmon64.exe"
@@ -142,6 +155,12 @@ switch ($Mode) {
         Write-LogLine "Backups present: $((Get-ChildItem -Path $BackupDir -Filter 'sysmon-config.*.xml' -ErrorAction SilentlyContinue | Measure-Object).Count)"
         Write-LogLine (Get-RecentEid7Count)
         Write-LogLine "Check Wazuh: agent keepalive + EID7/EID1/EID10 counts."
+        if (-not $script:ModeFromArgs) {
+            Write-Host ""
+            Write-Host "RMM note: no -Mode argument was received (defaulted to check - no changes made)."
+            Write-Host "To apply: run with -Mode apply (or 'apply' as first positional argument)."
+            Write-Host "To rollback: run with -Mode rollback."
+        }
     }
     "apply" { Invoke-Apply }
     "rollback" { Invoke-Rollback }
