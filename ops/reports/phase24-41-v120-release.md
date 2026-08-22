@@ -1,7 +1,7 @@
 # Phase 24 v1.2.0 Tag, Release, and Bundle
 
 Date: 2026-08-22
-Status: **NOT EXECUTED - APPROVAL PENDING** (C9; PAT memory-only when executed).
+Status: **EXECUTED - v1.2.0 PUBLISHED** (2026-08-22 06:14 UTC; PAT memory-only from .env, unset after).
 
 ## Procedure (on approval)
 
@@ -18,3 +18,9 @@ Status: **NOT EXECUTED - APPROVAL PENDING** (C9; PAT memory-only when executed).
 - v1.1.0 remains the published release until this executes.
 
 ## No secrets
+## Published result (verified via public API)
+
+- Release: id 374836261, https://github.com/MaineCyberTech/soc/releases/tag/v1.2.0, published 2026-08-22T06:14:12Z.
+- Asset: `mct-security-stack-release-20260822-061237.tar.gz` (3,909,144 bytes, state uploaded).
+- Tag: v1.2.0 -> 62d7457 (pushed).
+- Rollback retained: tag delete + release object discard if ever needed.

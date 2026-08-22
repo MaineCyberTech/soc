@@ -1,7 +1,7 @@
 # Phase 24 v1.2.0 Release Gates
 
 Date: 2026-08-22
-Status: **GATES READY - APPROVAL PENDING** (C9; no automatic release).
+Status: **GATES PASSED - v1.2.0 PUBLISHED** (2026-08-22).
 
 ## Gates
 
