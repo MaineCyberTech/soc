@@ -8,6 +8,7 @@
   - Sysmon executable is RESOLVED dynamically (service registration -> common paths -> PATH).
   - The effective current config is captured via "Sysmon64 -s" dump (path-independent
     backup), so rollback works even if the config file location differs.
+  - Native commands run via cmd /c so Sysmon's stderr banner never aborts the script.
 
   Log: C:\Windows\Sysmon\mct-sysmon-tune.log  (no secrets)
 #>
@@ -30,8 +31,24 @@ function Get-SysmonHash([string]$Path) {
     return (Get-FileHash -Algorithm SHA256 -Path $Path).Hash.Substring(0, 16)
 }
 
+function Invoke-NativeCmd([string]$Native, [string[]]$ArgList, [string]$OutFile) {
+    # Run a native command via cmd /c so stderr output (e.g. Sysmon banner) never becomes
+    # a terminating PowerShell error under $ErrorActionPreference = "Stop".
+    $oldEAP = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+    $quoted = @()
+    foreach ($a in $ArgList) {
+        if ($a -match '\s') { $quoted += '"{0}"' -f $a } else { $quoted += $a }
+    }
+    $cmd = '"{0}" {1}' -f $Native, ($quoted -join ' ')
+    if ($OutFile) { $cmd += ' > "{0}" 2>&1' -f $OutFile }
+    & cmd /c $cmd
+    $rc = $LASTEXITCODE
+    $ErrorActionPreference = $oldEAP
+    return $rc
+}
+
 function Resolve-SysmonExe {
-    # 1) registered service binary path (authoritative)
     try {
         $svc = Get-CimInstance Win32_Service -Filter "Name='Sysmon64'" -ErrorAction SilentlyContinue
         if ($svc -and $svc.PathName) {
@@ -39,7 +56,6 @@ function Resolve-SysmonExe {
             if (Test-Path $p) { return $p }
         }
     } catch {}
-    # 2) common install paths
     foreach ($cand in @('C:\Windows\Sysmon\Sysmon64.exe',
                         'C:\Windows\Sysmon64.exe',
                         'C:\Program Files\Sysmon\Sysmon64.exe',
@@ -48,7 +64,6 @@ function Resolve-SysmonExe {
                         'C:\Level\Sysmon\Sysmon64.exe')) {
         if (Test-Path $cand) { return $cand }
     }
-    # 3) PATH lookup
     $cmd = Get-Command Sysmon64.exe -ErrorAction SilentlyContinue
     if ($cmd) { return $cmd.Source }
     return ""
@@ -67,15 +82,14 @@ function Resolve-SysmonCfg {
 }
 
 function Dump-EffectiveConfig {
-    # "Sysmon64 -s" prints the current effective config (path-independent backup)
-    $dump = Join-Path $BackupDir "effective-config-$(Get-Date -Format 'yyyyMMddTHHmmssZ').xml"
     New-Item -ItemType Directory -Force -Path $BackupDir | Out-Null
-    & $Script:SysmonExe -s *> $dump
+    $dump = Join-Path $BackupDir "effective-config-$(Get-Date -Format 'yyyyMMddTHHmmssZ').xml"
+    $rc = Invoke-NativeCmd $Script:SysmonExe @('-s') $dump
     if ((Test-Path $dump) -and (Get-Item $dump).Length -gt 100) {
         Write-LogLine "Effective config dumped: $dump (sha256 $((Get-SysmonHash $dump)))"
         return $dump
     }
-    Write-LogLine "WARN: 'sysmon -s' produced no dump (older Sysmon? fallback to file copy)"
+    Write-LogLine "WARN: 'sysmon -s' produced no usable dump (rc=$rc) - fallback to file copy"
     if (Test-Path $Script:SysmonCfg) {
         $bak = Join-Path $BackupDir "sysmon-config-$(Get-Date -Format 'yyyyMMddTHHmmssZ').xml"
         Copy-Item $Script:SysmonCfg $bak -Force
@@ -141,8 +155,8 @@ function Invoke-Apply {
     Write-LogLine "Config path (detected): $Script:SysmonCfg (sha256 $((Get-SysmonHash $Script:SysmonCfg)))"
     $bak = Dump-EffectiveConfig
     Write-PolicyFile
-    & $Script:SysmonExe -c $PolicyPath
-    if ($LASTEXITCODE -ne 0) { Write-LogLine "ERROR: Sysmon rejected the policy (exit $LASTEXITCODE) - rollback recommended (rollback-sysmon-tune.ps1)"; exit 1 }
+    $rc = Invoke-NativeCmd $Script:SysmonExe @('-c', $PolicyPath) $null
+    if ($rc -ne 0) { Write-LogLine "ERROR: Sysmon rejected the policy (exit $rc) - rollback recommended (rollback-sysmon-tune.ps1)"; exit 1 }
     Write-LogLine "Sysmon reload OK; service: $(Test-SysmonService)"
     Write-LogLine "Deployed config sha256: $(Get-SysmonHash $Script:SysmonCfg)"
     Write-LogLine "Validation (SOC-side): EID7 >=99% drop, EID1/10 flowing, buffer clean - confirm in Wazuh."
@@ -158,8 +172,9 @@ function Invoke-Check {
     Write-LogLine "Policy file sha256: $(Get-SysmonHash $PolicyPath)"
     Write-LogLine "Backups present: $((Get-ChildItem -Path $BackupDir -Filter '*config*.xml' -ErrorAction SilentlyContinue | Measure-Object).Count)"
     if ($Script:SysmonExe) {
-        & $Script:SysmonExe -s *> (Join-Path $env:TEMP 'mct-sysmon-s.txt')
-        Write-LogLine "Effective config dump size: $((Get-Item (Join-Path $env:TEMP 'mct-sysmon-s.txt') -ErrorAction SilentlyContinue).Length) bytes"
+        $tmp = Join-Path $env:TEMP 'mct-sysmon-s.txt'
+        $rc = Invoke-NativeCmd $Script:SysmonExe @('-s') $tmp
+        Write-LogLine "Effective config dump size: $((Get-Item $tmp -ErrorAction SilentlyContinue).Length) bytes (rc=$rc)"
     }
     try {
         $null = Get-WinEvent -FilterHashtable @{LogName = "Microsoft-Windows-Sysmon/Operational"; Id = 7 } -MaxEvents 1 -ErrorAction SilentlyContinue
@@ -175,8 +190,8 @@ function Invoke-Rollback {
     $target = (Get-ChildItem -Path $BackupDir -Filter "*.xml" -ErrorAction SilentlyContinue |
         Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName
     if (-not $target) { Write-LogLine "ERROR: no backup found to restore"; exit 3 }
-    & $Script:SysmonExe -c $target
-    if ($LASTEXITCODE -ne 0) { Write-LogLine "ERROR: restore rejected (exit $LASTEXITCODE)"; exit 1 }
+    $rc = Invoke-NativeCmd $Script:SysmonExe @('-c', $target) $null
+    if ($rc -ne 0) { Write-LogLine "ERROR: restore rejected (exit $rc)"; exit 1 }
     Write-LogLine "Restored: $target ; service: $(Test-SysmonService)"
 }
 
