@@ -42,7 +42,7 @@ function Invoke-NativeCmd([string]$Native, [string[]]$ArgList, [string]$OutFile)
     }
     $cmd = '"{0}" {1}' -f $Native, ($quoted -join ' ')
     if ($OutFile) { $cmd += ' > "{0}" 2>&1' -f $OutFile }
-    & cmd /c $cmd
+    $out = & cmd /c $cmd 2>&1
     $rc = $LASTEXITCODE
     $ErrorActionPreference = $oldEAP
     return $rc
@@ -104,14 +104,14 @@ function Write-PolicyFile {
     if (-not (Test-Path $PolicyPath)) {
         $policyXml = @'
 <!--
-  Phase 23 EventID 7 include-oriented policy (phase23-eventid7-policy.xml).
-  Collects ImageLoad events ONLY for suspicious combinations (LOLBin loading processes,
-  unsigned modules, modules staged in non-system paths). EID1/3/5/6/8/10/11/12/13/14/15/
-  17/18/22/25 remain collected per baseline. Never disable EventID 1/10.
+  MCT EventID 7 include-oriented policy (phase23-eventid7-policy.xml).
+  Sysmon 15.21 / schema 4.91 (matches deployed endpoints 013/014).
+  Collects ImageLoad events ONLY for suspicious combinations. EID1/3/5/6/8/10/11/12/13/14/
+  15/17/18/22/25 remain collected per baseline. Never disable EventID 1/10.
   Deploy: .\Sysmon64.exe -c phase23-eventid7-policy.xml
-  Rollback: .\Sysmon64.exe -c <prior>.xml  (prior config exported before change)
+  Rollback: .\Sysmon64.exe -c <prior>.xml (backup retained by apply-sysmon-tune.ps1)
 -->
-<Sysmon schemaversion="4.90">
+<Sysmon schemaversion="4.91">
   <EventFiltering>
     <!-- EventID 7 include-oriented rule group (or: any condition logs the event) -->
     <RuleGroup name="group=image-load-include" groupRelation="or">
@@ -127,7 +127,7 @@ function Write-PolicyFile {
         <Image condition="contains">cmd.exe</Image>
         <Image condition="contains">pwsh.exe</Image>
         <!-- Unsigned module loads -->
-        <Signature condition="equals">Unsigned</Signature>
+        <Signed condition="is not">true</Signed>
         <!-- Modules staged outside system directories -->
         <ImageLoaded condition="contains">\AppData\</ImageLoaded>
         <ImageLoaded condition="contains">\Temp\</ImageLoaded>
@@ -138,6 +138,7 @@ function Write-PolicyFile {
     </RuleGroup>
   </EventFiltering>
 </Sysmon>
+
 '@
         Set-Content -Path $PolicyPath -Value $policyXml -Encoding UTF8 -NoNewline
         Write-LogLine "Policy file created: $PolicyPath"
@@ -157,7 +158,14 @@ function Invoke-Apply {
     Write-PolicyFile
     $rc = Invoke-NativeCmd $Script:SysmonExe @('-c', $PolicyPath) $null
     if ($rc -ne 0) { Write-LogLine "ERROR: Sysmon rejected the policy (exit $rc) - rollback recommended (rollback-sysmon-tune.ps1)"; exit 1 }
-    Write-LogLine "Sysmon reload OK; service: $(Test-SysmonService)"
+    Write-LogLine "Sysmon reload command accepted (rc=0); service: $(Test-SysmonService)"
+    $verify = Join-Path $env:TEMP 'mct-sysmon-verify.txt'
+    $vrc = Invoke-NativeCmd $Script:SysmonExe @('-s') $verify
+    if ((Test-Path $verify) -and (Select-String -Path $verify -Pattern 'image-load-include' -Quiet -ErrorAction SilentlyContinue)) {
+        Write-LogLine "VERIFIED: effective config now contains the include-oriented rules (marker 'image-load-include')"
+    } else {
+        Write-LogLine "WARN: effective config does NOT show the marker (rc=$vrc) - run rollback-sysmon-tune.ps1 and re-check"
+    }
     Write-LogLine "Deployed config sha256: $(Get-SysmonHash $Script:SysmonCfg)"
     Write-LogLine "Validation (SOC-side): EID7 >=99% drop, EID1/10 flowing, buffer clean - confirm in Wazuh."
 }

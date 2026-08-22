@@ -20,7 +20,7 @@ volume is not a goal.
 | Condition | Use case |
 |---|---|
 | Loading process contains a LOLBin (rundll32, regsvr32, mshta, wscript, cscript, wmic, certutil, powershell, pwsh, cmd) | scriptlet/LOLBin execution with module loads |
-| Module signature Unsigned | unsigned module loads (supply-chain/lateral movement signal) |
+| Module signature Unsigned (`Signed is not true`) | unsigned module loads (supply-chain/lateral movement signal) |
 | Module path contains \AppData\, \Temp\, \Downloads\, \ProgramData\, or begins C:\Windows\Temp\ | modules staged outside system dirs |
 | Module path not under C:\Windows\ (implicit via the above) | non-standard module locations |
 
@@ -61,3 +61,8 @@ exclude list. PowerShell module loads from non-system paths still fire (module c
 - `ops/reports/phase23-eventid7-design-review.md` (this), `integrations/sysmon/phase23-eventid7-policy.xml`
 
 ## No secrets
+## Schema note (Phase 24)
+
+- Endpoints run Sysmon 15.21 (schema 4.91). Policy declares `schemaversion="4.91"` and uses
+  the `Signed` field (`is not true`) instead of `Signature equals` - validated against the
+  deployed Sysmon. Apply now also VERIFIES the load via `sysmon -s` marker check.
