@@ -339,6 +339,17 @@
     <disabled>no</disabled>
   </cluster>
 
+  <!-- Zeek Class A (SSH/SMB/RDP) -> Shuffle webhook -> IRIS. Phase 25 approved.
+       Kill switch: remove this block and restart analysisd. Dedup key:
+       rule.id+src+dst+1h (operator-monitored; automation P26). -->
+  <integration>
+    <name>custom-json-output</name>
+    <rule_id>122001,122002,122003</rule_id>
+    <level>8</level>
+    <hook_url>http://shuffle-frontend/api/v1/hooks/webhook_24636c49-a2d0-40c2-887e-ccecdf22fc5c</hook_url>
+    <alert_format>json</alert_format>
+  </integration>
+
 </ossec_config>
 
 <ossec_config>
