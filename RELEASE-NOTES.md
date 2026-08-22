@@ -1,25 +1,30 @@
 # MCT Security Stack - Release Notes
 
-## v1.2.0 (planned - approval-gated; not released)
+## v1.2.0 (2026-08-22) - Published
 
-> Draft summary for the Phase 23 release. Tag/release requires operator approval (see
-> ops/reports/phase23-v120-readiness.md). No automatic release.
+> Released 2026-08-22. Tag `v1.2.0`, release object + portable bundle asset uploaded
+> (see ops/reports/phase24-41-v120-release.md and ops/reports/phase24-40-v120-release-gates.md).
 
-### Highlights (Phase 23)
+### Highlights (Phase 24)
 
-- macOS agent 015 unified-log flood RESOLVED (bounded filtered ULS predicate; reconnect
-  08-22 validated: archives ~0, 0 queue-full, bounded telemetry flowing). Predicate covers
-  sudo/loginwindow/securityd/sshd/tccd/screensharingd/logout/session.
-- Windows 014 Sysmon EventID 7: include-oriented design review (LOLBin/unsigned/non-system
-  module conditions) - apply pending endpoint access; throttle bounds impact meanwhile.
-- Disk relief: docker prune D1+D2 (85% -> 83%); OpenSearch nodes below low watermark; no
-  write blocks; swap root-cause documented (transient flood pressure, now idle si=0).
-- Credential env-abstraction complete (wazuh-docker ${VAR} refs + protected .env); rotations
-  staged (VT key, indexer) pending replacements/approval.
-- Image pinning + classification policy enforced (0 violations).
-- Evidence banner reconciliation: 122/122 reports bannered (v1.0.0 claim now true).
-- Documentation governance: ARCHITECTURE/STACK-OVERVIEW refreshed; client-artifact +
-  white-label governance docs; client-dir internal artifacts moved.
+- **Fleet restored to 3/3 active**: agent 013 reconnected (power confirmed 08-22); agent 015
+  macOS flood resolved with bounded filtered ULS telemetry; 014 active.
+- **Sysmon EventID 7 include-oriented automation**: `integrations/sysmon/apply-sysmon-tune.ps1`
+  (check/apply/rollback with backup + hashes) for 013/014.
+- **DR S3 bundle RESOLVED**: config bundle uploading to S3 (historical 403s resolved).
+- **Evidence archive complete**: Phase 11-23 finals archived (22/22) with banners + hash manifest.
+- **Canonical sanitized manager config** + zero runtime drift (9 allowed-ips).
+- **Governance + CI hardening**: client classification headers (33/33), brand neutralization,
+  fixture cleanup (YAML revalidated), REPO-MAP refresh, checklist consolidation, health-script
+  exit codes, secret-scanner exclusions, ShellCheck integration, flow/Zeek dashboard definitions.
+- **Security**: secrets env-abstracted (mode-600 stores), runtime images digest-pinned under
+  enforced R/F/V/C policy, no secret values in repo (verified), v1.2.0 bundle clean.
+
+### Artifacts
+
+- Portable bundle: `/home/user/mct-security-releases/mct-security-stack-release-20260822-061237.tar.gz`
+  (0 sensitive files; manifest `release-manifest-20260822-061237.json`).
+- Repository: https://github.com/MaineCyberTech/soc
 
 ## v1.1.0 (2026-08-19) - Published
 
