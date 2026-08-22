@@ -181,7 +181,15 @@ function Invoke-Check {
     if ($Script:SysmonExe) {
         $tmp = Join-Path $env:TEMP 'mct-sysmon-s.txt'
         $rc = Invoke-NativeCmd $Script:SysmonExe @('-s') $tmp
-        Write-LogLine "Effective config dump size: $((Get-Item $tmp -ErrorAction SilentlyContinue).Length) bytes (rc=$rc)"
+        if (Test-Path $tmp) {
+            $size = (Get-Item $tmp).Length
+            $marker = Select-String -Path $tmp -Pattern 'image-load-include' -Quiet -ErrorAction SilentlyContinue
+            $head = (Get-Content -Path $tmp -TotalCount 8 -ErrorAction SilentlyContinue) -join ' | '
+            Write-LogLine "Effective config dump size: $size bytes (rc=$rc) marker-present: $marker"
+            Write-LogLine "dump head: $head"
+        } else {
+            Write-LogLine "WARN: sysmon -s produced no dump (rc=$rc)"
+        }
     }
     try {
         $null = Get-WinEvent -FilterHashtable @{LogName = "Microsoft-Windows-Sysmon/Operational"; Id = 7 } -MaxEvents 1 -ErrorAction SilentlyContinue
