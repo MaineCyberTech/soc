@@ -100,9 +100,11 @@ function Dump-EffectiveConfig {
 }
 
 function Write-PolicyFile {
+    # Always write the embedded policy (source of truth) so stale copies from earlier
+    # partial runs cannot be re-applied. Previous hash logged for audit.
     New-Item -ItemType Directory -Force -Path "C:\Windows\Sysmon" | Out-Null
-    if (-not (Test-Path $PolicyPath)) {
-        $policyXml = @'
+    $before = Get-SysmonHash $PolicyPath
+    $policyXml = @'
 <!--
   MCT EventID 7 include-oriented policy (phase23-eventid7-policy.xml).
   Sysmon 15.21 / schema 4.91 (matches deployed endpoints 013/014).
@@ -140,11 +142,8 @@ function Write-PolicyFile {
 </Sysmon>
 
 '@
-        Set-Content -Path $PolicyPath -Value $policyXml -Encoding UTF8 -NoNewline
-        Write-LogLine "Policy file created: $PolicyPath"
-    } else {
-        Write-LogLine "Policy file exists (not overwritten): $PolicyPath sha256 $((Get-SysmonHash $PolicyPath))"
-    }
+    Set-Content -Path $PolicyPath -Value $policyXml -Encoding UTF8 -NoNewline
+    Write-LogLine "Policy file written: $PolicyPath (was $before, now $((Get-SysmonHash $PolicyPath)))"
 }
 
 function Invoke-Apply {
