@@ -1,11 +1,11 @@
 {
   "name": "mct-security-stack-release",
-  "created": "20260822-061237",
+  "created": "20260822-070718",
   "source": "/opt/mct-security-stack",
-  "archive": "mct-security-stack-release-20260822-061237.tar.gz",
+  "archive": "mct-security-stack-release-20260822-070718.tar.gz",
   "size": "3.8M",
-  "file_count": 1709,
+  "file_count": 1733,
   "sensitive_files": 0,
   "exclusions": [".git", "ops/backups", "data", ".env", "creds.env", "client.config.yaml", "*.key", "*.pem", "*.sql.gz", "*.tar.gz", "*.zip", "*.pcap", "*.evtx"],
-  "sha256": "db1ad1f46ced2caa29d40123a8d6ca5c8d8eb9c92faf9fc40e4a768787e812ad"
+  "sha256": "134585262663461acd1b7f54de3a7fb7b471eebc69d8da0e741cb8de974642d3"
 }
