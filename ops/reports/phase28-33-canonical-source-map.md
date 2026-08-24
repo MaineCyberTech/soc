@@ -9,7 +9,7 @@ Date: 2026-08-24
 | Wazuh multi-node | /opt/wazuh-docker/multi-node (gitignored) | running compose | SOC | wazuh 4.14.7 / indexer 4.14.7 | - |
 | MCT stack repo | github.com/MaineCyberTech/soc | bundle v1.2.0/v1.3.0 | SOC | tags | - |
 | IRIS | upstream dfir-iris/iris-web v2.4.29 | data/dfir-iris (nested git, gitignored) | SOC | v2.4.29 | vendored copy |
-| Scorecard generators | reporting/generators/ | reporting/output/ | SOC | - | ops/scripts copies |
+| Scorecard generators | ops/scripts/ (used by runbooks + cron) | reporting/output/ | SOC | - | reporting/generators copies deprecated (P29 correction) |
 | Sysmon policies | integrations/sysmon/ | endpoints | SOC | 4.91 (BCA0EB) | endpoint-deploy copy |
 | Shuffle workflow | integrations/shuffle/backups/ (export) | Shuffle org | SOC | phase27 export | UI edits gated |
 | Zeek guardrail | ops/scripts/zeek-classa-guardrail.sh | cron */15 | SOC | - | - |

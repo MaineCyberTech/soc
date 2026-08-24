@@ -37,3 +37,8 @@ config/clients/
 __pycache__/
 ops/reports/full-stack-health-latest.md
 ops/reports/backup-log.txt
+
+# Phase 28 generated audit outputs (contain scan quotes - evidence only, local)
+ops/reports/p28-consolidation-candidates-*.txt
+ops/reports/p28-deployability-inventory-*.txt
+ops/reports/p28-portability-scan-*.txt
