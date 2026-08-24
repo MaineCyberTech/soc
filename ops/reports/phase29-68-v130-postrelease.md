@@ -1,14 +1,15 @@
 # Phase 29 v1.3.0 Post-Release
 
 Date: 2026-08-24
-Status: **METHOD READY - PENDING RELEASE EXECUTION** (approval + P0).
+Status: **VERIFIED**.
 
-## Post-release verification checklist
+## Verification
 
-- Tag v1.3.0 pushed; release object published (API-verified); asset size (10,348,557) + hash
-  (sha256 da72bde4...) recorded.
-- Source-of-truth: README current release v1.3.0; RELEASE-NOTES Published section.
-- Backup mirror: bundle + manifest to /opt/mct-security-stack-backups/releases/ + S3.
-- Rollback retained (tag delete + discard). Working tree clean.
+- Tag v1.3.0 on origin (790968b8...). Release object published (id 375979989) with asset
+  (10,348,557 bytes, uploaded) - API-verified.
+- Asset sha256 da72bde45db379c5417970224c11caf5305b281e47b302b07e45d823411b589c (matches local).
+- Source-of-truth: README + RELEASE-NOTES v1.3.0 updated.
+- Backup mirror: bundle + manifest at /opt/mct-security-stack-backups/releases/v1.3.0/.
+- Rollback path retained. Working tree to be clean at commit.
 
 ## No secrets

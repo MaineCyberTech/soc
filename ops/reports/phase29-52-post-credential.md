@@ -1,22 +1,13 @@
 # Phase 29 Post-Credential Validation
 
 Date: 2026-08-24
-Status: **BASELINE CAPTURED - ROTATIONS PENDING** (blocked on replacements/approval).
+Status: **BASELINE HEALTHY** (no rotation succeeded; cluster unchanged).
 
-## Baseline (all healthy)
+## Checks (after 50 attempt + rollback)
 
-| Check | Result |
-|---|---|
-| Healthcheck | 0 FAIL |
-| Cluster | green (256 shards) |
-| Indexer auth | OK |
-| Dashboard/API | OK |
-| ElastiFlow/flow-relay | fresh |
-| Backups/snapshots | fresh (snap-20260823-0017) |
-| CI + secret | PASS |
-
-## Post-rotation procedure
-
-- Re-run all of the above + VT probe + PVE222 healthcheck after any rotation executes.
+- Indexer admin auth: 200 (existing password).
+- Cluster: green. Healthcheck: 2 FAIL = Security Onion VM + suricata (accepted, SO off).
+- CI: PASS code gates (agent-008 environmental). Secret scan: PASS.
+- Backups/snapshots: intact (42). Guardrail: OK.
 
 ## No secrets

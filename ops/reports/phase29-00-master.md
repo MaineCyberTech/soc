@@ -7,7 +7,7 @@ Date: 2026-08-24
 | Workstream | Prompts | Status |
 |---|---|---|
 | Preflight + change register | 01-02 | DONE (SO VM down + memory pressure found) |
-| Image packaging | 03-10 | pins prepared + CI gate + exec-mode audit; **apply approval-pending** |
+| Image packaging | 03-10 | **pins APPLIED (approved)** - all 8 mutable refs pinned; CI gate + exec-mode audit PASS |
 | Endpoint certification | 11-16 | PARTIAL (markers operator-pending; throttles RETAIN) |
 | PS 4104 | 17-20 | PREPARED (approval pending) |
 | Shuffle / Zeek | 21-27 | UI approval-pending; **cron failover re-proven** |
@@ -17,7 +17,7 @@ Date: 2026-08-24
 | Credentials / owners | 49-57 | BLOCKED (replacement/approval/evidence) |
 | Capacity / billing / scorecard / monthly ops | 58-61 | done; 2 incidents (SO VM, swap) |
 | Audits + deployability | 62-64 | no regressions; deployability PARTIAL (no simulated pass) |
-| v1.3.0 | 65-68 | **bundle built**; release NOT CLEAR (P0 + approval) |
+| v1.3.0 | 65-68 | **RELEASED (approved)** - tag v1.3.0, release 375979989, asset sha256 da72bde4 |
 | Repo commit + final report | 69-70 | PENDING (this close) |
 
 ## Doable vs blocked

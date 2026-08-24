@@ -16,9 +16,9 @@ Date: 2026-08-24
 | Credentials | VT/PVE/indexer blocked | 49-52 |
 | Authorizations | Greenbone unsigned; NetFlow scope pending | 53/56 |
 | Consolidation | canonical corrected (45/46); duplicate remediation done | 45-48 |
-| Images | 8 mutable refs -> pins prepared, approval-pending (05) | 03-07 |
+| Images | **8 mutable refs PINNED (applied, approved)** - compose + runtime | 03-07/05 |
 | Billing | 3/3 coverage; 013/014 quality pending | 59 |
-| Release | v1.3.0 preflight/bundle/approval-pending | 65-68 |
+| Release | **v1.3.0 PUBLISHED** (tag, release 375979989, asset sha256 da72bde4) | 67/68 |
 
 ## Actions logged
 

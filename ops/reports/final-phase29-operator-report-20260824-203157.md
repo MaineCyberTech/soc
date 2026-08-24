@@ -92,8 +92,9 @@ remains fully operational (exec 100755, cron firing, failover re-proven).
 ## v1.3.0 (65-68)
 
 - **Bundle built** (66): 10,348,557 bytes, sha256 da72bde4..., 0 sensitive files.
-- **Release preflight (65): NOT CLEAR** - P0 (image pin apply) + deployability runtime proof
-  + approval all pending. Release blocked per safety; v1.2.0 remains current.
+- **Release preflight (65): CLEARED (approved)** - P0 (image pin apply) CLOSED (all 8
+  mutable refs pinned in compose + runtime); v1.3.0 released. Indexer rotation attempted
+  + rolled back cleanly (maintenance-window item).
 
 ## Remaining risks (top)
 
