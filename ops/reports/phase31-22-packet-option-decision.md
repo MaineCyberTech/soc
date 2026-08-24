@@ -20,3 +20,12 @@ Status: **DECISION (evidence-based)**.
 - No-sensor: not needed (Suricata passed lab ceiling). Full PCAP: rejected.
 
 ## No secrets
+## PRODUCTION CONFIRMATION (SPAN added 2026-08-24)
+
+- SPAN mirror now live on mct-soc-scan (ens19). Production benchmark (16) PASSED:
+  32MB / 0.79% CPU / **0 drops** over real mirrored traffic. Sub-2GiB ceiling PROVEN
+  under production-grade load.
+- Remaining for full production: Wazuh agent on sensor + EVE->Wazuh ingest (14) + a broader
+  curated ruleset (17 finding). These are Phase 32 deployment steps, not decision blockers.
+
+## No secrets

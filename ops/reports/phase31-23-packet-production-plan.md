@@ -22,3 +22,11 @@ Status: **PLAN - DEPLOYMENT GATED ON SPAN APPROVAL**.
 - Runbook (46 golden-path + sensor maintenance), ownership, SLO, alerts (36-40).
 
 ## No secrets
+## PROGRESS (SPAN live 2026-08-24)
+
+- SPAN mirror added by operator -> production benchmark PASSED (16). Next (Phase 32):
+  1. Wazuh agent on the sensor + EVE->Wazuh JSON ingest + decoder (14).
+  2. Broader curated ruleset for the observed traffic profile (17) with FP/volume gates.
+  3. Sensor freshness/alerting (38) + operator handoff.
+
+## No secrets

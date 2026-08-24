@@ -4,7 +4,7 @@
     {"id": "wazuh-cluster", "state": "HEALTHY", "owner": "SOC", "next_action": "none"},
     {"id": "wazuh-managers", "state": "HEALTHY", "owner": "SOC", "next_action": "none"},
     {"id": "endpoints", "state": "DEGRADED", "owner": "operator", "next_action": "markers for 013/014 (RMM); 013/015 transient offline"},
-    {"id": "packet-visibility", "state": "BLOCKED", "owner": "operator", "next_action": "SPAN mirror approval for Suricata production"},
+    {"id": "packet-visibility", "state": "DEGRADED", "owner": "operator", "next_action": "Wazuh agent + EVE ingest + broader ruleset (SPAN live, sensor benchmarked 32MB/0 drops)"},
     {"id": "security-onion", "state": "RETIRED", "owner": "SOC", "next_action": "historical evidence only"},
     {"id": "shuffle-native-controls", "state": "BLOCKED", "owner": "operator", "next_action": "Shuffle UI window approval"},
     {"id": "fresh-target", "state": "BLOCKED", "owner": "operator", "next_action": "provision adequate isolated target"},

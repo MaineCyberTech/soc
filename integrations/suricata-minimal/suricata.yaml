@@ -5,7 +5,7 @@
 
 # --- Capture / threading (low memory) ---
 af-packet:
-  - interface: eth0
+  - interface: ens19
     cluster-id: 99
     cluster-type: cluster_flow
     defrag: no
@@ -15,7 +15,7 @@ af-packet:
     buffer-size: 24576
     max-pending-packets: 1024
 pcap:
-  - interface: eth0
+  - interface: ens19
 max-pending-packets: 1024
 runmode: autofp
 threading:

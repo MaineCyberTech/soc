@@ -3,7 +3,7 @@
 Date: 2026-08-24
 
 ## P0
-1. SPAN mirror approval -> production Suricata deploy + full-volume benchmark (packet gap).
+1. SPAN mirror LIVE -> production ingest (Wazuh agent + EVE decode) + broader curated ruleset for the observed profile.
 2. Endpoint markers 013/014 (operator RMM) -> cert -> throttles.
 
 ## P1

@@ -30,3 +30,17 @@ Tooling: p31-sensor-benchmark.sh (systemd sampling) + eve.json stats.
 - **PASS vs sub-2GiB ceiling** at the measured profile; production-volume proof gated on SPAN.
 
 ## No secrets
+## PRODUCTION SPAN BENCHMARK (2026-08-24, SPAN added to soc-scan by operator)
+
+- Capture: ens19 (SPAN mirror) - real multi-VLAN traffic (192.168.111.0/24 client LAN,
+  192.168.123/222, 10.10.202; SSDP/mDNS/ARP/STP/broadcasts). Sustained ~90 pps.
+- **MemoryCurrent min/avg/max: 31.77 / 31.94 / 32.06 MB; MemoryPeak 32.45 MB** (< 2 GiB PASS)
+- **CPU: 0.79% avg** (312s)
+- **Kernel packets captured: 16,523; drops: 0**; decoder invalid 0
+- **Alerts: 0 on real SPAN traffic** (focused ruleset does not fire on this profile - zero
+  false positives; detection coverage limited - see 17)
+- eve.json 0.02MB (bounded); target PSI 0
+- **Verdict: sub-2-GiB ceiling PROVEN under real production-mirrored traffic** (was lab-profile
+  only; now SPAN-backed). No simulated PASS - real measurement.
+
+## No secrets

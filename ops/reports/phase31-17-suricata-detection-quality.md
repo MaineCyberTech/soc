@@ -15,3 +15,13 @@ Date: 2026-08-24
   ingest + alert routing to be validated on SPAN-backed deploy (17 continuation).
 
 ## No secrets
+## PRODUCTION TRAFFIC DETECTION (SPAN, 2026-08-24)
+
+- Real SPAN traffic (mDNS/SSDP/broadcast-heavy): **0 alerts** from the focused 4-rule set -
+  zero false positives (bounded), but limited coverage on this profile.
+- Detection quality conclusion: the minimal ruleset is validated as noise-safe; a broader
+  curated ruleset (targeting the actual protocols present) is required for production
+  detection value - Phase 32, with careful FP/volume management.
+- Field/timestamp validation: eve.json JSON valid; stats + alert schema correct.
+
+## No secrets

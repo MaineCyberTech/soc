@@ -9,7 +9,7 @@ Status: **CREATED** (config/health-state-components.json + derived summary).
 |---|---|---|---|
 | Wazuh cluster / managers | HEALTHY | SOC | none |
 | Endpoints | DEGRADED | operator | markers 013/014 (RMM); 013/015 transient offline |
-| Packet visibility | BLOCKED | operator | SPAN approval -> Suricata production deploy |
+| Packet visibility | DEGRADED | operator | SPAN LIVE; sensor 32MB/0 drops; next: Wazuh ingest + broader ruleset |
 | Security Onion | RETIRED | SOC | historical evidence |
 | Shuffle-native controls | BLOCKED | operator | Shuffle UI window approval |
 | Fresh target | BLOCKED | operator | provision adequate isolated target |
