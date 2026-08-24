@@ -98,3 +98,34 @@
 - Portable bundle: /home/user/mct-security-releases/mct-security-stack-release-20260816-014828.tar.gz
   (sha256 8d4dc40291a6d1906540bf774da4b44f8380a3050050273bda10a89c2b45ca7d)
 - Repository: https://github.com/MaineCyberTech/soc
+
+## v1.3.0 (2026-08-24) - Immutable Packaging + Consolidation + DR Readiness
+
+### Highlights
+
+- **Immutable runtime packaging**: all 8 mutable production image refs pinned by digest in
+  active Compose files and running runtime (tenzir, opencanary, syslog-ng, flow-relay,
+  shuffle backend/frontend/orborus/worker); CI gate fails any new undocumented mutable ref.
+- **Consolidation + deployability**: full audit stack (inventory, canonical map, dependency
+  lock, config schema, env profiles, service graph, clean-deploy, idempotency, offline/cache,
+  licensing, smoke, upgrade/rollback, golden-path runbook, fresh-target dry-run, remediation
+  plan). Executable-mode policy enforced (all tracked .sh 100755).
+- **DR readiness**: full-cluster architecture + runbook; config/single/multi-index restore
+  drills PASSED; full-cluster RTO/RPO unclaimed (no isolated target).
+- **Endpoint certification**: 013/014 PARTIAL (marker pending); 015 certified; throttles RETAIN.
+- **Guardrail**: exec-bit incident closed; cron failover re-proven.
+- **Deployability certificate**: PARTIAL (runtime install pending approved isolated target).
+
+### Verification
+
+- Local CI: PASS (code gates; agent-008 environmental note - SO VM down)
+- Secret scan: PASS
+- Image CI gate: PASS (0 undocumented mutable refs)
+- Executable-mode audit: PASS (all tracked .sh 100755)
+- Bundle: 10,348,557 bytes, 0 sensitive files, sha256 da72bde4...
+
+### Artifacts
+
+- Portable bundle: /home/user/mct-security-releases/mct-security-stack-release-20260824-203124.tar.gz
+  (sha256 da72bde45db379c5417970224c11caf5305b281e47b302b07e45d823411b589c)
+- Repository: https://github.com/MaineCyberTech/soc

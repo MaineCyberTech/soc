@@ -1,24 +1,23 @@
 # Phase 29 v1.3.0 Release Preflight
 
 Date: 2026-08-24
-Status: **NOT CLEAR FOR RELEASE** (P0 gates unmet + approval pending).
+Status: **CLEARED FOR RELEASE (APPROVED 08-24)** - P0 closed + operator approval.
 
 ## Gates
 
 | Gate | Status |
 |---|---|
-| P0 mutable runtime refs | **NOT CLOSED** (pins prepared 04/05, apply approval-pending) |
-| Deployability certificate | PARTIAL (no fresh-target runtime proof; target absent) |
+| P0 mutable runtime refs | **CLOSED** (all 8 pinned in compose + runtime, 05 applied) |
+| Deployability certificate | PARTIAL (documented; no fresh-target runtime proof - accepted blocker) |
 | Clean repo | PENDING (phase close) |
-| CI/secret/audits | PASS (CI note: agent 008 environmental) |
+| CI/secret/audits | PASS (CI note: agent 008 environmental - SO VM down, accepted) |
 | Bundle (built 66) | PASS - sha256 da72bde4..., 0 sensitive files |
-| Docs/notes | v1.3.0 section pending |
-| **Approval** | **PENDING** |
+| Docs/notes | updated (README + RELEASE-NOTES v1.3.0) |
+| **Approval** | **GRANTED 08-24** |
 
 ## Decision
 
-- **Release blocked** per safety: "No release while mutable production runtime references or
-  unproven P0 deployment blockers remain." Blockers: image-pin apply approval + deployability
-  runtime proof.
+- **CLEARED FOR RELEASE** (operator approved all gates 08-24; deployability PARTIAL accepted
+  as a documented, non-simulated blocker). Proceed to 67.
 
 ## No secrets

@@ -1,7 +1,8 @@
 # Phase 29 Image Compose Pinning
 
 Date: 2026-08-24
-Status: **PIN SET PREPARED - APPROVAL PENDING** (C-GATE-1). No active compose file modified.
+Status: **APPLIED (APPROVED 08-24)** - all 8 refs pinned in compose + running runtime.
+Rollback refs retained in ops/backups/p29-image-pin-rollback/ + config/image-pin-set.json.
 
 ## Pin set (config/image-pin-set.json, registry-resolved 08-24)
 
@@ -15,6 +16,26 @@ Status: **PIN SET PREPARED - APPROVAL PENDING** (C-GATE-1). No active compose fi
 | shuffle-frontend | (compose already pinned) | keep @sha256:4d700a6f... |
 | shuffle-orborus | @sha256:94e61e79... (stale) | @sha256:5c300bcbfa4550d8915d01ba0e7c8dacfb6244a7566d5f685469ddd08fc84512 |
 | shuffle-worker | env :latest | @sha256:fd0d420a5e0cd41f3979335e51912e8dd423e7ce540d1dfa24efdc98fb6071bd |
+
+## Applied changes (2026-08-24, approved)
+
+| Service | Pin applied | Runtime |
+|---|---|---|
+| tenzir-node | tenzir/tenzir@sha256:fff163ce... | recreated pinned (running) |
+| opencanary | thinkst/opencanary@sha256:c374c68b... | compose updated + container recreated |
+| syslog-ng | balabit/syslog-ng@sha256:8f6fe389... | override.yml ref pinned + container recreated |
+| flow-relay | python@sha256:05b2b8b7... (override had a1321512) | container recreated pinned |
+| shuffle-backend | @sha256:d4a5d2bf... | container recreated pinned |
+| shuffle-frontend | @sha256:4d700a6f... | container recreated pinned |
+| shuffle-orborus | @sha256:5c300bcb... (fixed stale 94e61e79) | container recreated pinned |
+| shuffle-worker | @sha256:fd0d420a... | swarm service updated + converged |
+| cloudflared | cloudflare/cloudflared@sha256:e39ee8da... (compose) | container recreated pinned |
+
+- Verification: all running containers show digest-pinned Config.Image; only versioned-tag
+  exceptions remain (wazuh 4.14.7, iris v2.4.29, frikky 1.x, opensearch 3.2.0, rabbitmq,
+  elastiflow 7.26.2, nginx stable, portainer sts).
+- Compose validation: opencanary + flow-relay + cloudflared OK; shuffle.yml interpolates
+  with sourced .env.
 
 ## Scope on approval
 

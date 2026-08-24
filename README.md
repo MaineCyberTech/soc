@@ -4,7 +4,7 @@
 
 A production MSSP security-operations platform built additively on a multi-node Wazuh SIEM,
 with packet detection (Security Onion), deception, SOAR, IR, EDR, IOC sharing, and
-vulnerability management. **Fully deployed and verified. Current release: v1.2.0 (2026-08-22).**
+vulnerability management. **Fully deployed and verified. Current release: v1.3.0 (2026-08-24).**
 
 ---
 
@@ -155,6 +155,7 @@ ssh -i ~/.ssh/mct_soc_scan -L 443:127.0.0.1:443 root@192.168.222.154
 
 ## Releases
 
+- **v1.3.0 (2026-08-24)**: image digest pinning + CI gates, consolidation/deployability audit stack, DR readiness, bundle sha256 da72bde4
 - **v1.2.0 (2026-08-22)**: endpoint fleet restoration, evidence archive, governance + CI
   hardening, canonical config, DR S3 resolution. See RELEASE-NOTES.md.
 - v1.1.0 (2026-08-19), v1.0.0 (2026-08-16) - see RELEASE-NOTES.md for details and artifacts.

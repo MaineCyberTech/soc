@@ -63,7 +63,7 @@ services:
     profiles: ["shuffle"]
 
   shuffle-orborus:
-    image: ghcr.io/shuffle/shuffle-orborus@sha256:94e61e7916aea28351fce3851f26f14fb85204f1567a8807d137321418366dba
+    image: ghcr.io/shuffle/shuffle-orborus@sha256:5c300bcbfa4550d8915d01ba0e7c8dacfb6244a7566d5f685469ddd08fc84512
     container_name: shuffle-orborus
     hostname: shuffle-orborus
     networks:
@@ -82,7 +82,7 @@ services:
       - SHUFFLE_LOGS_DISABLED=true
       - SHUFFLE_SWARM_CONFIG=run
       - CLEANUP=false
-      - SHUFFLE_WORKER_IMAGE=ghcr.io/shuffle/shuffle-worker:latest
+      - SHUFFLE_WORKER_IMAGE=ghcr.io/shuffle/shuffle-worker@sha256:fd0d420a5e0cd41f3979335e51912e8dd423e7ce540d1dfa24efdc98fb6071bd
     restart: unless-stopped
     mem_limit: 384m
     profiles: ["shuffle"]

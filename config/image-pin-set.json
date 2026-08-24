@@ -2,18 +2,65 @@
   "name": "mct-image-pin-set",
   "version": "1.3.0",
   "generated": "2026-08-24",
-  "status": "APPROVAL-PENDING (prompt 05; apply to active compose only on approval)",
+  "status": "APPLIED 2026-08-24 (approved); all 8 refs pinned in compose + running runtime; rollback refs retained",
   "resolve_method": "docker buildx imagetools inspect (registry manifest digest), 2026-08-24",
   "rollback": "revert each image: field to the recorded tag reference below",
   "pins": [
-    {"service": "tenzir-node", "ref": "tenzir/tenzir:main", "pin": "tenzir/tenzir@sha256:fff163ce85984ab1016580798a7c2b94376c906f9cb579ce8556a713a9253352", "running_image_id": "sha256:5dc1dbd43857..."},
-    {"service": "opencanary", "ref": "thinkst/opencanary:latest", "pin": "thinkst/opencanary@sha256:c374c68b3e0f6b362baa00d6ba5ae4ad8e946383521482c6780b075c7ab41640", "running_image_id": "sha256:07bf63d835c9...", "compose_current": "thinkst/opencanary:latest@sha256:db6bf96d...", "note": "3-way drift: running / compose pin / registry"},
-    {"service": "syslog-ng (security-onion bridge)", "ref": "balabit/syslog-ng:latest", "pin": "balabit/syslog-ng@sha256:8f6fe389151c2dfd4c21a2f82ef80ee17cdc71e7c023c813f3974f4d8575b8c5", "running_image_id": "sha256:f10b2331efe5..."},
-    {"service": "flow-relay", "ref": "python:3-alpine", "pin": "python@sha256:05b2b8b732ecd268fee8727a369f936f022d1321b59befd13c30ede22769dcdc", "running_image_id": "sha256:d72efe4a0d6f..."},
-    {"service": "shuffle-backend", "ref": "ghcr.io/shuffle/shuffle-backend:latest", "pin": "ghcr.io/shuffle/shuffle-backend@sha256:d4a5d2bf1f956955b68b099ba1c38997e4b257b2518215e0427f433515bea5c8", "running_image_id": "sha256:e5a9c7b0a7f0...", "compose_current": "already pinned @sha256:d4a5d2bf..."},
-    {"service": "shuffle-frontend", "ref": "ghcr.io/shuffle/shuffle-frontend:latest", "pin": "ghcr.io/shuffle/shuffle-frontend@sha256:4d700a6f0822cb081822bd2fa6c633080553bdd4313aed2c4bdce75b87e82836", "running_image_id": "sha256:a8cfa786c84a...", "compose_current": "already pinned @sha256:4d700a6f..."},
-    {"service": "shuffle-orborus", "ref": "ghcr.io/shuffle/shuffle-orborus:latest", "pin": "ghcr.io/shuffle/shuffle-orborus@sha256:5c300bcbfa4550d8915d01ba0e7c8dacfb6244a7566d5f685469ddd08fc84512", "running_image_id": "sha256:ec1b8df1131a...", "compose_current": "@sha256:94e61e79...", "note": "compose pin stale vs registry"},
-    {"service": "shuffle-worker", "ref": "ghcr.io/shuffle/shuffle-worker:latest", "pin": "ghcr.io/shuffle/shuffle-worker@sha256:fd0d420a5e0cd41f3979335e51912e8dd423e7ce540d1dfa24efdc98fb6071bd", "running_image_id": "sha256:17dbe56c9f57..."}
+    {
+      "service": "tenzir-node",
+      "ref": "tenzir/tenzir:main",
+      "pin": "tenzir/tenzir@sha256:fff163ce85984ab1016580798a7c2b94376c906f9cb579ce8556a713a9253352",
+      "running_image_id": "sha256:5dc1dbd43857..."
+    },
+    {
+      "service": "opencanary",
+      "ref": "thinkst/opencanary:latest",
+      "pin": "thinkst/opencanary@sha256:c374c68b3e0f6b362baa00d6ba5ae4ad8e946383521482c6780b075c7ab41640",
+      "running_image_id": "sha256:07bf63d835c9...",
+      "compose_current": "thinkst/opencanary:latest@sha256:db6bf96d...",
+      "note": "3-way drift: running / compose pin / registry"
+    },
+    {
+      "service": "syslog-ng (security-onion bridge)",
+      "ref": "balabit/syslog-ng:latest",
+      "pin": "balabit/syslog-ng@sha256:8f6fe389151c2dfd4c21a2f82ef80ee17cdc71e7c023c813f3974f4d8575b8c5",
+      "running_image_id": "sha256:f10b2331efe5..."
+    },
+    {
+      "service": "flow-relay",
+      "ref": "python:3-alpine",
+      "pin": "python@sha256:05b2b8b732ecd268fee8727a369f936f022d1321b59befd13c30ede22769dcdc",
+      "running_image_id": "sha256:d72efe4a0d6f..."
+    },
+    {
+      "service": "shuffle-backend",
+      "ref": "ghcr.io/shuffle/shuffle-backend:latest",
+      "pin": "ghcr.io/shuffle/shuffle-backend@sha256:d4a5d2bf1f956955b68b099ba1c38997e4b257b2518215e0427f433515bea5c8",
+      "running_image_id": "sha256:e5a9c7b0a7f0...",
+      "compose_current": "already pinned @sha256:d4a5d2bf..."
+    },
+    {
+      "service": "shuffle-frontend",
+      "ref": "ghcr.io/shuffle/shuffle-frontend:latest",
+      "pin": "ghcr.io/shuffle/shuffle-frontend@sha256:4d700a6f0822cb081822bd2fa6c633080553bdd4313aed2c4bdce75b87e82836",
+      "running_image_id": "sha256:a8cfa786c84a...",
+      "compose_current": "already pinned @sha256:4d700a6f..."
+    },
+    {
+      "service": "shuffle-orborus",
+      "ref": "ghcr.io/shuffle/shuffle-orborus:latest",
+      "pin": "ghcr.io/shuffle/shuffle-orborus@sha256:5c300bcbfa4550d8915d01ba0e7c8dacfb6244a7566d5f685469ddd08fc84512",
+      "running_image_id": "sha256:ec1b8df1131a...",
+      "compose_current": "@sha256:94e61e79...",
+      "note": "compose pin stale vs registry"
+    },
+    {
+      "service": "shuffle-worker",
+      "ref": "ghcr.io/shuffle/shuffle-worker:latest",
+      "pin": "ghcr.io/shuffle/shuffle-worker@sha256:fd0d420a5e0cd41f3979335e51912e8dd423e7ce540d1dfa24efdc98fb6071bd",
+      "running_image_id": "sha256:17dbe56c9f57..."
+    }
   ],
-  "policy": "feed/versioned exceptions (greenbone stable, misp modules, frikky/shuffle:1.x) documented and exempted"
+  "policy": "feed/versioned exceptions (greenbone stable, misp modules, frikky/shuffle:1.x) documented and exempted",
+  "applied": "2026-08-24T20:45Z"
 }
