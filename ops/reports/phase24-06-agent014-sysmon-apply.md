@@ -14,26 +14,27 @@ Status: **BLOCKED - ENDPOINT ACCESS + APPROVAL** (C1 pending).
 
 ## 3. Operator steps (per endpoint, 014 + 013)
 
-New automation (Phase 24): `integrations/sysmon/apply-sysmon-tune.ps1` (elevated PowerShell on the endpoint).
+**Level.io/RMM-safe automation (Phase 24):** three self-contained scripts - **no arguments
+required** (runners that execute scripts without parameters, e.g.
+`ScriptBlock::Create(stdin)`, are fully supported):
 
-**RMM note (Level.io/scriptblock wrappers):** when the runner executes the script without
-arguments, the script now defaults to **check** (non-destructive) instead of failing. To apply
-through such a runner, pass the mode explicitly in the action command line, e.g.
-`.\apply-sysmon-tune.ps1 -Mode apply` or `.\apply-sysmon-tune.ps1 apply`.
+| Script | Purpose |
+|---|---|
+| `integrations/sysmon/check-sysmon-tune.ps1` | report only (service, hashes, backups, EID7 activity) - no changes |
+| `integrations/sysmon/apply-sysmon-tune.ps1` | **creates the policy file** (embedded XML), backs up + hashes current config, loads include-oriented policy, reloads Sysmon, verifies |
+| `integrations/sysmon/rollback-sysmon-tune.ps1` | restore newest backup + reload |
+
+Each script embeds everything it needs - upload any of them to the endpoint and run with no
+arguments:
 
 ```powershell
-# 1. Pre-check (no changes) - safe under any runner
-.\apply-sysmon-tune.ps1 -Mode check
-
-# 2. Copy the include-oriented policy to the endpoint, then apply:
-#    (script backs up + hashes current config, copies policy, reloads Sysmon, verifies)
-Copy-Item <share>\integrations\sysmon\phase23-eventid7-policy.xml C:\Windows\Sysmon\mct-eid7-policy.xml
-.\apply-sysmon-tune.ps1 -Mode apply
-
-# 3. Rollback (if needed)
-.\apply-sysmon-tune.ps1 -Mode rollback            # newest backup
-.\apply-sysmon-tune.ps1 -Mode rollback -BackupPath C:\Windows\Sysmon\mct-backups\sysmon-config.<TS>.xml
+.\check-sysmon-tune.ps1          # safe pre-check
+.\apply-sysmon-tune.ps1          # apply (creates mct-eid7-policy.xml automatically)
+.\rollback-sysmon-tune.ps1       # rollback
 ```
+
+Log: `C:\Windows\Sysmon\mct-sysmon-tune.log` (no secrets).
+Docs: `integrations/sysmon/README-sysmon-tuning.md`.
 
 Manual fallback (script unavailable):
 

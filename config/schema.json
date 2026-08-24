@@ -1,0 +1,24 @@
+{
+  "name": "mct-security-stack-config-schema",
+  "version": "1.0",
+  "profiles": ["lab", "production", "client", "scratch"],
+  "rules": {
+    "no_secrets_in_source": true,
+    "placeholders_only": "values are ${VAR} references resolved from env files at runtime",
+    "defaults_policy": "secure default; fail-closed when required var missing",
+    "validation": "config/profiles/<profile>.env.example documents required vars per profile"
+  },
+  "profile_required_vars": {
+    "lab": ["WAZUH_ADMIN_PASSWORD", "WAZUH_WUI_PASSWORD", "INDEXER_PASSWORD", "SHUFFLE_*"],
+    "production": ["WAZUH_ADMIN_PASSWORD", "WAZUH_WUI_PASSWORD", "INDEXER_PASSWORD", "SHUFFLE_*", "DO_*", "GH_PAT", "PVE_*", "VT_*"],
+    "client": ["CLIENT_ID", "CLIENT_NAME", "SCAN_SCOPE", "SCAN_AUTH_FILE"],
+    "scratch": ["SCRATCH_ADMIN_PASSWORD", "SCRATCH_REPO_LOCATION", "SCRATCH_PORTS"]
+  },
+  "component_fields": [
+    "id", "purpose", "owner", "lifecycle", "canonical_source", "runtime_path",
+    "version", "compat", "dependencies", "install_order", "env_profile_inputs",
+    "secret_refs", "listeners", "dns_tls_firewall", "storage", "backup_restore",
+    "migration", "installer_idempotent", "health_check", "smoke_test", "upgrade",
+    "rollback", "offline_cache", "license", "docs", "deprecation", "deployability"
+  ]
+}

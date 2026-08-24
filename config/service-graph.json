@@ -1,0 +1,31 @@
+{
+  "name": "mct-security-stack-service-graph",
+  "version": "1.3.0",
+  "generated": "2026-08-24",
+  "root": "infrastructure",
+  "nodes": [
+    {"id": "infra", "type": "host", "depends_on": []},
+    {"id": "docker", "type": "runtime", "depends_on": ["infra"]},
+    {"id": "wazuh-indexer", "type": "compose:multi-node", "depends_on": ["docker"], "ready": "cluster health green"},
+    {"id": "wazuh-manager", "type": "compose:multi-node", "depends_on": ["wazuh-indexer"], "ready": "wazuh-analysisd -t rc=0"},
+    {"id": "wazuh-dashboard", "type": "compose:multi-node", "depends_on": ["wazuh-indexer"], "ready": "https 9443"},
+    {"id": "elastiflow", "type": "compose:multi-node", "depends_on": ["docker"], "ready": "flow collector api 8000"},
+    {"id": "iris", "type": "compose:iris-web", "depends_on": ["wazuh-indexer", "rabbitmq"], "ready": "app healthy + db reachable"},
+    {"id": "shuffle", "type": "compose:shuffle", "depends_on": ["docker", "iris"], "ready": "backend + frontend up"},
+    {"id": "wazuh-integration", "type": "wazuh config", "depends_on": ["wazuh-manager", "shuffle"], "ready": "custom-json-output enabled"},
+    {"id": "opencanary", "type": "compose:opencanary", "depends_on": ["docker"], "ready": "syslog listener"},
+    {"id": "security-onion-bridge", "type": "compose:phase2", "depends_on": ["docker"], "ready": "syslog-ng healthy"},
+    {"id": "tenzir", "type": "compose", "depends_on": ["docker"], "ready": "node up"},
+    {"id": "guardrail-cron", "type": "cron", "depends_on": ["wazuh-manager", "shuffle"], "ready": "script +x and check OK"},
+    {"id": "backup-bundle", "type": "cron", "depends_on": ["infra", "docker"], "ready": "04:00 daily + s3 mirror"},
+    {"id": "endpoints", "type": "agents", "depends_on": ["wazuh-manager"], "ready": "3/3 active telemetry"}
+  ],
+  "bootstrap_stages": [
+    {"stage": 0, "nodes": ["infra", "docker"]},
+    {"stage": 1, "nodes": ["wazuh-indexer"]},
+    {"stage": 2, "nodes": ["wazuh-manager", "wazuh-dashboard", "elastiflow"]},
+    {"stage": 3, "nodes": ["iris", "shuffle"]},
+    {"stage": 4, "nodes": ["wazuh-integration", "opencanary", "security-onion-bridge", "tenzir"]},
+    {"stage": 5, "nodes": ["guardrail-cron", "backup-bundle", "endpoints"]}
+  ]
+}

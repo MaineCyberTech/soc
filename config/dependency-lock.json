@@ -1,0 +1,37 @@
+{
+  "name": "mct-security-stack-dependency-lock",
+  "version": "1.3.0",
+  "generated": "2026-08-24",
+  "source": "live docker inspect + compose definitions; reconcile at install",
+  "images": [
+    {"image": "wazuh/wazuh-manager", "tag": "4.14.7", "image_id_prefix": "25719a1b9b8a", "role": "wazuh manager (master+worker)"},
+    {"image": "wazuh/wazuh-indexer", "tag": "4.14.7", "image_id_prefix": "a24fdce561f5", "role": "opensearch 2.19.5.0 nodes"},
+    {"image": "ghcr.io/dfir-iris/iriswebapp_app", "tag": "v2.4.29", "image_id_prefix": "f6af6018f65f", "role": "iris app+worker"},
+    {"image": "ghcr.io/dfir-iris/iriswebapp_nginx", "tag": "v2.4.29", "image_id_prefix": "80a22b935b80", "role": "iris nginx"},
+    {"image": "ghcr.io/dfir-iris/iriswebapp_db", "tag": "v2.4.29", "image_id_prefix": "771e84cc256f", "role": "iris db"},
+    {"image": "rabbitmq", "tag": "3-management-alpine", "image_id_prefix": "1031d41f3f16", "role": "iris queue"},
+    {"image": "elastiflow/flow-collector", "tag": "7.26.2", "image_id_prefix": "c5300c2fb949", "role": "netflow collector"},
+    {"image": "tenzir/tenzir", "tag": "main", "image_id_prefix": "5dc1dbd43857", "role": "tenzir node (MUTABLE TAG - pin)"},
+    {"image": "thinkst/opencanary", "tag": "latest", "image_id_prefix": "07bf63d835c9", "role": "deception (MUTABLE TAG - pin)"},
+    {"image": "balabit/syslog-ng", "tag": "latest", "image_id_prefix": "f10b2331efe5", "role": "syslog bridge (MUTABLE TAG - pin)"},
+    {"image": "ghcr.io/shuffle/shuffle-backend", "tag": "latest", "image_id_prefix": "e5a9c7b0a7f0", "role": "shuffle (MUTABLE TAG - pin)"},
+    {"image": "ghcr.io/shuffle/shuffle-frontend", "tag": "latest", "image_id_prefix": "a8cfa786c84a", "role": "shuffle (MUTABLE TAG - pin)"},
+    {"image": "opensearchproject/opensearch", "tag": "3.2.0", "image_id_prefix": "b6dde07329e6", "role": "shuffle opensearch"},
+    {"image": "python", "tag": "3-alpine", "image_id_prefix": "d72efe4a0d6f", "role": "flow-relay (MUTABLE TAG - pin)"}
+  ],
+  "python": {
+    "runtime": "3.13.5",
+    "stdlib_only": true,
+    "optional": {"pymisp": ">=2.4.150", "requests": ">=2.31.0", "pyyaml": ">=6.0"}
+  },
+  "os_packages": {
+    "endpoint_linux": ["wazuh-agent=$WAZUH_VERSION-1", "osquery"],
+    "endpoint_macos": ["wazuh-agent=$WAZUH_VERSION-1"],
+    "endpoint_windows": ["Sysmon 15.21 (binary pinned, no package manager)"]
+  },
+  "plugins": {
+    "wazuh-indexer": ["opensearch-security", "opensearch-index-management", "opensearch-alerting", "opensearch-anomaly-detection", "opensearch-sql", "opensearch-knn", "opensearch-ml", "opensearch-neural-search", "opensearch-observability", "opensearch-notifications", "opensearch-cross-cluster-replication", "repository-s3", "opensearch-asynchronous-search", "opensearch-geospatial", "opensearch-job-scheduler", "opensearch-performance-analyzer", "opensearch-reports-scheduler"],
+    "plugin_version": "2.19.5.0"
+  },
+  "mutable_tag_policy": "pin mutable tags to resolved image IDs before release; record in bundle manifest"
+}
