@@ -1,0 +1,632 @@
+{
+ "workflow_as_code": false,
+ "actions": [
+  {
+   "app_name": "Shuffle Tools",
+   "app_version": "1.2.0",
+   "description": "",
+   "app_id": "105a94f1-725a-4cab-b085-520b4eec1f86",
+   "errors": [],
+   "id": "cc9f3618-e54f-4a1a-adb1-bfe00505b6ef",
+   "is_valid": true,
+   "isStartNode": true,
+   "sharing": true,
+   "label": "Log received alert (notify-only)",
+   "public": true,
+   "generated": false,
+   "large_image": "data:image/png;base64,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",
+   "environment": "Shuffle",
+   "name": "repeat_back_to_me",
+   "parameters": [
+    {
+     "description": "",
+     "id": "",
+     "name": "call",
+     "example": "Repeating: Hello World",
+     "value": "Alert received (notify-only)",
+     "multiline": true,
+     "multiselect": false,
+     "options": null,
+     "action_field": "",
+     "variant": "",
+     "required": false,
+     "configuration": false,
+     "tags": null,
+     "schema": {
+      "type": ""
+     },
+     "skip_multicheck": false,
+     "custom_value": false,
+     "value_replace": null,
+     "unique_toggled": false,
+     "error": "",
+     "hidden": false
+    }
+   ],
+   "execution_variable": {
+    "description": "",
+    "id": "",
+    "name": "",
+    "value": ""
+   },
+   "position": {
+    "x": 449.5,
+    "y": 446.1
+   },
+   "authentication_id": "",
+   "category": "",
+   "reference_url": "",
+   "sub_action": false,
+   "run_magic_output": false,
+   "run_magic_input": false,
+   "execution_delay": 0,
+   "category_label": null,
+   "suggestion": false,
+   "parent_controlled": false,
+   "source_workflow": "",
+   "source_execution": ""
+  },
+  {
+   "app_name": "HTTP",
+   "app_version": "1.4.0",
+   "description": "",
+   "app_id": "0de33550-8502-403f-90c6-2f09e317d49b",
+   "errors": [],
+   "id": "556b5cd9-1946-48fa-af09-5bc82f024542",
+   "is_valid": true,
+   "sharing": true,
+   "label": "Create DFIR-IRIS alert (notify-only)",
+   "public": true,
+   "generated": false,
+   "environment": "Shuffle",
+   "name": "POST",
+   "parameters": [
+    {
+     "description": "",
+     "id": "",
+     "name": "url",
+     "example": "",
+     "value": "https://iriswebapp_nginx:8443/alerts/add",
+     "multiline": false,
+     "multiselect": false,
+     "options": null,
+     "action_field": "",
+     "variant": "",
+     "required": false,
+     "configuration": false,
+     "tags": null,
+     "schema": {
+      "type": ""
+     },
+     "skip_multicheck": false,
+     "custom_value": false,
+     "value_replace": null,
+     "unique_toggled": false,
+     "error": "",
+     "hidden": false
+    },
+    {
+     "description": "",
+     "id": "",
+     "name": "body",
+     "example": "",
+     "value": "{\"alert_title\": \"Wazuh flow alert (Class A)\", \"alert_source\": \"wazuh\", \"alert_source_ref\": \"\\\\${body:rule_id}\", \"alert_severity_id\": 6, \"alert_customer_id\": 1, \"alert_status_id\": 2, \"alert_source_content\": {\"monitor\": \"\\\\${body:rule_id}\"}, \"alert_tags\": \"source:wazuh,class:A\"}",
+     "multiline": false,
+     "multiselect": false,
+     "options": null,
+     "action_field": "",
+     "variant": "",
+     "required": false,
+     "configuration": false,
+     "tags": null,
+     "schema": {
+      "type": ""
+     },
+     "skip_multicheck": false,
+     "custom_value": false,
+     "value_replace": null,
+     "unique_toggled": false,
+     "error": "",
+     "hidden": false
+    },
+    {
+     "description": "",
+     "id": "",
+     "name": "headers",
+     "example": "",
+     "value": "{\"Authorization <REDACTED>, \"Content-Type\": \"application/json\"}",
+     "multiline": false,
+     "multiselect": false,
+     "options": null,
+     "action_field": "",
+     "variant": "",
+     "required": false,
+     "configuration": false,
+     "tags": null,
+     "schema": {
+      "type": ""
+     },
+     "skip_multicheck": false,
+     "custom_value": false,
+     "value_replace": null,
+     "unique_toggled": false,
+     "error": "",
+     "hidden": false
+    },
+    {
+     "description": "",
+     "id": "",
+     "name": "username",
+     "example": "",
+     "value": "",
+     "multiline": false,
+     "multiselect": false,
+     "options": null,
+     "action_field": "",
+     "variant": "",
+     "required": false,
+     "configuration": false,
+     "tags": null,
+     "schema": {
+      "type": ""
+     },
+     "skip_multicheck": false,
+     "custom_value": false,
+     "value_replace": null,
+     "unique_toggled": false,
+     "error": "",
+     "hidden": false
+    },
+    {
+     "description": "",
+     "id": "",
+     "name": "password",
+     "example": "",
+     "value": "",
+     "multiline": false,
+     "multiselect": false,
+     "options": null,
+     "action_field": "",
+     "variant": "",
+     "required": false,
+     "configuration": false,
+     "tags": null,
+     "schema": {
+      "type": ""
+     },
+     "skip_multicheck": false,
+     "custom_value": false,
+     "value_replace": null,
+     "unique_toggled": false,
+     "error": "",
+     "hidden": false
+    },
+    {
+     "description": "",
+     "id": "",
+     "name": "verify",
+     "example": "",
+     "value": "false",
+     "multiline": false,
+     "multiselect": false,
+     "options": null,
+     "action_field": "",
+     "variant": "",
+     "required": false,
+     "configuration": false,
+     "tags": null,
+     "schema": {
+      "type": ""
+     },
+     "skip_multicheck": false,
+     "custom_value": false,
+     "value_replace": null,
+     "unique_toggled": false,
+     "error": "",
+     "hidden": false
+    },
+    {
+     "description": "",
+     "id": "",
+     "name": "http_proxy",
+     "example": "",
+     "value": "",
+     "multiline": false,
+     "multiselect": false,
+     "options": null,
+     "action_field": "",
+     "variant": "",
+     "required": false,
+     "configuration": false,
+     "tags": null,
+     "schema": {
+      "type": ""
+     },
+     "skip_multicheck": false,
+     "custom_value": false,
+     "value_replace": null,
+     "unique_toggled": false,
+     "error": "",
+     "hidden": false
+    },
+    {
+     "description": "",
+     "id": "",
+     "name": "https_proxy",
+     "example": "",
+     "value": "",
+     "multiline": false,
+     "multiselect": false,
+     "options": null,
+     "action_field": "",
+     "variant": "",
+     "required": false,
+     "configuration": false,
+     "tags": null,
+     "schema": {
+      "type": ""
+     },
+     "skip_multicheck": false,
+     "custom_value": false,
+     "value_replace": null,
+     "unique_toggled": false,
+     "error": "",
+     "hidden": false
+    },
+    {
+     "description": "",
+     "id": "",
+     "name": "timeout",
+     "example": "",
+     "value": "10",
+     "multiline": false,
+     "multiselect": false,
+     "options": null,
+     "action_field": "",
+     "variant": "",
+     "required": false,
+     "configuration": false,
+     "tags": null,
+     "schema": {
+      "type": ""
+     },
+     "skip_multicheck": false,
+     "custom_value": false,
+     "value_replace": null,
+     "unique_toggled": false,
+     "error": "",
+     "hidden": false
+    }
+   ],
+   "execution_variable": {
+    "description": "",
+    "id": "",
+    "name": "",
+    "value": ""
+   },
+   "position": {
+    "x": 449.5,
+    "y": 646.1
+   },
+   "authentication_id": "",
+   "category": "",
+   "reference_url": "",
+   "sub_action": false,
+   "run_magic_output": false,
+   "run_magic_input": false,
+   "execution_delay": 0,
+   "category_label": null,
+   "suggestion": false,
+   "parent_controlled": false,
+   "source_workflow": "",
+   "source_execution": ""
+  }
+ ],
+ "branches": [
+  {
+   "destination_id": "556b5cd9-1946-48fa-af09-5bc82f024542",
+   "id": "980a897a-be2e-44d2-8f27-fee040753a5c",
+   "source_id": "cc9f3618-e54f-4a1a-adb1-bfe00505b6ef",
+   "label": "",
+   "has_errors": false,
+   "conditions": [],
+   "decorator": false,
+   "parent_controlled": false,
+   "source_parent": ""
+  }
+ ],
+ "visual_branches": null,
+ "triggers": [
+  {
+   "app_name": "",
+   "description": "",
+   "long_description": "",
+   "status": "",
+   "app_version": "",
+   "errors": null,
+   "id": "24636c49-a2d0-40c2-887e-ccecdf22fc5c",
+   "is_valid": false,
+   "isStartNode": false,
+   "label": "wazuh-high-severity",
+   "small_image": "",
+   "large_image": "",
+   "environment": "",
+   "trigger_type": "webhook",
+   "name": "wazuh-high-severity",
+   "tags": null,
+   "parameters": null,
+   "position": {
+    "x": 0,
+    "y": 0
+   },
+   "priority": 0,
+   "source_workflow": "",
+   "execution_delay": 0,
+   "app_association": {
+    "name": "",
+    "app_version": "",
+    "id": "",
+    "link": "",
+    "is_valid": false,
+    "generated": false,
+    "downloaded": false,
+    "sharing": false,
+    "verified": false,
+    "invalid": false,
+    "activated": false,
+    "tested": false,
+    "hash": "",
+    "private_id": "",
+    "environment": "",
+    "small_image": "",
+    "large_image": "",
+    "contact_info": {
+     "name": "",
+     "url": ""
+    },
+    "folder_mount": {
+     "folder_mount": false,
+     "source_folder": "",
+     "destination_folder": ""
+    },
+    "authentication": {
+     "type": "",
+     "required": false,
+     "parameters": null,
+     "redirect_uri": "",
+     "token_uri": "",
+     "refresh_uri": "",
+     "scope": null,
+     "client_id": "",
+     "client_secret": "",
+     "grant_type": ""
+    },
+    "actions": null,
+    "tags": null,
+    "categories": null,
+    "created": 0,
+    "edited": 0,
+    "last_runtime": 0,
+    "versions": null,
+    "loop_versions": null,
+    "owner": "",
+    "sharing_config": "",
+    "public": false,
+    "published_id": "",
+    "child_ids": null,
+    "reference_org": "",
+    "reference_url": "",
+    "action_file_path": "",
+    "template": false,
+    "documentation": "",
+    "description": "",
+    "documentation_download_url": "",
+    "primary_usecases": null,
+    "skipped_build": false,
+    "reference_info": {
+     "onprem_backup": false,
+     "is_partner": false,
+     "partner_contacts": "",
+     "documentation_url": "",
+     "github_url": "",
+     "triggers": null
+    },
+    "blogpost": "",
+    "video": "",
+    "company_url": "",
+    "contributors": null,
+    "revision_id": "",
+    "collection": ""
+   },
+   "parent_controlled": false,
+   "replacement_for_trigger": ""
+  }
+ ],
+ "comments": [],
+ "configuration": {
+  "exit_on_error": false,
+  "start_from_top": false,
+  "skip_notifications": false
+ },
+ "created": 1786389530,
+ "edited": 1786399969,
+ "last_runtime": 0,
+ "due_date": 0,
+ "errors": [
+  "Trigger wazuh-high-severity needs to be started"
+ ],
+ "id": "eb937a37-5244-46dc-95ff-62ad4c681322",
+ "is_valid": true,
+ "name": "wazuh-high-severity-to-iris",
+ "description": "Class A/B Wazuh alerts -> log (notify-only). IRIS creation to be added after validation.",
+ "start": "cc9f3618-e54f-4a1a-adb1-bfe00505b6ef",
+ "owner": "39dd09d3-7874-46a0-8672-e7acb8827b2c",
+ "sharing": "private",
+ "execution_org": {
+  "name": "default",
+  "id": "264c0502-9136-4cfc-938b-390b97b861b8",
+  "users": [],
+  "role": "admin",
+  "child_orgs": null,
+  "region_url": "",
+  "is_partner": false,
+  "image": "",
+  "creator_org": "",
+  "branding": {
+   "enable_chat": false,
+   "home_url": "",
+   "theme": "",
+   "documentation_link": "",
+   "global_user": false,
+   "support_email": "",
+   "logout_url": "",
+   "brand_color": "",
+   "brand_name": ""
+  }
+ },
+ "org_id": "264c0502-9136-4cfc-938b-390b97b861b8",
+ "workflow_variables": null,
+ "execution_environment": "",
+ "previously_saved": true,
+ "categories": {
+  "siem": {
+   "name": "",
+   "count": 0,
+   "id": "",
+   "description": "",
+   "large_image": ""
+  },
+  "communication": {
+   "name": "",
+   "count": 0,
+   "id": "",
+   "description": "",
+   "large_image": ""
+  },
+  "assets": {
+   "name": "",
+   "count": 0,
+   "id": "",
+   "description": "",
+   "large_image": ""
+  },
+  "cases": {
+   "name": "",
+   "count": 0,
+   "id": "",
+   "description": "",
+   "large_image": ""
+  },
+  "network": {
+   "name": "",
+   "count": 0,
+   "id": "",
+   "description": "",
+   "large_image": ""
+  },
+  "intel": {
+   "name": "",
+   "count": 0,
+   "id": "",
+   "description": "",
+   "large_image": ""
+  },
+  "edr": {
+   "name": "",
+   "count": 0,
+   "id": "",
+   "description": "",
+   "large_image": ""
+  },
+  "iam": {
+   "name": "",
+   "count": 0,
+   "id": "",
+   "description": "",
+   "large_image": ""
+  },
+  "ai": {
+   "name": "",
+   "count": 0,
+   "id": "",
+   "description": "",
+   "large_image": ""
+  },
+  "email": {
+   "name": "",
+   "count": 0,
+   "id": "",
+   "description": "",
+   "large_image": ""
+  },
+  "other": {
+   "name": "",
+   "count": 0,
+   "id": "",
+   "description": "",
+   "large_image": ""
+  }
+ },
+ "example_argument": "",
+ "public": false,
+ "default_return_value": "",
+ "contact_info": {
+  "name": "",
+  "url": ""
+ },
+ "published_id": "",
+ "revision_id": "",
+ "usecase_ids": null,
+ "input_questions": null,
+ "form_control": {
+  "input_markdown": "",
+  "output_yields": null,
+  "cleanup_actions": null,
+  "form_width": 0
+ },
+ "blogpost": "",
+ "video": "",
+ "status": "test",
+ "workflow_type": "",
+ "generated": false,
+ "hidden": false,
+ "background_processing": false,
+ "updated_by": "soc@mainecybertech.com",
+ "validated": false,
+ "validation": {
+  "valid": false,
+  "changed_at": 1787552881000,
+  "last_valid": 1786396144000,
+  "validation_ran": true,
+  "notifications_created": 0,
+  "environment": "Shuffle",
+  "workflow_id": "",
+  "execution_id": "1036fb75-b958-423e-a105-e8a2ed64ce79",
+  "node_id": "",
+  "total_problems": 1,
+  "errors": [
+   {
+    "order": 0,
+    "action_id": "556b5cd9-1946-48fa-af09-5bc82f024542",
+    "app_id": "0de33550-8502-403f-90c6-2f09e317d49b",
+    "app_name": "HTTP",
+    "error": "Action 'Create DFIR-IRIS alert (notify-only)' failed: 'An exception occurred while running this function (2). See exception for more details and contact support if this persists (support@shuffler.io)'",
+    "type": "configuration",
+    "waiting": false
+   }
+  ],
+  "subflow_apps": []
+ },
+ "parentorg_workflow": "",
+ "childorg_workflow_ids": null,
+ "suborg_distribution": [],
+ "backup_config": {
+  "onprem_backup": false,
+  "upload_repo": "",
+  "upload_branch": "",
+  "upload_username": "",
+  "upload_token": "",
+  "tokens_encrypted": false
+ },
+ "auth_groups": null
+}
