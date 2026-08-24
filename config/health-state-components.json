@@ -1,0 +1,17 @@
+{
+  "version": "1.0",
+  "components": [
+    {"id": "wazuh-cluster", "state": "HEALTHY", "owner": "SOC", "next_action": "none"},
+    {"id": "wazuh-managers", "state": "HEALTHY", "owner": "SOC", "next_action": "none"},
+    {"id": "endpoints", "state": "DEGRADED", "owner": "operator", "next_action": "markers for 013/014 (RMM); 013/015 transient offline"},
+    {"id": "packet-visibility", "state": "BLOCKED", "owner": "operator", "next_action": "SPAN mirror approval for Suricata production"},
+    {"id": "security-onion", "state": "RETIRED", "owner": "SOC", "next_action": "historical evidence only"},
+    {"id": "shuffle-native-controls", "state": "BLOCKED", "owner": "operator", "next_action": "Shuffle UI window approval"},
+    {"id": "fresh-target", "state": "BLOCKED", "owner": "operator", "next_action": "provision adequate isolated target"},
+    {"id": "credentials", "state": "BLOCKED", "owner": "operator", "next_action": "VT/PVE/indexer/NetFlow/Redis/Greenbone replacements"},
+    {"id": "capacity-disk", "state": "DEGRADED", "owner": "SOC", "next_action": "confirm 08-15..18 retention wave (due ~08-29)"},
+    {"id": "capacity-memory", "state": "DEGRADED", "owner": "operator", "next_action": "RAM expansion (Phase 31/32); swappiness=10 applied"},
+    {"id": "backup-dr", "state": "HEALTHY", "owner": "SOC", "next_action": "none (42 snapshots, bundle mirrored)"},
+    {"id": "release", "state": "HEALTHY", "owner": "SOC", "next_action": "none (v1.3.0 published)"}
+  ]
+}

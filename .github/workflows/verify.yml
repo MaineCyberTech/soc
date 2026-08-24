@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4 pinned
 
       - name: Bash syntax check
         run: |
@@ -59,6 +59,18 @@ jobs:
           export MCT_STACK_ROOT="$PWD"
           if [ -x ops/scripts/check-unpinned-docker-images.sh ]; then
             bash ops/scripts/check-unpinned-docker-images.sh || echo "NOTE: unpinned refs remain (backlog) - report only"
+          fi
+
+      - name: Image CI gate (immutable refs)
+        run: |
+          if [ -x ops/scripts/p29-image-ci-gate.sh ]; then
+            bash ops/scripts/p29-image-ci-gate.sh || { echo "FAIL: undocumented mutable image ref"; exit 1; }
+          fi
+
+      - name: Executable-mode audit (scheduled/entrypoint scripts)
+        run: |
+          if [ -x ops/scripts/p29-executable-mode-audit.sh ]; then
+            timeout 300 bash ops/scripts/p29-executable-mode-audit.sh || { echo "FAIL: non-executable referenced script"; exit 1; }
           fi
 
       - name: Live architecture check (SKIP in CI - requires docker stack)

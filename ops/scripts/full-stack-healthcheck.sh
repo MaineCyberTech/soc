@@ -45,12 +45,9 @@ if down wazuh-cloudflared; then row "Cloudflare tunnel" OK "container running" n
 if down elastiflow; then row "ElastiFlow" OK "container running" none; else row "ElastiFlow" "**FAIL**" "not running" investigate; fi
 if down flow-relay; then row "flow-relay" OK "container running" none; else row "flow-relay" "**FAIL**" "not running" investigate; fi
 
-# --- Security Onion (packet ingestion -> feeds Wazuh via agent 008) ---
-if pinghost 192.168.222.116; then row "Security Onion VM" OK "ping ok" none; else row "Security Onion VM" "**FAIL**" "ping failed" check VM; fi
-if command -v sshpass >/dev/null 2>&1 && [ -n "${SO_SSH_PASSWORD:-}" ] && SSHPASS="${SO_SSH_PASSWORD}" sshpass -e ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o ConnectTimeout=5 "${SO_SSH_USERNAME:-user}@192.168.222.116" "echo '${SO_SSH_PASSWORD}' | sudo -S docker ps --format '{{.Names}}' 2>/dev/null | grep -q so-suricata" 2>/dev/null; then
-  row "SO suricata" OK "container running" none
-else
-  row "SO suricata" "**FAIL**" "container not reachable" check SO VM; fi
+# --- Security Onion (RETIRED phase31 - packet scanning discontinued; historical only) ---
+row "Security Onion (retired)" RETIRED "packet scanning discontinued (phase31 decision)" none
+row "SO suricata (retired)" RETIRED "no active expectation; evidence preserved" none
 
 # --- Deception ---
 if down mct-security-stack-opencanary-1; then row "OpenCanary" OK "container running" none; else row "OpenCanary" "**FAIL**" "not running" investigate; fi

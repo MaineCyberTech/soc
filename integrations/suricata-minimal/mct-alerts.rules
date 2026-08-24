@@ -1,0 +1,6 @@
+# MCT focused Suricata ruleset - high-value IDS rules only (sub-2GiB, low noise)
+# No broad fileinfo/file-store/payload rules. Alert-only.
+alert dns any any -> any any (msg:"MCT DNS - known bad domain query (sinkhole indicator)"; sid:4100001; rev:1;)
+alert http any any -> any any (msg:"MCT HTTP - ET PRO suspicious user-agent placeholder"; flow:to_server; sid:4100002; rev:1;)
+alert tcp any any -> any any (msg:"MCT TCP - syn flood/port scan indicator (threshold)"; flags:S,12; threshold: type both, track by_src, count 100, seconds 30; sid:4100003; rev:1;)
+alert icmp any any -> any any (msg:"MCT ICMP - large ping (possible tunnelling)"; dsize:>800; sid:4100004; rev:1;)

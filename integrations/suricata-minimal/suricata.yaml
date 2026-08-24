@@ -1,0 +1,104 @@
+# MCT minimal Suricata sensor config - sub-2GiB memory profile (Phase 31)
+# Capture: eth0 (no production SPAN); EVE JSON alert+metadata only; no PCAP/file-store/payload.
+%YAML 1.1
+---
+
+# --- Capture / threading (low memory) ---
+af-packet:
+  - interface: eth0
+    cluster-id: 99
+    cluster-type: cluster_flow
+    defrag: no
+    use-mmap: yes
+    tpacket-v3: yes
+    ring-size: 250
+    buffer-size: 24576
+    max-pending-packets: 1024
+pcap:
+  - interface: eth0
+max-pending-packets: 1024
+runmode: autofp
+threading:
+  set-cpu-affinity: no
+  detect-thread-ratio: 1.0
+
+# --- Detection engine ---
+detect-engine:
+  - profile: low
+  - sgh-mpm-context: single
+  - inspection-recursion-limit: 2000
+
+# --- App-layer / flow memory caps ---
+app-layer:
+  protocols:
+    http:
+      enabled: yes
+      memcap: 16777216
+    dns:
+      enabled: yes
+    tls:
+      enabled: yes
+    smtp:
+      enabled: no
+    imap:
+      enabled: no
+    pop3:
+      enabled: no
+    ssh:
+      enabled: yes
+    ikev2:
+      enabled: no
+    nfs:
+      enabled: no
+    smb:
+      enabled: no
+flow:
+  memcap: 67108864
+  emergency-recovery: 30
+  hash-size: 65536
+  prealloc: 10000
+flow-timeouts:
+  default: 30
+  tcp:
+    established: 300
+    closed: 30
+  udp:
+    unreplied: 30
+    replied: 60
+  icmp:
+    unreplied: 30
+    replied: 60
+defrag:
+  memcap: 33554432
+  max-frags: 65535
+  prealloc: 4096
+stream:
+  memcap: 33554432
+  checksum-validation: no
+  inline: no
+  prealloc-sessions: 1000
+  midstream: yes
+
+# --- Outputs: EVE alert + metadata only ---
+outputs:
+  - eve-log:
+      enabled: yes
+      filetype: regular
+      filename: eve.json
+      types:
+        - alert:
+            metadata: yes
+            tagged-packets: no
+        - stats:
+            totals: yes
+            threads: no
+            deltas: no
+  - stats:
+      enabled: yes
+      interval: 60
+  - fast:
+      enabled: yes
+      filename: fast.log
+
+# --- Logging dirs ---
+default-log-dir: /var/log/suricata

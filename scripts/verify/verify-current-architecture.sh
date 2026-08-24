@@ -14,8 +14,8 @@ echo "== Architecture verify $(date -u '+%Y-%m-%d %H:%M') =="
 if docker port multi-node-wazuh.master-1 2>/dev/null | grep -q "15140"; then ok "remote syslog 15140 mapped"; else bad "15140 not mapped"; fi
 if docker port multi-node-wazuh.master-1 2>/dev/null | grep -q ":514"; then bad "514 still mapped (should be retired)"; else ok "514 retired"; fi
 
-# 2. SO packet ingestion -> agent 008
-if docker exec multi-node-wazuh.master-1 /var/ossec/bin/agent_control -i 008 2>/dev/null | grep -q Active; then ok "agent 008 Active"; else bad "agent 008 not active"; fi
+# 2. SO packet ingestion -> agent 008 (RETIRED phase31; historical only, not a failure)
+echo "  [RETIRED] agent 008 / Security Onion packet scanning retired (phase31) - not an active failure"
 
 # 3. agents 011 + 012
 for a in 011 012; do
