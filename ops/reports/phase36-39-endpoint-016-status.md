@@ -9,12 +9,12 @@ Date: 2026-08-25
 - Config drift: NONE (matches expected)
 
 ## Logcollector
-- eve.json: forwarding (38 events today)
-- eve-alert.json: forwarding (1 event — P35 canary)
+- eve.json: forwarding (active today)
+- eve-alert.json: forwarding (1 record — P35 canary)
 
 ## Suricata
-- Status: active, 79MB, 0 drops
-- eve-alert.json: 1 record (canary)
+- Process: NOT running on host (SPAN container `mct-soc-scan` not found)
+- eve-alert.json: 0 bytes on host
 
 ## Config backup
 - /var/ossec/etc/ossec.conf.bak-p34: EXISTS

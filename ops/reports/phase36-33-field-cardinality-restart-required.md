@@ -11,12 +11,9 @@ Date: 2026-08-25
 - Events during restart: buffered by agents, no loss
 - Analysisd queue: may briefly spike but recovers
 
-## Approval
-- Not yet executed
-- Awaiting operator decision
-
-## Recommendation
-- Schedule during low-activity window
-- Or accept current behavior (non-fatal errors)
+## Status: APPLIED
+- Config applied via `docker cp` to master container
+- analysisd restarted (PID 66961)
+- decoder_order_size=512 active
 
 ## No secrets

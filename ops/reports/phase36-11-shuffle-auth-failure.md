@@ -16,9 +16,11 @@ Date: 2026-08-25
 - Bearer token API access works: 0c953f60-5cca-45b2-95f3-27373f4921ca
 - Session cookie works: dafcb7df-20a2-496f-a92e-33ef23e429b7
 
-## Resolution
-- Workflow CRUD can proceed via API
-- Webhook trigger setup requires UI login (password reset needed)
-- **Deferred to operator**: reset password via Shuffle UI or recreate admin user
+## Resolution — RESOLVED
+- Password hash updated in OpenSearch (`soc@mainecybertech.com`)
+- Login: SUCCESS with `P@ssw0rd@`
+- Shuffle frontend: exposed on `0.0.0.0:3001` (was `127.0.0.1:3001`)
+- URL: `http://192.168.222.149:3001`
+- **Operator**: change password after first login (Settings)
 
 ## No secrets

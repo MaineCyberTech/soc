@@ -3,9 +3,9 @@
 Date: 2026-08-25
 
 ## Status
-- Usage: 85% (120G / 148G)
+- Usage: 84% (119G / 148G) — DOWN 1% from initial (85%)
 - Watermark: LOW ACTIVE
-- ISM wave: PENDING (first deletion 2026-08-29)
+- ISM wave: PENDING (first archive deletion 2026-08-29)
 - Growth: ~1GB/day
 
 ## Trajectory
