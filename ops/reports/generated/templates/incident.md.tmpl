@@ -1,0 +1,47 @@
+---
+report_id: "{{report_id}}"
+phase: "{{phase}}"
+title: "{{title}}"
+date: "{{YYYY-MM-DD}}"
+classification: INTERNAL
+status: IN PROGRESS
+authority: GENERATED-AUDIT
+evidence_refs: []
+source_path: "{{absolute_path_of_instance}}"
+retention_class: permanent-evidence
+---
+
+# Incident Report — {{INC-YYYYMMDD-NN}} {{short_title}}
+
+**Report ID:** {{report_id}}
+**Incident ID:** INC-{{YYYYMMDD}}-{{NN}}
+**Severity:** {{SEV1..SEV4}}
+**Date:** {{YYYY-MM-DD}}
+**Status:** IN PROGRESS
+
+---
+
+## 1. Timeline (UTC)
+
+| Time | Event | Source |
+|---|---|---|
+| {{HH:MM}} | Detection | |
+
+## 2. Impact
+
+Systems affected, data exposure assessment, client impact statement.
+
+## 3. Root Cause
+
+Technical cause chain; contributing factors separated from trigger.
+
+## 4. Containment and Eradication
+
+Actions taken with timestamps and evidence refs.
+
+## 5. Follow-ups
+
+| Action | Owner | Due | Ledger Row |
+|---|---|---|---|
+
+All follow-up rows MUST land in actions-ledger.csv; incident file itself becomes append-only at status RETIRED.

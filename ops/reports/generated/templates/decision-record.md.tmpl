@@ -1,0 +1,45 @@
+---
+report_id: "{{report_id}}"
+phase: "{{phase}}"
+title: "{{title}}"
+date: "{{YYYY-MM-DD}}"
+classification: INTERNAL
+status: PENDING
+authority: AUTHORITATIVE-CURRENT
+evidence_refs: []
+source_path: "{{absolute_path_of_instance}}"
+retention_class: phase-history
+---
+
+# Decision Record — DEC-{{NNNN}} {{short_title}}
+
+**Report ID:** {{report_id}}
+**Decision ID:** DEC-{{NNNN}}
+**Date:** {{YYYY-MM-DD}}
+**Status:** PENDING
+
+---
+
+## 1. Context
+
+Forces at play; constraints; evidence refs supporting the framing.
+
+## 2. Options Considered
+
+| Option | Pros | Cons | Rejected Because |
+|---|---|---|---|
+
+## 3. Decision
+
+Single unambiguous statement of what was decided.
+
+## 4. Consequences
+
+Positive, negative, and neutral consequences; follow-up ledger rows.
+
+## 5. Supersedes
+
+| Prior Decision | Relationship |
+|---|---|
+
+Immutable once status moves to PASS/PASS-equivalent per taxonomy; changes require a new decision record referencing this one.

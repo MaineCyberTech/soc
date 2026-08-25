@@ -1,0 +1,45 @@
+---
+report_id: "{{report_id}}"
+phase: "{{phase}}"
+title: "{{title}}"
+date: "{{YYYY-MM-DD}}"
+classification: CLIENT-SAFE
+status: PENDING
+authority: CLIENT-SAFE
+evidence_refs: []
+source_path: "{{absolute_path_of_instance}}"
+retention_class: client-delivered
+---
+
+# {{Client-Facing Title}}
+
+**Report ID:** {{report_id}}
+**Date:** {{YYYY-MM-DD}}
+**Classification:** CLIENT-SAFE
+**Status:** PENDING
+
+---
+
+## 1. Redaction Log (INTERNAL SECTION — STRIP BEFORE DELIVERY)
+
+| Removed Field | Source Doc | Reason |
+|---|---|---|
+
+This section is removed by the delivery tooling; its presence in a delivered artifact is a P0 leak.
+
+## 2. Summary for Client
+
+Plain-language summary derived from current/ sources.
+
+## 3. Metrics
+
+Client-safe subset only (see scorecard template §2).
+
+## 4. Open Items and Commitments
+
+| Commitment | Target Date | Status |
+|---|---|---|
+
+## 5. Distribution List
+
+Named recipients; two-person review recorded in actions ledger prior to send.

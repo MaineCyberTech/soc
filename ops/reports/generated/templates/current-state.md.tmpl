@@ -1,0 +1,41 @@
+---
+report_id: "{{report_id}}"
+phase: "{{phase}}"
+title: "{{title}}"
+date: "{{YYYY-MM-DD}}"
+classification: INTERNAL
+status: PENDING
+authority: AUTHORITATIVE-CURRENT
+evidence_refs: []
+source_path: "{{absolute_path_of_instance}}"
+retention_class: canonical-current
+---
+
+# Current System State
+
+**Report ID:** {{report_id}}
+**Date:** {{YYYY-MM-DD}}
+**Status:** PENDING
+**Authoritative:** true
+
+---
+
+## 1. Domain Truth Tables
+
+One table per domain; each row carries a claim-ID and verification pointer.
+
+| Domain | Item | State | Claim ID | Verified |
+|---|---|---|---|---|
+
+## 2. Known Broken Right Now
+
+| Severity | Item | Backlog Ref |
+|---|---|---|
+
+## 3. Interim-Truth Note
+
+If this file does not yet exist, interim truth = newest PHASE-FINAL operator report (see phase38-60 §2).
+
+## 4. Supersession
+
+This document supersedes, for current-truth purposes only: final-phase36*, final-phase37* and all older state claims. History remains valid in phases/.

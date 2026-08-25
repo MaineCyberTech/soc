@@ -1,0 +1,40 @@
+---
+report_id: "{{report_id}}"
+phase: "{{phase}}"
+title: "{{title}}"
+date: "{{YYYY-MM-DD}}"
+classification: INTERNAL
+status: IN PROGRESS
+authority: AUTHORITATIVE-CURRENT
+evidence_refs: []
+source_path: "{{absolute_path_of_instance}}"
+retention_class: canonical-current
+---
+
+# Scorecard — {{YYYY-MM}}
+
+**Report ID:** {{report_id}}
+**Period:** {{YYYY-MM}}
+**Status:** IN PROGRESS
+
+---
+
+## 1. Internal Scorecard
+
+| Metric | Value | Target | Trend | Source Ledger Row |
+|---|---|---|---|---|
+
+## 2. Client-Safe Metrics Subset
+
+Only metrics cleared for client exposure appear here; the full redaction log lives in the client-safe derivative.
+
+| Metric | Value | Target | Trend |
+|---|---|---|---|
+
+## 3. Data Sources
+
+Every metric row MUST cite a metrics-ledger row or evidence hash. Uncited metrics are UNVERIFIED and excluded from rollups.
+
+## 4. Redaction Notes
+
+Fields removed before any client-safe projection, with justification.

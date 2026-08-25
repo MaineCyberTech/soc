@@ -1,0 +1,36 @@
+---
+report_id: "{{report_id}}"
+phase: "{{phase}}"
+title: "{{title}}"
+date: "{{YYYY-MM-DD}}"
+classification: INTERNAL
+status: IN PROGRESS
+authority: AUTHORITATIVE-CURRENT
+evidence_refs: []
+source_path: "{{absolute_path_of_instance}}"
+retention_class: canonical-current
+---
+
+# Change Register
+
+**Report ID:** {{report_id}}
+**Date:** {{YYYY-MM-DD}}
+**Status:** IN PROGRESS
+
+---
+
+## 1. Active Gates
+
+| Gate | Description | State |
+|---|---|---|
+| G1 | | OPEN |
+
+## 2. Change Log (APPEND-ONLY)
+
+| Change ID | Date | Description | Gates Touched | Approver | Verification Row |
+|---|---|---|---|---|---|
+
+Rules:
+- Never edit or delete a row; corrections are new rows referencing the old Change ID.
+- Every row requires an approver and a verification-ledger reference before its gate may close.
+- Whole-file replacement only via reviewed edit; previous version becomes SUPERSEDED.

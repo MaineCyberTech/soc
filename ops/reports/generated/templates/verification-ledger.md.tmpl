@@ -1,0 +1,36 @@
+---
+report_id: "{{report_id}}"
+phase: "{{phase}}"
+title: "{{title}}"
+date: "{{YYYY-MM-DD}}"
+classification: INTERNAL
+status: IN PROGRESS
+authority: AUTHORITATIVE-CURRENT
+evidence_refs: []
+source_path: "{{absolute_path_of_instance}}"
+retention_class: canonical-current
+---
+
+# Verification Ledger
+
+**Report ID:** {{report_id}}
+**Date:** {{YYYY-MM-DD}}
+**Status:** IN PROGRESS
+
+---
+
+## 1. Ledger Contract
+
+Append-only rows. A verdict may never be edited; re-verification adds a new row superseding the old one.
+
+## 2. Verification Rows
+
+| Verif ID | Claim ID | Claim Statement | Method | evidence_refs (path#sha256) | Verdict | Date | Actor |
+|---|---|---|---|---|---|---|---|
+| VER-{{NNNN}} | CLM-{{NNNN}} | {{statement}} | {{recompute-hash / replay / inspection}} | {{path}}#{{sha256}} | VERIFIED \| UNVERIFIED \| CONTRADICTED | {{YYYY-MM-DD}} | {{actor}} |
+
+## 3. Verdict Rules
+
+- VERIFIED requires: method stated, evidence hash recomputed matching, no open contradiction rows.
+- UNVERIFIED: default state for any claim lacking a complete row.
+- CONTRADICTED: blocks the claim from citation in current/ until resolved (phase38-57 §5).

@@ -1,0 +1,48 @@
+---
+report_id: "{{report_id}}"
+phase: "{{phase}}"
+title: "{{title}}"
+date: "{{YYYY-MM-DD}}"
+classification: INTERNAL
+status: PASS
+authority: GENERATED-AUDIT
+evidence_refs: []
+source_path: "{{absolute_path_of_instance}}"
+retention_class: generated-cache
+---
+
+# {{Audit Family}} Audit — {{YYYY-MM-DD}}
+
+**Report ID:** {{report_id}}
+**Date:** {{YYYY-MM-DD}}
+**Classification:** INTERNAL
+**Status:** PASS
+
+---
+
+## 1. Scope
+
+Systems, controls, and time window covered by this audit instance.
+
+## 2. Method
+
+Checks executed, tooling versions, and sampling approach.
+
+## 3. Findings
+
+| # | Severity | Finding | Affected Asset | Recommendation |
+|---|---|---|---|---|
+
+Severity scale: P0 (immediate), P1 (this cycle), P2 (backlog).
+
+## 4. Evidence
+
+| Check | Evidence Path | sha256 | Result |
+|---|---|---|---|
+
+## 5. Remediation Tracker
+
+| Finding # | Action | Due | Status |
+|---|---|---|---|
+
+Newest-instance rule applies: this audit supersedes prior instances of the same family for current-truth purposes until findings are folded into current/.
