@@ -17,7 +17,7 @@ Phase 36 executed 76 prompts (00-75) covering disk/retention management, Shuffle
 
 ### 2. Shuffle Workflows
 - **Discovery**: 2 workflows already exist (wazuh-high-severity-to-iris, wazuh-flow-classb-to-iris)
-- **Auth**: RESOLVED — password reset, login works with `P@ssw0rd@`
+- **Auth**: RESOLVED — password reset, login works
 - **Frontend**: EXPOSED on `0.0.0.0:3001` (was `127.0.0.1:3001`)
 - **Executions**: 796 total, all FINISHED
 - **Status**: OPERATIONAL — UI accessible, workflows visible
