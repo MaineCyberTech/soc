@@ -8,7 +8,7 @@ Date: 2026-08-25 (17:35Z)
 |---|---|---|
 | Preflight + change register + observe + zero-alert | 01-04 | FINALIZED: 17h, 8.3M pkts, 0 drops, 0 alerts, 529 rules |
 | Authoritative SID + rule cost + routing matrix | 05-07 | DONE: SID 2027967 canary-eligible, all others observe-only |
-| Canary approval/enable/E2E/dedup/failure/volume | 08-13 | APPROVED + DESIGNED; E2E DEFERRED (agent 016 gap) |
+| Canary approval/enable/E2E/dedup/failure/volume | 08-13 | APPROVED + DESIGNED; E2E PARTIAL (detection proven, forwarding configured, live pipeline blocked - SPAN read-only) |
 | Production routing decision | 14 | DEFERRED (no approval, canary not triggered) |
 | Alert wiring (drop/memcap/resource/ruleset/drift/ingest) | 15-22 | WIRED: 9 checks HEALTHY |
 | Retention wave + disk + capacity | 23-27 | STAGED: 08-15 present, wave ~08-29, disk 84% |

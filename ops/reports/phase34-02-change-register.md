@@ -20,3 +20,10 @@ Date: 2026-08-25
 - Production routing approval (deferred)
 
 ## No secrets
+
+## Changes applied
+- CR-34-03: Agent 016 eve.json forwarding ADDED to ossec.conf (approved)
+  - Backup: /var/ossec/etc/ossec.conf.bak-p34
+  - Added: `<localfile><log_format>json</log_format><location>/var/log/suricata/eve.json</location></localfile>`
+  - Removed duplicate eve.json entry
+  - Agent restarted, active, forwarding confirmed
