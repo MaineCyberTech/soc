@@ -93,6 +93,14 @@ outputs:
             totals: yes
             threads: no
             deltas: no
+  - eve-log:
+      enabled: yes
+      filetype: regular
+      filename: eve-alert.json
+      types:
+        - alert:
+            metadata: yes
+            tagged-packets: no
   - stats:
       enabled: yes
       interval: 60
