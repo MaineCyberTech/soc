@@ -15,6 +15,10 @@ ROOT=${MCT_STACK_ROOT:-/opt/mct-security-stack}
 IFS=',' read -r -a WORKFLOWS <<< "${1:-eb937a37-5244-46dc-95ff-62ad4c681322,e951db98-9a57-4328-8344-09f8b5b9a69f}"
 LIMIT=${2:-500}
 
+LOCKFILE=/tmp/opencode/p39-iris-delivery-check.lock
+exec 9>"$LOCKFILE" || exit 2
+if ! flock -n 9; then echo "SKIP: previous run still holding $LOCKFILE"; exit 0; fi
+
 set -a; source "$ROOT/.env" 2>/dev/null; set +a
 if [ -z "${SHUFFLE_API_KEY:-}" ]; then
   echo "ERROR: SHUFFLE_API_KEY not set (expected via $ROOT/.env)"; exit 2

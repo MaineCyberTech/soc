@@ -28,12 +28,11 @@ _Sources: [SRC: phase39-56]_
 
 ## Canonical Truth & Navigation
 
-- Current operational truth: the latest authoritative current-state final under
-  `ops/reports/generated/` — currently `phase38-49-generate-current-state.md`; superseded
-  only by a newer final per its own supersession statement.
-- Open work ledger: `ops/reports/generated/phase38-47-generate-openwork.md` and
-  `ops/reports/generated/phase38-90-backlog.md`; current change register:
-  `ops/reports/generated/phase39-02-change-register.md`.
+- Current operational truth: `ops/reports/canonical/current/current-state-20260826.md`
+  (Phase-40 refresh; supersedes `phase38-49-generate-current-state.md` pointer-wise;
+  superseded only by a newer current-state doc per its own supersession statement).
+- Open work ledger: `ops/reports/canonical/current/open-work.md`; current change register:
+  `ops/reports/generated/phase40-02-change-register.md` (G40 series).
 - Do not act on any claim older than the canonical current-state doc without re-verification.
 _Sources: [SRC: phase39-56]_
 
@@ -82,17 +81,23 @@ _Sources: [SRC: phase39-56]_
 
 ## Known Blockers
 
-Pointers only — live values live in the linked reports, never here:
+Resolved-in-P40 (details in linked reports; listed to prevent re-litigation):
+field-fix VERIFIED (phase40-13); Wazuh→Shuffle trigger WIRED+PROVEN end-to-end
+(phase40-37/-40); Shuffle TLS implemented on :3443, plaintext LAN exposure closed
+(phase40-32); agent-015 merged.mg defect FIXED (phase40-24); W1/W2 dashboards
+imported 8/8 into the global tenant (phase40-62).
 
-- Field-fix effectiveness proof pending first post-template archive index — see
-  `ops/reports/generated/phase39-28-field-fix-certification.md`.
-- Automated Wazuh→Shuffle trigger not wired — see
-  `ops/reports/generated/phase39-37-wazuh-shuffle-config.md`.
-- Shuffle LAN exposure without TLS — see `ops/reports/generated/phase39-14-shuffle-hardening-design.md`.
-- First policy-driven ISM deletion not yet observed — retention verification reports.
-- Agent connectivity exceptions (013 offline, 015 flapping) — endpoint status reports.
-- Full-cluster restore NO-GO until rehearsal on an approved target — see
-  `ops/reports/generated/phase38-94-deployability.md`.
+Open blockers — pointers only; live values in linked reports, never here:
+
+- Agent 013 SAMSUNG offline — owner device-side action; endpoint status reports.
+- Agent 015 flap remediation — owner device-side; manager-side merged.mg defect fixed
+  (phase40-24).
+- First policy-driven ISM deletion wave not yet observed — window opens 2026-08-29.
+- Packet workflow import + routing proofs DEFERRED by choice until refinement — see
+  `ops/reports/generated/phase40-41-packet-workflow-import.md` and ROUT-PKT-40-01.
+- RTO/RPO sign-off awaiting owner decision — see
+  `ops/reports/generated/phase40-72-rto-rpo-owner-decision.md`.
+- Restore rehearsal NO-GO until an adequate external target is approved.
 _Sources: [SRC: phase39-56]_
 
 ## Credential Handling
@@ -103,6 +108,10 @@ _Sources: [SRC: phase39-56]_
   - Runtime credentials: `/opt/wazuh-docker/multi-node/ops/creds.env` (outside this repo,
     mode 600); scripts consume variables such as `${WAZUH_ADMIN_PASSWORD}` from it.
 - Indexer auth pattern: `curl -sk -u "admin:${WAZUH_ADMIN_PASSWORD}" https://127.0.0.1:9200/…`.
+- Scripting note: reading key files with `$(cat file)` embeds a trailing newline in the
+  value (and therefore in the `Authorization: Bearer …` header), which reproduces
+  intermittent 401s; strip whitespace (`tr -d '[:space:]'` or equivalent) whenever
+  scripting tokens read from files. Lesson from phase40-41 (probes C1 vs E1).
 _Sources: [SRC: phase39-56]_
 
 ## Report Authoring Conventions

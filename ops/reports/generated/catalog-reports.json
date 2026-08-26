@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated_at": "2026-08-25T23:29:51Z",
+  "generated_at": "2026-08-26T01:56:51Z",
   "corpus_root": "/opt/mct-security-stack/ops/reports/generated",
   "phase": 38,
   "hash_algorithm": "sha256",
@@ -1656,6 +1656,216 @@
    "class": "GENERATED-AUDIT",
    "status": "COMPLETE",
    "sha256": "7da33d2f8856d22689043336b9839f33d80d26e6eac7d39e0178a8296be05f40"
+  },
+  {
+   "report_id": "phase40-00-master",
+   "path": "generated/phase40-00-master.md",
+   "title": "Phase 40 Master Orchestrator \u2014 Field-Template Proof Arc Scope, Execution Order, and Verdict Approach",
+   "phase": 40,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "afe53342809000029da7870846a76c294fa66145bc9f0737d6adea458f56fb83"
+  },
+  {
+   "report_id": "phase40-01-preflight",
+   "path": "generated/phase40-01-preflight.md",
+   "title": "Phase 40 Preflight \u2014 Live State Freeze for the Field-Template Proof Arc",
+   "phase": 40,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "ef0afb34b00705ee517e9e16c49d9ce600635561b676b5d3033e3696dae94e2b"
+  },
+  {
+   "report_id": "phase40-02-change-register",
+   "path": "generated/phase40-02-change-register.md",
+   "title": "Phase 40 Change Register \u2014 Gates G40-01..12 (Field-Template Proof Arc)",
+   "phase": 40,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "84e58bcabde9c1595ec675605934ee726ac370f260d474d73c84051e9a17b45d"
+  },
+  {
+   "report_id": "phase40-03-field-proof-readiness",
+   "path": "generated/phase40-03-field-proof-readiness.md",
+   "title": "Phase 40 Field-Proof Readiness \u2014 Checklist Verified Before Adjudicating the Midnight Roll",
+   "phase": 40,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "b7df585da81009c90f5f1057b9dfb2fabc560c6083b61d518e4d0eae4ba3e0a8"
+  },
+  {
+   "report_id": "phase40-04-post-template-index-detect",
+   "path": "generated/phase40-04-post-template-index-detect.md",
+   "title": "Phase 40 DETECTED \u2014 First Post-Template Archive Index wazuh-archives-4.x-2026.08.26 (Creation 00:00:02.420Z)",
+   "phase": 40,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "921df643dce02bfa48775ce80e5c9b7abead52d020ec11d0c67b9737467bdfb2"
+  },
+  {
+   "report_id": "phase40-05-template-simulation",
+   "path": "generated/phase40-05-template-simulation.md",
+   "title": "Phase 40 Template Simulation \u2014 _simulate_index Resolution vs ACTUAL Index State (Simulation Validated by Reality)",
+   "phase": 40,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "002c4c10b9d9276defe75aa39d8f2bc7f77fb8f11df920d4379fd96a4c9652b5"
+  },
+  {
+   "report_id": "phase40-06-field-setting-verify",
+   "path": "generated/phase40-06-field-setting-verify.md",
+   "title": "Phase 40 Effective-Setting Proof \u2014 total_fields.limit=2000 Applied; Conflicting-Override Audit; ISM Attachment Deviation (ISM-40-01)",
+   "phase": 40,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "PARTIAL",
+   "sha256": "cccb17cc02c4da90b4f90be1c1eeb9128b35c6918255adfb4941f2066efc1f54"
+  },
+  {
+   "report_id": "phase40-07-mapped-fields-baseline",
+   "path": "generated/phase40-07-mapped-fields-baseline.md",
+   "title": "Phase 40 Mapped-Field Baseline on 2026.08.26 \u2014 Deep Leaf Count 1580\u21921604, Branch Accounting, Growth Trajectory vs the 2000 Budget",
+   "phase": 40,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "dac7aa6a0cd04a9d339bfcfdb06953ded8fa05213bcf2d0a4603a1f84a76161c"
+  },
+  {
+   "report_id": "phase40-08-rejection-before-after",
+   "path": "generated/phase40-08-rejection-before-after.md",
+   "title": "Phase 40 Rejection Flatline Proof \u2014 ~150/min Stream Ends at 00:00:01.431Z; Every Post-Roll Window Reads ZERO",
+   "phase": 40,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "cbb29ad468688cc6bb26f96c8d4f7b01bf9c0fca2288c9fe6df58d215f80e332"
+  },
+  {
+   "report_id": "phase40-09-representative-ingest",
+   "path": "generated/phase40-09-representative-ingest.md",
+   "title": "Phase 40 Ingest Proof \u2014 44,286 First-Hour Docs \u2192 102,775 by H+1.7h; Event-Class Census; Filebeat Queue Healthy",
+   "phase": 40,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "ca530e8219c1f2e379749e968633e20a574f479f9262a3e1dab32cf2702703c0"
+  },
+  {
+   "report_id": "phase40-10-pipeline-health-after-field",
+   "path": "generated/phase40-10-pipeline-health-after-field.md",
+   "title": "Phase 40 Pipeline Health Post-Cutover \u2014 Clean Logs, GREEN Cluster, Steady Resources, Alert Lane Unaffected",
+   "phase": 40,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "2b2623f6380b6305bf1dfe46618e0bc70035eaf701c17ff273958884b1f6a2d1"
+  },
+  {
+   "report_id": "phase40-11-field-growth-guardrail",
+   "path": "generated/phase40-11-field-growth-guardrail.md",
+   "title": "Phase 40 Field-Growth Guardrail \u2014 Thresholds, Trend Formula, Delivery Script (Created + Executed), Alert Path and Containment",
+   "phase": 40,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "APPLIED",
+   "sha256": "3630200733fd1ff44a61bd694770af52610d634ee52fc015983c1684c08a598f"
+  },
+  {
+   "report_id": "phase40-12-field-fix-rollback",
+   "path": "generated/phase40-12-field-fix-rollback.md",
+   "title": "Phase 40 Rollback Validation \u2014 Delete-Template Semantics Proven Non-Destructive, Priority-Conflict Response, Fallback Designs, Escalation Conditions",
+   "phase": 40,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "fc19a286f1f867251911a2df19b20ab89ccb1e5c83736013e3f265df202c8afa"
+  },
+  {
+   "report_id": "phase40-13-field-fix-certification",
+   "path": "generated/phase40-13-field-fix-certification.md",
+   "title": "Phase 40 Certification \u2014 Field-Limit Fix VERIFIED; Evidence Matrix, Root-Cause Chain Closure, Supersession of Decoder-Based Claims",
+   "phase": 40,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "VERIFIED",
+   "sha256": "9e95fcb2370699ef3f4d03db0c34adf9620c3edcdb76b4f09c13c8fe5e56d867"
+  },
+  {
+   "report_id": "phase40-75-report-current-state-refresh",
+   "path": "/opt/mct-security-stack/ops/reports/generated/phase40-75-report-current-state-refresh.md",
+   "title": "CS-40-01 \u2014 Full Canonical Refresh: New Current-State Snapshot Written to canonical/current/current-state-20260826.md, Open-Work Register Rewritten With P40 Closures and Live Risks",
+   "phase": 40,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "c125f38da5da895993af70a28b40d74ed6a819cc1f390cb9d1ebcfbab35d78fc"
+  },
+  {
+   "report_id": "phase40-76-agents-phase40-audit",
+   "path": "/opt/mct-security-stack/ops/reports/generated/phase40-76-agents-phase40-audit.md",
+   "title": "AGENTS-40-AUDIT \u2014 Full Read of Root AGENTS.md Against Phase-40 Reality; Durable-Fact Drift Findings F-40-x With Severities; Path/Command Validations",
+   "phase": 40,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "b7dfcea3cb911035246860e54d8414f5d346d69c88ded973b2e4f60807092c70"
+  },
+  {
+   "report_id": "phase40-77-agents-gap-repair",
+   "path": "/opt/mct-security-stack/ops/reports/generated/phase40-77-agents-gap-repair.md",
+   "title": "CHG-40-AGENTS-01 \u2014 Minimal Three-Hunk AGENTS.md Refresh: Backup \u2192 Dry-Run Diff \u2192 Apply \u2192 Post-Validate; Before/After Hashes; Register Entry G40-13",
+   "phase": 40,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "0a1c933ff0552336b58ae6d9eab71d5ef2778a96bd49f0c55d94f2ae7cd1324a"
+  },
+  {
+   "report_id": "phase40-78-agents-report-drift",
+   "path": "/opt/mct-security-stack/ops/reports/generated/phase40-78-agents-report-drift.md",
+   "title": "DRIFT-40-01 \u2014 Post-Edit CI Rerun Triple (agents-ci + report-ci + canonical-ci): All PASS; No Volatile Metrics in AGENTS.md; All References Resolve",
+   "phase": 40,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "b20220e7a2ac3a889aeb76eb769e05c228514f2bc179b49b3f917260dd93c78d"
+  },
+  {
+   "report_id": "phase40-79-duplicate-decision",
+   "path": "/opt/mct-security-stack/ops/reports/generated/phase40-79-duplicate-decision.md",
+   "title": "DUP-DEC-40-01 \u2014 Post-Migration Duplicate Recount Verified (3 Groups / 12 Files); Per-Group Adjudication: 2\u00d7 APPROVE Alias-Consolidation, 1\u00d7 DEFER",
+   "phase": 40,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "c5203b1c219433a716640ed3df4d8a9756b88904a515e44ebd1e8e1c95994faf"
+  },
+  {
+   "report_id": "phase40-80-duplicate-apply",
+   "path": "/opt/mct-security-stack/ops/reports/generated/phase40-80-duplicate-apply.md",
+   "title": "DUP-APP-40-01 \u2014 Machine-Readable Alias Ledger CREATED (canonical/ledgers/source-map-aliases.json); 2 Rows Applied Non-Destructively; Zero Deletions Verified",
+   "phase": 40,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "c49f1cec8a0a190dd7e994725bb77fc7671c848f2c95d5bccf51d830125028ac"
+  },
+  {
+   "report_id": "phase40-81-securityonion-stop-decision",
+   "path": "/opt/mct-security-stack/ops/reports/generated/phase40-81-securityonion-stop-decision.md",
+   "title": "SO-DEC-40-01 \u2014 RETIRED Chain Verified, Zero Remaining Dependencies, Evidence Volumes Untouched \u2192 APPROVE STOP; EXECUTED docker stop security-onion (Exit 0); Rollback = docker start",
+   "phase": 40,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "32d2af4d750e4144e8c168fcfc0579fe654a392dbe067dfac2b5c4e7ea82190d"
   }
  ]
 }

@@ -18,7 +18,7 @@ services:
     container_name: shuffle-frontend
     hostname: shuffle-frontend
     ports:
-      - "192.168.222.149:3001:80"
+      - "127.0.0.1:3001:80"
     networks:
       - mct-security
       - multi-node_default
@@ -116,6 +116,19 @@ services:
     restart: unless-stopped
     mem_limit: 1536m
     profiles: ["shuffle"]
+
+  shuffle-tls-proxy:
+    image: nginx@sha256:46ccc48fbb1f5a43167f2ee2c279c122b96eec5d976e7f4e1e0780f59a51b4d6
+    container_name: shuffle-tls-proxy
+    restart: unless-stopped
+    ports:
+      - "192.168.222.149:3443:443"
+    volumes:
+      - ../config/shuffle-tls/nginx-shuffle-proxy.conf:/etc/nginx/conf.d/default.conf:ro
+      - ../config/shuffle-tls/shuffle-mgmt.crt:/etc/nginx/certs/shuffle-mgmt.crt:ro
+      - ../config/shuffle-tls/shuffle-mgmt.key:/etc/nginx/certs/shuffle-mgmt.key:ro
+    networks:
+      - mct-security
 
 volumes:
   shuffle-database:

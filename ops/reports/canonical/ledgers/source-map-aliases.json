@@ -1,0 +1,44 @@
+{
+  "ledger": "source-map-aliases",
+  "description": "Machine-readable duplicate-alias map: original_path -> canonical twin. Rows are advisory (no file deletions performed); both names remain resolvable on disk. Promotion of the inline table from phase39-86 per its P40 promotion plan.",
+  "created_utc": "2026-08-26T02:50:00Z",
+  "decision_id": "DUP-DEC-40-01",
+  "apply_id": "DUP-APP-40-01",
+  "method": "source-map entries ONLY; zero deletions; approval basis = pack instruction + non-destructive method",
+  "supersedes_inline_table": "ops/reports/generated/phase39-86-duplicate-collapse.md section 3 (historical record retained)",
+  "rows": [
+    {
+      "original_path": "ops/reports/phase37-81-final.md",
+      "canonical_path": "ops/reports/final-phase37-operator-report-20260825-1943Z.md",
+      "relationship": "duplicate-alias",
+      "sha256": "ef6e5a84644dacdedd60c89d1ba5a8dbb306278ef93aec7aaf287c50b411fd90",
+      "group": "DUP-39-B",
+      "canonical_rule": "finals keep filename-stem IDs (source-map rule R1)",
+      "retention_class": "PHASE-FINAL / LONG",
+      "protected_evidence_overlap": false,
+      "decided_by": "DUP-DEC-40-01",
+      "applied_utc": "2026-08-26T02:50:00Z"
+    },
+    {
+      "original_path": "ops/reports/phase5-current-resource-state.md",
+      "canonical_path": "ops/reports/resource-trend-20260811-070615.md",
+      "relationship": "duplicate-alias",
+      "sha256": "fdad4fe16f91b4f432bcbc4048c6788310f457aa4db701742dfdbfb070fbe9c7",
+      "group": "DUP-39-C",
+      "canonical_rule": "dated instance wins within family (source-map section 4)",
+      "retention_class": "GENERATED-AUDIT",
+      "protected_evidence_overlap": false,
+      "decided_by": "DUP-DEC-40-01",
+      "applied_utc": "2026-08-26T02:50:00Z"
+    }
+  ],
+  "deferred_groups": [
+    {
+      "group": "DUP-39-A",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "members_pattern": "ops/reports/phase33-6[1-8]-.md (8 files, zero-byte)",
+      "reason": "aliasing eight empty stubs to one empty file adds no information; stub disposition governed by phase39-85 catalog marking",
+      "status": "DEFERRED"
+    }
+  ]
+}
