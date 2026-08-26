@@ -134,7 +134,7 @@
           "id": "",
           "name": "headers",
           "example": "",
-          "value": "{\"Authorization\": \"Bearer stCG-82yR5cBd6CFUepZcJAENSMmvHieVEjeZ7Ajd2FZ4ExFPI46nEQVsruDUlpJ\", \"Content-Type\": \"application/json\"}",
+          "value": "{\"Authorization\": \"Bearer [REDACTED-IRIS-TOKEN]\", \"Content-Type\": \"application/json\"}",
           "multiline": false,
           "multiselect": false,
           "options": null,

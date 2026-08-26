@@ -18,7 +18,7 @@ services:
     container_name: shuffle-frontend
     hostname: shuffle-frontend
     ports:
-      - "0.0.0.0:3001:80"
+      - "192.168.222.149:3001:80"
     networks:
       - mct-security
       - multi-node_default

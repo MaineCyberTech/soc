@@ -13,12 +13,12 @@ Date: 2026-08-25
 - Password for soc@mainecybertech.com unknown/forgotten
 
 ## Workaround
-- Bearer token API access works: 0c953f60-5cca-45b2-95f3-27373f4921ca
+- Bearer token API access works: [REDACTED-SHUFFLE-TOKEN]
 - Session cookie works: dafcb7df-20a2-496f-a92e-33ef23e429b7
 
 ## Resolution — RESOLVED
 - Password hash updated in OpenSearch (`soc@mainecybertech.com`)
-- Login: SUCCESS with `P@ssw0rd@`
+- Login: SUCCESS with `[REDACTED-PW]`
 - Shuffle frontend: exposed on `0.0.0.0:3001` (was `127.0.0.1:3001`)
 - URL: `http://192.168.222.149:3001`
 - **Operator**: change password after first login (Settings)

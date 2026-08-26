@@ -87,7 +87,7 @@ Date: YYYY-MM-DD
 **Phase:** N
 **Timestamp:** YYYY-MM-DDThh:mmZ
 **Classification:** INTERNAL
-**Status:** ...
+**Status:** UNKNOWN (placeholder — value never populated)
 **Source Path:** ...
 ```
 

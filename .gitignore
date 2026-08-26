@@ -32,6 +32,7 @@ ops/reports/*.log
 ops/reports/vm103-*.log
 
 # White-label real values (never commit)
+config/shuffle-api-key
 config/brand.yml
 config/clients/
 __pycache__/

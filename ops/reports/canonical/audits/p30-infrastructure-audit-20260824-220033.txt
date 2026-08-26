@@ -1,0 +1,366 @@
+# host
+Linux docker 6.12.101+deb13-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.12.101-1 (2026-08-05) x86_64 GNU/Linux
+ 22:00:33 up 2 days, 17:21,  3 users,  load average: 2.16, 1.89, 1.26
+               total        used        free      shared  buff/cache   available
+Mem:            15Gi        12Gi       430Mi       1.5Gi       3.9Gi       2.3Gi
+Swap:          8.0Gi       8.0Gi       7.1Mi
+Filesystem     Type      Size  Used Avail Use% Mounted on
+udev           devtmpfs  7.6G     0  7.6G   0% /dev
+tmpfs          tmpfs     1.6G  4.0M  1.6G   1% /run
+/dev/sda1      ext4      148G  118G   24G  84% /
+tmpfs          tmpfs     7.6G     0  7.6G   0% /dev/shm
+efivarfs       efivarfs  256K   76K  176K  30% /sys/firmware/efi/efivars
+tmpfs          tmpfs     5.0M     0  5.0M   0% /run/lock
+tmpfs          tmpfs     1.0M     0  1.0M   0% /run/credentials/systemd-journald.service
+tmpfs          tmpfs     1.0M     0  1.0M   0% /run/credentials/systemd-resolved.service
+tmpfs          tmpfs     7.6G  6.8G  844M  90% /tmp
+/dev/sda15     vfat      124M  8.9M  115M   8% /boot/efi
+tmpfs          tmpfs     1.0M     0  1.0M   0% /run/credentials/systemd-networkd.service
+tmpfs          tmpfs     1.0M     0  1.0M   0% /run/credentials/getty@tty1.service
+tmpfs          tmpfs     1.6G  4.0K  1.6G   1% /run/user/0
+tmpfs          tmpfs     1.0M     0  1.0M   0% /run/credentials/serial-getty@ttyS0.service
+tmpfs          tmpfs     1.6G  4.0K  1.6G   1% /run/user/1000
+Filesystem     Inodes IUsed IFree IUse% Mounted on
+udev             1.9M   385  1.9M    1% /dev
+tmpfs            1.9M  1.7K  1.9M    1% /run
+/dev/sda1        9.4M  590K  8.8M    7% /
+tmpfs            1.9M     1  1.9M    1% /dev/shm
+efivarfs            0     0     0     - /sys/firmware/efi/efivars
+tmpfs            1.9M     2  1.9M    1% /run/lock
+tmpfs            1.0K     1  1023    1% /run/credentials/systemd-journald.service
+tmpfs            1.0K     1  1023    1% /run/credentials/systemd-resolved.service
+tmpfs            1.0M  395K  630K   39% /tmp
+/dev/sda15          0     0     0     - /boot/efi
+tmpfs            1.0K     1  1023    1% /run/credentials/systemd-networkd.service
+tmpfs            1.0K     1  1023    1% /run/credentials/getty@tty1.service
+tmpfs            389K    28  389K    1% /run/user/0
+tmpfs            1.0K     1  1023    1% /run/credentials/serial-getty@ttyS0.service
+tmpfs            389K    27  389K    1% /run/user/1000
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+ens18            UP             192.168.222.149/24 metric 100 fe80::34:bdff:fe21:a3f8/64 
+docker0          UP             172.17.0.1/16 fe80::607b:61ff:feb9:33de/64 
+br-1479c9821b36  UP             172.23.0.1/16 fe80::5062:4cff:feac:e23c/64 
+br-27a70d8d5cb1  UP             172.22.0.1/16 fe80::4e2:62ff:fe79:4d62/64 
+br-a2e58ba5942a  UP             172.19.0.1/16 fe80::7043:13ff:fea5:364d/64 
+br-bd4a8b6d0ef1  DOWN           192.168.102.1/24 fe80::d05a:c6ff:fea4:633b/64 
+docker_gwbridge  UP             172.21.0.1/16 fe80::109c:77ff:fe58:2ffd/64 
+br-e640d29a50d0  UP             172.20.0.1/16 fe80::78fb:9aff:fedc:2cd2/64 
+br-fde6df06b7b6  UP             172.18.0.1/16 fe80::dc6f:39ff:fef1:b4b2/64 
+veth266bc03@if2  UP             fe80::bc89:afff:fefe:15f6/64 
+veth30cdb42@if2  UP             fe80::f40b:76ff:feaa:7022/64 
+vethd677dae@if2  UP             fe80::cd5:80ff:fe2b:b807/64 
+veth6d66092@if2  UP             fe80::cc8a:54ff:fe62:68fc/64 
+veth54c07d0@if2  UP             fe80::6ccf:70ff:fec6:d913/64 
+veth6a1795e@if2  UP             fe80::40ee:c4ff:feb5:2f6e/64 
+vethd83b2fc@if2  UP             fe80::881:c4ff:fef3:82ef/64 
+veth358cd04@if2  UP             fe80::a889:11ff:fe11:ff3d/64 
+veth5191039@if2  UP             fe80::286e:85ff:feea:b83f/64 
+veth5f04a23@if2  UP             fe80::dcf1:24ff:fe68:b2d2/64 
+vetha458e5a@if2  UP             fe80::14a7:caff:fe19:3da8/64 
+veth782b077@if2  UP             fe80::848c:eaff:fe5a:95d2/64 
+vethaa7a9aa@if3  UP             fe80::f48e:bdff:fee3:8d95/64 
+vethb6aa2be@if3  UP             fe80::bc83:5dff:fe1d:6d1f/64 
+veth98939c0@if3  UP             fe80::b0c2:88ff:fe9c:9198/64 
+veth08b6545@if3  UP             fe80::5450:8bff:fe6d:a977/64 
+vethab8abce@if4  UP             fe80::7424:f3ff:feb9:8666/64 
+veth59603c7@if2  UP             fe80::5016:d0ff:fe5e:1e6e/64 
+veth9b9e925@if49 UP             fe80::948c:b0ff:feed:1aa1/64 
+vethed756f6@if2458 UP             fe80::247e:88ff:fecd:2752/64 
+veth14d639d@if2488 UP             fe80::90e2:e0ff:fe93:42a4/64 
+veth81573f2@if2504 UP             fe80::1c4e:33ff:fee2:af8b/64 
+veth94d1ba7@if2514 UP             fe80::a88a:faff:fe63:242b/64 
+veth0acae6d@if2  UP             fe80::48b9:f9ff:fe5b:950a/64 
+vethce68d96@if2  UP             fe80::744b:ff:fefc:bd1c/64 
+vethd5a0be6@if2  UP             fe80::7c3a:3aff:fe03:d86f/64 
+vethea654d7@if2  UP             fe80::44d1:59ff:fe1f:6b46/64 
+veth7650f8a@if2  UP             fe80::a8be:8fff:fe65:ccb/64 
+vethcda75b8@if2  UP             fe80::1472:36ff:fea0:afbc/64 
+vethc8c0cd1@if2  UP             fe80::851:53ff:fef2:4253/64 
+veth84ea923@if2  UP             fe80::589a:47ff:febc:a0c5/64 
+veth3f4b5a0@if2  UP             fe80::d5:22ff:fe5e:1a31/64 
+vethe0fa34f@if2  UP             fe80::1c24:6ff:feb9:7440/64 
+vethb8b5f60@if2  UP             fe80::dc50:3aff:feb2:b0db/64 
+veth167949a@if2  UP             fe80::1c1e:ceff:fe0b:564a/64 
+vethc7bbe4d@if3  UP             fe80::54cc:41ff:fe0c:1ef/64 
+veth127559a@if2  UP             fe80::ac3e:1bff:fedc:cc29/64 
+vethcaf0c02@if2  UP             fe80::6c9e:6dff:fe6e:d72a/64 
+veth1022cf4@if2  UP             fe80::9cfd:48ff:fe99:2ede/64 
+veth4d04887@if2  UP             fe80::c871:f6ff:fe39:efa/64 
+vethedb8d2d@if3  UP             fe80::b885:c1ff:fe02:213d/64 
+default via 192.168.222.1 dev ens18 proto dhcp src 192.168.222.149 metric 100 
+172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 
+172.18.0.0/16 dev br-fde6df06b7b6 proto kernel scope link src 172.18.0.1 
+172.19.0.0/16 dev br-a2e58ba5942a proto kernel scope link src 172.19.0.1 
+172.20.0.0/16 dev br-e640d29a50d0 proto kernel scope link src 172.20.0.1 
+172.21.0.0/16 dev docker_gwbridge proto kernel scope link src 172.21.0.1 
+172.22.0.0/16 dev br-27a70d8d5cb1 proto kernel scope link src 172.22.0.1 
+172.23.0.0/16 dev br-1479c9821b36 proto kernel scope link src 172.23.0.1 
+192.168.102.0/24 dev br-bd4a8b6d0ef1 proto kernel scope link src 192.168.102.1 linkdown 
+192.168.222.0/24 dev ens18 proto kernel scope link src 192.168.222.149 metric 100 
+192.168.222.1 dev ens18 proto dhcp scope link src 192.168.222.149 metric 100 
+# docker
+CONTAINER ID   IMAGE                                        COMMAND                  CREATED             STATUS                           PORTS                                                                                                                                                                                                                                                          NAMES
+e95daafc747a   frikky/shuffle:shufflehealthcheck_1.1.0      "python app.py --log…"   20 minutes ago      Up 19 minutes                                                                                                                                                                                                                                                                                   shufflehealthcheck_1-1-0.1.nvg6x8g2jx7bpw915ch1qam3m
+9899c430f4eb   frikky/shuffle:shufflehealthcheck_1.1.0      "python app.py --log…"   20 minutes ago      Up 20 minutes                                                                                                                                                                                                                                                                                   shufflehealthcheck_1-1-0.2.pqh2n5141siis79fkmq1jent3
+836d9aa4cfaf   cloudflare/cloudflared:latest                "cloudflared --no-au…"   About an hour ago   Up About an hour                                                                                                                                                                                                                                                                                wazuh-cloudflared
+44a18afbfda3   thinkst/opencanary                           "opencanaryd --dev -…"   About an hour ago   Up About an hour                 0.0.0.0:21->21/tcp, [::]:21->21/tcp, 0.0.0.0:23->23/tcp, [::]:23->23/tcp, 0.0.0.0:1433->1433/tcp, [::]:1433->1433/tcp, 0.0.0.0:3306->3306/tcp, [::]:3306->3306/tcp, 0.0.0.0:8008->8008/tcp, [::]:8008->8008/tcp, 0.0.0.0:9100->9100/tcp, [::]:9100->9100/tcp   mct-security-stack-opencanary-1
+af13ecca48d1   python:3-alpine                              "python /relay.py"       About an hour ago   Up About an hour                                                                                                                                                                                                                                                                                flow-relay
+e6aaac958984   45baad7ec2ea                                 "python app.py --log…"   About an hour ago   Exited (137) 19 minutes ago                                                                                                                                                                                                                                                                     shufflehealthcheck_1-1-0.2.d4r6f4y8452ffr2og5bojz9gf
+e745806b9b2a   balabit/syslog-ng                            "/usr/local/bin/entr…"   About an hour ago   Up About an hour (healthy)       601/tcp, 514/udp, 6514/tcp                                                                                                                                                                                                                                     security-onion
+7a67f37c309f   45baad7ec2ea                                 "python app.py --log…"   About an hour ago   Exited (137) 19 minutes ago                                                                                                                                                                                                                                                                     shufflehealthcheck_1-1-0.1.rka5d9nwn0aj9v7byi6lt0uqd
+e1eb125493b9   45baad7ec2ea                                 "python app.py --log…"   About an hour ago   Exited (137) About an hour ago                                                                                                                                                                                                                                                                  shufflehealthcheck_1-1-0.2.3l67ito0qrpmr26j5dylpzr9k
+8f6a40475f10   tenzir/tenzir                                "tenzir-node '--comm…"   About an hour ago   Up About an hour                                                                                                                                                                                                                                                                                tenzir-node
+84c22cea42b3   ghcr.io/shuffle/shuffle-worker               "./worker"               About an hour ago   Up About an hour                                                                                                                                                                                                                                                                                shuffle-workers.1.paeow7xmfoh3lhuvub3bb7mhh
+7e0c6d1aff52   ghcr.io/shuffle/shuffle-frontend             "/entrypoint.sh ngin…"   About an hour ago   Up 31 seconds                    443/tcp, 127.0.0.1:3001->80/tcp                                                                                                                                                                                                                                shuffle-frontend
+664b9f7707c3   ghcr.io/shuffle/shuffle-backend              "./shufflebackend"       About an hour ago   Up About an hour                 127.0.0.1:5001->5001/tcp                                                                                                                                                                                                                                       shuffle-backend
+3b78e54b412a   ghcr.io/shuffle/shuffle-orborus              "./orborus"              About an hour ago   Up About an hour                                                                                                                                                                                                                                                                                shuffle-orborus
+df8828bb5570   ebebd9c68c69                                 "/bin/sh -c 'python …"   2 hours ago         Up 2 hours                                                                                                                                                                                                                                                                                      shuffle-subflow_1-1-0.1.p7x3f6yqe1ym6h710muk3zli2
+81d21c91c271   frikky/shuffle:email_1.3.0                   "/bin/sh -c 'python …"   2 hours ago         Up 2 hours                                                                                                                                                                                                                                                                                      email_1-3-0.2.qndcq6xgm5ofbijj67li28g2u
+226e3722e513   2fe71e05a9d8                                 "python app.py --log…"   2 hours ago         Exited (137) About an hour ago                                                                                                                                                                                                                                                                  shufflehealthcheck_1-1-0.2.nedww0tlw0z8at5fvoebppxyr
+cd89f2c62ac8   frikky/shuffle:shuffle-ai_1.1.0              "python app.py --log…"   2 hours ago         Up 2 hours                                                                                                                                                                                                                                                                                      shuffle-ai_1-1-0.2.fbo1ih0bb35lu8oxa2n3p7ssa
+9538e88683f1   frikky/shuffle:http_1.4.0                    "/bin/sh -c 'python …"   2 hours ago         Up 2 hours                                                                                                                                                                                                                                                                                      http_1-4-0.2.xzyupsp5p1oc2fcxfusymbbnn
+71ff3b5b0504   frikky/shuffle:shuffle-tools_1.2.0           "python app.py --log…"   2 hours ago         Up 2 hours                                                                                                                                                                                                                                                                                      shuffle-tools_1-2-0.1.bqcjvi3l67793snaukez4s0tu
+b90e14a182c7   ghcr.io/shuffle/shuffle-worker:latest        "./worker"               2 hours ago         Exited (2) About an hour ago                                                                                                                                                                                                                                                                    shuffle-workers.1.sfiti2g2umb8a4pzhthvfzonf
+3d2a849bba8b   ebebd9c68c69                                 "/bin/sh -c 'python …"   2 hours ago         Up 2 hours                                                                                                                                                                                                                                                                                      shuffle-subflow_1-1-0.2.sdetdg1e33rtc123kdlqxom3h
+127753f0b698   frikky/shuffle:http_1.4.0                    "/bin/sh -c 'python …"   2 hours ago         Up 2 hours                                                                                                                                                                                                                                                                                      http_1-4-0.1.m29kerearj7gw3midzgqis36i
+d86a6f698c6f   frikky/shuffle:shuffle-tools_1.2.0           "python app.py --log…"   2 hours ago         Up 2 hours                                                                                                                                                                                                                                                                                      shuffle-tools_1-2-0.2.qy9dazim1o4rbq7og8tzsckjx
+dac14459b3d7   2fe71e05a9d8                                 "python app.py --log…"   2 hours ago         Exited (137) About an hour ago                                                                                                                                                                                                                                                                  shufflehealthcheck_1-1-0.1.sn93tk0qg35c1pem331efwetm
+d169ce5895b6   frikky/shuffle:shuffle-ai_1.1.0              "python app.py --log…"   2 hours ago         Up 2 hours                                                                                                                                                                                                                                                                                      shuffle-ai_1-1-0.1.fe9n0u5m5zhyg1gpgkh2vpo2w
+1becce25a521   frikky/shuffle:email_1.3.0                   "/bin/sh -c 'python …"   2 hours ago         Up 2 hours                                                                                                                                                                                                                                                                                      email_1-3-0.1.6gf0y60lucibshlcd1xnxazdb
+88dd72b73249   2fe71e05a9d8                                 "python app.py --log…"   2 hours ago         Exited (137) 2 hours ago                                                                                                                                                                                                                                                                        shufflehealthcheck_1-1-0.1.brosfcj49ketoqk3ix9mnimbz
+64b24aa5e6b2   a1716e26760f                                 "python app.py --log…"   3 hours ago         Exited (137) 2 hours ago                                                                                                                                                                                                                                                                        shufflehealthcheck_1-1-0.1.tkq3gfhmtuzhtaqpkqsx7vyio
+9f7c74a335a1   frikky/shuffle:http_1.4.0                    "/bin/sh -c 'python …"   2 days ago          Exited (137) 2 hours ago                                                                                                                                                                                                                                                                        http_1-4-0.1.6n52rmyy71bc0b08gcartgeuw
+2910c7360538   frikky/shuffle:email_1.3.0                   "/bin/sh -c 'python …"   2 days ago          Exited (137) 2 hours ago                                                                                                                                                                                                                                                                        email_1-3-0.2.grgqp1wsgkez6t219tr9ucgfi
+942c02fa3919   frikky/shuffle:shuffle-ai_1.1.0              "python app.py --log…"   2 days ago          Exited (137) 2 hours ago                                                                                                                                                                                                                                                                        shuffle-ai_1-1-0.2.8h1b478gire0jwmm43z76t6v5
+f59cf5ff52c2   frikky/shuffle:shuffle-tools_1.2.0           "python app.py --log…"   2 days ago          Exited (137) 2 hours ago                                                                                                                                                                                                                                                                        shuffle-tools_1-2-0.2.t0m5rcu2o2918iz5ioos2jf4v
+f012388d5741   frikky/shuffle:email_1.3.0                   "/bin/sh -c 'python …"   2 days ago          Exited (137) 2 hours ago                                                                                                                                                                                                                                                                        email_1-3-0.1.tjbwb6879dw58sd1iap41obfn
+94b3b8ace83e   ebebd9c68c69                                 "/bin/sh -c 'python …"   2 days ago          Exited (137) 2 hours ago                                                                                                                                                                                                                                                                        shuffle-subflow_1-1-0.1.qnaxha3m61pi0s66tiss11zsr
+3f57ddb6f5ae   frikky/shuffle:http_1.4.0                    "/bin/sh -c 'python …"   2 days ago          Exited (137) 2 hours ago                                                                                                                                                                                                                                                                        http_1-4-0.2.8am970n9e61tky5x1anog7323
+4fff24497e0d   frikky/shuffle:shuffle-tools_1.2.0           "python app.py --log…"   2 days ago          Exited (137) 2 hours ago                                                                                                                                                                                                                                                                        shuffle-tools_1-2-0.1.k70wbbis9hfo6t7hhvk9qxqqt
+4b1f32bd7844   frikky/shuffle:shuffle-ai_1.1.0              "python app.py --log…"   2 days ago          Exited (137) 2 hours ago                                                                                                                                                                                                                                                                        shuffle-ai_1-1-0.1.qmvg159beiyiy4jnk10kz4v0o
+6a0729cab862   ebebd9c68c69                                 "/bin/sh -c 'python …"   2 days ago          Exited (137) 2 hours ago                                                                                                                                                                                                                                                                        shuffle-subflow_1-1-0.2.ttyy6n9h1mo7qgew4s96bslve
+90bcfe10ed19   ghcr.io/shuffle/shuffle-worker:latest        "./worker"               2 days ago          Exited (2) 2 hours ago                                                                                                                                                                                                                                                                          shuffle-workers.1.iaf9abj4ec76ny4y626jbm5hg
+cafd3710aabe   wazuh/wazuh-manager:4.14.7                   "/init"                  9 days ago          Up 2 hours                       1514/tcp, 0.0.0.0:1515->1515/tcp, 514/udp, 1516/tcp, 0.0.0.0:15140->15140/tcp, 0.0.0.0:15140->15140/udp, 127.0.0.1:55000->55000/tcp                                                                                                                            multi-node-wazuh.master-1
+8183a7a3839b   wazuh/wazuh-manager:4.14.7                   "/init"                  13 days ago         Created                                                                                                                                                                                                                                                                                         tmp-wazuh4
+4e1a0c430378   ghcr.io/dfir-iris/iriswebapp_nginx:v2.4.29   "/entrypoint.sh"         2 weeks ago         Up 2 days (healthy)              80/tcp, 127.0.0.1:8443->8443/tcp                                                                                                                                                                                                                               iriswebapp_nginx
+0ef0a302c8e2   wazuh/wazuh-manager:4.14.7                   "/init"                  2 weeks ago         Up 2 days                        1514-1516/tcp, 514/udp, 55000/tcp                                                                                                                                                                                                                              multi-node-wazuh.worker-1
+5267fd450c8f   ghcr.io/dfir-iris/iriswebapp_app:v2.4.29     "./wait-for-irisweba…"   2 weeks ago         Up 2 days                                                                                                                                                                                                                                                                                       iriswebapp_worker
+04b521db7d96   ghcr.io/dfir-iris/iriswebapp_app:v2.4.29     "nohup ./iris-entryp…"   2 weeks ago         Up 2 days                                                                                                                                                                                                                                                                                       iriswebapp_app
+e484bfdb245f   ghcr.io/dfir-iris/iriswebapp_db:v2.4.29      "docker-entrypoint.s…"   2 weeks ago         Up 2 days                        5432/tcp                                                                                                                                                                                                                                                       iriswebapp_db
+16dcfb70b5d0   rabbitmq:3-management-alpine                 "docker-entrypoint.s…"   2 weeks ago         Up 2 days                        4369/tcp, 5671-5672/tcp, 15671-15672/tcp, 15691-15692/tcp, 25672/tcp                                                                                                                                                                                           iriswebapp_rabbitmq
+54e2dff802be   opensearchproject/opensearch:3.2.0           "./opensearch-docker…"   2 weeks ago         Up 2 days                        9200/tcp, 9300/tcp, 9600/tcp, 9650/tcp                                                                                                                                                                                                                         shuffle-opensearch
+2fb96edf7ccc   opensearchproject/opensearch:2.19.5          "./opensearch-docker…"   2 weeks ago         Created                                                                                                                                                                                                                                                                                         opensearch-plugin-src
+e36a26b4cda3   elastiflow/flow-collector:7.26.2             "/bin/sh -c $BINARY_…"   2 weeks ago         Up 2 days                                                                                                                                                                                                                                                                                       elastiflow
+60fcc5e5d9d6   wazuh/wazuh-indexer:4.14.7                   "/entrypoint.sh open…"   2 weeks ago         Up 2 days                        127.0.0.1:9200->9200/tcp                                                                                                                                                                                                                                       multi-node-wazuh1.indexer-1
+9a7874617221   wazuh/wazuh-indexer:4.14.7                   "/entrypoint.sh open…"   2 weeks ago         Up 2 days                        9200/tcp                                                                                                                                                                                                                                                       multi-node-wazuh2.indexer-1
+107a57791db2   wazuh/wazuh-indexer:4.14.7                   "/entrypoint.sh open…"   2 weeks ago         Up 2 days                        9200/tcp                                                                                                                                                                                                                                                       multi-node-wazuh3.indexer-1
+0bc1f5b17eb4   portainer/portainer-ce:sts                   "/portainer"             2 weeks ago         Up 2 days                        0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp, 0.0.0.0:9443->9443/tcp, [::]:9443->9443/tcp, 9000/tcp                                                                                                                                                             portainer
+0164c90c8626   nginx:stable                                 "/docker-entrypoint.…"   2 weeks ago         Up 2 days                        80/tcp, 0.0.0.0:1514->1514/tcp                                                                                                                                                                                                                                 multi-node-nginx-1
+facf49243ce0   wazuh/wazuh-dashboard:4.14.7                 "/entrypoint.sh"         2 weeks ago         Up 2 days                        443/tcp, 127.0.0.1:443->5601/tcp                                                                                                                                                                                                                               multi-node-wazuh.dashboard-1
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          102       30        17.17GB   1.777GB (10%)
+Containers      57        36        1.033GB   8.411MB (0%)
+Local Volumes   47        39        52.44GB   274.7MB (0%)
+Build Cache     0         0         0B        0B
+NETWORK ID     NAME                       DRIVER    SCOPE
+5e2de7637e71   bridge                     bridge    local
+dec8bb300aa0   docker_gwbridge            bridge    local
+dfab4c033a19   host                       host      local
+4fiax9sxq3ef   ingress                    overlay   swarm
+1479c9821b36   iris_backend               bridge    local
+27a70d8d5cb1   iris_frontend              bridge    local
+e640d29a50d0   mct-security               bridge    local
+fde6df06b7b6   multi-node_default         bridge    local
+81b7f667794f   none                       null      local
+a2e58ba5942a   portainer_network          bridge    local
+t1rv43olc7ev   shuffle_swarm_executions   overlay   swarm
+bd4a8b6d0ef1   tenzir-network             bridge    local
+DRIVER    VOLUME NAME
+local     0dae030d7b380bacbaef7f77795b4e2e61279495d80b2bab2c836de7c9b363c6
+local     0e07331dd4e226ca48b17a7c309dc36f7bcceac6f32ab3b94941f1bc442ca3f4
+local     6d3670161f7923b3cc8c5dd06aa0f2a0ae2cdd6fc0f6d9ae7243e735e2e20045
+local     9bc3af8a634ec35aa888978ba481821b751d5b2d6824c1b25c707e39b3fe5022
+local     825e07d41c01e633becec97c0c7eab961f18de7ee66fdd45d8eabf0ad0b95b91
+local     847a604c962bc64ef19bbd486f9274ebdbe705a7155eaee3feae8c1d32986ebe
+local     cd0b79848b4289221beeba9103b8f58fb0d672fe0da06ac22957814cafa752e8
+local     e17b839ddcd3668bc53a95c9c2e981e9490fd9dde9f15a60eaf5f1d341d726ec
+local     e74a8e0917dbbebe2fff4ddaa24bc961c9e40f447ebb0b0f1be714317662342e
+local     f2ffc3960c7c38db4422eac02264bc801315258fbe14c654c7458457174fe887
+local     f675e37a850e9c98f579dcb54bd3042d5c79902ac1f2d3e1958813e4898ae596
+local     iris-web_db_data
+local     iris-web_iris-downloads
+local     iris-web_server_data
+local     iris-web_user_templates
+local     mct-security-stack_opencanary-logs
+local     mct-security-stack_shuffle-database
+local     multi-node_elastiflow-data
+local     multi-node_master-filebeat-etc
+local     multi-node_master-filebeat-var
+local     multi-node_master-wazuh-active-response
+local     multi-node_master-wazuh-agentless
+local     multi-node_master-wazuh-api-configuration
+local     multi-node_master-wazuh-etc
+local     multi-node_master-wazuh-integrations
+local     multi-node_master-wazuh-logs
+local     multi-node_master-wazuh-queue
+local     multi-node_master-wazuh-var-multigroups
+local     multi-node_master-wazuh-wodles
+local     multi-node_security-onion-persist
+local     multi-node_wazuh-dashboard-config
+local     multi-node_wazuh-dashboard-custom
+local     multi-node_wazuh-indexer-data-1
+local     multi-node_wazuh-indexer-data-2
+local     multi-node_wazuh-indexer-data-3
+local     multi-node_worker-filebeat-etc
+local     multi-node_worker-filebeat-var
+local     multi-node_worker-wazuh-active-response
+local     multi-node_worker-wazuh-agentless
+local     multi-node_worker-wazuh-api-configuration
+local     multi-node_worker-wazuh-etc
+local     multi-node_worker-wazuh-integrations
+local     multi-node_worker-wazuh-logs
+local     multi-node_worker-wazuh-queue
+local     multi-node_worker-wazuh-var-multigroups
+local     multi-node_worker-wazuh-wodles
+local     portainer_data
+# services
+  UNIT LOAD ACTIVE SUB DESCRIPTION
+
+0 loaded units listed.
+NEXT                            LEFT LAST                               PASSED UNIT                         ACTIVATES
+Tue 2026-08-25 00:00:00 UTC 1h 59min Mon 2026-08-24 00:00:01 UTC       22h ago dpkg-db-backup.timer         dpkg-db-backup.service
+Tue 2026-08-25 00:00:00 UTC 1h 59min Mon 2026-08-24 00:00:01 UTC       22h ago exim4-base.timer             exim4-base.service
+Tue 2026-08-25 04:31:28 UTC       6h Mon 2026-08-24 03:01:01 UTC       18h ago man-db.timer                 man-db.service
+Tue 2026-08-25 04:54:41 UTC       6h Mon 2026-08-24 04:54:41 UTC       17h ago systemd-tmpfiles-clean.timer systemd-tmpfiles-clean.service
+Tue 2026-08-25 06:39:15 UTC       8h Mon 2026-08-24 06:22:09 UTC       15h ago apt-daily-upgrade.timer      apt-daily-upgrade.service
+Tue 2026-08-25 08:48:29 UTC      10h Mon 2026-08-24 18:18:43 UTC  3h 41min ago apt-daily.timer              apt-daily.service
+Sun 2026-08-30 03:10:02 UTC   5 days Sun 2026-08-23 03:10:33 UTC 1 day 18h ago e2scrub_all.timer            e2scrub_all.service
+Mon 2026-08-31 00:36:42 UTC   6 days Mon 2026-08-24 00:30:51 UTC       21h ago fstrim.timer                 fstrim.service
+-                                  - -                                       - logrotate.timer              -
+
+9 timers listed.
+# cron
+30 3 * * * /opt/wazuh-docker/multi-node/ops/scripts/elastic-snapshot.sh >> /tmp/wazuh-snapshot-cron.log 2>&1
+30 4 * * * /opt/wazuh-docker/multi-node/ops/scripts/health-check.sh >> /tmp/wazuh-health.log 2>&1
+30 2 * * * sudo /opt/wazuh-docker/multi-node/ops/scripts/backup-wazuh-config.sh >> /tmp/wazuh-backup-cron.log 2>&1
+# Shuffle network repair on boot (Phase 3) - reconnects replicas to mct-security after swarm re-creation
+@reboot sleep 120 && /opt/mct-security-stack/ops/scripts/shuffle-repair-network.sh --apply >> /opt/mct-security-stack/ops/reports/shuffle-boot-repair.log 2>&1
+
+# Phase 5 backup crons (approved 2026-08-11)
+30 4 * * * /opt/mct-security-stack/ops/scripts/iris-db-dump.sh >> /opt/mct-security-stack/ops/reports/iris-db-cron.log 2>&1
+35 4 * * * /opt/mct-security-stack/ops/scripts/vm103-misp-db-dump.sh >> /opt/mct-security-stack/ops/reports/vm103-misp-cron.log 2>&1
+15 5 * * 0 /opt/mct-security-stack/ops/scripts/vm103-greenbone-backup.sh >> /opt/mct-security-stack/ops/reports/vm103-greenbone-cron.log 2>&1
+45 5 * * 0 /opt/mct-security-stack/ops/scripts/shuffle-workflow-export.sh >> /opt/mct-security-stack/ops/reports/shuffle-export-cron.log 2>&1
+15 6 * * * /opt/mct-security-stack/ops/scripts/phase5-backup-freshness-check.sh >> /opt/mct-security-stack/ops/reports/phase5-freshness-cron.log 2>&1
+0 6 * * 0 /opt/mct-security-stack/ops/scripts/prune-phase5-backups.sh --apply >> /opt/mct-security-stack/ops/reports/backup-prune-cron.log 2>&1
+# Shuffle network periodic repair (Phase 5 quick fix) - idempotent, reconnects replicas to mct-security
+*/15 * * * * /opt/mct-security-stack/ops/scripts/shuffle-repair-network.sh --apply >> /opt/mct-security-stack/ops/reports/shuffle-periodic-repair.log 2>&1
+*/15 * * * * /opt/mct-security-stack/ops/scripts/zeek-classa-guardrail.sh check >> /opt/mct-security-stack/ops/reports/zeek-classa-guardrail.log 2>&1
+/etc/cron.d/wazuh-backups
+/etc/cron.d/.placeholder
+/etc/cron.d/e2scrub_all
+/etc/cron.d/wazuh-backups
+/etc/cron.d/.placeholder
+/etc/cron.d/e2scrub_all
+/etc/cron.daily/.placeholder
+/etc/cron.daily/dpkg
+/etc/cron.daily/man-db
+/etc/cron.daily/apt-compat
+/etc/cron.daily/exim4-base
+/etc/cron.hourly/.placeholder
+/etc/cron.monthly/.placeholder
+/etc/cron.weekly/.placeholder
+/etc/cron.weekly/man-db
+/etc/cron.yearly/.placeholder
+# listeners
+Netid State  Recv-Q Send-Q         Local Address:Port  Peer Address:PortProcess                            
+udp   UNCONN 0      0                    0.0.0.0:4789       0.0.0.0:*                                      
+udp   UNCONN 0      0                    0.0.0.0:5355       0.0.0.0:*                                      
+udp   UNCONN 0      0                    0.0.0.0:15140      0.0.0.0:*                                      
+udp   UNCONN 0      0                    0.0.0.0:40486      0.0.0.0:*                                      
+udp   UNCONN 0      0                  127.0.0.1:8125       0.0.0.0:*                                      
+udp   UNCONN 0      0                 127.0.0.54:53         0.0.0.0:*                                      
+udp   UNCONN 0      0              127.0.0.53%lo:53         0.0.0.0:*                                      
+udp   UNCONN 0      0      192.168.222.149%ens18:68         0.0.0.0:*                                      
+udp   UNCONN 0      0                          *:34471            *:*                                      
+udp   UNCONN 0      0                          *:2055             *:*    users:(("flowcoll",pid=3242,fd=7))
+udp   UNCONN 0      0                          *:43211            *:*                                      
+udp   UNCONN 0      0                          *:60396            *:*                                      
+udp   UNCONN 0      0                          *:45680            *:*                                      
+udp   UNCONN 0      0                       [::]:5355          [::]:*                                      
+udp   UNCONN 0      0                          *:7946             *:*                                      
+udp   UNCONN 0      0                      [::1]:8125          [::]:*                                      
+tcp   LISTEN 0      4096                 0.0.0.0:3306       0.0.0.0:*                                      
+tcp   LISTEN 0      4096                 0.0.0.0:19999      0.0.0.0:*                                      
+tcp   LISTEN 0      4096               127.0.0.1:55000      0.0.0.0:*                                      
+tcp   LISTEN 0      4096              127.0.0.54:53         0.0.0.0:*                                      
+tcp   LISTEN 0      128                127.0.0.1:4317       0.0.0.0:*                                      
+tcp   LISTEN 0      4096               127.0.0.1:5001       0.0.0.0:*                                      
+tcp   LISTEN 0      4096                 0.0.0.0:9443       0.0.0.0:*                                      
+tcp   LISTEN 0      4096                 0.0.0.0:1433       0.0.0.0:*                                      
+tcp   LISTEN 0      4096                 0.0.0.0:1514       0.0.0.0:*                                      
+tcp   LISTEN 0      4096                 0.0.0.0:1515       0.0.0.0:*                                      
+tcp   LISTEN 0      4096               127.0.0.1:8001       0.0.0.0:*                                      
+tcp   LISTEN 0      4096               127.0.0.1:8003       0.0.0.0:*                                      
+tcp   LISTEN 0      4096               127.0.0.1:8125       0.0.0.0:*                                      
+tcp   LISTEN 0      128                  0.0.0.0:22         0.0.0.0:*                                      
+tcp   LISTEN 0      4096                 0.0.0.0:23         0.0.0.0:*                                      
+tcp   LISTEN 0      4096                 0.0.0.0:21         0.0.0.0:*                                      
+tcp   LISTEN 0      4096                 0.0.0.0:9100       0.0.0.0:*                                      
+tcp   LISTEN 0      4096                 0.0.0.0:8000       0.0.0.0:*                                      
+tcp   LISTEN 0      4096                 0.0.0.0:8008       0.0.0.0:*                                      
+tcp   LISTEN 0      20                 127.0.0.1:25         0.0.0.0:*                                      
+tcp   LISTEN 0      4096               127.0.0.1:8443       0.0.0.0:*                                      
+tcp   LISTEN 0      4096               127.0.0.1:443        0.0.0.0:*                                      
+tcp   LISTEN 0      4096               127.0.0.1:8889       0.0.0.0:*                                      
+tcp   LISTEN 0      4096                 0.0.0.0:15140      0.0.0.0:*                                      
+tcp   LISTEN 0      4096               127.0.0.1:9200       0.0.0.0:*                                      
+tcp   LISTEN 0      4096                 0.0.0.0:5355       0.0.0.0:*                                      
+tcp   LISTEN 0      4096           127.0.0.53%lo:53         0.0.0.0:*                                      
+tcp   LISTEN 0      4096               127.0.0.1:3001       0.0.0.0:*                                      
+tcp   LISTEN 0      4096                    [::]:3306          [::]:*                                      
+tcp   LISTEN 0      4096                   [::1]:8125          [::]:*                                      
+tcp   LISTEN 0      4096                    [::]:19999         [::]:*                                      
+tcp   LISTEN 0      4096                       *:20241            *:*                                      
+tcp   LISTEN 0      4096                       *:2377             *:*                                      
+tcp   LISTEN 0      4096                    [::]:9443          [::]:*                                      
+tcp   LISTEN 0      4096                    [::]:1433          [::]:*                                      
+tcp   LISTEN 0      128                     [::]:22            [::]:*                                      
+tcp   LISTEN 0      4096                    [::]:23            [::]:*                                      
+tcp   LISTEN 0      4096                    [::]:21            [::]:*                                      
+tcp   LISTEN 0      4096                       *:33334            *:*                                      
+tcp   LISTEN 0      4096                       *:33335            *:*                                      
+tcp   LISTEN 0      4096                       *:33333            *:*                                      
+tcp   LISTEN 0      4096                       *:33338            *:*                                      
+tcp   LISTEN 0      4096                       *:33339            *:*                                      
+tcp   LISTEN 0      4096                       *:33336            *:*                                      
+tcp   LISTEN 0      4096                       *:33337            *:*                                      
+tcp   LISTEN 0      4096                    [::]:9100          [::]:*                                      
+tcp   LISTEN 0      4096                       *:8080             *:*    users:(("flowcoll",pid=3242,fd=8))
+tcp   LISTEN 0      4096                       *:7946             *:*                                      
+tcp   LISTEN 0      4096                       *:8002             *:*                                      
+tcp   LISTEN 0      4096                    [::]:8000          [::]:*                                      
+tcp   LISTEN 0      4096                    [::]:8008          [::]:*                                      
+tcp   LISTEN 0      4096                    [::]:5355          [::]:*                                      
+tcp   LISTEN 0      20                     [::1]:25            [::]:*                                      
+# compose
+/opt/mct-security-stack/compose/docker-compose.dfir-iris.yml
+/opt/mct-security-stack/compose/docker-compose.greenbone.yml
+/opt/mct-security-stack/compose/docker-compose.misp.yml
+/opt/mct-security-stack/compose/docker-compose.opencanary.yml
+/opt/mct-security-stack/compose/docker-compose.phase2.yml
+/opt/mct-security-stack/compose/docker-compose.shuffle.yml
+/opt/mct-security-stack/compose/docker-compose.velociraptor.yml
+/opt/mct-security-stack/data/dfir-iris/iris-web/docker-compose.base.yml
+/opt/mct-security-stack/data/dfir-iris/iris-web/docker-compose.dev.yml
+/opt/mct-security-stack/data/dfir-iris/iris-web/docker-compose.yml
+/opt/mct-security-stack/ops/backups/p29-image-pin-rollback/docker-compose.opencanary.yml
+/opt/mct-security-stack/ops/backups/p29-image-pin-rollback/docker-compose.shuffle.yml
+/opt/portainer/compose.yaml
+/opt/wazuh-docker/multi-node/docker-compose.cloudflare.yml
+/opt/wazuh-docker/multi-node/docker-compose.override.yml
+/opt/wazuh-docker/multi-node/docker-compose.yml
+/opt/wazuh-docker/multi-node/ops/backups/compose-20260807-044826/docker-compose.yml
+/opt/wazuh-docker/multi-node/ops/backups/pw-rotation-20260807-154045/docker-compose.yml
+/opt/wazuh-docker/single-node/docker-compose.yml
+/opt/wazuh-docker/wazuh-agent/docker-compose.yml

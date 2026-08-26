@@ -1,0 +1,222 @@
+# desired images
+/opt/mct-security-stack/compose/docker-compose.misp.yml:14:    image: mariadb:10.11
+/opt/mct-security-stack/compose/docker-compose.misp.yml:43:    image: valkey/valkey:7.2
+/opt/mct-security-stack/compose/docker-compose.misp.yml:61:    image: ghcr.io/misp/misp-docker/misp-modules:latest
+/opt/mct-security-stack/compose/docker-compose.misp.yml:69:    image: ghcr.io/misp/misp-docker/misp-core@sha256:0eaa4e423d5cd965b7b76aa5665e81d5c05a35bc46a4ffec2ca52e0cfe627e86
+/opt/mct-security-stack/compose/docker-compose.greenbone.yml:5:    image: registry.community.greenbone.net/community/vulnerability-tests
+/opt/mct-security-stack/compose/docker-compose.greenbone.yml:13:    image: registry.community.greenbone.net/community/notus-data
+/opt/mct-security-stack/compose/docker-compose.greenbone.yml:20:    image: registry.community.greenbone.net/community/scap-data
+/opt/mct-security-stack/compose/docker-compose.greenbone.yml:27:    image: registry.community.greenbone.net/community/cert-bund-data
+/opt/mct-security-stack/compose/docker-compose.greenbone.yml:34:    image: registry.community.greenbone.net/community/dfn-cert-data
+/opt/mct-security-stack/compose/docker-compose.greenbone.yml:44:    image: registry.community.greenbone.net/community/data-objects
+/opt/mct-security-stack/compose/docker-compose.greenbone.yml:52:    image: registry.community.greenbone.net/community/report-formats
+/opt/mct-security-stack/compose/docker-compose.greenbone.yml:63:    image: registry.community.greenbone.net/community/gpg-data
+/opt/mct-security-stack/compose/docker-compose.greenbone.yml:68:    image: registry.community.greenbone.net/community/redis-server
+/opt/mct-security-stack/compose/docker-compose.greenbone.yml:76:    image: registry.community.greenbone.net/community/pg-gvm:stable
+/opt/mct-security-stack/compose/docker-compose.greenbone.yml:88:    image: registry.community.greenbone.net/community/pg-gvm-migrator:stable
+/opt/mct-security-stack/compose/docker-compose.greenbone.yml:97:    image: registry.community.greenbone.net/community/gvmd@sha256:cb82c501ca93809405a8d0ed4c21846703466802ce6462536e985625f102b497
+/opt/mct-security-stack/compose/docker-compose.greenbone.yml:126:    image: registry.community.greenbone.net/community/gsa:stable-slim
+/opt/mct-security-stack/compose/docker-compose.greenbone.yml:137:    image: registry.community.greenbone.net/community/gsad:stable
+/opt/mct-security-stack/compose/docker-compose.greenbone.yml:152:    image: registry.community.greenbone.net/community/gvm-config:latest
+/opt/mct-security-stack/compose/docker-compose.greenbone.yml:161:    image: registry.community.greenbone.net/community/nginx:latest
+/opt/mct-security-stack/compose/docker-compose.greenbone.yml:185:    image: registry.community.greenbone.net/community/openvas-scanner:stable
+/opt/mct-security-stack/compose/docker-compose.greenbone.yml:202:    image: registry.community.greenbone.net/community/openvas-scanner:stable
+/opt/mct-security-stack/compose/docker-compose.greenbone.yml:217:    image: registry.community.greenbone.net/community/openvas-scanner:stable
+/opt/mct-security-stack/compose/docker-compose.greenbone.yml:250:    image: registry.community.greenbone.net/community/ospd-openvas:stable
+/opt/mct-security-stack/compose/docker-compose.greenbone.yml:293:    image: registry.community.greenbone.net/community/gvm-tools
+/opt/mct-security-stack/compose/docker-compose.shuffle.yml:17:    image: ghcr.io/shuffle/shuffle-frontend@sha256:4d700a6f0822cb081822bd2fa6c633080553bdd4313aed2c4bdce75b87e82836
+/opt/mct-security-stack/compose/docker-compose.shuffle.yml:34:    image: ghcr.io/shuffle/shuffle-backend@sha256:d4a5d2bf1f956955b68b099ba1c38997e4b257b2518215e0427f433515bea5c8
+/opt/mct-security-stack/compose/docker-compose.shuffle.yml:66:    image: ghcr.io/shuffle/shuffle-orborus@sha256:5c300bcbfa4550d8915d01ba0e7c8dacfb6244a7566d5f685469ddd08fc84512
+/opt/mct-security-stack/compose/docker-compose.shuffle.yml:91:    image: opensearchproject/opensearch:3.2.0
+/opt/mct-security-stack/compose/docker-compose.phase2.yml:17:    image: alpine:3.20
+/opt/mct-security-stack/compose/docker-compose.dfir-iris.yml:13:    image: postgres:16-alpine
+/opt/mct-security-stack/compose/docker-compose.dfir-iris.yml:27:    image: redis:7-alpine
+/opt/mct-security-stack/compose/docker-compose.dfir-iris.yml:38:    image: ghcr.io/dfir-iris/iriswebapp_app@sha256:d7d23026bdde593278075821d3abc8649fe28d618d5784cc9875bd7a3d05699b
+/opt/mct-security-stack/compose/docker-compose.velociraptor.yml:14:    image: velociraptor:latest
+/opt/mct-security-stack/compose/docker-compose.opencanary.yml:15:    image: thinkst/opencanary@sha256:c374c68b3e0f6b362baa00d6ba5ae4ad8e946383521482c6780b075c7ab41640
+/opt/mct-security-stack/data/dfir-iris/iris-web/docker-compose.yml:28:    image: ${DB_IMAGE_NAME:-ghcr.io/dfir-iris/iriswebapp_db}:${DB_IMAGE_TAG:-v2.4.29}
+/opt/mct-security-stack/data/dfir-iris/iris-web/docker-compose.yml:35:    image: ${APP_IMAGE_NAME:-ghcr.io/dfir-iris/iriswebapp_app}:${APP_IMAGE_TAG:-v2.4.29}
+/opt/mct-security-stack/data/dfir-iris/iris-web/docker-compose.yml:41:    image: ${APP_IMAGE_NAME:-ghcr.io/dfir-iris/iriswebapp_app}:${APP_IMAGE_TAG:-v2.4.29}
+/opt/mct-security-stack/data/dfir-iris/iris-web/docker-compose.yml:48:    image: ${NGINX_IMAGE_NAME:-ghcr.io/dfir-iris/iriswebapp_nginx}:${NGINX_IMAGE_TAG:-v2.4.29}
+/opt/mct-security-stack/data/dfir-iris/iris-web/docker-compose.dev.yml:31:    image: iriswebapp_db:v2.4.7
+/opt/mct-security-stack/data/dfir-iris/iris-web/docker-compose.dev.yml:42:    image: iriswebapp_app:v2.4.7
+/opt/mct-security-stack/data/dfir-iris/iris-web/docker-compose.dev.yml:53:    image: iriswebapp_app:v2.4.7
+/opt/mct-security-stack/data/dfir-iris/iris-web/docker-compose.dev.yml:64:    image: iriswebapp_nginx:v2.4.7
+/opt/mct-security-stack/data/dfir-iris/iris-web/deploy/kubernetes/charts/values.yaml:12:   image: rabbitmq
+/opt/mct-security-stack/data/dfir-iris/iris-web/deploy/kubernetes/charts/values.yaml:35:   image: <postgres_image>
+/opt/mct-security-stack/data/dfir-iris/iris-web/deploy/kubernetes/charts/values.yaml:71:   image: <irisapp_image>
+/opt/mct-security-stack/data/dfir-iris/iris-web/deploy/kubernetes/charts/values.yaml:119:   image: <irisworker_image>
+/opt/mct-security-stack/data/dfir-iris/iris-web/deploy/kubernetes/charts/templates/iris_app.yaml:57:          image: "{{ .Values.irisapp.image}}:{{ .Values.irisapp.tag }}"
+/opt/mct-security-stack/data/dfir-iris/iris-web/deploy/kubernetes/charts/templates/iris_worker.yaml:57:          image: "{{ .Values.irisworker.image}}:{{ .Values.irisworker.tag }}"
+/opt/mct-security-stack/data/dfir-iris/iris-web/deploy/kubernetes/charts/templates/postgres.yaml:53:          image: "{{ .Values.postgres.image}}:{{ .Values.postgres.tag }}"
+/opt/mct-security-stack/data/dfir-iris/iris-web/deploy/eks_manifest/psql/deployment.yml:22:        image: iriswebapp_db:v2.2.2
+/opt/mct-security-stack/data/dfir-iris/iris-web/deploy/eks_manifest/app/deployment.yml:22:        image: iriswebapp_app:v2.2.2
+/opt/mct-security-stack/data/dfir-iris/iris-web/deploy/eks_manifest/worker/deployment.yml:22:        image: iriswebapp_app:v2.2.2
+/opt/mct-security-stack/data/dfir-iris/iris-web/deploy/eks_manifest/rabbitmq/deployment.yml:22:        image: rabbitmq:3-management-alpine
+/opt/mct-security-stack/data/dfir-iris/iris-web/docker-compose.base.yml:20:    image: rabbitmq:3-management-alpine
+/opt/mct-security-stack/ops/backups/p29-image-pin-rollback/docker-compose.shuffle.yml:17:    image: ghcr.io/shuffle/shuffle-frontend@sha256:4d700a6f0822cb081822bd2fa6c633080553bdd4313aed2c4bdce75b87e82836
+/opt/mct-security-stack/ops/backups/p29-image-pin-rollback/docker-compose.shuffle.yml:34:    image: ghcr.io/shuffle/shuffle-backend@sha256:d4a5d2bf1f956955b68b099ba1c38997e4b257b2518215e0427f433515bea5c8
+/opt/mct-security-stack/ops/backups/p29-image-pin-rollback/docker-compose.shuffle.yml:66:    image: ghcr.io/shuffle/shuffle-orborus@sha256:94e61e7916aea28351fce3851f26f14fb85204f1567a8807d137321418366dba
+/opt/mct-security-stack/ops/backups/p29-image-pin-rollback/docker-compose.shuffle.yml:91:    image: opensearchproject/opensearch:3.2.0
+/opt/mct-security-stack/ops/backups/p29-image-pin-rollback/docker-compose.opencanary.yml:15:    image: thinkst/opencanary:latest@sha256:db6bf96d01528928d425be4321ff7d35adf8b1e69c4f02821f6498f3f9b0702e
+/opt/wazuh-docker/multi-node/docker-compose.yml:4:    image: wazuh/wazuh-manager:4.14.7
+/opt/wazuh-docker/multi-node/docker-compose.yml:49:    image: wazuh/wazuh-manager:4.14.7
+/opt/wazuh-docker/multi-node/docker-compose.yml:87:    image: wazuh/wazuh-indexer:4.14.7
+/opt/wazuh-docker/multi-node/docker-compose.yml:113:    image: wazuh/wazuh-indexer:4.14.7
+/opt/wazuh-docker/multi-node/docker-compose.yml:135:    image: wazuh/wazuh-indexer:4.14.7
+/opt/wazuh-docker/multi-node/docker-compose.yml:157:    image: wazuh/wazuh-dashboard:4.14.7
+/opt/wazuh-docker/multi-node/docker-compose.yml:184:    image: nginx:stable@sha256:46ccc48fbb1f5a43167f2ee2c279c122b96eec5d976e7f4e1e0780f59a51b4d6
+/opt/wazuh-docker/multi-node/generate-indexer-certs.yml:4:    image: wazuh/wazuh-certs-generator:0.0.4
+/opt/wazuh-docker/multi-node/docker-compose.override.yml:36:    image: elastiflow/flow-collector:7.26.2@sha256:c668429f354f0dcd705d7d4668915896cf369710d3e9aed3ef8143f1b5673eb2
+/opt/wazuh-docker/multi-node/docker-compose.override.yml:70:    image: python:3-alpine@sha256:a1321512d6a287428c50dcdf2ab3857761127e03a23b1f648e9c1c0de59288f8
+/opt/wazuh-docker/multi-node/ops/backups/compose-20260807-044826/docker-compose.yml:4:    image: wazuh/wazuh-manager:4.14.7
+/opt/wazuh-docker/multi-node/ops/backups/compose-20260807-044826/docker-compose.yml:46:    image: wazuh/wazuh-manager:4.14.7
+/opt/wazuh-docker/multi-node/ops/backups/compose-20260807-044826/docker-compose.yml:82:    image: wazuh/wazuh-indexer:4.14.7
+/opt/wazuh-docker/multi-node/ops/backups/compose-20260807-044826/docker-compose.yml:108:    image: wazuh/wazuh-indexer:4.14.7
+/opt/wazuh-docker/multi-node/ops/backups/compose-20260807-044826/docker-compose.yml:130:    image: wazuh/wazuh-indexer:4.14.7
+/opt/wazuh-docker/multi-node/ops/backups/compose-20260807-044826/docker-compose.yml:152:    image: wazuh/wazuh-dashboard:4.14.7
+/opt/wazuh-docker/multi-node/ops/backups/compose-20260807-044826/docker-compose.yml:179:    image: nginx:stable
+/opt/wazuh-docker/multi-node/docker-compose.cloudflare.yml:3:    image: cloudflare/cloudflared:latest@sha256:e39ee8da81ad5e05d77f38d2f51c60ca51bf2a8450ac3abab50c17fdb91d91bf
+# running images
+shufflehealthcheck_1-1-0.1.nvg6x8g2jx7bpw915ch1qam3m frikky/shuffle:shufflehealthcheck_1.1.0 e95daafc747a
+shufflehealthcheck_1-1-0.2.pqh2n5141siis79fkmq1jent3 frikky/shuffle:shufflehealthcheck_1.1.0 9899c430f4eb
+wazuh-cloudflared cloudflare/cloudflared:latest 836d9aa4cfaf
+mct-security-stack-opencanary-1 thinkst/opencanary 44a18afbfda3
+flow-relay python:3-alpine af13ecca48d1
+security-onion balabit/syslog-ng e745806b9b2a
+tenzir-node tenzir/tenzir 8f6a40475f10
+shuffle-workers.1.paeow7xmfoh3lhuvub3bb7mhh ghcr.io/shuffle/shuffle-worker 84c22cea42b3
+shuffle-frontend ghcr.io/shuffle/shuffle-frontend 7e0c6d1aff52
+shuffle-backend ghcr.io/shuffle/shuffle-backend 664b9f7707c3
+shuffle-orborus ghcr.io/shuffle/shuffle-orborus 3b78e54b412a
+shuffle-subflow_1-1-0.1.p7x3f6yqe1ym6h710muk3zli2 ebebd9c68c69 df8828bb5570
+email_1-3-0.2.qndcq6xgm5ofbijj67li28g2u frikky/shuffle:email_1.3.0 81d21c91c271
+shuffle-ai_1-1-0.2.fbo1ih0bb35lu8oxa2n3p7ssa frikky/shuffle:shuffle-ai_1.1.0 cd89f2c62ac8
+http_1-4-0.2.xzyupsp5p1oc2fcxfusymbbnn frikky/shuffle:http_1.4.0 9538e88683f1
+shuffle-tools_1-2-0.1.bqcjvi3l67793snaukez4s0tu frikky/shuffle:shuffle-tools_1.2.0 71ff3b5b0504
+shuffle-subflow_1-1-0.2.sdetdg1e33rtc123kdlqxom3h ebebd9c68c69 3d2a849bba8b
+http_1-4-0.1.m29kerearj7gw3midzgqis36i frikky/shuffle:http_1.4.0 127753f0b698
+shuffle-tools_1-2-0.2.qy9dazim1o4rbq7og8tzsckjx frikky/shuffle:shuffle-tools_1.2.0 d86a6f698c6f
+shuffle-ai_1-1-0.1.fe9n0u5m5zhyg1gpgkh2vpo2w frikky/shuffle:shuffle-ai_1.1.0 d169ce5895b6
+email_1-3-0.1.6gf0y60lucibshlcd1xnxazdb frikky/shuffle:email_1.3.0 1becce25a521
+multi-node-wazuh.master-1 wazuh/wazuh-manager:4.14.7 cafd3710aabe
+iriswebapp_nginx ghcr.io/dfir-iris/iriswebapp_nginx:v2.4.29 4e1a0c430378
+multi-node-wazuh.worker-1 wazuh/wazuh-manager:4.14.7 0ef0a302c8e2
+iriswebapp_worker ghcr.io/dfir-iris/iriswebapp_app:v2.4.29 5267fd450c8f
+iriswebapp_app ghcr.io/dfir-iris/iriswebapp_app:v2.4.29 04b521db7d96
+iriswebapp_db ghcr.io/dfir-iris/iriswebapp_db:v2.4.29 e484bfdb245f
+iriswebapp_rabbitmq rabbitmq:3-management-alpine 16dcfb70b5d0
+shuffle-opensearch opensearchproject/opensearch:3.2.0 54e2dff802be
+elastiflow elastiflow/flow-collector:7.26.2 e36a26b4cda3
+multi-node-wazuh1.indexer-1 wazuh/wazuh-indexer:4.14.7 60fcc5e5d9d6
+multi-node-wazuh2.indexer-1 wazuh/wazuh-indexer:4.14.7 9a7874617221
+multi-node-wazuh3.indexer-1 wazuh/wazuh-indexer:4.14.7 107a57791db2
+portainer portainer/portainer-ce:sts 0bc1f5b17eb4
+multi-node-nginx-1 nginx:stable 0164c90c8626
+multi-node-wazuh.dashboard-1 wazuh/wazuh-dashboard:4.14.7 facf49243ce0
+# git executable modes
+100755 e5f63be7264000d8519afc498960ff4d38385631 0	integrations/macos/remediation-bundle/collect-agent015-diagnostics.sh
+100755 84fbd49204fbff9bcc8545370cc3cc6ee68a8d2b 0	integrations/macos/remediation-bundle/repair-agent015-unified-log.sh
+100755 e446cfca5eb8023611e2670abcc3b6fb512c8421 0	integrations/macos/remediation-bundle/rollback-agent015.sh
+100755 1c1769ec0186076d0a30fc7f0108a90a944d2413 0	integrations/macos/remediation-bundle/verify-agent015.sh
+100755 a370200965d4f7192027af2007c0ca68d7d6e862 0	ops/scripts/active-response-audit.sh
+100755 ef12f6e1207d880e70f24867ebc4748d38f2bfbe 0	ops/scripts/alert-volume-by-rule.sh
+100755 6d98dba389d52e32091ab9c0e3631199d6d5aabd 0	ops/scripts/backup-dr-audit.sh
+100755 a6579eff059b69c999056cfb92f4d070217434f8 0	ops/scripts/backup-freshness-check.sh
+100755 9ac9736b8eb176d979bc8e6813ba0cdd584f9ed7 0	ops/scripts/backup-phase2-config.sh
+100755 7d58060895dd403ccce12039099e76a42267adfd 0	ops/scripts/capacity-threshold-check.sh
+100755 657da7e78b45ea315b359e9bf3ec4b3d57ff294d 0	ops/scripts/check-unpinned-docker-images.sh
+100755 4d10de5e3548065df665c9a7a3a839b5f7928247 0	ops/scripts/client013-baseline-report.sh
+100755 2cffe0e22e7e23b63c75c778f5c62d7ee3a5ff72 0	ops/scripts/common.sh
+100755 ea9d3f6f72cc9c4a1b2b31575b7331fe70e446d9 0	ops/scripts/credential-rotation-validation.sh
+100755 c05d1ca3b8a8eef05217257c120b483805ac2557 0	ops/scripts/disk-growth-report.sh
+100755 b939e11647f46f303e401f004fa0f36fd851bfe3 0	ops/scripts/endpoint-count-report.sh
+100755 da066f730c6ab3eb2b5d10320b18b5337cbffea8 0	ops/scripts/enter-safe-mode.sh
+100755 2b98b5c337941184774f401c5d2c444600264a79 0	ops/scripts/es-snapshot-retention-apply.sh
+100755 5349d11de72032bc508512e27f20a1edc7cba921 0	ops/scripts/es-snapshot-retention-report.sh
+100755 c1fcca0da512fe487e632593e9b3b1244d757357 0	ops/scripts/exit-safe-mode-checklist.sh
+100755 9d903c27ff431cb29c716f6d9e0fdb4db9efa937 0	ops/scripts/full-stack-healthcheck.sh
+100755 cfe29aaaab0b6c774c3f086931e5cb03ee6188e4 0	ops/scripts/healthcheck-selftest.sh
+100755 67788ad7bd105818c5d8b52d4ca35270d92c6967 0	ops/scripts/iris-create-test-alert.sh
+100755 c9f08fd475c1a21be6eb759b60606629f1913d17 0	ops/scripts/iris-db-dump.sh
+100755 b072d4b4ad5f03b6cf2f55b72b99bec016ae0178 0	ops/scripts/misp-cdb-diff-report.sh
+100755 2476ab92f81b2fc0c7d921a24d305de0c9768b39 0	ops/scripts/misp-feed-health.sh
+100755 310ec02dfcfb79ac6a97e03c95270b78dbaca77c 0	ops/scripts/p28-consolidation-candidates.sh
+100755 abebc526cf6bdb1b103506e2c7b38a2c5d808903 0	ops/scripts/p28-deployability-inventory.sh
+100755 c6a95b3c42dd7db9f7b60c9ea439c0c85ae0dfc4 0	ops/scripts/p28-fresh-target-gate.sh
+100755 4d1eb49daf57d533cda14a82f79ae8aba2b97b1e 0	ops/scripts/p28-portability-scan.sh
+100755 0d3cd5160388a6e0545a04246bca6a32cb655472 0	ops/scripts/p29-deploy-evidence-pack.sh
+100755 6f421faddd63cf5eca8d5eb1fbad451970f1c80f 0	ops/scripts/p29-executable-mode-audit.sh
+100755 3c2926278ad972455130a0149b62d86907e5fd51 0	ops/scripts/p29-fresh-target-smoke.sh
+100644 b7f50441163c1ad3c167e9da637ca860d93a9313 0	ops/scripts/p29-image-ci-gate.sh
+100755 fbea27a41c15720ef86e4565116069ccb96fc604 0	ops/scripts/p29-image-lock-audit.sh
+100755 58e0b3596319117afdd920ad6ba07e3296bc4ca0 0	ops/scripts/package-portable-repo.sh
+100755 20c9c857b43f1cc0651ce5a3930d47d4e2cbe1cf 0	ops/scripts/phase2-healthcheck.sh
+100755 af70914122354c691d0349d1578e0fcc4060324f 0	ops/scripts/phase2-integration-smoke-test.sh
+100755 457d3b6aeabe35f3cd4d774a5ef134e68baef09f 0	ops/scripts/phase2-port-audit.sh
+100755 1b1efa6b6ade6b92faa4badc8b04b4bb5a24cf3c 0	ops/scripts/phase5-backup-freshness-check.sh
+100755 d1eff029294a1aa46a2e41b08db59e715c0eeea9 0	ops/scripts/phase5-credential-postcheck.sh
+100755 f8f5af47610b7c631776ee1276dd4c42169c2a7f 0	ops/scripts/phase6-resource-validation.sh
+100755 d695a795f6b07bf6eea30dc64b8b8e264d07de33 0	ops/scripts/post-ram-health-validation.sh
+100755 a503ab88cbd46a51f50d32d32ca5c90de2ce2154 0	ops/scripts/proxmox-thinpool-report.sh
+100755 3a61c9a1031d9b9188775f09dc6e0e15b2b18dd2 0	ops/scripts/prune-phase5-backups.sh
+100755 14d4cb433a449131405d773c32dcd74238b34e34 0	ops/scripts/pve-api-healthcheck.sh
+100755 68fd6109714c3083649c50a6af404843d00d40bd 0	ops/scripts/pve222-api-healthcheck.sh
+100755 dadae56843f558053605689fe94559022a108474 0	ops/scripts/render-virustotal-integration.sh
+100755 807cad42a4c91aeb424b8821504170b47e653efd 0	ops/scripts/resource-efficiency-report.sh
+100755 f8f5af47610b7c631776ee1276dd4c42169c2a7f 0	ops/scripts/resource-post-change-validation.sh
+100755 28f06245b9294e559e7c3f6cc4505cb616684445 0	ops/scripts/resource-trend-report.sh
+100755 5a164a382ab5a3128c0c7aa19b3197068f087212 0	ops/scripts/scan-docs-for-secret-patterns.sh
+100755 fd5f3e1ecda4a9ad564ba0290d5d2c1590c8b4ec 0	ops/scripts/secret-pattern-scan.sh
+100755 6602a4d00a82f72c6e3c8abd1ac257d6ff98c296 0	ops/scripts/shuffle-healthcheck.sh
+100755 d4574698841d5f0045c33d378e3e4201be34b822 0	ops/scripts/shuffle-repair-network.sh
+100755 2a4984f99e68e240e1df0599a6433a7b2b2e2abe 0	ops/scripts/shuffle-webhook-smoke-test.sh
+100755 4c74d4f7018b108ef38f85d1ff01c6d4bbefc5e8 0	ops/scripts/shuffle-workflow-export.sh
+100755 74f1fe095d1d195b22fdde02200d00a38dc069fd 0	ops/scripts/soc-smoke-test.sh
+100755 59d6d82564eedeb185937229728c29b8e35aa529 0	ops/scripts/vm103-backup-freshness-check.sh
+100755 55d2f609a331b5988d2ad6fc784ba190a26411c3 0	ops/scripts/vm103-greenbone-backup.sh
+100755 0438a83d858decb7f0caf02708aa65a811987886 0	ops/scripts/vm103-misp-db-dump.sh
+100755 eabf48b06a67c1cf59d7a177202f920ffc40d82e 0	ops/scripts/zeek-classa-guardrail.sh
+100755 d289bfe66bcb0d959c704d04777f8457eb25ff12 0	scripts/bootstrap/check-prereqs.sh
+100755 48e41266ea71e24f084184c795dfcbd696704f7e 0	scripts/bootstrap/create-directories.sh
+100755 7fd599f60e6bfe9603bcdc01f44f9606c4a21530 0	scripts/bootstrap/render-env-summary.sh
+100755 b15b5d52b99841f0fe536fc62573f6886300435a 0	scripts/ci/build-release-bundle.sh
+100755 7935826547e7256b96dd1dea7e83c2a598233893 0	scripts/ci/run-levelio-variable-tests.sh
+100755 815c86ec1c818af14d3335cf3385e82db4b8c62f 0	scripts/ci/run-local-ci.sh
+100755 dbb75c2f4ca18029207be563238e66615a0cd3fa 0	scripts/endpoint-deploy/install-wazuh-linux.sh
+100755 a6bff5faebb8875918a3517ca19385d3ad8693e1 0	scripts/endpoint-deploy/install-wazuh-macos.sh
+100755 7346c0bee32109bcadb9a3503cf067fe861eff01 0	scripts/endpoint-deploy/lib/mct-env.sh
+100755 fc5d1fe71665aadcd686ad744db9d0615b1b9345 0	scripts/endpoint-deploy/prepare-velociraptor-client.sh
+100755 763e4469ea7be60b25d257588000a6763ddfa383 0	scripts/endpoint-deploy/test/simulate-levelio-linux.sh
+100755 e6eba81ee27da0ea9c7d89b972877fccb8bcd6f8 0	scripts/endpoint-deploy/uninstall-endpoint-linux-macos.sh
+100755 52970f3d8bb0b5c86c6c8ed90addcec892c06e8e 0	scripts/endpoint-deploy/verify-endpoint-linux-macos.sh
+100755 49beb91007fb5a60ac9707bcfa4680ad4c15ad28 0	scripts/verify/github-prepush-check.sh
+100755 15196303b6068e6695ec0131ced418d7344fd746 0	scripts/verify/verify-current-architecture.sh
+100755 42ef1675611c0e4dc54c562ebe58e56d1110aa5b 0	scripts/verify/verify-no-stale-phase-refs.sh
+100755 f8748d92987d5a76f3c6dafc902ba881d9eab555 0	scripts/verify/verify-portable-repo.sh
+100755 57f253b4af9fbb9376287353d445d5a359b2c516 0	scripts/verify/verify-stack-layout.sh
+# modified/untracked
+?? ops/reports/full-stack-health-20260824-215701.md
+?? ops/reports/full-stack-health-20260824-215823.md
+?? ops/reports/full-stack-health-20260824-215827.md
+?? ops/reports/p30-runtime-drift-20260824-215916.txt
+?? ops/reports/phase30-03-so-power-storage.md
+?? ops/reports/phase30-04-so-vm-recovery.md
+?? ops/reports/phase30-05-so-service-validation.md
+?? ops/reports/phase30-06-agent008-reconnect.md
+?? ops/reports/phase30-07-zeek-suricata-recovery.md
+?? ops/reports/phase30-08-so-backlog-flood-check.md
+?? ops/reports/phase30-09-so-postmortem.md
+?? ops/reports/phase30-10-memory-preflight.md
+?? ops/reports/phase30-11-memory-process-container.md
+?? ops/reports/phase30-12-indexer-jvm.md
+?? ops/reports/phase30-13-shuffle-memory.md
+?? ops/reports/phase30-14-kernel-swap-psi.md
+?? ops/reports/phase30-15-memory-plan.md
+?? ops/reports/phase30-16-memory-apply.md
+?? ops/reports/phase30-17-memory-validation.md
+?? ops/scripts/p30-audit-gate.sh
+?? ops/scripts/p30-codebase-audit.sh
+?? ops/scripts/p30-infrastructure-audit.sh
+?? ops/scripts/p30-memory-audit.sh
+?? ops/scripts/p30-runtime-drift-audit.sh

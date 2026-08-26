@@ -7,7 +7,7 @@
 **Timestamp:** 2026-08-25T21:13:25Z  
 **Classification:** INTERNAL  
 **Scope:** Post-migration verification plan + verification of what exists today (pre-apply)  
-**Status:** NOT APPLICABLE YET / READY-TO-RUN  
+**Status:** PENDING (ready-to-run; not yet applicable)  
 **Authoritative:** true  
 **Author:** opencode/ox-alpha  
 **Owners:** ["opencode/ox-alpha", "human-operator"]  

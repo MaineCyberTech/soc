@@ -1,0 +1,750 @@
+{
+  "name": "wazuh-suricata-packet-to-iris",
+  "description": "Isolated Suricata packet routing (WF-39-02 import candidate - test-only, disabled by default). Dedup TTL 300s; SID allowlist 2027967 first; synthetic-tag sink; dead-letter on malformed/target-fail.",
+  "status": "test",
+  "workflow_as_code": false,
+  "owner": "MCT SOC",
+  "start": "trig-p39-webhook-1",
+  "execution_environment": "Shuffle",
+  "triggers": [
+    {
+      "id": "trig-p39-webhook-1",
+      "app_name": "",
+      "app_version": "",
+      "name": "suricata-eve-in",
+      "label": "suricata-eve-in",
+      "trigger_type": "WEBHOOK",
+      "status": "",
+      "environment": "",
+      "description": "Test-only webhook; NOT bound to Wazuh integration until ROUT-39-02 pass",
+      "is_valid": true,
+      "isStartNode": true,
+      "parameters": [
+        {
+          "name": "custom_url",
+          "value": "p39-suricata-test"
+        }
+      ],
+      "position": {
+        "x": -200,
+        "y": 0
+      }
+    }
+  ],
+  "actions": [
+    {
+      "id": "0b969499-5793-5309-872c-93084ae21eb2",
+      "app_name": "Shuffle Tools",
+      "app_version": "1.2.0",
+      "name": "json_dumps",
+      "label": "parse-eve-json",
+      "description": "",
+      "long_description": "",
+      "is_valid": true,
+      "isStartNode": true,
+      "environment": "Shuffle",
+      "execution_delay": 0,
+      "generated": false,
+      "public": false,
+      "parameters": [
+        {
+          "id": "",
+          "name": "call",
+          "value": "json_dumps",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        },
+        {
+          "id": "",
+          "name": "input",
+          "value": "$exec",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        }
+      ],
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "7a12f309-f3a0-540c-bd26-70c0a4e5a34d",
+      "app_name": "Shuffle Tools",
+      "app_version": "1.2.0",
+      "name": "set_fields",
+      "label": "normalize-fields",
+      "description": "",
+      "long_description": "",
+      "is_valid": true,
+      "isStartNode": false,
+      "environment": "Shuffle",
+      "execution_delay": 0,
+      "generated": false,
+      "public": false,
+      "parameters": [
+        {
+          "id": "",
+          "name": "call",
+          "value": "set_fields",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        },
+        {
+          "id": "",
+          "name": "sid",
+          "value": "${parse-eve-json.alert.signature_id}",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        },
+        {
+          "id": "",
+          "name": "src_ip",
+          "value": "${parse-eve-json.src_ip}",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        },
+        {
+          "id": "",
+          "name": "dst_ip",
+          "value": "${parse-eve-json.dest_ip}",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        },
+        {
+          "id": "",
+          "name": "timestamp",
+          "value": "${parse-eve-json.timestamp}",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        },
+        {
+          "id": "",
+          "name": "severity",
+          "value": "${parse-eve-json.alert.severity}",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        }
+      ],
+      "position": {
+        "x": 200,
+        "y": 0
+      }
+    },
+    {
+      "id": "39e7673f-2775-5c6a-910c-067a25b661c5",
+      "app_name": "Shuffle Tools",
+      "app_version": "1.2.0",
+      "name": "filter_required_fields",
+      "label": "validate-required-fields",
+      "description": "",
+      "long_description": "",
+      "is_valid": true,
+      "isStartNode": false,
+      "environment": "Shuffle",
+      "execution_delay": 0,
+      "generated": false,
+      "public": false,
+      "parameters": [
+        {
+          "id": "",
+          "name": "call",
+          "value": "regex_capture",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        },
+        {
+          "id": "",
+          "name": "input",
+          "value": "${normalize-fields.sid}|${normalize-fields.src_ip}|${normalize-fields.dst_ip}",
+          "variant": "STATIC_VALUE",
+          "multiline": true,
+          "required": false
+        },
+        {
+          "id": "",
+          "name": "regex",
+          "value": "^[0-9]+\\|.+\\|.+",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        }
+      ],
+      "position": {
+        "x": 400,
+        "y": 0
+      }
+    },
+    {
+      "id": "b1657c3a-af43-5a48-bf9e-0d1b7892bf5f",
+      "app_name": "Shuffle Tools",
+      "app_version": "1.2.0",
+      "name": "check_regex",
+      "label": "synthetic-isolation-check",
+      "description": "",
+      "long_description": "",
+      "is_valid": true,
+      "isStartNode": false,
+      "environment": "Shuffle",
+      "execution_delay": 0,
+      "generated": false,
+      "public": false,
+      "parameters": [
+        {
+          "id": "",
+          "name": "call",
+          "value": "check_regex",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        },
+        {
+          "id": "",
+          "name": "input",
+          "value": "${parse-eve-json.tags}",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        },
+        {
+          "id": "",
+          "name": "regex",
+          "value": "synthetic",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        }
+      ],
+      "position": {
+        "x": 600,
+        "y": 0
+      }
+    },
+    {
+      "id": "aecb5b91-4045-5312-96ca-2d7af7e39c6c",
+      "app_name": "Shuffle Tools",
+      "app_version": "1.2.0",
+      "name": "repeat_back_to_me",
+      "label": "SINK-synthetic-logonly",
+      "description": "",
+      "long_description": "",
+      "is_valid": true,
+      "isStartNode": false,
+      "environment": "Shuffle",
+      "execution_delay": 0,
+      "generated": false,
+      "public": false,
+      "parameters": [
+        {
+          "id": "",
+          "name": "call",
+          "value": "repeat_back_to_me",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        },
+        {
+          "id": "",
+          "name": "input",
+          "value": "SYNTHETIC-EVENT-DROPPED sid=${normalize-fields.sid}",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        }
+      ],
+      "position": {
+        "x": 800,
+        "y": 200
+      }
+    },
+    {
+      "id": "cc6ee365-e9e7-5e22-90b3-ea2a4e847a73",
+      "app_name": "Shuffle Tools",
+      "app_version": "1.2.0",
+      "name": "filter_by_id",
+      "label": "sid-allowlist-filter",
+      "description": "",
+      "long_description": "",
+      "is_valid": true,
+      "isStartNode": false,
+      "environment": "Shuffle",
+      "execution_delay": 0,
+      "generated": false,
+      "public": false,
+      "parameters": [
+        {
+          "id": "",
+          "name": "call",
+          "value": "check_regex",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        },
+        {
+          "id": "",
+          "name": "input",
+          "value": "${normalize-fields.sid}",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        },
+        {
+          "id": "",
+          "name": "regex",
+          "value": "^(2027967)$",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        }
+      ],
+      "position": {
+        "x": 600,
+        "y": -200
+      }
+    },
+    {
+      "id": "94ad342b-43a3-5a5f-902a-af0549aa6916",
+      "app_name": "Shuffle Tools",
+      "app_version": "1.2.0",
+      "name": "set_state",
+      "label": "datastore-dedup-set",
+      "description": "",
+      "long_description": "",
+      "is_valid": true,
+      "isStartNode": false,
+      "environment": "Shuffle",
+      "execution_delay": 0,
+      "generated": false,
+      "public": false,
+      "parameters": [
+        {
+          "id": "",
+          "name": "call",
+          "value": "set_state",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        },
+        {
+          "id": "",
+          "name": "key",
+          "value": "${normalize-fields.sid}-${normalize-fields.src_ip}-${normalize-fields.dst_ip}-epoch300",
+          "variant": "STATIC_VALUE",
+          "multiline": true,
+          "required": false
+        },
+        {
+          "id": "",
+          "name": "value",
+          "value": "${normalize-fields.timestamp}",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        },
+        {
+          "id": "",
+          "name": "ttl",
+          "value": "300",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        }
+      ],
+      "position": {
+        "x": 800,
+        "y": -200
+      }
+    },
+    {
+      "id": "3ad890d4-a8f9-56d2-adf4-7ddbf80f73df",
+      "app_name": "Shuffle Tools",
+      "app_version": "1.2.0",
+      "name": "repeat_back_to_me",
+      "label": "duplicate-suppressed-logonly",
+      "description": "",
+      "long_description": "",
+      "is_valid": true,
+      "isStartNode": false,
+      "environment": "Shuffle",
+      "execution_delay": 0,
+      "generated": false,
+      "public": false,
+      "parameters": [
+        {
+          "id": "",
+          "name": "call",
+          "value": "repeat_back_to_me",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        },
+        {
+          "id": "",
+          "name": "input",
+          "value": "DUP-SUPPRESSED key=${normalize-fields.sid}-${normalize-fields.src_ip}-${normalize-fields.dst_ip}-epoch300",
+          "variant": "STATIC_VALUE",
+          "multiline": true,
+          "required": false
+        }
+      ],
+      "position": {
+        "x": 1000,
+        "y": -350
+      }
+    },
+    {
+      "id": "65406eec-96f5-5ee9-af8e-35be3b42e441",
+      "app_name": "Shuffle Tools",
+      "app_version": "1.2.0",
+      "name": "set_state",
+      "label": "counter-routed-increment",
+      "description": "",
+      "long_description": "",
+      "is_valid": true,
+      "isStartNode": false,
+      "environment": "Shuffle",
+      "execution_delay": 0,
+      "generated": false,
+      "public": false,
+      "parameters": [
+        {
+          "id": "",
+          "name": "call",
+          "value": "set_state",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        },
+        {
+          "id": "",
+          "name": "key",
+          "value": "p39_packet_counter_routed",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        },
+        {
+          "id": "",
+          "name": "value",
+          "value": "$calc:${state.p39_packet_counter_routed|0}+1",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        }
+      ],
+      "position": {
+        "x": 1000,
+        "y": -200
+      }
+    },
+    {
+      "id": "bf4ba8f5-a2da-58a4-a6d7-4a8391e3208b",
+      "app_name": "HTTP",
+      "app_version": "1.4.0",
+      "name": "post_request",
+      "label": "iris-test-route-p39tag",
+      "description": "",
+      "long_description": "",
+      "is_valid": true,
+      "isStartNode": false,
+      "environment": "Shuffle",
+      "execution_delay": 0,
+      "generated": false,
+      "public": false,
+      "parameters": [
+        {
+          "id": "",
+          "name": "url",
+          "value": "https://iriswebapp_nginx:8443/alerts/add",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        },
+        {
+          "id": "",
+          "name": "body",
+          "value": "{\"alert_title\": \"[p39-test] suricata sid ${normalize-fields.sid}\", \"alert_source\": \"suricata\", \"alert_source_ref\": \"${normalize-fields.sid}-${normalize-fields.src_ip}\", \"alert_source_event_time\": \"${normalize-fields.timestamp}\", \"alert_customer_id\": 1, \"alert_severity_id\": 6, \"alert_tags\": \"packet,suricata,sid:${normalize-fields.sid},class:packet,test:p39\"}",
+          "variant": "STATIC_VALUE",
+          "multiline": true,
+          "required": false
+        },
+        {
+          "id": "",
+          "name": "headers",
+          "value": "{\"Authorization\": \"Bearer <FROM_DATASTORE>\", \"Content-Type\": \"application/json\"}",
+          "variant": "STATIC_VALUE",
+          "multiline": true,
+          "required": false
+        },
+        {
+          "id": "",
+          "name": "verify",
+          "value": "false",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        },
+        {
+          "id": "",
+          "name": "timeout",
+          "value": "10",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        }
+      ],
+      "position": {
+        "x": 1200,
+        "y": -200
+      }
+    },
+    {
+      "id": "97c05e46-e731-54b9-b212-32fc0a3f4050",
+      "app_name": "Shuffle Tools",
+      "app_version": "1.2.0",
+      "name": "repeat_back_to_me",
+      "label": "done-routed-log",
+      "description": "",
+      "long_description": "",
+      "is_valid": true,
+      "isStartNode": false,
+      "environment": "Shuffle",
+      "execution_delay": 0,
+      "generated": false,
+      "public": false,
+      "parameters": [
+        {
+          "id": "",
+          "name": "call",
+          "value": "repeat_back_to_me",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        },
+        {
+          "id": "",
+          "name": "input",
+          "value": "ROUTED-OK sid=${normalize-fields.sid}",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        }
+      ],
+      "position": {
+        "x": 1400,
+        "y": -200
+      }
+    },
+    {
+      "id": "1fd9d0cb-fb4a-5e7a-90a7-940a743ee154",
+      "app_name": "Shuffle Tools",
+      "app_version": "1.2.0",
+      "name": "repeat_back_to_me",
+      "label": "DEADLETTER-malformed",
+      "description": "",
+      "long_description": "",
+      "is_valid": true,
+      "isStartNode": false,
+      "environment": "Shuffle",
+      "execution_delay": 0,
+      "generated": false,
+      "public": false,
+      "parameters": [
+        {
+          "id": "",
+          "name": "call",
+          "value": "repeat_back_to_me",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        },
+        {
+          "id": "",
+          "name": "input",
+          "value": "P39DL MALFORMED raw=${exec}",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        }
+      ],
+      "position": {
+        "x": 600,
+        "y": 200
+      }
+    },
+    {
+      "id": "f3abca06-8dbf-579a-a24b-429fe5c4fd50",
+      "app_name": "Shuffle Tools",
+      "app_version": "1.2.0",
+      "name": "repeat_back_to_me",
+      "label": "DEADLETTER-target-fail",
+      "description": "",
+      "long_description": "",
+      "is_valid": true,
+      "isStartNode": false,
+      "environment": "Shuffle",
+      "execution_delay": 0,
+      "generated": false,
+      "public": false,
+      "parameters": [
+        {
+          "id": "",
+          "name": "call",
+          "value": "repeat_back_to_me",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        },
+        {
+          "id": "",
+          "name": "input",
+          "value": "P39DL TARGETFAIL sid=${normalize-fields.sid}",
+          "variant": "STATIC_VALUE",
+          "multiline": false,
+          "required": false
+        }
+      ],
+      "position": {
+        "x": 1400,
+        "y": 0
+      }
+    }
+  ],
+  "branches": [
+    {
+      "destination_id": "7a12f309-f3a0-540c-bd26-70c0a4e5a34d",
+      "source_id": "0b969499-5793-5309-872c-93084ae21eb2",
+      "label": "",
+      "has_errors": false,
+      "conditions": [],
+      "decorator": false,
+      "parent_controlled": false
+    },
+    {
+      "destination_id": "39e7673f-2775-5c6a-910c-067a25b661c5",
+      "source_id": "7a12f309-f3a0-540c-bd26-70c0a4e5a34d",
+      "label": "",
+      "has_errors": false,
+      "conditions": [],
+      "decorator": false,
+      "parent_controlled": false
+    },
+    {
+      "destination_id": "b1657c3a-af43-5a48-bf9e-0d1b7892bf5f",
+      "source_id": "39e7673f-2775-5c6a-910c-067a25b661c5",
+      "label": "",
+      "has_errors": false,
+      "conditions": [],
+      "decorator": false,
+      "parent_controlled": false
+    },
+    {
+      "destination_id": "1fd9d0cb-fb4a-5e7a-90a7-940a743ee154",
+      "source_id": "39e7673f-2775-5c6a-910c-067a25b661c5",
+      "label": "failed",
+      "has_errors": false,
+      "conditions": [],
+      "decorator": false,
+      "parent_controlled": false
+    },
+    {
+      "destination_id": "aecb5b91-4045-5312-96ca-2d7af7e39c6c",
+      "source_id": "b1657c3a-af43-5a48-bf9e-0d1b7892bf5f",
+      "label": "success",
+      "has_errors": false,
+      "conditions": [],
+      "decorator": false,
+      "parent_controlled": false
+    },
+    {
+      "destination_id": "cc6ee365-e9e7-5e22-90b3-ea2a4e847a73",
+      "source_id": "b1657c3a-af43-5a48-bf9e-0d1b7892bf5f",
+      "label": "failed",
+      "has_errors": false,
+      "conditions": [],
+      "decorator": false,
+      "parent_controlled": false
+    },
+    {
+      "destination_id": "94ad342b-43a3-5a5f-902a-af0549aa6916",
+      "source_id": "cc6ee365-e9e7-5e22-90b3-ea2a4e847a73",
+      "label": "success",
+      "has_errors": false,
+      "conditions": [],
+      "decorator": false,
+      "parent_controlled": false
+    },
+    {
+      "destination_id": "1fd9d0cb-fb4a-5e7a-90a7-940a743ee154",
+      "source_id": "cc6ee365-e9e7-5e22-90b3-ea2a4e847a73",
+      "label": "failed",
+      "has_errors": false,
+      "conditions": [],
+      "decorator": false,
+      "parent_controlled": false
+    },
+    {
+      "destination_id": "65406eec-96f5-5ee9-af8e-35be3b42e441",
+      "source_id": "94ad342b-43a3-5a5f-902a-af0549aa6916",
+      "label": "success",
+      "has_errors": false,
+      "conditions": [],
+      "decorator": false,
+      "parent_controlled": false
+    },
+    {
+      "destination_id": "3ad890d4-a8f9-56d2-adf4-7ddbf80f73df",
+      "source_id": "94ad342b-43a3-5a5f-902a-af0549aa6916",
+      "label": "failed",
+      "has_errors": false,
+      "conditions": [],
+      "decorator": false,
+      "parent_controlled": false
+    },
+    {
+      "destination_id": "bf4ba8f5-a2da-58a4-a6d7-4a8391e3208b",
+      "source_id": "65406eec-96f5-5ee9-af8e-35be3b42e441",
+      "label": "",
+      "has_errors": false,
+      "conditions": [],
+      "decorator": false,
+      "parent_controlled": false
+    },
+    {
+      "destination_id": "97c05e46-e731-54b9-b212-32fc0a3f4050",
+      "source_id": "bf4ba8f5-a2da-58a4-a6d7-4a8391e3208b",
+      "label": "success",
+      "has_errors": false,
+      "conditions": [],
+      "decorator": false,
+      "parent_controlled": false
+    },
+    {
+      "destination_id": "f3abca06-8dbf-579a-a24b-429fe5c4fd50",
+      "source_id": "bf4ba8f5-a2da-58a4-a6d7-4a8391e3208b",
+      "label": "failed",
+      "has_errors": false,
+      "conditions": [],
+      "decorator": false,
+      "parent_controlled": false
+    }
+  ],
+  "visual_branches": null,
+  "comments": [],
+  "configuration": {},
+  "workflow_variables": [],
+  "errors": [],
+  "is_valid": true,
+  "created": "2026-08-25T22:40:00Z",
+  "edited": "2026-08-25T22:40:00Z",
+  "last_runtime": "0001-01-01T00:00:00Z",
+  "due_date": null
+}

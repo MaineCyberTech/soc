@@ -33,6 +33,7 @@ mct-security-stack/
     scripts/                - operational scripts (health, backup, capacity, etc.)
     checklists/             - operational checklists
     reports/                - current reports (historical moved to evidence/)
+                                  canonical/ - copy-first restructured corpus (P39 APPLY-39-01; see canonical/INDEX.md; originals remain authoritative until P40 decommission review)
     backups/                - OPERATIONAL DATA (dumps) - not in portable bundle
   integrations/             - per-subsystem docs (dfir-iris, greenbone, ...)
   reporting/

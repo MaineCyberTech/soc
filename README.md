@@ -48,7 +48,7 @@ OpenSearch low watermark, DR bundle uploading to S3, evidence archive complete (
   ops/scripts/      # operational scripts (healthcheck, alert volume, scanners, renderers)
   ops/runbooks/     # operational runbooks (103)
   ops/checklists/   # operational checklists (canonical location)
-  ops/reports/      # reports (preflight, validation, deployment, final, audits)
+  ops/reports/      # reports (preflight, validation, deployment, final, audits); canonical copy-first view in ops/reports/canonical/ (INDEX.md) since P39
   ops/backups/      # timestamped config backups + secret key files (600)
   integrations/     # cross-tool integration docs, payload contracts, tuning policies
   reporting/        # queries, dashboards, templates, output (client/internal)
