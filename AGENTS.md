@@ -28,11 +28,11 @@ _Sources: [SRC: phase39-56]_
 
 ## Canonical Truth & Navigation
 
-- Current operational truth: `ops/reports/canonical/current/current-state-20260826.md`
-  (Phase-40 refresh; supersedes `phase38-49-generate-current-state.md` pointer-wise;
+- Current operational truth: `ops/reports/canonical/current/current-state-20260826-postp41.md`
+  (Post-P41 refresh; supersedes the Phase-40 snapshot and `phase38-49-generate-current-state.md` pointer-wise;
   superseded only by a newer current-state doc per its own supersession statement).
 - Open work ledger: `ops/reports/canonical/current/open-work.md`; current change register:
-  `ops/reports/generated/phase40-02-change-register.md` (G40 series).
+  `ops/reports/generated/phase41-02-change-register.md` (G41 series; G40 register sticky for history).
 - Do not act on any claim older than the canonical current-state doc without re-verification.
 _Sources: [SRC: phase39-56]_
 
@@ -82,10 +82,16 @@ _Sources: [SRC: phase39-56]_
 ## Known Blockers
 
 Resolved-in-P40 (details in linked reports; listed to prevent re-litigation):
-field-fix VERIFIED (phase40-13); Wazuh→Shuffle trigger WIRED+PROVEN end-to-end
-(phase40-37/-40); Shuffle TLS implemented on :3443, plaintext LAN exposure closed
-(phase40-32); agent-015 merged.mg defect FIXED (phase40-24); W1/W2 dashboards
-imported 8/8 into the global tenant (phase40-62).
+field-fix VERIFIED (phase40-13), then field-growth CONTAINED AT SOURCE in P41
+(eve.json stats removed on sensor; compact-stats emitter+timer live; certification
+flips on the 08.27 guardrail — phase41-15/-18); Wazuh→Shuffle trigger WIRED+PROVEN
+end-to-end (phase40-37/-40) with overnight soak PASS incl. one real fail-closed
+ERROR caught (phase41-40) and monitor watchdog live (phase41-39/-43); Shuffle TLS
+implemented on :3443, plaintext LAN exposure closed (phase40-32), XFO dedup DONE
+(phase41-66); agent-015 merged.mg defect FIXED (phase40-24); W1/W2 dashboards
+imported 8/8 into the global tenant (phase40-62); dual-suricata-process defect
+FIXED via unit MASK + exact-args production invocation (phase41-15); v1.3.0
+published-original custody CLOSED byte-exact (phase41-75/-76).
 
 Open blockers — pointers only; live values in linked reports, never here:
 
@@ -93,8 +99,10 @@ Open blockers — pointers only; live values in linked reports, never here:
 - Agent 015 flap remediation — owner device-side; manager-side merged.mg defect fixed
   (phase40-24).
 - First policy-driven ISM deletion wave not yet observed — window opens 2026-08-29.
-- Packet workflow import + routing proofs DEFERRED by choice until refinement — see
-  `ops/reports/generated/phase40-41-packet-workflow-import.md` and ROUT-PKT-40-01.
+- Packet workflow import + routing proofs DEFERRED by choice; lane is TEST-ONLY
+  (ROUT-PKT-41) and blocked by the Shuffle execute_python param-injection platform
+  defect (R-PKT-PLATFORM) — see
+  `ops/reports/generated/phase41-52-routing-decision.md` and ROUT-PKT-40-01.
 - RTO/RPO sign-off awaiting owner decision — see
   `ops/reports/generated/phase40-72-rto-rpo-owner-decision.md`.
 - Restore rehearsal NO-GO until an adequate external target is approved.
@@ -112,6 +120,18 @@ _Sources: [SRC: phase39-56]_
   value (and therefore in the `Authorization: Bearer …` header), which reproduces
   intermittent 401s; strip whitespace (`tr -d '[:space:]'` or equivalent) whenever
   scripting tokens read from files. Lesson from phase40-41 (probes C1 vs E1).
+- Scripting note: never pipe a heredoc through `ssh host bash <<EOF` — the remote
+  command's stdin collides with the heredoc stream (consumed twice/misrouted; bit
+  twice in one day, P41). Stage the script to a file on the target or use
+  `ssh host bash -s < localfile`.
+- Scripting note: systemd unit state may NOT reflect what production runs — e.g. the
+  sensor Suricata unit is deliberately MASKED while production runs via an exact-args
+  setsid invocation. Verify with `pgrep -af` before reasoning about runtime state.
+- Scripting note: Shuffle `execute_python` cannot receive workflow variables today
+  (`data_in`, `input`, `execution_input`, `execution_data`, `data` all UNDEF in its
+  globals — param-injection platform defect R-PKT-PLATFORM). Prefer native
+  reference-consuming nodes (`filter_list`, `if_else_routing`, `set_datastore_value`)
+  which resolve $refs.
 _Sources: [SRC: phase39-56]_
 
 ## Report Authoring Conventions

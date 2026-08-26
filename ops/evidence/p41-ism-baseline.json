@@ -1,0 +1,129 @@
+{
+  "artifact": "p41-ism-baseline.json",
+  "purpose": "Pre-wave baseline: index list+sizes before first policy-driven ISM deletion wave",
+  "captured_at_utc": "2026-08-26T05:21:14Z",
+  "wave_eta_utc": "2026-08-29T21:00:44Z",
+  "policy": {
+    "id": "wazuh-archives-14d",
+    "transition": "hot -> delete when min_index_age=14d"
+  },
+  "eta_derivation": "oldest archive wazuh-archives-4.x-2026.08.15 created 2026-08-15T21:00:44Z (epoch 1786827644251) + 14d = 2026-08-29T21:00:44Z",
+  "first_candidate": "wazuh-archives-4.x-2026.08.15",
+  "candidates_in_wave_order": [
+    {
+      "index": "wazuh-archives-4.x-2026.08.15",
+      "docs": 3007251,
+      "pri_store_mb": 932.4,
+      "store": "1.8gb",
+      "ism_state": "hot",
+      "step_status": "condition_not_met"
+    },
+    {
+      "index": "wazuh-archives-4.x-2026.08.16",
+      "docs": 2150542,
+      "pri_store_mb": 649.9,
+      "store": "1.2gb",
+      "ism_state": "hot",
+      "step_status": "condition_not_met"
+    },
+    {
+      "index": "wazuh-archives-4.x-2026.08.17",
+      "docs": 2633464,
+      "pri_store_mb": "1.2gb",
+      "store": "2.4gb",
+      "ism_state": "hot",
+      "step_status": "condition_not_met"
+    },
+    {
+      "index": "wazuh-archives-4.x-2026.08.18",
+      "docs": 2397160,
+      "pri_store_mb": "1gb",
+      "store": "2gb",
+      "ism_state": "hot",
+      "step_status": "condition_not_met"
+    },
+    {
+      "index": "wazuh-archives-4.x-2026.08.19",
+      "docs": 2519199,
+      "pri_store_mb": "1.9gb",
+      "store": "3.8gb",
+      "ism_state": "hot",
+      "step_status": "condition_not_met"
+    },
+    {
+      "index": "wazuh-archives-4.x-2026.08.20",
+      "docs": 1486141,
+      "pri_store_mb": 622.4,
+      "store": "1.2gb",
+      "ism_state": "hot",
+      "step_status": "condition_not_met"
+    },
+    {
+      "index": "wazuh-archives-4.x-2026.08.21",
+      "docs": 1423025,
+      "pri_store_mb": 627.4,
+      "store": "1.2gb",
+      "ism_state": "hot",
+      "step_status": "condition_not_met"
+    },
+    {
+      "index": "wazuh-archives-4.x-2026.08.22",
+      "docs": 599196,
+      "pri_store_mb": 357.2,
+      "store": "707.8mb",
+      "ism_state": "hot",
+      "step_status": "condition_not_met"
+    },
+    {
+      "index": "wazuh-archives-4.x-2026.08.23",
+      "docs": 170521,
+      "pri_store_mb": 49.1,
+      "store": "98.3mb",
+      "ism_state": "hot",
+      "step_status": "condition_not_met"
+    },
+    {
+      "index": "wazuh-archives-4.x-2026.08.24",
+      "docs": 248458,
+      "pri_store_mb": 69.8,
+      "store": "139.8mb",
+      "ism_state": "hot",
+      "step_status": "condition_not_met"
+    },
+    {
+      "index": "wazuh-archives-4.x-2026.08.25",
+      "docs": 882772,
+      "pri_store_mb": 284.8,
+      "store": "570.9mb",
+      "ism_state": "hot",
+      "step_status": "condition_not_met"
+    },
+    {
+      "index": "wazuh-archives-4.x-2026.08.26",
+      "docs": 318128,
+      "pri_store_mb": 155.8,
+      "store": "302.8mb",
+      "ism_state": "hot",
+      "step_status": "condition_not_met"
+    }
+  ],
+  "snapshot_coverage": {
+    "fs": {
+      "repo": "wazuh-backup",
+      "latest": "snap-20260826-0330",
+      "status": "SUCCESS",
+      "contains_first_candidate": true
+    },
+    "s3": {
+      "repo": "do-spaces",
+      "latest": "s3-snap-20260826-0047",
+      "status": "SUCCESS",
+      "contains_first_candidate": true
+    }
+  },
+  "disk_baseline": {
+    "df_read_1": "2026-08-26T05:14Z /dev/sda1 148G total 118G used 24G avail 84%",
+    "df_read_2": "2026-08-26T05:19Z /dev/sda1 148G total 118G used 25G avail 83%"
+  },
+  "watermark_low_percent": 85
+}
