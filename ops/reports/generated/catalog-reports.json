@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated_at": "2026-08-26T01:56:51Z",
+  "generated_at": "2026-08-26T10:19:27Z",
   "corpus_root": "/opt/mct-security-stack/ops/reports/generated",
   "phase": 38,
   "hash_algorithm": "sha256",
@@ -10,7 +10,7 @@
   {
    "report_id": "phase38-00-master",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-00-master.md",
-   "title": "Phase 38 Master Orchestrator \u2014 Execution Summary and Phase 39 Roadmap",
+   "title": "Phase 38 Master Orchestrator — Execution Summary and Phase 39 Roadmap",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -20,7 +20,7 @@
   {
    "report_id": "phase38-01-preflight",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-01-preflight.md",
-   "title": "Phase 38 Preflight \u2014 System State Snapshot",
+   "title": "Phase 38 Preflight — System State Snapshot",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -30,7 +30,7 @@
   {
    "report_id": "phase38-02-change-register",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-02-change-register.md",
-   "title": "Phase 38 Change Register \u2014 Gates and Approval Requirements",
+   "title": "Phase 38 Change Register — Gates and Approval Requirements",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -40,7 +40,7 @@
   {
    "report_id": "phase38-03-report-root-discovery",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-03-report-root-discovery.md",
-   "title": "Phase 38 Report Root Discovery \u2014 Canonical and Approved Paths",
+   "title": "Phase 38 Report Root Discovery — Canonical and Approved Paths",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -50,7 +50,7 @@
   {
    "report_id": "phase38-04-report-inventory",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-04-report-inventory.md",
-   "title": "Phase 38 Report Inventory \u2014 Complete File Catalog",
+   "title": "Phase 38 Report Inventory — Complete File Catalog",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -60,7 +60,7 @@
   {
    "report_id": "phase38-05-report-hash-duplicates",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-05-report-hash-duplicates.md",
-   "title": "Phase 38 Report Hash Duplicates \u2014 SHA-256 Analysis",
+   "title": "Phase 38 Report Hash Duplicates — SHA-256 Analysis",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -70,7 +70,7 @@
   {
    "report_id": "phase38-06-report-near-duplicates",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-06-report-near-duplicates.md",
-   "title": "Phase 38 Report Near-Duplicates \u2014 Similarity Analysis",
+   "title": "Phase 38 Report Near-Duplicates — Similarity Analysis",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -80,7 +80,7 @@
   {
    "report_id": "phase38-07-report-schema",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-07-report-schema.md",
-   "title": "Phase 38 Report Schema \u2014 Required Metadata Definition",
+   "title": "Phase 38 Report Schema — Required Metadata Definition",
    "phase": 38,
    "date": "2026-08-25",
    "class": "AUTHORITATIVE-CURRENT (schema domain)",
@@ -90,7 +90,7 @@
   {
    "report_id": "phase38-08-status-taxonomy",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-08-status-taxonomy.md",
-   "title": "Phase 38 Status Taxonomy \u2014 Normalized Status Values and Transition Rules",
+   "title": "Phase 38 Status Taxonomy — Normalized Status Values and Transition Rules",
    "phase": 38,
    "date": "2026-08-25",
    "class": "AUTHORITATIVE-CURRENT (schema domain)",
@@ -100,7 +100,7 @@
   {
    "report_id": "phase38-09-claim-schema",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-09-claim-schema.md",
-   "title": "Phase 38 Claim Schema \u2014 Claim Definition and Verification Framework",
+   "title": "Phase 38 Claim Schema — Claim Definition and Verification Framework",
    "phase": 38,
    "date": "2026-08-25",
    "class": "AUTHORITATIVE-CURRENT (schema domain)",
@@ -110,7 +110,7 @@
   {
    "report_id": "phase38-10-action-schema",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-10-action-schema.md",
-   "title": "Phase 38 Action Schema \u2014 Canonical Definition for Trackable Actions",
+   "title": "Phase 38 Action Schema — Canonical Definition for Trackable Actions",
    "phase": 38,
    "date": "2026-08-25",
    "class": "AUTHORITATIVE-CURRENT (schema domain)",
@@ -120,7 +120,7 @@
   {
    "report_id": "phase38-11-report-parse",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-11-report-parse.md",
-   "title": "Phase 38 Report Parse \u2014 Corpus Extraction of Metadata, Claims, Metrics, and References",
+   "title": "Phase 38 Report Parse — Corpus Extraction of Metadata, Claims, Metrics, and References",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -130,7 +130,7 @@
   {
    "report_id": "phase38-12-phase-chronology",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-12-phase-chronology.md",
-   "title": "Phase 38 Chronology \u2014 Date-Anchored Phase Timeline from Git History and File Metadata",
+   "title": "Phase 38 Chronology — Date-Anchored Phase Timeline from Git History and File Metadata",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -140,7 +140,7 @@
   {
    "report_id": "phase38-13-current-state-claims",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-13-current-state-claims.md",
-   "title": "Phase 38 Current-State Claims \u2014 Live-Verified Claim Register with Sources and Status",
+   "title": "Phase 38 Current-State Claims — Live-Verified Claim Register with Sources and Status",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -150,7 +150,7 @@
   {
    "report_id": "phase38-14-metric-history",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-14-metric-history.md",
-   "title": "Phase 38 Metric History \u2014 Time-Series-Ready Records from Explicit Reports and Git Log",
+   "title": "Phase 38 Metric History — Time-Series-Ready Records from Explicit Reports and Git Log",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -160,7 +160,7 @@
   {
    "report_id": "phase38-15-decision-history",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-15-decision-history.md",
-   "title": "Phase 38 Decision History \u2014 Catalog of Approvals, Deferrals, Retirements, and Policy Decisions",
+   "title": "Phase 38 Decision History — Catalog of Approvals, Deferrals, Retirements, and Policy Decisions",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -170,7 +170,7 @@
   {
    "report_id": "phase38-16-applied-change-history",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-16-applied-change-history.md",
-   "title": "Phase 38 Applied-Change History \u2014 Mutation Ledger with Path, Backup, Validation, and Effectiveness",
+   "title": "Phase 38 Applied-Change History — Mutation Ledger with Path, Backup, Validation, and Effectiveness",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -180,7 +180,7 @@
   {
    "report_id": "phase38-17-risk-history",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-17-risk-history.md",
-   "title": "Phase 38 Risk History \u2014 Risk Register with First/Last References, Status Transitions, and Currency",
+   "title": "Phase 38 Risk History — Risk Register with First/Last References, Status Transitions, and Currency",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -190,7 +190,7 @@
   {
    "report_id": "phase38-18-recommendation-history",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-18-recommendation-history.md",
-   "title": "Phase 38 Recommendation History \u2014 Traceability of Every Roadmap/Action Recommendation Across Phases",
+   "title": "Phase 38 Recommendation History — Traceability of Every Roadmap/Action Recommendation Across Phases",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -200,7 +200,7 @@
   {
    "report_id": "phase38-19-evidence-root-inventory",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-19-evidence-root-inventory.md",
-   "title": "Phase 38 Evidence Root Inventory \u2014 Referenced Evidence Files, Hashes, Logs, Configs, Snapshots, and Bundles with Missing-Reference Flags",
+   "title": "Phase 38 Evidence Root Inventory — Referenced Evidence Files, Hashes, Logs, Configs, Snapshots, and Bundles with Missing-Reference Flags",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -210,7 +210,7 @@
   {
    "report_id": "phase38-20-path-link-validation",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-20-path-link-validation.md",
-   "title": "Phase 38 Path/Link Validation \u2014 Internal References Checked Against Live Repository and Filesystem",
+   "title": "Phase 38 Path/Link Validation — Internal References Checked Against Live Repository and Filesystem",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -440,7 +440,7 @@
   {
    "report_id": "phase38-43-generate-corpus-audit",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-43-generate-corpus-audit.md",
-   "title": "Complete Corpus Audit \u2014 Scope, Inventory, Methodology, Findings, Limitations, Evidence Map",
+   "title": "Complete Corpus Audit — Scope, Inventory, Methodology, Findings, Limitations, Evidence Map",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -450,7 +450,7 @@
   {
    "report_id": "phase38-44-generate-contradictions",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-44-generate-contradictions.md",
-   "title": "Contradictions Register \u2014 One Record Per Conflict, Adjudicated Against 2026-08-25 Live State",
+   "title": "Contradictions Register — One Record Per Conflict, Adjudicated Against 2026-08-25 Live State",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -460,7 +460,7 @@
   {
    "report_id": "phase38-45-generate-stale",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-45-generate-stale.md",
-   "title": "Stale / Superseded Claim Registry \u2014 Historical Statement \u2192 Canonical Replacement, with Chronology",
+   "title": "Stale / Superseded Claim Registry — Historical Statement → Canonical Replacement, with Chronology",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -470,7 +470,7 @@
   {
    "report_id": "phase38-46-generate-missing",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-46-generate-missing.md",
-   "title": "Missing, Broken, or Inaccessible Artifacts \u2014 Impact, Recovery, Certification Blocking",
+   "title": "Missing, Broken, or Inaccessible Artifacts — Impact, Recovery, Certification Blocking",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -480,7 +480,7 @@
   {
    "report_id": "phase38-47-generate-openwork",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-47-generate-openwork.md",
-   "title": "Open-Work Register \u2014 Deduplicated Actions (ACT = do-now, BCK = backlog) with Acceptance and Rollback",
+   "title": "Open-Work Register — Deduplicated Actions (ACT = do-now, BCK = backlog) with Acceptance and Rollback",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -490,7 +490,7 @@
   {
    "report_id": "phase38-48-generate-chronology",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-48-generate-chronology.md",
-   "title": "Authoritative Timeline \u2014 Major Changes, Decisions, Regressions, Incidents, Releases, Carryover",
+   "title": "Authoritative Timeline — Major Changes, Decisions, Regressions, Incidents, Releases, Carryover",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -500,7 +500,7 @@
   {
    "report_id": "phase38-49-generate-current-state",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-49-generate-current-state.md",
-   "title": "THE Canonical Current State \u2014 Verified 2026-08-25, Single Source of Truth",
+   "title": "THE Canonical Current State — Verified 2026-08-25, Single Source of Truth",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -510,7 +510,7 @@
   {
    "report_id": "phase38-50-generate-verification-ledger",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-50-generate-verification-ledger.md",
-   "title": "Claim Ledger \u2014 The ~50 Most Consequential Claims, Adjudicated",
+   "title": "Claim Ledger — The ~50 Most Consequential Claims, Adjudicated",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -520,7 +520,7 @@
   {
    "report_id": "phase38-51-generate-metric-ledger",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-51-generate-metric-ledger.md",
-   "title": "Metric History \u2014 Values Over Time with Conflict Flags (Markdown + CSV)",
+   "title": "Metric History — Values Over Time with Conflict Flags (Markdown + CSV)",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -530,7 +530,7 @@
   {
    "report_id": "phase38-52-generate-decision-ledger",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-52-generate-decision-ledger.md",
-   "title": "Decision History \u2014 Type, Description, Supersession, Effect-Today (Markdown + JSON)",
+   "title": "Decision History — Type, Description, Supersession, Effect-Today (Markdown + JSON)",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -540,7 +540,7 @@
   {
    "report_id": "phase38-53-generate-evidence-ledger",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-53-generate-evidence-ledger.md",
-   "title": "Evidence Catalog \u2014 Paths, Hashes, Availability, Classification, Referenced-By (Markdown + JSON)",
+   "title": "Evidence Catalog — Paths, Hashes, Availability, Classification, Referenced-By (Markdown + JSON)",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -550,7 +550,7 @@
   {
    "report_id": "phase38-55-canonical-structure-design",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-55-canonical-structure-design.md",
-   "title": "Phase 38 Canonical Structure Design \u2014 Target Directory Tree for the Report Corpus",
+   "title": "Phase 38 Canonical Structure Design — Target Directory Tree for the Report Corpus",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -560,7 +560,7 @@
   {
    "report_id": "phase38-56-naming-standard",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-56-naming-standard.md",
-   "title": "Phase 38 Naming Standard \u2014 Deterministic Lowercase Filenames for the Report Corpus",
+   "title": "Phase 38 Naming Standard — Deterministic Lowercase Filenames for the Report Corpus",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -570,7 +570,7 @@
   {
    "report_id": "phase38-57-authority-model",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-57-authority-model.md",
-   "title": "Phase 38 Authority Model \u2014 Document Classes, Precedence, and Promotion Rules",
+   "title": "Phase 38 Authority Model — Document Classes, Precedence, and Promotion Rules",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -580,7 +580,7 @@
   {
    "report_id": "phase38-58-retention-classification",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-58-retention-classification.md",
-   "title": "Phase 38 Retention Classification \u2014 Corpus-Wide Classes and DO-NOT-DELETE Policy",
+   "title": "Phase 38 Retention Classification — Corpus-Wide Classes and DO-NOT-DELETE Policy",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -590,7 +590,7 @@
   {
    "report_id": "phase38-59-migration-plan",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-59-migration-plan.md",
-   "title": "Phase 38 Non-Destructive Migration Plan \u2014 Copy-First Restructure of the Report Corpus",
+   "title": "Phase 38 Non-Destructive Migration Plan — Copy-First Restructure of the Report Corpus",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -600,7 +600,7 @@
   {
    "report_id": "phase38-60-canonical-index",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-60-canonical-index.md",
-   "title": "Phase 38 Canonical Index \u2014 Human-Readable INDEX.md Blueprint",
+   "title": "Phase 38 Canonical Index — Human-Readable INDEX.md Blueprint",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -610,7 +610,7 @@
   {
    "report_id": "phase38-61-machine-catalog",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-61-machine-catalog.md",
-   "title": "Phase 38 Machine Catalog \u2014 catalog-reports.json / .csv Generation",
+   "title": "Phase 38 Machine Catalog — catalog-reports.json / .csv Generation",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -620,7 +620,7 @@
   {
    "report_id": "phase38-62-source-map",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-62-source-map.md",
-   "title": "Phase 38 Source Map \u2014 original_path \u2192 canonical_path Mapping with Supersession Chains",
+   "title": "Phase 38 Source Map — original_path → canonical_path Mapping with Supersession Chains",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -630,7 +630,7 @@
   {
    "report_id": "phase38-63-backlink-map",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-63-backlink-map.md",
-   "title": "Phase 38 Backlink Map \u2014 Dependency Edges, Orphan Candidates",
+   "title": "Phase 38 Backlink Map — Dependency Edges, Orphan Candidates",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -640,7 +640,7 @@
   {
    "report_id": "phase38-64-readme-navigation",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-64-readme-navigation.md",
-   "title": "Phase 38 Operator README \u2014 Where Is the Truth and How to Navigate the Corpus",
+   "title": "Phase 38 Operator README — Where Is the Truth and How to Navigate the Corpus",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -650,7 +650,7 @@
   {
    "report_id": "phase38-65-templates",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-65-templates.md",
-   "title": "Phase 38 Templates \u2014 Normative Skeletons for All Report Types",
+   "title": "Phase 38 Templates — Normative Skeletons for All Report Types",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -660,7 +660,7 @@
   {
    "report_id": "phase38-66-schema-validation",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-66-schema-validation.md",
-   "title": "Phase 38 Schema Validation \u2014 Metadata Marker and Status-Enum Audit of Generated Reports",
+   "title": "Phase 38 Schema Validation — Metadata Marker and Status-Enum Audit of Generated Reports",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -694,7 +694,7 @@
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
-   "status": "DEFERRED \u2014 PENDING OPERATOR APPROVAL",
+   "status": "DEFERRED — PENDING OPERATOR APPROVAL",
    "sha256": "b3d62fb630ab58c509005b2a9f964ee2128a9c5740fa008520f18bcb93083c2d"
   },
   {
@@ -704,7 +704,7 @@
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
-   "status": "TEMPLATE \u2014 Migration not yet applied",
+   "status": "TEMPLATE — Migration not yet applied",
    "sha256": "3b0dded33f7a3025a5fb3ecf67a2fd348a5841001db76246cccfdfbbf1e03179"
   },
   {
@@ -734,7 +734,7 @@
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
-   "status": "PLAN-DEFERRED \u2014 Requires operator approval",
+   "status": "PLAN-DEFERRED — Requires operator approval",
    "sha256": "155d7a125b6f53cd563373880d9d9fef6fead6420584f8f09c668efeb41c4dc3"
   },
   {
@@ -754,7 +754,7 @@
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
-   "status": "DESIGN-COMPLETE \u2014 Requires Shuffle UI for creation",
+   "status": "DESIGN-COMPLETE — Requires Shuffle UI for creation",
    "sha256": "2117631eb6e4324661d3f6bf8d6f0c875612de1e4a23981271329ecb03cb31bb"
   },
   {
@@ -764,7 +764,7 @@
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
-   "status": "METHODOLOGY-COMPLETE \u2014 Requires workflow creation first",
+   "status": "METHODOLOGY-COMPLETE — Requires workflow creation first",
    "sha256": "cb6e08cf994e5e6c5a3e5547698a6e016771298c35e53f09fb3c0dae7fbf84aa"
   },
   {
@@ -810,7 +810,7 @@
   {
    "report_id": "phase38-90-backlog",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-90-backlog.md",
-   "title": "Phase 38 Consolidated Backlog \u2014 Prioritized Action Items",
+   "title": "Phase 38 Consolidated Backlog — Prioritized Action Items",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -820,7 +820,7 @@
   {
    "report_id": "phase38-91-billing",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-91-billing.md",
-   "title": "Phase 38 Billing Assessment \u2014 Service Delivery and Billable Coverage",
+   "title": "Phase 38 Billing Assessment — Service Delivery and Billable Coverage",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -830,7 +830,7 @@
   {
    "report_id": "phase38-92-scorecard",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-92-scorecard.md",
-   "title": "Phase 38 Scorecard \u2014 Internal and CLIENT-SAFE Metrics",
+   "title": "Phase 38 Scorecard — Internal and CLIENT-SAFE Metrics",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -850,7 +850,7 @@
   {
    "report_id": "phase38-94-deployability",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-94-deployability.md",
-   "title": "Phase 38 Deployability Assessment \u2014 Production Readiness Evaluation",
+   "title": "Phase 38 Deployability Assessment — Production Readiness Evaluation",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -860,7 +860,7 @@
   {
    "report_id": "phase38-95-release-assurance",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-95-release-assurance.md",
-   "title": "Phase 38 Release Assurance \u2014 v1.3.0 Integrity Verification",
+   "title": "Phase 38 Release Assurance — v1.3.0 Integrity Verification",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -870,7 +870,7 @@
   {
    "report_id": "phase38-96-repo",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-96-repo.md",
-   "title": "Phase 38 Repo Assessment \u2014 Code/Report Gates and Commit Status",
+   "title": "Phase 38 Repo Assessment — Code/Report Gates and Commit Status",
    "phase": 38,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -880,7 +880,7 @@
   {
    "report_id": "phase38-54-generate-remediation",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-54-generate-remediation.md",
-   "title": "Corrective Plan \u2014 Report Gaps + Operational Gaps Merged, Prioritized",
+   "title": "Corrective Plan — Report Gaps + Operational Gaps Merged, Prioritized",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -890,7 +890,7 @@
   {
    "report_id": "phase38-77-routing-decision",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-77-routing-decision.md",
-   "title": "Phase 38-77 Production Routing Decision \u2014 DEFERRED to Phase 39 with Pre-Approval Requirements",
+   "title": "Phase 38-77 Production Routing Decision — DEFERRED to Phase 39 with Pre-Approval Requirements",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -900,7 +900,7 @@
   {
    "report_id": "phase38-78-field-resolution",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase38-78-field-resolution.md",
-   "title": "Phase 38-78 \"Limit of total fields [1000]\" Resolution \u2014 Indexer Mapping Limit Fixed via Index Template",
+   "title": "Phase 38-78 \"Limit of total fields [1000]\" Resolution — Indexer Mapping Limit Fixed via Index Template",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -980,7 +980,7 @@
   {
    "report_id": "phase39-00-master",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-00-master.md",
-   "title": "Phase 39 Master Orchestrator \u2014 Credential Remediation Arc Scope, Execution Order, and Verdict Approach",
+   "title": "Phase 39 Master Orchestrator — Credential Remediation Arc Scope, Execution Order, and Verdict Approach",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -990,7 +990,7 @@
   {
    "report_id": "phase39-01-preflight",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-01-preflight.md",
-   "title": "Phase 39 Preflight \u2014 Live State Freeze for the Credential Remediation Arc",
+   "title": "Phase 39 Preflight — Live State Freeze for the Credential Remediation Arc",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1000,7 +1000,7 @@
   {
    "report_id": "phase39-02-change-register",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-02-change-register.md",
-   "title": "Phase 39 Change Register \u2014 Gates G1\u2013G12 (Credential Remediation Arc)",
+   "title": "Phase 39 Change Register — Gates G1–G12 (Credential Remediation Arc)",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1010,7 +1010,7 @@
   {
    "report_id": "phase39-03-credential-incident",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-03-credential-incident.md",
-   "title": "INC-39-01 \u2014 Confirmed Disclosure of Shuffle Admin Bearer and IRIS Bearer in Repo-Tracked Artifacts",
+   "title": "INC-39-01 — Confirmed Disclosure of Shuffle Admin Bearer and IRIS Bearer in Repo-Tracked Artifacts",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1020,7 +1020,7 @@
   {
    "report_id": "phase39-04-token-dependency-map",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-04-token-dependency-map.md",
-   "title": "Dependency Map \u2014 Old Shuffle Admin Bearer and IRIS Bearer (Locations, Consumers, Post-Rotation Status)",
+   "title": "Dependency Map — Old Shuffle Admin Bearer and IRIS Bearer (Locations, Consumers, Post-Rotation Status)",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1040,7 +1040,7 @@
   {
    "report_id": "phase39-06-token-rotate",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-06-token-rotate.md",
-   "title": "ROT-39-01 \u2014 Shuffle Admin Bearer Rotation via Datastore Update + Backend Restart",
+   "title": "ROT-39-01 — Shuffle Admin Bearer Rotation via Datastore Update + Backend Restart",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1050,7 +1050,7 @@
   {
    "report_id": "phase39-07-token-invalidate",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-07-token-invalidate.md",
-   "title": "INV-39-01 \u2014 Empirical Proof That the Old Shuffle Admin Bearer Is Rejected Post-Restart",
+   "title": "INV-39-01 — Empirical Proof That the Old Shuffle Admin Bearer Is Rejected Post-Restart",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1060,7 +1060,7 @@
   {
    "report_id": "phase39-08-token-workflow-re-auth",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-08-token-workflow-re-auth.md",
-   "title": "REA-39-01 \u2014 Post-Rotation Verification That Workflows Authenticate Outbound With the IRIS Bearer (Not the Rotated Shuffle Bearer)",
+   "title": "REA-39-01 — Post-Rotation Verification That Workflows Authenticate Outbound With the IRIS Bearer (Not the Rotated Shuffle Bearer)",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1070,7 +1070,7 @@
   {
    "report_id": "phase39-09-secret-location-redaction",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-09-secret-location-redaction.md",
-   "title": "RED-39-01..N \u2014 Tracked-File Redaction Inventory With Before/After Hashes",
+   "title": "RED-39-01..N — Tracked-File Redaction Inventory With Before/After Hashes",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1080,7 +1080,7 @@
   {
    "report_id": "phase39-10-secret-recursion-scan",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-10-secret-recursion-scan.md",
-   "title": "Recursive Secret Scan \u2014 Patterns, Scope, Counts-Only Findings, and Residual Risk Register",
+   "title": "Recursive Secret Scan — Patterns, Scope, Counts-Only Findings, and Residual Risk Register",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1090,7 +1090,7 @@
   {
    "report_id": "phase39-11-rehash-refresh",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-11-rehash-refresh.md",
-   "title": "Rehash Record \u2014 sha256 Recomputation for Sanitized Artifacts, Catalog Row Bumps, Export SUMS Refresh",
+   "title": "Rehash Record — sha256 Recomputation for Sanitized Artifacts, Catalog Row Bumps, Export SUMS Refresh",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1100,7 +1100,7 @@
   {
    "report_id": "phase39-12-report-ci-green",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-12-report-ci-green.md",
-   "title": "Report Corpus CI Recovery \u2014 p38-report-ci.sh Runs, Finding Classification, Final Verdict",
+   "title": "Report Corpus CI Recovery — p38-report-ci.sh Runs, Finding Classification, Final Verdict",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1110,7 +1110,7 @@
   {
    "report_id": "phase39-13-shuffle-exposure-baseline",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-13-shuffle-exposure-baseline.md",
-   "title": "EXP-39-01 \u2014 Shuffle Frontend Exposure Baseline (Pre/Post Interface-Binding Hardening)",
+   "title": "EXP-39-01 — Shuffle Frontend Exposure Baseline (Pre/Post Interface-Binding Hardening)",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1120,7 +1120,7 @@
   {
    "report_id": "phase39-14-shuffle-hardening-design",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-14-shuffle-hardening-design.md",
-   "title": "DES-39-01 \u2014 Frontend Exposure Control Selection: Options Evaluation and Chosen Minimum Durable Control",
+   "title": "DES-39-01 — Frontend Exposure Control Selection: Options Evaluation and Chosen Minimum Durable Control",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1130,17 +1130,17 @@
   {
    "report_id": "phase39-15-shuffle-firewall-apply",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-15-shuffle-firewall-apply.md",
-   "title": "FW-39-01 \u2014 Apply Record: Honest Reframe from Firewall to Bind-Address Hardening (Interface-Only Publish)",
+   "title": "FW-39-01 — Apply Record: Honest Reframe from Firewall to Bind-Address Hardening (Interface-Only Publish)",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
-   "status": "APPLIED (fallback mechanism \u2014 see \u00a71)",
+   "status": "APPLIED (fallback mechanism — see §1)",
    "sha256": "753e84d55bfa3f5249930dfb5ed8d697022873afc5eb5b551c183fe561cabb34"
   },
   {
    "report_id": "phase39-16-shuffle-tls-apply",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-16-shuffle-tls-apply.md",
-   "title": "TLS-39-01 \u2014 TLS Termination: NOT APPLIED (DEFERRED to P40) With Prepared Design",
+   "title": "TLS-39-01 — TLS Termination: NOT APPLIED (DEFERRED to P40) With Prepared Design",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1150,7 +1150,7 @@
   {
    "report_id": "phase39-17-shuffle-authorized-test",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-17-shuffle-authorized-test.md",
-   "title": "AUTHZ-39-01 \u2014 Authorized-Path Validation Post Interface-Binding Change",
+   "title": "AUTHZ-39-01 — Authorized-Path Validation Post Interface-Binding Change",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1160,7 +1160,7 @@
   {
    "report_id": "phase39-18-shuffle-unauthorized-test",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-18-shuffle-unauthorized-test.md",
-   "title": "DENY-39-01 \u2014 Unauthorized-Path Blocking Validation (Interface-Level Scope)",
+   "title": "DENY-39-01 — Unauthorized-Path Blocking Validation (Interface-Level Scope)",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1170,7 +1170,7 @@
   {
    "report_id": "phase39-19-shuffle-persistence",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-19-shuffle-persistence.md",
-   "title": "PERS-39-01 \u2014 Binding Persistence Across Lifecycle Events (Recreate Proven / Reboot Pending)",
+   "title": "PERS-39-01 — Binding Persistence Across Lifecycle Events (Recreate Proven / Reboot Pending)",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1180,7 +1180,7 @@
   {
    "report_id": "phase39-20-shuffle-security-report",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-20-shuffle-security-report.md",
-   "title": "SHUFFLE-SEC-39-01 \u2014 Shuffle Exposure Hardening Certification (Arc Summary)",
+   "title": "SHUFFLE-SEC-39-01 — Shuffle Exposure Hardening Certification (Arc Summary)",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1190,7 +1190,7 @@
   {
    "report_id": "phase39-21-field-template-baseline",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-21-field-template-baseline.md",
-   "title": "Field-Limit Template Baseline \u2014 `wazuh-archives-fieldlimit` Body, Priority/Overlap Audit, and Pre-Proof Rejection Counters",
+   "title": "Field-Limit Template Baseline — `wazuh-archives-fieldlimit` Body, Priority/Overlap Audit, and Pre-Proof Rejection Counters",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1200,7 +1200,7 @@
   {
    "report_id": "phase39-22-new-index-detection",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-22-new-index-detection.md",
-   "title": "First Post-Fix Index Detection \u2014 `wazuh-archives-4.x-2026.08.26` Creation Window, Capture Checklist, and Ready-to-Run Verification Script",
+   "title": "First Post-Fix Index Detection — `wazuh-archives-4.x-2026.08.26` Creation Window, Capture Checklist, and Ready-to-Run Verification Script",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1210,7 +1210,7 @@
   {
    "report_id": "phase39-23-field-setting-proof",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-23-field-setting-proof.md",
-   "title": "Field-Limit Setting Inheritance Proof \u2014 Criteria, Conflict Flags, and Pre-Captured Evidence (Awaiting 2026.08.26 Creation)",
+   "title": "Field-Limit Setting Inheritance Proof — Criteria, Conflict Flags, and Pre-Captured Evidence (Awaiting 2026.08.26 Creation)",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1220,7 +1220,7 @@
   {
    "report_id": "phase39-24-field-rejection-proof",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-24-field-rejection-proof.md",
-   "title": "Rejection-Flatline Proof Method \u2014 Before/After Counter Design, Expected Stop Signature, and Tail-End Caveat (Awaiting 2026.08.26 Roll)",
+   "title": "Rejection-Flatline Proof Method — Before/After Counter Design, Expected Stop Signature, and Tail-End Caveat (Awaiting 2026.08.26 Roll)",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1230,7 +1230,7 @@
   {
    "report_id": "phase39-25-field-ingest-proof",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-25-field-ingest-proof.md",
-   "title": "Ingest-Health Proof Method \u2014 Suricata Archive Landing, Sample-Field Searchability, Queue Health, and Growth-Rate Baselines (Awaiting 2026.08.26 Roll)",
+   "title": "Ingest-Health Proof Method — Suricata Archive Landing, Sample-Field Searchability, Queue Health, and Growth-Rate Baselines (Awaiting 2026.08.26 Roll)",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1240,7 +1240,7 @@
   {
    "report_id": "phase39-26-field-growth-audit",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-26-field-growth-audit.md",
-   "title": "Mapped-Field Growth Audit \u2014 Saturation at the 1000 Ceiling Proven on 08.23\u201308.25, Branch Analysis, and Warning Thresholds",
+   "title": "Mapped-Field Growth Audit — Saturation at the 1000 Ceiling Proven on 08.23–08.25, Branch Analysis, and Warning Thresholds",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1250,7 +1250,7 @@
   {
    "report_id": "phase39-27-field-template-rollback",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-27-field-template-rollback.md",
-   "title": "Rollback and Alternatives \u2014 Safe Template Removal, Cardinality-Reduction Options, Priority-Conflict Playbook, and Strategy Escalation Triggers",
+   "title": "Rollback and Alternatives — Safe Template Removal, Cardinality-Reduction Options, Priority-Conflict Playbook, and Strategy Escalation Triggers",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1260,7 +1260,7 @@
   {
    "report_id": "phase39-28-field-fix-certification",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-28-field-fix-certification.md",
-   "title": "Field-Limit Fix Certification \u2014 Sub-Verdicts (Root Cause, Application, Effectiveness, Rollback), Flip Conditions, and Scheduled Verification",
+   "title": "Field-Limit Fix Certification — Sub-Verdicts (Root Cause, Application, Effectiveness, Rollback), Flip Conditions, and Scheduled Verification",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1270,7 +1270,7 @@
   {
    "report_id": "phase39-29-iris-failure-baseline",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-29-iris-failure-baseline.md",
-   "title": "Failure Class Extraction for the Wazuh\u2192IRIS Delivery Path \u2014 Exception Signature, Affected Population, Network Environment Matrix, and Era Comparison",
+   "title": "Failure Class Extraction for the Wazuh→IRIS Delivery Path — Exception Signature, Affected Population, Network Environment Matrix, and Era Comparison",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1280,7 +1280,7 @@
   {
    "report_id": "phase39-30-dns-path-audit",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-30-dns-path-audit.md",
-   "title": "Resolver Comparison and Network Topology Audit \u2014 Why `iriswebapp_nginx` Resolved Everywhere Except Where Executions Actually Run",
+   "title": "Resolver Comparison and Network Topology Audit — Why `iriswebapp_nginx` Resolved Everywhere Except Where Executions Actually Run",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1290,7 +1290,7 @@
   {
    "report_id": "phase39-31-iris-service-audit",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-31-iris-service-audit.md",
-   "title": "IRIS Service Stack Health, Listener, API Contract, and Auth Audit \u2014 Failures Were DNS+Header-Layer Only",
+   "title": "IRIS Service Stack Health, Listener, API Contract, and Auth Audit — Failures Were DNS+Header-Layer Only",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1300,17 +1300,17 @@
   {
    "report_id": "phase39-32-dns-remediation-plan",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-32-dns-remediation-plan.md",
-   "title": "NET-39-01 \u2014 Minimal Durable Fix for Execution-Plane Resolution of `iriswebapp_nginx` (Overlay Attach with Alias)",
+   "title": "NET-39-01 — Minimal Durable Fix for Execution-Plane Resolution of `iriswebapp_nginx` (Overlay Attach with Alias)",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
-   "status": "APPROVED-FOR-APPLY \u2192 superseded by phase39-33 (APPLIED)",
+   "status": "APPROVED-FOR-APPLY → superseded by phase39-33 (APPLIED)",
    "sha256": "8108eac58e67311c9ad0c7bba02203a271bfb5387f2cff2d930fb8b1ad540986"
   },
   {
    "report_id": "phase39-33-dns-remediation-apply",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-33-dns-remediation-apply.md",
-   "title": "NET-39-01-APPLY \u2014 Overlay Network Attach Executed, Validated From the Exact Execution Environment, Status APPLIED",
+   "title": "NET-39-01-APPLY — Overlay Network Attach Executed, Validated From the Exact Execution Environment, Status APPLIED",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1320,17 +1320,17 @@
   {
    "report_id": "phase39-34-iris-consecutive-deliveries",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-34-iris-consecutive-deliveries.md",
-   "title": "THE PROOF RECORD \u2014 Three Consecutive API-Triggered Executions Delivered to IRIS With DB-Cross-Verified Alert Creation",
+   "title": "THE PROOF RECORD — Three Consecutive API-Triggered Executions Delivered to IRIS With DB-Cross-Verified Alert Creation",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
-   "status": "PASS \u2014 3-consecutive-delivery criterion MET",
+   "status": "PASS — 3-consecutive-delivery criterion MET",
    "sha256": "706c945184debc061ee256661bc402f3795d47816d6a3d2a106d093bf53b77cb"
   },
   {
    "report_id": "phase39-35-iris-failure-alert",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-35-iris-failure-alert.md",
-   "title": "Lightweight Execution-Outcome Monitor (Implemented as Script) \u2014 Delivered/Failed/Aborted Classification With Runbook and Recovery Test",
+   "title": "Lightweight Execution-Outcome Monitor (Implemented as Script) — Delivered/Failed/Aborted Classification With Runbook and Recovery Test",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1340,7 +1340,7 @@
   {
    "report_id": "phase39-36-routing-recertification",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-36-routing-recertification.md",
-   "title": "ROUT-39-01 \u2014 Conditional Recertification of Manual/API-Path IRIS Routing After DNS + Parameter Remediation",
+   "title": "ROUT-39-01 — Conditional Recertification of Manual/API-Path IRIS Routing After DNS + Parameter Remediation",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1350,7 +1350,7 @@
   {
    "report_id": "phase39-37-wazuh-shuffle-config",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-37-wazuh-shuffle-config.md",
-   "title": "Current ossec.conf Integration State, Canonical Shuffle Target Design, Prerequisites and Rollback \u2014 DESIGNED-NOT-APPLIED",
+   "title": "Current ossec.conf Integration State, Canonical Shuffle Target Design, Prerequisites and Rollback — DESIGNED-NOT-APPLIED",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1360,7 +1360,7 @@
   {
    "report_id": "phase39-38-packet-workflow-baseline",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-38-packet-workflow-baseline.md",
-   "title": "P38 Packet-Workflow Design vs Current Estate \u2014 Routing Lanes, SID Evidence Inventory, and the Standing Decision That a Dedicated Lane Remains Required",
+   "title": "P38 Packet-Workflow Design vs Current Estate — Routing Lanes, SID Evidence Inventory, and the Standing Decision That a Dedicated Lane Remains Required",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1370,17 +1370,17 @@
   {
    "report_id": "phase39-39-packet-workflow-build",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-39-packet-workflow-build.md",
-   "title": "Import-Ready Packet Workflow Artifact Finalized and Validated; Raw-API Creation Attempted \u2192 401 (UI-Gated Confirmed)",
+   "title": "Import-Ready Packet Workflow Artifact Finalized and Validated; Raw-API Creation Attempted → 401 (UI-Gated Confirmed)",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
-   "status": "NOT-BUILT-API-GATED \u2014 artifact COMPLETE, platform creation blocked",
+   "status": "NOT-BUILT-API-GATED — artifact COMPLETE, platform creation blocked",
    "sha256": "617756c3cbe7610604b42a210cfb78bebdc0bd1d2088b344b988f9cbfc61df19"
   },
   {
    "report_id": "phase39-40-packet-workflow-replay",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-40-packet-workflow-replay.md",
-   "title": "Three-Identical-Events Replay Protocol (Dedup Semantics, Expectations, and Execution Procedure) \u2014 BLOCKED-WITH-PROTOCOL-READY",
+   "title": "Three-Identical-Events Replay Protocol (Dedup Semantics, Expectations, and Execution Procedure) — BLOCKED-WITH-PROTOCOL-READY",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1390,7 +1390,7 @@
   {
    "report_id": "phase39-41-packet-workflow-failure",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-41-packet-workflow-failure.md",
-   "title": "Fault-Injection Matrix for the Packet Lane (Malformed / Datastore-Down / Downstream-Unreachable / Auth-Fail) With Guardrail-Independence Assertion \u2014 BLOCKED-MATRIX-DEFINED",
+   "title": "Fault-Injection Matrix for the Packet Lane (Malformed / Datastore-Down / Downstream-Unreachable / Auth-Fail) With Guardrail-Independence Assertion — BLOCKED-MATRIX-DEFINED",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1400,7 +1400,7 @@
   {
    "report_id": "phase39-42-packet-routing-decision",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-42-packet-routing-decision.md",
-   "title": "Packet/Suricata Lane Routing Decision \u2014 DEFERRED (Build API-Gated; Proofs Blocked) With Precommitted Preconditions, Limits, and Kill Switch",
+   "title": "Packet/Suricata Lane Routing Decision — DEFERRED (Build API-Gated; Proofs Blocked) With Precommitted Preconditions, Limits, and Kill Switch",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1410,7 +1410,7 @@
   {
    "report_id": "phase39-43-migration-precheck",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-43-migration-precheck.md",
-   "title": "Phase 39-43 Migration Precheck \u2014 GO/NO-GO Gates Before Copy-First Apply (APPLY-39-01)",
+   "title": "Phase 39-43 Migration Precheck — GO/NO-GO Gates Before Copy-First Apply (APPLY-39-01)",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1420,7 +1420,7 @@
   {
    "report_id": "phase39-44-migration-manifest-freeze",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-44-migration-manifest-freeze.md",
-   "title": "Phase 39-44 Migration Manifest Freeze \u2014 APPLY-39-01 Row Set, Classes, and Rollback Basis",
+   "title": "Phase 39-44 Migration Manifest Freeze — APPLY-39-01 Row Set, Classes, and Rollback Basis",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1430,7 +1430,7 @@
   {
    "report_id": "phase39-45-migration-apply",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-45-migration-apply.md",
-   "title": "Phase 39-45 Migration Apply Log APPLY-39-01 \u2014 Copy-First Execution Against Frozen Manifest",
+   "title": "Phase 39-45 Migration Apply Log APPLY-39-01 — Copy-First Execution Against Frozen Manifest",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1440,7 +1440,7 @@
   {
    "report_id": "phase39-46-link-rewrite",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-46-link-rewrite.md",
-   "title": "Phase 39-46 Active-Doc Reference Updates \u2014 Canonical Navigation Without Rewriting History",
+   "title": "Phase 39-46 Active-Doc Reference Updates — Canonical Navigation Without Rewriting History",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1450,7 +1450,7 @@
   {
    "report_id": "phase39-47-alias-source-map",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-47-alias-source-map.md",
-   "title": "Phase 39-47 Source-Map Validation \u2014 25-Row Spot Check, Supersession Chains, Evidence Orphans",
+   "title": "Phase 39-47 Source-Map Validation — 25-Row Spot Check, Supersession Chains, Evidence Orphans",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1460,7 +1460,7 @@
   {
    "report_id": "phase39-48-migration-hash-verify",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-48-migration-hash-verify.md",
-   "title": "Phase 39-48 Full Hash Verification \u2014 All Rows, Source and Destination, vs Frozen Manifest",
+   "title": "Phase 39-48 Full Hash Verification — All Rows, Source and Destination, vs Frozen Manifest",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1470,7 +1470,7 @@
   {
    "report_id": "phase39-49-migration-link-verify",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-49-migration-link-verify.md",
-   "title": "Phase 39-49 Link Integrity \u2014 Relative .md Links Across the Canonical Tree",
+   "title": "Phase 39-49 Link Integrity — Relative .md Links Across the Canonical Tree",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1480,7 +1480,7 @@
   {
    "report_id": "phase39-50-migration-catalog-verify",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-50-migration-catalog-verify.md",
-   "title": "Phase 39-50 Catalog Reconciliation \u2014 catalog-reports vs Filesystem, Drift Appended with Real Hashes",
+   "title": "Phase 39-50 Catalog Reconciliation — catalog-reports vs Filesystem, Drift Appended with Real Hashes",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1490,7 +1490,7 @@
   {
    "report_id": "phase39-51-migration-rollback-test",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-51-migration-rollback-test.md",
-   "title": "Phase 39-51 Rollback Test \u2014 DRY-RUN ONLY on Temp Clone, Zero Production Deletion",
+   "title": "Phase 39-51 Rollback Test — DRY-RUN ONLY on Temp Clone, Zero Production Deletion",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1500,7 +1500,7 @@
   {
    "report_id": "phase39-52-report-ci-postmigration",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-52-report-ci-postmigration.md",
-   "title": "Phase 39-52 Post-Migration CI \u2014 p38 Report Suite Green + New p39 Canonical Gate (Executed)",
+   "title": "Phase 39-52 Post-Migration CI — p38 Report Suite Green + New p39 Canonical Gate (Executed)",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1510,7 +1510,7 @@
   {
    "report_id": "phase39-53-agents-discovery",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-53-agents-discovery.md",
-   "title": "Discovery of AGENTS.md / Agent-Instruction Files Across All Approved Roots \u2014 Result: ZERO Files, Create-First Arc",
+   "title": "Discovery of AGENTS.md / Agent-Instruction Files Across All Approved Roots — Result: ZERO Files, Create-First Arc",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1540,7 +1540,7 @@
   {
    "report_id": "phase39-56-agents-report-truth-map",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-56-agents-report-truth-map.md",
-   "title": "Corpus\u2192AGENTS Truth Map: Every Durable Fact Candidates for AGENTS.md, Source-Linked; Volatile Items Excluded by Policy",
+   "title": "Corpus→AGENTS Truth Map: Every Durable Fact Candidates for AGENTS.md, Source-Linked; Volatile Items Excluded by Policy",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1550,7 +1550,7 @@
   {
    "report_id": "phase39-57-agents-gap-audit",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-57-agents-gap-audit.md",
-   "title": "Gap Audit vs Ideal Agent-File Content: Zero Baseline, Required Section Set, Corpus\u2192AGENTS Consolidation Gaps, Ambiguity and Duplicate Risks",
+   "title": "Gap Audit vs Ideal Agent-File Content: Zero Baseline, Required Section Set, Corpus→AGENTS Consolidation Gaps, Ambiguity and Duplicate Risks",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1560,7 +1560,7 @@
   {
    "report_id": "phase39-58-agents-command-validation",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-58-agents-command-validation.md",
-   "title": "Live Validation of Every Command and Path Slated for AGENTS.md \u2014 All PASS; Credential Values Never Written to File Content",
+   "title": "Live Validation of Every Command and Path Slated for AGENTS.md — All PASS; Credential Values Never Written to File Content",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1600,7 +1600,7 @@
   {
    "report_id": "phase39-62-agents-dryrun",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-62-agents-dryrun.md",
-   "title": "Dry Run of Proposed AGENTS.md Against All Gates Before Apply \u2014 Verdict READY",
+   "title": "Dry Run of Proposed AGENTS.md Against All Gates Before Apply — Verdict READY",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1610,7 +1610,7 @@
   {
    "report_id": "phase39-63-agents-apply",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-63-agents-apply.md",
-   "title": "Apply Record: /opt/mct-security-stack/AGENTS.md Written with Validated Content \u2014 Bytes, sha256, Timestamp Recorded",
+   "title": "Apply Record: /opt/mct-security-stack/AGENTS.md Written with Validated Content — Bytes, sha256, Timestamp Recorded",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1640,7 +1640,7 @@
   {
    "report_id": "phase39-66-agents-governance-ci",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase39-66-agents-governance-ci.md",
-   "title": "New Enforcement Script ops/scripts/p39-agents-ci.sh (9 Gates) \u2014 Created, chmod +x, Run Against Applied File: PASS",
+   "title": "New Enforcement Script ops/scripts/p39-agents-ci.sh (9 Gates) — Created, chmod +x, Run Against Applied File: PASS",
    "phase": 39,
    "date": "2026-08-25",
    "class": "GENERATED-AUDIT",
@@ -1660,7 +1660,7 @@
   {
    "report_id": "phase40-00-master",
    "path": "generated/phase40-00-master.md",
-   "title": "Phase 40 Master Orchestrator \u2014 Field-Template Proof Arc Scope, Execution Order, and Verdict Approach",
+   "title": "Phase 40 Master Orchestrator — Field-Template Proof Arc Scope, Execution Order, and Verdict Approach",
    "phase": 40,
    "date": "2026-08-26",
    "class": "GENERATED-AUDIT",
@@ -1670,7 +1670,7 @@
   {
    "report_id": "phase40-01-preflight",
    "path": "generated/phase40-01-preflight.md",
-   "title": "Phase 40 Preflight \u2014 Live State Freeze for the Field-Template Proof Arc",
+   "title": "Phase 40 Preflight — Live State Freeze for the Field-Template Proof Arc",
    "phase": 40,
    "date": "2026-08-26",
    "class": "GENERATED-AUDIT",
@@ -1680,7 +1680,7 @@
   {
    "report_id": "phase40-02-change-register",
    "path": "generated/phase40-02-change-register.md",
-   "title": "Phase 40 Change Register \u2014 Gates G40-01..12 (Field-Template Proof Arc)",
+   "title": "Phase 40 Change Register — Gates G40-01..12 (Field-Template Proof Arc)",
    "phase": 40,
    "date": "2026-08-26",
    "class": "GENERATED-AUDIT",
@@ -1690,7 +1690,7 @@
   {
    "report_id": "phase40-03-field-proof-readiness",
    "path": "generated/phase40-03-field-proof-readiness.md",
-   "title": "Phase 40 Field-Proof Readiness \u2014 Checklist Verified Before Adjudicating the Midnight Roll",
+   "title": "Phase 40 Field-Proof Readiness — Checklist Verified Before Adjudicating the Midnight Roll",
    "phase": 40,
    "date": "2026-08-26",
    "class": "GENERATED-AUDIT",
@@ -1700,7 +1700,7 @@
   {
    "report_id": "phase40-04-post-template-index-detect",
    "path": "generated/phase40-04-post-template-index-detect.md",
-   "title": "Phase 40 DETECTED \u2014 First Post-Template Archive Index wazuh-archives-4.x-2026.08.26 (Creation 00:00:02.420Z)",
+   "title": "Phase 40 DETECTED — First Post-Template Archive Index wazuh-archives-4.x-2026.08.26 (Creation 00:00:02.420Z)",
    "phase": 40,
    "date": "2026-08-26",
    "class": "GENERATED-AUDIT",
@@ -1710,7 +1710,7 @@
   {
    "report_id": "phase40-05-template-simulation",
    "path": "generated/phase40-05-template-simulation.md",
-   "title": "Phase 40 Template Simulation \u2014 _simulate_index Resolution vs ACTUAL Index State (Simulation Validated by Reality)",
+   "title": "Phase 40 Template Simulation — _simulate_index Resolution vs ACTUAL Index State (Simulation Validated by Reality)",
    "phase": 40,
    "date": "2026-08-26",
    "class": "GENERATED-AUDIT",
@@ -1720,7 +1720,7 @@
   {
    "report_id": "phase40-06-field-setting-verify",
    "path": "generated/phase40-06-field-setting-verify.md",
-   "title": "Phase 40 Effective-Setting Proof \u2014 total_fields.limit=2000 Applied; Conflicting-Override Audit; ISM Attachment Deviation (ISM-40-01)",
+   "title": "Phase 40 Effective-Setting Proof — total_fields.limit=2000 Applied; Conflicting-Override Audit; ISM Attachment Deviation (ISM-40-01)",
    "phase": 40,
    "date": "2026-08-26",
    "class": "GENERATED-AUDIT",
@@ -1730,7 +1730,7 @@
   {
    "report_id": "phase40-07-mapped-fields-baseline",
    "path": "generated/phase40-07-mapped-fields-baseline.md",
-   "title": "Phase 40 Mapped-Field Baseline on 2026.08.26 \u2014 Deep Leaf Count 1580\u21921604, Branch Accounting, Growth Trajectory vs the 2000 Budget",
+   "title": "Phase 40 Mapped-Field Baseline on 2026.08.26 — Deep Leaf Count 1580→1604, Branch Accounting, Growth Trajectory vs the 2000 Budget",
    "phase": 40,
    "date": "2026-08-26",
    "class": "GENERATED-AUDIT",
@@ -1740,7 +1740,7 @@
   {
    "report_id": "phase40-08-rejection-before-after",
    "path": "generated/phase40-08-rejection-before-after.md",
-   "title": "Phase 40 Rejection Flatline Proof \u2014 ~150/min Stream Ends at 00:00:01.431Z; Every Post-Roll Window Reads ZERO",
+   "title": "Phase 40 Rejection Flatline Proof — ~150/min Stream Ends at 00:00:01.431Z; Every Post-Roll Window Reads ZERO",
    "phase": 40,
    "date": "2026-08-26",
    "class": "GENERATED-AUDIT",
@@ -1750,7 +1750,7 @@
   {
    "report_id": "phase40-09-representative-ingest",
    "path": "generated/phase40-09-representative-ingest.md",
-   "title": "Phase 40 Ingest Proof \u2014 44,286 First-Hour Docs \u2192 102,775 by H+1.7h; Event-Class Census; Filebeat Queue Healthy",
+   "title": "Phase 40 Ingest Proof — 44,286 First-Hour Docs → 102,775 by H+1.7h; Event-Class Census; Filebeat Queue Healthy",
    "phase": 40,
    "date": "2026-08-26",
    "class": "GENERATED-AUDIT",
@@ -1760,7 +1760,7 @@
   {
    "report_id": "phase40-10-pipeline-health-after-field",
    "path": "generated/phase40-10-pipeline-health-after-field.md",
-   "title": "Phase 40 Pipeline Health Post-Cutover \u2014 Clean Logs, GREEN Cluster, Steady Resources, Alert Lane Unaffected",
+   "title": "Phase 40 Pipeline Health Post-Cutover — Clean Logs, GREEN Cluster, Steady Resources, Alert Lane Unaffected",
    "phase": 40,
    "date": "2026-08-26",
    "class": "GENERATED-AUDIT",
@@ -1770,7 +1770,7 @@
   {
    "report_id": "phase40-11-field-growth-guardrail",
    "path": "generated/phase40-11-field-growth-guardrail.md",
-   "title": "Phase 40 Field-Growth Guardrail \u2014 Thresholds, Trend Formula, Delivery Script (Created + Executed), Alert Path and Containment",
+   "title": "Phase 40 Field-Growth Guardrail — Thresholds, Trend Formula, Delivery Script (Created + Executed), Alert Path and Containment",
    "phase": 40,
    "date": "2026-08-26",
    "class": "GENERATED-AUDIT",
@@ -1780,7 +1780,7 @@
   {
    "report_id": "phase40-12-field-fix-rollback",
    "path": "generated/phase40-12-field-fix-rollback.md",
-   "title": "Phase 40 Rollback Validation \u2014 Delete-Template Semantics Proven Non-Destructive, Priority-Conflict Response, Fallback Designs, Escalation Conditions",
+   "title": "Phase 40 Rollback Validation — Delete-Template Semantics Proven Non-Destructive, Priority-Conflict Response, Fallback Designs, Escalation Conditions",
    "phase": 40,
    "date": "2026-08-26",
    "class": "GENERATED-AUDIT",
@@ -1790,7 +1790,7 @@
   {
    "report_id": "phase40-13-field-fix-certification",
    "path": "generated/phase40-13-field-fix-certification.md",
-   "title": "Phase 40 Certification \u2014 Field-Limit Fix VERIFIED; Evidence Matrix, Root-Cause Chain Closure, Supersession of Decoder-Based Claims",
+   "title": "Phase 40 Certification — Field-Limit Fix VERIFIED; Evidence Matrix, Root-Cause Chain Closure, Supersession of Decoder-Based Claims",
    "phase": 40,
    "date": "2026-08-26",
    "class": "GENERATED-AUDIT",
@@ -1800,7 +1800,7 @@
   {
    "report_id": "phase40-75-report-current-state-refresh",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase40-75-report-current-state-refresh.md",
-   "title": "CS-40-01 \u2014 Full Canonical Refresh: New Current-State Snapshot Written to canonical/current/current-state-20260826.md, Open-Work Register Rewritten With P40 Closures and Live Risks",
+   "title": "CS-40-01 — Full Canonical Refresh: New Current-State Snapshot Written to canonical/current/current-state-20260826.md, Open-Work Register Rewritten With P40 Closures and Live Risks",
    "phase": 40,
    "date": "2026-08-26",
    "class": "GENERATED-AUDIT",
@@ -1810,7 +1810,7 @@
   {
    "report_id": "phase40-76-agents-phase40-audit",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase40-76-agents-phase40-audit.md",
-   "title": "AGENTS-40-AUDIT \u2014 Full Read of Root AGENTS.md Against Phase-40 Reality; Durable-Fact Drift Findings F-40-x With Severities; Path/Command Validations",
+   "title": "AGENTS-40-AUDIT — Full Read of Root AGENTS.md Against Phase-40 Reality; Durable-Fact Drift Findings F-40-x With Severities; Path/Command Validations",
    "phase": 40,
    "date": "2026-08-26",
    "class": "GENERATED-AUDIT",
@@ -1820,7 +1820,7 @@
   {
    "report_id": "phase40-77-agents-gap-repair",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase40-77-agents-gap-repair.md",
-   "title": "CHG-40-AGENTS-01 \u2014 Minimal Three-Hunk AGENTS.md Refresh: Backup \u2192 Dry-Run Diff \u2192 Apply \u2192 Post-Validate; Before/After Hashes; Register Entry G40-13",
+   "title": "CHG-40-AGENTS-01 — Minimal Three-Hunk AGENTS.md Refresh: Backup → Dry-Run Diff → Apply → Post-Validate; Before/After Hashes; Register Entry G40-13",
    "phase": 40,
    "date": "2026-08-26",
    "class": "GENERATED-AUDIT",
@@ -1830,7 +1830,7 @@
   {
    "report_id": "phase40-78-agents-report-drift",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase40-78-agents-report-drift.md",
-   "title": "DRIFT-40-01 \u2014 Post-Edit CI Rerun Triple (agents-ci + report-ci + canonical-ci): All PASS; No Volatile Metrics in AGENTS.md; All References Resolve",
+   "title": "DRIFT-40-01 — Post-Edit CI Rerun Triple (agents-ci + report-ci + canonical-ci): All PASS; No Volatile Metrics in AGENTS.md; All References Resolve",
    "phase": 40,
    "date": "2026-08-26",
    "class": "GENERATED-AUDIT",
@@ -1840,7 +1840,7 @@
   {
    "report_id": "phase40-79-duplicate-decision",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase40-79-duplicate-decision.md",
-   "title": "DUP-DEC-40-01 \u2014 Post-Migration Duplicate Recount Verified (3 Groups / 12 Files); Per-Group Adjudication: 2\u00d7 APPROVE Alias-Consolidation, 1\u00d7 DEFER",
+   "title": "DUP-DEC-40-01 — Post-Migration Duplicate Recount Verified (3 Groups / 12 Files); Per-Group Adjudication: 2× APPROVE Alias-Consolidation, 1× DEFER",
    "phase": 40,
    "date": "2026-08-26",
    "class": "GENERATED-AUDIT",
@@ -1850,7 +1850,7 @@
   {
    "report_id": "phase40-80-duplicate-apply",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase40-80-duplicate-apply.md",
-   "title": "DUP-APP-40-01 \u2014 Machine-Readable Alias Ledger CREATED (canonical/ledgers/source-map-aliases.json); 2 Rows Applied Non-Destructively; Zero Deletions Verified",
+   "title": "DUP-APP-40-01 — Machine-Readable Alias Ledger CREATED (canonical/ledgers/source-map-aliases.json); 2 Rows Applied Non-Destructively; Zero Deletions Verified",
    "phase": 40,
    "date": "2026-08-26",
    "class": "GENERATED-AUDIT",
@@ -1860,12 +1860,1042 @@
   {
    "report_id": "phase40-81-securityonion-stop-decision",
    "path": "/opt/mct-security-stack/ops/reports/generated/phase40-81-securityonion-stop-decision.md",
-   "title": "SO-DEC-40-01 \u2014 RETIRED Chain Verified, Zero Remaining Dependencies, Evidence Volumes Untouched \u2192 APPROVE STOP; EXECUTED docker stop security-onion (Exit 0); Rollback = docker start",
+   "title": "SO-DEC-40-01 — RETIRED Chain Verified, Zero Remaining Dependencies, Evidence Volumes Untouched → APPROVE STOP; EXECUTED docker stop security-onion (Exit 0); Rollback = docker start",
    "phase": 40,
    "date": "2026-08-26",
    "class": "GENERATED-AUDIT",
    "status": "COMPLETE",
    "sha256": "32d2af4d750e4144e8c168fcfc0579fe654a392dbe067dfac2b5c4e7ea82190d"
+  },
+  {
+   "report_id": "phase42-00-master",
+   "path": "generated/phase42-00-master.md",
+   "title": "Orchestrator — 104-Prompt Program, 8 Primary Gates, Execution-State Summary (done-live / pending-window / owner-gated), Verdict Approach for the Five-Condition Adjudication",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "241bbc7843e68b79e32a599de228cab6da661836759117d425ca2a4391a0b706"
+  },
+  {
+   "report_id": "phase42-01-preflight",
+   "path": "generated/phase42-01-preflight.md",
+   "title": "Full Preflight — Repo 6579919 Clean-at-HEAD, v1.3.0+v1.3.1 Tags Pushed/On-Box, Disk 84%, OS GREEN, Field CRIT-Legacy Situation (Rejections Resumed on Legacy Index 07:02–07:45Z), Monitor Cycles incl. Real ERROR Catch, Repair-Churn Fix Proven, Blockers Register",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "dbc637495ef0e6f1c441e2ed99c968749e70378a30da461a5b52b8ab6b6a21ce"
+  },
+  {
+   "report_id": "phase42-02-change-register",
+   "path": "generated/phase42-02-change-register.md",
+   "title": "Change Register — Fourteen Gates Mapped to Execution States, Evidence Paths, and Owners",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "3e333fbf30dfb00dc5eaa8c277e436e69220080c312cc4a0afdbd26301cbae6f"
+  },
+  {
+   "report_id": "phase42-03-field-cycle-readiness",
+   "path": "generated/phase42-03-field-cycle-readiness.md",
+   "title": "Readiness — Adjudicator Staged (Embedded), Five Conditions C1–C5 Restated, Credentials-by-Reference Method, Birth Window, Evidence Destinations, Rollback Position, Interim-Risk Statement",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "1b8ddc1a58a5395821ee56db0f6ceb6c023912f468abb2171be6e215c1968d13"
+  },
+  {
+   "report_id": "phase42-04-index-birth-proof",
+   "path": "generated/phase42-04-index-birth-proof.md",
+   "title": "Birth Proof Plan for wazuh-archives-4.x-2026.08.27 — Detection Command Ready, Creation-Timestamp Capture, Matched-Template Verification via _simulate_index (Pre-Resolved Today)",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "PENDING-BIRTH",
+   "sha256": "649528eedcafd5d497aaa7fd168cfc0573bb1a0da9daf2de09adcb8c131f276e"
+  },
+  {
+   "report_id": "phase42-05-c1-limit-condition",
+   "path": "generated/phase42-05-c1-limit-condition.md",
+   "title": "C1 Adjudication Package — Exact Check, Pass Band, Interim Template-Level Proof Already GREEN",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "PENDING-BIRTH",
+   "sha256": "2f1bd96bccb7d2dfbf923beedab21598d022666327f2fc1e8b582546d7c1ed0f"
+  },
+  {
+   "report_id": "phase42-06-c2-ism-condition",
+   "path": "generated/phase42-06-c2-ism-condition.md",
+   "title": "C2 Adjudication Package — Policy Assignment at Birth, Pass Band, Interim Proof (Simulate Resolves wazuh-archives-14d; Legacy Index Predates Template)",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "PENDING-BIRTH",
+   "sha256": "166e4aa0dccf969a89553915ae1aa64d96d1531dbe9904c1ae9517863173b62d"
+  },
+  {
+   "report_id": "phase42-07-c3-fullstats-condition",
+   "path": "generated/phase42-07-c3-fullstats-condition.md",
+   "title": "C3 Adjudication Package — Zero Full-Stats in Newborn; Interim Live Proof: 0 Docs Since 03:54Z Cutover on Legacy Index",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "PENDING-BIRTH",
+   "sha256": "dc3ff9bd49e02c9afe67c71650f6c79708f6fa23bfb130c2e33d4dd5464e732c"
+  },
+  {
+   "report_id": "phase42-08-c4-rejection-condition",
+   "path": "generated/phase42-08-c4-rejection-condition.md",
+   "title": "C4 Adjudication Package — Zero Rejections Post-Birth; Interim Live Proof: 2746 Rejections Resumed Against Legacy Index 07:02–07:45Z, Zero Since, Zero on Worker",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "PENDING-BIRTH",
+   "sha256": "d40d35ac75d493883b9c28a6fd1dcf86b9972a7b12561f01c7299cc3a18f7641"
+  },
+  {
+   "report_id": "phase42-09-c5-required-data-condition",
+   "path": "generated/phase42-09-c5-required-data-condition.md",
+   "title": "C5 Adjudication Package — Newborn Leaf Count ≤1400 Unique-Basis; Projection ~937 Basis / ~1100 Raw Day-One, Verdict-Insensitive Either Way",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "PENDING-BIRTH",
+   "sha256": "eee714b318bcd1b0c61979adde5114e8a7005c7b33a61925df10cba88543c165"
+  },
+  {
+   "report_id": "phase42-10-field-basis-reconciliation",
+   "path": "generated/phase42-10-field-basis-reconciliation.md",
+   "title": "THE Basis Explanation (P41 Finding) — Guardrail Counts Multi-Fields Raw; Unique-Leaf Basis Is the Decision Metric; Both Bases Tabulated; Verdict-Insensitive Proof",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "6667bdb6288953152d6acec76e074f870c3ddad32e4389b1751c628c24617120"
+  },
+  {
+   "report_id": "phase42-100-deployability",
+   "path": "generated/phase42-100-deployability.md",
+   "title": "DEPLOY-42-07 — Verdict PARTIAL Maintained Precisely: Remaining Blockers 3 (B1 Target AWAITING-approval, B2 Signature AWAITING-owner, B3 Rehearsal Never-Run); Custody Now DOUBLE-GREEN (v1.3.0 Published-Original Byte-Exact + v1.3.1 Tag-Pushed/On-Box); Spot-Check Streak ×4 and Ordered Flip-Path With Owners; Statement Of What Remains",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "PARTIAL",
+   "sha256": "b660027abd51a7828718b7667e18426eedab0dc9c0ab34b2daec7f257908a346"
+  },
+  {
+   "report_id": "phase42-101-release-assurance",
+   "path": "generated/phase42-101-release-assurance.md",
+   "title": "REL-42-07 — Dual-Release Assurance: v1.3.0 Published-Original Byte-Exact Custody STANDS CLOSED And v1.3.1 Tag-Pushed/On-Box ASSURED (ls-remote Exit 0 Object Identical; Archive sha256 Recompute MATCH; MANIFEST Written); Delta Register D-1…D-12 Now SHIPPED-IN-TAG (v1.3.1 Supersedes Delta-Tracking Need Going Forward); Sensitive-File Gates PASS; Triple-CI Gates PASS Re-Run Embedded Verbatim",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "f174a27c8096b38f05264231322af8ae5ad9edbf38b40837803b3dcbd95bfb93"
+  },
+  {
+   "report_id": "phase42-102-repo",
+   "path": "generated/phase42-102-repo.md",
+   "title": "REPO-42-04 — Pre-Commit PLAN Record: Gates Run Triple-GREEN (Verbatim Embeds In phase42-101 §6), Redaction Sweep Zero, Change Classification Four Classes (Sensor-Remote · Host-Configs/Code · Evidence Incl. v1.3.1 Releases+Workflow-Export+FP-Sample · Reports Generated+Canonical+Current), Planned Single Logical Commit With Verbatim Message, Push-If-Approved Policy, Expected-Clean-Tree Checklist. DO NOT COMMIT YET.",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "PLAN-ONLY",
+   "sha256": "7782c49c9a1b7b6100861235be55ded598e9b81235dfa5def7f9d419622f40aa"
+  },
+  {
+   "report_id": "phase42-11-field-growth-attribution",
+   "path": "generated/phase42-11-field-growth-attribution.md",
+   "title": "Morning CRIT 1852/2000 Decomposed — Legacy-Stats Baggage Immutable + Organic +15 win +13 VT +1 osquery; Producer Correlation; Velocity Table 1604→1852; Midnight Projection Scenarios",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "f81cda40923082a9c81e4e1cc4edf4366376c55477bde8ff24f53acfe9a96f8d"
+  },
+  {
+   "report_id": "phase42-12-field-guardrail-check",
+   "path": "generated/phase42-12-field-guardrail-check.md",
+   "title": "Guardrail Reading CRIT 1852 (Raw) with Threshold Logic Review — Soft 1400/Hard 1800 Calibrated for a CLEAN Index; Addendum: During Legacy Window Raw-2000-Cap Proximity Is Informational-Only, Rejection Counter Is the True Signal (=0 Post-Birth Expectation)",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "7138de86eb1b5096d25916bf7cf193e036e852ff170902d61b511f782898c41e"
+  },
+  {
+   "report_id": "phase42-13-field-cycle-addendum",
+   "path": "generated/phase42-13-field-cycle-addendum.md",
+   "title": "Pre-Drafted Post-Adjudication Addendum — Verdict Lines per Condition, Signature Block, Evidence Links, Plus Tomorrow-Morning Runbook (Single Command)",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "STAGED",
+   "sha256": "f04038f8faf76acd3e29e15beaaf9c1d7f102bbdd0b300f2a357887d20b31407"
+  },
+  {
+   "report_id": "phase42-14-field-cycle-monitoring",
+   "path": "generated/phase42-14-field-cycle-monitoring.md",
+   "title": "Interim Monitoring Until Birth (Hourly Guardrail Cadence, Alert-If-Rejections>0) and Post-Birth Schedule (Adjudicator + Plateau Sampling t+1h/t+6h/t+24h)",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "ACTIVE",
+   "sha256": "9a8c9d89985f18fd94acc3870fa0a5ce354e2439bb9043a68a70295d150084e2"
+  },
+  {
+   "report_id": "phase42-15-packet-capability-inventory",
+   "path": "generated/phase42-15-packet-capability-inventory.md",
+   "title": "CAPINV-42-01 — COMPLETE: Definitive Tools-1.2.0 Capability Matrix For This Build From Five Empirical Probes (T1–T5) Across Two Phases; No Native Reference-Consuming Gate Primitive Is Operational In Tools; HTTP App Confirmed Sole Reference Consumer",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "08c86d083be938e5db0a489fb6716b8e1cd8abfb7d59e6d3c0623fcd13893662"
+  },
+  {
+   "report_id": "phase42-16-packet-native-design",
+   "path": "generated/phase42-16-packet-native-design.md",
+   "title": "NATDES-42-01 — COMPLETE: Three API-Side Design Attempts Cataloged (Linear-Chain Topology Fix / Old-vs-New Ref Syntax / Full-Metadata Clone) With Honest Outcomes; Final Architecture Options A/B/C Stated With Tradeoffs; Ranking B > A > C",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "54edf320ca0f695aa89aa334ca590ff40bb6da57bc661f8ae1620ef8e54f0b58"
+  },
+  {
+   "report_id": "phase42-17-packet-backup",
+   "path": "generated/phase42-17-packet-backup.md",
+   "title": "BKUP-42-01 — COMPLETE: Fresh Live Export Of Packet Workflow e133a645 (No Prior Current-State Export Existed; Only P39 Import Artifact) Plus Hook-Bearing WEBHOOK Trigger Doc Saved To ops/evidence/p42-workflow-export/ With sha256SUMS; Rollback = Restore Exports",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "84180a65b95a66abda8a9a6e6d2e30d6b1890b0f54783634f3e1698cb06b68ca"
+  },
+  {
+   "report_id": "phase42-18-packet-native-rebuild",
+   "path": "generated/phase42-18-packet-native-rebuild.md",
+   "title": "REBUILD-42-01 — Status NOT-COMPLETED-PLATFORM-BLOCKED: Rebuild Attempted Via Best-Available Primitives; Topology Class Solved But Chain Dies At The First Gate Node (if_else Runtime-Missing; execute_python Input-Injection Absent; All Tools $refs Literal); Canonical Blocker Statement Below For Reuse",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "BLOCKED",
+   "sha256": "26e8215364ce44990fa9de041d551740f755950ff8d9f04c86e8203b0f7ad7a5"
+  },
+  {
+   "report_id": "phase42-19-packet-reference-proof",
+   "path": "generated/phase42-19-packet-reference-proof.md",
+   "title": "REFPROOF-42-01 — COMPLETE (NEGATIVE): Four Reference-Syntax/Metadata Tests All Fail To Make Tools Consume References; Reference Consumption Is Impossible In Shuffle Tools 1.2.0 On This Build; HTTP App Is The Sole Consumer",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "9b7e5741164a229ba207d23568315011d677a4dda0440e147778fedbc58e115a"
+  },
+  {
+   "report_id": "phase42-20-validation-gate-proof",
+   "path": "generated/phase42-20-validation-gate-proof.md",
+   "title": "VALPRF-42-01 — BLOCKED-DEPENDS-ON-GATES: Required-Field Validation Protocol Preserved Intact From P41; Node Executes Error-Free But Sees Undefined Input (T1), So It Cannot Detect Malformedness; Partial Credit = Happy-Path Execution + Structural Wiring",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "BLOCKED-DEPENDS-ON-GATES",
+   "sha256": "66a0ea03129faad9c6a4d843c00b32cc36e720e39be1efdbe1da691a8da4240e"
+  },
+  {
+   "report_id": "phase42-21-isolation-proof",
+   "path": "generated/phase42-21-isolation-proof.md",
+   "title": "ISO-42-01 — BLOCKED-DEPENDS-ON-GATES With Honest Partial Credit: Zero Contamination PROVEN By Markers/Status Across All P41–P42 Traffic (Every Event Synthetic/Test-Titled; Trigger Stopped; Estate 3); The Programmatic Isolation Branch Itself Remains Input-Blocked (T1)",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "PARTIAL",
+   "sha256": "60d7a1ff56c7c1dddde5c9b1262ecbbb20efb7fa326c1f56fea10298eeefa8f7"
+  },
+  {
+   "report_id": "phase42-22-dedup-proof",
+   "path": "generated/phase42-22-dedup-proof.md",
+   "title": "DEDUP-PRF-42-01 — BLOCKED-DEPENDS-ON-GATES: Dedup Protocol Preserved; check_datastore_contains Executes Error-Free But Its Key Ships Static Because Refs Pass Literal (T2) — Suppression Semantics Remain Unprovable; Partial Credit = Non-Suppression Of Triplets Is Itself Documented Platform Behavior",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "BLOCKED-DEPENDS-ON-GATES",
+   "sha256": "256cf49c97e3740c5e33e1e6745979fe55181702fb72acf8185cdbb1a3089b72"
+  },
+  {
+   "report_id": "phase42-23-counter-proof",
+   "path": "generated/phase42-23-counter-proof.md",
+   "title": "CNTR-PRF-42-01 — BLOCKED-DEPENDS-ON-GATES: Routed-Increment Counter Protocol Preserved; set_cache_value Runs Error-Free But Stores The Literal `$ref` Echo (T2, exec bc6197a4) — No Counter Semantics Claimed Or Possible Today",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "BLOCKED-DEPENDS-ON-GATES",
+   "sha256": "514442aec03cbdeac484a914ca9e420e4001a80f0eb3d39550a9d63258f85a14"
+  },
+  {
+   "report_id": "phase42-24-replay-proof",
+   "path": "generated/phase42-24-replay-proof.md",
+   "title": "RPL-PRF-42-01 — BLOCKED-DEPENDS-ON-GATES With Strong Partial Credit: Replayed-Triplet Delivery Remains Proven (12 FINISHED, IRIS 200 ×12, Zero Function Errors); Replay *Suppression* Leg Waits On Working Dedup Gates; No New Fires This Phase By Design",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "PARTIAL",
+   "sha256": "9e1f1f2cd8722c4935dde753c837f70d098cda99627656e258c12f8af979d771"
+  },
+  {
+   "report_id": "phase42-25-malformed-proof",
+   "path": "generated/phase42-25-malformed-proof.md",
+   "title": "MALF-PRF-42-01 — BLOCKED-DEPENDS-ON-GATES: Malformed-Event Protocol Preserved Verbatim; Fail-Closed Wiring Structural (DEADLETTER-malformed Present, AGENTS MUST Honored In Design) But Validate Gate Cannot Behaviorally Route While Input Is Undefined (T1); No Injection Test Run By Policy",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "BLOCKED-DEPENDS-ON-GATES",
+   "sha256": "eb2eddade19bbcafa8ee18531253be92aaadbd72d7d698934d0ad6f8f917cbac"
+  },
+  {
+   "report_id": "phase42-26-datastore-failure-proof",
+   "path": "generated/phase42-26-datastore-failure-proof.md",
+   "title": "DSFPRF-42-01 — BLOCKED-DEPENDS-ON-GATES: Unreachable-Endpoint Simulation Still Correctly Designed And Deliberately Not Executed (Shared-Store Stop = Production Outage); Dedup Node Itself Now Known Dead-On-Arrival (T2), Making The Failure Test Premature Twice Over; Platform Fail-Closed Machinery Cited",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "PLAN-ONLY",
+   "sha256": "cc020539c3aee0ca6a4ca3ecb31922fa67e06d35eff6eb0614ead260d7088827"
+  },
+  {
+   "report_id": "phase42-27-counter-failure-proof",
+   "path": "generated/phase42-27-counter-failure-proof.md",
+   "title": "CNTRFAIL-42-01 — BLOCKED-DEPENDS-ON-GATES: Cache-Backend Failure Protocol Designed And Preserved; Untestable While The Counter's Happy Path Cannot Produce Resolved Values (T2); Partial Credit = Cache Hygiene Proven (Flush/Zero-Residue) + Zero Error Behavior Observed Across All Runs",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "BLOCKED-DEPENDS-ON-GATES",
+   "sha256": "f16d82d9b85bf215131d52f7197bd65d2d29c482fb7aa9fe1480e1f5c055b522"
+  },
+  {
+   "report_id": "phase42-28-downstream-failure-proof",
+   "path": "generated/phase42-28-downstream-failure-proof.md",
+   "title": "DSFLPRF-42-01 — BLOCKED-DEPENDS-ON-GATES With Generous Honest Credit: Downstream-Failure Detection Is PROVEN From Class-A History (failed=31 Held Out Of delivered For Months) AND Today's Fail-Closed Monitor ERROR Catch At 04:15Z; Packet-Lane-Specific Live Fire Still Waits On A Real Or Unblocked Failure",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "PARTIAL",
+   "sha256": "d718f5b0b9bd1454dfee27fdc45f303a4cf828a384a18b9dfbbbf8031f393c27"
+  },
+  {
+   "report_id": "phase42-29-packet-volume-window",
+   "path": "generated/phase42-29-packet-volume-window.md",
+   "title": "VOL-WIN-42-01 — COMPLETE: Volume-Window Protocol Defined; Live API Pull Shows Packet Lane e133a645 Lifetime = 18 Executions (12 FINISHED Proof Triplets 04:21–04:28Z + 6 Debug-Era ABORTEDs 04:15–04:18Z), ALL Aug-26 DEBUG/TEST Traffic, Zero Movement Since — Documented As DEBUG-Era Only",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "6f19fc3b61fc280d2f6c58cb8152fe47ebdae9ab2db930b9f4afdd0750116a75"
+  },
+  {
+   "report_id": "phase42-30-packet-sid-decisions",
+   "path": "generated/phase42-30-packet-sid-decisions.md",
+   "title": "SIDDEC-42-01 — DEFERRED: Every Per-SID Production Decision Deferred; Shortlist Carried Unchanged (SID 2027967 Lead; ET Open Curated Population Behind It); Precondition = Working Gate Primitives; Per-SID Decision Template Ready For The Unblocked Session",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "DEFERRED",
+   "sha256": "ec4768e0d4ff1c8ded46fa6a056ee0f98e540a2f3aa47bc25ff39753ed2b34dc"
+  },
+  {
+   "report_id": "phase42-31-packet-production-apply",
+   "path": "generated/phase42-31-packet-production-apply.md",
+   "title": "PRODAPP-42-01 — NOT-APPLICABLE-BLOCKED: No Production Apply Attempted Or Possible; Lane Maintained DISABLED/TEST-ONLY With Dual Interlock Intact And Verified Live (Workflow status=test At Pull Time; SID Approvals Absent); Webhook Hook-Bearing Doc Exists In Evidence Backup",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "NOT-APPLICABLE-BLOCKED",
+   "sha256": "4e2eca484b8c4a8772d31205142f35348bac54e261c55cfde1843aa30a294e29"
+  },
+  {
+   "report_id": "phase42-32-packet-certification",
+   "path": "generated/phase42-32-packet-certification.md",
+   "title": "CERT-42-01 — FAIL-TO-CERTIFY: Platform Blocker Precisely Stated; Evidence Matrix Splits Structural vs Functional Controls; Remediation Decision Matrix Ranked B > A > C; Owner Decision Request Drafted; Review Phase 43",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "BLOCKED",
+   "sha256": "7743daf29043cc08981e36994d5401303fcba9077b2ceaf4d902369fe1afef1a"
+  },
+  {
+   "report_id": "phase42-33-owner-batch-readiness",
+   "path": "generated/phase42-33-owner-batch-readiness.md",
+   "title": "OWNER-BATCH-42-FINAL — Single-Sitting Agenda Updated From P41-19 With Live Baselines: 013 Power-On (T+0), 015 Caffeinate-Plist Via Screenshare (T+10), DEC-40-01 Signature (T+20), Restore-Target Decision Unchanged (T+35), Fleet+Signature Verify/Filing (T+50); Every Artifact Staged And Ready — Nothing Executed, No Owner Available",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "AWAITING-SCHEDULING",
+   "sha256": "a76c853b19fc08ae29a5e847d7cb3853830d518715917d5966e4a8c820bc2e2e"
+  },
+  {
+   "report_id": "phase42-34-agent013-recovery",
+   "path": "generated/phase42-34-agent013-recovery.md",
+   "title": "REC-013-42-01 — Recovery Runbook Re-Staged Against Fresh Live Baseline (disconnected 26.5h, LKA 2026-08-25T06:20:29Z); Every Server-Side Prerequisite Verified Good Today; Only Missing Input Is Hands On The Laptop — Automation Cannot Power On A Device",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "BLOCKED-AWAITING-OWNER",
+   "sha256": "b71c88d772aea9d91b8053c41dd4f0cd8877132c7c8c92b2308fcc092073dea4"
+  },
+  {
+   "report_id": "phase42-35-agent013-sustained-proof",
+   "path": "generated/phase42-35-agent013-sustained-proof.md",
+   "title": "SUS-013-42-01 — Sustained-Proof Protocol Pre-Committed Before Any Evidence Exists: ≥3 Keepalives Over ≥30 Minutes All Fresh; Zero Evidence Today Because Zero Uptime Today; Polls Execute Automatically Once 013 Returns",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "BLOCKED-AWAITING-OWNER",
+   "sha256": "51141d660e84a88f9564dfc3c437f38c240d726e5c332f43b845f63d9d3c0cc3"
+  },
+  {
+   "report_id": "phase42-36-agent013-decision",
+   "path": "generated/phase42-36-agent013-decision.md",
+   "title": "DEC-013-42-01 — Certification Decision Matrix Issued PRE-FILLED With Every Gate Red-By-Reality (Zero Gates Carry Evidence Today); Verdict Mechanically Determined The Moment Evidence Lands; No Discretionary Upgrade Path Exists",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "BLOCKED-AWAITING-OWNER",
+   "sha256": "870388c737c544617bb3b488ff516e1314ab116890e51b5a48bb98cc31716565"
+  },
+  {
+   "report_id": "phase42-37-agent015-power-remediation",
+   "path": "generated/phase42-37-agent015-power-remediation.md",
+   "title": "REMED-015-42-01 — Device-Side Sleep Fix Re-Staged Unchanged And Still Correct: `caffeinate -dis` launchd Plist Sample + Energy-GUI Path, Both Fully Scripted For A Screenshare Slot; Permission Closure Durable (Zero merged.mg Errors Since Fix) While The Flap Remains Open — Only The Owner's Hands Can Close It",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "BLOCKED-AWAITING-OWNER",
+   "sha256": "fdab7f6c0306c3a313ec5bf9a55ebf59bc378b34d3a27d15092b561a21064681"
+  },
+  {
+   "report_id": "phase42-38-agent015-sustained-proof",
+   "path": "generated/phase42-38-agent015-sustained-proof.md",
+   "title": "SUS-015-42-01 — 24-Hour Clean-Window Protocol Pre-Committed: Zero Disconnections And All Keepalives Fresh Across A Full Day Post-Remediation; Clock Not Started Because No Remediation Has Been Applied; Baseline Flap Documented Live",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "BLOCKED-AWAITING-OWNER",
+   "sha256": "810dd351bf18d8eca516e305030922b3f75a0e0a61a0195353b16c58d10e6be1"
+  },
+  {
+   "report_id": "phase42-39-agent015-decision",
+   "path": "generated/phase42-39-agent015-decision.md",
+   "title": "DEC-015-42-01 — Standing Verdict PARTIAL With An Evidence-Based Split: Permission Gate CLOSED-DURABLE (Proven By Zero merged.mg Errors Since Fix), Sleep-Flap Gate OPEN-BY-REALITY (Device-Side Action Pending); Split Is Not Softness — Each Half Carries Its Own Proof Class",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "PARTIAL",
+   "sha256": "48df2b3ab513ce9ea07a639097c495e35edc729257e6bc95e6bd6da4d073071c"
+  },
+  {
+   "report_id": "phase42-40-rto-rpo-signoff",
+   "path": "generated/phase42-40-rto-rpo-signoff.md",
+   "title": "SIGN-RTO-42-01 — DEC-40-01 Decision Sheet Re-Presented For Signature With Fresh-Evidence Deltas Enumerated (Custody-Closed Already Reflected; Fleet Baselines Refreshed Today); Interim DRAFT-TARGET Governance Remains In Force Until Ink — No Signature Exists And None May Be Simulated",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "AWAITING-SIGNATURE",
+   "sha256": "edd2b15b93301ef222157d4eaac7fb95369d24cd69d77907ae4f287c09304a3a"
+  },
+  {
+   "report_id": "phase42-41-target-approval",
+   "path": "generated/phase42-41-target-approval.md",
+   "title": "RT-APPR-42-01 — Approval Memo Re-Presented Unchanged: Recommended Primary Cloud VM 8 vCPU / 32GB / 300GB SSD (Isolated), Candidates Matrix Stable Across Two Phases; Provisioning Remains Owner-Gated And Nothing Is Pre-Committed",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "AWAITING-APPROVAL",
+   "sha256": "865eceeaf24fefd33818baca1eaea3690f65e3ebe63c9492c93fccee4e4e26dc"
+  },
+  {
+   "report_id": "phase42-42-owner-batch-closeout",
+   "path": "generated/phase42-42-owner-batch-closeout.md",
+   "title": "CLOSE-42-01 — Session Closeout Record Issued As A Fill-In-The-Blank Template With Every Outcome Blank Because The Session Did Not Occur; Cumulative Owner-Latency Risk Quantified (013 Aging Past 26h Offline); Template Becomes Truth Only When Filled From Real Evidence",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "NOT-HELD",
+   "sha256": "686183ff5a1a5a8c2be8719dcb9912d510b6e79d817816c54ca8a47123aed32f"
+  },
+  {
+   "report_id": "phase42-43-repair-churn-baseline",
+   "path": "generated/phase42-43-repair-churn-baseline.md",
+   "title": "CHURN-BASE-42-01 — Historical Restart Churn Measured From Primary Sources: 1,381 Unconditional Frontend Restarts Over ~15 Days ≈ 92/day (Cron Ceiling 96/day) Since Aug-11; Docker Inspect Confirms Continuous-Uptime Era Boundary At 2026-08-26T07:45:02Z; Impact Analysis Filed",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "68de2518d65213b57b7522907cd943757eff0187f5fcce4fbcf964e581dbca39"
+  },
+  {
+   "report_id": "phase42-44-repair-gate-design",
+   "path": "generated/phase42-44-repair-gate-design.md",
+   "title": "DESIGN-CHURN-42-01 — Gate Design Record: Why The Unconditional Restart Existed (Cached Backend IP After Swarm Recreate), Why Gating On Actual-Reconnect-This-Run Is Correct (Restart Is Only Useful Immediately After A Reconnect), Edge Cases Enumerated Including Self-Drift",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "9ca53b1ad33b57aee49e448176ce247da8352c6765529f38677b88c3401c29b7"
+  },
+  {
+   "report_id": "phase42-45-repair-script-fix",
+   "path": "generated/phase42-45-repair-script-fix.md",
+   "title": "FIX-CHURN-42-01 — Apply Record: FRONTEND_REPAIRED Gate Installed Into ops/scripts/shuffle-repair-network.sh At 2026-08-26T07:50:27Z; Pre-Change Backup Hashed And Filed; bash -n Syntax-Clean; Diff Confined To The Restart Block — Zero Behavioral Change Elsewhere",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "APPLIED",
+   "sha256": "97511f26848817628ddd71ef5a979f17622e194a41d5af5f9320dfee14d131d2"
+  },
+  {
+   "report_id": "phase42-46-repair-healthy-noop",
+   "path": "generated/phase42-46-repair-healthy-noop.md",
+   "title": "PROOF-NOOP-42-01 — Healthy No-Op Proven On Live Fleet: Run-1 Repaired 2 Drifted Healthcheck Containers While Frontend Stayed Up (Gate Holds During Real Repair Work); Runs 2–3 Pure `PASS + NO-OP`; Zero Restarts Across All Three Runs And Every Cycle Since",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "PASS",
+   "sha256": "a992862cc638b1e83f85253c2230d261c6defb4743b1d423217e555ce1712e31"
+  },
+  {
+   "report_id": "phase42-47-repair-forced-failure",
+   "path": "generated/phase42-47-repair-forced-failure.md",
+   "title": "PROOF-FAIL-42-01 — Controlled Failure Injected And Survived: Backend Disconnected → `--apply` Reconnected It While Frontend Recorded ZERO Restarts And Continuous Uptime; Gate Distinguishes \"Something Drifted\" From \"Frontend Drifted\" Exactly As Designed",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "PASS",
+   "sha256": "f641aae868454fc602c18b3d46ea4800e4256bdb24c235ab1f63f1efc47b75a9"
+  },
+  {
+   "report_id": "phase42-48-repair-churn-cert",
+   "path": "generated/phase42-48-repair-churn-cert.md",
+   "title": "CHURN-CERT-42-01 — Certification PASS: Healthy No-Op Proven On Live Fleet; Forced-Failure Recovery Proven Controlled With Zero Collateral Restarts; Historical Churn (~92/day × 15 Days = 1,381 Restarts) Eliminated Going Forward With Cron Unchanged And Script Gated; Monitoring Signal Defined",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "CERTIFIED",
+   "sha256": "061eaa61de6b8911c62c9b5c78c154ce0f29de6f8687c056a6b684f3c31d20e2"
+  },
+  {
+   "report_id": "phase42-49-nosniff-baseline",
+   "path": "generated/phase42-49-nosniff-baseline.md",
+   "title": "NOSNIFF-BASE-42-01 — Duplicate X-Content-Type-Options Documented Value-Blind-Safe (App Header + Proxy Header = 2× nosniff on :3443); Ownership Split Defined (App: Standard Security Headers / Proxy: TLS-Specific HSTS); Dedup Decision Rationale Recorded",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "05a6a7073da694399399d1d308834ce2b6bfbb864194e627eb086f0e3b2b4935"
+  },
+  {
+   "report_id": "phase42-50-nosniff-fix",
+   "path": "generated/phase42-50-nosniff-fix.md",
+   "title": "HDR-42-01 — Proxy XCTO Line Removed (sed, Line 8) And Proxy Reloaded; Post-Fix Curl Proves Exactly ONE X-Content-Type-Options + HSTS Retained + HTTP 200; Rollback Procedure Recorded",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "c16e0f877a1c53b1c4710eb8a4b0370b21c1e31cf838e5106b9fa31aee0c7369"
+  },
+  {
+   "report_id": "phase42-51-vt-valueblind-baseline.md",
+   "path": "generated/phase42-51-vt-valueblind-baseline.md",
+   "title": "VT-42-01 — Value-Blind Secret Baseline For VirusTotal api_key (Length-Classification Only, 64-hex Class); Presence Map Across Master/Worker/Host-File/Git/History; Perms Drift 644→640 Container; Exposure-Surface Diagram; Value Itself Never Read",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "83a821d7941e0a0e6e9fbc8c83d6ecde70ef984c32446629c0868bfbe592d370"
+  },
+  {
+   "report_id": "phase42-52-vt-migration-plan",
+   "path": "generated/phase42-52-vt-migration-plan.md",
+   "title": "MIG-VT-42-01 — Native Secret-Reference Support Confirmed ABSENT In This Wazuh Version (integrationsd Reads ossec.conf Literally); Options Ranked: (a) Accepted-Risk With Hardening + Rotation Runbook [RECOMMENDED] > (b) Custom Env-Var Wrapper [Deferred]; Rotation Runbook Skeleton Included",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "DECIDED",
+   "sha256": "51662965d0ae708c189af356818f78af0b7eedfb5d4ae73145922d68e5864473"
+  },
+  {
+   "report_id": "phase42-53-vt-migration-apply",
+   "path": "generated/phase42-53-vt-migration-apply.md",
+   "title": "APPLY-VT-42-01 — Container Conf Hardened 644→640 APPLIED (Before/After ls Cited); Host-Side 640 BLOCKED-No-Sudo (Owner Item With Exact Command); 15/15 Daemons Running Post-Change; Value-Blind Attestation Signed By Process",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "PARTIAL",
+   "sha256": "0bdbc738ef86da1d3c1d5a4d10020101e4c8e20256dfb94af6f65fcf8be6c43f"
+  },
+  {
+   "report_id": "phase42-54-security-quickwin-cert",
+   "path": "generated/phase42-54-security-quickwin-cert.md",
+   "title": "QW-SEC-42-01 — Certification: nosniff PASS-FIXED (Single Header + HSTS + 200); VT PARTIAL-HARDENED (Container 640 Done; Host Perm + Rotation Runbook Owner Items; Secret-Ref Migration Platform-Blocked); Combined Verdict PASS-WITH-OWNER-ITEMS",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "PASS-WITH-OWNER-ITEMS",
+   "sha256": "9052b07653dc809d60ce66a94650a378a507caf590cd4ffdd0c3f22f18cfa08e"
+  },
+  {
+   "report_id": "phase42-55-monitor-fullday-window",
+   "path": "generated/phase42-55-monitor-fullday-window.md",
+   "title": "MON-WIN-42-01 — Full-Day Evidence Window Assessed Precisely: 29 Observable Cron Slots 01:45Z→08:45Z (Zero Silent), Arc Extended By Pre-Cron P39-Era Runs To Evening Aug-25; Strict 96-Slot Cron-Day Completes 2026-08-27T01:45Z — Stated, Not Claimed Early",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "2f7637f1fa81389837e0388395f0b8b98ab7ea2328b764d86e3e850711412584"
+  },
+  {
+   "report_id": "phase42-56-monitor-cadence-audit",
+   "path": "generated/phase42-56-monitor-cadence-audit.md",
+   "title": "CAD-42-01 — Slot-Level Cadence Audit: 29/29 Expected Outputs Since Activation (Δ≈900s Nominal), Both Gaps Are Fail-Closed ERROR Cycles Tied To Backend Restart Windows (04:15Z, 07:45Z); Watchdog (>20min Stall) Never Fired — No Stall Beyond Tolerance Existed",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "c72bea2b67c531421739308a2139a665d327726c2eefc5f8f9dfd74d08a21823"
+  },
+  {
+   "report_id": "phase42-57-monitor-outcome-audit",
+   "path": "generated/phase42-57-monitor-outcome-audit.md",
+   "title": "OUT-42-01 — Outcome Accounting: delivered=46 (Real OpenCanary-Sourced Wazuh→IRIS Flows), failed=31 Stable-Lifetime, aborted=3, other=4; False-FINISHED Guard Recapped (delivered ⇔ HTTP200-in-results); 04:15Z/07:45Z ERRORs Classified Fail-Closed-Correct",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "1b327e567c7db5eab6af8262ca26c59c7c3c4c1de8728aa1d7f0e9983b0c97f0"
+  },
+  {
+   "report_id": "phase42-58-monitor-watchdog-test",
+   "path": "generated/phase42-58-monitor-watchdog-test.md",
+   "title": "WATCHDOG-42-01 — Watchdog Live-Tested In Sandbox (Stale→ALERT To Dedicated Test Log; Repeat-Guard Holds; Fresh Clears State; Production Logs Untouched); Dedicated Alert Log Exists And Is Empty (Zero Real Stalls); Self-Masking Fix Recap; Reboot Persistence Via Cron",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "PASS",
+   "sha256": "a3e1a186c7e4014b2a80a599108302baae37dc538c77166ffa6792ed318d7578"
+  },
+  {
+   "report_id": "phase42-59-monitor-certification",
+   "path": "generated/phase42-59-monitor-certification.md",
+   "title": "MON-CERT-42-01 — CERTIFICATION: PASS-WITH-WINDOW-NOTE (Cadence Proven Over Available Window Incl. Overnight + Real Fault Events; Destination-Proof Verified; Watchdog Armed And Tested By Real Event; Recovery Automatic; History Bounded) — Strict 24h-Contiguous Certificate Completes 2026-08-27T01:45Z",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "PASS-WITH-WINDOW-NOTE",
+   "sha256": "a1a34691f82793d8cd04e554a4b621e1a2ffface547b60a056c6d2df699d9d17"
+  },
+  {
+   "report_id": "phase42-60-ism-birth-policy-watch",
+   "path": "generated/phase42-60-ism-birth-policy-watch.md",
+   "title": "BIRTH-WATCH ARMED For wazuh-archives-4.x-2026.08.27 — Template Resolution Pre-Verified NOW Via `_index_template/_simulate_index` (policy `wazuh-archives-14d` + `total_fields.limit=2000` Resolve Through Order-320 `wazuh-archives-fieldlimit`), Creation-Time Capture Staged, Immediate Post-Birth Policy-Assignment Check Queued With Remove→Add Repair Procedure Documented",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "PENDING-BIRTH",
+   "sha256": "06fb9cb37492f7a9b7939674020624a1ab35f93dbc67219d354b9b449ea0904d"
+  },
+  {
+   "report_id": "phase42-61-ism-wave-readiness",
+   "path": "generated/phase42-61-ism-wave-readiness.md",
+   "title": "WAVE-READY-42 — Readiness COMPLETE On Every Mechanical Dimension (Candidates Fresh-Sized, Both Wave Leaders hot/condition_not_met With Active Transition Evaluation, Dual-Repo Snapshot Coverage Current, Restore Streak ×4, Birth-Watch Armed) — Observation PENDING-WINDOW; Exact ETA 2026-08-29T21:00:44Z = 3d 11h 50m From 09:10Z Read (Supersedes ~2.5d Planning Shorthand); Disk Advisory Line Distance 6.8G df-Basis, Decider OFF Disclosure",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "9f4a2d5c0adcd61e7943e11e72fda8d1b947fdaa1542149a571ca5ef42ca201f"
+  },
+  {
+   "report_id": "phase42-62-ism-wave-observe",
+   "path": "generated/phase42-62-ism-wave-observe.md",
+   "title": "OBSERVE-42 — Status PENDING-WINDOW: Exact ETA Recomputed From Live Explain (Deletion Eligible 2026-08-29T21:00:44Z, ISM 5-Minute Job Interval ⇒ Realized Delete Within Minutes After); Ready-To-Run Command Block Staged, Hourly Post-ETA Recheck Cadence Defined, Error/Retry Watch Points Named, FORCE-DELETION PROHIBITION Restated",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "PENDING-WINDOW",
+   "sha256": "b02f122527a87f5c0a8a9c29bd172b64602239d02edf4bfac2b0e856b0875f50"
+  },
+  {
+   "report_id": "phase42-63-ism-index-diff",
+   "path": "generated/phase42-63-ism-index-diff.md",
+   "title": "DIFF-42 — Methodology Staged And First Run Executed: 12/12 Index Names Identical To p41 Baseline, Zero Deletions (Expected Pre-Wave), Single Live Delta = 08.26 Growth +221,612 Docs / +136.9MB pri Since 05:21Z Capture — All Older Indices Byte-Frozen As Expected",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "82bbd4b0dbd5b2a5c856cbe1fb7ef89fe1b23298014febdb17df974366ce781e"
+  },
+  {
+   "report_id": "phase42-64-ism-restore-check",
+   "path": "generated/phase42-64-ism-restore-check.md",
+   "title": "RESTORE-CHECK #4 — PASS (Fourth Consecutive): Smallest Snapshot Index 2026.08.23 Restored From snap-20260826-0517 As restored-p42-* → GREEN → Count Parity EXACT 170,521 = 170,521 → ISM Unattached → Deleted Clean; Full Transcript Embedded; Scope Disclaimer Applies",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "7a53745f2fef223374db507dc345fb89ac4649cb7a1fe7ee225b6826b03d6114"
+  },
+  {
+   "report_id": "phase42-65-ism-relief-proof",
+   "path": "generated/phase42-65-ism-relief-proof.md",
+   "title": "RELIEF-42 — Honest Realized Relief: ZERO (No Deletion Has Ever Fired); Fresh Disk/Allocation Reads Embedded; Post-Wave Days 1–7 Projection ≈13.6GB (~14GB Claim Confirmed By Arithmetic On Live Sizes); Watermark Proximity Math Shown On Both Bases With Decider-OFF Disclosure — Wave Arrives Before df-Basis Fill Risk",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "63d957d9146aef800320688f59331f22a01bda374ccb2246179096e58a40a369"
+  },
+  {
+   "report_id": "phase42-66-ism-plateau",
+   "path": "generated/phase42-66-ism-plateau.md",
+   "title": "PLATEAU-42 — Series 82 → 83 → 84% With Same-Day Stability (84% Held Across 05:14Z/09:07Z/09:19Z Reads): Classified STABLE-DRIFTING-UP-SLIGHTLY; Wave-Relief Inflection Projected 08-29+; No Watermark Manipulation Statement Reaffirmed And Now Paired With Decider-OFF Disclosure",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "610f726b3e44de0fdb2abef9e456d42a0e97ac92a4ede6a4e677e348902adc01"
+  },
+  {
+   "report_id": "phase42-67-ism-certification",
+   "path": "generated/phase42-67-ism-certification.md",
+   "title": "RET-CERT-42-02 — Overall PENDING-WAVE (Honest: The Defining Event Is Unobserved); Sub-Matrix Strong — Mechanism ARMED+VERIFIED Via Fresh Explains And Birth Simulation, Restore-Safety Streak ×4, Relief Measurement Staged With ~13.6GB Grounded Projection, Monitoring Cadence Defined; Explicit Flip Conditions To VERIFIED Post-Wave",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "PENDING-WAVE",
+   "sha256": "4a0ef4e1236a740304d5defc203960d11d297f2447c3a43be462633b43251122"
+  },
+  {
+   "report_id": "phase42-68-dashboard-visual-session",
+   "path": "generated/phase42-68-dashboard-visual-session.md",
+   "title": "VISUAL-42 — API Proof-Of-Life Achieved With Credentials (GET /api/status: OSD 2.19.5, uuid 871adb57…, overall Green; Saved-Objects API Confirms All 8 Originals + 4 v2 Objects Server-Side); Rendered Panels/Interactions Remain Browser-Bound (No Headless Render API Exists) — Operator Session Kit PREPARED; Status VISUAL-PENDING-BROWSER",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "VISUAL-PENDING-BROWSER",
+   "sha256": "fad645b23d8edd8792ffc5a7120c06867a448f54ecf4c250acf622b2674096d1"
+  },
+  {
+   "report_id": "phase42-69-dashboard-eid-discrepancy",
+   "path": "generated/phase42-69-dashboard-eid-discrepancy.md",
+   "title": "EID-42 — ROOT-CAUSED: `event.code` Is Never Populated In This Stack (0 Hits Across Archives AND Alerts); Real Signal = `data.win.system.eventID` (1.96M Docs) With Detection Tags `sysmon_eidN_detections` In `rule.groups` On A 0.17% Subset; Zero Of 8 Artifacts Reference event.code; REAL Defect Found & FIXED — Original W2 Table Aggregates A Text Field (fielddata Error) → v2 Objects Imported With `.keyword` Fix, Live Parity Proven, Swap Plan Staged, Originals Retained",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "589569137d0d16385aa08e84eb686a8d1a48e905ca89ae94989a3e05df9d13ba"
+  },
+  {
+   "report_id": "phase42-70-dashboard-mobile",
+   "path": "generated/phase42-70-dashboard-mobile.md",
+   "title": "MOB-42 — Grid Audit Across All 8 Objects (+4 v2 Clones, Identical Geometry): Both Dashboards 12-Col With Full-Width Strip + 6+6 Pair; Narrow-Viewport Collapse Still FRAMEWORK-BEHAVIOR-UNVERIFIED; Device-Test Protocol Issued To Owner; Untestable-From-Here List Explicit",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "PARTIAL",
+   "sha256": "6d6d41a225a047bf4b00d6ad2de9a2efe156c9b517bbf33d4fbeed99811d1455"
+  },
+  {
+   "report_id": "phase42-71-dashboard-accessibility",
+   "path": "generated/phase42-71-dashboard-accessibility.md",
+   "title": "A11Y-42 — Contrast/Tab-Order/ARIA Are NOT Statically Verifiable In Saved-Object JSON (Explicit Unknown List); Color-Only Encoding Scan: ZERO `color` Params Across All visStates (Tagcloud Size-Encoding Only); Keyboard-Navigability Notes From OSD Product Knowledge; Verdict ACCESSIBILITY-REVIEW-REQUIRED-BROWSER",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "PARTIAL",
+   "sha256": "28bda57a2ba9608f92a6b8b439032d3c51d9b9d28af1385f180b61bde0796f21"
+  },
+  {
+   "report_id": "phase42-72-dashboard-client-safe",
+   "path": "generated/phase42-72-dashboard-client-safe.md",
+   "title": "SAFE-42 — Classification Audit Of All 8 Objects (Value-Blind Title/Description Scan): Zero Objects Marked CLIENT-SAFE; Sensitive-Term Hits = Agent IDs 012/013/014, Group windows-clients, Hostname MCT-WIN11PILOT, Billing Concept; All Patterns Internal ⇒ Any CLIENT-SAFE Export Requires A Redacted Clone Set — Decision DEFERRED-OWNER; Boundary Statement Issued",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "1f88c283ed8bf088195f415415298592f074aa06c41fccd309290f9d945cbb5f"
+  },
+  {
+   "report_id": "phase42-73-dashboard-certification",
+   "path": "generated/phase42-73-dashboard-certification.md",
+   "title": "DASH-CERT-42-01 — Overall PARTIAL: Data Accuracy VALIDATED (P41 Live Parity + This Phase's EID Root-Cause With v2 Fix APPLIED And Live-Parity Proven), Import Integrity 8/8 Originals + 4/4 v2 Server-Side, Visual/Mobile/Accessibility BROWSER-GATED With Prepared Session Kit, Client-Safe Separation Clean — Flip Conditions Enumerated",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "PARTIAL",
+   "sha256": "77d2a3335fb0e7758c4efa004088addc152b59a728281562cc912a2e3a2dc486"
+  },
+  {
+   "report_id": "phase42-74-fp-population-check",
+   "path": "generated/phase42-74-fp-population-check.md",
+   "title": "Fresh Rolling-7d Universe Rerun: 10 Alerts (8 Canary-Marked / 2 Natural), Zero NEW Natural SIDs, Zero Repeat Offenders — Scheduled Phase-42 Trigger Satisfied And Resolved By This Check; ≥50-Natural And Repeat-Offender Triggers Both NOT FIRED → Outcome CONTINUE-QUALITATIVE",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "1a9e7d1ab0847f189a0da481292c15141179b756f5e8fdf317243e7e1dd96469"
+  },
+  {
+   "report_id": "phase42-75-fp-continue",
+   "path": "generated/phase42-75-fp-continue.md",
+   "title": "Continuation Record For FP-BASE-41-01: Weekly Standing Cadence Affirmed, Artifact Locations Listed With Live Hash Verification, Count Change (Natural 4→2) Reviewed Inline As Window Aging Only — Zero New Events Requiring Individual Review",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "b2bc3894e652adbecd610e76569d0f677913239922dd250cf5b72d8f5b0f7785"
+  },
+  {
+   "report_id": "phase42-76-rule-tuning-decision",
+   "path": "generated/phase42-76-rule-tuning-decision.md",
+   "title": "Rule Tuning Decision: NO-TUNING — Evidence-Backed (Zero Natural FP Signal At n=2, Zero Repeat Offenders, Zero New SIDs); rules_failed=15 Remains A Separate Backlogged Hygiene Item With suricata -T Verbose Capture As Its Identification Path When Scheduled",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "5c0ec4f9457b6098f58f91e5deb132cfae21bcc77e96a8e9f3697b8d886ebc3a"
+  },
+  {
+   "report_id": "phase42-77-v131-readiness",
+   "path": "generated/phase42-77-v131-readiness.md",
+   "title": "v1.3.1 Readiness Recap At Cut Time: D-Register Complete D-1..D-12, Tree Verified (CI Green, 6579919 Lineage), Custody Standard Proven By v1.3.0 Byte-Exact Precedent, Publication Constraint Identified Before Execution → VERDICT READY",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "8cb60133545774447f5108d88b44e8ce8b5492622780a67ba500555f77946937"
+  },
+  {
+   "report_id": "phase42-78-v131-cut-decision",
+   "path": "generated/phase42-78-v131-cut-decision.md",
+   "title": "DECISION EXECUTED: CUT v1.3.1 — All Deltas Runtime-Stable Under Documented-Delta Model Since P40; Packet-Lane Blocker Is Platform-Side NOT Config-Side So Waiting Adds Nothing To The Tag; Containment Chain Belongs In A Tagged Baseline; Approver MCT-SOC-Process (Automation-Executed Per Pack Mission \"Execute Or Explicitly Defer\")",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "dfd64bb4b5f6b9bc3b9dab62d12cd3ffdbb46d2d1b0e8f05ff90e142d77d6dc7"
+  },
+  {
+   "report_id": "phase42-79-v131-execute",
+   "path": "generated/phase42-79-v131-execute.md",
+   "title": "Execution Record: Annotated Tag v1.3.1 Created From Verified Tree And PUSHED TO ORIGIN SUCCESS; On-Box Asset Built Via git archive (sha256 Recorded); MANIFEST.md Written; GitHub Release-Asset Upload BLOCKED-AWAITING-TOKEN With Exact Owner API Call Documented",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "4450917670caafcc54e95de74c67d15b33c377cdef2247cd110fa16ec4521509"
+  },
+  {
+   "report_id": "phase42-80-v131-assurance",
+   "path": "generated/phase42-80-v131-assurance.md",
+   "title": "Assurance Verdict ASSURED-ONBOX-PUBLICATION-PENDING: Remote Tag Visibility PROVEN (git ls-remote Exit 0, Object Identical To Local), Archive sha256 Recompute MATCH, Delta Completeness Cross-Reffed (phase41-77 D-1..D-10 ⊆ D-1..D-12 Register), Rollback Defined; Residual: Release-Page Visibility Pending Token",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "74085a9d370bd7c825dfe6e5fc2dafe23567e74e0e46a7bc2586e29127f526a3"
+  },
+  {
+   "report_id": "phase42-81-restore-readiness-refresh",
+   "path": "generated/phase42-81-restore-readiness-refresh.md",
+   "title": "Restore-Readiness Scoreboard Refresh — Custody GREEN (v1.3.0 Byte-Exact + v1.3.1 On-Box sha256 Re-Verified Live), Objectives AWAITING-Signature, Target AWAITING-Approval, Snapshots Fresh (fs 42 / s3 87), Spot-Streak ×4 — Overall NOT-READY With Owner-Mapped Red Gates",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "265cfad1c9b35cbd756824fb3ef062b023f3f88bc2a154571f22e6cc4d7565f9"
+  },
+  {
+   "report_id": "phase42-82-restore-rehearsal-stage",
+   "path": "generated/phase42-82-restore-rehearsal-stage.md",
+   "title": "Rehearsal Staging Within Automation Limits — Validation Battery Extended V1–V7 + V8 (P41) → **V9 Bundle Staged** (v1.3.1 Asset-Verify Step, Watchdog-Presence Check, Compact-Stats Timer Reaffirm); Stage Sequence UNCHANGED From Plan v3; Execution NO-GO Standing",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "PLAN-ONLY",
+   "sha256": "3cf7a124da551e59b24b57fed68b7bf489b7216b9dabcd08b6770558f16a9d03"
+  },
+  {
+   "report_id": "phase42-83-restore-go-nogo",
+   "path": "generated/phase42-83-restore-go-nogo.md",
+   "title": "Restore Rehearsal Go/No-Go — Verdict NO-GO With Precise Gate Matrix (Two Red Gates, Both Owner-Held: RTO/RPO Signature + External Target Approval); What-Flips Statement Updated (Signature + Approval ⇒ GO With Zero Design Work Remaining)",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "BLOCKED",
+   "sha256": "de7f59997533c1983c6624eb5cfef40122f7d5801f2800299a822f63a9b9b027"
+  },
+  {
+   "report_id": "phase42-84-current-state-refresh",
+   "path": "generated/phase42-84-current-state-refresh.md",
+   "title": "Canonical Refresh Executed — NEW Snapshot `current-state-20260826-p42.md` Written (All P42 Anchors Evidence-Tagged; Field-Legacy Interim-Risk Story; R-DISKBYPASS First-Class Risk) + open-work.md REWRITTEN Under OPENWORK-42-01 (Five Closures, Three New OW Rows)",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "7eb0692ebc45ca1d785e53ed0bb1d851a9470f1c64ef904f66bda246501cab9e"
+  },
+  {
+   "report_id": "phase42-85-agents-phase42-audit",
+   "path": "generated/phase42-85-agents-phase42-audit.md",
+   "title": "AGENTS.md vs Phase-42 Audit — Canon Pointer Stale (postp41 → p42), Packet Blocker Text Pre-Dates DEFINITIVE-Negative Research, Zero Phase-42 References; Three Durable Candidates Adjudicated (HTTP-app Interpolator Extension = APPLY, Disk-Threshold Pointer = APPLY, Sensor-Mask Reminder = STANDS/No-Change); Commands and Paths Validated",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "f926c8219e85f0ec47092659ddaf6a1fd47acb244e84e4cdab60041ffff8f935"
+  },
+  {
+   "report_id": "phase42-86-agents-gap-repair",
+   "path": "generated/phase42-86-agents-gap-repair.md",
+   "title": "Minimal Diff APPLIED to Root AGENTS.md With Full Compliance Chain (Backup+SHA BEFORE → Dry-Run Hunks → Assert-Guarded Apply ×5 → Post-Validate Greps → p39-agents-ci.sh PASS 0 Warnings → Ledger CHG-42-AGENTS-01 With Before/After SHA256s)",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "fe052604ed2bd95f391a3f21eaa46a6d4ba89f9eec8694e7e7bb8c10caefb754"
+  },
+  {
+   "report_id": "phase42-88-code-audit",
+   "path": "generated/phase42-88-code-audit.md",
+   "title": "Code Audit — 93 Scripts Inventoried, bash -n 93/93 CLEAN, Exec-Bits 93/93, Secret-Pattern Sweep ZERO Hits, Compose Validations VALID (--profile shuffle With Root .env), Pin Table Verified (nginx ✓ frontend ✓); NEW-Script Quality Review: p42-field-cycle-adjudicate.sh [REDACTED-PW] Literal FLAGGED, repair-gate Logic Reviewed Sound",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "75d5588cb694bddedc3193592d39439d7a1f9942cc216f374607542b9957d42f"
+  },
+  {
+   "report_id": "phase42-89-infra-audit",
+   "path": "generated/phase42-89-infra-audit.md",
+   "title": "Infra Audit — 34 Containers Up (security-onion Exited(0) Stable; TLS Proxy Up; Backend Uptime Post-Restart-Window), Listeners As Designed, Crontab Full Incl. Watchdog Line, Sensor Units Verified via ssh (Masked Unit + Active Timer + Single ens19 Process count=1), Cluster GREEN, IRIS Healthy, Backups Current; INDEXER CONFIG FINDING: disk.threshold_enabled:false at wazuh1.indexer.yml Line 44 (R-DISKBYPASS)",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "a412912e7dc11901f32f5ac2d72b70cd4b602f8138e8c72cff3f2cd41a853506"
+  },
+  {
+   "report_id": "phase42-90-security-audit",
+   "path": "generated/phase42-90-security-audit.md",
+   "title": "Security Audit — Rotation Posture Stable, TLS Headers Now Single-XFO + Single-XCTO (Verified Live), Credential Modes Conform (shuffle-api-key 600 Gitignored; VT Container 640 DONE / Host 644 Owner Item; ossec Shuffle Placeholders CONFIRMED Both Nodes via Grep), Corpus Secret-Scan Zero, Pins Verified; Residual Risks Ranked With R-DISKBYPASS NEW Top-Tier",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "c34c351f7cf29e4ae7821d5011ea8e63ccf4886da42782f5da0b5d16ee66379e"
+  },
+  {
+   "report_id": "phase42-91-performance-audit",
+   "path": "generated/phase42-91-performance-audit.md",
+   "title": "Performance Audit — Host Comfortable (PSI cpu-some ~6–8%, io/memory ≈0), Rejection-Burst Cost Quantified (2,746 Events ≈ 413 KB Indexer-Log Noise, Zero Data Loss), Alert Volume Steady With 07:00-Hour Spike Attributed to Burst Window, Compact Cadence ~51–54/hr On Target, Churn Elimination Saves ≈92 Restarts/Day Going Forward",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "db566799b2223a37ad775024be787c481804669a025aac2c56261475aa74d4a8"
+  },
+  {
+   "report_id": "phase42-92-detection-audit",
+   "path": "generated/phase42-92-detection-audit.md",
+   "title": "DET-42-05 Lanes Matrix — Class-A CERTIFIED Sustained (Fresh Monitor Run delivered=46; Two Real Fail-Closed Catches), Packet TEST-ONLY-DEFERRED (Blocker-Referenced), FP Qualitative Continuing (10-Universe, 2 Natural, Zero New SIDs), Archives Data-Quality Improved (Clean Compact Fields), Containment Detection-Impact VERIFIED-ZERO (Hourly Volume Steady Through Restart/Burst Windows); Coverage Gaps Stated Honestly",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "6ee614c87952f4cf2074c0ae773a43f02da84be8f3f82f608dc3db7fd2228dc5"
+  },
+  {
+   "report_id": "phase42-96-backlog",
+   "path": "generated/phase42-96-backlog.md",
+   "title": "BCK-42-001…012 — Consolidated Phase 43 Backlog: Owner-Batch Bundle EXPANDED TO EIGHT Items Grouped By Agenda Slot (013 Power · 015 Caffeinate · DEC-40-01 Signature · Target Approval · Host-Conf 640 chmod · GitHub Token For v1.3.1 Page · Dashboard v2-Swap Signoff · Disk-Threshold Policy), Field Adjudication Tomorrow AM, Monitor Full-Day Flip 01:45Z, ISM Wave Watch Aug-29, Packet Remediation Execution (B>A>C), Plus Self-Extinguishing Legacy-Burst Watch And Quick-Wins ⚡",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "a1f88a64bfb5d0f6520133cfed014a7c2eefb61c2276b2a89de4d194527cc3b1"
+  },
+  {
+   "report_id": "phase42-97-billing",
+   "path": "generated/phase42-97-billing.md",
+   "title": "BILL-42-05 — August 2026 Billing Coverage Matrix: Capture VERIFIED, Detection VERIFIED Through Containment+Legacy-Bursts With Zero Impact, Class-A Routing CERTIFIED-AUTOMATED Sustained (delivered=46, Monitor Dual-Fault-Proof), Packet DEFERRED-Disclosed On Finalized Platform Evidence; Capacity 84% Transparently Disclosed Incl. Threshold Finding; Stance RECOMMENDED",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "4372a41ccae3206b63907d649b5c8441496d1c7ead601f774706287fcec7c8c6"
+  },
+  {
+   "report_id": "phase42-98-scorecard",
+   "path": "generated/phase42-98-scorecard.md",
+   "title": "SCORE-42-06 — Internal M-Series Metrics With P41 Trends (Churn ELIMINATED+Certified, Hygiene ▲, Custody DOUBLE-GREEN v1.3.1-Shipped, Monitor Dual-Fault-Proof, Packet Platform-Blocked-Honest Finality, Field Adjudication Staged Tonight, Capacity Disclosure-Upgraded), Domain RAG, and Delimited CLIENT-SAFE Section",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "73cd974fc79c57fb398a0ecdac98ba41fb4b525b187da36bea20369b2325880d"
+  },
+  {
+   "report_id": "phase42-99-monthly",
+   "path": "generated/phase42-99-monthly.md",
+   "title": "MONTHLY-42-10 — August Cycle Closer: Endpoint, Packet (Five-Test Capability Matrix Finality), IRIS (delivered=46 Era Continues, Dual Real-Fault Proof), Alert Volumes (24.9K Today), Backup (Fresh Counts Re-Verified), Retention (Exact Wave ETA + Streak ×4), Capacity (+Threshold Disclosure), Temp, Dashboard (v2 Fix Shipped Pending Swap), Governance Cycles; Blocker Review; Billing Cross-Ref; Retrospective",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "44bc422b4d3a9d3b75dd73ee2498c345fc01b49df5a5440b2ce58fde7f8a9150"
+  },
+  {
+   "report_id": "phase42-93-usability-audit",
+   "path": "generated/phase42-93-usability-audit.md",
+   "title": "Usability Audit — Canonical Truth Fresh Today (CS-42-01), Dashboard v2 Artifact Ready With Swap Pending Owner + Render Still Login-Gated, Monitor Observability Strong (Two Real Catches Visibly Logged), Ownership Clear Per Register; False-Health Watchlist REFRAMED: Watermark Advisory-Only Converts Prior Green-Cluster Risk Into Known-Limitation; Quick-Ref Cards Updated",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "fa413d57c890808d40468c8be1bba567fbc4bea7f89d4b058f78e5cb316590a1"
+  },
+  {
+   "report_id": "phase42-94-governance-audit",
+   "path": "generated/phase42-94-governance-audit.md",
+   "title": "Governance Audit — G42 Ledger Compliance VERIFIED (14 Gates + CHG-42-AGENTS-01 With Hashes), Triple CI PASS, Status Enums Clean, Catalog Currency RESTORED Post-Append (99/99 Phase-42 Rows, Both Copies), Preservation Zero-Deletions Intact, Client-Safe Separation Held — Verdict COMPLIANT",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "bda240364a028513aaf5f0a6b020938a1b2a9a4b5b82a3d78ff3c7747219d37e"
+  },
+  {
+   "report_id": "phase42-95-full-drift",
+   "path": "generated/phase42-95-full-drift.md",
+   "title": "D-42-x Dispositions — Catalogs Lag FIXED (Append) With P41-Row Absence Disclosed (D-42-CATL), AGENTS Staleness FIXED (CHG-42-AGENTS-01), Disk-Thresholds-Disabled vs Governance Presumption = D-R-DISKBYPASS MAJOR FOUND+DISCLOSED, event.code Panels FIXED-v2-Pending-Swap, Rejection Resumption RECONCILED as Bounded Legacy-Window, Worker Backup Gap CARRIED, Sensor Mask Rationale DOCUMENTED, New Discoveries Logged — Verdict MANAGED",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "d3e38692112fb0af657696d5411366542acf13fcd319aa05e56388553b86dc36"
+  },
+  {
+   "report_id": "phase42-87-governance-ci",
+   "path": "generated/phase42-87-governance-ci.md",
+   "title": "Governance CI Close-Out — Triple Suites PASS (Report-CI / Canonical-CI / AGENTS-CI Embedded), Catalog Reconciliation APPENDED 99+3+Top-Up Phase-42 Rows With Real sha256s To Both Copies (P41-Row Absence In Generated Copy Disclosed As D-42-CATL), Dup-ID Scan ZERO Across 501 Files, Aliases JSON VALID, Client-Safe Greps Clean",
+   "phase": 42,
+   "date": "2026-08-26",
+   "class": "GENERATED-AUDIT",
+   "status": "COMPLETE",
+   "sha256": "a74364bceb4bbbe33ef6badbffe312095d6f919deef99491c2c05e126b63aff4"
   }
  ]
 }

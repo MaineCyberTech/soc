@@ -56,9 +56,16 @@ for c in shuffle-workers.1.odzpa0kgsgcfbddij7qnywisu shuffle-backend; do
   fi
 done
 
-if docker ps --format '{{.Names}}' | grep -q '^shuffle-frontend$' && [ $APPLY -eq 1 ]; then
-  echo "Restarting shuffle-frontend to clear cached backend IP"
+# P42 churn fix: restart ONLY when frontend was actually reconnected this run
+FRONTEND_REPAIRED=0
+for c in "${need[@]:-}"; do
+  [[ "$c" == "shuffle-frontend" ]] && FRONTEND_REPAIRED=1
+done
+if docker ps --format '{{.Names}}' | grep -q '^shuffle-frontend$' && [ $APPLY -eq 1 ] && [ $FRONTEND_REPAIRED -eq 1 ]; then
+  echo "Restarting shuffle-frontend (was reconnected this run) to clear cached backend IP"
   docker restart shuffle-frontend >/dev/null && echo "  restarted" || echo "  restart failed"
+else
+  echo "NO-OP: frontend network intact; no restart needed"
 fi
 
 echo "== Done =="

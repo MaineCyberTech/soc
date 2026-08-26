@@ -1,21 +1,21 @@
-# Open Work Register OPENWORK-41-01
+# Open Work Register OPENWORK-42-01
 
-**Report ID:** phase41-81-open-work-refresh
-**Phase:** 41
-**Title:** Open-Work Refresh OPENWORK-41-01 — Post-Phase-41 Consolidated Register (Ten Closures Moved to Resolved Log; Live Items With Owners)
+**Report ID:** phase42-84-open-work-refresh
+**Phase:** 42
+**Title:** Open-Work Refresh OPENWORK-42-01 — Post-Phase-42 Consolidated Register (Five Closures Moved to Resolved Log: Churn, Nosniff, VT-Container, Custody-v1.3.1, EID-Root-Cause+v2; Owner Batch and ISM Wave Lead the Open Set)
 **Date:** 2026-08-26
-**Timestamp:** 2026-08-26T06:35:00Z
+**Timestamp:** 2026-08-26T10:04:00Z
 **Classification:** INTERNAL
 **Status:** COMPLETE
-**Source Path:** `ops/reports/generated/phase41-81-canonical-current-refresh.md`
-**Canonical Copy:** `canonical/current/open-work.md` (rewritten this phase; supersedes OPENWORK-40-01 content for tracking)
+**Source Path:** `ops/reports/generated/phase42-84-current-state-refresh.md`
+**Canonical Copy:** `canonical/current/open-work.md` (rewritten this phase; supersedes OPENWORK-41-01 content for tracking)
 
 ---
 
 ## 1. Register Rules
 
 This file is THE open-work register going forward. It supersedes, for tracking purposes,
-OPENWORK-40-01 (phase40-75) and through it OPENWORK-39-02 and the phase38 registers.
+OPENWORK-41-01 (phase41-81) and through it OPENWORK-40-01 and earlier registers.
 Prior IDs remain sticky for backlinks. Closed items move to §3 Resolved Log with closure
 evidence; they are not deleted. One row per unique work item.
 
@@ -23,38 +23,32 @@ evidence; they are not deleted. One row per unique work item.
 
 | ID | Pri | Title | Status-today | Owner | Deps | Evidence ref | Rollback note |
 |---|---|---|---|---|---|---|---|
-| OW-40-01 (=BCK-38-011) | P2 | Recover agent 013 SAMSUNG | STILL-OPEN — owner device-side action required | Endpoint ops | user-held hardware | phase40-14…17; phase41-22 final cert | N/A client-side; fallback formal retirement w/ approval |
-| OW-40-02 (=BCK-38-012) | P2 | Agent 015 flap remediation | STILL-OPEN — manager merged.mg defect fixed long ago; owner device-side remains | Endpoint ops + Wazuh config owner | owner cooperation on device | phase40-18…24; phase41-26 final state | chmod/chown one-liner documented phase39-76 |
-| OW-40-03 (=BCK-38-010) | P2 | Observe ISM first deletion wave | STILL-OPEN — window opens 2026-08-29T21:00Z; policy verified attached, hot, evaluating transitions (live this phase) | Infrastructure owner | calendar | phase40-54…58; live _ism/explain [phase41-81] | N/A observation-only |
-| OW-40-04 (=BCK-38-007) | P1 | Packet workflow import + routing proofs | DEFERRED BY CHOICE — plus platform execute_python param-injection defect precisely documented (data_in/input/execution_input/execution_data/data all UNDEF); remediation = UI rebuild on native reference-consuming nodes (filter_list/if_else_routing/set_datastore_value) or Shuffle upgrade | SOAR ops + Detection | R-PKT-PLATFORM remediation choice | phase40-41/-53; phase41-52 probe; workflows API live: exactly 3 | Lane test-only/disabled; artifact sha-pinned |
-| OW-40-05 (=BCK-38-015) | P1 | RTO/RPO sign-off | AWAITING-OWNER — worksheet ready (phase40-72), signature pending | Platform + SOC lead | owner decision | phase40-70…72 | Documents only |
-| OW-40-06 | P1 | Restore rehearsal on approved external target | NO-GO — no adequate target approved yet (spot-check #3 PASS 170521=170521 parity does not substitute) | Infra + SOC lead | OW-40-05 outcome; target env | phase40-70 §156; phase41-57 | Rehearsal env disposable |
-| OW-40-11 | P2 | Commit/push Phase-41 changeset | STILL-OPEN — operator sign-off gate (G41-13); tree dirty incl. AGENTS.md CHG-41-AGENTS-01 + canonical refresh | ops-reports-owner | operator review | git status live; phase41-02 register | Git-native revert paths per changeset |
-| OW-40-12 | P3 | Physical duplicate-path retirement in catalogs | STILL-OPEN — alias rows APPLIED non-destructively; path retirement approval-gated | Governance | operator sign-off | phase40-79/-80; source-map-aliases.json (parse OK live) | Delete JSON rows; files never moved |
-| OW-41-01 | P4 | Duplicate X-Content-Type-Options header cleanup at :3443 | NEW — nosniff emitted 2× live (XFO half of old OW-40-08 closed single-header) | SOAR ops | proxy config edit window | curl -D count=2 live [phase41-87] | nginx conf backup before edit |
-| OW-41-02 | P3 | Dashboard EID-mapping question (event.code vs rule.groups sysmon_eid1) + agent-count widget 6-vs-7 discrepancy | OWNER QUERY RAISED — both counts zero in today's live indices; question persists inside FP-baseline dataset (576-alert sample) | Detection + dashboard owner | owner ruling on mapping | phase41-62/-71/-74; live counts [phase41-81] | Query/doc change only |
-| OW-41-03 | P3 | Dashboard visual-render verification | LOGIN-GATED — data layer validated; pixels unverified until operator-driven browser session | ops-reports-owner + operator | browser credentials | phase41-63/-64 | N/A verification-only |
-| OW-41-04 | P2 | v1.3.1 cut | SCHEDULED Phase-42-open — candidate deltas tabled (REL-40-05); custody chain proven reusable | Release owner | Phase-42 open | phase41-77…79 | Additive tag path |
-| OW-41-05 | P2 | Frontend restart churn gating | NEW — shuffle-repair-network.sh --apply restarts frontend every */15 tick (~96/day); gate on DNS-failure detection | SOAR ops | none (script edit + cron unchanged) | script lines 59–61; docker events 06:30Z restart observed [phase41-92] | Revert one hunk |
+| OW-40-01 (=BCK-38-011) | P2 | Recover agent 013 SAMSUNG | STILL-OPEN — offline >26h; owner device-side action required | Endpoint ops | user-held hardware | phase40-14…17; phase41-22; phase42-33…36 | N/A client-side; fallback formal retirement w/ approval |
+| OW-40-02 (=BCK-38-012) | P2 | Agent 015 flap remediation | STILL-OPEN — owner device-side flap persists | Endpoint ops + Wazuh config owner | owner cooperation on device | phase40-18…24; phase42-37…39 | chmod/chown one-liner documented phase39-76 |
+| OW-40-03 (=BCK-38-010) | P2 | Observe ISM first deletion wave | STILL-OPEN — window opens **2026-08-29T21:00:44Z**; policy attached/enabled on archives; watch arc complete through certification | Infrastructure owner | calendar | phase42-60…67; _ism/explain live [phase42-84] | N/A observation-only |
+| OW-40-04 (=BCK-38-007) | P1 | Packet workflow import + routing proofs | DEFERRED BY CHOICE — capability research DEFINITIVE-negative (T1–T5); lane test-only/disabled with exact blockers; remediation B(platform upgrade)>A(UI rebuild)>C | SOAR ops + Detection | owner remediation-path choice | phase42-15…32; ROUT chain [phase42-84 §8] | Lane disabled test-only; artifacts sha-pinned |
+| OW-40-05 (=BCK-38-015) | P1 | RTO/RPO sign-off | AWAITING-SIGNATURE — sole red gate G6 of the go/no-go matrix | Platform + SOC lead | owner decision | phase40-72; phase42-83 gate matrix | Documents only |
+| OW-40-06 | P1 | Restore rehearsal on approved external target | NO-GO — red gates = exactly {G6 signature, G7 target approval}; spot-streak ×4 does not substitute | Infra + SOC lead | OW-40-05 outcome; approved target | phase42-81 scoreboard; phase42-82 V9 stage; phase42-83 matrix | Rehearsal env disposable |
+| OW-40-11 | P2 | Commit/push Phase-42 changeset | STILL-OPEN — operator sign-off gate; tree dirty incl. AGENTS.md CHG-42-AGENTS-01 + canonical refresh + catalog appends | ops-reports-owner | operator review | git status live [phase42-87] | Git-native revert paths per changeset |
+| OW-40-12 | P3 | Physical duplicate-path retirement in catalogs | STILL-OPEN — alias rows applied non-destructively; path retirement approval-gated | Governance | operator sign-off | phase40-79/-80; source-map-aliases.json valid live | Delete JSON rows; files never moved |
+| OW-41-03 | P3 | Dashboard visual-render verification | LOGIN-GATED — browser session operator-held; data layer fully validated incl. v2 artifact | ops-reports-owner + operator | browser credentials | phase41-63/-64; phase42-68/-73 | N/A verification-only |
+| **OW-42-01** | P1 | **Indexer disk-threshold policy decision (R-DISKBYPASS)** | NEW-P42 — watermark enforcement confirmed disabled cluster-wide; owner must enable thresholds or formally accept advisory posture; host at 84% meanwhile | Wazuh/indexer config owner + Infrastructure owner | sudo/config window | config line 44 wazuh1.indexer.yml; _nodes/settings live [phase42-89] | One-line yml revert; rolling restart of indexers |
+| **OW-42-02** | P2 | v1.3.1 release-page publication | TOKEN-BLOCKED — tag+on-box custody proven; GitHub publication awaits owner token (exact call sequence ready) | MCT SOC (token holder) | GITHUB_TOKEN | phase42-79 §6; phase42-80 assurance | Delete remote tag + on-box dir per phase42-80 §3 |
+| **OW-42-03** | P2 | Dashboard W2 v2 artifact swap + sign-off | STAGED — v2 (.keyword) imported with 4/4 parity in validation set; originals retained; global-tenant swap needs owner sign-off + browser session | Dashboard owner + Detection | OW-41-03 session | evidence/p42-dashboard-v2/ + SHA256SUMS; phase42-69/-73 | Re-import retained originals; rollback IDs recorded |
 
-## 3. Resolved Log (closed through Phase 41; retained for backlink integrity)
+## 3. Resolved Log (closed through Phase 42; retained for backlink integrity)
 
 | Prior ID | Item | Closure | Evidence |
 |---|---|---|---|
-| BCK-38-003 / R-FG lineage | Field-growth guardrail WARN | CLOSED-AT-SOURCE → **CONTAINED-PENDING-FULL-CYCLE**: eve.json stats removed at source on sensor; compact emitter+timer+localfile live; stats_compact indexed/searchable (129 docs today, live growth observed); certification flips on 08.27 index guardrail (G41-14 ARMED) | phase41-15/-18; live _count ×2 [phase41-81] |
-| NEW-41 (defect) | Dual-suricata-process defect on sensor | FOUND+FIXED — suricata.service MASKED; production runs via exact-args setsid invocation; stale unit "failed" state documented as pre-mask record, not live fault | phase41-15 G41-02/03; systemctl/pgrep live [phase41-86] |
-| OW-39-03 successor | Delivery-monitor soak certification | CLOSED PASS — overnight 14 cycles incl. one REAL fail-closed ERROR caught at 04:15Z slot proving failure detection works | phase41-35/-40 |
-| NEW-41 | Delivery-monitor watchdog | IMPLEMENTED — self-masking bug found+fixed pre-install; dedicated alert log p41-monitor-watchdog.log; cron 3,18,33,48 live | phase41-39/-43; crontab+file live [phase41-81] |
-| OW-40-07 (=OW-39-02) | Published-original v1.3.0 retrieval/custody | **CLOSED byte-exact** — GitHub REST download onto ops/releases/v1.3.0/; sha256 da72bde45db379c5… re-verified against MANIFEST PRIMARY this session (CUSTODY-41-01 CLOSED) | phase41-75/-76; sha256sum live [phase41-81] |
-| OW-40-08 (XFO half) | Duplicate X-Frame-Options at TLS proxy | CLOSED for XFO — exactly ONE `X-Frame-Options: DENY` at :3443 live; sibling XCTO dup split out as OW-41-01 | phase41-65/-66; curl -D count=1 live |
-| OW-40-09 | windows-clients .bak hygiene | CLOSED CLEAN — windows/mac .bak sweep verified clean; no root-owned strays in shared dirs | phase41-67/-68 |
-| NEW-41 | False-positive baseline | ESTABLISHED — zero natural FP; minimal honest population 12 alerts; tuning proposals documented awaiting owner | phase41-69…74 |
-| NEW-41 | Restore spot-check #3 | PASS — 170521=170521 parity | phase41-57 |
-| BCK-38-014 successor | Dashboards data validation | CLOSED data-layer — W1/W2 validated vs live queries; visual-render split out login-gated as OW-41-03; EID-mapping question split out as OW-41-02 | phase41-61/-62 |
-| R-SO | security-onion resurrection risk | CLOSED — restart=no + exited(0) verified live; volumes intact untouched | phase41-80 |
+| OW-41-05 / R-CHURN | Frontend restart churn (~92/day × 15d = 1,381 restarts) | **ELIMINATED + CERTIFIED** — repair script gated on actual reconnect; healthy no-op ×3 + forced-failure controlled recovery both PROVEN; CHURN-CERT-42-01 PASS; ≈92 avoidable restarts/day removed going forward | phase42-43…48 chain |
+| OW-41-01 / R-XCTO | Duplicate nosniff header at :3443 | **DONE** — single `X-Content-Type-Options: nosniff` (and single XFO) verified live via curl -I | phase42-49/-50 |
+| NEW-42 (partial) | VT integration conf exposure | **CONTAINER HALF CLOSED** — master ossec.conf hardened 644→640 root:root inside volume, 15/15 daemons running post-change; HOST-side chmod remains owner item under R-VTOSSEC | phase42-51…54 |
+| OW-41-04 successor | v1.3.1 cut | **CUT + TAG PUSHED + ON-BOX ASSURED** — annotated tag 71701dfd→6579919 on origin; asset sha256 4e6c3712… re-verified; REL-ASR-42-01 ASSURED-ONBOX-PUBLICATION-PENDING; publication token-blocked split to OW-42-02 | phase42-77…80 |
+| OW-41-02 (EID half) | Dashboard EID-mapping question | **ROOT-CAUSED + v2 STAGED** — signal is data.win.system.eventID (10,975 all-history); event.code NEVER populated (0 ever); v2 artifact with .keyword field 4/4 parity; originals retained; swap tracked as OW-42-03 | phase42-69/-70; evidence/p42-dashboard-v2 |
+| (carried from OPENWORK-41-01 §3) | All eleven prior closures | Remain closed — churn/nosniff/EID/custody rows above supersede their open-row presence; field containment now adjudicator-armed (§6 canonical snapshot) | OPENWORK-41-01 sticky |
 
 ## 4. Standing Rule
 
 Future reports reference ONLY these OW IDs for tracked work. Canonical copies:
-this file + `canonical/current/current-state-20260826-postp41.md`. AGENTS.md Known
-Blockers mirrors the open set pointer-wise (refreshed under CHG-41-AGENTS-01).
+this file + `canonical/current/current-state-20260826-p42.md`. AGENTS.md Known
+Blockers mirrors the open set pointer-wise (refreshed under CHG-42-AGENTS-01).
