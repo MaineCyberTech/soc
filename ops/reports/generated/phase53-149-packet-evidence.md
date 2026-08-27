@@ -1,0 +1,27 @@
+# Phase 53: Packet Evidence Bundle
+
+**Prompt:** 149-packet-evidence
+**Generated (UTC):** 2026-08-27T20:08:49Z
+**Operator (EDT):** 2026-08-27T16:08:49-0400
+**Verdict:** PARTIAL
+
+## Summary
+Evidence for packet-routing events is retained across three stores: (1) `workflowexecution-000001` holds every execution with its argument + results; (2) `org_cache-000001` holds dedup/routed/counter/probe state; (3) the IRIS destination object (e.g., alert id 60) is the external proof. A cryptographic hash bundle over all events/executions/objects was NOT produced in this read-only batch (it would require bulk export + hashing, which is allowed but not executed here). No secret values are present in any of these stores (token is loaded at runtime from a file, never persisted).
+
+## Evidence
+- E1: `workflowexecution-000001` = 159 suricata executions retained (execution_argument + results per run).
+- E2: `org_cache-000001` p53_* docs retained (dedup/routed/counter/probe) — reproducible state evidence.
+- E3: LIVE ROUTED proof execution `4d5b9d15...` → IRIS alert object_id 60 (external object evidence).
+- E4: IRIS token file `/opt/mct-security-stack/data/shuffle/files/iris-shuffle.env` mode 600, gitignored; contents NOT printed (secret policy).
+
+## Backup / Rollback
+N/A (read-only). An evidence-hash export can be generated later from the above stores.
+
+## Stop conditions (BLOCKED only)
+None.
+
+## Limitations
+No hash manifest computed in-batch. Object/execution IDs available; per-record hashes not generated.
+
+## Verdict rationale
+Evidence sources identified and retained; a formal hashed bundle was not generated in this read-only batch. PARTIAL.
