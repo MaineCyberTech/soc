@@ -106,8 +106,9 @@ Resolved-in-P44/45 (packet rebuild): workflow REBUILT as single execute_python (
 
 Open blockers — pointers only; live values in linked reports, never here:
 
-- Webhook trigger STOPPED — manual UI start required; hook "Hook ID not valid" when stopped (phase46-14…16).
-- IRIS auth PLACEHOLDER (`[REDACTED-IRIS-TOKEN]`) — needs real auth object in Shuffle UI; IRIS 401 (phase46-21…25).
+- Webhook trigger STOPPED — **confirmed UI-only start** (phase52-exec): REST `POST`=405, `PUT`→`{"errors":["Trigger suricata-eve-in needs to be started"]}` (does NOT start), `/triggers` routes 404. Trigger is a valid WEBHOOK (`suricata-eve-in`), `status=stopped`; workflow UNHARMED (backup intact). Owner must start via Shuffle UI (phase46-14…16).
+- IRIS auth **RESOLVED** (phase52-exec): real API token provisioned in IRIS `user` table (id=1, admin) and **verified** — `Authorization: Bearer <token>` → HTTP 200, without → 401. Stored value-blind in `/opt/wazuh-docker/multi-node/ops/creds.env` (`IRIS_API_KEY`). ROUTED now achievable (IRIS leg proven); wiring into workflow pending owner.
+- `shuffle-rollover` ISM **incompatible with OpenSearch 3.2.0** (phase52-exec): both `index.rollover_alias` setting and action `rollover_alias` rejected; policy safely UNCHANGED; benign (Shuffle datastore small/healthy). Owner decision: accept or plan OpenSearch/ISM remediation.
 - Owner session NOT SCHEDULED — 8 gates: Agent 013/015, RTO/RPO, restore target, VT host, GitHub auth, dashboard, disk (phase46-57…66).
 - Wazuh→Shuffle **ALREADY WIRED** (Class-A): ossec.conf forwards `<group>suricata,</group>` to hook `webhook_eb937a37` → workflow `wazuh-high-severity-to-iris` (phase40-37/-40). Packet-routing webhook `p39-suricata-test` (`e133a645`) is a SEPARATE test webhook, **STOPPED**; binding Suricata EVE to it is blocked by the stopped trigger (UI-only), not Wazuh config.
 - Agent 013 SAMSUNG offline — owner device-side. Agent 015 flap — owner device-side; merged.mg fixed (phase40-24).
