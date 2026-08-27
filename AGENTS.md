@@ -113,7 +113,7 @@ Open blockers — pointers only; live values in linked reports, never here:
 - Agent 013 SAMSUNG offline — owner device-side. Agent 015 flap — owner device-side; merged.mg fixed (phase40-24).
 - First ISM deletion wave unobserved — window opens 2026-08-29. RTO/RPO sign-off pending (phase40-72).
 - Restore rehearsal NO-GO until adequate external target approved.
-- v1.3.1 publication PARTIALLY UNBLOCKED — `gh` v2.98.0 at `~/.local/bin/gh`; auth needed (token expired); asset ready (phase46-86).
+- v1.3.1 PUBLISHED — release v1.3.1 + asset `v1.3.1-from-tag.tar.gz` (sha256 `4e6c3712…ebf596`) live at `github.com/MaineCyberTech/soc/releases/tag/v1.3.1` (phase48-114/-116).
 - Dashboard v2 ACTIVATION PENDING — signed off, not activated (phase46-71…75).
 - Canonical current-state REFRESHED to Phase 48 (20260827-p48) this session; operator-authorized (phase48-014).
 - Phase 46 Full COMPLETE — 121 reports (000-120) from `/home/user/mct-p46-full/`; corpus 225+ (phase46-full-120-final).
@@ -153,10 +153,7 @@ _Sources: [SRC: phase39-56] [SRC: phase44-13] [SRC: phase45-29…35] [SRC: phase
   `multi-node/config/wazuh_indexer/wazuh1.indexer.yml`, mounted as opensearch.yml;
   live on all 3 nodes) — watermarks advisory-only, capacity is manual-watch
   (R-DISKBYPASS; owner decision tracked OW-42-01).
-- Tool note: `gh` (GitHub CLI) v2.98.0 installed at `~/.local/bin/gh`. Requires
-  authentication before use: `gh auth login` (interactive) or
-  `gh auth login --with-token <<< "<GH_TOKEN>"` (token from creds.env or fresh).
-  PATH: add `~/.local/bin` to `$PATH` or use full path. Used for v1.3.1 publication.
+- Tool note: `gh` (GitHub CLI) v2.98.0 installed at `~/.local/bin/gh` and **authenticated** (token in creds.env valid; full `repo` scope). v1.3.1 release published (phase48-114/-116). _Sources: [SRC: phase48-109]_
 _Sources: [SRC: phase39-56]_
 
 ## Report Authoring Conventions

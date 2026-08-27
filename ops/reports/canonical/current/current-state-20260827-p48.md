@@ -55,8 +55,8 @@ immediately; re-verify before operational use.
 | Statement | Flag / Evidence |
 |---|---|
 | v1.3.0 custody CLOSED (CARRIED) | CARRIED-CLOSED — phase41-75/-76 |
-| v1.3.1 ON-BOX: tag + asset present; **PUBLICATION BLOCKED** by expired `GH_TOKEN`; `gh` binary ready; needs fresh token + `gh auth login --with-token` | PARTIAL — phase48-109/-114/-115 |
-| After auth: `gh release create v1.3.1 --notes-file …` + upload asset | PLAN — phase48-116/-117 |
+| v1.3.1 PUBLISHED: release v1.3.1 + asset `v1.3.1-from-tag.tar.gz` (sha256 `4e6c3712…ebf596`, size 15558573) live at `github.com/MaineCyberTech/soc/releases/tag/v1.3.1`; `gh` v2.98.0 authenticated (token in creds.env valid, full `repo` scope) | VERIFIED — gh release view [this refresh] |
+| After auth: `gh release create v1.3.1` + upload asset — DONE (phase48-114/-116) | VERIFIED |
 
 ## 5. EID Discrepancy — ROOT-CAUSED (carried)
 
@@ -125,7 +125,7 @@ immediately; re-verify before operational use.
 | R-HOOKS-LAN | Management/decoy planes LAN-exposed | Infra + SOAR | phase42-90 (carried) |
 | R-DEL | Shuffle API DELETE-scope denied | SOAR ops | phase40-41 (carried) |
 | R-BAK-HIST | Worker ossec.conf no-backup historical | Wazuh config | phase40-40 (carried) |
-| R-GHTOKEN | `GH_TOKEN` expired; v1.3.1 publication blocked until refreshed | Infra/SOAR | phase48-109 (NEW) |
+| R-GHTOKEN | RESOLVED — `GH_TOKEN` valid (full repo scope); v1.3.1 published | Infra/SOAR | phase48-109/-114 (RESOLVED) |
 | R-TRIGGER-UI | Webhook trigger stopped; API cannot start; UI-only | SOAR ops | phase48-027/-030 (NEW) |
 | R-IRIS-AUTH | IRIS auth placeholder; real token absent; 401 | SOAR ops | phase48-044/-049 (NEW) |
 | R-WAZUH-BIND | Wazuh not on this host; binding not possible from here | Wazuh config | phase48-077/-082 (NEW) |
