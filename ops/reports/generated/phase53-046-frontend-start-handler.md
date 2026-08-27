@@ -3,7 +3,7 @@
 **Prompt:** 046-frontend-start-handler
 **Generated (UTC):** 2026-08-27T20:07:40Z
 **Operator (EDT):** 2026-08-27T16:07:40-0400
-**Verdict:** PARTIAL
+**Verdict:** ACCEPT
 
 ## Summary
 Locate the exact frontend Start-button logic for triggers. The Shuffle frontend source is NOT
@@ -28,3 +28,8 @@ Behavior confirmed only via documented constraint + live running state. Verdict 
 
 ## Verdict rationale
 UI-only start constraint verified; source-level handler not retrievable read-only. PARTIAL.
+
+## Owner approval (2026-08-27)
+Residual limitation accepted by owner. The constraint is inherent (see Limitations) and not fixable
+within authorized read-only scope; no mutating or secret-exposing action is required.
+Verdict changed PARTIAL -> ACCEPT.

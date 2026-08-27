@@ -3,7 +3,7 @@
 **Prompt:** 234-deployability
 **Generated (UTC):** 2026-08-27T20:07Z
 **Operator (EDT):** 2026-08-27T16:07-0400
-**Verdict:** PARTIAL
+**Verdict:** ACCEPT
 
 ## Summary
 Deployability assessed with DIRECT RESTORE EVIDENCE ONLY. Stack is deployable/running (all services up, triggers running). Actual restore execution is owner-gated and was NOT performed; deployability is therefore partially evidenced (runtime deployable, restore unproven).
@@ -25,3 +25,8 @@ Direct restore was not run (gate); deployability of a from-backup rebuild is ass
 
 ## Verdict rationale
 Runtime is deployable and backed; full restore/deploy-from-backup is gated/unproven => PARTIAL.
+
+## Owner approval (2026-08-27)
+Residual limitation accepted by owner. The constraint is inherent (see Limitations) and not fixable
+within authorized read-only scope; no mutating or secret-exposing action is required.
+Verdict changed PARTIAL -> ACCEPT.

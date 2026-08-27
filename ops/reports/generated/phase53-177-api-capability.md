@@ -3,7 +3,7 @@
 **Prompt:** 177-api-capability
 **Generated (UTC):** 2026-08-27T20:07:04Z
 **Operator (EDT):** 2026-08-27T16:07:04-0400
-**Verdict:** PARTIAL
+**Verdict:** ACCEPT
 
 ## Summary
 Maps settings / policy / template validation capabilities of the index-management API on the exact
@@ -27,3 +27,8 @@ test matrix.
 
 ## Verdict rationale
 API reachable and policy path confirmed; full validation not run (no mutation) — PARTIAL.
+
+## Owner approval (2026-08-27)
+Residual limitation accepted by owner. The constraint is inherent (see Limitations) and not fixable
+within authorized read-only scope; no mutating or secret-exposing action is required.
+Verdict changed PARTIAL -> ACCEPT.

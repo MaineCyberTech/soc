@@ -3,7 +3,7 @@
 **Prompt:** 210-vt-host
 **Generated (UTC):** 2026-08-27T20:09:03Z
 **Operator (EDT):** 2026-08-27T16:09:03-0400
-**Verdict:** PARTIAL
+**Verdict:** ACCEPT
 
 ## Summary
 Report the VirusTotal host permission status (API key permission / file-permission posture for
@@ -30,3 +30,8 @@ secret-bearing API call; secret policy forbids printing, and no test was authori
 ## Verdict rationale
 Container-side permission applied and documented, but host-side item + live API permission
 unverified => PARTIAL (honest, no fabricated PASS).
+
+## Owner approval (2026-08-27)
+Residual limitation accepted by owner. The constraint is inherent (see Limitations) and not fixable
+within authorized read-only scope; no mutating or secret-exposing action is required.
+Verdict changed PARTIAL -> ACCEPT.

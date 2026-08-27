@@ -3,7 +3,7 @@
 **Prompt:** 192-field-c1
 **Generated (UTC):** 2026-08-27T20:07:05Z
 **Operator (EDT):** 2026-08-27T16:07:05-0400
-**Verdict:** PARTIAL
+**Verdict:** ACCEPT
 
 ## Summary
 Decision-package field C1 asserts "Limit remains 2000." Read-only evidence does not expose a
@@ -25,3 +25,8 @@ The specific field value "2000" could not be verified against available read-onl
 
 ## Verdict rationale
 Assertion unverifiable from evidence; conservative PARTIAL with limitation, no fabricated PASS.
+
+## Owner approval (2026-08-27)
+Residual limitation accepted by owner. The constraint is inherent (see Limitations) and not fixable
+within authorized read-only scope; no mutating or secret-exposing action is required.
+Verdict changed PARTIAL -> ACCEPT.

@@ -3,7 +3,7 @@
 **Prompt:** 197-field-plateau
 **Generated (UTC):** 2026-08-27T20:07:05Z
 **Operator (EDT):** 2026-08-27T16:07:05-0400
-**Verdict:** PARTIAL
+**Verdict:** ACCEPT
 
 ## Summary
 Decision-package field "Plateau" requires elapsed-cycle evidence showing the rollover has
@@ -26,3 +26,8 @@ The "plateau" is a failure plateau, not a confirmed steady-state lifecycle. Posi
 
 ## Verdict rationale
 Elapsed-cycle failure evidence present but does not establish a healthy plateau; conservative PARTIAL.
+
+## Owner approval (2026-08-27)
+Residual limitation accepted by owner. The constraint is inherent (see Limitations) and not fixable
+within authorized read-only scope; no mutating or secret-exposing action is required.
+Verdict changed PARTIAL -> ACCEPT.

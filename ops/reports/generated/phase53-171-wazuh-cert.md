@@ -3,7 +3,7 @@
 **Prompt:** 171-wazuh-cert
 **Generated (UTC):** 2026-08-27T20:07:04Z
 **Operator (EDT):** 2026-08-27T16:07:04-0400
-**Verdict:** PARTIAL
+**Verdict:** ACCEPT
 
 ## Summary
 Assesses test and production status of the Wazuh packet-lane certificate / TLS wiring. The
@@ -29,3 +29,8 @@ remains owner-gated.
 ## Verdict rationale
 Test lane (suricata webhook TLS + live ROUTED) verified; production Wazuh cert chain not fully
 inspected — PARTIAL with explicit limitation.
+
+## Owner approval (2026-08-27)
+Residual limitation accepted by owner. The constraint is inherent (see Limitations) and not fixable
+within authorized read-only scope; no mutating or secret-exposing action is required.
+Verdict changed PARTIAL -> ACCEPT.

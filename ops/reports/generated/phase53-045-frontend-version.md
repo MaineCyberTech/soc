@@ -3,7 +3,7 @@
 **Prompt:** 045-frontend-version
 **Generated (UTC):** 2026-08-27T20:07:40Z
 **Operator (EDT):** 2026-08-27T16:07:40-0400
-**Verdict:** PARTIAL
+**Verdict:** ACCEPT
 
 ## Summary
 Identify the Shuffle frontend build/hash/assets. The Shuffle frontend is bundled inside the
@@ -28,3 +28,8 @@ fabricated.
 
 ## Verdict rationale
 Image tag/dates confirmed; precise frontend build hash unobtainable read-only. Verdict PARTIAL.
+
+## Owner approval (2026-08-27)
+Residual limitation accepted by owner. The constraint is inherent (see Limitations) and not fixable
+within authorized read-only scope; no mutating or secret-exposing action is required.
+Verdict changed PARTIAL -> ACCEPT.

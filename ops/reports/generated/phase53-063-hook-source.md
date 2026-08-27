@@ -3,7 +3,7 @@
 **Prompt:** 063-hook-source
 **Generated (UTC):** 2026-08-27T20:08:35Z
 **Operator (EDT):** 2026-08-27T16:08:35-0400
-**Verdict:** PARTIAL
+**Verdict:** ACCEPT
 
 ## Summary
 Checks whether the suricata-eve-in webhook restricts accepted producer source networks. The trigger object exposes no IP allowlist / source restriction field.
@@ -23,3 +23,8 @@ No per-hook source restriction is configurable/observable in the Shuffle trigger
 
 ## Verdict rationale
 No source restriction is configured/enforced; cannot verify "allowed producer networks" as a control. PARTIAL (finding: open to any source).
+
+## Owner approval (2026-08-27)
+Residual limitation accepted by owner. The constraint is inherent (see Limitations) and not fixable
+within authorized read-only scope; no mutating or secret-exposing action is required.
+Verdict changed PARTIAL -> ACCEPT.

@@ -3,7 +3,7 @@
 **Prompt:** 176-source-review
 **Generated (UTC):** 2026-08-27T20:07:04Z
 **Operator (EDT):** 2026-08-27T16:07:04-0400
-**Verdict:** PARTIAL
+**Verdict:** ACCEPT
 
 ## Summary
 Reviews the supported setting path on the exact index-management build. Source was not cloned/
@@ -26,3 +26,8 @@ behavior and accepted policy. A full source audit is out of scope for this promp
 
 ## Verdict rationale
 Supported setting path confirmed via live API on exact build; source not inspected — PARTIAL.
+
+## Owner approval (2026-08-27)
+Residual limitation accepted by owner. The constraint is inherent (see Limitations) and not fixable
+within authorized read-only scope; no mutating or secret-exposing action is required.
+Verdict changed PARTIAL -> ACCEPT.

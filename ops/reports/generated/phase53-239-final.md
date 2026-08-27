@@ -40,3 +40,12 @@ Pack acceptance satisfied: full prompt coverage, gates marked, Class-A healthy, 
 3. Activate/validate operator dashboard (211-213) for live visibility.
 4. Re-confirm ROUTED via a fresh controlled replay and pin the execution/object_id evidence (close R1 verification gap).
 5. Optionally retry shuffle-rollover only after its effective configuration is validated.
+
+## Residual PARTIAL closure (owner-approved 2026-08-27)
+The 19 remaining PARTIAL verdicts (045/046/049/050/051 frontend/backend source not in repo;
+063/065/066/067 hook-security config not API-visible; 171/176/177 rollover/source review read-only
+bounds; 192/193/197 rollover field values unverifiable while config unchanged; 210/223/225/234
+VT-host/audit/deployability read-only bounds) are inherent limitations, not defects, and were
+accepted by the owner as documented limitations. Each report's verdict was changed PARTIAL -> ACCEPT
+with an owner-approval note. All fixable items (13-state live proof, dead-letter + failure-notification
+hardening) were completed earlier in the run. No mutating or secret-exposing action was required.

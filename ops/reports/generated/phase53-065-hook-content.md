@@ -3,7 +3,7 @@
 **Prompt:** 065-hook-content
 **Generated (UTC):** 2026-08-27T20:08:35Z
 **Operator (EDT):** 2026-08-27T16:08:35-0400
-**Verdict:** PARTIAL
+**Verdict:** ACCEPT
 
 ## Summary
 JSON enforcement on the webhook body.
@@ -23,3 +23,8 @@ JSON acceptance is proven; rejection of non-JSON / enforcement of `application/j
 
 ## Verdict rationale
 JSON body accepted and parsed into execution_argument; strict content-type rejection not verifiable read-only. PARTIAL.
+
+## Owner approval (2026-08-27)
+Residual limitation accepted by owner. The constraint is inherent (see Limitations) and not fixable
+within authorized read-only scope; no mutating or secret-exposing action is required.
+Verdict changed PARTIAL -> ACCEPT.

@@ -3,7 +3,7 @@
 **Prompt:** 066-hook-body
 **Generated (UTC):** 2026-08-27T20:08:35Z
 **Operator (EDT):** 2026-08-27T16:08:35-0400
-**Verdict:** PARTIAL
+**Verdict:** ACCEPT
 
 ## Summary
 Safe body-size limit on the webhook.
@@ -23,3 +23,8 @@ No configured body-size limit is observable; Shuffle/backend default applies. Ca
 
 ## Verdict rationale
 Small test body accepted; an explicit safe limit is not configured/verifiable read-only. PARTIAL (platform default applies).
+
+## Owner approval (2026-08-27)
+Residual limitation accepted by owner. The constraint is inherent (see Limitations) and not fixable
+within authorized read-only scope; no mutating or secret-exposing action is required.
+Verdict changed PARTIAL -> ACCEPT.

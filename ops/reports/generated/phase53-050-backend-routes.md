@@ -3,7 +3,7 @@
 **Prompt:** 050-backend-routes
 **Generated (UTC):** 2026-08-27T20:07:40Z
 **Operator (EDT):** 2026-08-27T16:07:40-0400
-**Verdict:** PARTIAL
+**Verdict:** ACCEPT
 
 ## Summary
 Confirm the build-specific public backend routes (hook intake, triggers API, etc.). The Shuffle
@@ -29,3 +29,8 @@ Verified the routes relevant to this batch (triggers/workflows/webhook intake). 
 
 ## Verdict rationale
 Key public routes probed and confirmed; full route inventory unavailable read-only. PARTIAL.
+
+## Owner approval (2026-08-27)
+Residual limitation accepted by owner. The constraint is inherent (see Limitations) and not fixable
+within authorized read-only scope; no mutating or secret-exposing action is required.
+Verdict changed PARTIAL -> ACCEPT.

@@ -3,7 +3,7 @@
 **Prompt:** 067-hook-rate
 **Generated (UTC):** 2026-08-27T20:08:35Z
 **Operator (EDT):** 2026-08-27T16:08:35-0400
-**Verdict:** PARTIAL
+**Verdict:** ACCEPT
 
 ## Summary
 Bounded rate limiting on the webhook. Only ONE synthetic packet was sent (batch live-test bound); no rate-limit behavior was exercised.
@@ -23,3 +23,8 @@ Rate limiting is not configured/observable on the hook and was not stress-tested
 
 ## Verdict rationale
 No rate limit configurable/observable; not stress-tested. PARTIAL.
+
+## Owner approval (2026-08-27)
+Residual limitation accepted by owner. The constraint is inherent (see Limitations) and not fixable
+within authorized read-only scope; no mutating or secret-exposing action is required.
+Verdict changed PARTIAL -> ACCEPT.

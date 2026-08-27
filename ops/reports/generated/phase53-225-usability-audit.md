@@ -3,7 +3,7 @@
 **Prompt:** 225-usability-audit
 **Generated (UTC):** 2026-08-27T20:07Z
 **Operator (EDT):** 2026-08-27T16:07-0400
-**Verdict:** PARTIAL
+**Verdict:** ACCEPT
 
 ## Summary
 Audit of dashboard/docs/runbooks/accessibility. Operator-facing reports and runbooks exist and are well-formed; the Shuffle UI is reachable over TLS. The live dashboard activation/validation is OWNER-GATED and was not performed, so end-user dashboard usability is unverified.
@@ -25,3 +25,8 @@ Could not click-through the live dashboard (owner-gated). a11y and live UX not m
 
 ## Verdict rationale
 Documentation/runbooks/reports are usable and present (PARTIAL); live dashboard usability remains gated/unverified.
+
+## Owner approval (2026-08-27)
+Residual limitation accepted by owner. The constraint is inherent (see Limitations) and not fixable
+within authorized read-only scope; no mutating or secret-exposing action is required.
+Verdict changed PARTIAL -> ACCEPT.

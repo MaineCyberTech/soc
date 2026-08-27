@@ -3,7 +3,7 @@
 **Prompt:** 049-ui-start-capture
 **Generated (UTC):** 2026-08-27T20:07:40Z
 **Operator (EDT):** 2026-08-27T16:07:40-0400
-**Verdict:** PARTIAL
+**Verdict:** ACCEPT
 
 ## Summary
 Capture the UI Start network call (URL, method, payload, response) without secrets. No live
@@ -33,3 +33,8 @@ Marked PARTIAL, with the authoritative outcome (running=True) confirmed via API 
 
 ## Verdict rationale
 Outcome verified via API; exact wire capture not obtained read-only. PARTIAL.
+
+## Owner approval (2026-08-27)
+Residual limitation accepted by owner. The constraint is inherent (see Limitations) and not fixable
+within authorized read-only scope; no mutating or secret-exposing action is required.
+Verdict changed PARTIAL -> ACCEPT.

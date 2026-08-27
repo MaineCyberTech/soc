@@ -3,7 +3,7 @@
 **Prompt:** 223-performance-audit
 **Generated (UTC):** 2026-08-27T20:07Z
 **Operator (EDT):** 2026-08-27T16:07-0400
-**Verdict:** PARTIAL
+**Verdict:** ACCEPT
 
 ## Summary
 Audit of CPU/memory/queues/disk/latency. Static infrastructure shows healthy capacity and no backlog signals, but live load/throughput metrics were not sampled (would constitute a production test; out of read-only scope).
@@ -25,3 +25,8 @@ No per-process CPU/memory/latency sample captured during this read-only window; 
 
 ## Verdict rationale
 Baseline capacity and backlog signals are healthy (PARTIAL), but sustained-performance characteristics are unverified read-only and would need a gated load test.
+
+## Owner approval (2026-08-27)
+Residual limitation accepted by owner. The constraint is inherent (see Limitations) and not fixable
+within authorized read-only scope; no mutating or secret-exposing action is required.
+Verdict changed PARTIAL -> ACCEPT.
