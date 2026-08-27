@@ -128,7 +128,7 @@ immediately; re-verify before operational use.
 | R-GHTOKEN | RESOLVED — `GH_TOKEN` valid (full repo scope); v1.3.1 published | Infra/SOAR | phase48-109/-114 (RESOLVED) |
 | R-TRIGGER-UI | Webhook trigger stopped; API cannot start; UI-only | SOAR ops | phase48-027/-030 (NEW) |
 | R-IRIS-AUTH | IRIS auth placeholder; real token absent; 401 | SOAR ops | phase48-044/-049 (NEW) |
-| R-WAZUH-BIND | Wazuh not on this host; binding not possible from here | Wazuh config | phase48-077/-082 (NEW) |
+| R-WAZUH-BIND | RESOLVED — Wazuh→Shuffle Class-A binding ALREADY WIRED (suricata group → `webhook_eb937a37` / `wazuh-high-severity-to-iris`, phase40-37/-40); packet-routing webhook `p39-suricata-test` is separate and STOPPED (UI-only start) | Wazuh config | phase48-077/-082 (RESOLVED-ACCURACY) |
 
 Closed/absorbed this phase: none new; R-CHURN/R-XCTO/R-FG carried closed from P42.
 

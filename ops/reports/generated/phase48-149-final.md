@@ -1,6 +1,6 @@
 # Phase 48: Final
 
-Phase 48: 150 reports. Blockers: trigger, IRIS auth, owner session, Wazuh, canonical, gh. Readiness: PARTIAL.
+Phase 48: 150 reports. Blockers: trigger (STOPPED, UI-only), IRIS auth (no real token), owner session, canonical (refreshed P48), gh (published v1.3.1). Wazuh→Shuffle Class-A WIRED. Readiness: PARTIAL.
 
 ## Verification
 - [x] Documented

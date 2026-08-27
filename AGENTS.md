@@ -109,7 +109,7 @@ Open blockers — pointers only; live values in linked reports, never here:
 - Webhook trigger STOPPED — manual UI start required; hook "Hook ID not valid" when stopped (phase46-14…16).
 - IRIS auth PLACEHOLDER (`[REDACTED-IRIS-TOKEN]`) — needs real auth object in Shuffle UI; IRIS 401 (phase46-21…25).
 - Owner session NOT SCHEDULED — 8 gates: Agent 013/015, RTO/RPO, restore target, VT host, GitHub auth, dashboard, disk (phase46-57…66).
-- Wazuh→Shuffle BIND PENDING — baseline documented, not configured (phase46-40…42).
+- Wazuh→Shuffle **ALREADY WIRED** (Class-A): ossec.conf forwards `<group>suricata,</group>` to hook `webhook_eb937a37` → workflow `wazuh-high-severity-to-iris` (phase40-37/-40). Packet-routing webhook `p39-suricata-test` (`e133a645`) is a SEPARATE test webhook, **STOPPED**; binding Suricata EVE to it is blocked by the stopped trigger (UI-only), not Wazuh config.
 - Agent 013 SAMSUNG offline — owner device-side. Agent 015 flap — owner device-side; merged.mg fixed (phase40-24).
 - First ISM deletion wave unobserved — window opens 2026-08-29. RTO/RPO sign-off pending (phase40-72).
 - Restore rehearsal NO-GO until adequate external target approved.

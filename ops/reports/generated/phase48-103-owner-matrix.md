@@ -1,6 +1,6 @@
 # Phase 48: Owner Matrix
 
-8 gated decisions pending: SID, IRIS URL, dedup TTL, counter key, Wazuh bind, owner session, v1.3.1 publish, canonical.
+8 gated decisions pending: SID, IRIS URL, dedup TTL, counter key, owner session, v1.3.1 publish, canonical. (Wazuh bind: Class-A ALREADY WIRED phase40-37/-40; packet-routing binding moot until trigger started.)
 
 ## Verification
 - [x] Documented
