@@ -20,21 +20,23 @@ _Sources: [SRC: phase39-57] [SRC: phase39-60]_
   `docker-compose.misp.yml`, `docker-compose.greenbone.yml`, `docker-compose.opencanary.yml`,
   `docker-compose.velociraptor.yml`, `docker-compose.phase2.yml`).
 - `config/` — stack configuration; secrets are referenced by path only (see Credential Handling).
-- `ops/scripts/` — gates, audits, utilities, including the `p33-`–`p39-` phase series.
+- `ops/scripts/` — gates, audits, utilities, including the `p33-`–`p46-` phase series.
 - `ops/reports/generated/` — governed report corpus with `catalog-reports.csv` / `catalog-reports.json`.
+- `ops/reports/current/` — operator final reports (phaseNN-operator-report).
 - `ops/evidence/` — exports and evidence artifacts (treat as immutable).
+- `integrations/shuffle/workflows/suricata-packet-routing/` — canonical workflow layout (changelog, expected, rollback, tests).
 - `docs/` — policy documents including `SECRET-HANDLING.md`; root-level `REPO-MAP.md`, `SECURITY.md`.
-_Sources: [SRC: phase39-56]_
+_Sources: [SRC: phase39-56] [SRC: phase45-13] [SRC: phase46-12]_
 
 ## Canonical Truth & Navigation
 
-- Current operational truth: `ops/reports/canonical/current/current-state-20260826-p42.md`
-  (Post-P42 refresh; supersedes the Post-P41 and Phase-40 snapshots and `phase38-49-generate-current-state.md` pointer-wise;
-  superseded only by a newer current-state doc per its own supersession statement).
-- Open work ledger: `ops/reports/canonical/current/open-work.md`; current change register:
-  `ops/reports/generated/phase41-02-change-register.md` (G41 series; G40 register sticky for history).
-- Do not act on any claim older than the canonical current-state doc without re-verification.
-_Sources: [SRC: phase39-56]_
+- Current operational truth: `ops/reports/canonical/current/current-state-20260827-p48.md`
+  (Post-P48 refresh; supersedes the Post-P42 snapshot and earlier pointers per its own
+  supersession statement; superseded only by a newer current-state doc).
+  This canonical state was refreshed in Phase 48 (operator-authorized) to clear the
+  Phase-42 staleness. Open-work ledger: `ops/reports/canonical/current/open-work.md`.
+  Do not act on any claim older than the canonical current-state doc without re-verification.
+_Sources: [SRC: phase48-014] [SRC: phase39-56]_
 
 ## Required Gates Before Commit
 
@@ -85,30 +87,38 @@ Resolved-in-P40 (details in linked reports; listed to prevent re-litigation):
 field-fix VERIFIED (phase40-13), then field-growth CONTAINED AT SOURCE in P41
 (eve.json stats removed on sensor; compact-stats emitter+timer live; certification
 flips on the 08.27 guardrail via staged adjudicator `ops/scripts/p42-field-cycle-adjudicate.sh`,
-window = 08.27 index birth — phase41-15/-18, phase42-03); Wazuh→Shuffle trigger WIRED+PROVEN
-end-to-end (phase40-37/-40) with overnight soak PASS incl. one real fail-closed
-ERROR caught (phase41-40) and monitor watchdog live (phase41-39/-43); Shuffle TLS
-implemented on :3443, plaintext LAN exposure closed (phase40-32), XFO dedup DONE
-(phase41-66); agent-015 merged.mg defect FIXED (phase40-24); W1/W2 dashboards
+window = 08.27 index birth — phase41-15/-18, phase42-03); Wazuh→Shuffle trigger
+WIRED+PROVEN end-to-end in Phase 40 (phase40-37/-40) with overnight soak PASS incl.
+one real fail-closed ERROR caught (phase41-40) and monitor watchdog live (phase41-39/-43);
+Shuffle TLS implemented on :3443, plaintext LAN exposure closed (phase40-32), XFO dedup
+DONE (phase41-66); agent-015 merged.mg defect FIXED (phase40-24); W1/W2 dashboards
 imported 8/8 into the global tenant (phase40-62); dual-suricata-process defect
 FIXED via unit MASK + exact-args production invocation (phase41-15); v1.3.0
-published-original custody CLOSED byte-exact (phase41-75/-76); P42 closures: repair-churn ELIMINATED+certified via gated repair script — healthy no-op x3 + forced-failure controlled recovery (phase42-48); nosniff dedup DONE single-header at :3443 (phase42-50); VT conf container-side 640 applied, host-side 640 = owner sudo-window item (phase42-53); v1.3.1 CUT+TAG pushed to origin with on-box asset sha256-verified, release-page publication token-blocked (phase42-79/-80); EID discrepancy ROOT-CAUSED (signal=data.win.system.eventID; event.code never populated) with W2 v2 artifact staged pending owner swap (phase42-69).
+published-original custody CLOSED byte-exact (phase41-75/-76); P42 closures: repair-churn
+ELIMINATED+certified via gated repair script — healthy no-op x3 + forced-failure controlled
+recovery (phase42-48); nosniff dedup DONE single-header at :3443 (phase42-50); VT conf
+container-side 640 applied, host-side 640 = owner sudo-window item (phase42-53); v1.3.1
+CUT+TAG pushed to origin with on-box asset sha256-verified, release-page publication
+token-blocked (phase42-79/-80); EID discrepancy ROOT-CAUSED (signal=data.win.system.eventID;
+event.code never populated) with W2 v2 artifact staged pending owner swap (phase42-69).
+
+Resolved-in-P44/45 (packet rebuild): workflow REBUILT as single execute_python (phase44-13); 10 state transitions TEST PROVEN (phase45-29…35); canonical layout created (phase45-13); P45 final corrected via addendum (phase46-05…08).
 
 Open blockers — pointers only; live values in linked reports, never here:
 
-- Agent 013 SAMSUNG offline — owner device-side action; endpoint status reports.
-- Agent 015 flap remediation — owner device-side; manager-side merged.mg defect fixed
-  (phase40-24).
-- First policy-driven ISM deletion wave not yet observed — window opens 2026-08-29.
-- Packet workflow import + routing proofs DEFERRED by choice; lane is TEST-ONLY /
-  disabled-in-production with exact blockers documented; P42 native-rebuild capability
-  research is DEFINITIVE-negative (T1–T5 evidence, phase42-15…32) reaffirming
-  R-PKT-PLATFORM; remediation preference B(platform upgrade) > A(UI rebuild on native
-  reference-consuming nodes) > C — see ROUT chain and ROUT-PKT-40-01.
-- RTO/RPO sign-off awaiting owner decision — see
-  `ops/reports/generated/phase40-72-rto-rpo-owner-decision.md`.
-- Restore rehearsal NO-GO until an adequate external target is approved.
-_Sources: [SRC: phase39-56]_
+- Webhook trigger STOPPED — manual UI start required; hook "Hook ID not valid" when stopped (phase46-14…16).
+- IRIS auth PLACEHOLDER (`[REDACTED-IRIS-TOKEN]`) — needs real auth object in Shuffle UI; IRIS 401 (phase46-21…25).
+- Owner session NOT SCHEDULED — 8 gates: Agent 013/015, RTO/RPO, restore target, VT host, GitHub auth, dashboard, disk (phase46-57…66).
+- Wazuh→Shuffle BIND PENDING — baseline documented, not configured (phase46-40…42).
+- Agent 013 SAMSUNG offline — owner device-side. Agent 015 flap — owner device-side; merged.mg fixed (phase40-24).
+- First ISM deletion wave unobserved — window opens 2026-08-29. RTO/RPO sign-off pending (phase40-72).
+- Restore rehearsal NO-GO until adequate external target approved.
+- v1.3.1 publication PARTIALLY UNBLOCKED — `gh` v2.98.0 at `~/.local/bin/gh`; auth needed (token expired); asset ready (phase46-86).
+- Dashboard v2 ACTIVATION PENDING — signed off, not activated (phase46-71…75).
+- Canonical current-state REFRESHED to Phase 48 (20260827-p48) this session; operator-authorized (phase48-014).
+- Phase 46 Full COMPLETE — 121 reports (000-120) from `/home/user/mct-p46-full/`; corpus 225+ (phase46-full-120-final).
+- Phase 47 COMPLETE — 130 reports from `/home/user/mct-p47/`. Phase 48 COMPLETE — 150 reports from `/home/user/mct-p48/`.
+_Sources: [SRC: phase39-56] [SRC: phase44-13] [SRC: phase45-29…35] [SRC: phase46-14…120]_
 
 ## Credential Handling
 
@@ -129,18 +139,24 @@ _Sources: [SRC: phase39-56]_
 - Scripting note: systemd unit state may NOT reflect what production runs — e.g. the
   sensor Suricata unit is deliberately MASKED while production runs via an exact-args
   setsid invocation. Verify with `pgrep -af` before reasoning about runtime state.
-- Scripting note: Shuffle `execute_python` cannot receive workflow variables today
-  (`data_in`, `input`, `execution_input`, `execution_data`, `data` all UNDEF in its
-  globals — param-injection platform defect R-PKT-PLATFORM). Prefer native
-  reference-consuming nodes (`filter_list`, `if_else_routing`, `set_datastore_value`)
-  which resolve $refs. Verified interpolation positive-control: the HTTP app node is
-  the ONLY node type that interpolates `${…}` references into requests (T5,
+- Scripting note: Shuffle `execute_python` cannot receive workflow variables via template
+  interpolation today (`$hook.data`, `$exec` arrive as literal strings — param-injection
+  platform defect R-PKT-PLATFORM). However, it CAN access the full execution context via
+  `self.full_execution.get('execution_argument', '{}')` which contains the raw webhook
+  payload as a JSON string. Prefer native reference-consuming nodes (`filter_list`,
+  `set_cache_value`, `check_cache_contains`) which resolve $refs. Verified: the HTTP app
+  node is the ONLY node type that interpolates `${…}` references into requests (T5,
   phase42-15) — Tools-family nodes pass refs as literals.
+  _Sources: [SRC: phase39-56] [SRC: phase44-13] [SRC: phase45-29]_
 - Config-truth note: indexer disk-watermark enforcement is DISABLED cluster-wide
   (`cluster.routing.allocation.disk.threshold_enabled: false` in
   `multi-node/config/wazuh_indexer/wazuh1.indexer.yml`, mounted as opensearch.yml;
   live on all 3 nodes) — watermarks advisory-only, capacity is manual-watch
   (R-DISKBYPASS; owner decision tracked OW-42-01).
+- Tool note: `gh` (GitHub CLI) v2.98.0 installed at `~/.local/bin/gh`. Requires
+  authentication before use: `gh auth login` (interactive) or
+  `gh auth login --with-token <<< "<GH_TOKEN>"` (token from creds.env or fresh).
+  PATH: add `~/.local/bin` to `$PATH` or use full path. Used for v1.3.1 publication.
 _Sources: [SRC: phase39-56]_
 
 ## Report Authoring Conventions
