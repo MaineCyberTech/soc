@@ -3,7 +3,7 @@
 **Prompt:** 171-wazuh-cert
 **Generated (UTC):** 2026-08-27T20:07:04Z
 **Operator (EDT):** 2026-08-27T16:07:04-0400
-**Verdict:** ACCEPT
+**Verdict:** DONE
 
 ## Summary
 Assesses test and production status of the Wazuh packet-lane certificate / TLS wiring. The
@@ -34,3 +34,8 @@ inspected — PARTIAL with explicit limitation.
 Residual limitation accepted by owner. The constraint is inherent (see Limitations) and not fixable
 within authorized read-only scope; no mutating or secret-exposing action is required.
 Verdict changed PARTIAL -> ACCEPT.
+
+## Live remediation (2026-08-27)
+Wazuh manager cert inspected (read-only): `/var/ossec/etc/sslmanager.cert` — subject CN=wazuh.master, issuer CN=wazuh.master (self-signed),
+valid 2026-08-07 → 2036-08-04. Wazuh→Shuffle integration trusts a self-signed manager CA; single-node self-signed chain (expected). No external CA
+dependency.

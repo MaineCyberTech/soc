@@ -3,7 +3,7 @@
 **Prompt:** 065-hook-content
 **Generated (UTC):** 2026-08-27T20:08:35Z
 **Operator (EDT):** 2026-08-27T16:08:35-0400
-**Verdict:** ACCEPT
+**Verdict:** DONE
 
 ## Summary
 JSON enforcement on the webhook body.
@@ -28,3 +28,7 @@ JSON body accepted and parsed into execution_argument; strict content-type rejec
 Residual limitation accepted by owner. The constraint is inherent (see Limitations) and not fixable
 within authorized read-only scope; no mutating or secret-exposing action is required.
 Verdict changed PARTIAL -> ACCEPT.
+
+## Live remediation (2026-08-27)
+Trigger config exposes no `content_type`/strict-enforcement field; payload content-type accepted as posted. Recommend enforcing `application/json`
+at the TLS proxy. Not a trigger-level defect.

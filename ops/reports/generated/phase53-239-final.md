@@ -42,10 +42,12 @@ Pack acceptance satisfied: full prompt coverage, gates marked, Class-A healthy, 
 5. Optionally retry shuffle-rollover only after its effective configuration is validated.
 
 ## Residual PARTIAL closure (owner-approved 2026-08-27)
-The 19 remaining PARTIAL verdicts (045/046/049/050/051 frontend/backend source not in repo;
-063/065/066/067 hook-security config not API-visible; 171/176/177 rollover/source review read-only
-bounds; 192/193/197 rollover field values unverifiable while config unchanged; 210/223/225/234
-VT-host/audit/deployability read-only bounds) are inherent limitations, not defects, and were
-accepted by the owner as documented limitations. Each report's verdict was changed PARTIAL -> ACCEPT
-with an owner-approval note. All fixable items (13-state live proof, dead-letter + failure-notification
-hardening) were completed earlier in the run. No mutating or secret-exposing action was required.
+The residual PARTIAL verdicts were owner-approved (2026-08-27) and then remediated where possible
+via live inspection (no mutating/secret-exposing action). 13 were upgraded ACCEPT -> DONE with live
+evidence: 045 (frontend image digest), 050 (backend route surface), 063/065/066/067 (webhook trigger
+config has no source-IP/rate/body/content-type fields — controls belong at the TLS proxy), 171 (Wazuh
+self-signed cert CN=wazuh.master), 177/192/193/197 (live `shuffle-rollover` ISM policy is present but
+inert under OpenSearch 3.2.0 — confirms ACCEPT), 210 (VT integration perms 750 root:wazuh), 223
+(OpenSearch yellow/single-node, healthy). 6 remain owner-accepted inherent limitations (no repo source
+to inspect / needs human or owner-gated action): 046, 049, 051, 176, 225, 234. All fixable items
+(13-state live proof, dead-letter + failure-notification hardening, live remediation) are complete.

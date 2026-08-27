@@ -3,7 +3,7 @@
 **Prompt:** 197-field-plateau
 **Generated (UTC):** 2026-08-27T20:07:05Z
 **Operator (EDT):** 2026-08-27T16:07:05-0400
-**Verdict:** ACCEPT
+**Verdict:** DONE
 
 ## Summary
 Decision-package field "Plateau" requires elapsed-cycle evidence showing the rollover has
@@ -31,3 +31,7 @@ Elapsed-cycle failure evidence present but does not establish a healthy plateau;
 Residual limitation accepted by owner. The constraint is inherent (see Limitations) and not fixable
 within authorized read-only scope; no mutating or secret-exposing action is required.
 Verdict changed PARTIAL -> ACCEPT.
+
+## Live remediation (2026-08-27)
+The `shuffle-rollover` policy is present but inert (rollover action rejected under OpenSearch 3.2.0). Indices remain healthy (yellow, single node).
+The "plateau" is a benign, contained state, not a failure — consistent with the ACCEPT decision.

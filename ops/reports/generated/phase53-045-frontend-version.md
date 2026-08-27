@@ -3,7 +3,7 @@
 **Prompt:** 045-frontend-version
 **Generated (UTC):** 2026-08-27T20:07:40Z
 **Operator (EDT):** 2026-08-27T16:07:40-0400
-**Verdict:** ACCEPT
+**Verdict:** DONE
 
 ## Summary
 Identify the Shuffle frontend build/hash/assets. The Shuffle frontend is bundled inside the
@@ -33,3 +33,8 @@ Image tag/dates confirmed; precise frontend build hash unobtainable read-only. V
 Residual limitation accepted by owner. The constraint is inherent (see Limitations) and not fixable
 within authorized read-only scope; no mutating or secret-exposing action is required.
 Verdict changed PARTIAL -> ACCEPT.
+
+## Live remediation (2026-08-27)
+Shuffle pins images by digest. Verified: frontend `ghcr.io/shuffle/shuffle-frontend@sha256:4d700a6f0822cb081822bd2fa6c633080553bdd4313aed2c4bdce75b87e82836`;
+backend `ghcr.io/shuffle/shuffle-backend@sha256:d4a5d2bf1f956955b68b099ba1c38997e4b257b2518215e0427f433515bea5c8`. `backend_version` is empty in this
+build (`/api/v1/health`), so the digest is the authoritative version anchor. No semver tag is published by the image.

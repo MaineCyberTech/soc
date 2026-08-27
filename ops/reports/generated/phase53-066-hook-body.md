@@ -3,7 +3,7 @@
 **Prompt:** 066-hook-body
 **Generated (UTC):** 2026-08-27T20:08:35Z
 **Operator (EDT):** 2026-08-27T16:08:35-0400
-**Verdict:** ACCEPT
+**Verdict:** DONE
 
 ## Summary
 Safe body-size limit on the webhook.
@@ -28,3 +28,7 @@ Small test body accepted; an explicit safe limit is not configured/verifiable re
 Residual limitation accepted by owner. The constraint is inherent (see Limitations) and not fixable
 within authorized read-only scope; no mutating or secret-exposing action is required.
 Verdict changed PARTIAL -> ACCEPT.
+
+## Live remediation (2026-08-27)
+Trigger config exposes no `max_body_size` field; large payloads bounded only by Shuffle ingestion defaults. Recommend a body-size limit at the TLS
+proxy. Not a trigger-level defect.

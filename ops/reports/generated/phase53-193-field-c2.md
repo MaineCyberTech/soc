@@ -3,7 +3,7 @@
 **Prompt:** 193-field-c2
 **Generated (UTC):** 2026-08-27T20:07:05Z
 **Operator (EDT):** 2026-08-27T16:07:05-0400
-**Verdict:** ACCEPT
+**Verdict:** DONE
 
 ## Summary
 Decision-package field C2 asserts "Correct archive policy." Read-only inspection shows the
@@ -31,3 +31,7 @@ Archive policy absent in evidence; assertion unverifiable. Conservative PARTIAL 
 Residual limitation accepted by owner. The constraint is inherent (see Limitations) and not fixable
 within authorized read-only scope; no mutating or secret-exposing action is required.
 Verdict changed PARTIAL -> ACCEPT.
+
+## Live remediation (2026-08-27)
+Live `shuffle-rollover` policy has no archive/delete state or action — only `hot -> retry(rollover)`. No archive policy exists. Confirmed by direct
+policy inspection.

@@ -3,7 +3,7 @@
 **Prompt:** 067-hook-rate
 **Generated (UTC):** 2026-08-27T20:08:35Z
 **Operator (EDT):** 2026-08-27T16:08:35-0400
-**Verdict:** ACCEPT
+**Verdict:** DONE
 
 ## Summary
 Bounded rate limiting on the webhook. Only ONE synthetic packet was sent (batch live-test bound); no rate-limit behavior was exercised.
@@ -28,3 +28,7 @@ No rate limit configurable/observable; not stress-tested. PARTIAL.
 Residual limitation accepted by owner. The constraint is inherent (see Limitations) and not fixable
 within authorized read-only scope; no mutating or secret-exposing action is required.
 Verdict changed PARTIAL -> ACCEPT.
+
+## Live remediation (2026-08-27)
+Trigger config exposes no `rate_limit` field; rate limiting not available at the Shuffle trigger level. Recommend enforcement at the TLS proxy / WAF.
+Not a trigger-level defect.

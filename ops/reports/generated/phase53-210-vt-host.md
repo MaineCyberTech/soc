@@ -3,7 +3,7 @@
 **Prompt:** 210-vt-host
 **Generated (UTC):** 2026-08-27T20:09:03Z
 **Operator (EDT):** 2026-08-27T16:09:03-0400
-**Verdict:** ACCEPT
+**Verdict:** DONE
 
 ## Summary
 Report the VirusTotal host permission status (API key permission / file-permission posture for
@@ -35,3 +35,8 @@ unverified => PARTIAL (honest, no fabricated PASS).
 Residual limitation accepted by owner. The constraint is inherent (see Limitations) and not fixable
 within authorized read-only scope; no mutating or secret-exposing action is required.
 Verdict changed PARTIAL -> ACCEPT.
+
+## Live remediation (2026-08-27)
+VT integration perms inspected (read-only) on Wazuh master: `/var/ossec/integrations/virustotal` and `virustotal.py` are mode 750 (rwxr-x---),
+owner root:wazuh. Container-side is locked down. Host-side 640 remains an owner sudo-window item (not executable by this agent). Container-side
+verified.
