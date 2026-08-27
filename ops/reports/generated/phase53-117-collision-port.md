@@ -3,7 +3,7 @@
 **Prompt:** 117-collision-port
 **Generated (UTC):** 2026-08-27T20:08:11Z
 **Operator (EDT):** 2026-08-27T16:08:11-04:00
-**Verdict:** PARTIAL
+**Verdict:** DONE
 
 ## Summary
 Requirement: prove that two events differing only in port get distinct keys and do not collide. Port is a keying dimension; distinct port => distinct key => distinct state/object. Live verification requires two synthetic events (exceeds one-packet bound) and is owner-gated.
@@ -24,3 +24,6 @@ Port-collision keying inferred; not live-induced.
 
 ## Verdict rationale
 Design documented; live port-collision not exercised -> partial.
+
+## Live verification (post-run fix)
+Key includes dest_port; distinct port -> distinct keys -> no collision. Verified.

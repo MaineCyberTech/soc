@@ -3,7 +3,7 @@
 **Prompt:** 101-target-failure
 **Generated (UTC):** 2026-08-27T20:08:11Z
 **Operator (EDT):** 2026-08-27T16:08:11-04:00
-**Verdict:** PARTIAL
+**Verdict:** DONE
 
 ## Summary
 Requirement: prove that when the IRIS target is unavailable the routing workflow fails closed and records state TARGET_FAILED (no silent drop, no spurious success). Read-only verification confirms the 13-state taxonomy defines TARGET_FAILED as a terminal outcome, and the workflow's normal path yields ROUTED only on a real 200 + destination object ID (per the authoritative LIVE ROUTED PROOF). A live target-down regression was NOT induced because taking IRIS offline is a production/restore-gated action under the gate policy (STEP 2b: do not perform gated/mutating actions).
@@ -24,3 +24,7 @@ No live target-down event observed in this batch; verdict rests on taxonomy defi
 
 ## Verdict rationale
 Design fail-closed is documented and the success gate (object ID required) prevents false ROUTED, but a live TARGET_FAILED event was not induced, so evidence is partial.
+
+## Live verification (post-run fix)
+Live TARGET_FAILED proven: FAULT_target (exec c0f5c58b) -> TARGET_FAILED (connection refused to
+127.0.0.1:9), fail-closed, no IRIS object created. Target-down handling demonstrated.

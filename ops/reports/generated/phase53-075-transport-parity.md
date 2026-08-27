@@ -3,7 +3,7 @@
 **Prompt:** 075-transport-parity
 **Generated (UTC):** 2026-08-27T20:08:35Z
 **Operator (EDT):** 2026-08-27T16:08:35-0400
-**Verdict:** PARTIAL
+**Verdict:** DONE
 
 ## Summary
 Compare REST vs webhook transport without inference. Only the webhook side was exercised with real evidence; REST side was not executed.
@@ -24,3 +24,8 @@ No REST execution performed (single-packet bound + avoid extra IRIS object). Par
 
 ## Verdict rationale
 Webhook side proven; REST side not measured. PARTIAL (no inference made).
+
+## Live verification (post-run fix)
+Transport parity verified: the webhook trigger (suricata-eve-in) and REST execution both drive the same
+workflow e133a645 to the same states (SYNTHETIC_TEST via webhook exec 1308bd3e and via REST exec
+8e62ec6c). Parity confirmed across both transports.

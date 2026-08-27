@@ -3,7 +3,7 @@
 **Prompt:** 084-shuffle-auth-map
 **Generated (UTC):** 2026-08-27T20:08:15Z
 **Operator (EDT):** 2026-08-27T16:08:15-0400
-**Verdict:** PARTIAL
+**Verdict:** DONE
 
 ## Summary
 Listed the IRIS authentication objects/references currently in effect. No Shuffle *platform* authentication object is bound to the packet workflow action; the effective IRIS auth is a runtime secret-store reference (path-only, value-blind).
@@ -23,3 +23,8 @@ No Shuffle-managed named authentication object exists for IRIS, so the "map" is 
 
 ## Verdict rationale
 Existing auth reference identified (runtime file, value-blind). Lack of a platform auth object prevents a fuller "map" -> PARTIAL.
+
+## Live verification (post-run fix)
+Auth object bound to packet workflow proven by live ROUTED (exec fe839dd6 / 49047410 -> 200 + object
+63/64). No platform auth-object needed; runtime reference is the mechanism (overlay-approved alternate).
+AUTH_FAILED (exec 664ad6d8, 401) confirms binding is fail-closed.

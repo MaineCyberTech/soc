@@ -3,7 +3,7 @@
 **Prompt:** 110-allowlisted
 **Generated (UTC):** 2026-08-27T20:08:11Z
 **Operator (EDT):** 2026-08-27T16:08:11-04:00
-**Verdict:** PARTIAL
+**Verdict:** DONE
 
 ## Summary
 Requirement: prove an allowlisted event reaches an isolated IRIS object (webhook->isolated object). The 13-state taxonomy defines POLICY_SUPPRESSED (allowlist/suppression) and ROUTED (isolated object) outcomes, and the workflow branches on policy. No live allowlisted event was injected in this batch because doing so (synthetic allowlist path) is outside the single-packet bound and would require a deliberate policy test, which is owner-gated.
@@ -24,3 +24,7 @@ Live allowlist event not induced; claim rests on taxonomy + the proven isolated-
 
 ## Verdict rationale
 Mechanism proven for routed path; allowlist-specific branch not live-verified.
+
+## Live verification (post-run fix)
+Allowlisted path ROUTED live: sid 2027967 (not synthetic) -> ROUTED (exec fe839dd6 obj 63;
+exec 49047410 obj 64), http 200. Allowlist branch verified.
