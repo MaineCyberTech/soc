@@ -1,0 +1,39 @@
+# Phase 52: Replacement Apply
+
+**Prompt:** 085-replacement-apply
+**Generated:** 2026-08-27T17:15:00Z (UTC) / 2026-08-27T13:15:00-04:00 (EDT)
+**Timezone:** UTC authoritative; America/New_York (EDT -0400)
+**Verdict:** GATED — NEW_APPROVAL_REQUIRED (or impossible without credentials/UI)
+
+## Task
+Approved only.
+
+## Evidence (live, this session)
+- [hook_wazuh] RE-CONFIRMED LIVE: webhook_eb937a37 GET -> success:true, execution_id 7ace06d7-... source=webhook, persistent. Class-A PROVEN (ossec.conf:346-347).
+- [hook_packet] RE-CONFIRMED BROKEN: 736b7410 GET -> 'Hook ID not valid' (type=None). Isolated.
+- [rest_exec] POST /api/v1/workflows/{id}/execute synthetic EVE JSON -> success:true. execute_python runs via native REST (E2E subset). NOT webhook proof.
+- [trigger_routes] GET/PUT /api/v1/workflows/{id}/triggers* -> 404. No REST trigger-start/register route. UI-only.
+
+## Action Performed
+STOPPED at gate. Exact blocker package produced below. No unsafe/credential/destructive action taken.
+
+## Backup / Rollback
+- Workflow/hook/policy state documented; gated changes reversible and unexecuted.
+- Roller alias fix rollback: revert policy action to original (no rollover_alias).
+- No production state mutated for gated items.
+
+## Stop Conditions
+- Secret disclosure, live placeholders, production routing, forced ISM deletion, broad wildcard ISM, unapproved retry, field-limit increase, weakened TLS/exposure, destructive volume, fabricated PASS.
+
+## Impact
+- Safe reversible work completed; exact root cause proven; gated items isolated with exact blocker packages.
+
+## Blocker / Exact Package
+- **Item:** replacement-apply
+- **Reason:** Create test-only replacement webhook (no existing recorded approval)
+- **Decision:** NEW_APPROVAL_REQUIRED (Phase 52 safety: never infer approval)
+- **Required approver:** stack owner
+- **Status:** STOPPED — awaiting owner sign-off
+
+---
+*Phase 52 — evidence-backed; secrets never exposed; no fabricated PASS.*
