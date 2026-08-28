@@ -7,7 +7,7 @@ This runbook documents the procedure for rotating the underlying IRIS API key (t
 - Any other consumers of the `iris-shuffle-env` secret
 
 ## Current State
-- **Current IRIS API Key**: `31475ce60587be55229c3bf97ac3c317a417a38a53990f4b7e7457616b7852d5`
+- **Current IRIS API Key**: `REDACTED_IRIS_API_KEY`
 - **Secret Location**: `/shuffle-files/iris-shuffle.env` and `/run/secrets/iris-shuffle.env` (mounted in shuffle-tools)
 - **Secret Name**: `iris-shuffle-env` (Docker Swarm secret, ID: 4vpfvc92ice0)
 - **Workflows Using**: Class-A (`c6b3fcd8`), Packet (`e133a645`) - both use value-blind token loading
