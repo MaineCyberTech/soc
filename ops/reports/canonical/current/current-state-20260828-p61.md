@@ -21,10 +21,11 @@ than this doc without re-verification. Open-work ledger: `ops/reports/canonical/
   (GET=400 / DELETE=401 RBAC owner `39dd09d3-…`); superseded by `c6b3fcd8`; admin-removable in UI.
 - **Integratord** running (PID 5203) on wazuh.master-1, monitored by watchdog (PIDs 4855/5110).
 - **Watchdog** governed source committed: `ops/source/integratord-watchdog/integratord_watchdog_persist.sh`
-  + s6 unit `s6-integratord-watchdog/run`. Recreate-survival PREPARED via
-  `compose-override.patch` (bind-mount script + s6 unit) — **apply pending root/sudo gate + owner sign-off**;
-  currently the watchdog lives only in the live container writable layer and does NOT yet
-  auto-survive a container recreation.
+  + s6 unit `s6-integratord-watchdog/run`. Recreate-survival **APPLIED + PROVEN** via
+  `compose-override.patch` (bind-mount script + s6 unit) deployed through sudo and a
+  `wazuh.master` recreate on 2026-08-28. Post-recreate: governed script + s6 unit present in
+  container, watchdog auto-running (PID 2229), integratord running (PID 603), and a fresh
+  destination-backed canary returned IRIS ROUTED 200. The watchdog now survives container recreation.
 - **13 current-revision states** enumerated + flagged `live_current_revision` in
   `ops/evidence/phase61-states.json` (ROUTED/SYNTHETIC_TEST/DUPLICATE live-proven; negative
   branches defined defensive logic in current revision).

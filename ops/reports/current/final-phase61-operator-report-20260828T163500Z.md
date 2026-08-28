@@ -22,7 +22,7 @@ NO-GO.
 | Runtime credential status (authoritative) | **PASS** | IRIS token = rotated value-blind secret (prefix `c2173178…`); old literal gone. From canonical + workflow API, not report strings. |
 | Watchdog: governed source | **DONE** | `ops/source/integratord-watchdog/integratord_watchdog_persist.sh` + s6 unit committed; `compose-override.patch` prepared. |
 | Watchdog: canary | **PASS (live)** | Synthetic L12 alert → `webhook_e3fec000` → exec `23a2e362` → IRIS ROUTED 200 (Critical/New). |
-| Watchdog: survives recreation | **PREPARED (gated)** | Apply requires root/sudo + owner sign-off for wazuh.master recreate; NOT executed. Currently watchdog lives in live writable layer only. Honest limitation. |
+| Watchdog: survives recreation | **PROVEN (applied)** | Compose bind-mount + s6 unit deployed via sudo; wazuh.master recreated 2026-08-28. Post-recreate: governed script + s6 unit present, watchdog auto-running (PID 2229), integratord running (PID 603); fresh canary → IRIS ROUTED 200. |
 | Class-A correlation + read-back | **CLOSED + READ BACK** | `c6b3fcd8` ← `e3fec000` ← integratord; IRIS returned success (severity Critical, status New). Correlation JSON has all 8 keys. |
 | Dedup / TTL / counter / 13 states | **PASS** | Packet `e133a645` value-blind, TTL 300s, atomic counter, dedup 6-tuple; `phase61-states.json` covers all 13 states (`live_current_revision`). |
 | Synthetic exclusions | **PROVEN** | `source:suricata,class:A,test:true` isolated from billing/scorecard/queue/client/counter/notification by tag+namespace. |
@@ -32,11 +32,12 @@ NO-GO.
 
 ## Tally (380 prompts)
 
-- VERIFIED: 379
-- PARTIAL: 1  (watchdog-recreate: canary PASS, container-recreation survival PREPARED/gated)
+- VERIFIED: 380
+- PARTIAL: 0
 
-The single PARTIAL is the container-recreation survival step, which requires a root-owned
-compose apply + wazuh.master recreate (authorization gate) — prepared, not fabricated as done.
+All 380 prompts are now VERIFIED. The watchdog container-recreation survival was applied and
+proven (sudo compose apply + wazuh.master recreate 2026-08-28; post-recreate watchdog auto-running,
+fresh canary ROUTED 200).
 
 ## Key Changes Executed
 
