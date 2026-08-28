@@ -1,0 +1,12 @@
+{
+  "pack": "mct-p57",
+  "generated": 340,
+  "tally": {
+    "COMPLETE": 8,
+    "VERIFIED": 300,
+    "PARTIAL": 12,
+    "DEFERRED": 6,
+    "BLOCKED": 14
+  },
+  "utc": "2026-08-28T03:54:26Z"
+}
