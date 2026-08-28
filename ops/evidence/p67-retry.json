@@ -1,10 +1,10 @@
 {
-  "description": "Phase 67 retry/dead-letter/replay DESIGN for the Class-A destination. HONEST NOTE: not yet wired into the live workflow execute_python (which currently POSTs once with no retry/DLQ). This is the recommended implementation, tracked as OW-67-01. Values below are the designed configuration, not a claim of live implementation.",
-  "max_attempts": "DESIGN=3 (not yet wired into Class-A workflow execute_python)",
-  "timeout_seconds": "DESIGN=15 (per attempt; matches current requests.post timeout)",
-  "backoff": "DESIGN=exponential (2s,4s,8s) — not yet implemented",
-  "idempotency_key": "DESIGN=alert_source_ref (Wazuh rule id) + execution_id; IRIS alert add is naturally idempotent per source ref — not yet enforced in code",
-  "dead_letter": "DESIGN=on repeated TARGET_FAILED/AUTH_FAILED emit to Shuffle dead-letter (logs) + page; not yet implemented",
-  "replay_guard": "DESIGN=replay only un-delivered (AUTH/TARGET failed) executions; never replay already-ROUTED — not yet implemented",
-  "alerting": "DESIGN=alert on dead-letter threshold via Shuffle notification; not yet implemented"
+  "description": "Phase 67 retry/dead-letter/replay DESIGN — now PARTIALLY IMPLEMENTED in the Class-A workflow execute_python (OpenSearch workflow-000001 doc c6b3fcd8, updated 2026-08-28, backup at ops/backups/workflow-c6b3fcd8-20260828T223000Z.json). Retry loop + dead-letter are wired; idempotency/replay/alerting remain deferred (noted).",
+  "max_attempts": "3 — IMPLEMENTED in workflow execute_python (retry loop, breaks on first success)",
+  "timeout_seconds": "15 — IMPLEMENTED (per-request timeout in requests.post)",
+  "backoff": "exponential (2s,4s,8s) — IMPLEMENTED (time.sleep(backoff**attempt))",
+  "idempotency_key": "NOT enforced in code (IRIS list API 500s); best-effort via alert tags source:wazuh,class:A; deferred",
+  "dead_letter": "IMPLEMENTED — on final failure execute_python prints state=DEAD_LETTER (Shuffle execution result is the dead-letter record; Shuffle can alert on failed executions)",
+  "replay_guard": "NOT implemented — IRIS list API 500s prevents pre-check; deferred (replay could duplicate; tags aid identification)",
+  "alerting": "NOT implemented — no Shuffle notification wired on dead-letter; deferred"
 }

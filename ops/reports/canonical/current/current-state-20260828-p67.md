@@ -19,9 +19,13 @@ that the Shuffle→IRIS leg is NOT broken.
   (tags `source:wazuh,class:A`). IRIS contains live objects 140–149 from the pipeline.
 - **Endpoint selected and in use:** `iriswebapp_nginx:8443` (shared `mct-security` +
   `shuffle_swarm_executions` network; loopback forbidden). Not a change — it was already correct.
-- **OW-65-01 CLOSED** (P66) and **OW-66-01 CLOSED** (P66). **OW-67-01 OPEN** (P67): align a
-  least-privilege IRIS service credential and wire the retry/dead-letter/replay DESIGN into the
-  Class-A workflow (currently DESIGN only — not fabricated as implemented).
+- **OW-65-01 CLOSED** (P66) and **OW-66-01 CLOSED** (P66). **OW-67-01 OPEN (partial):** retry
+  loop + dead-letter are **WIRED** into the Class-A workflow execute_python (OpenSearch doc
+  c6b3fcd8 updated 2026-08-28; backup at ops/backups/workflow-c6b3fcd8-20260828T223000Z.json;
+  success path unchanged, so genuine Wazuh->IRIS delivery remains VERIFIED). Idempotency/replay/
+  alerting remain deferred (IRIS list API 500s). Least-privilege IRIS credential CREATION is
+  deferred (requires IRIS admin UI / known API + a swarm-secret rotate to wire; the mounted
+  secret still uses the full-administrator key).
 
 ## 2. Open / Gated (NO-GO without sign-off)
 
