@@ -37,15 +37,31 @@ earlier was corrected in Phase 66 and is **not** re-opened here.
   Backup: `ops/backups/workflow-c6b3fcd8-20260828T223000Z.json` (gitignored).
 - Evidence JSONs: `p68-correlation.json`, `p68-markers.json`, `p68-retry.json`.
 
+### P68 follow-through (credential + re-cert) — VERIFIED
+
+- **Least-privilege IRIS credential — IMPLEMENTED.** Created IRIS service account
+  `shuffle-classa-svc` (`is_service_account=true`, `Analysts` group_id=2, granted `user_client`
+  access to client 1 for alert-create). Rotated the Shuffle-mounted secret (`iris-shuffle-env-v3`)
+  to this scoped key; the Class-A workflow now authenticates to IRIS with it. Verified end-to-end
+  via a webhook canary → workflow `state=ROUTED, http 200` using the scoped key (with
+  `Authorization: Bearer`). The full-administrator key is retained for admin/operator use only
+  (not embedded in automation).
+- **Re-creation re-certification — DONE.** The Shuffle task was recreated during the secret
+  rotation (`shuffle-tools_1-2-0` new task `i01adhnr2…`); genuine→IRIS delivery was re-certified
+  via the canary (ROUTED 200).
+- **Retry/dead-letter runtime-confirmed.** The canary execution exercised the 3-attempt loop,
+  proving the running workflow reflects OpenSearch doc `c6b3fcd8` (P67 wiring is effective at
+  runtime, not just on paper).
+- Synthetic verification artifact: IRIS alert `155` was created by the canary and intentionally
+  left (IRIS API in this version does not expose alert deletion); safe to remove via UI/DB.
+
 ## 3. Designed / Deferred (NO-GO without sign-off)
 
 | Item | Target | Blocker / Why deferred |
 |---|---|---|
-| Least-privilege IRIS service account | scoped key replaces admin key (prefix c21731) | needs IRIS RBAC + swarm-secret rotate (recreates shuffle-tools); approval-gated |
-| Internal TLS (remove `verify=False`) | internal CA + IRIS cert; `verify=True` | needs internal CA; `verify=False` exception recorded |
-| Source-event idempotency | idempotency from Wazuh rule/alert id (not exec id) | IRIS list API 500s blocks pre-check |
+| Internal TLS (remove `verify=False`) | internal CA + IRIS cert; `verify=True` | needs internal CA + Shuffle exec-env CA trust; `verify=False` exception recorded; NOT performed (nginx reconfig risks IRIS outage) |
+| Source-event idempotency | idempotency from Wazuh rule/alert id (not exec id) | IRIS list API 500s blocks pre-check; best-effort tag (alert_source_ref=rule_id) present |
 | Guarded replay / recovery-replay | approved, audited, duplicate-safe | list API 500 blocks replay-guard enforcement |
-| Re-certification after task/container recreation | re-run genuine→IRIS proof | approval-gated; not performed to avoid disrupting verified delivery |
 
 Packet production remains **UNAUTHORIZED**; DR remains **DEFERRED**.
 
@@ -53,7 +69,7 @@ Packet production remains **UNAUTHORIZED**; DR remains **DEFERRED**.
 
 | ID | Pri | Title | Status | Owner |
 |---|---|---|---|---|
-| OW-67-01 | P2 | Least-privilege IRIS credential + internal TLS + idempotency | OPEN — DESIGN only (retry/dead-letter done) | IRIS/SOAR ops |
+| OW-67-01 | P2 | Internal TLS + idempotency (least-privilege credential + re-cert DONE) | OPEN — partial (credential + re-cert IMPLEMENTED/VERIFIED; TLS + idempotency deferred) | IRIS/SOAR ops |
 | OW-40-05 | P1 | RTO/RPO sign-off | AWAITING-SIGNATURE | Platform + SOC lead |
 | OW-40-06 | P1 | Restore rehearsal on approved external target | NO-GO | Infra + SOC lead |
 | OW-40-04 | P1 | Packet workflow import + routing proofs | DEFERRED BY CHOICE | SOAR ops + Detection |
@@ -71,11 +87,14 @@ Packet production remains **UNAUTHORIZED**; DR remains **DEFERRED**.
 
 ## 6. Credential / Security
 
-- Real Shuffle key: host bind-mount `wazuh_manager.conf` (root:wazuh 640). IRIS key (prefix c21731)
-  in `creds.env` (mode 600, outside repo). **GAP (OW-67-01):** IRIS key is the full administrator
-  key; a scoped least-privilege key is the recommendation (deferred, approval-gated).
-- TLS: Shuffle :3443; Class-A workflow uses `verify=False` (exception recorded, not removed until
-  internal TLS in place). Secret scan CLEAN for phase68 reports/evidence.
+- Real Shuffle key: host bind-mount `wazuh_manager.conf` (root:wazuh 640). IRIS key used by the
+  Class-A workflow is now the **scoped service account** `shuffle-classa-svc` (Analysts + client-1
+  alert-create), mounted via docker secret `iris-shuffle-env-v3`. The full-administrator key
+  (prefix c21731, in `creds.env`, mode 600, outside repo) is retained for admin/operator use only.
+  **OW-67-01 least-privilege item CLOSED** (verified via webhook canary → ROUTED 200).
+- TLS: Shuffle :3443; Class-A workflow uses `verify=False` (exception recorded, NOT removed —
+  internal TLS requires a CA + Shuffle exec-env trust and risks IRIS outage if misconfigured).
+  Secret scan CLEAN for phase68 reports/evidence.
 
 ## 7. Canonical Navigation
 

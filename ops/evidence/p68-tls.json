@@ -1,12 +1,12 @@
 {
   "report": "phase68-evidence-tls",
   "internal_tls": {
-    "status": "DESIGNED-DEFERRED",
+  "status": "DESIGNED-DEFERRED (NOT PERFORMED)",
     "current": "workflow execute_python uses verify=False (cert not validated)",
     "exception_recorded": true,
-    "target": "internal CA + IRIS internal cert + Shuffle env trusts it (verify=True)",
-    "requires": ["stand up internal CA", "issue IRIS cert", "trust in Shuffle exec env"],
+    "target": "internal CA + IRIS cert + Shuffle env trusts it (verify=True)",
+    "requires": ["stand up internal CA", "issue IRIS cert for iriswebapp_nginx", "reload nginx (risk: IRIS outage if misconfigured)", "mount CA into shuffle-tools + set verify=/path/to/ca", "verify via canary before flipping"],
     "approval_gated": true,
-    "reason_deferred": "verify=False exception recorded; removal deferred until internal TLS in place."
+    "reason_deferred": "verify=False exception recorded; removal deferred — nginx cert reconfig risks IRIS outage and breaking the verified-working delivery. Requires coordinated internal-CA + Shuffle exec-env trust with a verified canary. Not performed."
   }
 }

@@ -1,0 +1,14 @@
+{
+  "report": "phase68-evidence-recreation",
+  "recreation_recertification": {
+    "status": "DONE",
+    "event": "Shuffle task recreated during secret rotation (shuffle-tools_1-2-0 new task i01adhnr2...)",
+    "delivery_recertified": true,
+    "method": "webhook canary -> workflow state ROUTED, http 200 with scoped key",
+    "retry_runtime_confirmed": "canary exercised 3-attempt loop; running workflow reflects OpenSearch doc c6b3fcd8 (P67 wiring effective at runtime)"
+  },
+  "synthetic_artifact": {
+    "alert_id": 155,
+    "note": "created by rotation canary; IRIS API in this version does not expose alert deletion (DELETE 405/404); safe to remove via UI/DB"
+  }
+}

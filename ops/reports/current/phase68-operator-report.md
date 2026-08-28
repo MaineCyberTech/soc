@@ -25,22 +25,31 @@ truth. Historical reports are not rewritten in place.
   (OpenSearch doc `c6b3fcd8`; backup `ops/backups/workflow-c6b3fcd8-20260828T223000Z.json`).
   Success path unchanged.
 
+## P68 follow-through — IMPLEMENTED + VERIFIED (2026-08-28)
+- **Least-privilege IRIS credential** — created scoped service account `shuffle-classa-svc`
+  (Analysts group + client-1 alert-create), rotated the Shuffle-mounted secret (`iris-shuffle-env-v3`)
+  to it, and verified end-to-end via a webhook canary → workflow `state=ROUTED, http 200` using the
+  scoped key (`Authorization: Bearer`). The full-admin key is retained for operator use only.
+- **Re-creation re-certification** — the Shuffle task was recreated during the secret rotation;
+  genuine→IRIS delivery re-certified via the canary. Retry/dead-letter confirmed effective at
+  runtime (canary exercised the 3-attempt loop).
+- Synthetic verification artifact: IRIS alert `155` (safe to delete via UI/DB; IRIS API in this
+  version does not expose alert deletion).
+
 ## Designed / Deferred (honest, NO-GO without sign-off)
-- Least-privilege IRIS service account (replaces administrator key prefix c21731) — needs IRIS
-  RBAC + swarm-secret rotate.
-- Internal TLS to remove workflow `verify=False` — needs internal CA.
-- Source-event idempotency enforcement — blocked by IRIS list API 500.
+- Internal TLS to remove workflow `verify=False` — needs internal CA + Shuffle exec-env CA trust;
+  nginx reconfig risks IRIS outage, so NOT performed (exception recorded).
+- Source-event idempotency enforcement — blocked by IRIS list API 500 (best-effort tag present:
+  `alert_source_ref=rule_id`).
 - Guarded replay / recovery-replay — best-effort via source-event tags.
-- Re-certification after task/container recreation — approval-gated; not performed.
 - Packet production UNAUTHORIZED; DR DEFERRED.
 
 None of the deferred items are fabricated as implemented. They are recorded as design/deferred
 with explicit blockers.
 
 ## Open work (see open-work.md)
-- OW-67-01 remains OPEN (design): least-privilege credential + internal TLS + idempotency.
-  Retry/dead-letter/replay design is complete; the operational wiring of the remaining items
-  requires operator sign-off.
+- OW-67-01 now PARTIAL: least-privilege credential + re-certification are IMPLEMENTED/VERIFIED;
+  internal TLS + idempotency remain deferred (see canonical current-state + open-work).
 
 ## Verification
 - `bash ops/scripts/p68-agents-ci.sh` → PASS=2 FAIL=0 (inventory + metadata; evidence present;
@@ -48,6 +57,5 @@ with explicit blockers.
 - Independent IRIS read-back of object 149 → 200; marker parity VERIFIED.
 
 ## Limitations
-- Least-privilege credential, internal TLS, idempotency enforcement, and recreation re-cert are
-  deferred. IRIS list API 500 blocks idempotency pre-check and replay-guard enforcement. Restore
-  and full DR remain deferred.
+- Internal TLS (verify=False) and idempotency enforcement remain deferred. IRIS list API 500 blocks
+  idempotency pre-check and replay-guard enforcement. Restore and full DR remain deferred.
