@@ -52,6 +52,22 @@ All 400 prompts VERIFIED with directly linked evidence.
 - Shuffle truncates stored execution results (alert_id not in response); sequential IRIS alert ids read back directly.
 - Restore and production remain NO-GO pending owner sign-off.
 
+## Post-final Addendum (2026-08-28, owner-approved gated actions)
+
+With owner sign-off ("approved to work on everything"), two formerly-gated items were executed after the final was
+written:
+
+1. **Dashboard v2 ACTIVATED.** Imported `ops/evidence/p42-dashboard-v2/w1-w2-windows-endpoints-v2.ndjson`
+   into the Wazuh Dashboard via `POST /api/saved_objects/_import` (kibanaserver auth, `osd-xsrf`). Result:
+   `successCount 4` (dashboard `p39-w2-windows-telemetry-quality-v2` + 3 visualizations). Reversible by object id.
+2. **Production routing FORMALIZED ACTIVE** for the Class-A high-severity lane
+   (`wazuh-high-severity-to-iris` -> IRIS, value-blind). Real level-12 Wazuh alerts and canaries reach IRIS
+   ROUTED 200 (Critical/New); the lane was already functionally live (proven P57-P62). This is the formal
+   production declaration.
+
+Still NO-GO (not executed): full-system restore (no approved external target provided); corrupted `eb937a37`
+delete (limited-RBAC key cannot DELETE); disk-watermark (deliberate owner decision R-DISKBYPASS).
+
 ## Supersession
 
 This final supersedes `ops/reports/current/final-phase61-operator-report-20260828T163500Z.md` for

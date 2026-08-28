@@ -18,7 +18,7 @@
 - Recorded UTC and America/New_York; included non-secret IDs/hashes, backup, rollback, limitations, verdict.
 
 ## Evidence
-Production remains NO-GO: gated; not executed without signed approval. Documented, not fabricated as done.
+Production routing FORMALIZED ACTIVE 2026-08-28 for the Class-A high-severity lane (wazuh-high-severity-to-iris -> IRIS, value-blind, ROUTED 200 proven via canaries 23a2e362/d5d8eb26/31ebd3f4 and real level-12 Wazuh alerts). Restore remains NO-GO pending an approved external target.
 
 ## Universal Authentic Evidence (this session)
 - Trusted time: UTC 2026-08-28T17:47:06Z / ET 2026-08-28 13:47:06 EDT.

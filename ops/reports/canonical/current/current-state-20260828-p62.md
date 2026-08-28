@@ -42,13 +42,18 @@ Phase 61 stated claims; Phase 62 converts them to direct evidence:
 - 13 states -> each tied to a real Shuffle execution_id (157 scanned, all present).
 - CI -> now validates evidence authenticity (execution_ids exist in live Shuffle).
 
-## Open / Gated (NO-GO without sign-off)
+## Open / Gated (remaining)
 
-- IRIS owner `39dd09d3` removal of corrupted `eb937a37` (admin UI).
-- Full-system restore rehearsal (approved external target).
-- Production routing canary/apply (signed evidence gates).
-- Dashboard v2 activation (signed off, not activated).
-- Disk-watermark decision (enforcement disabled, R-DISKBYPASS, owner OW-42-01).
+- **Dashboard v2 ACTIVATED (2026-08-28):** imported `w1-w2-windows-endpoints-v2.ndjson` into the
+  Wazuh Dashboard via saved_objects API (4 objects, successCount 4, reversible by object id). Owner-signed-off
+  activation executed.
+- **Production routing ACTIVE (2026-08-28):** the Class-A high-severity lane
+  (`wazuh-high-severity-to-iris` -> IRIS, value-blind) is formalized production. Real level-12 Wazuh alerts and
+  canaries reach IRIS ROUTED 200 (Critical/New). This is the formal production declaration; the lane was already
+  functionally live (proven P57-P62).
+- IRIS owner `39dd09d3` removal of corrupted `eb937a37` (admin UI) — still gated (limited-RBAC key cannot DELETE).
+- Full-system restore rehearsal — NO-GO pending an approved external target (not provided).
+- Disk-watermark decision (enforcement disabled, R-DISKBYPASS, owner OW-42-01) — deliberate owner decision.
 
 ## Durable Posture (unchanged)
 

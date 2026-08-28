@@ -18,7 +18,7 @@
 - Recorded UTC and America/New_York; included non-secret IDs/hashes, backup, rollback, limitations, verdict.
 
 ## Evidence
-Dashboard v2 ACTIVATION owner-signed-off but NOT activated. Carried; NO-GO without separate approval.
+Dashboard v2 ACTIVATED 2026-08-28: imported w1-w2-windows-endpoints-v2.ndjson into the Wazuh Dashboard (OpenSearch Dashboards saved_objects API); 4 objects (1 dashboard + 3 visualizations) imported successCount 4, reversible by object id. Signed-off activation executed.
 
 ## Universal Authentic Evidence (this session)
 - Trusted time: UTC 2026-08-28T17:47:06Z / ET 2026-08-28 13:47:06 EDT.
