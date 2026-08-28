@@ -9,7 +9,7 @@
 |---|---|---|
 | IRIS auth | Workflow `eb937a37` POST header `Authorization` set to valid IRIS key (was empty → 401) | DONE |
 | Workflow active | `eb937a37` `status` set to `active` | DONE |
-| Wazuh integratord | `ossec.conf` `<hook_url>` → `.../webhook_24636c49-a2d0-40c2-887e-ccecdf22fc5c`, `<api_key>` → real Shuffle API key | DONE (Wazuh restarted healthy) |
+| Wazuh integratord | `ossec.conf` `<hook_url>` → `.../webhook_24636c49-a2d0-40c2-887e-ccecdf22fc5c` (actual trigger id). `<api_key>` left as the deployment placeholder `SHUFFLE_API_KEY_PLACEHOLDER` — Shuffle does **not** authenticate webhook POSTs, so it is not required for delivery; the IRIS 401 was fixed in the workflow's IRIS `Authorization` header, not Wazuh→Shuffle. | DONE (Wazuh restarted healthy) |
 | **Trigger start** | **Start webhook trigger `24636c49-…` in the Shuffle UI** | **REMAINING — operator UI action** |
 
 **Root cause confirmed:** integratord was posting to a webhook keyed by *workflow id* (`webhook_eb937a37`) but Shuffle registers webhooks by *trigger id* (`24636c49`); no `eb937a37` webhook exists. Live webhooks show only `suricata-eve-in` (`736b7410`). The fix aligns Wazuh's `hook_url` to the actual trigger id and supplies a valid IRIS key + active workflow.
@@ -17,6 +17,8 @@
 **Verification gap:** the Class-A webhook `24636c49` returns `{"success": false}` (400) on POST/GET because the trigger is **not started**. Restarting it is UI-only (REST `POST`/`PUT`/`/start`/`/triggers` all 404/405), exactly as was done for `suricata-eve-in`. Until the operator starts `24636c49` in the Shuffle UI, Wazuh→IRIS delivery stays inactive — but the configuration is fully correct and ready.
 
 **Incident note (transparency):** during Wazuh config re-application a `docker cp` from the host set the config file owner to host uid 1000, which the `wazuh` user could not read → `wazuh-db: ERROR: (1226): Error reading XML file 'etc/ossec.conf'`, causing a Wazuh outage. Recovered by restoring the pre-edit backup, `chown wazuh:wazuh` + `chmod 640`, removing the failed flag, and restarting the manager. Final config applied cleanly; all core daemons running.
+
+**Durability note:** a subsequent Wazuh container recreate reverted the in-volume config to the deployment default (`webhook_eb937a37`, `SHUFFLE_API_KEY_PLACEHOLDER`), breaking the fix. The fix was re-applied to BOTH the running volume (`/var/ossec/etc/ossec.conf`) AND the durable host bind source (`/opt/wazuh-docker/multi-node/config/wazuh_cluster/wazuh_manager.conf`, mounted at `/wazuh-config-mount/etc/ossec.conf`) so it survives future recreates. The host source is outside the repo (edited directly, not committed).
 
 ## 2. Packet-workflow `e133a645` defects — DONE + VERIFIED (Shuffle API)
 
@@ -43,4 +45,4 @@ phase56-122, -139, -155 (workflow fixes), -047, -048, -057 (Class-A repair), -08
 
 ## 6. Commit
 
-Remediation updates committed: report status changes + AGENTS pointer (with pre-edit backup+sha256). Live workflow/IRIS/Wazuh state is not in-repo (Shuffle workflows, volume-backed Wazuh config, IRIS objects).
+Remediation updates committed: report status changes + AGENTS pointer (with pre-edit backup+sha256). Live workflow/IRIS/Wazuh state is not in-repo (Shuffle workflows, volume-backed + host-bind Wazuh config, IRIS objects). The durable host bind source `/opt/wazuh-docker/multi-node/config/wazuh_cluster/wazuh_manager.conf` was edited directly (outside the repo) so the hook_url fix survives container recreates.
