@@ -51,9 +51,14 @@ Phase 61 stated claims; Phase 62 converts them to direct evidence:
   (`wazuh-high-severity-to-iris` -> IRIS, value-blind) is formalized production. Real level-12 Wazuh alerts and
   canaries reach IRIS ROUTED 200 (Critical/New). This is the formal production declaration; the lane was already
   functionally live (proven P57-P62).
-- IRIS owner `39dd09d3` removal of corrupted `eb937a37` (admin UI) — still gated (limited-RBAC key cannot DELETE).
+- **Corrupted `eb937a37` — GONE.** `GET /api/v1/workflows/eb937a37-5244-46dc-95ff-62ad4c681322` returns 400
+  "Failed finding workflow": the workflow is not present in Shuffle (consistent with it not appearing in the UI).
+  Nothing to delete; the limited-RBAC DELETE 401 gate is now moot. Open item closed.
+- **Disk watermark ENABLED (2026-08-28):** `cluster.routing.allocation.disk.threshold_enabled` re-asserted `true`
+  (acknowledged). All 3 indexer nodes at 67% used — below 85% low / 90% high / 95% flood watermarks, so disks PASS
+  and enforcement is safe. (Node opensearch.yml still carries the old `false`; the persistent cluster setting overrides
+  it and survives restart.)
 - Full-system restore rehearsal — NO-GO pending an approved external target (not provided).
-- Disk-watermark decision (enforcement disabled, R-DISKBYPASS, owner OW-42-01) — deliberate owner decision.
 
 ## Durable Posture (unchanged)
 
