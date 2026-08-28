@@ -1,0 +1,12 @@
+{
+  "report": "phase68-evidence-markers",
+  "unique_source_event_marker": {
+    "status": "VERIFIED",
+    "source": "genuine Wazuh alert 1787948087.9767291 (rule 100065)",
+    "iris_object_id": "149",
+    "tags": ["source:wazuh", "class:A"],
+    "parity": "VERIFIED (marker uniquely identifies Class-A Wazuh origin)",
+    "idempotency_basis": "SOURCE event (Wazuh rule/alert id), NOT Shuffle execution id"
+  },
+  "limitation": "Full source-event idempotency enforcement deferred (IRIS list API 500 blocks pre-check)."
+}

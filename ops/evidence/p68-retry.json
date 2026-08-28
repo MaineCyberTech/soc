@@ -1,0 +1,14 @@
+{
+  "report": "phase68-evidence-retry",
+  "retry_dead_letter": {
+    "status": "IMPLEMENTED (P67)",
+    "workflow": "c6b3fcd8-13e5-44a8-a818-024e4ae4422b",
+    "opensearch_doc": "workflow-000001 / c6b3fcd8",
+    "backup": "ops/backups/workflow-c6b3fcd8-20260828T223000Z.json (gitignored)",
+    "policy": "3 attempts, exponential backoff",
+    "dead_letter": "state=DEAD_LETTER recorded on exhaustion",
+    "alerting": "Shuffle failed-execution alert on DEAD_LETTER",
+    "replay": "approved, audited, duplicate-safe (best-effort via source-event tags)",
+    "success_path_unchanged": true
+  }
+}

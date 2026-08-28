@@ -1,0 +1,18 @@
+{
+  "report": "phase68-evidence-correlation",
+  "truth_baseline": {
+    "status": "VERIFIED-PERSISTENT",
+    "genuine_wazuh_alert_id": "1787948087.9767291",
+    "wazuh_rule_id": "100065",
+    "integratord_http": "200",
+    "shuffle_hook": "webhook_e3fec000-555f-4e81-9497-77b7c91c5b98",
+    "classa_workflow": "c6b3fcd8-13e5-44a8-a818-024e4ae4422b",
+    "shuffle_execution": "593b3840-0565-4d46-8574-c676cc7f54a8",
+    "iris_post_http": "200",
+    "iris_object_id": "149",
+    "iris_readback_http": "200",
+    "marker_parity": "VERIFIED (tags source:wazuh,class:A)"
+  },
+  "iris_objects": "140-149 (source=wazuh, tags=source:wazuh,class:A)",
+  "correction": "Prior erroneous 'broken Shuffle->IRIS leg' finding corrected in P66; not re-opened in P68."
+}

@@ -1,0 +1,12 @@
+{
+  "report": "phase68-evidence-tls",
+  "internal_tls": {
+    "status": "DESIGNED-DEFERRED",
+    "current": "workflow execute_python uses verify=False (cert not validated)",
+    "exception_recorded": true,
+    "target": "internal CA + IRIS internal cert + Shuffle env trusts it (verify=True)",
+    "requires": ["stand up internal CA", "issue IRIS cert", "trust in Shuffle exec env"],
+    "approval_gated": true,
+    "reason_deferred": "verify=False exception recorded; removal deferred until internal TLS in place."
+  }
+}
