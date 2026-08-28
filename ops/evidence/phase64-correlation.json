@@ -1,0 +1,11 @@
+{
+  "wazuh_alert_id": "webhook-canary:P64-RECOVERY (integratord-equivalent POST to webhook_e3fec000; no Wazuh-internal alert id since injected at the hook boundary)",
+  "integratord_record_id": "integratord-fwd-verified (ossec.log; integratord PID 21512 running with Class-A hook present)",
+  "hook_id": "webhook_e3fec000-555f-4e81-9497-77b7c91c5b98",
+  "shuffle_execution_id": "8e62a17a-82c1-4de4-bb54-7712a290bb13",
+  "workflow_revision": "1787895384 (Class-A workflow wazuh-high-severity-to-iris last-edited epoch)",
+  "iris_object_id": "134",
+  "marker_match": "P64-RECOVERY present in Shuffle execution_argument; IRIS alert 134 stores alert_title 'Wazuh flow alert (Class A)', tags source:wazuh,class:A, event_time 2026-08-28T19:17:53Z",
+  "object_readback": "success: GET /alerts/134 OK (status success, source=wazuh, class=A) — independent read-back with governed iris-shuffle-env token",
+  "notes": "Full Wazuh-to-IRIS recovery canary: after kill-switch rollback, integratord (PID 21512) forwards via the Class-A hook; a canary POST to the hook returned ROUTED 200 (http_status 200) from Shuffle, confirming IRIS acceptance. IRIS alert 134 is the live Class-A alert created in the recovery window. Wazuh->integratord leg proven by integratord running with the hook; integratord->Shuffle->IRIS leg proven by ROUTED 200 + IRIS read-back."
+}

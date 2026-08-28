@@ -1,0 +1,12 @@
+{
+  "owner": "root",
+  "group": "wazuh",
+  "mode": "640",
+  "readable_by_service_user": true,
+  "xml_valid": true,
+  "intended_hook_state": "class-a-present",
+  "backup_sha256": "1893ae0ee4b93e3132f8d9acf2e6fec1101f2f20ff04871cef888c9aab37f2d4",
+  "rollback_defined": true,
+  "service_user": "wazuh",
+  "notes": "Staged-deploy contract: config validated for owner/group/mode/service-user readability/XML/hook before any integratord restart. Rollback = restore pre-change backup (root:wazuh 640) + restart integratord only via watchdog. Raw secret-bearing backup retained outside repo at /opt/wazuh-docker/multi-node/ops/backups/."
+}

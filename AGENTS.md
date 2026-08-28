@@ -30,8 +30,8 @@ MUST / MUST NOT item below.
 
 ## Canonical Truth & Navigation
 
-- Current operational truth: `ops/reports/canonical/current/current-state-20260828-p63.md`
-  (Phase 63 refresh; supersedes `current-state-20260828-p62.md` per its own
+- Current operational truth: `ops/reports/canonical/current/current-state-20260828-p64.md`
+  (Phase 64 refresh; supersedes `current-state-20260828-p63.md` per its own
   supersession statement; superseded only by a newer current-state doc).
 - Open-work ledger: `ops/reports/canonical/current/open-work.md`.
 - Do not act on any claim older than the canonical current-state doc without re-verification.
@@ -110,7 +110,7 @@ Operator sign-off, recorded in the change register, is REQUIRED before:
 
 Durable-only pointer. Volatile per-phase history and open/gated items are NOT embedded here
 (they are volatile). The live list of open blockers and gated (NO-GO) operations is maintained
-in the canonical current-state doc: `ops/reports/canonical/current/current-state-20260828-p63.md`
+in the canonical current-state doc: `ops/reports/canonical/current/current-state-20260828-p64.md`
 (see "Open / Gated (NO-GO without sign-off)"). Recurring durable blockers: production routing,
 restore rehearsal, credential rotation, ISM/index intervention, and container recreate-to-deploy
 all require operator sign-off per Approval-Gated Operations.
