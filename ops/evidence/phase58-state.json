@@ -1,0 +1,12 @@
+{
+  "pack": "mct-p58",
+  "generated": 360,
+  "tally": {
+    "COMPLETE": 17,
+    "VERIFIED": 314,
+    "PARTIAL": 12,
+    "DEFERRED": 6,
+    "BLOCKED": 11
+  },
+  "utc": "2026-08-28T05:13:44Z"
+}
