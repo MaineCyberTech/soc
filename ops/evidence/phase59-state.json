@@ -1,0 +1,12 @@
+{
+  "pack": "mct-p59",
+  "generated": 380,
+  "tally": {
+    "COMPLETE": 25,
+    "VERIFIED": 326,
+    "PARTIAL": 12,
+    "DEFERRED": 6,
+    "BLOCKED": 11
+  },
+  "utc": "2026-08-28T05:56:54Z"
+}
