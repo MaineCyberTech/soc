@@ -28,7 +28,7 @@ Phase 61 work item executed per the execution contract; evidence referenced abov
 - Corrupted `eb937a37-5244-46dc-95ff-62ad4c681322`: GET=400 / DELETE=401 (harmless artifact, governed).
 - IRIS token: rotated, value-blind secret (prefix c2173178); old literal 31475ce6... removed (non-incident).
 - Watchdog: committed source `ops/source/integratord-watchdog/integratord_watchdog_persist.sh` + s6 unit `ops/source/integratord-watchdog/s6-integratord-watchdog/run`; live PIDs 4855/5110; integratord PID 5203.
-- Recreate-survival: governed source ready; compose bind-mount + s6 unit PREPARED, apply pending root-owned (sudo) gate.
+- Recreate-survival: APPLIED + PROVEN. The prepared compose bind-mount + s6 unit were deployed via sudo and wazuh.master recreated 2026-08-28. Post-recreate: governed script + s6 unit present, watchdog auto-running (PID 2229), integratord running (PID 603); fresh destination-backed canary (exec d5d8eb26) returned IRIS ROUTED 200 (Critical/New). The watchdog now survives container recreation.
 
 ## Backup / Rollback
 - Prior phases (P56-P60) reports and finals remain in git history (immutable).
