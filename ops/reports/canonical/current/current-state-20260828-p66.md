@@ -18,6 +18,15 @@ operationally closed state and records one new open item (OW-66-01).
 > creds.env; **independent read-back is now VERIFIED** (GET /alerts/134 → live Critical/New).
 > The genuine-event delivery still requires Shuffle IRIS app reconfiguration (correct key +
 > Shuffle-reachable URL) — approval-gated, not performed blindly.
+>
+> **FINAL CORRECTION (same session):** the "delivery broken / 401" finding was INCORRECT.
+> The workflow's execute_python reads the CORRECT key from the MOUNTED secret
+> (/run/secrets/iris-shuffle.env, prefix c21731 — identical to the recovered creds.env key)
+> and POSTs to the reachable URL https://iriswebapp_nginx:8443/alerts/add. Delivery is
+> VERIFIED: IRIS contains live objects 140-149 with source=wazuh, tags source:wazuh,class:A.
+> The only real defect was the ops-vault creds.env key (31475ce6…), now fixed. OW-66-01
+> CLOSED. The WRONG standalone iris-shuffle.env files were tested earlier, not the mounted
+> secret the workflow actually uses.
 
 - **GENUINE Wazuh→Shuffle delivery is PROVEN and PERSISTENT.** Real Wazuh alert
   `1787948087.9767291` (rule 100065, level 12) → wazuh-integratord Response `[200]` →
@@ -32,13 +41,13 @@ operationally closed state and records one new open item (OW-66-01).
 - **OW-65-01 CLOSED** for the **Wazuh→Shuffle** portion (network + webhook + real Shuffle
   key; genuine delivery proven). The **Shuffle→IRIS** portion is NOT confirmed and is
   tracked separately as OW-66-01.
-- **OW-66-01 OPEN (split):** READ-BACK CLOSED — the real IRIS key was recovered from the
-  IRIS DB (user.api_key, prefix c21731) and written to `creds.env`; independent IRIS
-  read-back is VERIFIED (GET /alerts/134 → live Critical/New). DELIVERY OPEN — the
-  Shuffle→IRIS leg never created an IRIS object (both prior keys were 401 and Shuffle cannot
-  reach host `127.0.0.1:8443`); remediating requires reconfiguring the Shuffle IRIS app
-  (correct key + Shuffle-reachable URL), approval-gated. The genuine-event `iris_object_id`
-  is UNRETRIEVABLE until delivery is reconfigured.
+- **OW-66-01 CLOSED** — the MOUNTED Shuffle secret already held the correct IRIS key
+  (prefix c21731, identical to the recovered creds.env key) and the workflow POSTs to the
+  reachable URL `https://iriswebapp_nginx:8443/alerts/add`. Delivery VERIFIED: IRIS
+  contains live objects 140-149 with `source=wazuh`, `tags=source:wazuh,class:A`.
+  Independent read-back VERIFIED (GET /alerts/149 → 200 live Critical/New). The earlier
+  "delivery broken" finding tested the WRONG standalone files; the genuine Wazuh→IRIS
+  delivery is PROVEN and the iris_object_id is now retrieved (149), marker parity VERIFIED.
 
 ## 2. Open / Gated (NO-GO without sign-off)
 

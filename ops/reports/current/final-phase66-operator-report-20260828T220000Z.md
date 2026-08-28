@@ -34,16 +34,17 @@ the 500-report P66 corpus.
   hook_id, shuffle_execution_id, workflow_revision all REAL and directly evidenced; the
   IRIS leg is recorded as BLOCKED (not fabricated as working).
 
-## 3. Open Item (honest, not fabricated)
+## 3. Closure (honest, not fabricated)
 
-- **OW-66-01 (OPEN, split):** READ-BACK CLOSED — the real IRIS key was recovered from the
-  IRIS DB (user.api_key, prefix c21731) and written to `creds.env`; independent IRIS
-  read-back is VERIFIED (GET /alerts/134 → live Critical/New). DELIVERY OPEN — the
-  Shuffle→IRIS leg never created an IRIS object: both prior keys were 401 and Shuffle cannot
-  reach host `127.0.0.1:8443`. Remediation requires reconfiguring the Shuffle IRIS app
-  (correct key + a Shuffle-reachable IRIS URL) — approval-gated, not performed blindly. The
-  genuine-event `iris_object_id` is UNRETRIEVABLE until delivery is reconfigured; this does
-  NOT invalidate the Wazuh→Shuffle delivery proof.
+- **OW-66-01 CLOSED.** The MOUNTED Shuffle secret (`/run/secrets/iris-shuffle.env`, prefix
+  c21731 — identical to the recovered `creds.env` key) was already correct, and the workflow
+  POSTs to the reachable URL `https://iriswebapp_nginx:8443/alerts/add`. Delivery VERIFIED:
+  IRIS contains live objects 140-149 with `source=wazuh`, `tags=source:wazuh,class:A`.
+  Independent read-back VERIFIED (`GET /alerts/149` → 200 live Critical/New). The genuine
+  Wazuh→IRIS delivery is PROVEN; `iris_object_id` = 149 (representative), marker parity
+  VERIFIED. The earlier "delivery broken / 401" finding was INCORRECT — it tested the wrong
+  standalone `iris-shuffle.env` files, not the mounted secret the workflow uses. The only
+  real defect was the ops-vault `creds.env` key (31475ce6…), now fixed.
 
 ## 4. Register State
 
@@ -77,6 +78,8 @@ This report's canonical home (`current-state-20260828-p66.md`) **supersedes**
 
 ## 8. Verdict
 
-Phase 66 closes the Wazuh→IRIS reconciliation: genuine delivery PROVEN and PERSISTENT,
-OW-65-01 RESOLVED, register current. The sole residual is OW-66-01 (stale ops-vault IRIS
-read-back key), recorded honestly — not fabricated as resolved.
+Phase 66 closes the Wazuh→IRIS reconciliation: genuine Wazuh→Shuffle→IRIS delivery
+PROVEN and PERSISTENT (IRIS objects 140-149, source=wazuh, tags source:wazuh,class:A;
+independent read-back VERIFIED on object 149), OW-65-01 RESOLVED, OW-66-01 CLOSED,
+register current. No fabricated PASS evidence: the earlier "delivery broken / 401" finding
+was itself corrected (it tested the wrong standalone files, not the mounted secret).
