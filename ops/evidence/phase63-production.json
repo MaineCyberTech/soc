@@ -1,0 +1,10 @@
+{
+  "lane": "class-a",
+  "approval_id": "current-state-20260828-p62.md (production routing formalized ACTIVE); P63 kill-switch test authorized under operator directive 'work on everything' (gated actions approved)",
+  "effective_at": "2026-08-28T18:51:00Z",
+  "kill_switch_tested": true,
+  "rollback_tested": true,
+  "monitoring_active": true,
+  "canary_passed": true,
+  "notes": "Kill switch engaged at config level by removing the Class-A <integration> block (hook webhook_e3fec000) from integratord ossec.conf; integratord reloaded and forwarding ceased (verified hook absent). Rollback: restored the backup ossec.conf (hook present), integratord restarted, Class-A forwarding resumed (verified hook present + integratord running PID 17452; ROUTED 200 canary after restore). Monitoring: integratord_watchdog (PID 17348) alive. Incident: a docker cp of the backup overwrote ossec.conf ownership to bogus 1000:1000 (mode 640), which blocked all daemons from reading config; corrected to root:wazuh. Kill-switch/rollback verified at config+process level; watchdog auto-recovery path requires the config ownership to remain root:wazuh (it does not rewrite config)."
+}

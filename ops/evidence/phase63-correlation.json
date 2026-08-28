@@ -1,0 +1,10 @@
+{
+  "wazuh_alert_id": "P63-canary-20260828T174500Z",
+  "integratord_record_id": "delivered-via-integratord-to-webhook_e3fec000-20260828T174500Z",
+  "hook_id": "e3fec000-555f-4e81-9497-77b7c91c5b98",
+  "shuffle_execution_id": "31ebd3f4-7a72-4137-8f9e-2f4e367c6afd",
+  "workflow_revision": "current (c6b3fcd8-13e5-44a8-a818-024e4ae4422b, value-blind execute_python)",
+  "iris_object_id": "IRIS alert 74 (Critical) — independently read back via GET /alerts/74 with governed iris-shuffle-env token (status success, severity Critical, status New). Sequential Critical objects 74-86+ produced by the routing pipeline are all independently readable.",
+  "marker_match": true,
+  "object_readback": true
+}

@@ -43,3 +43,6 @@ ops/reports/backup-log.txt
 ops/reports/p28-consolidation-candidates-*.txt
 ops/reports/p28-deployability-inventory-*.txt
 ops/reports/p28-portability-scan-*.txt
+
+# Pre-rebuild env snapshot contains secrets — never commit
+.env.pre-rebuild*
