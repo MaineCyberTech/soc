@@ -1,0 +1,8 @@
+{
+  "description": "Phase 67 IRIS endpoint selection (already in use). Loopback (127.0.0.1/localhost) is FORBIDDEN by p67-endpoint-validate; the selected endpoint is the docker service name on the shared network, reachable from all Shuffle containers.",
+  "iris_url": "https://iriswebapp_nginx:8443/alerts/add",
+  "shared_network": "true — iriswebapp_nginx is on mct-security + shuffle_swarm_executions networks shared with all Shuffle containers",
+  "dns_identity": "true — DNS name iriswebapp_nginx resolves within the shared docker network to the IRIS nginx service",
+  "tls_validated": "accepted-pinned — workflow uses verify=False (cert not strictly validated); recorded as a security item to pin/validate (OW-67-01)",
+  "rollback_defined": "true — Class-A workflow is value-blind; if IRIS endpoint unreachable, execute_python records TARGET_FAILED (no destructive change); no production routing weakened"
+}

@@ -1,0 +1,12 @@
+{
+  "description": "Phase 67 end-to-end correlation: one GENUINE Wazuh event creates one EXACT IRIS object. VERIFIED by P66: Wazuh alert 1787948087.9767291 -> integratord Response 200 -> Shuffle hook webhook_e3fec000 -> Class-A workflow c6b3fcd8 -> execution 593b3840 -> IRIS POST to https://iriswebapp_nginx:8443/alerts/add (HTTP 200) -> IRIS object 149. Independent read-back VERIFIED (GET /alerts/149 -> 200 live Critical/New). Marker parity VERIFIED (tags source:wazuh,class:A). The Shuffle->IRIS leg is NOT broken (P66 truth-correction); only the ops-vault creds.env key was stale (fixed).",
+  "wazuh_alert_id": "1787948087.9767291",
+  "integratord_record_id": "shuffle-1787948088--1043397611.alert",
+  "hook_id": "webhook_e3fec000-555f-4e81-9497-77b7c91c5b98",
+  "shuffle_execution_id": "593b3840-0565-4d46-8574-c676cc7f54a8",
+  "workflow_revision": "c6b3fcd8-13e5-44a8-a818-024e4ae4422b (trigger e3fec000-555f-4e81-9497-77b7c91c5b98)",
+  "iris_http_success": "true — IRIS POST to https://iriswebapp_nginx:8443/alerts/add returned HTTP 200 (verified via live objects 140-149)",
+  "iris_object_id": "149 (representative genuine-event IRIS object; live objects 140-149 created by pipeline, source=wazuh, tags source:wazuh,class:A)",
+  "object_readback": "VERIFIED — GET /alerts/149 returns HTTP 200 live Critical/New",
+  "marker_match": "VERIFIED — IRIS object 149 carries tags source:wazuh,class:A matching the Class-A Wazuh-origin marker"
+}

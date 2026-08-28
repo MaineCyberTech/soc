@@ -1,0 +1,10 @@
+{
+  "description": "Phase 67 open-work register. OW-65-01 (Wazuh->IRIS delivery) and OW-66-01 (IRIS read-back + genuine-event delivery) CLOSED in P66 (verified). OW-67-01 OPEN: align a least-privilege IRIS service credential (replace full-administrator key with a scoped key) and wire the P67 retry/dead-letter/replay design into the Class-A workflow (currently DESIGN only).",
+  "open": [
+    {"id": "OW-67-01", "title": "Least-privilege IRIS credential + wire retry/dead-letter/replay into Class-A workflow", "status": "OPEN", "owner": "IRIS/SOAR ops", "severity": "medium", "recorded": "2026-08-28", "detail": "Mounted Shuffle secret uses the full-administrator IRIS key (administrator@localhost, prefix c21731). Align a scoped IRIS API key (least-privilege) and implement the P67 retry/dead-letter/replay design in the workflow execute_python. Currently DESIGN only; not yet wired."}
+  ],
+  "resolved": [
+    {"id": "OW-65-01", "title": "Wazuh->IRIS delivery leg", "status": "RESOLVED", "closed": "2026-08-28", "evidence": "phase65-wazuh-canary-alert.json; phase65-integratord-delivery.log; p66-correlation.json; iris_db alerts 140-149"},
+    {"id": "OW-66-01", "title": "IRIS read-back + genuine-event delivery", "status": "RESOLVED", "closed": "2026-08-28", "evidence": "p66-correlation.json; GET /alerts/149 200; iris_db alerts 140-149"}
+  ]
+}

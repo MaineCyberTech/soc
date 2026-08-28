@@ -1,0 +1,10 @@
+{
+  "description": "Phase 67 retry/dead-letter/replay DESIGN for the Class-A destination. HONEST NOTE: not yet wired into the live workflow execute_python (which currently POSTs once with no retry/DLQ). This is the recommended implementation, tracked as OW-67-01. Values below are the designed configuration, not a claim of live implementation.",
+  "max_attempts": "DESIGN=3 (not yet wired into Class-A workflow execute_python)",
+  "timeout_seconds": "DESIGN=15 (per attempt; matches current requests.post timeout)",
+  "backoff": "DESIGN=exponential (2s,4s,8s) — not yet implemented",
+  "idempotency_key": "DESIGN=alert_source_ref (Wazuh rule id) + execution_id; IRIS alert add is naturally idempotent per source ref — not yet enforced in code",
+  "dead_letter": "DESIGN=on repeated TARGET_FAILED/AUTH_FAILED emit to Shuffle dead-letter (logs) + page; not yet implemented",
+  "replay_guard": "DESIGN=replay only un-delivered (AUTH/TARGET failed) executions; never replay already-ROUTED — not yet implemented",
+  "alerting": "DESIGN=alert on dead-letter threshold via Shuffle notification; not yet implemented"
+}
