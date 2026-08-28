@@ -33,12 +33,15 @@ truth. Historical reports are not rewritten in place.
 - **Re-creation re-certification** — the Shuffle task was recreated during the secret rotation;
   genuine→IRIS delivery re-certified via the canary. Retry/dead-letter confirmed effective at
   runtime (canary exercised the 3-attempt loop).
-- Synthetic verification artifact: IRIS alert `155` (safe to delete via UI/DB; IRIS API in this
-  version does not expose alert deletion).
+- **Internal TLS — IMPLEMENTED + VERIFIED.** Stood up an internal CA (`ops/backups/tls/ca.crt`),
+  issued a CA-signed cert for `iriswebapp_nginx` (replaced the self-signed cert; nginx reloaded),
+  mounted the CA into `shuffle-tools` (`iris-ca.crt` → `/run/secrets/iris-ca.crt`), and flipped the
+  workflow `execute_python` from `verify=False` to `verify='/run/secrets/iris-ca.crt'`. Webhook
+  canary → `state=ROUTED, http 200` with CA-validated TLS. `verify=False` exception removed.
+- Synthetic verification artifacts: IRIS alerts `155` and `156` (created by the two canaries; IRIS
+  API in this version does not expose alert deletion; safe to remove via UI/DB).
 
 ## Designed / Deferred (honest, NO-GO without sign-off)
-- Internal TLS to remove workflow `verify=False` — needs internal CA + Shuffle exec-env CA trust;
-  nginx reconfig risks IRIS outage, so NOT performed (exception recorded).
 - Source-event idempotency enforcement — blocked by IRIS list API 500 (best-effort tag present:
   `alert_source_ref=rule_id`).
 - Guarded replay / recovery-replay — best-effort via source-event tags.
@@ -48,8 +51,8 @@ None of the deferred items are fabricated as implemented. They are recorded as d
 with explicit blockers.
 
 ## Open work (see open-work.md)
-- OW-67-01 now PARTIAL: least-privilege credential + re-certification are IMPLEMENTED/VERIFIED;
-  internal TLS + idempotency remain deferred (see canonical current-state + open-work).
+- OW-67-01 now PARTIAL: least-privilege credential + re-certification + internal TLS are
+  IMPLEMENTED/VERIFIED; idempotency + replay remain deferred (see canonical current-state + open-work).
 
 ## Verification
 - `bash ops/scripts/p68-agents-ci.sh` → PASS=2 FAIL=0 (inventory + metadata; evidence present;
@@ -57,5 +60,6 @@ with explicit blockers.
 - Independent IRIS read-back of object 149 → 200; marker parity VERIFIED.
 
 ## Limitations
-- Internal TLS (verify=False) and idempotency enforcement remain deferred. IRIS list API 500 blocks
-  idempotency pre-check and replay-guard enforcement. Restore and full DR remain deferred.
+- Internal TLS is now active (`verify='/run/secrets/iris-ca.crt'`); idempotency enforcement + guarded
+  replay remain deferred (IRIS list API 500 blocks pre-check/enforcement). Restore and full DR remain
+  deferred.

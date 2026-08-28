@@ -1,12 +1,19 @@
 {
   "report": "phase68-evidence-tls",
   "internal_tls": {
-  "status": "DESIGNED-DEFERRED (NOT PERFORMED)",
-    "current": "workflow execute_python uses verify=False (cert not validated)",
-    "exception_recorded": true,
-    "target": "internal CA + IRIS cert + Shuffle env trusts it (verify=True)",
-    "requires": ["stand up internal CA", "issue IRIS cert for iriswebapp_nginx", "reload nginx (risk: IRIS outage if misconfigured)", "mount CA into shuffle-tools + set verify=/path/to/ca", "verify via canary before flipping"],
-    "approval_gated": true,
-    "reason_deferred": "verify=False exception recorded; removal deferred — nginx cert reconfig risks IRIS outage and breaking the verified-working delivery. Requires coordinated internal-CA + Shuffle exec-env trust with a verified canary. Not performed."
+    "status": "IMPLEMENTED-VERIFIED",
+    "ca": "ops/backups/tls/ca.crt (internal CA, gitignored)",
+    "server_cert": "iriswebapp_nginx SAN (iriswebapp_nginx, iris.app.dev) signed by internal CA; replaced self-signed cert; nginx reloaded",
+    "chain_validation": "Verify return code: 0 (ok) from iriswebapp_app and from shuffle-tools exec env",
+    "shuffle_secret": "iris-ca.crt mounted at /run/secrets/iris-ca.crt in shuffle-tools_1-2-0",
+    "workflow_change": "execute_python verify=False -> verify='/run/secrets/iris-ca.crt' (OpenSearch doc c6b3fcd8 v10)",
+    "verification": {
+      "method": "webhook canary",
+      "execution_id": "c25e4adf-9314-4b26-971b-857a3a18acd2",
+      "workflow_state": "ROUTED",
+      "http_status": 200,
+      "note": "verify=False exception removed; cert now validated against internal CA"
+    },
+    "rollback": "re-PUT ops/backups/tls/wf_backup_verifyfalse.json to OpenSearch workflow-000001/_doc/c6b3fcd8 to revert verify=False; original self-signed cert in ops/backups/tls/"
   }
 }

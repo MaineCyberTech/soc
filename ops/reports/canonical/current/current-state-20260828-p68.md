@@ -59,9 +59,19 @@ earlier was corrected in Phase 66 and is **not** re-opened here.
 
 | Item | Target | Blocker / Why deferred |
 |---|---|---|
-| Internal TLS (remove `verify=False`) | internal CA + IRIS cert; `verify=True` | needs internal CA + Shuffle exec-env CA trust; `verify=False` exception recorded; NOT performed (nginx reconfig risks IRIS outage) |
 | Source-event idempotency | idempotency from Wazuh rule/alert id (not exec id) | IRIS list API 500s blocks pre-check; best-effort tag (alert_source_ref=rule_id) present |
 | Guarded replay / recovery-replay | approved, audited, duplicate-safe | list API 500 blocks replay-guard enforcement |
+
+### Internal TLS — IMPLEMENTED + VERIFIED (2026-08-28)
+- Stood up an internal CA (`ops/backups/tls/ca.crt`, gitignored). Issued a server cert for
+  `iriswebapp_nginx` (SAN `iriswebapp_nginx`, `iris.app.dev`) signed by the CA; replaced the
+  self-signed cert and reloaded nginx (IRIS reachable, chain validates `Verify return code: 0`).
+- Mounted the CA into `shuffle-tools` as docker secret `iris-ca.crt` (`/run/secrets/iris-ca.crt`).
+- Flipped the workflow `execute_python` from `verify=False` to `verify='/run/secrets/iris-ca.crt'`
+  (OpenSearch doc `c6b3fcd8`, version 10). Webhook canary → `state=ROUTED, http 200` with
+  CA-validated TLS. `verify=False` exception removed.
+- Rollback: OpenSearch doc `c6b3fcd8` has `_source` backup at `ops/backups/tls/wf_backup_verifyfalse.json`
+  (re-PUT to revert to `verify=False`); original self-signed cert backed up in `ops/backups/tls/`.
 
 Packet production remains **UNAUTHORIZED**; DR remains **DEFERRED**.
 
@@ -92,8 +102,9 @@ Packet production remains **UNAUTHORIZED**; DR remains **DEFERRED**.
   alert-create), mounted via docker secret `iris-shuffle-env-v3`. The full-administrator key
   (prefix c21731, in `creds.env`, mode 600, outside repo) is retained for admin/operator use only.
   **OW-67-01 least-privilege item CLOSED** (verified via webhook canary → ROUTED 200).
-- TLS: Shuffle :3443; Class-A workflow uses `verify=False` (exception recorded, NOT removed —
-  internal TLS requires a CA + Shuffle exec-env trust and risks IRIS outage if misconfigured).
+- TLS: Shuffle :3443; Class-A workflow now uses `verify='/run/secrets/iris-ca.crt'` (internal CA
+  `ops/backups/tls/ca.crt`). `verify=False` exception REMOVED — internal TLS is active and verified
+  (webhook canary → ROUTED 200 with CA-validated TLS). Self-signed cert replaced; nginx reloaded.
   Secret scan CLEAN for phase68 reports/evidence.
 
 ## 7. Canonical Navigation
