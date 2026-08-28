@@ -1,0 +1,10 @@
+{
+  "wazuh_alert_id": "P61-canary-20260828T162500Z",
+  "integratord_record_id": "delivered-via-integratord-to-webhook_e3fec000-20260828T162500Z",
+  "hook_id": "e3fec000-555f-4e81-9497-77b7c91c5b98",
+  "shuffle_execution_id": "23a2e362-983a-45a4-a4a6-89a426f1ba63",
+  "workflow_revision": "current (c6b3fcd8-13e5-44a8-a818-024e4ae4422b, value-blind execute_python)",
+  "iris_object_id": "iris:critical:P61-canary-20260828T162500Z (severity=Critical,status=New confirmed via Shuffle exec read-back)",
+  "marker_match": true,
+  "object_readback": true
+}

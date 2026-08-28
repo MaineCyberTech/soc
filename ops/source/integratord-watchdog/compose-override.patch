@@ -1,0 +1,26 @@
+# Phase 61 — prepared compose patch for integratord watchdog recreate-survival.
+#
+# STATUS: PREPARED, NOT APPLIED. Applying requires root/sudo (the
+# /opt/wazuh-docker/multi-node compose files are root-owned) AND owner sign-off
+# for the wazuh.master recreate. This snippet is the governed deployment mechanism
+# that makes the watchdog survive container recreation (acceptance item).
+#
+# Apply under services.wazuh.master: in docker-compose.override.yml (volumes merge
+# with the base file). After applying, recreate the master:
+#   sudo docker compose -f docker-compose.yml -f docker-compose.override.yml up -d wazuh.master
+#
+# The bind-mounts pull the GOVERNED source (committed in this repo) into the
+# container, so a recreate auto-deploys the watchdog + s6 unit. No image rebuild.
+
+services:
+  wazuh.master:
+    volumes:
+      # Governed watchdog script (committed at ops/source/integratord-watchdog/)
+      - /opt/mct-security-stack/ops/source/integratord-watchdog/integratord_watchdog_persist.sh:/usr/local/bin/integratord_watchdog_persist.sh:ro
+      # s6 service unit that launches the watchdog at container start
+      - /opt/mct-security-stack/ops/source/integratord-watchdog/s6-integratord-watchdog:/etc/services.d/integratord-watchdog:ro
+
+# Verification after recreate:
+#   docker exec multi-node-wazuh.master-1 pgrep -af integratord_watchdog
+#   docker exec multi-node-wazuh.master-1 pgrep -af wazuh-integratord
+#   (then re-run the destination-backed canary: POST to webhook_e3fec000)

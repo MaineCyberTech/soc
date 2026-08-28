@@ -1,0 +1,5 @@
+#!/bin/sh
+# s6 service unit for the integratord watchdog.
+# Executed at container start by s6-overlay (scans /etc/services.d).
+# The watchdog itself loops forever and restarts wazuh-integratord on failure.
+exec /usr/local/bin/integratord_watchdog_persist.sh

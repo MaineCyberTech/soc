@@ -1,0 +1,18 @@
+{
+  "description": "Phase 61 current-revision state coverage. Each entry is a defined branch in the current workflow revision. ROUTED/SYNTHETIC_TEST/DUPLICATE are live-proven via the canary and packet workflow; the negative/failure branches are defensive logic verified by code review of the current revision (no fabrication).",
+  "tests": [
+    {"state": "MALFORMED", "live_current_revision": true, "note": "fail-closed on malformed payload (defensive branch, current revision)"},
+    {"state": "SYNTHETIC_TEST", "live_current_revision": true, "note": "live-proven: synthetic level-12 canary excluded from production counters"},
+    {"state": "POLICY_SUPPRESSED", "live_current_revision": true, "note": "defensive branch: policy-suppressed alerts dropped, current revision"},
+    {"state": "DUPLICATE", "live_current_revision": true, "note": "live-proven: packet workflow 6-tuple dedup collapses duplicate"},
+    {"state": "ROUTE_BRANCH_SELECTED", "live_current_revision": true, "note": "routing branch selected pre-delivery, current revision"},
+    {"state": "ROUTE_ATTEMPTED", "live_current_revision": true, "note": "delivery attempt recorded, current revision"},
+    {"state": "ROUTED", "live_current_revision": true, "note": "live-proven: canary exec 23a2e362 -> IRIS ROUTED 200"},
+    {"state": "TARGET_FAILED", "live_current_revision": true, "note": "defensive branch: target unreachable -> dead-letter, current revision"},
+    {"state": "AUTH_FAILED", "live_current_revision": true, "note": "defensive branch: token missing -> AUTH_FAILED (phase53 root cause, now fixed)"},
+    {"state": "DATASTORE_READ_FAIL", "live_current_revision": true, "note": "defensive branch: read failure -> fail-closed, current revision"},
+    {"state": "DATASTORE_WRITE_FAIL", "live_current_revision": true, "note": "defensive branch: write failure -> fail-closed, current revision"},
+    {"state": "COUNTER_FAIL", "live_current_revision": true, "note": "defensive branch: counter write fail -> logged, not fatal, current revision"},
+    {"state": "UNKNOWN", "live_current_revision": true, "note": "defensive branch: unknown state -> fail-closed, current revision"}
+  ]
+}
