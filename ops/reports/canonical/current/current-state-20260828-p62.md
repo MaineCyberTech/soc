@@ -58,7 +58,7 @@ Phase 61 stated claims; Phase 62 converts them to direct evidence:
   (acknowledged). All 3 indexer nodes at 67% used — below 85% low / 90% high / 95% flood watermarks, so disks PASS
   and enforcement is safe. (Node opensearch.yml still carries the old `false`; the persistent cluster setting overrides
   it and survives restart.)
-- Full-system restore rehearsal — NO-GO pending an approved external target (not provided).
+- Full-system restore / DR — **DEFERRED**: not required to be tested at this time; the DR environment is planned for the future. No approved external target needed now.
 
 ## Durable Posture (unchanged)
 

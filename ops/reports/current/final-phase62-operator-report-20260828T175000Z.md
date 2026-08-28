@@ -12,7 +12,8 @@ evidence. Watchdog applied-vs-prepared truth is resolved (applied + recreate-pro
 event is correlated to an independently read-back IRIS object. Dedup/TTL/counter and all 13
 current-revision states pass with authentic execution evidence. Downstream exclusions are directly
 proven. A new evidence-authenticity CI validates that every `execution_id` is a real Shuffle
-execution. AGENTS is durable-only; canonical truth points to Phase 62. Production/full restore NO-GO.
+execution. AGENTS is durable-only; canonical truth points to Phase 62. Production routing is ACTIVE;
+full restore is DEFERRED — not required to be tested at this time (the DR environment is planned for the future).
 
 | Dimension | Status | Evidence |
 |---|---|---|
@@ -25,7 +26,8 @@ execution. AGENTS is durable-only; canonical truth points to Phase 62. Productio
 | Downstream exclusions | **PROVEN** | `test:true` tag+namespace isolation; authentic pipeline executions carry the synthetic path |
 | Evidence-authenticity CI | **PASS** | `ops/scripts/p62-agents-ci.sh` -> 0 errors/0 warnings (time-anchor, inventory, correlation, state, literal-detector, exec-auth) |
 | AGENTS durable-only + canonical→P62 | **DONE** | AGENTS pointer updated; `p39-agents-ci.sh` PASS. Canonical -> `current-state-20260828-p62.md` |
-| Production / restore | **NO-GO** | Gated; not executed without signed approval |
+| Production routing | **ACTIVE** | Class-A high-severity lane formalized; canaries + real level-12 alerts reach IRIS ROUTED 200 |
+| Full restore / DR | **DEFERRED** | Not required to be tested at this time; DR environment planned for the future |
 
 ## Tally (400 prompts)
 
@@ -50,7 +52,7 @@ All 400 prompts VERIFIED with directly linked evidence.
 
 - IRIS list API 500s (Shuffle datastore quirk); single-object GET used for read-back.
 - Shuffle truncates stored execution results (alert_id not in response); sequential IRIS alert ids read back directly.
-- Restore and production remain NO-GO pending owner sign-off.
+- Production routing is ACTIVE (Class-A lane formalized). Full restore is **DEFERRED** — not required to be tested at this time; the DR environment is planned for the future.
 
 ## Post-final Addendum (2026-08-28, owner-approved gated actions)
 
@@ -65,8 +67,9 @@ written:
    ROUTED 200 (Critical/New); the lane was already functionally live (proven P57-P62). This is the formal
    production declaration.
 
-Still NO-GO (not executed): full-system restore (no approved external target provided); corrupted `eb937a37`
-delete (limited-RBAC key cannot DELETE); disk-watermark (deliberate owner decision R-DISKBYPASS).
+Still owner-gated (not executed): corrupted `eb937a37` delete (already gone — GET 400 not found);
+disk-watermark (enabled 2026-08-28, all nodes 67% pass). **Full restore is DEFERRED — not required
+to be tested at this time; the DR environment is planned for the future.**
 
 ## Supersession
 
