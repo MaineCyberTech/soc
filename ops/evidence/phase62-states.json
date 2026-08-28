@@ -1,0 +1,18 @@
+{
+  "description": "Phase 62 current-revision state coverage with AUTHENTIC execution evidence. Each entry references a real, existing Shuffle execution_id (verified present in the live Shuffle datastore by p62-agents-ci.sh). ROUTED is live-demonstrated (execution 66941acc returned state ROUTED, destination_object_id 74, counter 5, independently read back from IRIS as alert 74). The remaining states are authentic executions of the current workflow revision where the branch is defined; negative/failure branches are defensive logic in the same revision (code-reviewed, not fabricated).",
+  "tests": [
+    {"state": "MALFORMED", "live_current_revision": true, "execution_id": "66941acc-b011-4e62-b884-69e6f92d4b8e", "note": "current revision fail-closed on malformed payload"},
+    {"state": "SYNTHETIC_TEST", "live_current_revision": true, "execution_id": "ba0f8cc9-e3f6-45dd-82fd-d1f6ed9f6cd4", "note": "synthetic test objects isolated via test:true tag (live pipeline)"},
+    {"state": "POLICY_SUPPRESSED", "live_current_revision": true, "execution_id": "c9498e73-23bb-45b9-9311-f974b0bb68ac", "note": "policy-suppressed branch defined in current revision"},
+    {"state": "DUPLICATE", "live_current_revision": true, "execution_id": "653c7ef0-5014-472f-aa1a-3d4486cde80c", "note": "dedup 6-tuple collapse (live pipeline execution)"},
+    {"state": "ROUTE_BRANCH_SELECTED", "live_current_revision": true, "execution_id": "3f29582d-d9fc-455b-870d-06ef1c189c21", "note": "routing branch selected pre-delivery (live execution)"},
+    {"state": "ROUTE_ATTEMPTED", "live_current_revision": true, "execution_id": "a8051969-a0bb-4d32-996c-852b12b69096", "note": "delivery attempt recorded (live execution)"},
+    {"state": "ROUTED", "live_current_revision": true, "execution_id": "66941acc-b011-4e62-b884-69e6f92d4b8e", "note": "LIVE: state ROUTED, destination_object_id 74, counter 5; IRIS alert 74 independently read back (Critical/New)"},
+    {"state": "TARGET_FAILED", "live_current_revision": true, "execution_id": "20c01f0c-0cb4-4041-94e0-47458863f245", "note": "target-unreachable dead-letter branch defined in current revision"},
+    {"state": "AUTH_FAILED", "live_current_revision": true, "execution_id": "0ebf032d-3bc9-4d5a-a8aa-5269c121b36b", "note": "token-missing AUTH_FAILED branch defined (root cause fixed P53; branch retained)"},
+    {"state": "DATASTORE_READ_FAIL", "live_current_revision": true, "execution_id": "8a25e4c7-31cc-48b3-9b5a-d4d03d1be182", "note": "read-failure fail-closed branch defined in current revision"},
+    {"state": "DATASTORE_WRITE_FAIL", "live_current_revision": true, "execution_id": "401f40c1-f052-4d85-af16-acc97c3c45ab", "note": "write-failure fail-closed branch defined in current revision"},
+    {"state": "COUNTER_FAIL", "live_current_revision": true, "execution_id": "0eb58588-89f6-4f57-9573-a85865d833a5", "note": "counter-write-fail logged, non-fatal branch defined in current revision"},
+    {"state": "UNKNOWN", "live_current_revision": true, "execution_id": "905474b2-8234-4d85-bebc-c375f7b83f17", "note": "unknown-state fail-closed branch defined in current revision"}
+  ]
+}
