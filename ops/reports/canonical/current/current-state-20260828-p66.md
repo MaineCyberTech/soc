@@ -7,21 +7,31 @@ operationally closed state and records one new open item (OW-66-01).
 
 ## 1. Headline
 
-- **GENUINE Wazuh→Shuffle→IRIS delivery is PROVEN and PERSISTENT.**
-  Real Wazuh alert `1787948087.9767291` (rule 100065, level 12) → wazuh-integratord
-  Response `[200]` → Shuffle hook `webhook_e3fec000-555f-4e81-9497-77b7c91c5b98` →
-  Class-A workflow `c6b3fcd8-13e5-44a8-a818-024e4ae4422b` → execution
-  `593b3840-0565-4d46-8574-c676cc7f54a8` → IRIS POST **Routed 200 (status New)**.
-  Evidence: `ops/evidence/phase65-wazuh-canary-alert.json`,
+> **CORRECTION (2026-08-28, same day):** The earlier "IRIS delivery proven (Routed 200)"
+> was a misread — `Routed 200` was Shuffle's *internal* routing status, not an IRIS HTTP
+> 200. Verification shows the Shuffle→IRIS leg is **auth/connectivity-broken**: BOTH the
+> ops-vault `IRIS_API_KEY` AND the Shuffle `iris-shuffle.env` key return **HTTP 401** from
+> IRIS, and Shuffle's container network cannot reach the host loopback `127.0.0.1:8443`
+> where IRIS is published. No IRIS object creation is confirmable. The Wazuh→Shuffle leg
+> remains PROVEN; the IRIS leg is tracked as OW-66-01 (requires a valid IRIS credential).
+
+- **GENUINE Wazuh→Shuffle delivery is PROVEN and PERSISTENT.** Real Wazuh alert
+  `1787948087.9767291` (rule 100065, level 12) → wazuh-integratord Response `[200]` →
+  Shuffle hook `webhook_e3fec000-555f-4e81-9497-77b7c91c5b98` → Class-A workflow
+  `c6b3fcd8-13e5-44a8-a818-024e4ae4422b` → execution `593b3840-0565-4d46-8574-c676cc7f54a8`
+  (created). Evidence: `ops/evidence/phase65-wazuh-canary-alert.json`,
   `ops/evidence/phase65-integratord-delivery.log`.
 - **Persistence verified after container recreate:** manager is on the `mct-security`
   network (sudo-edited `docker-compose.yml` + recreate, backed up) and the real Shuffle
   key is set in the host bind-mount `wazuh_manager.conf` (root:wazuh 640). A fresh genuine
-  canary produced a NEW execution that reached IRIS (Routed 200).
-- **OW-65-01 CLOSED** (Wazuh→IRIS pipeline repaired + persistent).
-- **OW-66-01 OPEN** — credential drift: the ops-vault `IRIS_API_KEY` returns HTTP 401
-  (stale) while the Shuffle-managed IRIS key remains valid. Independent IRIS object
-  read-back is therefore BLOCKED; `iris_object_id` UNRETRIEVABLE, marker parity UNVERIFIED.
+  canary produced a NEW Shuffle execution (proving Wazuh→Shuffle survives recreate).
+- **OW-65-01 CLOSED** for the **Wazuh→Shuffle** portion (network + webhook + real Shuffle
+  key; genuine delivery proven). The **Shuffle→IRIS** portion is NOT confirmed and is
+  tracked separately as OW-66-01.
+- **OW-66-01 OPEN** — IRIS credential/connectivity break: both available IRIS keys return
+  HTTP 401 from IRIS and Shuffle cannot reach host `127.0.0.1:8443`. Independent IRIS
+  object read-back is BLOCKED; `iris_object_id` UNRETRIEVABLE, marker parity UNVERIFIED.
+  Remediation requires a valid IRIS API key (IRIS admin) + a Shuffle-reachable IRIS URL.
   Recorded honestly, not fabricated.
 
 ## 2. Open / Gated (NO-GO without sign-off)

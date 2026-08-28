@@ -4,12 +4,17 @@
 superseded only by a newer current-state doc. Per-phase truth lives here; AGENTS.md
 holds directives/pointers only (durable).
 
-**UPDATE (same day):** OW-65-01 **CLOSED**. Wazuh→IRIS delivery is now functional
-end-to-end and persistent: the manager was added to the `mct-security` network
-(compose-persistent) and the real Shuffle API key was set in the host bind-mount
-(`config/wazuh_cluster/wazuh_manager.conf`) + volume. CORRECTION: webhook
-`webhook_e3fec000` was already linked to `c6b3fcd8` (trigger id `e3fec000-…`); the
-earlier "0 executions" was a limited-RBAC listing artifact. Genuine end-to-end proven
+**CORRECTION (same day, by current-state-20260828-p66.md):** the "Wazuh→IRIS delivery
+functional end-to-end" claim was a misread — `Routed 200` was Shuffle-internal, not an IRIS
+HTTP 200. BOTH IRIS keys return 401 and Shuffle cannot reach host 127.0.0.1:8443. Only the
+Wazuh→Shuffle leg is proven; the Shuffle→IRIS leg is auth/connectivity-broken (OW-66-01).
+This doc is superseded by `current-state-20260828-p66.md`.
+
+**UPDATE (same day):** OW-65-01 **CLOSED** for the Wazuh→Shuffle portion (manager on
+`mct-security` network + real Shuffle key; genuine delivery proven). The Shuffle→IRIS
+portion is NOT confirmed (see CORRECTION above) and is tracked as OW-66-01. CORRECTION:
+webhook `webhook_e3fec000` was already linked to `c6b3fcd8` (trigger id `e3fec000-…`); the
+earlier "0 executions" was a limited-RBAC listing artifact. Genuine Wazuh→Shuffle proven
 (real Wazuh alert → integratord → Shuffle → `wazuh-high-severity-to-iris` → IRIS POST
 SUCCESS/Routed 200, status New). No Shuffle-exposure weakening (compose-only network add).
 
