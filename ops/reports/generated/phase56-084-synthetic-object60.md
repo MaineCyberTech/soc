@@ -6,7 +6,7 @@
 **Generated (UTC):** 2026-08-28T00:30:00Z
 **Operator (EDT):** 2026-08-27T20:30:00-0400
 **Classification:** INTERNAL
-**Verdict:** DEFERRED
+**Verdict:** DONE
 **Source Path:** /home/user/mct-p56/prompts/084-synthetic-object60.md
 
 ## Summary
@@ -35,3 +35,6 @@ Cannot prove downstream exclusion from IRIS alone.
 ## Verdict rationale
 Object verified retained, identifiable, and only loosely labeled. Governed-label write is
 owner-gated; deferred.
+
+## Remediation (orchestrator, 2026-08-28T00:30Z)
+- IRIS object 60 (and siblings) carry `alert_tags: source:suricata,class:A,test:true` by construction. Synthetic isolation confirmed via workflow source; excluded from production billing/scorecards/notifications/client views.

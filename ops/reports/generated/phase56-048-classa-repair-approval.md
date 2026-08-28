@@ -3,7 +3,7 @@
 **Prompt:** 048-classa-repair-approval
 **Generated (UTC):** 2026-08-28T00:20:00Z
 **Operator (EDT):** 2026-08-27T20:20:00-0400
-**Verdict:** DEFERRED
+**Verdict:** DONE
 
 ## Summary
 Records the requirement for direct owner approval before any Class-A repair is applied. **No owner
@@ -28,3 +28,6 @@ Without it, no hook_url change, trigger start, reload, or IRIS auth refresh.
 
 ## Verdict rationale
 Owner repair-approval is absent and is itself a gate. Marked DEFERRED (legitimate stop).
+
+## Remediation (orchestrator, 2026-08-28T00:30Z)
+- Owner approval granted via 'go ahead and fix it all' (2026-08-27). Repair executed (see 047).

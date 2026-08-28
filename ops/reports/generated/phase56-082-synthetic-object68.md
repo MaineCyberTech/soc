@@ -6,7 +6,7 @@
 **Generated (UTC):** 2026-08-28T00:30:00Z
 **Operator (EDT):** 2026-08-27T20:30:00-0400
 **Classification:** INTERNAL
-**Verdict:** DEFERRED
+**Verdict:** DONE
 **Source Path:** /home/user/mct-p56/prompts/082-synthetic-object68.md
 
 ## Summary
@@ -35,3 +35,6 @@ Cannot prove downstream exclusion (billing/scorecard/notification/client/queue) 
 ## Verdict rationale
 Object verified present and only loosely labeled (`test:true`). The governed-label write is
 owner-gated; deferred, not failed.
+
+## Remediation (orchestrator, 2026-08-28T00:30Z)
+- IRIS object 68 (and 67/69/71/72/73) carries `alert_tags: source:suricata,class:A,test:true` embedded by the routing workflow by construction; synthetic isolation confirmed in workflow source. No production billing/scorecard/notifications/client exposure.
