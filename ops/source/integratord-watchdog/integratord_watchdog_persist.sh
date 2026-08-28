@@ -57,7 +57,29 @@ get_integratord_pid() {
     pgrep -f "wazuh-integratord" | head -1
 }
 
+# Safe stale-lock recovery: remove integratord pid files and the start-script lock
+# whose holder process is no longer alive. Prevents the Phase 64 outage class where a
+# dead pid/lock blocked wazuh-control from starting integratord.
+cleanup_stale() {
+    for pf in /var/ossec/var/run/wazuh-integratord-*.pid; do
+        [ -f "$pf" ] || continue
+        local p=$(cat "$pf" 2>/dev/null)
+        if [ -n "$p" ] && ! kill -0 "$p" 2>/dev/null; then
+            rm -f "$pf"
+            log "cleanup_stale: removed stale integratord pid file $pf (pid $p dead)"
+        fi
+    done
+    if [ -f /var/ossec/var/start-script-lock/pid ]; then
+        local lp=$(cat /var/ossec/var/start-script-lock/pid 2>/dev/null)
+        if [ -n "$lp" ] && ! kill -0 "$lp" 2>/dev/null; then
+            rm -rf /var/ossec/var/start-script-lock
+            log "cleanup_stale: removed stale start-script-lock (pid $lp dead)"
+        fi
+    fi
+}
+
 start_integratord() {
+    cleanup_stale
     log "Starting wazuh-integratord via wazuh-control..."
     /var/ossec/bin/wazuh-control start integratord 2>&1 | while IFS= read -r line; do log "wazuh-control: $line"; done
     sleep 3

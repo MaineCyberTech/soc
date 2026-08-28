@@ -30,8 +30,8 @@ MUST / MUST NOT item below.
 
 ## Canonical Truth & Navigation
 
-- Current operational truth: `ops/reports/canonical/current/current-state-20260828-p64.md`
-  (Phase 64 refresh; supersedes `current-state-20260828-p63.md` per its own
+- Current operational truth: `ops/reports/canonical/current/current-state-20260828-p65.md`
+  (Phase 65 refresh; supersedes `current-state-20260828-p64.md` per its own
   supersession statement; superseded only by a newer current-state doc).
 - Open-work ledger: `ops/reports/canonical/current/open-work.md`.
 - Do not act on any claim older than the canonical current-state doc without re-verification.

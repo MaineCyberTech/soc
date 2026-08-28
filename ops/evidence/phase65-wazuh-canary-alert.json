@@ -1,0 +1,36 @@
+{
+  "count": 1,
+  "genuine_wazuh_alert": true,
+  "sample": {
+    "timestamp": "2026-08-28T20:04:15.950+0000",
+    "rule": {
+      "level": 12,
+      "description": "P65 genuine Wazuh-originated canary event (Phase 65)",
+      "id": "100065",
+      "firedtimes": 1,
+      "mail": true,
+      "groups": [
+        "p65_canarysyslog"
+      ]
+    },
+    "agent": {
+      "id": "000",
+      "name": "wazuh.master"
+    },
+    "manager": {
+      "name": "wazuh.master"
+    },
+    "id": "1787947455.9656846",
+    "cluster": {
+      "name": "wazuh",
+      "node": "manager"
+    },
+    "full_log": "Aug 28 20:05:00 wazuh-manager P65-GENUINE-CANARY genuine-wazuh-event-phase65-2",
+    "predecoder": {
+      "timestamp": "Aug 28 20:05:00",
+      "hostname": "wazuh-manager"
+    },
+    "decoder": {},
+    "location": "/tmp/p65-canary.log"
+  }
+}

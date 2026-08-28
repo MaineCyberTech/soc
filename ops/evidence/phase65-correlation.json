@@ -1,0 +1,11 @@
+{
+  "wazuh_alert_id": "1787948087.9767291",
+  "integratord_record_id": "/tmp/shuffle-1787948088--1043397611.alert",
+  "hook_id": "webhook_e3fec000-555f-4e81-9497-77b7c91c5b98",
+  "shuffle_execution_id": "none-webhook-not-linked-to-class-a-workflow",
+  "workflow_revision": "c6b3fcd8-13e5-44a8-a818-024e4ae4422b",
+  "iris_object_id": "none-webhook-not-linked",
+  "marker_match": true,
+  "object_readback": "pending-webhook-link-gap",
+  "notes": "Genuine Wazuh-originated canary: Wazuh generated alert rule 100065 (level 12) from a monitored localfile; wazuh-integratord forwarded it to Shuffle webhook webhook_e3fec000 with HTTP 200 (phase65-integratord-delivery.log). The ->IRIS leg does not complete because (1) live ossec.conf api_key is the placeholder, (2) shuffle-backend is unreachable from the manager container (HTTP 000), and (3) the webhook is not linked to the Class-A workflow (0 executions). All three were temporarily remediated and FULLY reverted; config restored to sha 1893ae0ee4b93e3132f8d9acf2e6fec1101f2f20ff04871cef888c9aab37f2d4."
+}

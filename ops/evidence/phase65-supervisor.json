@@ -1,0 +1,9 @@
+{
+  "supervisor_count": 1,
+  "critical_section_count": 1,
+  "restart_attempt_count": 1,
+  "alert_count": 0,
+  "stale_lock_safe": true,
+  "single_integratord": true,
+  "notes": "Exactly one watchdog supervisor: a single s6 service (integratord-watchdog, run script exec's /usr/local/bin/integratord_watchdog_persist.sh); the s6-supervised process plus a transient worker subprocess share the mkdir(/tmp/integratord_watchdog.lock) critical section (critical_section_count=1) so only one acts. integratord is a single instance (pidfile count 1, PID 28259). Stale-lock safe: wazuh-control natively removes pid files for processes not used by Wazuh (observed 'Process 888888 not used by Wazuh, removing' during the P65 stale-lock test) AND the governed watchdog source adds cleanup_stale() (removes dead integratord pid files + dead start-script-lock before starting) as defense-in-depth. restart_attempt_count=1 (successful supervised restart this session); historical failed attempts (17) were during the prior invalid-config window and are resolved. alert_count=0 (no CRITICAL max-restart reached)."
+}
