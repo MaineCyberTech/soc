@@ -1,0 +1,9 @@
+{
+  "description": "Phase 66 open-work register. OW-65-01 is RESOLVED (Wazuh->IRIS pipeline repaired and made persistent: manager added to mct-security network via sudo-edited compose + recreate; real Shuffle key set in host bind-mount manager.conf; verified post-recreate that a genuine Wazuh canary -> Shuffle execution 593b3840 -> IRIS POST Routed 200). OW-66-01 is OPEN: the IRIS_API_KEY stored in the ops vault (creds.env) is stale (HTTP 401) while the Shuffle-managed IRIS key remains valid; independent IRIS read-back of the created object is therefore blocked and must be remediated (rotate/refresh the ops-vault IRIS key, or document the Shuffle-owned key as source of truth).",
+  "open": [
+    {"id": "OW-66-01", "title": "IRIS read-back credential drift (ops-vault IRIS_API_KEY stale, HTTP 401)", "status": "OPEN", "owner": "IRIS/SOAR ops", "severity": "medium", "recorded": "2026-08-28", "detail": "creds.env IRIS_API_KEY returns 401 on IRIS GET /alerts/<id>; Shuffle-managed key still posts (Routed 200). Blocks independent IRIS object read-back for correlation; remediate by refreshing the ops-vault key to the live Shuffle-owned key."}
+  ],
+  "resolved": [
+    {"id": "OW-65-01", "title": "Repair Wazuh->IRIS pipeline (network isolation + placeholder Shuffle key + webhook not linked)", "status": "RESOLVED", "closed": "2026-08-28", "evidence": "ops/evidence/phase65-wazuh-canary-alert.json; phase65-integratord-delivery.log; Shuffle execution 593b3840 (Routed 200, status New); manager on mct-security network; real Shuffle key persistent in host bind-mount wazuh_manager.conf"}
+  ]
+}

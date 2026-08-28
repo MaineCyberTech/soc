@@ -1,0 +1,11 @@
+{
+  "description": "Phase 66 correlation: a GENUINE Wazuh-originated alert (not a synthetic POST) is linked forward through integratord -> Shuffle hook -> Class-A workflow -> IRIS. The Wazuh/integratord/Shuffle linkage is REAL and directly evidenced (phase65-wazuh-canary-alert.json + phase65-integratord-delivery.log + Shuffle execution 593b3840). The independent IRIS object read-back is BLOCKED: the IRIS_API_KEY stored in the ops vault (creds.env) returns HTTP 401 (stale) while the Shuffle-managed IRIS key remains valid (Class-A IRIS POST returned Routed 200, status New). This credential-drift gap is recorded as OW-66-01; iris_object_id is therefore unretrievable via the ops-vault key and is NOT fabricated.",
+  "wazuh_alert_id": "1787948087.9767291",
+  "integratord_record_id": "shuffle-1787948088--1043397611.alert",
+  "hook_id": "webhook_e3fec000-555f-4e81-9497-77b7c91c5b98",
+  "shuffle_execution_id": "593b3840-0565-4d46-8574-c676cc7f54a8",
+  "workflow_revision": "c6b3fcd8-13e5-44a8-a818-024e4ae4422b (trigger e3fec000-555f-4e81-9497-77b7c91c5b98)",
+  "iris_object_id": "UNRETRIEVABLE: ops-vault IRIS_API_KEY returns HTTP 401 (stale); live Shuffle->IRIS POST proven via execution 593b3840 (Routed 200, status New)",
+  "marker_match": "UNVERIFIED: independent IRIS read-back blocked by stale ops-vault IRIS_API_KEY (401); Wazuh alert marker 'P65-GENUINE-CANARY-e2e-1787948086' propagated to Shuffle (Routed 200) and IRIS POST accepted (200)",
+  "object_readback": "BLOCKED: IRIS GET /alerts/<id> with ops-vault key returns 401; Shuffle-only IRIS key remains valid; recorded as OW-66-01"
+}
