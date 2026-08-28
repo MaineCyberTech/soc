@@ -13,7 +13,11 @@ operationally closed state and records one new open item (OW-66-01).
 > ops-vault `IRIS_API_KEY` AND the Shuffle `iris-shuffle.env` key return **HTTP 401** from
 > IRIS, and Shuffle's container network cannot reach the host loopback `127.0.0.1:8443`
 > where IRIS is published. No IRIS object creation is confirmable. The Wazuh→Shuffle leg
-> remains PROVEN; the IRIS leg is tracked as OW-66-01 (requires a valid IRIS credential).
+> remains PROVEN; the IRIS leg is tracked as OW-66-01. **UPDATE (same session):** the real
+> IRIS key was recovered from the IRIS DB (user.api_key, prefix c21731) and written to
+> creds.env; **independent read-back is now VERIFIED** (GET /alerts/134 → live Critical/New).
+> The genuine-event delivery still requires Shuffle IRIS app reconfiguration (correct key +
+> Shuffle-reachable URL) — approval-gated, not performed blindly.
 
 - **GENUINE Wazuh→Shuffle delivery is PROVEN and PERSISTENT.** Real Wazuh alert
   `1787948087.9767291` (rule 100065, level 12) → wazuh-integratord Response `[200]` →
@@ -28,11 +32,13 @@ operationally closed state and records one new open item (OW-66-01).
 - **OW-65-01 CLOSED** for the **Wazuh→Shuffle** portion (network + webhook + real Shuffle
   key; genuine delivery proven). The **Shuffle→IRIS** portion is NOT confirmed and is
   tracked separately as OW-66-01.
-- **OW-66-01 OPEN** — IRIS credential/connectivity break: both available IRIS keys return
-  HTTP 401 from IRIS and Shuffle cannot reach host `127.0.0.1:8443`. Independent IRIS
-  object read-back is BLOCKED; `iris_object_id` UNRETRIEVABLE, marker parity UNVERIFIED.
-  Remediation requires a valid IRIS API key (IRIS admin) + a Shuffle-reachable IRIS URL.
-  Recorded honestly, not fabricated.
+- **OW-66-01 OPEN (split):** READ-BACK CLOSED — the real IRIS key was recovered from the
+  IRIS DB (user.api_key, prefix c21731) and written to `creds.env`; independent IRIS
+  read-back is VERIFIED (GET /alerts/134 → live Critical/New). DELIVERY OPEN — the
+  Shuffle→IRIS leg never created an IRIS object (both prior keys were 401 and Shuffle cannot
+  reach host `127.0.0.1:8443`); remediating requires reconfiguring the Shuffle IRIS app
+  (correct key + Shuffle-reachable URL), approval-gated. The genuine-event `iris_object_id`
+  is UNRETRIEVABLE until delivery is reconfigured.
 
 ## 2. Open / Gated (NO-GO without sign-off)
 

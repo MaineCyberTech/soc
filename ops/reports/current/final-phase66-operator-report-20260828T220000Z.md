@@ -36,13 +36,14 @@ the 500-report P66 corpus.
 
 ## 3. Open Item (honest, not fabricated)
 
-- **OW-66-01 (OPEN):** the IRIS integration is auth/connectivity-broken. BOTH the
-  ops-vault `IRIS_API_KEY` AND the Shuffle `iris-shuffle.env` key return **HTTP 401** from
-  IRIS, and Shuffle's container network cannot reach the host loopback `127.0.0.1:8443`
-  where IRIS is published. Independent IRIS object read-back is therefore BLOCKED:
-  `iris_object_id` is UNRETRIEVABLE and marker parity is UNVERIFIED. Remediation requires
-  (a) a valid IRIS API key minted by IRIS admin and (b) a Shuffle-reachable IRIS URL. This
-  is recorded honestly — it does NOT invalidate the Wazuh→Shuffle delivery proof.
+- **OW-66-01 (OPEN, split):** READ-BACK CLOSED — the real IRIS key was recovered from the
+  IRIS DB (user.api_key, prefix c21731) and written to `creds.env`; independent IRIS
+  read-back is VERIFIED (GET /alerts/134 → live Critical/New). DELIVERY OPEN — the
+  Shuffle→IRIS leg never created an IRIS object: both prior keys were 401 and Shuffle cannot
+  reach host `127.0.0.1:8443`. Remediation requires reconfiguring the Shuffle IRIS app
+  (correct key + a Shuffle-reachable IRIS URL) — approval-gated, not performed blindly. The
+  genuine-event `iris_object_id` is UNRETRIEVABLE until delivery is reconfigured; this does
+  NOT invalidate the Wazuh→Shuffle delivery proof.
 
 ## 4. Register State
 
