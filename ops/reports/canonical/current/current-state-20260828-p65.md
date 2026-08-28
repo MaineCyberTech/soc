@@ -4,6 +4,15 @@
 superseded only by a newer current-state doc. Per-phase truth lives here; AGENTS.md
 holds directives/pointers only (durable).
 
+**UPDATE (same day):** OW-65-01 **CLOSED**. Wazuh→IRIS delivery is now functional
+end-to-end and persistent: the manager was added to the `mct-security` network
+(compose-persistent) and the real Shuffle API key was set in the host bind-mount
+(`config/wazuh_cluster/wazuh_manager.conf`) + volume. CORRECTION: webhook
+`webhook_e3fec000` was already linked to `c6b3fcd8` (trigger id `e3fec000-…`); the
+earlier "0 executions" was a limited-RBAC listing artifact. Genuine end-to-end proven
+(real Wazuh alert → integratord → Shuffle → `wazuh-high-severity-to-iris` → IRIS POST
+SUCCESS/Routed 200, status New). No Shuffle-exposure weakening (compose-only network add).
+
 ## Phase 65 Summary
 
 Phase 65 proves a **genuine Wazuh-originated recovery canary** (overlay requirement:
