@@ -1,0 +1,19 @@
+{
+  "note": "Phase 56 closeout packet-regression against deployed remediation revision e133a645. ROUTED and DUPLICATE are genuine closeout-rerun via live suricata-eve-in webhook (736b7410). Remaining branch states validated by deployed source code path analysis + Phase 53/56 evidence (not re-injected in closeout to avoid fabricating failure injection).",
+  "deployed_revision": "e133a645-95b9-4e01-9454-e270d2a0b599",
+  "tests": [
+    {"test_id":"MALFORMED","state":"MALFORMED","closeout_rerun":false,"validation":"code-path+prior-phase"},
+    {"test_id":"SYNTHETIC_TEST","state":"SYNTHETIC_TEST","closeout_rerun":false,"validation":"code-path+prior-phase"},
+    {"test_id":"POLICY_SUPPRESSED","state":"POLICY_SUPPRESSED","closeout_rerun":false,"validation":"code-path+prior-phase"},
+    {"test_id":"DUPLICATE","state":"DUPLICATE","closeout_rerun":true,"validation":"genuine (repeat 5-tuple -> DUPLICATE)","http_success":true,"destination_object_id":null,"marker_match":true,"execution_source":"webhook","synthetic_isolated":true,"object_readback":true},
+    {"test_id":"ROUTE_BRANCH_SELECTED","state":"ROUTE_BRANCH_SELECTED","closeout_rerun":false,"validation":"code-path+prior-phase"},
+    {"test_id":"ROUTE_ATTEMPTED","state":"ROUTE_ATTEMPTED","closeout_rerun":false,"validation":"code-path+prior-phase"},
+    {"test_id":"ROUTED","state":"ROUTED","closeout_rerun":true,"validation":"genuine webhook 736b7410 execution","http_success":true,"destination_object_id":72,"marker_match":true,"execution_source":"webhook","synthetic_isolated":true,"object_readback":true},
+    {"test_id":"TARGET_FAILED","state":"TARGET_FAILED","closeout_rerun":false,"validation":"code-path+prior-phase"},
+    {"test_id":"AUTH_FAILED","state":"AUTH_FAILED","closeout_rerun":false,"validation":"code-path+prior-phase"},
+    {"test_id":"DATASTORE_READ_FAIL","state":"DATASTORE_READ_FAIL","closeout_rerun":false,"validation":"code-path+prior-phase"},
+    {"test_id":"DATASTORE_WRITE_FAIL","state":"DATASTORE_WRITE_FAIL","closeout_rerun":false,"validation":"code-path+prior-phase"},
+    {"test_id":"COUNTER_FAIL","state":"COUNTER_FAIL","closeout_rerun":false,"validation":"code-path+prior-phase"},
+    {"test_id":"UNKNOWN","state":"UNKNOWN","closeout_rerun":false,"validation":"code-path+prior-phase"}
+  ]
+}
