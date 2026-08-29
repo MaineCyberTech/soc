@@ -74,6 +74,7 @@ the CI matrix and asserts declared==actual (no mismatch). Secret scan: clean.
   `p69-permissions.json`, `p69-ci-matrix.json`, `p69-e2e.json`, `p69-time-anchor.json`).
 - CI: `ops/scripts/p69-agents-ci.sh`.
 - DR runbook (Phase 68): `ops/runbooks/dr-class-a-hardening.md`.
+- Final operator report (this phase): `ops/reports/canonical/current/final-phase69-operator-report-20260829T0100Z.md`.
 
 ## 6. Open / Deferred / Forbidden
 
