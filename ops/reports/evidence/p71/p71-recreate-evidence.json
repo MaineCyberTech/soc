@@ -1,0 +1,14 @@
+{
+  "approval": true,
+  "compose_sha256": "916e6b49bcff7819fc53ffa0a6ff38a3f31330fefee18f58b67a035af4441a57",
+  "old_backend_id": "b338ea55cf73",
+  "new_backend_id": "1fdf39e252b0",
+  "scoped_secret_present": true,
+  "ca_present": true,
+  "admin_secret_absent": true,
+  "dead_letter_preserved": true,
+  "ledger_preserved": true,
+  "strict_e2e_passed": true,
+  "rollback_defined": true,
+  "notes": "shuffle-backend recreated from corrected Compose (bind-mounted CA + scoped IRIS key into /run/secrets, only this service). Old b338ea55cf73 -> new 1fdf39e252b0. Dead-letter 88c3 + dedup ledger survived (stored in opensearch). Post-recreation canary a0295014 ROUTED 200. NOTE: a transient swarm reschedule of shuffle-tools broke IRIS name resolution from the Shuffle-Tools action path (iris not on mct-security); pipeline proved ROUTED at 03:09 before that; this is an environment/swarm instability to remediate (ensure IRIS reachable from the SOAR action path), separate from the backend recreation."
+}

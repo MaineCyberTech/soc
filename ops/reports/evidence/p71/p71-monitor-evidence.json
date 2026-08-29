@@ -1,0 +1,42 @@
+{
+  "auth": {
+    "tested": true,
+    "note": "scoped IRIS credential validity verified (IRIS_API_KEY scoped to customer-1 write/read; negative cross-tenant rejected)"
+  },
+  "tls": {
+    "tested": true,
+    "note": "cert-expiry-monitor.sh runs; internal-CA chain valid; renewal/rollback exercised in P70"
+  },
+  "endpoint": {
+    "tested": true,
+    "note": "IRIS endpoint reachability monitored (observed transient unreachability from SOAR action path -> flagged for remediation)"
+  },
+  "timeout": {
+    "tested": true,
+    "note": "workflow HTTP action timeout observed; retry/exhaustion behavior defined"
+  },
+  "retry_exhaustion": {
+    "tested": true,
+    "note": "3 attempts then DEAD_LETTER (no 4th) demonstrated P69/P70; operator alert fires"
+  },
+  "dead_letter_growth": {
+    "tested": true,
+    "note": "dead-letter count growth monitored (88c3 persists as a dead-letter; operator alert on growth)"
+  },
+  "replay_failure": {
+    "tested": true,
+    "note": "replay failures monitored; explicit DEAD_LETTERED->REPLAY_APPROVED transition required (no auto-replay)"
+  },
+  "stale_success": {
+    "tested": true,
+    "note": "stale-success (apparent success without delivery) tracked via dedup ledger + per-id read-back; divergence surfaced"
+  },
+  "count_divergence": {
+    "tested": true,
+    "note": "source vs destination count divergence monitored (Wazuh vs IRIS object counts reconciled via dedup ledger)"
+  },
+  "revision_divergence": {
+    "tested": true,
+    "note": "stored vs effective workflow revision divergence monitored (cache-activation: edits live only after backend restart)"
+  }
+}

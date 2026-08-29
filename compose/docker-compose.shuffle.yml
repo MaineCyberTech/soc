@@ -42,6 +42,10 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - /opt/mct-security-stack/data/shuffle/apps:/shuffle-apps
       - /opt/mct-security-stack/data/shuffle/files:/shuffle-files
+      # Service-scoped trust: only shuffle-backend receives the internal CA and the
+      # scoped IRIS key (no admin/credential material mounted into this container).
+      - /opt/mct-security-stack/ops/backups/tls/20260828T234243Z/ca.crt:/run/secrets/iris-ca.crt:ro
+      - /opt/mct-security-stack/ops/backups/agents/iris-shuffle.env:/run/secrets/iris-shuffle.env:ro
     environment:
       - SHUFFLE_APP_HOTLOAD_FOLDER=/shuffle-apps
       - SHUFFLE_FILE_LOCATION=/shuffle-files

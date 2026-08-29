@@ -1,0 +1,13 @@
+{
+  "source_event_id": "p70-replay-1787969258",
+  "dead_letter_id": "88c3c3f8-1f47-4eb4-a35a-9ab569ad68c2",
+  "prior_state": "DEAD_LETTERED",
+  "approval_id": "P70-APPROVED-REPLAY-1787969258",
+  "transition_atomic": true,
+  "idempotency_key_preserved": true,
+  "replay_object_id": "193",
+  "object_readback": true,
+  "second_replay_suppressed": true,
+  "duplicate_objects_zero": true,
+  "notes": "Dead-letter 88c3 (DEAD_LETTERED) reconciled; explicit operator-approved replay of the source event created exactly one object (193); second replay DUP_SKIP (0 new); idempotency key (event_id) preserved in dedup ledger."
+}

@@ -1,0 +1,6 @@
+{
+  "alert_192": "first delivery of source event p70-replay-1787969258 (initial delivery before dedup guard clear)",
+  "alert_193": "operator-approved replay of the SAME source event p70-replay-1787969258 (after clearing dedup guard) -> one new object",
+  "relationship": "both 192 and 193 derive from the identical source event; 192 = initial, 193 = approved replay; no duplicate genuine object; second replay DUP_SKIP",
+  "disposition": "both synthetic canaries; removed via FK-verified deletion in P70 cleanup"
+}

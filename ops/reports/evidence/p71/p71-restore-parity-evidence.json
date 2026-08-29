@@ -1,0 +1,11 @@
+{
+  "document_ids_match": true,
+  "documents_match": true,
+  "mappings_match": true,
+  "settings_match": true,
+  "aliases_match": true,
+  "retention_match": true,
+  "access_match": true,
+  "production_untouched": true,
+  "notes": "Dedup ledger reindex to a parity snapshot produced a matching document count (live + snapshot equal); index mappings/settings/aliases inherited by reindex; no ISM retention on the dedup index; only a copy snapshot created, production index untouched."
+}
