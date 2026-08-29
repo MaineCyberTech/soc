@@ -1,0 +1,12 @@
+{
+  "wazuh_alert_id": "p72-canary-1787974900",
+  "integratord_record_id": "wazuh-iris-dedup-000001/_doc/p72-canary-1787974900",
+  "hook_id": "webhook_e3fec000-555f-4e81-9497-77b7c91c5b98",
+  "shuffle_execution_id": "00cd3eee-1d36-4551-81b3-ecd465794f6e",
+  "workflow_revision": "c6b3fcd8@edited-1787895384",
+  "iris_object_id": "210",
+  "object_readback": true,
+  "unique_marker_match": true,
+  "post_reschedule": true,
+  "notes": "End-to-end correlation for strict_e2e canary: synthetic Wazuh alert id p72-canary-1787974900 -> webhook e3fec000 -> Shuffle execution 00cd3eee-1d36-4551-81b3-ecd465794f6e -> workflow c6b3fcd8 (revision c6b3fcd8@edited-1787895384) -> exactly one IRIS object 210, read back via dedup ledger; unique marker (event id) matched; executed after the observed action-service reschedule (post_reschedule=true). Canary object + ledger entry cleaned after read-back."
+}

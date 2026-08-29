@@ -1,0 +1,14 @@
+{
+  "action_service": "shuffle-tools_1-2-0 (Swarm action service executing the IRIS POST)",
+  "desired_network": "mct-security (+ shuffle_swarm_executions)",
+  "dns_name": "iriswebapp_nginx",
+  "first_reschedule": true,
+  "second_reschedule": true,
+  "dns_pass": true,
+  "tcp_pass": true,
+  "tls_pass": true,
+  "scoped_secret_present": true,
+  "ca_present": true,
+  "strict_e2e_pass": true,
+  "notes": "Action service (shuffle-tools) observed rescheduled >=2 times (swarm history: Failed/Shutdown/Running across nodes). Scoped IRIS key + internal CA are bind-mounted from host into shuffle-backend:/run/secrets, so they survive ANY reschedule by construction. Post-reschedule live checks: iriswebapp_nginx resolves from backend AND shuffle-tools; canary 210 (synthetic Wazuh alert -> webhook e3fec000 -> workflow c6b3fcd8 -> IRIS POST with verify=/run/secrets/iris-ca.crt) ROUTED 200 and created exactly one IRIS object (210), read back via dedup ledger; object + ledger entry cleaned after. tcp_pass/tls_pass proven by the successful TLS-verified delivery."
+}

@@ -1,0 +1,12 @@
+{
+  "source_event_id": "p72-exact-once-1787975031",
+  "prior_state": "DEAD_LETTERED",
+  "no_existing_object": true,
+  "approval_id": "P72-APPROVED-REPLAY-1787975031",
+  "atomic_transition": true,
+  "idempotency_key_preserved": true,
+  "one_object": true,
+  "object_readback": true,
+  "second_replay_suppressed": true,
+  "notes": "Exactly-once replay demonstrated: source event p72-exact-once-1787975031 (replay of dead-letter 88c3c3f8-1f47-4eb4-a35a-9ab569ad68c2) replayed under operator approval -> exactly one IRIS object (211) created and read back via dedup ledger; a second identical replay returned DUP_SKIP (0 new objects). DELIVERED state is never cleared by replay. Partial-success outcomes are routed to reconciliation (separate control). The canonical persistent dead-letter 88c3c3f8-1f47-4eb4-a35a-9ab569ad68c2 remains DEAD_LETTERED."
+}

@@ -1,0 +1,8 @@
+{
+  "endpoint_real_fault": true,
+  "stale_success_real_fault": true,
+  "count_divergence_real_fault": true,
+  "alert_routed": true,
+  "recovery_observed": true,
+  "notes": "The real DNS fault after a swarm reschedule of shuffle-tools (iriswebapp_nginx unresolved from the action path) was detected by (a) endpoint monitor, (b) stale-success monitor (apparent ROUTED without actual IRIS object, tracked via dedup-ledger read-back), and (c) count-divergence monitor (Wazuh source vs IRIS destination counts). Canary 210 later ROUTED 200 -> recovery_observed=true. Pipeline health is layered and was NOT called HEALTHY while the action path was degraded."
+}
