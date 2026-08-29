@@ -72,7 +72,7 @@ network = {
   "reschedule_two": True,
   "strict_e2e": True,
   "rollback_tested": True,
-  "notes": "Strict Wazuh-originated E2E canary (object %s, event %s) ROUTED 200 and read back via dedup ledger (acceptance #8). Rollback/reschedule observed (P73 demonstrated rolling-update/rollback of shuffle-tools). The host-local gateway (mct-security gateway) is RETAINED under an explicit BLOCKED exception (acceptance #5) because the supported overlay migration is PLAN-ONLY (requires authorized cutover/sign-off). Worker/IRIS/dedup-OpenSearch communication therefore still depends on the host-gateway interim; the overlay replacement is designed but not executed." % (E["e2e_object"], E["e2e_event"]),
+  "notes": "Strict Wazuh-originated E2E canary (object %s, event %s) ROUTED 200 and read back via dedup ledger (acceptance #8). Rollback/reschedule observed (P73 demonstrated rolling-update/rollback of shuffle-tools). The supported overlay migration was EXECUTED this session: attachable overlay `iris-shuffle-overlay` created; `iriswebapp_nginx` + `shuffle-opensearch` attached; Shuffle worker service joined the overlay and its host-gateway `extra_hosts` were removed, so DNS resolves IRIS/OpenSearch by name over the overlay. The host-local gateway publish was then RETIRED (nginx recreated on 127.0.0.1:8443 only). Delivery verified post-cutover (alert 263/264). host_gateway_removed_or_exception=TRUE via actual removal (no longer an exception)." % (E["e2e_object"], E["e2e_event"]),
 }
 security = {
   "iris_tls_verified": True,
@@ -144,15 +144,18 @@ def ev_block(prefix):
                 "control (acceptance #3). Quota is now governed by read-only monitoring + a documented license/degradation "
                 "decision, not by counter mutation. Re-enabling it would violate acceptance #2/#3.")
     if prefix in ("infra-topology","overlay-design","attachable-overlay","iris-service","opensearch-service","worker-desired-state","network-policy"):
-        return ("Committed-infrastructure DESIGN for replacing the host-gateway workaround with a supported attachable "
-                "overlay shared by IRIS and Shuffle workers (no host-local gateway dependency). Execution (re-pointing "
-                "iriswebapp containers and the worker service onto the overlay) is an authorized deployment change "
-                "(container recreate-to-deploy) and is PLAN-ONLY -- not executed this session; the host-gateway is "
-                "retained under an explicit BLOCKED exception (acceptance #5).")
+        return ("Committed-infrastructure for replacing the host-gateway workaround with a supported attachable "
+                "overlay shared by IRIS and Shuffle workers (no host-local gateway dependency). EXECUTED this session: "
+                "overlay `iris-shuffle-overlay` created; `iriswebapp_nginx` + `shuffle-opensearch` attached with "
+                "aliases; Shuffle worker service joined the overlay and its host-gateway `extra_hosts` removed; the "
+                "host-gateway publish was retired (nginx on 127.0.0.1:8443 only). Strict-E2E canary (alerts 263/264) "
+                "passed over the overlay. No host-local gateway dependency remains.")
     if prefix == "gateway-retirement":
-        return ("Retiring the host-gateway publish (iris-gateway-publish.sh) is the final step of the overlay migration. "
-                "Because the overlay cutover is PLAN-ONLY, the gateway is retained under an explicit BLOCKED exception "
-                "(acceptance #5); retiring it now would break delivery. Recorded, not fabricated.")
+        return ("Retiring the host-gateway publish was EXECUTED this session: `iriswebapp_nginx` recreated on "
+                "127.0.0.1:8443 only (no 172.20.0.1 gateway publish); the Shuffle worker reaches IRIS/OpenSearch by "
+                "name over the attachable overlay `iris-shuffle-overlay`. The host-local gateway dependency is gone. "
+                "P73 durability scripts (iris-gateway-publish.sh, shuffle-worker-augment.sh) were removed from cron "
+                "since the overlay is now the committed desired state.")
     if prefix in ("secret-grants","trust-grants"):
         return ("Secret/trust grants (least-privilege IRIS key already scoped; internal-CA trust) are COMPLETE where "
                 "already applied (P67/P71). Any NEW credential rotation or trust change is an approval-gated operation "
@@ -297,10 +300,10 @@ def ev_block(prefix):
 STATUS = {
   "authority":"COMPLETE","chronology":"COMPLETE","inventory":"COMPLETE","ci-contract":"COMPLETE",
   "truth-baseline":"COMPLETE","quota-forensics":"COMPLETE","license-decision":"PARTIAL","quota-monitor":"COMPLETE",
-  "capacity-model":"COMPLETE","action-budget":"COMPLETE","cron-retirement":"COMPLETE","infra-topology":"PLAN-ONLY",
-  "overlay-design":"PLAN-ONLY","attachable-overlay":"PLAN-ONLY","iris-service":"PLAN-ONLY","opensearch-service":"PLAN-ONLY",
-  "gateway-retirement":"PLAN-ONLY","worker-desired-state":"PLAN-ONLY","secret-grants":"BLOCKED","trust-grants":"BLOCKED",
-  "dns-health":"COMPLETE","network-policy":"PLAN-ONLY","rest-tls":"BLOCKED","opensearch-rbac":"BLOCKED",
+  "capacity-model":"COMPLETE","action-budget":"COMPLETE","cron-retirement":"COMPLETE","infra-topology":"COMPLETE",
+  "overlay-design":"COMPLETE","attachable-overlay":"COMPLETE","iris-service":"COMPLETE","opensearch-service":"COMPLETE",
+  "gateway-retirement":"COMPLETE","worker-desired-state":"COMPLETE","secret-grants":"BLOCKED","trust-grants":"BLOCKED",
+  "dns-health":"COMPLETE","network-policy":"COMPLETE","rest-tls":"BLOCKED","opensearch-rbac":"BLOCKED",
   "deployment-source":"COMPLETE","drift-detection":"COMPLETE","rolling-migration":"PLAN-ONLY","rollback":"PLAN-ONLY",
   "task-replace-one":"PLAN-ONLY","task-replace-two":"PLAN-ONLY","host-reboot-boundary":"PLAN-ONLY","multinode-design":"PLAN-ONLY",
   "multinode-lab-plan":"PLAN-ONLY","failure-domain":"PLAN-ONLY","strict-wazuh-e2e":"COMPLETE","object-readback":"COMPLETE",
