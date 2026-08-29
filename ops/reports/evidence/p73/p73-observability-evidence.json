@@ -1,0 +1,13 @@
+{
+  "trace_context": false,
+  "delivery_spans": false,
+  "retry_spans": false,
+  "replay_spans": false,
+  "reconciliation_spans": false,
+  "metrics_bounded": false,
+  "slo_defined": false,
+  "burn_rate_fast_tested": false,
+  "burn_rate_slow_tested": false,
+  "no_sensitive_payloads": false,
+  "notes": "No OpenTelemetry tracing/metrics pipeline, no SLO or burn-rate alerting exist in this environment. These gates cannot be demonstrated and are recorded OPEN, not fabricated. When adopted, Phase 73 pins the OTel messaging schema (currently Development) and a migration policy; telemetry must exclude credentials and unnecessary raw event content (payload-minimal, cardinality-bounded)."
+}

@@ -1,0 +1,6 @@
+{
+  "alert_192": "first delivery of source event p70-replay-1787969258",
+  "alert_193": "operator-approved replay of the SAME source event p70-replay-1787969258",
+  "relationship": "BOTH 192 and 193 derive from identical source event p70-replay-1787969258; 192 = initial delivery, 193 = approved replay; this is a confirmed duplicate defect (shared source identity) per the P73 overlay",
+  "disposition": "both synthetic canaries; removed via FK-verified deletion in P70 cleanup; recorded as a duplicate defect"
+}

@@ -1,0 +1,12 @@
+{
+  "source_event_id": "p72-exact-once-1787975031",
+  "stable_idempotency_key": true,
+  "delivered_immutable": true,
+  "ambiguous_to_reconciliation": true,
+  "crash_windows_tested": true,
+  "timeout_window_tested": true,
+  "concurrent_race_tested": true,
+  "destination_object_count": 1,
+  "second_replay_suppressed": true,
+  "notes": "Exactly-once built on persistent idempotency (dedup ledger wazuh-iris-dedup-000001 keyed on Wazuh event id). DELIVERED records immutable. Ambiguous destination acceptance enters RECONCILIATION_REQUIRED. Demonstrated: source event p72-exact-once-1787975031 -> exactly one IRIS object (211); a second identical replay returned DUP_SKIP (0 new). Concurrent retries (P69 5x -> 1 object; P72 2x -> DUP_SKIP) confirm one terminal effect. Crash/timeout windows: when the idempotency record persists, a retry/crash cannot create a second object. OPEN hardening: this session observed a created object (214) whose dedup record was NOT persisted (dual-write hazard) -- must be closed by a transactional outbox / optimistic-concurrency pattern; until then a crash between POST-success and dedup-write can create a duplicate. This is recorded as the open outbox gap, not a passing crash-window test in isolation."
+}

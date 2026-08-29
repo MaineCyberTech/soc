@@ -1,0 +1,13 @@
+{
+  "desired_state_hash": "916e6b49bcff7819fc53ffa0a6ff38a3f31330fefee18f58b67a035af4441a57",
+  "action_service": "shuffle-tools_1-2-0",
+  "overlay_network": "mct-security (+ shuffle_swarm_executions)",
+  "stable_dns": true,
+  "reschedule_one": true,
+  "reschedule_two": true,
+  "node_evacuation": false,
+  "healthcheck_noninvasive": true,
+  "strict_e2e_after_each": true,
+  "rollback_tested": false,
+  "notes": "Action network committed in Swarm desired state (sha 916e6b49bcff of docker-compose.shuffle.yml); action service shuffle-tools shares overlay mct-security with iriswebapp_nginx (stable_dns verified: resolves consistently). Reschedules observed >=2x; post-reschedule strict E2E canary (object 213) ROUTED 200. Non-invasive health check (DNS/TLS verify + scoped-auth read-back, no IRIS alert created) passes. OPEN: node_evacuation (drain a Swarm node) and rolling-update/rollback were NOT performed -- these are authorized infrastructure operations, not executed this session. The transient DNS/IRIS fault observed this session (orphaned object 214: created without a persisted dedup record) is the real dual-write hazard the outbox pattern must close."
+}

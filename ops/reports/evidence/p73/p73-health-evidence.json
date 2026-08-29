@@ -1,0 +1,14 @@
+{
+  "wazuh": "HEALTHY",
+  "integratord": "HEALTHY",
+  "hook": "HEALTHY",
+  "backend": "HEALTHY",
+  "action_worker": "HEALTHY",
+  "iris_dns": "HEALTHY",
+  "iris_tls": "HEALTHY",
+  "iris_auth": "HEALTHY",
+  "destination_fresh": "HEALTHY",
+  "monitors_fresh": "HEALTHY",
+  "divergence_clear": "HEALTHY",
+  "notes": "Live non-invasive probe (this session): iriswebapp_nginx resolves; TLS verified (Verify return code 0) with mounted CA; scoped IRIS token accepted (GET returned 404 not 401, i.e. auth passed); strict canary 213 read back via dedup ledger (destination_fresh); recent real-fault monitor evidence (monitors_fresh); no unexplained source/destination divergence. Pipeline is layered and was NOT called HEALTHY during the transient fault window."
+}

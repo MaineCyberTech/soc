@@ -1,0 +1,5 @@
+{
+  "pattern": "transactional outbox",
+  "gap": "current dual-write (IRIS POST then OpenSearch dedup PUT) is unsafe; observed orphan object 214 created without a persisted dedup record this session",
+  "recommended": "persist the outbound delivery durably with the local state change, then relay via a separate process with optimistic-concurrency/idempotent consumer semantics"
+}
