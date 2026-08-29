@@ -63,6 +63,28 @@ evidence; they are not deleted. One row per unique work item.
 | (OPEN-SEC-01) | OpenSearch REST TLS + minimal dedup RBAC | **CLOSED (implemented 2026-08-29, owner-approved)** — `shuffle-opensearch` runs the security plugin with TLS (`https://shuffle-opensearch:9200`, internal CA under `data/opensearch-tls`) and RBAC (anonymous → 401; `admin` basic-auth → 200). Shuffle backend connects over HTTPS (`SHUFFLE_OPENSEARCH_USERNAME=admin`, mounted internal CA bundle). A scoped `dedup_writer` role + internal user (least-privilege on `wazuh-iris-dedup-000001`/`wazuh-iris-dedup-*`) replaces prior admin/anonymous dedup access; live workflow `c6b3fcd8` dedup code uses HTTPS + `dedup_writer` basic-auth (`verify=False` from the app container, which lacks the OpenSearch CA). Signed exception (acceptance #6) resolved by implementation. Credentials gitignored; no secret committed. | current-state-20260829-p74.md; compose/docker-compose.shuffle.yml; data/opensearch-tls; ops/backups/agents/iris-shuffle.env |
 | (OPEN-P74-E2E) | Strict Wazuh-originated E2E + item read-back (acceptance #8) | **CLOSED (verified)** — synthetic canary (event `p74-e2e-1787983207`) → workflow `c6b3fcd8` → IRIS POST → real IRIS alert **262**; dedup ledger `wazuh-iris-dedup-000001` recorded it (`p74-e2e-1787983207` → 262). Object read-back PASS. No production incident created. | current-state-20260829-p74.md; ops/reports/evidence/p74/p74-network-evidence.json |
 
+## 5. Phase 75 Additions (2026-08-29)
+
+Phase 75 executed the full 690-prompt pack (`/home/user/mct-p75/`); 690 reports at
+`ops/reports/generated/phase75/`, evidence JSONs at `ops/reports/evidence/phase75/`, canonical
+advanced to `current-state-20260829-p75.md`, final operator report
+`final-phase75-operator-report-20260829T1410Z.md`. OPEN-SEC-01 (P74) carries CLOSED. Verdict
+distribution: PASS 320, PARTIAL 140, BLOCKED/gated 210, DEFERRED 10. Pack validators return the
+honest expected OPEN pattern (gated items not executed).
+
+| ID | Pri | Title | Status-today | Owner | Deps | Evidence ref |
+|---|---|---|---|---|---|---|
+| OW-75-01 (=P75-CAP) | P1 | Supported capacity unresolved (no counter mutation) | OPEN — owner entitlement or quota-safe degradation decision required | Platform + SOC lead | license decision | current-state-20260829-p75.md; ops/scripts/p74-usage-monitor.sh |
+| OW-75-02 (=P75-FAULT) | P1 | Effectively-once fault-injection certs (crash-*, response-loss, partial-success, replay-race, concurrency, timeout-ambiguity) | BLOCKED — require destructive/restart/topology approval | SOAR ops | owner approval | ops/reports/evidence/phase75/phase75-evidence-effectively-once.json |
+| OW-75-03 (=P75-OVERLAY-ENC) | P2 | Overlay encryption decision | DEFERRED — pending measured perf/compat evidence (IPsec cost) | Infra owner | research-notes | current-state-20260829-p75.md |
+| OW-75-04 (=P75-RECREATE) | P1 | Worker / OpenSearch recreation from governed source | BLOCKED — topology/restart gate | Infra owner | approval | ops/reports/evidence/phase75/phase75-evidence-recreate.json |
+| OW-75-05 (=P75-NEGNET) | P2 | Negative network / membership-control tests | BLOCKED — network/security gate | Infra + SOC | approval | ops/reports/evidence/phase75/phase75-evidence-security.json |
+| OW-75-06 (=P75-OUTBOX) | P3 | Outbox PoC / decision | DEFERRED — new approval/infra | SOAR ops | approval | current-state-20260829-p75.md |
+| OW-75-07 (=P75-LICENSE) | P1 | License selection (Shuffle 25K quota recurs) | OPEN — owner license gate | Platform | owner decision | OPEN-ENV-03 (P74) |
+| OW-75-08 (=P75-IRIS-TLS) | P2 | IRIS TLS not enabled | OPEN — remediation target (OpenSearch TLS done) | SOC | security approval | current-state-20260829-p75.md |
+| OW-75-09 (=P75-PACKET) | P3 | Packet production | OPEN — unauthorized per overlay constraints | — | n/a | AGENTS-PHASE75-OVERLAY.md |
+| OW-75-10 (=P75-DR) | P2 | Full DR / restore drill | DEFERRED by design — full DR deferred | Infra + SOC | approval | current-state-20260829-p75.md |
+
 ## 4. Standing Rule
 
 Future reports reference ONLY these OW IDs for tracked work. Canonical copies:

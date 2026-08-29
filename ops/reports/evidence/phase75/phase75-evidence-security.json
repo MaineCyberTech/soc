@@ -1,0 +1,11 @@
+{
+  "overlay_members_audited": true,
+  "encryption_decided": false,
+  "iris_tls_verified": false,
+  "opensearch_tls_verified": true,
+  "dedup_role_minimal": true,
+  "backend_admin_reduced_or_exception": true,
+  "separate_credentials": true,
+  "negative_network_tests": false,
+  "anonymous_denied": true
+}

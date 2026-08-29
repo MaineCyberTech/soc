@@ -5,7 +5,7 @@
 **Phase:** 74
 **Classification:** Internal / Operational summary
 **Owner:** MCT SOC
-**Verdict:** **COMPLETE (supported capacity governance established; committed-infra replacements designed/recorded; gated items OPEN/BLOCKED with explicit exceptions — no fabricated PASS)**
+**Verdict:** **COMPLETE (supported capacity governance established; committed-infra replacements designed/recorded; gated items OPEN/BLOCKED with explicit exceptions — no fabricated PASS)** — *Addendum 2026-08-29: OPEN-SEC-01 (OpenSearch REST TLS+RBAC) implemented and CLOSED; see §3.*
 **Canonical truth:** `ops/reports/canonical/current/current-state-20260829-p74.md`
 **Supersedes:** all prior P73/P74 "verified delivery / dev-workaround" framing; this report reflects the corrected, supported posture.
 
@@ -26,7 +26,7 @@ OPEN/BLOCKED with explicit exceptions (acceptance #5/#6), not fabricated as PASS
 | 3 | Quota reset cron disabled as production control | **PASS** | `p73-reset-shuffle-quota.sh` removed from cron |
 | 4 | Usage / remaining-capacity / projected-exhaustion monitors live | **PASS** | `ops/scripts/p74-usage-monitor.sh` (read-only) in cron `*/15`; warning/critical tested |
 | 5 | Worker/IRIS/dedup comms in governed state w/o host-gateway, OR explicitly BLOCKED | **PASS** | overlay `iris-shuffle-overlay` EXECUTED; worker `extra_hosts` removed; DNS resolves IRIS/OpenSearch by name; host-gateway publish retired (nginx on 127.0.0.1:8443 only); post-cutover E2E (alerts 263/264) PASS |
-| 6 | OpenSearch REST TLS + min RBAC, OR signed exception open | **OPEN (signed exception)** | REST TLS/RBAC BLOCKED (sign-off required); security plugin currently disabled (`DISABLE_SECURITY_PLUGIN=true`); full enablement would require editing the running workflow dedup code + security bootstrap (risk to verified delivery) — signed exception retained per acceptance #6 |
+| 6 | OpenSearch REST TLS + min RBAC | **CLOSED (implemented 2026-08-29, owner-approved)** | security plugin + TLS enabled (`DISABLE_SECURITY_PLUGIN=false`, internal CA); RBAC enforced (anon 401 / admin 200); backend over HTTPS (`SHUFFLE_OPENSEARCH_USERNAME=admin`); scoped `dedup_writer` role/user least-privilege on the dedup index; workflow `c6b3fcd8` dedup code uses HTTPS + `dedup_writer` basic-auth; E2E canary DUP_SKIP verified, no IRIS alert. Signed exception (acceptance #6) resolved by implementation. |
 | 7 | Two replacements pass; cross-node claims prohibited w/o multi-node | **PASS** | (1) quota→supported governance achieved (monitoring + decision, no mutation); (2) host-gateway→overlay EXECUTED (alerts 263/264). Cross-node claims still prohibited (single-node Swarm) |
 | 8 | Strict Wazuh-originated E2E + read-back after migration | **PASS** | canary `p74-e2e-1787983207` → IRIS alert **262**; dedup ledger recorded; read-back PASS |
 | 9 | 192/193 recorded historical duplicate defect | **PASS** | both derive from `p70-replay-1787969258`; FK-removed; recorded |
@@ -48,8 +48,7 @@ OPEN/BLOCKED with explicit exceptions (acceptance #5/#6), not fabricated as PASS
 
 - **OPEN-ENV-03** — 25K quota recurs; needs a license or quota-safe degradation (PLAN-ONLY enforcement). Dev reset retired.
 - **OPEN-ENV-04** — **CLOSED (executed, owner-approved)**: overlay migration done; host-gateway dependency removed; post-cutover E2E (alerts 263/264) PASS. P73 durability scripts removed from cron.
-- **OPEN-SEC-01** — OpenSearch REST TLS + minimal dedup RBAC: security plugin currently disabled (`DISABLE_SECURITY_PLUGIN=true`). Full enablement requires bootstrapping the security plugin + editing the running workflow dedup code (risk to the verified delivery); **signed exception retained** per acceptance #6.
-- **OPEN-SEC-01** — OpenSearch REST TLS + minimal dedup RBAC BLOCKED (sign-off required); signed exception OPEN.
+- **OPEN-SEC-01** — **CLOSED (implemented 2026-08-29, owner-approved):** OpenSearch security plugin + TLS enabled (internal CA under `data/opensearch-tls`); RBAC enforced (anon 401 / admin 200); backend connects over HTTPS (`SHUFFLE_OPENSEARCH_USERNAME=admin`, mounted CA bundle); scoped `dedup_writer` role + internal user (least-privilege on `wazuh-iris-dedup-000001`/`wazuh-iris-dedup-*`) replaces prior admin/anonymous dedup access; workflow `c6b3fcd8` dedup code uses HTTPS + `dedup_writer` basic-auth (app container reads creds from bind-mounted `/shuffle-files/iris-shuffle.env`); E2E canary DUP_SKIP verified with no IRIS alert. Signed exception (acceptance #6) resolved by implementation. Details in canonical `current-state-20260829-p74.md`.
 - **Effectively-once crash/timeout windows** — not fault-injected; safety holds while idempotency record persists; outbox hardening remains open.
 - **Observability** — no dedicated OTel collector; SLO program partial.
 - **Packet production / full DR** — unauthorized / deferred.
@@ -67,8 +66,8 @@ OPEN/BLOCKED with explicit exceptions (acceptance #5/#6), not fabricated as PASS
 Phase 74 establishes the **supported** posture the P73 workarounds only approximated: app-run
 governance without counter mutation (monitors live, reset cron retired), a verified strict-Wazuh
 E2E canary (alert 262), durable-only AGENTS, and a corrected canonical. The two infrastructure
-replacements are honestly recorded — quota governance **achieved**; overlay cutover and OpenSearch
-REST TLS/RBAC are **designed/BLOCKED with explicit exceptions** pending owner sign-off (acceptance
-#5/#6). No fabricated PASS; packet production and full DR remain out of scope. Recommended next
-owner decisions: (a) obtain a Shuffle license or approve quota-safe degradation (OPEN-ENV-03);
-(b) approve the overlay cutover + OpenSearch REST TLS/RBAC (OPEN-ENV-04 / OPEN-SEC-01).
+replacements are honestly recorded — quota governance **achieved**; overlay cutover **CLOSED**
+(OPEN-ENV-04) and OpenSearch REST TLS/RBAC **CLOSED** (OPEN-SEC-01, implemented 2026-08-29 post-P74
+with owner sign-off). No fabricated PASS; packet production and full DR remain out of scope.
+Recommended next owner decisions: (a) obtain a Shuffle license or approve quota-safe degradation
+(OPEN-ENV-03); (b) [OPEN-ENV-04 / OPEN-SEC-01 resolved by implementation].

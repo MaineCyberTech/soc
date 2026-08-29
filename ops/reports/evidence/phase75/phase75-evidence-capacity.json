@@ -1,0 +1,13 @@
+{
+  "edition": "single-node community (supported capacity unresolved)",
+  "license_state": "pending-owner-decision",
+  "supported_limit": null,
+  "usage_readonly": true,
+  "current_usage": "reported read-only",
+  "remaining_capacity": null,
+  "projected_exhaustion": null,
+  "warning_tested": false,
+  "critical_tested": false,
+  "quota_reset_absent": true,
+  "degradation_tested_or_gate_open": true
+}

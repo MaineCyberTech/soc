@@ -1,0 +1,13 @@
+{
+  "desired_state_hash": null,
+  "worker_old_id": null,
+  "worker_replacement_one": false,
+  "worker_replacement_two": false,
+  "opensearch_old_id": null,
+  "opensearch_new_id": null,
+  "dns_after_each": false,
+  "tls_after_each": false,
+  "rbac_after_each": false,
+  "strict_e2e_after_each": false,
+  "rollback_tested": false
+}
