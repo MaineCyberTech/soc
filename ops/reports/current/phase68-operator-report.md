@@ -46,8 +46,10 @@ truth. Historical reports are not rewritten in place.
 - **Shuffle cache note:** Shuffle caches workflows in `shuffle-backend`; the OpenSearch doc edits
   (retry, `verify=CA`, dedup) only went live after restarting `shuffle-backend`. Live doc:
   `ops/backups/tls/wf_live_v12.json`.
-- Synthetic verification artifacts: IRIS alerts `155`, `156`, `159`–`164` (created by canaries; IRIS
-  API in this version does not expose alert deletion; safe to remove via UI/DB).
+- Synthetic verification artifacts (canary/probe alerts `150`–`154`,`155`,`156`,`157`,`159`–`164`)
+  were cleaned from IRIS via FK-verified direct DB delete; genuine delivery proof set `140`–`149`
+  preserved. Alert `158` (source_ref `100065`) left as ambiguous (likely a canary). IRIS API in this
+  version does not expose alert deletion, so cleanup was done via DB with FK pre-check.
 
 ## Designed / Deferred (honest, NO-GO without sign-off)
 - Packet production UNAUTHORIZED; DR DEFERRED.

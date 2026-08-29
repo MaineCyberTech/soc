@@ -52,8 +52,10 @@ earlier was corrected in Phase 66 and is **not** re-opened here.
 - **Retry/dead-letter runtime-confirmed.** The canary execution exercised the 3-attempt loop,
   proving the running workflow reflects OpenSearch doc `c6b3fcd8` (P67 wiring is effective at
   runtime, not just on paper).
-- Synthetic verification artifact: IRIS alert `155` was created by the canary and intentionally
-  left (IRIS API in this version does not expose alert deletion); safe to remove via UI/DB.
+- Synthetic verification artifacts created by canaries/probes (alerts `150`–`154`, `155`, `156`,
+  `157`, `159`–`164`) were cleaned from IRIS via FK-verified direct DB delete; the genuine delivery
+  proof set `140`–`149` is preserved. Alert `158` (source_ref `100065`) was left as ambiguous (likely a
+  canary) to avoid deleting a possibly-genuine alert.
 
 ## 3. Designed / Deferred (NO-GO without sign-off)
 
@@ -71,6 +73,10 @@ earlier was corrected in Phase 66 and is **not** re-opened here.
   CA-validated TLS. `verify=False` exception removed.
 - Rollback: OpenSearch doc `c6b3fcd8` has `_source` backup at `ops/backups/tls/wf_backup_verifyfalse.json`
   (re-PUT to revert to `verify=False`); original self-signed cert backed up in `ops/backups/tls/`.
+- Cert lifecycle: internal CA (`ops/backups/tls/ca.crt`) + IRIS server cert are valid 10 years.
+  Rotation: re-issue server cert from `ops/backups/tls/ca.key`, replace
+  `data/dfir-iris/iris-web/certificates/web_certificates/iris_dev_*.pem`, reload nginx, keep
+  `verify='/run/secrets/iris-ca.crt'` unchanged (CA does not change).
 
 ### Idempotency + guarded replay — IMPLEMENTED via workaround (2026-08-28)
 - **Blocker:** IRIS `/api/alerts/list` returns HTTP 500, so duplicates cannot be pre-checked via IRIS.
