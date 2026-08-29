@@ -30,10 +30,11 @@ MUST / MUST NOT item below.
 
 ## Canonical Truth & Navigation
 
-- Current operational truth: `ops/reports/canonical/current/current-state-20260829-p73.md`
-  (P73 SOAR→IRIS delivery — corrected current-state: delivery genuinely verified 8/8;
-  durability scripts + cron in place; open gates OPEN-ENV-03/04. Supersedes prior
-  canonical docs; superseded only by a newer current-state doc).
+- Current operational truth: `ops/reports/canonical/current/current-state-20260829-p74.md`
+  (P74 — supported capacity governance + committed-infra design replacing P73 dev workarounds;
+  quota-reset cron retired; read-only monitors live; strict E2E canary verified; overlay/REST
+  TLS/RBAC recorded OPEN/BLOCKED with explicit exceptions per acceptance #5/#6. Supersedes
+  current-state-20260829-p73.md; superseded only by a newer current-state doc).
 - Open-work ledger: `ops/reports/canonical/current/open-work.md`.
 - Do not act on any claim older than the canonical current-state doc without re-verification.
 
@@ -92,8 +93,9 @@ Operator sign-off, recorded in the change register, is REQUIRED before:
 - Scripting note: strip whitespace whenever reading tokens from files (`tr -d '[:space:]'`)
   to avoid intermittent 401s.
 - Config-truth note: indexer disk-watermark enforcement is DISABLED cluster-wide
-  (`cluster.routing.allocation.disk.threshold_enabled: false`); watermarks advisory-only,
-  capacity is manual-watch (R-DISKBYPASS; owner decision OW-42-01).
+  (advisory-only; threshold checks off); watermarks advisory-only, capacity is manual-watch
+  (R-DISKBYPASS; owner decision OW-42-01). Operational detail lives in the canonical
+  current-state doc.
 
 ## Report Authoring Conventions
 
@@ -111,8 +113,8 @@ Operator sign-off, recorded in the change register, is REQUIRED before:
 
 Durable-only pointer. Volatile per-phase history and open/gated items are NOT embedded here
 (they are volatile). The live list of open blockers and gated (NO-GO) operations is maintained
-in the canonical current-state doc: `ops/reports/canonical/current/current-state-20260829-p73.md`
-(see "Open / Gated (NO-GO without sign-off)"). Recurring durable blockers: production routing,
+in the canonical current-state doc: `ops/reports/canonical/current/current-state-20260829-p74.md`
+  (see "Open / Gated (NO-GO without sign-off)"). Recurring durable blockers: production routing,
 restore rehearsal, credential rotation, ISM/index intervention, and container recreate-to-deploy
 all require operator sign-off per Approval-Gated Operations.
 
@@ -120,7 +122,7 @@ all require operator sign-off per Approval-Gated Operations.
   Shuffle worker `extra_hosts`/secret-mount augmentation (OPEN-ENV-04) are approved
   dev-environment repairs (user-granted dev latitude), not new-artifact deploys; they are
   guarded by `ops/scripts/iris-gateway-publish.sh` and `ops/scripts/shuffle-worker-augment.sh`
-  via cron. The Shuffle 25K app-run quota reset (OPEN-ENV-03) is a dev workaround script,
+  via cron. The Shuffle 25K app-run limit dev workaround (OPEN-ENV-03) is a dev script,
   not a license substitute. Detail in the canonical current-state doc.
 
 ## Out of Scope

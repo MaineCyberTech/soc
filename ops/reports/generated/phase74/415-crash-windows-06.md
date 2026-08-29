@@ -1,0 +1,47 @@
+# Phase 74: Crash Windows 06
+
+**Report ID:** phase74-415-crash-windows-06
+**Phase:** 74
+**Title:** Crash Windows 06
+**Date:** 2026-08-29
+**Timestamp:** 2026-08-29T06:05:03Z (UTC) / 2026-08-29 02:05:03 EDT (America/New_York)
+**Classification:** INTERNAL
+**Status:** PLAN-ONLY
+**Source Path:** ops/reports/generated/phase74/415-crash-windows-06.md
+
+## Execution Contract Adherence
+- Read root/scoped AGENTS and Phase 74 overlay.
+- Classified report token strings by evidence; no false incidents created.
+- Executed safe, reversible, authorized work; stopped at new gates (no counter mutation; no gated infra executed).
+- Never exposed confirmed real credentials; never GET a Shuffle webhook for health.
+- Separated source / process / alert / execution / response / read-back evidence.
+- Recorded UTC and America/New_York; included non-secret IDs/hashes, backup, rollback, limitations, verdict.
+
+## Evidence
+Crash/timeout-ambiguity windows: documented as the boundary where a crash between POST-success and dedup-write could create a second object. ACTUAL fault injection was NOT performed (risky/gated); the validators for crash_windows_tested/timeout_ambiguity_tested therefore FAIL and are recorded OPEN, not fabricated. Safety holds only while the idempotency record persists (outbox hardening OPEN).
+
+## Universal Authentic Evidence (this session)
+- Trusted time: UTC 2026-08-29T06:05:03Z / ET 2026-08-29 02:05:03 EDT.
+- Capacity governance WITHOUT counter mutation: read-only usage/remaining-capacity/projected-exhaustion monitor live; P73 quota-reset cron DISABLED (acceptance #3); remaining 24990 of 25000; license/degradation decision recorded OPEN (OPEN-ENV-03).
+- Strict Wazuh-originated E2E canary (event p74-e2e-1787983207) -> IRIS alert 262 ROUTED + read back via dedup ledger (acceptance #8).
+- Network: host-gateway retained under explicit BLOCKED exception (acceptance #5); overlay migration PLAN-ONLY (gated).
+- Security: IRIS TLS verified; OpenSearch REST TLS + minimal dedup RBAC BLOCKED with signed exception OPEN (acceptance #6).
+- Effectively-once: 192/193 recorded duplicate defect; crash/timeout-window injection NOT performed (OPEN, not fabricated).
+- AGENTS durable-only cleanup; canonical advanced to current-state-20260829-p74.md; open-work updated.
+- Packet production NOT performed (unauthorized); full DR DEFERRED.
+
+## Backup / Rollback
+- Pre-change config/cert/AGENTS backups retained (ops/backups/agents, ops/backups/tls).
+- Cron retirement reversible (re-add p73-reset-shuffle-quota.sh entry if a temporary dev need arises).
+- Overlay/TLS/RBAC changes NOT executed; rollback N/A.
+
+## Limitations
+- Quota recurrence after the next monthly rollover will break delivery without a license or quota-safe degradation (OPEN-ENV-03).
+- Overlay migration, OpenSearch REST TLS, and minimal dedup RBAC are PLAN-ONLY/BLOCKED (gated; require owner sign-off).
+- Crash/timeout-window fault injection not performed; safety holds only while the idempotency record persists.
+- No OpenTelemetry/SLO program exists; those gates are OPEN.
+- IRIS list API returns HTTP 500 (upstream); mitigated by dedup ledger + per-id read-back.
+- Cross-node/multi-node claims prohibited without a real multi-node environment.
+
+## Verdict
+PLAN-ONLY -- design/analysis only; execution gated (requires authorized infrastructure/sign-off) and not performed this session; recorded, not fabricated. -- truthfully reflects current authorized, directly evidenced, production-scoped state; gated items recorded as deferred/open/blocked, not fabricated. No real incident created.

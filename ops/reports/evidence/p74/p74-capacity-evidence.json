@@ -1,0 +1,13 @@
+{
+  "edition": "Shuffle Community/Open-Source (no paid license)",
+  "license_state": "unlicensed",
+  "limit_source": "Shuffle platform 25,000 monthly app-run limit (org_statistics.monthly_app_executions); NOT locally mutated",
+  "usage_readonly": true,
+  "remaining_capacity": 24990,
+  "projected_exhaustion": "2026-09-01 (next monthly rollover) if prior-month volume (~25.4k) recurs; current usage 10",
+  "warning_tested": true,
+  "critical_tested": true,
+  "counter_reset_disabled": true,
+  "supported_path_decided": true,
+  "notes": "Supported entitlement state established WITHOUT counter mutation. A read-only usage/remaining-capacity/projected-exhaustion monitor (ops/scripts/p74-usage-monitor.sh) is live; the P73 dev quota-reset cron was DISABLED as a production control (acceptance #3). Sustained operation now requires a Shuffle license OR quota-safe degradation; both recorded OPEN (OPEN-ENV-03)."
+}

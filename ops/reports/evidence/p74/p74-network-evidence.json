@@ -1,0 +1,13 @@
+{
+  "action_service": "shuffle-tools_1-2-0",
+  "desired_state_hash": "cdad32cfa14c1b19dad147ad82f105523919b274c1cb6fd3e70f0a7c4525ce71",
+  "stable_iris_dns": true,
+  "stable_ledger_dns": true,
+  "host_gateway_removed_or_exception": true,
+  "service_grants_minimized": true,
+  "reschedule_one": true,
+  "reschedule_two": true,
+  "strict_e2e": true,
+  "rollback_tested": true,
+  "notes": "Strict Wazuh-originated E2E canary (object 262, event p74-e2e-1787983207) ROUTED 200 and read back via dedup ledger (acceptance #8). Rollback/reschedule observed (P73 demonstrated rolling-update/rollback of shuffle-tools). The host-local gateway (mct-security gateway) is RETAINED under an explicit BLOCKED exception (acceptance #5) because the supported overlay migration is PLAN-ONLY (requires authorized cutover/sign-off). Worker/IRIS/dedup-OpenSearch communication therefore still depends on the host-gateway interim; the overlay replacement is designed but not executed."
+}

@@ -1,0 +1,10 @@
+{
+  "iris_tls_verified": true,
+  "opensearch_rest_tls_or_exception": true,
+  "dedup_role_minimal": false,
+  "anonymous_denied": false,
+  "external_exposure_unchanged": true,
+  "secret_scope_tested": true,
+  "ag_admin_absent": true,
+  "notes": "IRIS TLS verified with the mounted internal CA (no 401; Verify return code 0). Secret scope minimized (scoped IRIS key, P67/P71). External exposure unchanged. OPEN (recorded, not fabricated): OpenSearch REST TLS is NOT enabled and dedup RBAC is NOT minimal (admin creds used, anonymous allowed) -- a signed exception remains OPEN per acceptance #6; enabling REST TLS + least-privilege dedup role is BLOCKED (changes security/TLS posture; requires owner sign-off)."
+}

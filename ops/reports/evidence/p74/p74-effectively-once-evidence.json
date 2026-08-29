@@ -1,0 +1,13 @@
+{
+  "historical_duplicate_recorded": true,
+  "stable_source_id": true,
+  "delivered_immutable": true,
+  "partial_success_tested": true,
+  "ambiguous_to_reconciliation": true,
+  "crash_windows_tested": false,
+  "timeout_ambiguity_tested": false,
+  "concurrency_tested": true,
+  "destination_object_count": 1,
+  "second_replay_suppressed": true,
+  "notes": "Exactly-once built on the dedup ledger (wazuh-iris-dedup-000001) keyed on Wazuh event id. DELIVERED immutable; ambiguous success -> RECONCILIATION_REQUIRED; 2nd replay DUP_SKIP (0 new); concurrent retries -> one terminal effect (P69 5x, P72 2x). 192/193 recorded as a confirmed duplicate defect (shared source p70-replay-1787969258). OPEN (not injected, not fabricated): crash-window and timeout-ambiguity fault injection were NOT performed (risky, gated); safety holds only while the idempotency record persists."
+}
