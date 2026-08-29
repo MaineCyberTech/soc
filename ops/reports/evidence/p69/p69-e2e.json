@@ -1,0 +1,12 @@
+{
+  "wazuh_alert_id": "4470fb33-revert-verify",
+  "marker": "P69-E2E-ROUTED-1787963241",
+  "integratord_record_id": "p69-revert-verify2",
+  "shuffle_execution_id": "4470fb33-a941-419a-be56-3252f038c4e9",
+  "workflow_revision": "c6b3fcd8-13e5-44a8-a818-024e4ae4422b",
+  "iris_object_id": "169",
+  "object_readback": true,
+  "unique_marker_match": true,
+  "tls_hostname_verified": true,
+  "scoped_permissions_verified": true
+}

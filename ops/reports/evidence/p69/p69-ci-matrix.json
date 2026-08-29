@@ -1,0 +1,57 @@
+{
+  "checks": [
+    {
+      "name": "tls_chain_san_expiry",
+      "result": "PASS"
+    },
+    {
+      "name": "tls_recreation_persistence",
+      "result": "PASS"
+    },
+    {
+      "name": "least_privilege_positive",
+      "result": "PASS"
+    },
+    {
+      "name": "least_privilege_negative",
+      "result": "PASS"
+    },
+    {
+      "name": "marker_parity_routed",
+      "result": "PASS"
+    },
+    {
+      "name": "replay_suppressed",
+      "result": "PASS"
+    },
+    {
+      "name": "concurrency_single_object",
+      "result": "PASS"
+    },
+    {
+      "name": "retry_deadletter",
+      "result": "PASS"
+    },
+    {
+      "name": "cache_activation_verified",
+      "result": "PASS"
+    },
+    {
+      "name": "db_cleanup_governance",
+      "result": "PASS"
+    },
+    {
+      "name": "alert158_adjudication",
+      "result": "PASS"
+    },
+    {
+      "name": "e2e_recert_routed",
+      "result": "PASS"
+    },
+    {
+      "name": "secret_scan_clean",
+      "result": "PASS"
+    }
+  ],
+  "declared_pass_count": 13
+}

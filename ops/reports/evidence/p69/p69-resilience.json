@@ -1,0 +1,10 @@
+{
+  "attempts_observed": 3,
+  "no_fourth_attempt": true,
+  "dead_letter_id": "88c3c3f8-1f47-4eb4-a35a-9ab569ad68c2",
+  "dead_letter_persisted": true,
+  "operator_alert_count": 1,
+  "replay_object_id": 168,
+  "second_replay_suppressed": true,
+  "duplicate_objects_zero": true
+}

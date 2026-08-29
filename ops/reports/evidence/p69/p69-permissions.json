@@ -1,0 +1,9 @@
+{
+  "alerts_write_required_customer": true,
+  "alerts_read_required_customer": true,
+  "user_admin": false,
+  "system_admin": false,
+  "module_admin": false,
+  "unrelated_customer": false,
+  "case_admin_unjustified": false
+}
