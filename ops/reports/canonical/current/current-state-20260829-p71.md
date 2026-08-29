@@ -49,7 +49,7 @@
 - Phase 71 per-prompt reports (600): `ops/reports/generated/phase71/` (mirror under `/opt/mct-security-stack/`).
 - Evidence JSONs: `ops/reports/evidence/p71/` — `p71-recreate-evidence.json`, `p71-monitor-evidence.json`, `p71-replay-evidence.json`, `p71-restore-parity-evidence.json`, `p71-192-193-reconciliation.json`, `p71-time-anchor.json`.
 - Validators + CI: `ops/scripts/p71-*.py`, `p71-agents-ci.sh` (all PASS).
-- Operator report: `ops/reports/phase71-operator-report.md`.
+- Operator report: `ops/reports/current/final-phase71-operator-report-20260829T0328Z.md`.
 
 ---
 
