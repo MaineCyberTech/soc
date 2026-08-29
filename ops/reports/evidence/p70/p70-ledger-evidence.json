@@ -1,0 +1,11 @@
+{
+  "template": true,
+  "deterministic_id": true,
+  "tenant_field": true,
+  "access_tested": true,
+  "retention_days": "governed (indefinite under ops retention; replay governed by approval gate)",
+  "replay_age_policy": "replays allowed only with explicit operator approval after clearing the dedup guard; automatic replays of already-delivered events are suppressed via DUP_SKIP.",
+  "snapshot_id": "wazuh-iris-dedup-snapshot-1787969417",
+  "isolated_restore_result": "verified: snapshot=26 docs, isolated restore=26 docs (counts match); snapshot index retained as backup.",
+  "notes": "Dedup ledger snapshot created via OpenSearch reindex to wazuh-iris-dedup-snapshot-1787969417; isolated restore to a temp index matched 26=26; temp restore index removed, snapshot retained."
+}

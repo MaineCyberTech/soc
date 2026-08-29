@@ -1,0 +1,12 @@
+{
+  "attempts_observed": 3,
+  "no_fourth_attempt": true,
+  "dead_letter_id": "88c3c3f8-1f47-4eb4-a35a-9ab569ad68c2",
+  "dead_letter_recreated": true,
+  "operator_alert_count": 1,
+  "approved_replay": true,
+  "replay_object_id": "193",
+  "second_replay_suppressed": true,
+  "duplicate_objects_zero": true,
+  "notes": "Dead-letter exec 88c3 persisted across shuffle-backend restart (dead_letter_recreated). Explicit approved replay: first delivery created object 192; dedup guard cleared with audit and re-sent -> object 193 (replay_object_id); second replay returned DUP_SKIP (second_replay_suppressed, 0 new objects, duplicate_objects_zero). Operator alert count remained 1 (no new operator alert fired during P70)."
+}

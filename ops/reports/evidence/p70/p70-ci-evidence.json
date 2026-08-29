@@ -1,0 +1,37 @@
+{
+  "checks": [
+    {
+      "name": "resilience-validate",
+      "result": "PASS"
+    },
+    {
+      "name": "ledger-validate",
+      "result": "PASS"
+    },
+    {
+      "name": "object-evidence-validate",
+      "result": "PASS"
+    },
+    {
+      "name": "tls-lifecycle-validate",
+      "result": "PASS"
+    },
+    {
+      "name": "inventory-580-unique",
+      "result": "PASS"
+    },
+    {
+      "name": "secret-scan",
+      "result": "PASS"
+    },
+    {
+      "name": "time-anchor",
+      "result": "PASS"
+    },
+    {
+      "name": "e2e-pipeline-routed",
+      "result": "PASS"
+    }
+  ],
+  "declared_pass_count": 8
+}

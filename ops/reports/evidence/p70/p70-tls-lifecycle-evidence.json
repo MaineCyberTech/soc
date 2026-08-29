@@ -1,0 +1,11 @@
+{
+  "chain_valid": true,
+  "hostname_valid": true,
+  "expiry_monitor_live": true,
+  "expiry_alert_tested": true,
+  "renewal_tested": true,
+  "rollback_tested": true,
+  "container_recreate_tested": true,
+  "verify_false_absent": true,
+  "notes": "Renewed cert (CA-signed, same SAN) applied to bind-mount source, nginx reloaded, monitor reported 3649 days OK. Short (5d) cert applied -> monitor emitted ALERT (4 days < 30-day threshold), proving expiry-alert path. Rolled back to original (notAfter 2036). iriswebapp_nginx restarted (container recreation) -> cert survived, canary ROUTED 200 after restart. Workflow verify uses /run/secrets/iris-ca.crt (CA); verify=False count in effective Class-A path = 0."
+}

@@ -1,0 +1,17 @@
+{
+  "object_id": "169",
+  "kind": "IRIS object (alert)",
+  "created_at": "2026-08-29T00:27:21Z",
+  "read_at": "2026-08-29T02:25:06Z",
+  "creation_execution": "4470fb33-a941-419a-be56-3252f038c4e9",
+  "response_sha256": "e1b3f2390e6efc46e601f627dd74bf09a69fe6aef810b2c8da10b74830147877",
+  "cleanup_approval": "P69 cleanup approved: synthetic canaries 165-169 removed via FK-verified transactional delete (0 FK refs across governance tables); genuine proof-set 140-149 + ambiguous alert 158 (source_ref 100065) preserved; alert 170 (timestamp-format Wazuh event_id, possibly genuine) retained.",
+  "cleanup_transaction": "P69 FK-verified transactional DELETE (BEGIN/COMMIT) of synthetics 165-169; pre-delete integrity check showed 0 child rows in all referencing tables; audited; see canonical current-state-20260829-p69.md (DB-cleanup governance VERIFIED).",
+  "post_delete_result": "absent -- object 169 confirmed not present in iris_db.alerts after deletion (read-back post-delete returned none).",
+  "chronology": [
+    "P69: object 169 created in IRIS via hardened pipeline execution 4470fb33 (ROUTED 200) as E2E marker for the TLS+scoped-key+dedup+retry hardening.",
+    "P69: object 169 read-back VERIFIED (unique-marker match) before any cleanup.",
+    "P69: synthetic canaries 165-169 removed via FK-verified transactional delete; 169 included; 0 FK references confirmed.",
+    "P70: pre-deletion response sha256 preserved; cleanup chronology recorded; post-delete absence confirmed."
+  ]
+}

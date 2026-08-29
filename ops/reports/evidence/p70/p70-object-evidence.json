@@ -1,0 +1,10 @@
+{
+  "object_id": "169",
+  "created_at": "2026-08-29T00:27:21Z",
+  "read_at": "2026-08-29T02:25:06Z",
+  "response_sha256": "e1b3f2390e6efc46e601f627dd74bf09a69fe6aef810b2c8da10b74830147877",
+  "cleanup_approval": "P69 cleanup approved: synthetic canaries 165-169 removed via FK-verified transactional delete (0 FK refs across governance tables); genuine proof-set 140-149 + ambiguous alert 158 (source_ref 100065) preserved; alert 170 (timestamp-format Wazuh event_id, possibly genuine) retained.",
+  "cleanup_transaction": "P69 FK-verified transactional DELETE (BEGIN/COMMIT) of synthetics 165-169; pre-delete integrity check showed 0 child rows in all referencing tables; audited; see canonical current-state-20260829-p69.md (DB-cleanup governance VERIFIED).",
+  "post_delete_result": "absent",
+  "retained_evidence_path": "/opt/mct-security-stack/ops/evidence/object-169-predeleletion-20260829T022506Z.json"
+}
