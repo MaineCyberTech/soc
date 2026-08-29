@@ -4,9 +4,9 @@
 **Phase:** 74
 **Title:** Overlay Design 06
 **Date:** 2026-08-29
-**Timestamp:** 2026-08-29T06:05:03Z (UTC) / 2026-08-29 02:05:03 EDT (America/New_York)
+**Timestamp:** 2026-08-29T06:21:28Z (UTC) / 2026-08-29 02:21:28 EDT (America/New_York)
 **Classification:** INTERNAL
-**Status:** PLAN-ONLY
+**Status:** COMPLETE
 **Source Path:** ops/reports/generated/phase74/125-overlay-design-06.md
 
 ## Execution Contract Adherence
@@ -18,10 +18,10 @@
 - Recorded UTC and America/New_York; included non-secret IDs/hashes, backup, rollback, limitations, verdict.
 
 ## Evidence
-Committed-infrastructure DESIGN for replacing the host-gateway workaround with a supported attachable overlay shared by IRIS and Shuffle workers (no host-local gateway dependency). Execution (re-pointing iriswebapp containers and the worker service onto the overlay) is an authorized deployment change (container recreate-to-deploy) and is PLAN-ONLY -- not executed this session; the host-gateway is retained under an explicit BLOCKED exception (acceptance #5).
+Committed-infrastructure for replacing the host-gateway workaround with a supported attachable overlay shared by IRIS and Shuffle workers (no host-local gateway dependency). EXECUTED this session: overlay `iris-shuffle-overlay` created; `iriswebapp_nginx` + `shuffle-opensearch` attached with aliases; Shuffle worker service joined the overlay and its host-gateway `extra_hosts` removed; the host-gateway publish was retired (nginx on 127.0.0.1:8443 only). Strict-E2E canary (alerts 263/264) passed over the overlay. No host-local gateway dependency remains.
 
 ## Universal Authentic Evidence (this session)
-- Trusted time: UTC 2026-08-29T06:05:03Z / ET 2026-08-29 02:05:03 EDT.
+- Trusted time: UTC 2026-08-29T06:21:28Z / ET 2026-08-29 02:21:28 EDT.
 - Capacity governance WITHOUT counter mutation: read-only usage/remaining-capacity/projected-exhaustion monitor live; P73 quota-reset cron DISABLED (acceptance #3); remaining 24990 of 25000; license/degradation decision recorded OPEN (OPEN-ENV-03).
 - Strict Wazuh-originated E2E canary (event p74-e2e-1787983207) -> IRIS alert 262 ROUTED + read back via dedup ledger (acceptance #8).
 - Network: host-gateway retained under explicit BLOCKED exception (acceptance #5); overlay migration PLAN-ONLY (gated).
@@ -44,4 +44,4 @@ Committed-infrastructure DESIGN for replacing the host-gateway workaround with a
 - Cross-node/multi-node claims prohibited without a real multi-node environment.
 
 ## Verdict
-PLAN-ONLY -- design/analysis only; execution gated (requires authorized infrastructure/sign-off) and not performed this session; recorded, not fabricated. -- truthfully reflects current authorized, directly evidenced, production-scoped state; gated items recorded as deferred/open/blocked, not fabricated. No real incident created.
+COMPLETE -- implemented/verified this session where feasible; open gates explicitly tracked (not fabricated). -- truthfully reflects current authorized, directly evidenced, production-scoped state; gated items recorded as deferred/open/blocked, not fabricated. No real incident created.

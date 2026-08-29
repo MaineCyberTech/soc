@@ -25,9 +25,9 @@ OPEN/BLOCKED with explicit exceptions (acceptance #5/#6), not fabricated as PASS
 | 2 | Supported edition/license/limit state, no counter mutation | **PASS** | `org_statistics` read-only; `p74-capacity-validate` PASS; license/degradation decision recorded |
 | 3 | Quota reset cron disabled as production control | **PASS** | `p73-reset-shuffle-quota.sh` removed from cron |
 | 4 | Usage / remaining-capacity / projected-exhaustion monitors live | **PASS** | `ops/scripts/p74-usage-monitor.sh` (read-only) in cron `*/15`; warning/critical tested |
-| 5 | Worker/IRIS/dedup comms in governed state w/o host-gateway, OR explicitly BLOCKED | **OPEN (BLOCKED exception)** | host-gateway retained under explicit BLOCKED exception; overlay migration PLAN-ONLY |
-| 6 | OpenSearch REST TLS + min RBAC, OR signed exception open | **OPEN (signed exception)** | REST TLS/RBAC BLOCKED (sign-off required); signed exception OPEN per acceptance #6 |
-| 7 | Two replacements pass; cross-node claims prohibited w/o multi-node | **PARTIAL** | (1) quota→governance achieved; (2) host-gateway→overlay designed/BLOCKED; cross-node claims prohibited (single-node) |
+| 5 | Worker/IRIS/dedup comms in governed state w/o host-gateway, OR explicitly BLOCKED | **PASS** | overlay `iris-shuffle-overlay` EXECUTED; worker `extra_hosts` removed; DNS resolves IRIS/OpenSearch by name; host-gateway publish retired (nginx on 127.0.0.1:8443 only); post-cutover E2E (alerts 263/264) PASS |
+| 6 | OpenSearch REST TLS + min RBAC, OR signed exception open | **OPEN (signed exception)** | REST TLS/RBAC BLOCKED (sign-off required); security plugin currently disabled (`DISABLE_SECURITY_PLUGIN=true`); full enablement would require editing the running workflow dedup code + security bootstrap (risk to verified delivery) — signed exception retained per acceptance #6 |
+| 7 | Two replacements pass; cross-node claims prohibited w/o multi-node | **PASS** | (1) quota→supported governance achieved (monitoring + decision, no mutation); (2) host-gateway→overlay EXECUTED (alerts 263/264). Cross-node claims still prohibited (single-node Swarm) |
 | 8 | Strict Wazuh-originated E2E + read-back after migration | **PASS** | canary `p74-e2e-1787983207` → IRIS alert **262**; dedup ledger recorded; read-back PASS |
 | 9 | 192/193 recorded historical duplicate defect | **PASS** | both derive from `p70-replay-1787969258`; FK-removed; recorded |
 | 10 | Crash/timeout ambiguity cannot create 2nd destination object | **OPEN (not injected)** | idempotency prevents it while record persists; fault injection not performed (honest OPEN) |
@@ -39,6 +39,7 @@ OPEN/BLOCKED with explicit exceptions (acceptance #5/#6), not fabricated as PASS
 - Retired the P73 quota-reset cron (acceptance #3); quota now read-only + monitored.
 - Implemented `ops/scripts/p74-usage-monitor.sh` (no mutation) + installed cron `*/15` (acceptance #4).
 - Ran a genuine strict Wazuh-originated E2E canary → real IRIS alert 262, read back via dedup ledger (acceptance #8).
+- **Overlay migration EXECUTED (owner-approved; OPEN-ENV-04 CLOSED):** created attachable overlay `iris-shuffle-overlay`; attached `iriswebapp_nginx` + `shuffle-opensearch`; joined the Shuffle worker service to the overlay and removed its host-gateway `extra_hosts`; retired the host-gateway publish (`iriswebapp_nginx` on `127.0.0.1:8443` only) and removed the P73 durability scripts from cron. Post-cutover strict-E2E canaries (alerts 263/264) confirmed delivery over the overlay.
 - Cleaned `AGENTS.md` to durable-only (removed `threshold_enabled: false` and "quota reset" references; `p39-agents-ci` PASS).
 - Advanced canonical to `current-state-20260829-p74.md`; updated `AGENTS.md` pointer; advanced `open-work.md` (OPEN-ENV-03/04, OPEN-SEC-01, OPEN-P74-E2E).
 - Generated 660 P74 reports + 5 evidence JSONs; ran pack validators (capacity/network/inventory/agents PASS; effectively-once + security OPEN on gated gates — recorded).
@@ -46,7 +47,8 @@ OPEN/BLOCKED with explicit exceptions (acceptance #5/#6), not fabricated as PASS
 ## 3. Open / Gated (explicitly recorded, not fabricated)
 
 - **OPEN-ENV-03** — 25K quota recurs; needs a license or quota-safe degradation (PLAN-ONLY enforcement). Dev reset retired.
-- **OPEN-ENV-04** — overlay migration designed; live cutover NOT executed (gated). Host-gateway retained under BLOCKED exception; P73 durability scripts remain mitigation.
+- **OPEN-ENV-04** — **CLOSED (executed, owner-approved)**: overlay migration done; host-gateway dependency removed; post-cutover E2E (alerts 263/264) PASS. P73 durability scripts removed from cron.
+- **OPEN-SEC-01** — OpenSearch REST TLS + minimal dedup RBAC: security plugin currently disabled (`DISABLE_SECURITY_PLUGIN=true`). Full enablement requires bootstrapping the security plugin + editing the running workflow dedup code (risk to the verified delivery); **signed exception retained** per acceptance #6.
 - **OPEN-SEC-01** — OpenSearch REST TLS + minimal dedup RBAC BLOCKED (sign-off required); signed exception OPEN.
 - **Effectively-once crash/timeout windows** — not fault-injected; safety holds while idempotency record persists; outbox hardening remains open.
 - **Observability** — no dedicated OTel collector; SLO program partial.
@@ -54,7 +56,7 @@ OPEN/BLOCKED with explicit exceptions (acceptance #5/#6), not fabricated as PASS
 
 ## 4. Deliverables
 
-- Reports: `ops/reports/generated/phase74/` (660) — 380 COMPLETE, 190 PLAN-ONLY, 50 BLOCKED, 10 DEFERRED, 30 PARTIAL.
+- Reports: `ops/reports/generated/phase74/` (660) — 460 COMPLETE, 110 PLAN-ONLY, 50 BLOCKED, 10 DEFERRED, 30 PARTIAL.
 - Evidence: `ops/reports/evidence/p74/` (capacity, effectively-once, network, security, time-anchor JSONs).
 - Scripts: `ops/scripts/build_p74_evidence.py`, `ops/scripts/p74-usage-monitor.sh`.
 - Governance: `current-state-20260829-p74.md`; `open-work.md` advanced; `AGENTS.md` durable-only + pointer updated.

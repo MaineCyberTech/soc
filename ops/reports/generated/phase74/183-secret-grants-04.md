@@ -4,7 +4,7 @@
 **Phase:** 74
 **Title:** Secret Grants 04
 **Date:** 2026-08-29
-**Timestamp:** 2026-08-29T06:05:03Z (UTC) / 2026-08-29 02:05:03 EDT (America/New_York)
+**Timestamp:** 2026-08-29T06:21:28Z (UTC) / 2026-08-29 02:21:28 EDT (America/New_York)
 **Classification:** INTERNAL
 **Status:** BLOCKED
 **Source Path:** ops/reports/generated/phase74/183-secret-grants-04.md
@@ -21,7 +21,7 @@
 Secret/trust grants (least-privilege IRIS key already scoped; internal-CA trust) are COMPLETE where already applied (P67/P71). Any NEW credential rotation or trust change is an approval-gated operation and is BLOCKED (requires owner sign-off); no new secrets created or rotated this session.
 
 ## Universal Authentic Evidence (this session)
-- Trusted time: UTC 2026-08-29T06:05:03Z / ET 2026-08-29 02:05:03 EDT.
+- Trusted time: UTC 2026-08-29T06:21:28Z / ET 2026-08-29 02:21:28 EDT.
 - Capacity governance WITHOUT counter mutation: read-only usage/remaining-capacity/projected-exhaustion monitor live; P73 quota-reset cron DISABLED (acceptance #3); remaining 24990 of 25000; license/degradation decision recorded OPEN (OPEN-ENV-03).
 - Strict Wazuh-originated E2E canary (event p74-e2e-1787983207) -> IRIS alert 262 ROUTED + read back via dedup ledger (acceptance #8).
 - Network: host-gateway retained under explicit BLOCKED exception (acceptance #5); overlay migration PLAN-ONLY (gated).

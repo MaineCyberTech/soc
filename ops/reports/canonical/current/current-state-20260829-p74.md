@@ -34,6 +34,14 @@ tests, operational SLOs, durable AGENTS/canonical cleanup).
   `p74-e2e-1787983207`) through the webhook → workflow `c6b3fcd8` → IRIS POST created real
   IRIS alert **262**; dedup ledger `wazuh-iris-dedup-000001` recorded it (`p74-e2e-1787983207`
   → 262). Object read-back PASS.
+- **Overlay migration EXECUTED (owner-approved; OPEN-ENV-04 CLOSED).** Attachable overlay
+  `iris-shuffle-overlay` created; `iriswebapp_nginx` + `shuffle-opensearch` attached with
+  aliases; the Shuffle **worker** service joined the overlay and its host-gateway `extra_hosts`
+  were removed, so DNS resolves IRIS/OpenSearch by name over the overlay (no host-local gateway
+  dependency). The host-gateway publish was then **retired** (`iriswebapp_nginx` recreated on
+  `127.0.0.1:8443` only); P73 durability scripts (`iris-gateway-publish.sh`,
+  `shuffle-worker-augment.sh`) removed from cron. Post-cutover strict-E2E canaries created real
+  IRIS alerts **263/264** and were read back — delivery verified over the overlay.
 - **AGENTS made durable-only (acceptance #11).** Volatile operational specifics
   (disk-watermark `threshold_enabled`, P73 "quota reset" reference) relocated out of
   AGENTS.md; `p39-agents-ci.sh` PASS; `p74-agents-validate` passes on generated artifacts.
@@ -45,15 +53,14 @@ tests, operational SLOs, durable AGENTS/canonical cleanup).
 - **OPEN-ENV-03 (quota/license):** the 25K monthly limit recurs without a license. Sustained
   operation now requires a Shuffle license OR quota-safe degradation (enforcement = Shuffle
   product feature, PLAN-ONLY). Dev counter-reset is retired; no local override exists.
-- **OPEN-ENV-04 (host-gateway → overlay migration):** the supported replacement for the
-  host-gateway workaround is an attachable overlay shared by IRIS (`iriswebapp_nginx`) and the
-  Shuffle worker service, removing the host-local gateway dependency. The overlay/networks,
-  IRIS-service, worker-desired-state, and gateway-retirement are **DESIGNED** (PLAN-ONLY). The
-  live cutover (re-pointing iriswebapp containers + worker service onto the overlay) is an
-  authorized deployment change (container recreate-to-deploy) and was **NOT executed** this
-  session. Per acceptance #5, the host-gateway is therefore **retained under an explicit
-  BLOCKED exception**; retiring it now would break delivery. The P73 durability scripts
-  (`iris-gateway-publish.sh`, `shuffle-worker-augment.sh`, cron `*/15`) remain as mitigation.
+- **OPEN-ENV-04 (host-gateway → overlay migration):** **CLOSED (executed, owner-approved).**
+  The supported replacement — an attachable overlay (`iris-shuffle-overlay`) shared by IRIS
+  (`iriswebapp_nginx`) and the Shuffle worker service — was implemented this session. The
+  worker's host-gateway `extra_hosts` were removed and DNS now resolves IRIS/OpenSearch by name
+  over the overlay; the host-gateway publish was retired (`iriswebapp_nginx` on `127.0.0.1:8443`
+  only). Post-cutover strict-E2E canaries (alerts 263/264) confirmed delivery over the overlay.
+  The P73 durability scripts were removed from cron (the overlay is the committed desired state).
+  Per acceptance #5, the host-local gateway dependency is gone (no longer under BLOCKED exception).
 - **OPEN-SEC-01 (OpenSearch REST TLS/RBAC):** the dedup endpoint is plain HTTP on the
   mct-security gateway; dedup access uses admin creds (anonymous allowed). Enabling REST TLS +
   a least-privilege dedup role changes the security/TLS posture and is **BLOCKED** (owner
