@@ -38,6 +38,12 @@ services:
       - "127.0.0.1:5001:5001"
     networks:
       - mct-security
+    # IRIS (iriswebapp_nginx) is only reachable from peer containers via the host
+    # published port on the mct-security gateway (a Docker bridge anomaly blocks the
+    # direct container->container path). Map the service name to that gateway so the
+    # workflow action reaches IRIS reliably.
+    extra_hosts:
+      - "iriswebapp_nginx:172.20.0.1"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /opt/mct-security-stack/data/shuffle/apps:/shuffle-apps
@@ -115,6 +121,10 @@ services:
         hard: 65536
     volumes:
       - shuffle-database:/usr/share/opensearch/data
+    # Published on the mct-security gateway so Shuffle worker tasks (swarm tasks are
+    # isolated from bridge containers) can reach OpenSearch via the host DNAT path.
+    ports:
+      - "172.20.0.1:9200:9200"
     networks:
       - mct-security
     restart: unless-stopped
