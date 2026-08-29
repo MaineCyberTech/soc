@@ -67,7 +67,12 @@ unchanged and still correct.
   recreated from its original compose, the gateway publish reverts to `127.0.0.1:8443`
   and delivery breaks again — re-apply the gateway publish + worker `extra_hosts`/secret
   mounts. The `docker-compose.shuffle.yml` backend `extra_hosts` and OpenSearch gateway
-  port ARE committed and survive `docker compose up`.
+  port ARE committed and survive `docker compose up`. **Mitigated (cron-guarded):** two
+  idempotent durability scripts (`ops/scripts/iris-gateway-publish.sh`,
+  `ops/scripts/shuffle-worker-augment.sh`) are installed in cron `*/15` and re-apply the
+  gateway publish / worker augmentation if it ever drifts. Re-run on 2026-08-29 confirmed
+  both are true no-ops (no Swarm task churn). True fix = capture these in the IRIS/Shuffle
+  deployment compose (infra change).
 - **node_evacuation** remains N/A on this single-node Swarm (draining the only node =
   full outage).
 - Observability: SLO + fast/slow burn-rate alerting + OTel messaging schema pin
@@ -75,15 +80,44 @@ unchanged and still correct.
 
 # 4. Evidence / Locators
 
-- Dedup ledger `wazuh-iris-dedup-000001` docs 100001–100008 → `alert_id` 252–259 (genuine
-  IRIS delivery; test artifacts, to be removed).
+- Dedup ledger `wazuh-iris-dedup-000001`: the 8/8 proof docs (rules 100001–100008 →
+  IRIS `alert_id` 252–259) were synthetic test artifacts and have been **FK-verified
+  removed** along with the re-verification canaries (alerts 260/261) — see §6.
 - Repo changes: `compose/docker-compose.shuffle.yml` (backend `extra_hosts`;
-  OpenSearch gateway port `172.20.0.1:9200`).
+  OpenSearch gateway port `172.20.0.1:9200`); `ops/scripts/iris-gateway-publish.sh`,
+  `ops/scripts/shuffle-worker-augment.sh` (durability); `ops/scripts/p73-reset-shuffle-quota.sh`
+  (quota workaround); `ops/reports/canonical/current/open-work.md`.
 - Environment changes: `iriswebapp_nginx` gateway publish (`172.20.0.1:8443`);
-  worker `extra_hosts` + secret mounts; `org_statistics` quota reset.
+  worker `extra_hosts` + secret mounts; `org_statistics` quota reset; cron entries
+  (`0 3 1 * *` quota reset; `*/15` durability scripts).
 
 # 5. Open-Work Pointer
 
-- P73 delivery gate is now CLOSED (genuinely verified 8/8). Remaining P73 acceptance
-  gates tracked as OPEN-ENV-03 (quota/license) and OPEN-ENV-04 (IRIS republish +
-  worker augmentation durability).
+- P73 delivery gate is now CLOSED (genuinely verified 8/8; post-fix re-verified via
+  canary → real IRIS `alert_id` 261). Remaining P73 acceptance gates tracked as
+  OPEN-ENV-03 (quota/license) and OPEN-ENV-04 (IRIS republish + worker augmentation
+  durability). OPEN-ENV-05 (synthetic IRIS alert cleanup) is CLOSED — see §6.
+
+# 6. Finalization (2026-08-29, post-correction)
+
+- **Durability scripts + cron:** `ops/scripts/iris-gateway-publish.sh` (idempotent;
+  re-applies the IRIS gateway publish if it drifts) and `ops/scripts/shuffle-worker-augment.sh`
+  (idempotent; re-applies worker `extra_hosts` + secret bind-mounts) added and installed
+  in cron `*/15`. Quota reset (`ops/scripts/p73-reset-shuffle-quota.sh`) installed in cron
+  `0 3 1 * *`. All confirmed true no-ops on re-run (no Swarm task churn). This mitigates
+  OPEN-ENV-04.
+- **Re-verification:** a post-fix synthetic canary (unique event id) was fired through the
+  webhook; it created a real IRIS `alert_id` 261 and the dedup ledger recorded it
+  (`canary-1787981492` → 261). Delivery is stable after the changes.
+- **Synthetic IRIS alert cleanup (OPEN-ENV-05 CLOSED):** all 7 tables that reference
+  `alerts.alert_id` (`alert_iocs_association`, `comments`, `alert_case_association`,
+  `similar_alerts_cache`, `alert_assets_association`, `alert_similarity`) had **0** rows for
+  alerts 252–261, so they were FK-verified isolated. A reversible backup was saved
+  (`ops/backups/iris-synthetic-alerts-252-261-20260829T053630Z.csv`, sha256
+  `606a706fc58b4c800513f7a4eaa659c36e4c0acdaa0c10ceb0bf6b482f2811d0`, 10 rows) and the
+  alerts were deleted from IRIS DB (remaining count 0; API `GET /api/alerts/252` → 404).
+  The two dangling dedup-ledger docs for the deleted canaries (`canary-1787981492`,
+  `1787980653.3655904`) were also removed from `wazuh-iris-dedup-000001`.
+- Net state: P73 SOAR→IRIS delivery is genuinely reliable (8/8 + re-verified), guarded by
+  cron, and free of synthetic test artifacts. Only environment/licensing constraints
+  (OPEN-ENV-03, OPEN-ENV-04) remain.

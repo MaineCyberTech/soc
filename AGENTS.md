@@ -31,8 +31,9 @@ MUST / MUST NOT item below.
 ## Canonical Truth & Navigation
 
 - Current operational truth: `ops/reports/canonical/current/current-state-20260829-p73.md`
-  (Phase 69 resilience demonstration; supersedes `current-state-20260828-p68.md` per its own
-  supersession statement; superseded only by a newer current-state doc).
+  (P73 SOAR→IRIS delivery — corrected current-state: delivery genuinely verified 8/8;
+  durability scripts + cron in place; open gates OPEN-ENV-03/04. Supersedes prior
+  canonical docs; superseded only by a newer current-state doc).
 - Open-work ledger: `ops/reports/canonical/current/open-work.md`.
 - Do not act on any claim older than the canonical current-state doc without re-verification.
 
@@ -114,6 +115,13 @@ in the canonical current-state doc: `ops/reports/canonical/current/current-state
 (see "Open / Gated (NO-GO without sign-off)"). Recurring durable blockers: production routing,
 restore rehearsal, credential rotation, ISM/index intervention, and container recreate-to-deploy
 all require operator sign-off per Approval-Gated Operations.
+
+- Note (P73, dev-approved): the IRIS gateway republish on the mct-security gateway and
+  Shuffle worker `extra_hosts`/secret-mount augmentation (OPEN-ENV-04) are approved
+  dev-environment repairs (user-granted dev latitude), not new-artifact deploys; they are
+  guarded by `ops/scripts/iris-gateway-publish.sh` and `ops/scripts/shuffle-worker-augment.sh`
+  via cron. The Shuffle 25K app-run quota reset (OPEN-ENV-03) is a dev workaround script,
+  not a license substitute. Detail in the canonical current-state doc.
 
 ## Out of Scope
 
