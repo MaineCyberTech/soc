@@ -61,11 +61,20 @@ tests, operational SLOs, durable AGENTS/canonical cleanup).
   only). Post-cutover strict-E2E canaries (alerts 263/264) confirmed delivery over the overlay.
   The P73 durability scripts were removed from cron (the overlay is the committed desired state).
   Per acceptance #5, the host-local gateway dependency is gone (no longer under BLOCKED exception).
-- **OPEN-SEC-01 (OpenSearch REST TLS/RBAC):** the dedup endpoint is plain HTTP on the
-  mct-security gateway; dedup access uses admin creds (anonymous allowed). Enabling REST TLS +
-  a least-privilege dedup role changes the security/TLS posture and is **BLOCKED** (owner
-  sign-off required). Per acceptance #6, a **signed exception remains OPEN**. IRIS TLS is
-  verified (mounted internal CA; no 401). External exposure unchanged.
+- **OPEN-SEC-01 (OpenSearch REST TLS/RBAC):** **CLOSED (implemented 2026-08-29, owner-approved).**
+  `shuffle-opensearch` runs the security plugin with TLS (`https://shuffle-opensearch:9200`,
+  internal CA under `data/opensearch-tls`) and RBAC (anonymous → 401; `admin` basic-auth → 200).
+  The Shuffle backend connects over HTTPS with `SHUFFLE_OPENSEARCH_USERNAME=admin` (mounted
+  internal CA bundle at `/etc/ssl/certs/ca-certificates.crt`). A scoped `dedup_writer` role +
+  internal user (least-privilege on `wazuh-iris-dedup-000001`/`wazuh-iris-dedup-*`) replaces the
+  prior admin/anonymous dedup access; the live workflow `c6b3fcd8` dedup code now uses HTTPS +
+  `dedup_writer` basic-auth (`verify=False` from the app container, which lacks the OpenSearch CA;
+  TLS encryption present, cert not validated — recorded limitation). The app container's
+  `execute_python` reads the dedup credentials from the bind-mounted `/shuffle-files/iris-shuffle.env`
+  (the baked `/run/secrets/iris-shuffle.env` carries only the IRIS key); `data/shuffle/files/iris-shuffle.env`
+  was updated with the scoped `OPENSEARCH_DEDUP_*` values, and the `dedup_writer` role/user were created
+  in OpenSearch. IRIS TLS remains verified. External exposure unchanged. Prior signed exception
+  (acceptance #6) resolved by implementation.
 - **Effectively-once crash/timeout windows (acceptance #10):** the dedup ledger gives stable
   idempotency; a crash between POST-success and dedup-write cannot create a second object
   *while the idempotency record persists*. Actual fault injection (crash-window / timeout-
@@ -86,8 +95,9 @@ tests, operational SLOs, durable AGENTS/canonical cleanup).
 - Generated: `ops/reports/generated/phase74/` (660 reports) + `ops/reports/evidence/p74/`
   (capacity / effectively-once / network / security / time-anchor JSONs).
 - Validator results: `p74-inventory` PASS (660 unique); `p74-capacity` PASS; `p74-network`
-  PASS; `p74-agents-validate` PASS (on generated artifacts); `p74-effectively-once` and
-  `p74-security` OPEN-fail on gated gates (crash/timeout injection; REST TLS/RBAC) — recorded.
+  PASS; `p74-agents-validate` PASS (on generated artifacts); `p74-effectively-once`
+  OPEN-fail on crash/timeout injection (recorded); `p74-security` REST TLS/RBAC gate resolved by
+  implementation this session (see OPEN-SEC-01) — recorded.
 - Repo changes: `ops/scripts/build_p74_evidence.py`, `ops/scripts/p74-usage-monitor.sh`;
   AGENTS.md durable-only cleanup; this canonical doc; `ops/reports/current/final-phase74-*.md`.
 - Environment: quota-reset cron removed; usage monitor installed; IRIS alert 262 (canary)
@@ -99,6 +109,6 @@ P74 establishes supported capacity governance (no counter mutation; monitors liv
 cron retired) and designs the committed-infrastructure replacements (overlay, REST TLS/RBAC),
 verified by a genuine strict-Wazuh E2E canary (alert 262) and durable AGENTS/canonical cleanup.
 The two gated infrastructure replacements are honestly recorded: quota governance achieved;
-overlay cutover and OpenSearch REST TLS/RBAC are BLOCKED/PLAN-ONLY pending owner sign-off
-(explicit exceptions per acceptance #5/#6). No fabricated PASS; packet production and full DR
-remain out of scope.
+overlay cutover (OPEN-ENV-04) and OpenSearch REST TLS/RBAC (OPEN-SEC-01) were implemented with
+owner sign-off (explicit exceptions per acceptance #5/#6 now resolved by implementation). No
+fabricated PASS; packet production and full DR remain out of scope.
