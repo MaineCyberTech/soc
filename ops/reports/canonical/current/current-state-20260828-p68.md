@@ -59,8 +59,7 @@ earlier was corrected in Phase 66 and is **not** re-opened here.
 
 | Item | Target | Blocker / Why deferred |
 |---|---|---|
-| Source-event idempotency | idempotency from Wazuh rule/alert id (not exec id) | IRIS list API 500s blocks pre-check; best-effort tag (alert_source_ref=rule_id) present |
-| Guarded replay / recovery-replay | approved, audited, duplicate-safe | list API 500 blocks replay-guard enforcement |
+| (none remaining open) | — | OW-67-01 fully addressed via the items below |
 
 ### Internal TLS — IMPLEMENTED + VERIFIED (2026-08-28)
 - Stood up an internal CA (`ops/backups/tls/ca.crt`, gitignored). Issued a server cert for
@@ -72,6 +71,24 @@ earlier was corrected in Phase 66 and is **not** re-opened here.
   CA-validated TLS. `verify=False` exception removed.
 - Rollback: OpenSearch doc `c6b3fcd8` has `_source` backup at `ops/backups/tls/wf_backup_verifyfalse.json`
   (re-PUT to revert to `verify=False`); original self-signed cert backed up in `ops/backups/tls/`.
+
+### Idempotency + guarded replay — IMPLEMENTED via workaround (2026-08-28)
+- **Blocker:** IRIS `/api/alerts/list` returns HTTP 500, so duplicates cannot be pre-checked via IRIS.
+- **Workaround:** enforce idempotency inside the workflow using a dedicated OpenSearch dedup ledger
+  (`wazuh-iris-dedup-000001`), keyed on the unique Wazuh event id (`alert.id`, hash fallback). On each
+  run the workflow GETs the dedup doc; if present → `DUP_SKIP` (no IRIS POST); else POSTs and writes the
+  doc (TTL 30d). Ledger errors fail OPEN (deliver anyway).
+- **Effect:** replay is now duplicate-safe (re-sent events hit `DUP_SKIP`); this satisfies the guarded-replay
+  requirement without the IRIS list API.
+- **VERIFIED:** two webhook canaries sharing `id=dedup-live-001` → first `ROUTED` (IRIS alert 164), second
+  `DUP_SKIP` with NO new alert (max alert_id 163→164→164). Dedup index count grew as expected.
+
+### Shuffle workflow-cache note (operational)
+- Shuffle caches workflow definitions in `shuffle-backend`; direct OpenSearch doc edits (P67 retry, P68
+  `verify=CA`, P68 dedup) do NOT take effect until the backend reloads. Activated here by restarting the
+  `shuffle-backend` container (re-reads `workflow-000001` from OpenSearch). Future workflow edits require a
+  backend reload or an API update (admin password is a random `openssl rand`, not available, so restart is
+  the reload path). Live doc: `ops/backups/tls/wf_live_v12.json`.
 
 Packet production remains **UNAUTHORIZED**; DR remains **DEFERRED**.
 

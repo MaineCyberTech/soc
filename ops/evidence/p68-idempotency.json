@@ -1,0 +1,16 @@
+{
+  "report": "phase68-evidence-idempotency",
+  "idempotency_workaround": {
+    "status": "IMPLEMENTED-VERIFIED",
+    "blocker": "IRIS /api/alerts/list returns HTTP 500 — cannot pre-check duplicates via IRIS",
+    "workaround": "enforce idempotency in the workflow via a dedicated OpenSearch dedup ledger (wazuh-iris-dedup-000001), keyed on the unique Wazuh event id (alert.id); replay is duplicate-safe (DUP_SKIP)",
+    "code_changes": "execute_python: compute event_id from alert.id (hash fallback); GET dedup doc -> DUP_SKIP if seen; on ROUTED PUT dedup doc (ttl 30d); fail-open on cache/ledger error",
+    "verification": {
+      "method": "two webhook canaries sharing id=dedup-live-001",
+      "canary1": "ROUTED, created IRIS alert 164",
+      "canary2": "DUP_SKIP, NO new alert (max alert_id unchanged 163->164->164)",
+      "dedup_index_count": 3
+    },
+    "note": "Shuffle caches workflows; OpenSearch doc edits only take effect after restarting shuffle-backend (reloads from OpenSearch). v12 (dedup+verify=CA+retry) confirmed live post-restart."
+  }
+}
