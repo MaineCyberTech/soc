@@ -80,6 +80,16 @@ sleep 7
 Confirm in IRIS: `GET /alerts/<new_id>` → 200 with tags `source:wazuh,class:A`. Then clean up the
 smoke alert (IRIS API does not expose deletion in this version; remove via FK-verified DB delete).
 
+**Verification pitfall (from P69):** do NOT confirm delivery by grepping an execution (or the workflow
+definition) for the string `STATE=ROUTED` — that token is present in the workflow *definition* and
+will match even on a dead-lettered run (false positive). Confirm with the execution's *actual* result
+state instead, read from the latest `workflowexecution-000001` doc:
+- Healthy: `result.message.state == "ROUTED"` and `http_status == 200` (or the `execute_python`
+  action stdout contains `"state": "ROUTED"` with `resp`).
+- Broken target: `state == "DEAD_LETTER"` with `detail.state == "TARGET_FAILED"` and
+  `Max retries exceeded with url: ...` — exactly 3 attempts, then dead-letter (no 4th).
+Use the canary above and read the latest execution *result*, never a substring grep of the definition.
+
 ## Internal CA / IRIS cert rotation (cert lifecycle)
 
 - CA + server cert are valid 10 years. Rotation (no key change needed in the workflow):
@@ -96,6 +106,31 @@ Shuffle (`shuffle-backend`) caches workflow definitions. Any direct OpenSearch e
 `workflow-000001/_doc/c6b3fcd8` (including restore) is **not** live until the backend reloads.
 Activate by `docker restart shuffle-backend` (or an API update with admin creds — the Shuffle admin
 password is a random `openssl rand`, so restart is the reload path). Verify with the canary above.
+
+## Synthetic-alert cleanup (FK-verified)
+
+When removing test/synthetic IRIS alerts, never blind-DELETE and never trust the title alone.
+
+1. Identify synthetics by a **non-Wazuh event id** (e.g., `p69-*`, `lp-pos`) recorded in the dedup
+   ledger (`wazuh-iris-dedup-000001`), which stores the IRIS `alert_id` each canary created. Genuine
+   Wazuh events use timestamp-format ids (`1787...NNNNNN.NNNNNN`); an alert whose dedup event id is
+   timestamp-format (e.g., alert 170) must be **retained** — it may be a real Wazuh delivery.
+2. FK-verify before delete. Tables referencing `alerts.alert_id` are `alert_iocs_association`,
+   `comments` (`comment_alert_id`), `alert_case_association`, `similar_alerts_cache`,
+   `alert_assets_association`, and `alert_similarity` (both `alert_id` and `similar_alert_id`).
+   Confirm all counts are 0 for the target ids before deleting.
+3. Delete in a transaction: `BEGIN; DELETE FROM alerts WHERE alert_id IN (...); COMMIT;` then remove
+   the matching dedup docs from OpenSearch. Genuine proof-set (140–149) and ambiguous alerts
+   (e.g., 158) are preserved.
+
+## IRIS `/api/alerts/list` 500 defect (workaround)
+
+`GET/POST /api/alerts/list` returns HTTP 500 on this IRIS build (upstream defect), so list-based
+verification is unavailable. Workarounds that work: per-id read-back via the IRIS DB
+(`SELECT ... FROM alerts WHERE alert_id = ...`), or rely on the OpenSearch dedup ledger
+(`wazuh-iris-dedup-000001`), which records each delivered alert's `alert_id` and event id. Do not
+treat the 500 as a delivery failure — genuine deliveries still succeed (verified by `ROUTED` +
+read-back).
 
 ## Known gaps / risk acceptance
 
