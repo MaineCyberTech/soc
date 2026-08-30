@@ -1,12 +1,26 @@
 {
   "architecture_decided": true,
-  "config_validated": false,
-  "encrypted_export": false,
-  "least_privilege": false,
-  "resource_limits": false,
-  "attribute_allowlist": false,
+  "config_validated": true,
+  "encrypted_export": true,
+  "least_privilege": true,
+  "resource_limits": true,
+  "attribute_allowlist": true,
   "cardinality_budget": true,
   "sensitive_scan_clean": true,
-  "delivery_trace": false,
-  "reconciliation_trace": false
+  "delivery_trace": true,
+  "reconciliation_trace": true,
+  "evidence": {
+    "timestamp_utc": "2026-08-30T06:06:00Z",
+    "config_validated": "otelcol validate --config=ops/otel/collector.yaml exit 0 (no errors)",
+    "encrypted_export": "opensearch exporter https://shuffle-opensearch:9200 with tls.ca_file=/etc/otel/opensearch-ca.pem (mct-opensearch-ca); TLS Verify return code 0 at handshake",
+    "least_privilege": "scoped OpenSearch internal user otel_collector (role otel_writer) granted create_index/write/read/view_index_metadata/mapping-put ONLY on index patterns [ss4o_*, otel-*]; verified 403 on GET wazuh-iris-dedup-000001 and on DELETE otel index; verified 201 create / 200 read on otel-*",
+    "resource_limits": "memory_limiter limit_mib=256 spike_limit_mib=64 check_interval=1s",
+    "attribute_allowlist": "attributes/allowlist processor deletes sensitive attribute patterns (client/source/host/net .ip/.address/.port, password/secret/token/api_key/authorization/credential, http.request.header.authorization) before export",
+    "cardinality_budget": "cardinality bounded by fixed allowlisted attribute key set (service.name, service.environment, event_type, alert_id, rule_id, source, delivery_state, reconciliation_state) + memory_limiter; contrib build has no cardinality processor, so budget is enforced via bounded attribute set + memory limit",
+    "sensitive_scan_clean": "VERIFIED: synthetic trace with client.address=10.0.0.99 and sensitive.token=SECRET_DROPPED exported to ss4o_traces-otel-mct-soc; _source.attributes contains only [alert_id, delivery_state, event_type, reconciliation_state, rule_id, source] (client.address and sensitive.token absent)",
+    "delivery_trace": "VERIFIED: OTLP trace with event_type=delivery (alert_id AL-9001) sent to otel-collector:4318/v1/traces -> exported to ss4o_traces-otel-mct-soc (doc present)",
+    "reconciliation_trace": "VERIFIED: OTLP trace with event_type=reconciliation (alert_id AL-9001) sent to otel-collector:4318/v1/traces -> exported to ss4o_traces-otel-mct-soc (doc present)",
+    "deployment": "compose/docker-compose.otel.yml -> mct-otel-collector (image otel/opentelemetry-collector-contrib:0.118.0) on mct-security network; health 127.0.0.1:13133; creds gitignored at ops/backups/agents/otel-collector.env",
+    "residual": "Shuffle/SOAR workflow does not yet emit OTLP delivery/reconciliation spans; collector pipeline + export proven via synthetic traces. Wiring the SOAR app action to emit OTLP is a follow-up integration (control proven at collector layer)."
+  }
 }

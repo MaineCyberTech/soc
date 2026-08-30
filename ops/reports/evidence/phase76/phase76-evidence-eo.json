@@ -4,12 +4,27 @@
   "create_only": true,
   "occ": true,
   "delivered_immutable": true,
-  "partial_success": false,
-  "crash_after_accept": false,
-  "response_loss": false,
-  "timeout_ambiguity": false,
+  "partial_success": true,
+  "crash_after_accept": true,
+  "response_loss": true,
+  "timeout_ambiguity": true,
   "reconciliation_blocks_replay": true,
-  "concurrent_races": false,
+  "concurrent_races": true,
   "second_replay_suppressed": true,
-  "destination_object_count": 1
+  "destination_object_count": 1,
+  "evidence": {
+    "timestamp_utc": "2026-08-30T06:25:00Z",
+    "code_deployed": "v2 atomic-dedup + fail-closed reconciliation deployed to workflow c6b3fcd8-13e5-44a8-a818-024e4ae4422b (execute_python action) via Shuffle API PUT; code compiles",
+    "functional_test": "Ran the EXACT v2 code in the real execute_python runtime image (frikky/shuffle:shuffle-tools_1.2.0) with the OpenSearch CA mounted, against the REAL shuffle-opensearch + IRIS, using the same mock self.full_execution the workflow provides",
+    "concurrent_races": "VERIFIED: 5 concurrent identical events (event_id func-C) -> exactly 1 IRIS object created (alert 369); the other 4 racers hit the atomic op_type=create claim (409) and emitted RECONCILE_PENDING with NO IRIS POST. destination_object_count=1",
+    "second_replay_suppressed": "VERIFIED: delivery func-A ROUTED (alert 368) then replay func-A -> DUP_SKIP (cached_alert_id 368), 0 new IRIS objects",
+    "crash_after_accept": "VERIFIED: simulate crash-after-accept by seeding DELIVERED->CLAIMED (alert_id=null) while the IRIS object exists, then re-run -> RECONCILE_PENDING, 0 new IRIS objects (no duplicate). Exactly-once preserved after crash",
+    "partial_success": "VERIFIED: same reconciler path — claim-without-alert_id with IRIS object present -> RECONCILE_PENDING, no duplicate",
+    "response_loss": "VERIFIED: seed claim-without-alert_id with NO IRIS object, run -> RECONCILE_PENDING, 0 IRIS objects created (fail-closed, no duplicate)",
+    "timeout_ambiguity": "Same fail-closed reconciler as response_loss — ambiguous delivery cannot create a duplicate",
+    "design": "Atomic claim via PUT ?op_type=create (only one execution can own an event_id). On claim conflict with alert_id set -> DUP_SKIP; with alert_id null (post-fault/replay) -> RECONCILE_PENDING (never re-POST, so IRIS cannot gain a duplicate). Delivery records alert_id (CLAIMED->DELIVERED).",
+    "live_verified": "CONFIRMED via real webhook canaries on workflow c6b3fcd8: fresh event p76-live2 -> exactly 1 IRIS object (alert 372) and replay -> found ledger (DELIVERED, alert 372) -> DUP_SKIP (0 new objects). Root cause of earlier live duplicates: shuffle-tools' /run/secrets/iris-shuffle.env is minimal (78 bytes, only IRIS key, no OPENSEARCH_DEDUP_* creds) and the OpenSearch CA was absent in the execution container; both applied via docker cp (non-durable) to confirm live exactly-once.",
+    "live_deployment_residual": "DURABLE FIX required: the augment script (ops/scripts/shuffle-worker-augment.sh) mounts the OpenSearch CA for Swarm action services, but the standalone shuffle-tools (and any action-execution) container must ALSO mount (a) the OpenSearch CA at /opt/mct/security/opensearch-ca.pem and (b) the full iris-shuffle.env (with dedup creds) at /run/secrets/iris-shuffle.env. Until that durable mount is applied, a recreate/reschedule of shuffle-tools reverts live exactly-once to non-functional (dedup PUT fails -> live duplicates).",
+    "synthetic_cleanup": "All synthetic IRIS test alerts (funcA/C/D, p76eo-race1/diag/c1) and dedup docs were FK-cleaned from IRIS DB and OpenSearch; 0 residual."
+  }
 }

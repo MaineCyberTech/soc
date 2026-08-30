@@ -1,0 +1,25 @@
+# OpenTelemetry Collector — MCT SOC (secure, bounded)
+# Deploy: docker compose -f compose/docker-compose.otel.yml up -d
+# Least-privilege: uses scoped OpenSearch user `otel_collector` (role otel_writer,
+# write/read on otel-* only). Creds in gitignored ops/backups/agents/otel-collector.env.
+services:
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:0.118.0
+    container_name: mct-otel-collector
+    restart: unless-stopped
+    command: ["--config=/etc/otel/collector.yaml"]
+    env_file:
+      - /opt/mct-security-stack/ops/backups/agents/otel-collector.env
+    volumes:
+      - /opt/mct-security-stack/ops/otel/collector.yaml:/etc/otel/collector.yaml:ro
+      - /opt/mct-security-stack/data/opensearch-tls/ca/ca.pem:/etc/otel/opensearch-ca.pem:ro
+    ports:
+      - "127.0.0.1:13133:13133" # health_check (localhost only)
+    # OTLP gRPC/HTTP (4317/4318) are reachable on the mct-security network at
+    # otel-collector:4317 / otel-collector:4318 (no host port published).
+    networks:
+      - mct-security
+
+networks:
+  mct-security:
+    external: true

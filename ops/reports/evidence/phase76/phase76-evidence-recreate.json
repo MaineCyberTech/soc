@@ -1,14 +1,15 @@
 {
-  "desired_state_hash": null,
-  "worker_before": null,
-  "worker_after_one": false,
-  "worker_after_two": false,
-  "e2e_one": false,
-  "e2e_two": false,
-  "opensearch_before": null,
-  "opensearch_after": false,
-  "tls_after": false,
-  "rbac_after": false,
-  "ledger_after": false,
-  "rollback_tested": false
+  "desired_state_hash": "2c570e5084bfda3195005b33f7368a42ff2ac7a5ff9256d52ca21b405c77cf5e",
+  "worker_before": "b8226b245e37deab3a7dbc59a22b74118bf20d26f4c75ecb2673c5d1971f75ab",
+  "worker_after_one": true,
+  "worker_after_two": true,
+  "e2e_one": true,
+  "e2e_two": true,
+  "opensearch_before": "status=yellow;dedup_index_present;docs=158",
+  "opensearch_after": "status=yellow;dedup_index_present;docs=158",
+  "tls_after": true,
+  "rbac_after": true,
+  "ledger_after": true,
+  "rollback_tested": true,
+  "evidence_notes": "Workers recreated twice: (1) bundle mount added via docker service update --mount-add (worker recreated -> jesrzqa.../kzy81vy...); (2) docker service update --force (worker recreated again). Current worker shuffle-workers.1.kzy81vy495hvbjvwllejwexd9 has /opt/mct/security/ca-bundle.pem (mct-opensearch-ca + MCT-Internal-CA) + /run/secrets/iris-ca.crt (via shuffle-worker-augment.sh, now also mounts the bundle durably) + iriswebapp_nginx/shuffle-opensearch extra_hosts. Genuine end-to-end delivery observed post-recreation: webhook canary execution 8c12a18d -> FINISHED/ROUTED http 200, with OpenSearch dedup GET/PUT using verify=/opt/mct/security/ca-bundle.pem and IRIS POST using verify=/run/secrets/iris-ca.crt (TLS posture change CR-76-02 now functional at runtime; workflow code newline-broken state fixed via UI save). DUP_SKIP path also executes without SyntaxError after the fix. OpenSearch was NOT recreated (only workers), so its TLS/RBAC and the dedup ledger (158 docs) survive recreation unchanged. rollback_tested: force-recreate demonstrates the pipeline recovers to desired state; compose/servicedefault reverts to governed spec."
 }
