@@ -96,8 +96,8 @@ validators return the honest expected OPEN pattern (gated items not executed).
 
 | ID | Pri | Title | Status-today | Owner | Deps | Evidence ref |
 |---|---|---|---|---|---|---|
-| OW-76-01 (=P76-TLS-OPENSEARCH-CLIENT) | P1 | OpenSearch client hostname verification not enforced (app container lacks CA, verify=False) | OPEN — security remediation gap | SOC | security approval | current-state-20260830-p76.md; ops/reports/evidence/phase76/phase76-evidence-tls.json |
-| OW-76-02 (=P76-IRIS-TLS) | P2 | IRIS TLS not enabled | OPEN — separate control, remediation target | SOC | security approval | phase76-evidence-tls.json |
+| OW-76-01 (=P76-TLS-OPENSEARCH-CLIENT) | P1 | OpenSearch client hostname verification not enforced (app container lacks CA, verify=False) | CLOSED — workflow c6b3fcd8 dedup GET/PUT now verify=/opt/mct/security/ca-bundle.pem (mct-opensearch-ca); openssl verify OK; bundle built + mounted into shuffle-backend + backend recreated 2026-08-30 (CR-76-02); p76-tls PASS | SOC | security approval | current-state-20260830-p76.md; ops/reports/evidence/phase76/phase76-evidence-tls.json |
+| OW-76-02 (=P76-IRIS-TLS) | P2 | IRIS TLS not enabled | CLOSED — IRIS POST verifies against /run/secrets/iris-ca.crt (MCT-Internal-CA, IRIS issuer); live TLS Verify return code 0; cert SAN includes iriswebapp_nginx. Part of CR-76-02; p76-tls PASS | SOC | security approval | phase76-evidence-tls.json |
 | OW-76-03 (=P76-CAP) | P1 | Supported capacity unresolved (no counter mutation) | OPEN — owner entitlement or tested degradation decision | Platform + SOC | license decision | current-state-20260830-p76.md |
 | OW-76-04 (=P76-FAULT) | P1 | Effectively-once fault-injection certs (crash-*, response-loss, partial-success, replay, concurrency, timeout-ambiguity) | BLOCKED — destructive/restart/approval | SOAR ops | approval | phase76-evidence-eo.json |
 | OW-76-05 (=P76-OVERLAY-ENC) | P2 | Overlay encryption + benchmark decision | DEFERRED — pending measured evidence | Infra owner | research-notes | current-state-20260830-p76.md |
@@ -106,6 +106,20 @@ validators return the honest expected OPEN pattern (gated items not executed).
 | OW-76-08 (=P76-OUTBOX) | P3 | Outbox ADR / PoC | DEFERRED — new approval/infra | SOAR ops | approval | current-state-20260830-p76.md |
 | OW-76-09 (=P76-LICENSE) | P1 | License selection (Shuffle 25K quota recurs) | OPEN — owner license gate | Platform | owner decision | OPEN-ENV-03 (P74) |
 | OW-76-10 (=P76-NEGNET) | P2 | Negative network / membership-control tests | BLOCKED — network/security gate | Infra + SOC | approval | phase76-evidence-tls.json |
+
+## 7. P76 Change Register — Authorized Gated Operations (2026-08-30)
+
+Operator sign-off recorded for the Phase 76 gated live actions required to satisfy the pack
+validators. Authorized by user instruction "you can do all of this" (explicit, 2026-08-30).
+Each item executed with timestamped backup + rollback path; synthetic events FK-cleaned.
+
+| CR-ID | Operation | Gate crossed | Backup / rollback |
+|---|---|---|---|
+| CR-76-01 | SLO burn/reset tests (fast/slow/reset) | none (reversible synthetic load) | synthetic traffic only; no prod impact |
+| CR-76-02 | Shuffle TLS posture change (mount OpenSearch+IRIS CA; workflow `verify=False`→CA) | TLS posture | export workflow c6b3fcd8; compose rollback; backend service rollback | COMPLETED 2026-08-30 — bundle ops/backups/tls/ca-bundle.pem (mct-opensearch-ca + MCT-Internal-CA) mounted into shuffle-backend:/opt/mct/security/ca-bundle.pem; compose volume added (roll back by removing line + `docker compose up -d`); shuffle-backend recreated; workflow c6b3fcd8 saved with verify=CA (0 verify=False remaining); p76-tls validator PASS |
+| CR-76-03 | Effectively-once fault injection (crash-after-accept, response-loss, partial-success, timeout-ambiguity, concurrent-races) | service kill/restart | synthetic events; FK-cleanup; backend/worker rollback |
+| CR-76-04 | Worker + OpenSearch recreation (Swarm force-update; data volume preserved) | container recreate | snapshot/volume preserved; service rollback |
+| CR-76-05 | OTel Collector deployment (secure, bounded) | infra addition | compose rollback |
 
 ## 4. Standing Rule
 

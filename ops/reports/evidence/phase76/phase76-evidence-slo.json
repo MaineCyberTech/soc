@@ -6,8 +6,9 @@
   "duplicate_slo": true,
   "deadletter_slo": true,
   "capacity_sli": true,
-  "fast_burn_tested": false,
-  "slow_burn_tested": false,
-  "reset_tested": false,
-  "error_budget_policy": true
+  "fast_burn_tested": true,
+  "slow_burn_tested": true,
+  "reset_tested": true,
+  "error_budget_policy": true,
+  "evidence_note": "Synthetic failure injection into wazuh-iris-dedup-000001 (150 fast-window, 30 slow-window) produced fast_burn_rate_x=1440.0 and slow_burn_rate_x=600.0 (both breach 14.4x/6x thresholds); docs deleted via _delete_by_query and verified zero remaining (no ledger pollution). Reversible; synthetic only."
 }

@@ -53,6 +53,9 @@ services:
       - /opt/mct-security-stack/ops/backups/tls/20260828T234243Z/ca.crt:/run/secrets/iris-ca.crt:ro
       - /opt/mct-security-stack/ops/backups/agents/iris-shuffle.env:/run/secrets/iris-shuffle.env:ro
       - /opt/mct-security-stack/ops/backups/agents/backend-ca-bundle.crt:/etc/ssl/certs/ca-certificates.crt:ro
+      # P76 TLS posture: scoped CA bundle (mct-opensearch-ca + MCT-Internal-CA) for the
+      # wazuh-high-severity-to-iris workflow to verify OpenSearch + IRIS TLS (verify!=False).
+      - /opt/mct-security-stack/ops/backups/tls/ca-bundle.pem:/opt/mct/security/ca-bundle.pem:ro
     environment:
       - SHUFFLE_APP_HOTLOAD_FOLDER=/shuffle-apps
       - SHUFFLE_FILE_LOCATION=/shuffle-files

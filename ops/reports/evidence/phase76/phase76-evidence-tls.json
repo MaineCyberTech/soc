@@ -1,9 +1,12 @@
 {
-  "iris_app_tls": false,
-  "iris_hostname_verified": false,
+  "iris_app_tls": true,
+  "iris_hostname_verified": true,
   "opensearch_rest_tls": true,
-  "opensearch_hostname_verified": false,
+  "opensearch_hostname_verified": true,
   "overlay_encryption_state": "decision_pending_measured_evidence",
   "states_independent": true,
-  "current_evidence": true
+  "current_evidence": true,
+  "iris_hostname_verified_evidence": "Live workflow c6b3fcd8 (wazuh-high-severity-to-iris) execute_python IRIS POST now uses verify='/run/secrets/iris-ca.crt' (MCT-Internal-CA). openssl verify of iris_dev_cert.pem against MCT-Internal-CA => OK; live TLS Verify return code 0 at 127.0.0.1:8443 servername iriswebapp_nginx. Mounted in shuffle-backend via compose.",
+  "opensearch_hostname_verified_evidence": "Live workflow c6b3fcd8 dedup GET/PUT now use verify='/opt/mct/security/ca-bundle.pem' (mct-opensearch-ca). openssl verify of data/opensearch-tls/node/node.pem against mct-opensearch-ca => OK. Bundle built at ops/backups/tls/ca-bundle.pem, mounted into recreated shuffle-backend at /opt/mct/security/ca-bundle.pem. Workflow doc read from OpenSearch workflow-000001 confirms 0 verify=False remaining.",
+  "posture_change_ref": "CR-76-02 (operator-approved TLS posture change); bundle mount + shuffle-backend recreate performed 2026-08-30; workflow code change saved by operator in Shuffle UI."
 }
