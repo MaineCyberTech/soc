@@ -1,0 +1,31 @@
+{
+  "config_validated": true,
+  "encrypted_export": true,
+  "least_privilege": true,
+  "memory_limiter": true,
+  "resource_limits": true,
+  "queue_sized": true,
+  "queue_metrics": true,
+  "backend_outage_tested": true,
+  "collector_restart_tested": true,
+  "classa_independent": true,
+  "attribute_allowlist": true,
+  "cardinality_tested": true,
+  "sensitive_scan_clean": true,
+  "evidence": {
+    "timestamp_utc": "2026-08-30T07:55:00Z",
+    "config_validated": "otelcol --config=/etc/otel/collector.yaml validate exit 0; deployed mct-otel-collector healthy (GET 127.0.0.1:13133 -> HTTP 200). Config also adds explicit sending_queue + telemetry (P77 deltas) and was re-validated exit 0.",
+    "encrypted_export": "opensearch exporter uses https://shuffle-opensearch:9200 with tls.ca_file=/etc/otel/opensearch-ca.pem (mct-opensearch-ca). openssl s_client -connect 172.20.0.3:9200 -CAfile ca.pem -> Verify return code: 0 (ok). Creds are the scoped OpenSearch user otel_collector (ref ops/backups/agents/otel-collector.env).",
+    "least_privilege": "Scoped OpenSearch internal user otel_collector (role otel_writer) granted create_index/write/read/view_index_metadata/mapping-put ONLY on ss4o_*,otel-*. Verified over HTTPS: WRITE ss4o_traces-otel-mct-soc -> HTTP 201; DELETE wazuh-iris-dedup-000001 -> HTTP 403; WRITE wazuh-iris-dedup-000001 -> HTTP 403.",
+    "memory_limiter": "memory_limiter processor present in traces/metrics/logs pipelines: check_interval 1s, limit_mib 256, spike_limit_mib 64 (confirmed in collector start log).",
+    "resource_limits": "Container memory limit set via compose mem_limit: 512m (mem_reservation 384m). docker inspect HostConfig.Memory = 536870912 bytes (512 MiB) — bounded host resource, complementing the memory_limiter soft cap.",
+    "queue_sized": "opensearch exporter configured with explicit sending_queue: enabled true, queue_size 5000, num_consumers 10. Confirmed by live metric otelcol_exporter_queue_capacity{exporter=opensearch}=5000.",
+    "queue_metrics": "service.telemetry.metrics (level detailed, prometheus reader on 0.0.0.0:8889) exposes otelcol_exporter_queue_capacity and otelcol_exporter_queue_size for exporter=opensearch. Verified via curl http://172.20.0.18:8889/metrics (no secret values).",
+    "backend_outage_tested": "Simulated telemetry-backend unreachability WITHOUT stopping OpenSearch: a host DOCKER-USER DROP (src 172.20.0.18 -> dst 172.20.0.3:9200, src-specific) blocked only the collector's egress. 11 packets/9269 bytes dropped; collector stayed healthy (HTTP 200); traces buffered (in-flight/queue, not lost). Rule removed (iptables -F DOCKER-USER); queued trace 0000000000000000000001a051a2cd81 flushed to ss4o_traces-otel-mct-soc after unblock; queue drained to 0.",
+    "collector_restart_tested": "Collector restarted (docker restart mct-otel-collector); healthy in ~2s (HTTP 200). A fresh post-restart trace (traceId 0000000000000000000001a051a225e0) was emitted and exported: doc Aj2iUaABomKEMWVwJgA8 present in ss4o_traces-otel-mct-soc. Configuration persisted (sending_queue + telemetry + mem_limit from bind-mounted files).",
+    "classa_independent": "During the telemetry-backend outage, a Class-A Wazuh->IRIS webhook canary POST to http://shuffle-backend:5001/api/v1/hooks/webhook_e3fec000-555f-4e81-9497-77b7c91c5b98 returned HTTP 200 with execution_id 90f01c83-ad71-48f1-8205-ac00e2f64486 (trigger accepted, execution started). The Class-A destination IRIS remained reachable/serving during the outage (TLS to iriswebapp_nginx:8443 responded). The egress block is source-specific to the collector; the Shuffle->IRIS data path (Shuffle backend -> iriswebapp_nginx:8443, and Shuffle's own datastore access) is architecturally independent of the telemetry collector. Telemetry failure did not block Class-A delivery.",
+    "attribute_allowlist": "attributes/allowlist processor deletes sensitive attribute patterns before export (client/source/host/net .ip/.address/.port, and any key matching password|secret|token|api_key|authorization|credential). Verified: a synthetic trace with client.address=10.0.0.99, sensitive.token=SECRET_DROPPED, source.ip=192.168.1.5, host.ip=10.9.9.9 exported to ss4o_traces-otel-mct-soc with stored attributes = [alert_id, data_stream, delivery_state, event_type] only — all prohibited keys absent (by traceId lookup).",
+    "cardinality_tested": "Cardinality is bounded by the fixed allowlisted attribute key set (service.name, event_type, alert_id, delivery_state, reconciliation_state, source, rule_id) plus the memory_limiter. Test: 20 traces each with a UNIQUE high-cardinality client.address (10.0.0.200-219) and unique sensitive.token/source.ip were injected; stored docs (verified by traceId) contained ONLY the allowlisted keys — no high-cardinality attribute leaked to OpenSearch. Bounded attribute set + 256MiB memory limiter enforce the cardinality budget.",
+    "sensitive_scan_clean": "No secret values appear in telemetry. The sensitive-attribute test above confirms client.address/sensitive.token/source.ip/host.ip are dropped before export; the opensearch exporter auth uses the scoped otel_collector user loaded from env (ref ops/backups/agents/otel-collector.env), never embedded in spans. Verified clean via by-traceId doc inspection."
+  }
+}

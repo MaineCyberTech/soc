@@ -1,0 +1,56 @@
+{
+  "expected_members": true,
+  "unexpected_member_tested": true,
+  "unauthorized_iris_denied": true,
+  "unauthorized_opensearch_denied": true,
+  "scoped_iris_allowed": true,
+  "scoped_dedup_allowed": true,
+  "admin_secret_absent": true,
+  "recovery_observed": true,
+  "generated_utc": "2026-08-30T00:00:00Z",
+  "expected_member_list": {
+    "note": "Sensitive trust-domain members enumerated from `docker network inspect` on the two networks that carry IRIS/Shuffle/OpenSearch traffic. All listed containers were confirmed ATTACHED to their network at generation time.",
+    "iris-shuffle-overlay (overlay)": [
+      "iriswebapp_nginx",
+      "shuffle-workers"
+    ],
+    "mct-security (bridge)": [
+      "iriswebapp_nginx",
+      "iriswebapp_worker",
+      "shuffle-opensearch",
+      "shuffle-tools_1-2-0",
+      "shuffle-workers",
+      "shuffle-backend",
+      "shuffle-frontend",
+      "shuffle-orborus",
+      "shuffle-ai_1-1-0",
+      "shuffle-subflow_1-1-0",
+      "shufflehealthcheck_1-1-0",
+      "email_1-3-0",
+      "http_1-4-0",
+      "shuffle-tls-proxy",
+      "mct-otel-collector",
+      "multi-node-wazuh.master-1",
+      "multi-node-wazuh.worker-1",
+      "mct-security-stack-opencanary-1"
+    ]
+  },
+  "notes": {
+    "expected_members": "Enumerated the two relevant networks (iris-shuffle-overlay overlay + mct-security bridge) that carry IRIS/Shuffle/OpenSearch sensitive traffic. iris = iriswebapp_nginx + iriswebapp_worker; opensearch = shuffle-opensearch; shuffle = shuffle-tools_1-2-0, shuffle-workers, shuffle-backend, shuffle-frontend, shuffle-orborus, shuffle-ai_1-1-0, shuffle-subflow_1-1-0, shufflehealthcheck_1-1-0, email_1-3-0, http_1-4-0, shuffle-tls-proxy. All confirmed ATTACHED via docker network inspect (IPs present).",
+    "unexpected_member_tested": "Created a TEMPORARY alpine container on the default `bridge` network (NOT an expected sensitive-network member, carrying NO iris/dedup secrets). Attempted to reach IRIS at 127.0.0.1:8443 -> Connection refused (127.0.0.1 is the container's own loopback; IRIS is published only on host loopback, so the non-sensitive container is network-isolated). Attempted OpenSearch at 172.20.0.1:9200 -> reached at TCP layer but returned HTTP 401 Unauthorized (no creds). Container was then REMOVED (verified: no alpine containers remain).",
+    "unauthorized_iris_denied": "Host-side anonymous (no credentials) GET https://127.0.0.1:8443/ returned HTTP 302 (redirect to login; unauthenticated, no data returned) — access denied. Separately, the unexpected-member container could not even reach IRIS (connection refused). Both confirm an identity without IRIS credentials cannot authenticate/read.",
+    "unauthorized_opensearch_denied": "OpenSearch anonymous GET https://172.20.0.1:9200/ returned HTTP 401 Unauthorized ('Unauthorized'). The unexpected-member container (no creds) also received HTTP 401 from 172.20.0.1:9200. An identity without dedup/opensearch creds cannot authenticate or write.",
+    "scoped_iris_allowed": "Positive control: the dedicated `iris-shuffle-dedicated` secret was used (token read into a shell variable, never printed) in a GET https://127.0.0.1:8443/alerts/591 with the IRIS CA. Response HTTP 200 with alert data payload (status/message/data). The scoped IRIS identity CAN read an existing alert.",
+    "scoped_dedup_allowed": "Positive control: the dedicated `dedup-shuffle-dedicated` secret was sourced inside the shuffle-tools task (creds in env, never printed). A PUT of a verification doc to wazuh-iris-dedup-000001 via https://172.20.0.3:9200 (shuffle-opensearch container IP) with the dedup_writer user returned HTTP 201. The doc was then DELETED (HTTP 200) to leave the index clean. Scoped dedup_writer CAN write the dedup index (least-privilege confirmed).",
+    "admin_secret_absent": "Inspected shuffle-tools_1-2-0 task secret mounts via `docker service inspect`. Mounted secret files are EXACTLY: iris-ca.crt (->/run/secrets/iris-ca.crt), iris-shuffle-dedicated (->/run/secrets/iris-shuffle.env), dedup-shuffle-dedicated (->/run/secrets/dedup-shuffle.env), opensearch-ca (->/opt/mct/security/ca-bundle.pem). The broad mixed secrets (iris-shuffle-env, iris-shuffle-env-v2, iris-shuffle-env-v3) and any admin/compose/.env secret are NOT mounted. Only narrow dedicated secrets + both CAs are present — admin_secret_absent confirmed.",
+    "mounted_secret_names": [
+      "iris-ca.crt",
+      "iris-shuffle-dedicated",
+      "dedup-shuffle-dedicated",
+      "opensearch-ca"
+    ],
+    "recovery_observed": "After removing the temporary test container, a recovery health check confirmed the expected members still reach the backends: dedup_writer GET https://172.20.0.3:9200/_cluster/health/wazuh-iris-dedup-000001 returned HTTP 200 (cluster health readable), and the scoped IRIS GET returned HTTP 200. No iptables rules or network changes were introduced at any point, so nothing required reverting. All expected members remain attached and healthy.",
+    "network_changes": "NONE. No iptables rules added, no network isolation applied, no production traffic blocked. The only temporary artifact was the alpine test container, which was removed.",
+    "secrets_handling": "All secret values referenced by PATH/name only. Dedicated secret values were read only into transient shell variables / in-container env and never printed, logged, or committed."
+  }
+}

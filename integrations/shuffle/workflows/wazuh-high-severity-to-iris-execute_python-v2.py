@@ -9,7 +9,7 @@ IRIS_PORT = 8443
 
 def load_env():
     env = {}
-    for path in ["/shuffle-files/iris-shuffle.env", "/run/secrets/iris-shuffle.env"]:
+    for path in ["/shuffle-files/iris-shuffle.env", "/run/secrets/iris-shuffle.env", "/run/secrets/dedup-shuffle.env"]:
         try:
             with open(path) as fh:
                 for line in fh:
@@ -54,8 +54,8 @@ else:
     raw_id = alert.get("id") or alert.get("alert_id")
     event_id = str(raw_id) if raw_id else hashlib.md5(json.dumps(alert, sort_keys=True).encode()).hexdigest()
     dedup_url = "%s/%s/_doc/%s" % (OPENSEARCH, DEDUP_IDX, event_id)
-    ca = "/opt/mct/security/opensearch-ca.pem"
-    iris_ca = "/run/secrets/iris-ca.crt"
+    ca = os.environ.get("OPENSEARCH_CA_BUNDLE", "/opt/mct/security/opensearch-ca.pem")
+    iris_ca = os.environ.get("IRIS_CA", "/run/secrets/iris-ca.crt")
 
     # 1) ATOMIC CLAIM before any IRIS POST (exactly-once: only one execution can claim)
     claim_body = {"event_id": event_id, "alert_id": None, "claimed_ts": time.time(), "state": "CLAIMED"}

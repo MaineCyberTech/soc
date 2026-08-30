@@ -69,5 +69,30 @@ IRIS TLS / OpenSearch REST TLS / overlay encryption reconciled as independent co
 - Single-node Swarm: no cross-node resilience claimed. Pack validator OPEN results reflect honest
   non-execution of gated work, consistent with P74/P75.
 
+## 8. Addendum — Post-Pack Gated Operations Executed (2026-08-30, after this report)
+
+This report was finalized at 02:10Z before the post-pack gates were closed. All six `p76-*`
+validators are now PASS. The canonical current-state doc
+(`ops/reports/canonical/current/current-state-20260830-p76.md`, §8) is the live truth; key updates:
+
+- **TLS posture (CR-76-02):** OpenSearch CA bundle mounted into `shuffle-backend`+`shuffle-worker*`
+  (`VERIFY_CERTS=true`, `OPENSEARCH_HOSTNAME_VERIFY=true`); IRIS TLS verified
+  (`verify=/run/secrets/iris-ca.crt`). OpenSearch client hostname verification and IRIS TLS are now
+  TRUE. Supersedes §4 ("NOT enforced" / "NOT enabled").
+- **Effectively-once (CR-76-03):** v2 atomic-dedup + fail-closed reconciliation deployed and
+  live-verified (canaries `p76-live2`/replay). `p76-eo` PASS.
+- **Recreate-survival (CR-76-04):** operator-approved; `shuffle-worker1` + `wazuh-iris-dedup`
+  recreated (overwrite-safe). `p76-recreate` PASS.
+- **OTel collector (CR-76-05):** `mct-otel-collector` deployed; least-privilege; sensitive attrs
+  dropped. `p76-otel` PASS.
+- **SLO burn/reset (CR-76-01):** synthetic burn → paging + budget decrement + reset intent. PASS.
+- **Verdict update:** §5 now effectively PASS for the previously PARTIAL/DEFERRED/BLOCKED gated
+  items; only supported-capacity (license) and negative-network remain BLOCKED; overlay-enc/benchmark
+  and outbox ADR/PoC remain DEFERRED.
+- **RESIDUAL:** `shuffle-tools` needs durable mounts of OpenSearch CA + full `iris-shuffle.env`
+  (currently applied non-durably) for eo live exactly-once to survive container recreate.
+- Committed at git rev `6726959`.
+
 ---
-*Phase 76 autonomous-forward-safe — evidence-backed; secrets never exposed.*
+*Phase 76 autonomous-forward-safe — evidence-backed; secrets never exposed. This report's §4/§5/§6
+are superseded by the §8 addendum and the canonical current-state doc.*

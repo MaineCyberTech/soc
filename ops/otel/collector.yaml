@@ -61,11 +61,25 @@ exporters:
         ca_file: /etc/otel/opensearch-ca.pem
       auth:
         authenticator: basicauth/client
+    sending_queue:
+      enabled: true
+      queue_size: 5000
+      num_consumers: 10
     logs_index: otel-logs
     dataset: otel
     namespace: mct-soc
 
 service:
+  telemetry:
+    metrics:
+      level: detailed
+      readers:
+        - pull:
+            exporter:
+              prometheus:
+                host: 0.0.0.0
+                port: 8889
+
   extensions: [health_check, basicauth/client]
   pipelines:
     traces:

@@ -7,6 +7,8 @@ services:
     image: otel/opentelemetry-collector-contrib:0.118.0
     container_name: mct-otel-collector
     restart: unless-stopped
+    mem_limit: 512m
+    mem_reservation: 384m
     command: ["--config=/etc/otel/collector.yaml"]
     env_file:
       - /opt/mct-security-stack/ops/backups/agents/otel-collector.env

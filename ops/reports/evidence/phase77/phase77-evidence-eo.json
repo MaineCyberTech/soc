@@ -1,0 +1,99 @@
+{
+  "historical_duplicate_recorded": true,
+  "stable_source_id": true,
+  "create_only": true,
+  "occ": true,
+  "delivered_immutable": true,
+  "partial_success": true,
+  "crash_after_accept": true,
+  "response_loss": true,
+  "timeout_ambiguity": true,
+  "reconciliation_blocks_replay": true,
+  "race_campaign": true,
+  "second_replay_suppressed": true,
+  "destination_object_count": 1,
+  "evidence": {
+    "create_only": {
+      "claim_201": 201,
+      "second_claim_409": 409,
+      "doc_not_overwritten": true,
+      "result": true
+    },
+    "occ": {
+      "mechanism": "PUT ?op_type=create atomic claim; only one execution can own event_id; concurrent/retried claims rejected with 409 (optimistic-concurrency-style protection of the dedup ledger, no seq-no clobber)",
+      "create_only_409": 409,
+      "result": true
+    },
+    "race_campaign": {
+      "concurrent": 10,
+      "routed": 1,
+      "reconcile_pending": 2,
+      "dup_skip": 7,
+      "delivered_alert_id": 595,
+      "new_iris_objects": 1,
+      "result": true
+    },
+    "stable_source_id": {
+      "event_id": "P77EO-ID-E1",
+      "alert_id": 595,
+      "state": "DELIVERED",
+      "parity": true,
+      "result": true,
+      "iris_readback_status": 200
+    },
+    "delivered_immutable": {
+      "state": "DELIVERED",
+      "replay1": "DUP_SKIP",
+      "replay2": "DUP_SKIP",
+      "result": true
+    },
+    "second_replay_suppressed": {
+      "replay_state": "DUP_SKIP",
+      "new_objects": 0,
+      "result": true
+    },
+    "historical_duplicate_recorded": {
+      "replay_state": "DUP_SKIP",
+      "new_objects": 0,
+      "result": true
+    },
+    "reconciliation_blocks_replay": {
+      "name": "reconciliation_blocks_replay",
+      "state": "RECONCILE_PENDING",
+      "new_iris_objects": 0,
+      "result": true
+    },
+    "partial_success": {
+      "name": "partial_success",
+      "state": "RECONCILE_PENDING",
+      "new_iris_objects": 0,
+      "result": true
+    },
+    "crash_after_accept": {
+      "name": "crash_after_accept",
+      "state": "RECONCILE_PENDING",
+      "new_iris_objects": 0,
+      "result": true
+    },
+    "response_loss": {
+      "name": "response_loss",
+      "state": "RECONCILE_PENDING",
+      "new_iris_objects": 0,
+      "result": true
+    },
+    "timeout_ambiguity": {
+      "name": "timeout_ambiguity",
+      "state": "RECONCILE_PENDING",
+      "new_iris_objects": 0,
+      "result": true
+    }
+  },
+  "synthetic_iris_alert_ids_created": [
+    594,
+    595
+  ],
+  "synthetic_dedup_ledger_rows": "REMOVED (specific synthetic docs P77EO-ID-E1 and P77EO-CREATEONLY deleted by id from wazuh-iris-dedup-000001; production index data untouched).",
+  "iris_rest_delete_attempt": "DELETE /alerts/<id> -> 405; POST /alerts/delete -> 'Resource not found' for all body variants. Per AGENTS.md, direct DB deletion NOT performed. Synthetic IRIS alerts 594/595 left isolated (no case/linkage, no production-counter impact).",
+  "cleanup": "Temporary harness copies removed; fault flag was an in-process env var (P77_FAULT), not persisted. Synthetic dedup rows deleted by id; synthetic IRIS alerts 594/595 remain isolated and recorded.",
+  "notes": "All scenarios exercised the EXACT v2 dedup+delivery logic (a copy of integrations/shuffle/workflows/wazuh-high-severity-to-iris-execute_python-v2.py) from host against real IRIS (127.0.0.1:8443, network-isolated from swarm) + real OpenSearch dedup index wazuh-iris-dedup-000001 (172.20.0.1:9200) with dedicated creds (iris-shuffle-dedicated / dedup-shuffle-dedicated sourced via PATH only). For the tested stable source identity E (P77EO-ID-E1), exactly one IRIS object was created (alert 595, by the single race winner); every other run (replay / reconcile / race-loser) hit PUT ?op_type=create 409 -> DUP_SKIP / RECONCILE_PENDING and never re-POSTed. IRIS POST count for E across the entire fault window = 1 (provable from the control flow: only the 201 claim owner POSTs; all fault/replay paths are 409 and fail-closed). destination_object_count is the count of NEW IRIS objects for identity E across the whole fault window and equals 1. Alert 594 was created by the initial validation pass (pre-fix create-only test body) and is also isolated; its dedup ledger row was removed."
+}

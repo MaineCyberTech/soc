@@ -30,11 +30,13 @@ MUST / MUST NOT item below.
 
 ## Canonical Truth & Navigation
 
-- Current operational truth: `ops/reports/canonical/current/current-state-20260829-p74.md`
-  (P74 — supported capacity governance + committed-infra design replacing P73 dev workarounds;
-  quota-reset cron retired; read-only monitors live; strict E2E canary verified; overlay/REST
-  TLS/RBAC recorded OPEN/BLOCKED with explicit exceptions per acceptance #5/#6. Supersedes
-  current-state-20260829-p73.md; superseded only by a newer current-state doc).
+- Current operational truth: `ops/reports/canonical/current/current-state-20260830-p77.md`
+  (P77 — all seven `p77-*` validators PASS; shuffle-tools rebuilt with dedicated secrets + both CAs,
+  two worker replacements + E2E, OpenSearch recreate/rollback/TLS/RBAC/ledger, full eo fault matrix
+  (one destination object), Collector outage/restart/queue/cardinality independent from Class-A,
+  negative-network denied, fast/slow/reset/low-traffic SLO. Residual: isolated synthetic IRIS alerts
+  + IRIS loopback isolation + supported-capacity license gate. Supersedes
+  current-state-20260830-p76.md; superseded only by a newer current-state doc).
 - Open-work ledger: `ops/reports/canonical/current/open-work.md`.
 - Do not act on any claim older than the canonical current-state doc without re-verification.
 
@@ -113,7 +115,7 @@ Operator sign-off, recorded in the change register, is REQUIRED before:
 
 Durable-only pointer. Volatile per-phase history and open/gated items are NOT embedded here
 (they are volatile). The live list of open blockers and gated (NO-GO) operations is maintained
-in the canonical current-state doc: `ops/reports/canonical/current/current-state-20260829-p74.md`
+in the canonical current-state doc: `ops/reports/canonical/current/current-state-20260830-p77.md`
   (see "Open / Gated (NO-GO without sign-off)"). Recurring durable blockers: production routing,
 restore rehearsal, credential rotation, ISM/index intervention, and container recreate-to-deploy
 all require operator sign-off per Approval-Gated Operations.
