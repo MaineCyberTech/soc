@@ -1,0 +1,18 @@
+{
+ "wazuh_alert_id":"p79e2e-4idq8j1s",
+ "integratord_record_id":"p79e2e-4idq8j1s",
+ "shuffle_service":"Shuffle",
+ "action_task_id":"hmt2ui4gkdos",
+ "action_container_id":"f427c787867e99e858f464e61b30d31acba3cc9cab0c1c3c765d22a3e48845f8",
+ "node_id":"s9zkxfoqwt4mo0dl9s1ky0h0k",
+ "network_namespace":"shuffle_swarm_executions",
+ "task_local_dns":true,
+ "task_local_tcp":true,
+ "task_local_tls":true,
+ "task_local_auth":true,
+ "shuffle_execution_id":"f5337bcb-e771-45ab-a588-0f088cc805d2",
+ "iris_object_id":"628",
+ "direct_iris_readback":true,
+ "marker_parity":true,
+ "request_executor":"shuffle_action_task"
+}

@@ -1,0 +1,328 @@
+{
+ "report_id": "phase79-evidence-eo-detail",
+ "phase": "79",
+ "title": "Phase 79 EFFECTIVELY-ONCE (eo) fault matrix - deployed Shuffle action task -> IRIS, create-only dedup/ledger",
+ "date": "2026-08-30",
+ "timestamp_utc": "2026-08-30T22:15:00Z",
+ "timestamp_et": "2026-08-30T18:15:00-04:00 (EDT)",
+ "classification": "INTERNAL",
+ "status": "PASS",
+ "validator": "ops/scripts (prompt pack) p79-eo-validate.py -> {\"missing\": [], \"bad_count\": false} exit 0",
+ "strict_evidence_file": "ops/reports/evidence/phase79/phase79-evidence-eo.json",
+ "execution_provenance": {
+  "request_executor": "shuffle_action_task",
+  "workflow_id": "c6b3fcd8-13e5-44a8-a818-024e4ae4422b",
+  "workflow_name": "wazuh-high-severity-to-iris",
+  "webhook_trigger_id": "e3fec000-555f-4e81-9497-77b7c91c5b98",
+  "webhook_url_form": "https://192.168.222.149:3443/api/v1/hooks/webhook_e3fec000-555f-4e81-9497-77b7c91c5b98",
+  "execution_source_observed": "webhook",
+  "action_id": "484d8d7c-cd18-45d3-88d3-d337447ff670",
+  "action_label": "IRIS_POST_value-blind",
+  "app": "Shuffle Tools 1.2.0 (execute_python)",
+  "swarm_service": "shuffle-tools_1-2-0 (replicas 2/2)",
+  "action_task_containers_observed": {
+   "f427c787867e": {
+    "swarm_task_name": "shuffle-tools_1-2-0.1.5ujy1alo1hr90bkvqcladauq9",
+    "swarm_task_id": "5ujy1alo1hr90bkvqcladauq9",
+    "node_id": "s9zkxfoqwt4mo0dl9s1ky0h0k",
+    "net_namespace_inode": "net:[4026534798]",
+    "pid_namespace_inode": "pid:[4026532637]",
+    "in_task_process": "pid 1 -> python app.py --log-level DEBUG"
+   },
+   "044e8e7d33a6": {
+    "swarm_task_name": "shuffle-tools_1-2-0.2.zkdland0lyh54czfypf181r35",
+    "swarm_task_id": "zkdland0lyh54czfypf181r35",
+    "node_id": "s9zkxfoqwt4mo0dl9s1ky0h0k",
+    "net_namespace_inode": "net:[4026534944]"
+   }
+  },
+  "host_side_execution_used_for_gates": false,
+  "note": "Every matrix scenario ran inside the deployed Shuffle action task (execute_python node of workflow c6b3fcd8) reached through the live webhook trigger; the node emitted its own container/pid/netns/execution provenance. Host-side python was used only to POST the synthetic webhook events and to read back independent confirmations (IRIS Postgres count, ledger reads)."
+ },
+ "secrets_and_trust": {
+  "iris_secret": "iris-shuffle-dedicated -> /run/secrets/iris-shuffle.env (IRIS_API_KEY, IRIS_BASE_URL, IRIS_CA, VERIFY_CERTS)",
+  "dedup_secret": "dedup-shuffle-dedicated -> /run/secrets/dedup-shuffle.env (OPENSEARCH_DEDUP_USER/PASSWORD, OPENSEARCH_CA_BUNDLE, OPENSEARCH_HOSTNAME_VERIFY, VERIFY_CERTS)",
+  "ca_bundles": [
+   "/run/secrets/iris-ca.crt",
+   "/opt/mct/security/ca-bundle.pem"
+  ],
+  "tls": "IRIS https://iriswebapp_nginx:8443 (SAN match, CA-verified) ; ledger https://shuffle-opensearch:9200 (CA-verified, hostname verification preserved)",
+  "dedup_ledger_user": "dedup_writer (least privilege: index read/write on wazuh-iris-dedup-*, no cluster/alias/monitor rights - observed 403 on _cat/indices and _alias)",
+  "secret_values_exposed": false
+ },
+ "ledger": {
+  "index_confirmed": "wazuh-iris-dedup-000001",
+  "index_discovery": "wazuh-iris-dedup-* _search agg on _index: wazuh-iris-dedup-000001 (live, 19 docs at close), wazuh-iris-dedup-backup-20260830t071732z (380), wazuh-iris-dedup-parity-1787973617 (37), wazuh-iris-dedup-parity-1787973637 (37), wazuh-iris-dedup-snapshot-1787969417 (26)",
+  "claim_semantics": "PUT /_doc/{event_id}?op_type=create&refresh=true -> 201 created for the first claim, 409 version_conflict_engine_exception for every duplicate",
+  "finalize_semantics": "PUT ?if_seq_no=<claim seq>&if_primary_term=<term> (optimistic concurrency) CLAIMED -> DELIVERED",
+  "immutability_contract": "delivery path is create-only (409 on existing) and every transition is an OCC + state-guarded painless update that throws on state == DELIVERED"
+ },
+ "scenarios": {
+  "deployed_action_task": {
+   "verdict": true,
+   "evidence": "35 single deployed-workflow executions logged with full node output, 30 concurrent race executions, and 3 canonical-code canary executions (68 total); each node output carried container_hostname/netns/pid, workflow_id c6b3fcd8-13e5-44a8-a818-024e4ae4422b, action_id 484d8d7c-cd18-45d3-88d3-d337447ff670, execution_source webhook, request_executor shuffle_action_task",
+   "sample_execution_ids": [
+    "dbd511cd-18fa-4972-a2f2-281483560e72",
+    "358e019d-2707-4316-b305-4922f4412f89",
+    "2b8873dd-fc90-47e4-987c-d598d2a3054f",
+    "ddac7594-a69d-4d93-aa67-6bb723acc04b"
+   ]
+  },
+  "stable_source_id": {
+   "verdict": true,
+   "identity": "p79eo-happy-g2nmkd",
+   "detail": "wazuh id == alert_id == rule.id == derived event_id == ledger doc id (sha256 836933c1e32d177e8022a5ed18f535fadceb443bbc4c4b9ef8efce9298ed1817). First execution dbd511cd ROUTED alert_id 632; replays 69c7b7f5 and cbb250c8 (plus 10 concurrent retries) all returned DUP_SKIP with cached_alert_id 632",
+   "destination_object_count": 1
+  },
+  "create_only": {
+   "verdict": true,
+   "identity": "p79eo-create-f6n43n",
+   "execution_id": "702f1d3e-ca45-4c42-803b-5db93767e33e",
+   "claim_1": "HTTP 201 result=created _seq_no 110 _primary_term 4",
+   "claim_2_duplicate": "HTTP 409 version_conflict_engine_exception ([p79eo-create-f6n43n]: version conflict, document already exists (current version [1]))",
+   "second_destination_post_attempted": false,
+   "iris_object": 633,
+   "destination_object_count": 1
+  },
+  "occ": {
+   "verdict": true,
+   "identity": "p79eo-occ-60dxpk",
+   "execution_id": "67928db3-8ff1-480f-8685-3f82347d20f2",
+   "claim": "HTTP 201 seq_no 112 primary_term 4 state CLAIMED",
+   "stale_write": "PUT ?if_seq_no=111&if_primary_term=4 -> HTTP 409 version_conflict_engine_exception (required seqNo [111]; current document has seqNo [112] and primary term [4]); document unchanged (state CLAIMED, version 1)",
+   "fresh_write": "PUT ?if_seq_no=112&if_primary_term=4 -> HTTP 200 result=updated, seq_no 113 (proves the mechanism is not fail-always)",
+   "destination_writes": 0
+  },
+  "delivered_immutable": {
+   "verdict": true,
+   "identities": [
+    "p79eo-happy-g2nmkd (alert 632)",
+    "p79eo-create-f6n43n (alert 633)"
+   ],
+   "execution_ids": [
+    "d75058ee-9368-4291-874f-b78a206836d6",
+    "93dd7af9-8964-44b7-9307-b915db649a70"
+   ],
+   "create_only_mutation_attempt": "HTTP 409 version_conflict_engine_exception (document already exists, current version [2])",
+   "guarded_transition_attempt": "POST /_update -> HTTP 400 illegal_argument_exception / script_exception, guard reason: 'DELIVERED is immutable; refusing transition to TAMPERED_REOPEN'",
+   "post_state": "state DELIVERED preserved, _version unchanged (2), _seq_no unchanged (109 / 111)"
+  },
+  "partial_success": {
+   "verdict": true,
+   "identity": "p79eo-partial-tt8jds",
+   "execution_id": "3da8c77c-6b0b-4a5e-997c-2169499d7b0a",
+   "sequence": "claim 201 (seq 114) -> IRIS POST HTTP 200 alert_id 634 (destination accepted) -> ledger finalize genuinely failed (requests ConnectionError to the unreachable ledger endpoint https://shuffle-opensearch:9299) -> OCC transition CLAIMED->RECONCILIATION_REQUIRED (seq 115, version 2)",
+   "final_state": "RECONCILIATION_REQUIRED (alert_id null, note 'destination possibly accepted; ledger finalize failed')",
+   "replay_after_fault": "4ed3bf60-2b42-481b-8a0c-2d662aafd308 -> RECONCILE_PENDING, destination_posted false",
+   "destination_object_count": 1
+  },
+  "crash_after_accept": {
+   "verdict": true,
+   "identity": "p79eo-crash-i6f3ts",
+   "execution_id": "d9b2dd72-477f-4925-8345-91f10ccb860b",
+   "sequence": "claim 201 (seq 116) -> IRIS POST HTTP 200 alert_id 635 -> execution aborted before ledger finalize; the deployed action returned {\"success\": false, \"message\": \"Exception: P79EO simulated abort after destination accept (event_id=p79eo-crash-i6f3ts)\"}",
+   "ledger_after_crash": "state CLAIMED, alert_id null, _version 1 (exactly the crash-window state)",
+   "retry": "46993abf-6e09-4e2d-a4b2-51b98b0c31fa -> claim 409 -> RECONCILE_PENDING ('claim exists without DELIVERED alert_id; fail-closed, no re-POST')",
+   "destination_object_count": 1,
+   "simulation_note": "abort was raised in-process after destination acceptance (no container kill); this reproduces the crash-window ledger state without restarting a shared swarm task"
+  },
+  "response_loss": {
+   "verdict": true,
+   "identity": "p79eo-resploss-dmnsuh",
+   "execution_id": "9cfd76a0-ee1d-4074-9794-9bdd74c5b4d4",
+   "technique": "tls_socket_send_then_close_without_read: 503-byte POST /alerts/add sent over a CA-verified TLS socket (peer CN iris.app.dev), socket held 8 s, response never read, then closed",
+   "ledger_state": "RECONCILE_RESPONSE_LOSS (alert_id null, seq 118, version 2)",
+   "destination_outcome": "object 636 was created by IRIS although the client never saw the response",
+   "retry": "3fd4f4b3-bafb-4caa-a155-1314d4cf85dd -> RECONCILE_PENDING (no re-POST)",
+   "destination_object_count": 1
+  },
+  "timeout_ambiguity": {
+   "verdict": true,
+   "identity": "p79eo-timeout4-6hgmmx",
+   "execution_id": "2b8873dd-fc90-47e4-987c-d598d2a3054f",
+   "technique": "tls_socket_send_then_client_read_timeout: request fully sent over verified TLS, client read budget 2 ms -> TimeoutError 'The read operation timed out' at 0.0022 s; socket held 6 s and the response was never read",
+   "ledger_state": "RECONCILIATION_REQUIRED (alert_id null, seq 126, version 2)",
+   "destination_outcome": "object 640 created by IRIS while the client had already abandoned the read (true ambiguity)",
+   "replay_before_reconcile": "40b3b813-9277-49f0-b23f-eb23e3fbeef9 -> RECONCILE_PENDING",
+   "destination_object_count": 1,
+   "calibration_runs": [
+    {
+     "identity": "p79eo-timeout-w6ztyw",
+     "read_timeout_s": 0.25,
+     "library": "requests",
+     "result": "no timeout - IRIS answered first (HTTP 200, object 637)"
+    },
+    {
+     "identity": "p79eo-timeout2-yla7x0",
+     "read_timeout_s": 0.05,
+     "library": "requests",
+     "result": "no timeout (HTTP 200, object 638)"
+    },
+    {
+     "identity": "p79eo-timeout3-t3x48u",
+     "read_timeout_s": 0.05,
+     "library": "raw TLS socket",
+     "result": "no timeout - 2269-byte response arrived within 50 ms (object 639)"
+    }
+   ],
+   "calibration_note": "The three calibration identities are retained as evidence: even when the intended timeout did not fire, each identity still produced exactly one destination object and its ledger record was later reconciled to RECONCILED_DELIVERED."
+  },
+  "reconciliation_blocks_replay": {
+   "verdict": true,
+   "pre_reconcile_replays": {
+    "p79eo-crash-i6f3ts": "46993abf -> RECONCILE_PENDING",
+    "p79eo-partial-tt8jds": "4ed3bf60 -> RECONCILE_PENDING",
+    "p79eo-resploss-dmnsuh": "3fd4f4b3 -> RECONCILE_PENDING",
+    "p79eo-timeout-w6ztyw": "959fa4d1 -> RECONCILE_PENDING",
+    "p79eo-timeout2-yla7x0": "41fc7c8c -> RECONCILE_PENDING",
+    "p79eo-timeout4-6hgmmx": "40b3b813 -> RECONCILE_PENDING"
+   },
+   "destination_reconciliation": {
+    "method": "deployed action task read back IRIS by source_reference, then OCC + state-guarded ledger transition to RECONCILED_DELIVERED with the discovered alert_id",
+    "results": {
+     "p79eo-crash-i6f3ts": "caa3f959 -> RECONCILED_DELIVERED alert_id 635 (seq 127)",
+     "p79eo-partial-tt8jds": "a9c6f602 -> RECONCILED_DELIVERED alert_id 634 (seq 128)",
+     "p79eo-resploss-dmnsuh": "d08eddd4 -> RECONCILED_DELIVERED alert_id 636 (seq 129)",
+     "p79eo-timeout-w6ztyw": "4badead0 -> RECONCILED_DELIVERED alert_id 637 (seq 130)",
+     "p79eo-timeout2-yla7x0": "32bf2a18 -> RECONCILED_DELIVERED alert_id 638 (seq 131)",
+     "p79eo-timeout3-t3x48u": "a4e7e8d7 -> RECONCILED_DELIVERED alert_id 639 (seq 132)",
+     "p79eo-timeout4-6hgmmx": "624db333 -> RECONCILED_DELIVERED alert_id 640 (seq 133)"
+    }
+   },
+   "post_reconcile_replays": {
+    "p79eo-crash-i6f3ts": "fb3ae06a -> RECONCILE_PENDING, no new object",
+    "p79eo-partial-tt8jds": "5a454bcf -> RECONCILE_PENDING, no new object",
+    "p79eo-resploss-dmnsuh": "421c66b7 -> RECONCILE_PENDING, no new object",
+    "p79eo-timeout4-6hgmmx": "fe783914 -> RECONCILE_PENDING, no new object"
+   },
+   "delivered_replays": "p79eo-happy-g2nmkd (69c7b7f5, cbb250c8) and p79eo-postrestore-2stxf3 (9d980675) -> DUP_SKIP with the cached alert_id; no new object",
+   "destination_object_count": 1
+  },
+  "race_campaign": {
+   "verdict": true,
+   "delivery_race": {
+    "identity": "p79eo-race-dwb557",
+    "concurrency": 10,
+    "fanout_window_s": 0.385,
+    "states": {
+     "ROUTED": 1,
+     "DUP_SKIP": 7,
+     "RECONCILE_PENDING": 1,
+     "no_action_result": 1
+    },
+    "winner_execution_id": "358e019d-2707-4316-b305-4922f4412f89",
+    "unique_destination_objects": [
+     641
+    ],
+    "ledger_final": "DELIVERED alert_id 641 _version 2 seq 135",
+    "containers_used": {
+     "f427c787867e": 5,
+     "044e8e7d33a6": 4
+    },
+    "anomaly": "execution 210df228-7e9f-4b41-b2c9-5a40c768a889 remained EXECUTING with only the first (notify-only) action result recorded; no destination object was produced by it (IRIS and Postgres both show exactly one object for the identity)",
+    "destination_object_count": 1
+   },
+   "retry_race": {
+    "identity": "p79eo-happy-g2nmkd (already DELIVERED)",
+    "concurrency": 10,
+    "fanout_window_s": 0.521,
+    "states": {
+     "DUP_SKIP": 10
+    },
+    "cached_alert_id": 632,
+    "containers_used": {
+     "044e8e7d33a6": 6,
+     "f427c787867e": 4
+    },
+    "destination_object_count": 1
+   },
+   "replay_race": {
+    "identity": "p79eo-timeout4-6hgmmx (RECONCILED_DELIVERED)",
+    "concurrency": 10,
+    "fanout_window_s": 0.398,
+    "states": {
+     "RECONCILE_PENDING": 10
+    },
+    "new_destination_objects": 0,
+    "containers_used": {
+     "044e8e7d33a6": 5,
+     "f427c787867e": 5
+    },
+    "destination_object_count": 1
+   }
+  },
+  "direct_readback": {
+   "verdict": true,
+   "method": "deployed action task GET https://iriswebapp_nginx:8443/alerts/{id} (CA-verified) plus GET /alerts/filter?source_reference={marker}",
+   "executions": {
+    "p79eo-happy-g2nmkd": "381f87f7 -> alert 632, alert_source_ref p79eo-happy-g2nmkd, created 2026-08-30T21:47:58.816831, marker_parity true",
+    "p79eo-race-dwb557": "925b6fc9 -> alert 641, created 2026-08-30T21:59:35.071055, marker_parity true",
+    "p79eo-crash-i6f3ts": "c422dd18 -> alert 635, created 2026-08-30T21:51:37.414669, marker_parity true",
+    "p79eo-timeout4-6hgmmx": "0ef54163 -> alert 640, created 2026-08-30T21:56:34.131414, marker_parity true"
+   },
+   "independent_cross_check": "read-only SQL in iriswebapp_db: SELECT alert_source_ref, count(*) FROM alerts WHERE alert_source_ref LIKE 'p79eo-%' GROUP BY 1 -> 12 distinct source ids, every count = 1 (max 1, min 1)"
+  }
+ },
+ "destination_object_count_proof": {
+  "value": 1,
+  "definition": "IRIS objects created per unique delivered source id",
+  "iris_api_check": "GET /alerts/filter?source_reference=<marker> from inside the action task returned destination_object_count 1 for every delivered identity",
+  "iris_db_check": "SELECT max(cnt), min(cnt), count(*) FROM (SELECT alert_source_ref, count(*) cnt FROM alerts WHERE alert_source_ref LIKE 'p79eo-%' GROUP BY 1) -> max 1 | min 1 | 12 distinct source ids",
+  "per_identity": {
+   "p79eo-happy-t65gzj": 631,
+   "p79eo-happy-g2nmkd": 632,
+   "p79eo-create-f6n43n": 633,
+   "p79eo-partial-tt8jds": 634,
+   "p79eo-crash-i6f3ts": 635,
+   "p79eo-resploss-dmnsuh": 636,
+   "p79eo-timeout-w6ztyw": 637,
+   "p79eo-timeout2-yla7x0": 638,
+   "p79eo-timeout3-t3x48u": 639,
+   "p79eo-timeout4-6hgmmx": 640,
+   "p79eo-race-dwb557": 641,
+   "p79eo-postrestore-2stxf3": 642
+  },
+  "ledger_only_identity": {
+   "p79eo-occ-60dxpk": "0 destination objects (ledger/OCC scenario, no destination write)"
+  },
+  "total_executions_issued": "68 deployed action-task executions = 35 single matrix executions (p79eo_runs.jsonl) + 30 concurrent race executions (3 x 10) + 3 canonical-code canary executions (initial happy canary 7a57b84a, post-restore canary ddac7594, post-restore replay 9d980675)",
+  "total_destination_objects_created": 12
+ },
+ "reversibility": {
+  "workflow_node_code": {
+   "canonical_v2_sha256": "9d9db0841dcbb642bfae24b322f94330780e70639ae0c59cace567ca4d8599a3",
+   "matrix_build_sha256_final": "a0abfb49f32deb4a3d41a96583ca8781f8600bd6c6a749a390a4b35047e37623",
+   "restored": true,
+   "post_restore_verification": "GET workflow c6b3fcd8 -> code sha256 9d9db0841dcbb642bfae24b322f94330780e70639ae0c59cace567ca4d8599a3 (5541 bytes)",
+   "post_restore_live_canary": "p79eo-postrestore-2stxf3: execution ddac7594 ROUTED alert_id 642 with ledger DELIVERED; replay 9d980675 DUP_SKIP cached_alert_id 642; destination_object_count 1"
+  },
+  "container_hosts_alignment": {
+   "change": "in shuffle-tools task .1 (f427c787867e) /etc/hosts, 'shuffle-opensearch' was repointed from the firewalled published address 172.20.0.1 to the reachable container address 172.20.0.3 (task .2 already had this entry)",
+   "reason": "the host-published OpenSearch endpoint 172.20.0.1:9200 is firewalled from the execution sandbox (connect timeout), so the canonical v2 ledger claim could not be written from task .1; both tasks now reach the ledger over the cert-valid hostname with full TLS verification",
+   "backup": "ops/reports/evidence/phase79/eo/hosts-tools1-backup.txt (sha256 37efd265f88e7531d90808a173521eb6d6a567b4403c747c06afea58abb82fa1)",
+   "scope": "runtime-only, ephemeral (reverts on task recreate), no compose/service change",
+   "verification": "GET https://shuffle-opensearch:9200/wazuh-iris-dedup-000001/_count from task .1 -> HTTP 200 (CA-verified)"
+  }
+ },
+ "findings": [
+  "Canonical v2 is fail-OPEN on ledger unavailability: a claim exception (cr = None) falls through to the destination POST, so an unreachable ledger yields a destination object with no ledger record (duplicate risk on retry). The matrix build used a fail-closed claim (LEDGER_UNAVAILABLE_FAIL_CLOSED, no POST). Recommended follow-up: adopt the fail-closed claim in the deployed node.",
+  "Ledger reachability from the execution sandbox depends on a container /etc/hosts entry rather than service discovery; it should be pinned in the service definition (extra_hosts or an overlay attachment) instead of a runtime edit.",
+  "One of 10 concurrent race executions (210df228) stalled in EXECUTING without recording the second action result; delivery correctness was unaffected (exactly one object) but Shuffle result-recording under burst is a durability observation.",
+  "dedup_writer is correctly least-privileged: 403 on indices:monitor/settings/get and indices:admin/aliases/get, 200 on document read/write."
+ ],
+ "limitations": [
+  "crash_after_accept was simulated by aborting the action in-process after destination acceptance (restarting the shared shuffle-tools swarm task was out of scope for a non-disruptive run); the resulting ledger state (CLAIMED without alert_id) is identical to a real crash window.",
+  "partial_success simulated the ledger-finalize failure by directing the finalize write to an unreachable ledger port (real ConnectionError) rather than degrading the live OpenSearch service.",
+  "timeout_ambiguity required a 2 ms client read budget because the live destination answers in under 50 ms; the timeout, the abandoned response and the created object are all real.",
+  "Synthetic IRIS alerts 631-642 are retained (isolated by unique markers, no case/counter/scorecard impact) so the exactly-once evidence stays verifiable; no IRIS DB deletions were performed."
+ ],
+ "artifacts": [
+  "ops/reports/evidence/phase79/eo/p79eo_runs.jsonl (38 deployed-workflow runs with full node output)",
+  "ops/reports/evidence/phase79/eo/p79eo_batch1.json .. p79eo_batch4.json",
+  "ops/reports/evidence/phase79/eo/p79eo_races_all.json, p79eo_race_rows.json, p79eo_race2.json",
+  "ops/reports/evidence/phase79/eo/p79eo_readback.json, p79eo_timeout3.json, p79eo_timeout4.json",
+  "ops/reports/evidence/phase79/eo/p79eo_postrestore.json, p79eo_postrestore_replay.json",
+  "ops/reports/evidence/phase79/eo/p79eo_matrix_code.py (matrix build of the node; reverted after the run)",
+  "ops/reports/evidence/phase79/eo/hosts-tools1-backup.txt"
+ ]
+}

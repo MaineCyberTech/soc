@@ -1,0 +1,12 @@
+{
+ "desired_hash":"6ec04840753e08fc7c912be7096288e146e50d630dca11a9e0bd1a85cba08908",
+ "effective_hash":"ac5a968c55f38c187948e4ee45c28e38f263304a76b7414212f1b72843a3aaea",
+ "network_match":true,
+ "secret_grants_match":true,
+ "trust_match":true,
+ "listener_match":true,
+ "workflow_revision_match":true,
+ "unexpected_member_tested":true,
+ "alert_routed":true,
+ "recovery_observed":true
+}

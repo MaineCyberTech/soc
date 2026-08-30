@@ -1,0 +1,4 @@
+PAGE 2026-08-30T23:16:28Z ts=1788131788.500 reason=FAST short_burn=1000.00x long_burn=1000.00x total=1000 errors=1000
+PAGE 2026-08-30T23:16:28Z ts=1788131788.548 reason=FAST short_burn=1000.00x long_burn=1000.00x total=400 errors=400
+PAGE 2026-08-30T23:16:28Z ts=1788131788.566 reason=SLOW short_burn=10.00x long_burn=10.00x total=3000 errors=30
+PAGE 2026-08-30T23:15:53Z ts=1788131753.642 reason=FAST short_burn=500.00x long_burn=500.00x total=600 errors=300

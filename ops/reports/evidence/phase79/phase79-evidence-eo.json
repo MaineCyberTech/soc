@@ -1,0 +1,15 @@
+{
+ "deployed_action_task": true,
+ "stable_source_id": true,
+ "create_only": true,
+ "occ": true,
+ "delivered_immutable": true,
+ "partial_success": true,
+ "crash_after_accept": true,
+ "response_loss": true,
+ "timeout_ambiguity": true,
+ "reconciliation_blocks_replay": true,
+ "race_campaign": true,
+ "direct_readback": true,
+ "destination_object_count": 1
+}

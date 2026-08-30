@@ -1,0 +1,19 @@
+{
+  "network_match": true,
+  "gov_desired": [
+    "shuffle-workers"
+  ],
+  "gov_eff": [
+    "shuffle-workers"
+  ],
+  "overlay_set_desired": [
+    "ingress",
+    "iris-shuffle-overlay",
+    "shuffle_swarm_executions"
+  ],
+  "overlay_set_eff": [
+    "ingress",
+    "iris-shuffle-overlay",
+    "shuffle_swarm_executions"
+  ]
+}

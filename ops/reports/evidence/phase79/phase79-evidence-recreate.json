@@ -1,0 +1,16 @@
+{
+  "worker_before": "shuffle-workers.1.hhgn3ey16f6qdbje6j2g9x9fg (image ghcr.io/shuffle/shuffle-worker@sha256:fd0d420a5e0cd41f3979335e51912e8dd423e7ce540d1dfa24efdc98fb6071bd; Running before replacement one)",
+  "worker_after_one": "shuffle-workers.1.a84pf0h5sahsqm87vtu9xfrxe (image ghcr.io/shuffle/shuffle-worker@sha256:fd0d420a5e0cd41f3979335e51912e8dd423e7ce540d1dfa24efdc98fb6071bd; Running after replacement one)",
+  "worker_after_two": "shuffle-workers.1.l26qbuhmflysexcit2hilqptg (image ghcr.io/shuffle/shuffle-worker@sha256:fd0d420a5e0cd41f3979335e51912e8dd423e7ce540d1dfa24efdc98fb6071bd; Running after replacement two)",
+  "e2e_one": true,
+  "e2e_two": true,
+  "opensearch_runtime_type": "snapshot",
+  "opensearch_before": true,
+  "opensearch_after": true,
+  "snapshot_id": "p79_snap_20260830t211135z",
+  "snapshot_consistency_recorded": true,
+  "security_state_after": true,
+  "ledger_parity": true,
+  "true_runtime_rollback": true,
+  "secured_reapply": true
+}

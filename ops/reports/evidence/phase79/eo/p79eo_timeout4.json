@@ -1,0 +1,114 @@
+{
+ "label": "timeout_ambiguity_raw_2ms",
+ "marker": "p79eo-timeout4-6hgmmx",
+ "mode": "timeout",
+ "sent_utc": "2026-08-30T21:56:22.393953+00:00",
+ "trigger_status": 200,
+ "execution_id": "2b8873dd-fc90-47e4-987c-d598d2a3054f",
+ "exec_status": "FINISHED",
+ "action_status": "SUCCESS",
+ "action_started": 1788126991060,
+ "action_completed": 1788127003206,
+ "raw_result": "{\n    \"success\": true,\n    \"message\": {\n        \"phase\": 79,\n        \"workstream\": \"effectively-once\",\n        \"mode\": \"timeout\",\n        \"provenance\": {\n            \"container_hostname\": \"f427c787867e\",\n            \"pid\": 1,\n            \"ppid\": 0,\n            \"netns\": \"net:[4026534798]\",\n            \"pidns\": \"pid:[4026532637]\",\n            \"mntns\": \"mnt:[4026532432]\",\n            \"cgroup\": \"0::/\",\n            \"cmdline\": \"python app.py --log-level DEBUG\",\n            \"execution_id\": \"2b8873dd-fc90-47e4-987c-d598d2a3054f\",\n            \"workflow_id\": \"c6b3fcd8-13e5-44a8-a818-024e4ae4422b\",\n            \"workflow_name\": \"wazuh-high-severity-to-iris\",\n            \"execution_source\": \"webhook\",\n            \"start_node\": \"cc9f3618-e54f-4a1a-adb1-bfe00505b6ef\",\n            \"action_id\": \"484d8d7c-cd18-45d3-88d3-d337447ff670\",\n            \"action_label\": \"IRIS_POST_value-blind\",\n            \"app_name\": \"Shuffle Tools\",\n            \"app_version\": \"1.2.0\",\n            \"request_executor\": \"shuffle_action_task\",\n            \"ledger_ip_selected\": \"172.20.0.3\",\n            \"ledger_ip_candidates\": [\n                \"172.20.0.1\",\n                \"172.20.0.3\"\n            ],\n            \"iris_resolved\": \"172.20.0.1\",\n            \"secrets_used\": [\n                \"iris-shuffle-dedicated\",\n                \"dedup-shuffle-dedicated\"\n            ],\n            \"ts_utc\": \"2026-08-30T21:56:34Z\",\n            \"epoch\": 1788126994.094596\n        },\n        \"event_id\": \"p79eo-timeout4-6hgmmx\",\n        \"source_id_stable\": {\n            \"wazuh_id\": \"p79eo-timeout4-6hgmmx\",\n            \"wazuh_alert_id\": \"p79eo-timeout4-6hgmmx\",\n            \"rule_id\": \"p79eo-timeout4-6hgmmx\",\n            \"derived_event_id\": \"p79eo-timeout4-6hgmmx\",\n            \"ledger_doc_id\": \"p79eo-timeout4-6hgmmx\",\n            \"sha256_event_id\": \"3082f7b929f14dd9863c279d573c5e2d501343e22bfa4c42738cfe2bfea4d601\"\n        },\n        \"claim\": {\n            \"status\": 201,\n            \"result\": \"created\",\n            \"seq_no\": 125,\n            \"primary_term\": 4,\n            \"error_type\": null,\n            \"body\": \"{\\\"_index\\\":\\\"wazuh-iris-dedup-000001\\\",\\\"_id\\\":\\\"p79eo-timeout4-6hgmmx\\\",\\\"_version\\\":1,\\\"result\\\":\\\"created\\\",\\\"forced_refresh\\\":true,\\\"_shards\\\":{\\\"total\\\":2,\\\"successful\\\":1,\\\"failed\\\":0},\\\"_seq_no\\\":125,\\\"_primary_term\\\":4}\"\n        },\n        \"iris_post_timeout\": {\n            \"technique\": \"tls_socket_send_then_client_read_timeout\",\n            \"read_timeout_s\": 0.002,\n            \"hold_seconds\": 6.0,\n            \"request_bytes\": 484,\n            \"timed_out\": true,\n            \"error_class\": \"TimeoutError\",\n            \"error\": \"The read operation timed out\",\n            \"elapsed_s\": 0.0022,\n            \"response_never_read\": true,\n            \"ok\": true\n        },\n        \"reconcile_marker\": {\n            \"status\": 200,\n            \"result\": \"updated\",\n            \"seq_no\": 126,\n            \"primary_term\": 4,\n            \"error_type\": null,\n            \"body\": \"{\\\"_index\\\":\\\"wazuh-iris-dedup-000001\\\",\\\"_id\\\":\\\"p79eo-timeout4-6hgmmx\\\",\\\"_version\\\":2,\\\"result\\\":\\\"updated\\\",\\\"forced_refresh\\\":true,\\\"_shards\\\":{\\\"total\\\":2,\\\"successful\\\":1,\\\"failed\\\":0},\\\"_seq_no\\\":126,\\\"_primary_term\\\":4}\"\n        },\n        \"ledger_after\": {\n            \"status\": 200,\n            \"source\": {\n                \"event_id\": \"p79eo-timeout4-6hgmmx\",\n                \"alert_id\": null,\n                \"claimed_ts\": 1788127000.1300476,\n                \"state\": \"RECONCILIATION_REQUIRED\",\n                \"scenario\": \"timeout\",\n                \"note\": \"ambiguous timeout; destination acceptance unknown\"\n            },\n            \"seq_no\": 126,\n            \"primary_term\": 4,\n            \"version\": 2\n        },\n        \"state\": \"RECONCILIATION_REQUIRED\",\n        \"iris_by_ref\": {\n            \"status\": 200,\n            \"destination_object_count\": 1,\n            \"objects\": [\n                {\n                    \"alert_id\": 640,\n                    \"alert_source_ref\": \"p79eo-timeout4-6hgmmx\"\n                }\n            ],\n            \"api_total\": 1\n        }\n    }\n}",
+ "node_output": {
+  "phase": 79,
+  "workstream": "effectively-once",
+  "mode": "timeout",
+  "provenance": {
+   "container_hostname": "f427c787867e",
+   "pid": 1,
+   "ppid": 0,
+   "netns": "net:[4026534798]",
+   "pidns": "pid:[4026532637]",
+   "mntns": "mnt:[4026532432]",
+   "cgroup": "0::/",
+   "cmdline": "python app.py --log-level DEBUG",
+   "execution_id": "2b8873dd-fc90-47e4-987c-d598d2a3054f",
+   "workflow_id": "c6b3fcd8-13e5-44a8-a818-024e4ae4422b",
+   "workflow_name": "wazuh-high-severity-to-iris",
+   "execution_source": "webhook",
+   "start_node": "cc9f3618-e54f-4a1a-adb1-bfe00505b6ef",
+   "action_id": "484d8d7c-cd18-45d3-88d3-d337447ff670",
+   "action_label": "IRIS_POST_value-blind",
+   "app_name": "Shuffle Tools",
+   "app_version": "1.2.0",
+   "request_executor": "shuffle_action_task",
+   "ledger_ip_selected": "172.20.0.3",
+   "ledger_ip_candidates": [
+    "172.20.0.1",
+    "172.20.0.3"
+   ],
+   "iris_resolved": "172.20.0.1",
+   "secrets_used": [
+    "iris-shuffle-dedicated",
+    "dedup-shuffle-dedicated"
+   ],
+   "ts_utc": "2026-08-30T21:56:34Z",
+   "epoch": 1788126994.094596
+  },
+  "event_id": "p79eo-timeout4-6hgmmx",
+  "source_id_stable": {
+   "wazuh_id": "p79eo-timeout4-6hgmmx",
+   "wazuh_alert_id": "p79eo-timeout4-6hgmmx",
+   "rule_id": "p79eo-timeout4-6hgmmx",
+   "derived_event_id": "p79eo-timeout4-6hgmmx",
+   "ledger_doc_id": "p79eo-timeout4-6hgmmx",
+   "sha256_event_id": "3082f7b929f14dd9863c279d573c5e2d501343e22bfa4c42738cfe2bfea4d601"
+  },
+  "claim": {
+   "status": 201,
+   "result": "created",
+   "seq_no": 125,
+   "primary_term": 4,
+   "error_type": null,
+   "body": "{\"_index\":\"wazuh-iris-dedup-000001\",\"_id\":\"p79eo-timeout4-6hgmmx\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":true,\"_shards\":{\"total\":2,\"successful\":1,\"failed\":0},\"_seq_no\":125,\"_primary_term\":4}"
+  },
+  "iris_post_timeout": {
+   "technique": "tls_socket_send_then_client_read_timeout",
+   "read_timeout_s": 0.002,
+   "hold_seconds": 6.0,
+   "request_bytes": 484,
+   "timed_out": true,
+   "error_class": "TimeoutError",
+   "error": "The read operation timed out",
+   "elapsed_s": 0.0022,
+   "response_never_read": true,
+   "ok": true
+  },
+  "reconcile_marker": {
+   "status": 200,
+   "result": "updated",
+   "seq_no": 126,
+   "primary_term": 4,
+   "error_type": null,
+   "body": "{\"_index\":\"wazuh-iris-dedup-000001\",\"_id\":\"p79eo-timeout4-6hgmmx\",\"_version\":2,\"result\":\"updated\",\"forced_refresh\":true,\"_shards\":{\"total\":2,\"successful\":1,\"failed\":0},\"_seq_no\":126,\"_primary_term\":4}"
+  },
+  "ledger_after": {
+   "status": 200,
+   "source": {
+    "event_id": "p79eo-timeout4-6hgmmx",
+    "alert_id": null,
+    "claimed_ts": 1788127000.1300476,
+    "state": "RECONCILIATION_REQUIRED",
+    "scenario": "timeout",
+    "note": "ambiguous timeout; destination acceptance unknown"
+   },
+   "seq_no": 126,
+   "primary_term": 4,
+   "version": 2
+  },
+  "state": "RECONCILIATION_REQUIRED",
+  "iris_by_ref": {
+   "status": 200,
+   "destination_object_count": 1,
+   "objects": [
+    {
+     "alert_id": 640,
+     "alert_source_ref": "p79eo-timeout4-6hgmmx"
+    }
+   ],
+   "api_total": 1
+  }
+ },
+ "elapsed_s": 21.13
+}

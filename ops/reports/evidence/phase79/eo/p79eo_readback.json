@@ -1,0 +1,145 @@
+{
+ "p79eo-happy-g2nmkd": {
+  "exec": "381f87f7-fbdd-4945-b174-1cf570f155d0",
+  "action": "SUCCESS",
+  "state": "READBACK_VERIFIED",
+  "ledger": {
+   "event_id": "p79eo-happy-g2nmkd",
+   "alert_id": 632,
+   "claimed_ts": 1788126478.84449,
+   "state": "DELIVERED",
+   "scenario": "happy"
+  },
+  "iris_by_ref": {
+   "status": 200,
+   "destination_object_count": 1,
+   "objects": [
+    {
+     "alert_id": 632,
+     "alert_source_ref": "p79eo-happy-g2nmkd"
+    }
+   ],
+   "api_total": 1
+  },
+  "iris_detail": {
+   "status": 200,
+   "alert_id": 632,
+   "alert_source_ref": "p79eo-happy-g2nmkd",
+   "alert_title": "Wazuh flow alert (Class A)",
+   "alert_source": "wazuh",
+   "alert_creation_time": "2026-08-30T21:47:58.816831",
+   "alert_tags": "source:wazuh,class:A"
+  },
+  "marker_parity": true,
+  "container": "f427c787867e",
+  "netns": "net:[4026534798]"
+ },
+ "p79eo-race-dwb557": {
+  "exec": "925b6fc9-16d5-42d9-8747-aabcd21aadb6",
+  "action": "SUCCESS",
+  "state": "READBACK_VERIFIED",
+  "ledger": {
+   "event_id": "p79eo-race-dwb557",
+   "alert_id": 641,
+   "claimed_ts": 1788127175.1079042,
+   "state": "DELIVERED",
+   "scenario": "happy"
+  },
+  "iris_by_ref": {
+   "status": 200,
+   "destination_object_count": 1,
+   "objects": [
+    {
+     "alert_id": 641,
+     "alert_source_ref": "p79eo-race-dwb557"
+    }
+   ],
+   "api_total": 1
+  },
+  "iris_detail": {
+   "status": 200,
+   "alert_id": 641,
+   "alert_source_ref": "p79eo-race-dwb557",
+   "alert_title": "Wazuh flow alert (Class A)",
+   "alert_source": "wazuh",
+   "alert_creation_time": "2026-08-30T21:59:35.071055",
+   "alert_tags": "source:wazuh,class:A"
+  },
+  "marker_parity": true,
+  "container": "f427c787867e",
+  "netns": "net:[4026534798]"
+ },
+ "p79eo-crash-i6f3ts": {
+  "exec": "c422dd18-9264-4e05-ae3b-a05b3c681b92",
+  "action": "SUCCESS",
+  "state": "READBACK_VERIFIED",
+  "ledger": {
+   "event_id": "p79eo-crash-i6f3ts",
+   "alert_id": 635,
+   "claimed_ts": 1788126697.3625426,
+   "state": "RECONCILED_DELIVERED",
+   "scenario": "crash_after_accept",
+   "reconcile_ts": 1788127043.1540923
+  },
+  "iris_by_ref": {
+   "status": 200,
+   "destination_object_count": 1,
+   "objects": [
+    {
+     "alert_id": 635,
+     "alert_source_ref": "p79eo-crash-i6f3ts"
+    }
+   ],
+   "api_total": 1
+  },
+  "iris_detail": {
+   "status": 200,
+   "alert_id": 635,
+   "alert_source_ref": "p79eo-crash-i6f3ts",
+   "alert_title": "Wazuh flow alert (Class A)",
+   "alert_source": "wazuh",
+   "alert_creation_time": "2026-08-30T21:51:37.414669",
+   "alert_tags": "source:wazuh,class:A"
+  },
+  "marker_parity": true,
+  "container": "f427c787867e",
+  "netns": "net:[4026534798]"
+ },
+ "p79eo-timeout4-6hgmmx": {
+  "exec": "0ef54163-bb20-46dd-b7d4-50a7b215b5ea",
+  "action": "SUCCESS",
+  "state": "READBACK_VERIFIED",
+  "ledger": {
+   "event_id": "p79eo-timeout4-6hgmmx",
+   "alert_id": 640,
+   "claimed_ts": 1788127000.1300476,
+   "state": "RECONCILED_DELIVERED",
+   "scenario": "timeout",
+   "note": "ambiguous timeout; destination acceptance unknown",
+   "reconcile_ts": 1788127102.072424
+  },
+  "iris_by_ref": {
+   "status": 200,
+   "destination_object_count": 1,
+   "objects": [
+    {
+     "alert_id": 640,
+     "alert_source_ref": "p79eo-timeout4-6hgmmx"
+    }
+   ],
+   "api_total": 1
+  },
+  "iris_detail": {
+   "status": 200,
+   "alert_id": 640,
+   "alert_source_ref": "p79eo-timeout4-6hgmmx",
+   "alert_title": "Wazuh flow alert (Class A)",
+   "alert_source": "wazuh",
+   "alert_creation_time": "2026-08-30T21:56:34.131414",
+   "alert_tags": "source:wazuh,class:A"
+  },
+  "marker_parity": true,
+  "container": "f427c787867e",
+  "netns": "net:[4026534798]"
+ }
+}

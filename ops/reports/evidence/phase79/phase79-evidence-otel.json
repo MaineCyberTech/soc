@@ -1,0 +1,15 @@
+{
+ "file_storage":true,
+ "max_size":"69277986816",
+ "directory_permissions":"0750",
+ "queue_capacity":"5000",
+ "peak_depth":72687616,
+ "drop_count":"0",
+ "drain_time":"16",
+ "restart_survival":true,
+ "corruption_tested":true,
+ "classa_independent":true,
+ "authz_negative":true,
+ "cardinality_measured":true,
+ "sensitive_scan_clean":true
+}

@@ -1,0 +1,17 @@
+{
+ "marker": "p79eo-postrestore-2stxf3",
+ "execution_id": "ddac7594-a69d-4d93-aa67-6bb723acc04b",
+ "exec_status": "FINISHED",
+ "results": [
+  {
+   "label": "Log_received_alert_notify-only",
+   "status": "SUCCESS",
+   "result": "Alert received (notify-only)"
+  },
+  {
+   "label": "IRIS_POST_value-blind",
+   "status": "SUCCESS",
+   "result": "{\n    \"success\": true,\n    \"message\": {\n        \"state\": \"ROUTED\",\n        \"http_status\": 200,\n        \"alert_id\": 642,\n        \"attempt\": 1,\n        \"event_id\": \"p79eo-postrestore-2stxf3\"\n    }\n}"
+  }
+ ]
+}

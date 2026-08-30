@@ -1,0 +1,17 @@
+{
+ "marker": "p79eo-postrestore-2stxf3",
+ "execution_id": "9d980675-964b-4a00-8acd-e61f15e9589e",
+ "exec_status": "FINISHED",
+ "results": [
+  {
+   "label": "Log_received_alert_notify-only",
+   "status": "SUCCESS",
+   "result": "Alert received (notify-only)"
+  },
+  {
+   "label": "IRIS_POST_value-blind",
+   "status": "SUCCESS",
+   "result": "{\n    \"success\": true,\n    \"message\": {\n        \"state\": \"DUP_SKIP\",\n        \"event_id\": \"p79eo-postrestore-2stxf3\",\n        \"cached_alert_id\": \"642\"\n    }\n}"
+  }
+ ]
+}

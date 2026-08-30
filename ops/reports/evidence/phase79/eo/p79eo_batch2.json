@@ -1,0 +1,455 @@
+{
+ "delivered_immutable_2": {
+  "label": "delivered_immutable_create_marker",
+  "marker": "p79eo-create-f6n43n",
+  "mode": "delivered_immutable",
+  "sent_utc": "2026-08-30T21:51:10.078638+00:00",
+  "trigger_status": 200,
+  "execution_id": "93dd7af9-8964-44b7-9307-b915db649a70",
+  "exec_status": "FINISHED",
+  "action_status": "SUCCESS",
+  "action_started": 1788126676386,
+  "action_completed": 1788126679455,
+  "raw_result": "{\n    \"success\": true,\n    \"message\": {\n        \"phase\": 79,\n        \"workstream\": \"effectively-once\",\n        \"mode\": \"delivered_immutable\",\n        \"provenance\": {\n            \"container_hostname\": \"f427c787867e\",\n            \"pid\": 1,\n            \"ppid\": 0,\n            \"netns\": \"net:[4026534798]\",\n            \"pidns\": \"pid:[4026532637]\",\n            \"mntns\": \"mnt:[4026532432]\",\n            \"cgroup\": \"0::/\",\n            \"cmdline\": \"python app.py --log-level DEBUG\",\n            \"execution_id\": \"93dd7af9-8964-44b7-9307-b915db649a70\",\n            \"workflow_id\": \"c6b3fcd8-13e5-44a8-a818-024e4ae4422b\",\n            \"workflow_name\": \"wazuh-high-severity-to-iris\",\n            \"execution_source\": \"webhook\",\n            \"start_node\": \"cc9f3618-e54f-4a1a-adb1-bfe00505b6ef\",\n            \"action_id\": \"484d8d7c-cd18-45d3-88d3-d337447ff670\",\n            \"action_label\": \"IRIS_POST_value-blind\",\n            \"app_name\": \"Shuffle Tools\",\n            \"app_version\": \"1.2.0\",\n            \"request_executor\": \"shuffle_action_task\",\n            \"ledger_ip_selected\": \"172.20.0.3\",\n            \"ledger_ip_candidates\": [\n                \"172.20.0.1\",\n                \"172.20.0.3\"\n            ],\n            \"iris_resolved\": \"172.20.0.1\",\n            \"secrets_used\": [\n                \"iris-shuffle-dedicated\",\n                \"dedup-shuffle-dedicated\"\n            ],\n            \"ts_utc\": \"2026-08-30T21:51:19Z\",\n            \"epoch\": 1788126679.4185033\n        },\n        \"event_id\": \"p79eo-create-f6n43n\",\n        \"source_id_stable\": {\n            \"wazuh_id\": \"p79eo-create-f6n43n\",\n            \"wazuh_alert_id\": \"p79eo-create-f6n43n\",\n            \"rule_id\": \"p79eo-create-f6n43n\",\n            \"derived_event_id\": \"p79eo-create-f6n43n\",\n            \"ledger_doc_id\": \"p79eo-create-f6n43n\",\n            \"sha256_event_id\": \"3d73e4ebfd681685aa44916c0cf35452964449eb396473ff58a8eb88854b2725\"\n        },\n        \"ledger_before\": {\n            \"status\": 200,\n            \"source\": {\n                \"event_id\": \"p79eo-create-f6n43n\",\n                \"alert_id\": 633,\n                \"claimed_ts\": 1788126583.0403764,\n                \"state\": \"DELIVERED\",\n                \"scenario\": \"create_only\"\n            },\n            \"seq_no\": 111,\n            \"primary_term\": 4,\n            \"version\": 2\n        },\n        \"precondition_state\": \"DELIVERED\",\n        \"create_only_mutation_attempt\": {\n            \"status\": 409,\n            \"result\": null,\n            \"seq_no\": null,\n            \"primary_term\": null,\n            \"error_type\": \"version_conflict_engine_exception\",\n            \"body\": \"{\\\"error\\\":{\\\"root_cause\\\":[{\\\"type\\\":\\\"version_conflict_engine_exception\\\",\\\"reason\\\":\\\"[p79eo-create-f6n43n]: version conflict, document already exists (current version [2])\\\",\\\"index\\\":\\\"wazuh-iris-dedup-000001\\\",\"\n        },\n        \"create_only_rejected_409\": true,\n        \"guarded_transition_attempt\": {\n            \"status\": 400,\n            \"result\": null,\n            \"error_type\": \"illegal_argument_exception\",\n            \"caused_by\": \"runtime error\",\n            \"guard_reason\": \"DELIVERED is immutable; refusing transition to TAMPERED_REOPEN\",\n            \"guard_type\": \"illegal_argument_exception\",\n            \"body\": \"{\\\"error\\\":{\\\"root_cause\\\":[{\\\"type\\\":\\\"illegal_argument_exception\\\",\\\"reason\\\":\\\"failed to execute script\\\"}],\\\"type\\\":\\\"illegal_argument_exception\\\",\\\"reason\\\":\\\"failed to execute script\\\",\\\"caused_by\\\":{\\\"type\\\":\\\"script_exception\\\",\\\"reason\\\":\\\"runtime error\\\",\\\"script_stack\\\":[\\\"throw new IllegalArgumentException('DELIVERED is immutable; refusing transition to ' + params.new_state); } \\\",\\\"                                                                                             ^---- HERE\\\"],\\\"script\\\":\\\"if (ctx._source.state == 'DELIVERED') { throw new IllegalArgumentException('DELIVERED is immutable; refusing transition t\"\n        },\n        \"guarded_transition_rejected\": true,\n        \"ledger_after\": {\n            \"status\": 200,\n            \"source\": {\n                \"event_id\": \"p79eo-create-f6n43n\",\n                \"alert_id\": 633,\n                \"claimed_ts\": 1788126583.0403764,\n                \"state\": \"DELIVERED\",\n                \"scenario\": \"create_only\"\n            },\n            \"seq_no\": 111,\n            \"primary_term\": 4,\n            \"version\": 2\n        },\n        \"state_preserved\": true,\n        \"version_unchanged\": true,\n        \"state\": \"DELIVERED_IMMUTABLE_VERIFIED\",\n        \"destination_posted\": false\n    }\n}",
+  "node_output": {
+   "phase": 79,
+   "workstream": "effectively-once",
+   "mode": "delivered_immutable",
+   "provenance": {
+    "container_hostname": "f427c787867e",
+    "pid": 1,
+    "ppid": 0,
+    "netns": "net:[4026534798]",
+    "pidns": "pid:[4026532637]",
+    "mntns": "mnt:[4026532432]",
+    "cgroup": "0::/",
+    "cmdline": "python app.py --log-level DEBUG",
+    "execution_id": "93dd7af9-8964-44b7-9307-b915db649a70",
+    "workflow_id": "c6b3fcd8-13e5-44a8-a818-024e4ae4422b",
+    "workflow_name": "wazuh-high-severity-to-iris",
+    "execution_source": "webhook",
+    "start_node": "cc9f3618-e54f-4a1a-adb1-bfe00505b6ef",
+    "action_id": "484d8d7c-cd18-45d3-88d3-d337447ff670",
+    "action_label": "IRIS_POST_value-blind",
+    "app_name": "Shuffle Tools",
+    "app_version": "1.2.0",
+    "request_executor": "shuffle_action_task",
+    "ledger_ip_selected": "172.20.0.3",
+    "ledger_ip_candidates": [
+     "172.20.0.1",
+     "172.20.0.3"
+    ],
+    "iris_resolved": "172.20.0.1",
+    "secrets_used": [
+     "iris-shuffle-dedicated",
+     "dedup-shuffle-dedicated"
+    ],
+    "ts_utc": "2026-08-30T21:51:19Z",
+    "epoch": 1788126679.4185033
+   },
+   "event_id": "p79eo-create-f6n43n",
+   "source_id_stable": {
+    "wazuh_id": "p79eo-create-f6n43n",
+    "wazuh_alert_id": "p79eo-create-f6n43n",
+    "rule_id": "p79eo-create-f6n43n",
+    "derived_event_id": "p79eo-create-f6n43n",
+    "ledger_doc_id": "p79eo-create-f6n43n",
+    "sha256_event_id": "3d73e4ebfd681685aa44916c0cf35452964449eb396473ff58a8eb88854b2725"
+   },
+   "ledger_before": {
+    "status": 200,
+    "source": {
+     "event_id": "p79eo-create-f6n43n",
+     "alert_id": 633,
+     "claimed_ts": 1788126583.0403764,
+     "state": "DELIVERED",
+     "scenario": "create_only"
+    },
+    "seq_no": 111,
+    "primary_term": 4,
+    "version": 2
+   },
+   "precondition_state": "DELIVERED",
+   "create_only_mutation_attempt": {
+    "status": 409,
+    "result": null,
+    "seq_no": null,
+    "primary_term": null,
+    "error_type": "version_conflict_engine_exception",
+    "body": "{\"error\":{\"root_cause\":[{\"type\":\"version_conflict_engine_exception\",\"reason\":\"[p79eo-create-f6n43n]: version conflict, document already exists (current version [2])\",\"index\":\"wazuh-iris-dedup-000001\","
+   },
+   "create_only_rejected_409": true,
+   "guarded_transition_attempt": {
+    "status": 400,
+    "result": null,
+    "error_type": "illegal_argument_exception",
+    "caused_by": "runtime error",
+    "guard_reason": "DELIVERED is immutable; refusing transition to TAMPERED_REOPEN",
+    "guard_type": "illegal_argument_exception",
+    "body": "{\"error\":{\"root_cause\":[{\"type\":\"illegal_argument_exception\",\"reason\":\"failed to execute script\"}],\"type\":\"illegal_argument_exception\",\"reason\":\"failed to execute script\",\"caused_by\":{\"type\":\"script_exception\",\"reason\":\"runtime error\",\"script_stack\":[\"throw new IllegalArgumentException('DELIVERED is immutable; refusing transition to ' + params.new_state); } \",\"                                                                                             ^---- HERE\"],\"script\":\"if (ctx._source.state == 'DELIVERED') { throw new IllegalArgumentException('DELIVERED is immutable; refusing transition t"
+   },
+   "guarded_transition_rejected": true,
+   "ledger_after": {
+    "status": 200,
+    "source": {
+     "event_id": "p79eo-create-f6n43n",
+     "alert_id": 633,
+     "claimed_ts": 1788126583.0403764,
+     "state": "DELIVERED",
+     "scenario": "create_only"
+    },
+    "seq_no": 111,
+    "primary_term": 4,
+    "version": 2
+   },
+   "state_preserved": true,
+   "version_unchanged": true,
+   "state": "DELIVERED_IMMUTABLE_VERIFIED",
+   "destination_posted": false
+  },
+  "elapsed_s": 12.24
+ },
+ "partial_success": {
+  "label": "partial_success",
+  "marker": "p79eo-partial-tt8jds",
+  "mode": "partial_success",
+  "sent_utc": "2026-08-30T21:51:22.190934+00:00",
+  "trigger_status": 200,
+  "execution_id": "3da8c77c-6b0b-4a5e-997c-2169499d7b0a",
+  "exec_status": "FINISHED",
+  "action_status": "SUCCESS",
+  "action_started": 1788126685408,
+  "action_completed": 1788126688616,
+  "raw_result": "{\n    \"success\": true,\n    \"message\": {\n        \"phase\": 79,\n        \"workstream\": \"effectively-once\",\n        \"mode\": \"partial_success\",\n        \"provenance\": {\n            \"container_hostname\": \"f427c787867e\",\n            \"pid\": 1,\n            \"ppid\": 0,\n            \"netns\": \"net:[4026534798]\",\n            \"pidns\": \"pid:[4026532637]\",\n            \"mntns\": \"mnt:[4026532432]\",\n            \"cgroup\": \"0::/\",\n            \"cmdline\": \"python app.py --log-level DEBUG\",\n            \"execution_id\": \"3da8c77c-6b0b-4a5e-997c-2169499d7b0a\",\n            \"workflow_id\": \"c6b3fcd8-13e5-44a8-a818-024e4ae4422b\",\n            \"workflow_name\": \"wazuh-high-severity-to-iris\",\n            \"execution_source\": \"webhook\",\n            \"start_node\": \"cc9f3618-e54f-4a1a-adb1-bfe00505b6ef\",\n            \"action_id\": \"484d8d7c-cd18-45d3-88d3-d337447ff670\",\n            \"action_label\": \"IRIS_POST_value-blind\",\n            \"app_name\": \"Shuffle Tools\",\n            \"app_version\": \"1.2.0\",\n            \"request_executor\": \"shuffle_action_task\",\n            \"ledger_ip_selected\": \"172.20.0.3\",\n            \"ledger_ip_candidates\": [\n                \"172.20.0.1\",\n                \"172.20.0.3\"\n            ],\n            \"iris_resolved\": \"172.20.0.1\",\n            \"secrets_used\": [\n                \"iris-shuffle-dedicated\",\n                \"dedup-shuffle-dedicated\"\n            ],\n            \"ts_utc\": \"2026-08-30T21:51:28Z\",\n            \"epoch\": 1788126688.438762\n        },\n        \"event_id\": \"p79eo-partial-tt8jds\",\n        \"source_id_stable\": {\n            \"wazuh_id\": \"p79eo-partial-tt8jds\",\n            \"wazuh_alert_id\": \"p79eo-partial-tt8jds\",\n            \"rule_id\": \"p79eo-partial-tt8jds\",\n            \"derived_event_id\": \"p79eo-partial-tt8jds\",\n            \"ledger_doc_id\": \"p79eo-partial-tt8jds\",\n            \"sha256_event_id\": \"c5ca9a71c98fa945db2429caba96b26ca603b9558ec27c89a489851b69ce54d6\"\n        },\n        \"claim\": {\n            \"status\": 201,\n            \"result\": \"created\",\n            \"seq_no\": 114,\n            \"primary_term\": 4,\n            \"error_type\": null,\n            \"body\": \"{\\\"_index\\\":\\\"wazuh-iris-dedup-000001\\\",\\\"_id\\\":\\\"p79eo-partial-tt8jds\\\",\\\"_version\\\":1,\\\"result\\\":\\\"created\\\",\\\"forced_refresh\\\":true,\\\"_shards\\\":{\\\"total\\\":2,\\\"successful\\\":1,\\\"failed\\\":0},\\\"_seq_no\\\":114,\\\"_primary_term\\\":4}\"\n        },\n        \"iris_post\": {\n            \"ok\": true,\n            \"http_status\": 200,\n            \"alert_id\": 634,\n            \"attempt\": 1\n        },\n        \"destination_posted\": true,\n        \"ledger_finalize_failure\": {\n            \"error_class\": \"ConnectionError\",\n            \"error\": \"HTTPSConnectionPool(host='shuffle-opensearch', port=9299): Max retries exceeded with url: /wazuh-iris-dedup-000001/_doc/p79eo-partial-tt8jds (Caused by NewConne\"\n        },\n        \"reconcile_marker\": {\n            \"status\": 200,\n            \"result\": \"updated\",\n            \"seq_no\": 115,\n            \"primary_term\": 4,\n            \"error_type\": null,\n            \"body\": \"{\\\"_index\\\":\\\"wazuh-iris-dedup-000001\\\",\\\"_id\\\":\\\"p79eo-partial-tt8jds\\\",\\\"_version\\\":2,\\\"result\\\":\\\"updated\\\",\\\"forced_refresh\\\":true,\\\"_shards\\\":{\\\"total\\\":2,\\\"successful\\\":1,\\\"failed\\\":0},\\\"_seq_no\\\":115,\\\"_primary_term\\\":4}\"\n        },\n        \"ledger_after\": {\n            \"status\": 200,\n            \"source\": {\n                \"event_id\": \"p79eo-partial-tt8jds\",\n                \"alert_id\": null,\n                \"claimed_ts\": 1788126688.5040371,\n                \"state\": \"RECONCILIATION_REQUIRED\",\n                \"scenario\": \"partial_success\",\n                \"note\": \"destination possibly accepted; ledger finalize failed\"\n            },\n            \"seq_no\": 115,\n            \"primary_term\": 4,\n            \"version\": 2\n        },\n        \"state\": \"RECONCILIATION_REQUIRED\",\n        \"iris_by_ref\": {\n            \"status\": 200,\n            \"destination_object_count\": 1,\n            \"objects\": [\n                {\n                    \"alert_id\": 634,\n                    \"alert_source_ref\": \"p79eo-partial-tt8jds\"\n                }\n            ],\n            \"api_total\": 1\n        }\n    }\n}",
+  "node_output": {
+   "phase": 79,
+   "workstream": "effectively-once",
+   "mode": "partial_success",
+   "provenance": {
+    "container_hostname": "f427c787867e",
+    "pid": 1,
+    "ppid": 0,
+    "netns": "net:[4026534798]",
+    "pidns": "pid:[4026532637]",
+    "mntns": "mnt:[4026532432]",
+    "cgroup": "0::/",
+    "cmdline": "python app.py --log-level DEBUG",
+    "execution_id": "3da8c77c-6b0b-4a5e-997c-2169499d7b0a",
+    "workflow_id": "c6b3fcd8-13e5-44a8-a818-024e4ae4422b",
+    "workflow_name": "wazuh-high-severity-to-iris",
+    "execution_source": "webhook",
+    "start_node": "cc9f3618-e54f-4a1a-adb1-bfe00505b6ef",
+    "action_id": "484d8d7c-cd18-45d3-88d3-d337447ff670",
+    "action_label": "IRIS_POST_value-blind",
+    "app_name": "Shuffle Tools",
+    "app_version": "1.2.0",
+    "request_executor": "shuffle_action_task",
+    "ledger_ip_selected": "172.20.0.3",
+    "ledger_ip_candidates": [
+     "172.20.0.1",
+     "172.20.0.3"
+    ],
+    "iris_resolved": "172.20.0.1",
+    "secrets_used": [
+     "iris-shuffle-dedicated",
+     "dedup-shuffle-dedicated"
+    ],
+    "ts_utc": "2026-08-30T21:51:28Z",
+    "epoch": 1788126688.438762
+   },
+   "event_id": "p79eo-partial-tt8jds",
+   "source_id_stable": {
+    "wazuh_id": "p79eo-partial-tt8jds",
+    "wazuh_alert_id": "p79eo-partial-tt8jds",
+    "rule_id": "p79eo-partial-tt8jds",
+    "derived_event_id": "p79eo-partial-tt8jds",
+    "ledger_doc_id": "p79eo-partial-tt8jds",
+    "sha256_event_id": "c5ca9a71c98fa945db2429caba96b26ca603b9558ec27c89a489851b69ce54d6"
+   },
+   "claim": {
+    "status": 201,
+    "result": "created",
+    "seq_no": 114,
+    "primary_term": 4,
+    "error_type": null,
+    "body": "{\"_index\":\"wazuh-iris-dedup-000001\",\"_id\":\"p79eo-partial-tt8jds\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":true,\"_shards\":{\"total\":2,\"successful\":1,\"failed\":0},\"_seq_no\":114,\"_primary_term\":4}"
+   },
+   "iris_post": {
+    "ok": true,
+    "http_status": 200,
+    "alert_id": 634,
+    "attempt": 1
+   },
+   "destination_posted": true,
+   "ledger_finalize_failure": {
+    "error_class": "ConnectionError",
+    "error": "HTTPSConnectionPool(host='shuffle-opensearch', port=9299): Max retries exceeded with url: /wazuh-iris-dedup-000001/_doc/p79eo-partial-tt8jds (Caused by NewConne"
+   },
+   "reconcile_marker": {
+    "status": 200,
+    "result": "updated",
+    "seq_no": 115,
+    "primary_term": 4,
+    "error_type": null,
+    "body": "{\"_index\":\"wazuh-iris-dedup-000001\",\"_id\":\"p79eo-partial-tt8jds\",\"_version\":2,\"result\":\"updated\",\"forced_refresh\":true,\"_shards\":{\"total\":2,\"successful\":1,\"failed\":0},\"_seq_no\":115,\"_primary_term\":4}"
+   },
+   "ledger_after": {
+    "status": 200,
+    "source": {
+     "event_id": "p79eo-partial-tt8jds",
+     "alert_id": null,
+     "claimed_ts": 1788126688.5040371,
+     "state": "RECONCILIATION_REQUIRED",
+     "scenario": "partial_success",
+     "note": "destination possibly accepted; ledger finalize failed"
+    },
+    "seq_no": 115,
+    "primary_term": 4,
+    "version": 2
+   },
+   "state": "RECONCILIATION_REQUIRED",
+   "iris_by_ref": {
+    "status": 200,
+    "destination_object_count": 1,
+    "objects": [
+     {
+      "alert_id": 634,
+      "alert_source_ref": "p79eo-partial-tt8jds"
+     }
+    ],
+    "api_total": 1
+   }
+  },
+  "elapsed_s": 9.11
+ },
+ "crash_after_accept": {
+  "label": "crash_after_accept",
+  "marker": "p79eo-crash-i6f3ts",
+  "mode": "crash_after_accept",
+  "sent_utc": "2026-08-30T21:51:31.319330+00:00",
+  "trigger_status": 200,
+  "execution_id": "d9b2dd72-477f-4925-8345-91f10ccb860b",
+  "exec_status": "FINISHED",
+  "action_status": "SUCCESS",
+  "action_started": 1788126694332,
+  "action_completed": 1788126697471,
+  "raw_result": "{\n    \"success\": false,\n    \"message\": \"Exception: P79EO simulated abort after destination accept (event_id=p79eo-crash-i6f3ts)\"\n}",
+  "elapsed_s": 9.13
+ },
+ "response_loss": {
+  "label": "response_loss",
+  "marker": "p79eo-resploss-dmnsuh",
+  "mode": "response_loss",
+  "sent_utc": "2026-08-30T21:51:40.417978+00:00",
+  "trigger_status": 200,
+  "execution_id": "9cfd76a0-ee1d-4074-9794-9bdd74c5b4d4",
+  "exec_status": "FINISHED",
+  "action_status": "SUCCESS",
+  "action_started": 1788126705009,
+  "action_completed": 1788126718138,
+  "raw_result": "{\n    \"success\": true,\n    \"message\": {\n        \"phase\": 79,\n        \"workstream\": \"effectively-once\",\n        \"mode\": \"response_loss\",\n        \"provenance\": {\n            \"container_hostname\": \"f427c787867e\",\n            \"pid\": 1,\n            \"ppid\": 0,\n            \"netns\": \"net:[4026534798]\",\n            \"pidns\": \"pid:[4026532637]\",\n            \"mntns\": \"mnt:[4026532432]\",\n            \"cgroup\": \"0::/\",\n            \"cmdline\": \"python app.py --log-level DEBUG\",\n            \"execution_id\": \"9cfd76a0-ee1d-4074-9794-9bdd74c5b4d4\",\n            \"workflow_id\": \"c6b3fcd8-13e5-44a8-a818-024e4ae4422b\",\n            \"workflow_name\": \"wazuh-high-severity-to-iris\",\n            \"execution_source\": \"webhook\",\n            \"start_node\": \"cc9f3618-e54f-4a1a-adb1-bfe00505b6ef\",\n            \"action_id\": \"484d8d7c-cd18-45d3-88d3-d337447ff670\",\n            \"action_label\": \"IRIS_POST_value-blind\",\n            \"app_name\": \"Shuffle Tools\",\n            \"app_version\": \"1.2.0\",\n            \"request_executor\": \"shuffle_action_task\",\n            \"ledger_ip_selected\": \"172.20.0.3\",\n            \"ledger_ip_candidates\": [\n                \"172.20.0.1\",\n                \"172.20.0.3\"\n            ],\n            \"iris_resolved\": \"172.20.0.1\",\n            \"secrets_used\": [\n                \"iris-shuffle-dedicated\",\n                \"dedup-shuffle-dedicated\"\n            ],\n            \"ts_utc\": \"2026-08-30T21:51:48Z\",\n            \"epoch\": 1788126708.0505214\n        },\n        \"event_id\": \"p79eo-resploss-dmnsuh\",\n        \"source_id_stable\": {\n            \"wazuh_id\": \"p79eo-resploss-dmnsuh\",\n            \"wazuh_alert_id\": \"p79eo-resploss-dmnsuh\",\n            \"rule_id\": \"p79eo-resploss-dmnsuh\",\n            \"derived_event_id\": \"p79eo-resploss-dmnsuh\",\n            \"ledger_doc_id\": \"p79eo-resploss-dmnsuh\",\n            \"sha256_event_id\": \"b2bf853ec8441732408cbbcacbd6612a4424e39b101814cb5e00d83dfc551bf3\"\n        },\n        \"claim\": {\n            \"status\": 201,\n            \"result\": \"created\",\n            \"seq_no\": 117,\n            \"primary_term\": 4,\n            \"error_type\": null,\n            \"body\": \"{\\\"_index\\\":\\\"wazuh-iris-dedup-000001\\\",\\\"_id\\\":\\\"p79eo-resploss-dmnsuh\\\",\\\"_version\\\":1,\\\"result\\\":\\\"created\\\",\\\"forced_refresh\\\":true,\\\"_shards\\\":{\\\"total\\\":2,\\\"successful\\\":1,\\\"failed\\\":0},\\\"_seq_no\\\":117,\\\"_primary_term\\\":4}\"\n        },\n        \"iris_post_response_lost\": {\n            \"technique\": \"tls_socket_send_then_close_without_read\",\n            \"hold_seconds\": 8.0,\n            \"tls_peer_cn\": \"((('commonName', 'iris.app.dev'),), (('organizationName', 'MCT Security'),))\",\n            \"request_bytes\": 503,\n            \"response_read\": false,\n            \"ok\": true\n        },\n        \"reconcile_marker\": {\n            \"status\": 200,\n            \"result\": \"updated\",\n            \"seq_no\": 118,\n            \"primary_term\": 4,\n            \"error_type\": null,\n            \"body\": \"{\\\"_index\\\":\\\"wazuh-iris-dedup-000001\\\",\\\"_id\\\":\\\"p79eo-resploss-dmnsuh\\\",\\\"_version\\\":2,\\\"result\\\":\\\"updated\\\",\\\"forced_refresh\\\":true,\\\"_shards\\\":{\\\"total\\\":2,\\\"successful\\\":1,\\\"failed\\\":0},\\\"_seq_no\\\":118,\\\"_primary_term\\\":4}\"\n        },\n        \"ledger_after\": {\n            \"status\": 200,\n            \"source\": {\n                \"event_id\": \"p79eo-resploss-dmnsuh\",\n                \"alert_id\": null,\n                \"claimed_ts\": 1788126716.0822012,\n                \"state\": \"RECONCILE_RESPONSE_LOSS\",\n                \"scenario\": \"response_loss\",\n                \"note\": \"request sent, response never received; acceptance unknown\"\n            },\n            \"seq_no\": 118,\n            \"primary_term\": 4,\n            \"version\": 2\n        },\n        \"state\": \"RECONCILE_RESPONSE_LOSS\",\n        \"iris_by_ref\": {\n            \"status\": 200,\n            \"destination_object_count\": 1,\n            \"objects\": [\n                {\n                    \"alert_id\": 636,\n                    \"alert_source_ref\": \"p79eo-resploss-dmnsuh\"\n                }\n            ],\n            \"api_total\": 1\n        }\n    }\n}",
+  "node_output": {
+   "phase": 79,
+   "workstream": "effectively-once",
+   "mode": "response_loss",
+   "provenance": {
+    "container_hostname": "f427c787867e",
+    "pid": 1,
+    "ppid": 0,
+    "netns": "net:[4026534798]",
+    "pidns": "pid:[4026532637]",
+    "mntns": "mnt:[4026532432]",
+    "cgroup": "0::/",
+    "cmdline": "python app.py --log-level DEBUG",
+    "execution_id": "9cfd76a0-ee1d-4074-9794-9bdd74c5b4d4",
+    "workflow_id": "c6b3fcd8-13e5-44a8-a818-024e4ae4422b",
+    "workflow_name": "wazuh-high-severity-to-iris",
+    "execution_source": "webhook",
+    "start_node": "cc9f3618-e54f-4a1a-adb1-bfe00505b6ef",
+    "action_id": "484d8d7c-cd18-45d3-88d3-d337447ff670",
+    "action_label": "IRIS_POST_value-blind",
+    "app_name": "Shuffle Tools",
+    "app_version": "1.2.0",
+    "request_executor": "shuffle_action_task",
+    "ledger_ip_selected": "172.20.0.3",
+    "ledger_ip_candidates": [
+     "172.20.0.1",
+     "172.20.0.3"
+    ],
+    "iris_resolved": "172.20.0.1",
+    "secrets_used": [
+     "iris-shuffle-dedicated",
+     "dedup-shuffle-dedicated"
+    ],
+    "ts_utc": "2026-08-30T21:51:48Z",
+    "epoch": 1788126708.0505214
+   },
+   "event_id": "p79eo-resploss-dmnsuh",
+   "source_id_stable": {
+    "wazuh_id": "p79eo-resploss-dmnsuh",
+    "wazuh_alert_id": "p79eo-resploss-dmnsuh",
+    "rule_id": "p79eo-resploss-dmnsuh",
+    "derived_event_id": "p79eo-resploss-dmnsuh",
+    "ledger_doc_id": "p79eo-resploss-dmnsuh",
+    "sha256_event_id": "b2bf853ec8441732408cbbcacbd6612a4424e39b101814cb5e00d83dfc551bf3"
+   },
+   "claim": {
+    "status": 201,
+    "result": "created",
+    "seq_no": 117,
+    "primary_term": 4,
+    "error_type": null,
+    "body": "{\"_index\":\"wazuh-iris-dedup-000001\",\"_id\":\"p79eo-resploss-dmnsuh\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":true,\"_shards\":{\"total\":2,\"successful\":1,\"failed\":0},\"_seq_no\":117,\"_primary_term\":4}"
+   },
+   "iris_post_response_lost": {
+    "technique": "tls_socket_send_then_close_without_read",
+    "hold_seconds": 8.0,
+    "tls_peer_cn": "((('commonName', 'iris.app.dev'),), (('organizationName', 'MCT Security'),))",
+    "request_bytes": 503,
+    "response_read": false,
+    "ok": true
+   },
+   "reconcile_marker": {
+    "status": 200,
+    "result": "updated",
+    "seq_no": 118,
+    "primary_term": 4,
+    "error_type": null,
+    "body": "{\"_index\":\"wazuh-iris-dedup-000001\",\"_id\":\"p79eo-resploss-dmnsuh\",\"_version\":2,\"result\":\"updated\",\"forced_refresh\":true,\"_shards\":{\"total\":2,\"successful\":1,\"failed\":0},\"_seq_no\":118,\"_primary_term\":4}"
+   },
+   "ledger_after": {
+    "status": 200,
+    "source": {
+     "event_id": "p79eo-resploss-dmnsuh",
+     "alert_id": null,
+     "claimed_ts": 1788126716.0822012,
+     "state": "RECONCILE_RESPONSE_LOSS",
+     "scenario": "response_loss",
+     "note": "request sent, response never received; acceptance unknown"
+    },
+    "seq_no": 118,
+    "primary_term": 4,
+    "version": 2
+   },
+   "state": "RECONCILE_RESPONSE_LOSS",
+   "iris_by_ref": {
+    "status": 200,
+    "destination_object_count": 1,
+    "objects": [
+     {
+      "alert_id": 636,
+      "alert_source_ref": "p79eo-resploss-dmnsuh"
+     }
+    ],
+    "api_total": 1
+   }
+  },
+  "elapsed_s": 18.12
+ },
+ "timeout_ambiguity": {
+  "label": "timeout",
+  "marker": "p79eo-timeout-w6ztyw",
+  "mode": "timeout",
+  "sent_utc": "2026-08-30T21:51:58.549410+00:00",
+  "trigger_status": 200,
+  "execution_id": "e7f75d02-91b8-4505-b5cd-f3cb8988fb77",
+  "exec_status": "FINISHED",
+  "action_status": "SUCCESS",
+  "action_started": 1788126726094,
+  "action_completed": 1788126732263,
+  "raw_result": "{\n    \"success\": true,\n    \"message\": {\n        \"phase\": 79,\n        \"workstream\": \"effectively-once\",\n        \"mode\": \"timeout\",\n        \"provenance\": {\n            \"container_hostname\": \"f427c787867e\",\n            \"pid\": 1,\n            \"ppid\": 0,\n            \"netns\": \"net:[4026534798]\",\n            \"pidns\": \"pid:[4026532637]\",\n            \"mntns\": \"mnt:[4026532432]\",\n            \"cgroup\": \"0::/\",\n            \"cmdline\": \"python app.py --log-level DEBUG\",\n            \"execution_id\": \"e7f75d02-91b8-4505-b5cd-f3cb8988fb77\",\n            \"workflow_id\": \"c6b3fcd8-13e5-44a8-a818-024e4ae4422b\",\n            \"workflow_name\": \"wazuh-high-severity-to-iris\",\n            \"execution_source\": \"webhook\",\n            \"start_node\": \"cc9f3618-e54f-4a1a-adb1-bfe00505b6ef\",\n            \"action_id\": \"484d8d7c-cd18-45d3-88d3-d337447ff670\",\n            \"action_label\": \"IRIS_POST_value-blind\",\n            \"app_name\": \"Shuffle Tools\",\n            \"app_version\": \"1.2.0\",\n            \"request_executor\": \"shuffle_action_task\",\n            \"ledger_ip_selected\": \"172.20.0.3\",\n            \"ledger_ip_candidates\": [\n                \"172.20.0.1\",\n                \"172.20.0.3\"\n            ],\n            \"iris_resolved\": \"172.20.0.1\",\n            \"secrets_used\": [\n                \"iris-shuffle-dedicated\",\n                \"dedup-shuffle-dedicated\"\n            ],\n            \"ts_utc\": \"2026-08-30T21:52:09Z\",\n            \"epoch\": 1788126729.1304915\n        },\n        \"event_id\": \"p79eo-timeout-w6ztyw\",\n        \"source_id_stable\": {\n            \"wazuh_id\": \"p79eo-timeout-w6ztyw\",\n            \"wazuh_alert_id\": \"p79eo-timeout-w6ztyw\",\n            \"rule_id\": \"p79eo-timeout-w6ztyw\",\n            \"derived_event_id\": \"p79eo-timeout-w6ztyw\",\n            \"ledger_doc_id\": \"p79eo-timeout-w6ztyw\",\n            \"sha256_event_id\": \"b03b74873a43ad1f83e96e61fbdd9d63b67112b599bfc386776e7fcce92fe3d9\"\n        },\n        \"claim\": {\n            \"status\": 201,\n            \"result\": \"created\",\n            \"seq_no\": 119,\n            \"primary_term\": 4,\n            \"error_type\": null,\n            \"body\": \"{\\\"_index\\\":\\\"wazuh-iris-dedup-000001\\\",\\\"_id\\\":\\\"p79eo-timeout-w6ztyw\\\",\\\"_version\\\":1,\\\"result\\\":\\\"created\\\",\\\"forced_refresh\\\":true,\\\"_shards\\\":{\\\"total\\\":2,\\\"successful\\\":1,\\\"failed\\\":0},\\\"_seq_no\\\":119,\\\"_primary_term\\\":4}\"\n        },\n        \"iris_post_timeout\": {\n            \"unexpected_completion\": true,\n            \"http_status\": 200\n        },\n        \"reconcile_marker\": {\n            \"status\": 200,\n            \"result\": \"updated\",\n            \"seq_no\": 120,\n            \"primary_term\": 4,\n            \"error_type\": null,\n            \"body\": \"{\\\"_index\\\":\\\"wazuh-iris-dedup-000001\\\",\\\"_id\\\":\\\"p79eo-timeout-w6ztyw\\\",\\\"_version\\\":2,\\\"result\\\":\\\"updated\\\",\\\"forced_refresh\\\":true,\\\"_shards\\\":{\\\"total\\\":2,\\\"successful\\\":1,\\\"failed\\\":0},\\\"_seq_no\\\":120,\\\"_primary_term\\\":4}\"\n        },\n        \"ledger_after\": {\n            \"status\": 200,\n            \"source\": {\n                \"event_id\": \"p79eo-timeout-w6ztyw\",\n                \"alert_id\": null,\n                \"claimed_ts\": 1788126729.1984708,\n                \"state\": \"RECONCILIATION_REQUIRED\",\n                \"scenario\": \"timeout\",\n                \"note\": \"ambiguous timeout; destination acceptance unknown\"\n            },\n            \"seq_no\": 120,\n            \"primary_term\": 4,\n            \"version\": 2\n        },\n        \"state\": \"RECONCILIATION_REQUIRED\",\n        \"iris_by_ref\": {\n            \"status\": 200,\n            \"destination_object_count\": 1,\n            \"objects\": [\n                {\n                    \"alert_id\": 637,\n                    \"alert_source_ref\": \"p79eo-timeout-w6ztyw\"\n                }\n            ],\n            \"api_total\": 1\n        }\n    }\n}",
+  "node_output": {
+   "phase": 79,
+   "workstream": "effectively-once",
+   "mode": "timeout",
+   "provenance": {
+    "container_hostname": "f427c787867e",
+    "pid": 1,
+    "ppid": 0,
+    "netns": "net:[4026534798]",
+    "pidns": "pid:[4026532637]",
+    "mntns": "mnt:[4026532432]",
+    "cgroup": "0::/",
+    "cmdline": "python app.py --log-level DEBUG",
+    "execution_id": "e7f75d02-91b8-4505-b5cd-f3cb8988fb77",
+    "workflow_id": "c6b3fcd8-13e5-44a8-a818-024e4ae4422b",
+    "workflow_name": "wazuh-high-severity-to-iris",
+    "execution_source": "webhook",
+    "start_node": "cc9f3618-e54f-4a1a-adb1-bfe00505b6ef",
+    "action_id": "484d8d7c-cd18-45d3-88d3-d337447ff670",
+    "action_label": "IRIS_POST_value-blind",
+    "app_name": "Shuffle Tools",
+    "app_version": "1.2.0",
+    "request_executor": "shuffle_action_task",
+    "ledger_ip_selected": "172.20.0.3",
+    "ledger_ip_candidates": [
+     "172.20.0.1",
+     "172.20.0.3"
+    ],
+    "iris_resolved": "172.20.0.1",
+    "secrets_used": [
+     "iris-shuffle-dedicated",
+     "dedup-shuffle-dedicated"
+    ],
+    "ts_utc": "2026-08-30T21:52:09Z",
+    "epoch": 1788126729.1304915
+   },
+   "event_id": "p79eo-timeout-w6ztyw",
+   "source_id_stable": {
+    "wazuh_id": "p79eo-timeout-w6ztyw",
+    "wazuh_alert_id": "p79eo-timeout-w6ztyw",
+    "rule_id": "p79eo-timeout-w6ztyw",
+    "derived_event_id": "p79eo-timeout-w6ztyw",
+    "ledger_doc_id": "p79eo-timeout-w6ztyw",
+    "sha256_event_id": "b03b74873a43ad1f83e96e61fbdd9d63b67112b599bfc386776e7fcce92fe3d9"
+   },
+   "claim": {
+    "status": 201,
+    "result": "created",
+    "seq_no": 119,
+    "primary_term": 4,
+    "error_type": null,
+    "body": "{\"_index\":\"wazuh-iris-dedup-000001\",\"_id\":\"p79eo-timeout-w6ztyw\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":true,\"_shards\":{\"total\":2,\"successful\":1,\"failed\":0},\"_seq_no\":119,\"_primary_term\":4}"
+   },
+   "iris_post_timeout": {
+    "unexpected_completion": true,
+    "http_status": 200
+   },
+   "reconcile_marker": {
+    "status": 200,
+    "result": "updated",
+    "seq_no": 120,
+    "primary_term": 4,
+    "error_type": null,
+    "body": "{\"_index\":\"wazuh-iris-dedup-000001\",\"_id\":\"p79eo-timeout-w6ztyw\",\"_version\":2,\"result\":\"updated\",\"forced_refresh\":true,\"_shards\":{\"total\":2,\"successful\":1,\"failed\":0},\"_seq_no\":120,\"_primary_term\":4}"
+   },
+   "ledger_after": {
+    "status": 200,
+    "source": {
+     "event_id": "p79eo-timeout-w6ztyw",
+     "alert_id": null,
+     "claimed_ts": 1788126729.1984708,
+     "state": "RECONCILIATION_REQUIRED",
+     "scenario": "timeout",
+     "note": "ambiguous timeout; destination acceptance unknown"
+    },
+    "seq_no": 120,
+    "primary_term": 4,
+    "version": 2
+   },
+   "state": "RECONCILIATION_REQUIRED",
+   "iris_by_ref": {
+    "status": 200,
+    "destination_object_count": 1,
+    "objects": [
+     {
+      "alert_id": 637,
+      "alert_source_ref": "p79eo-timeout-w6ztyw"
+     }
+    ],
+    "api_total": 1
+   }
+  },
+  "elapsed_s": 15.13
+ }
+}

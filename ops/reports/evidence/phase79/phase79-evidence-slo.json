@@ -1,0 +1,15 @@
+{
+  "eligible_events_deployed_only": true,
+  "fast_method": true,
+  "fast_detection": true,
+  "fast_clear": true,
+  "slow_method": true,
+  "slow_detection": true,
+  "slow_clear": true,
+  "compliance_window": true,
+  "reset_time": true,
+  "low_traffic_tested": true,
+  "zero_traffic_policy": true,
+  "external_paging_state": "none",
+  "capacity_in_health": true
+}
