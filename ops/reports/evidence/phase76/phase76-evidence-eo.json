@@ -1,0 +1,15 @@
+{
+  "historical_duplicate_recorded": true,
+  "stable_source_id": true,
+  "create_only": true,
+  "occ": true,
+  "delivered_immutable": true,
+  "partial_success": false,
+  "crash_after_accept": false,
+  "response_loss": false,
+  "timeout_ambiguity": false,
+  "reconciliation_blocks_replay": true,
+  "concurrent_races": false,
+  "second_replay_suppressed": true,
+  "destination_object_count": 1
+}

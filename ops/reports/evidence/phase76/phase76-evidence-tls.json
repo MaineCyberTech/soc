@@ -1,0 +1,9 @@
+{
+  "iris_app_tls": false,
+  "iris_hostname_verified": false,
+  "opensearch_rest_tls": true,
+  "opensearch_hostname_verified": false,
+  "overlay_encryption_state": "decision_pending_measured_evidence",
+  "states_independent": true,
+  "current_evidence": true
+}

@@ -85,6 +85,28 @@ honest expected OPEN pattern (gated items not executed).
 | OW-75-09 (=P75-PACKET) | P3 | Packet production | OPEN — unauthorized per overlay constraints | — | n/a | AGENTS-PHASE75-OVERLAY.md |
 | OW-75-10 (=P75-DR) | P2 | Full DR / restore drill | DEFERRED by design — full DR deferred | Infra + SOC | approval | current-state-20260829-p75.md |
 
+## 6. Phase 76 Additions (2026-08-30)
+
+Phase 76 executed the full 710-prompt pack (`/home/user/mct-p76/`); 710 reports at
+`ops/reports/generated/phase76/`, evidence JSONs at `ops/reports/evidence/phase76/`, canonical
+advanced to `current-state-20260830-p76.md`, final operator report
+`final-phase76-operator-report-20260830T0210Z.md`. OPEN-SEC-01 (P74) and P75 pack carried
+CLOSED/CURRENT. Verdict distribution: PASS 300 / PARTIAL 210 / DEFERRED 50 / BLOCKED 150. Pack
+validators return the honest expected OPEN pattern (gated items not executed).
+
+| ID | Pri | Title | Status-today | Owner | Deps | Evidence ref |
+|---|---|---|---|---|---|---|
+| OW-76-01 (=P76-TLS-OPENSEARCH-CLIENT) | P1 | OpenSearch client hostname verification not enforced (app container lacks CA, verify=False) | OPEN — security remediation gap | SOC | security approval | current-state-20260830-p76.md; ops/reports/evidence/phase76/phase76-evidence-tls.json |
+| OW-76-02 (=P76-IRIS-TLS) | P2 | IRIS TLS not enabled | OPEN — separate control, remediation target | SOC | security approval | phase76-evidence-tls.json |
+| OW-76-03 (=P76-CAP) | P1 | Supported capacity unresolved (no counter mutation) | OPEN — owner entitlement or tested degradation decision | Platform + SOC | license decision | current-state-20260830-p76.md |
+| OW-76-04 (=P76-FAULT) | P1 | Effectively-once fault-injection certs (crash-*, response-loss, partial-success, replay, concurrency, timeout-ambiguity) | BLOCKED — destructive/restart/approval | SOAR ops | approval | phase76-evidence-eo.json |
+| OW-76-05 (=P76-OVERLAY-ENC) | P2 | Overlay encryption + benchmark decision | DEFERRED — pending measured evidence | Infra owner | research-notes | current-state-20260830-p76.md |
+| OW-76-06 (=P76-OTEL) | P2 | Secure/bounded OTel collector deployment | DEFERRED — no deployed collector | Observability | infra | phase76-evidence-otel.json |
+| OW-76-07 (=P76-RECREATE) | P1 | Worker / OpenSearch reconstruction from governed source | BLOCKED — topology/restart gate | Infra owner | approval | phase76-evidence-recreate.json |
+| OW-76-08 (=P76-OUTBOX) | P3 | Outbox ADR / PoC | DEFERRED — new approval/infra | SOAR ops | approval | current-state-20260830-p76.md |
+| OW-76-09 (=P76-LICENSE) | P1 | License selection (Shuffle 25K quota recurs) | OPEN — owner license gate | Platform | owner decision | OPEN-ENV-03 (P74) |
+| OW-76-10 (=P76-NEGNET) | P2 | Negative network / membership-control tests | BLOCKED — network/security gate | Infra + SOC | approval | phase76-evidence-tls.json |
+
 ## 4. Standing Rule
 
 Future reports reference ONLY these OW IDs for tracked work. Canonical copies:

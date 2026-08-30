@@ -1,0 +1,14 @@
+{
+  "desired_state_hash": null,
+  "worker_before": null,
+  "worker_after_one": false,
+  "worker_after_two": false,
+  "e2e_one": false,
+  "e2e_two": false,
+  "opensearch_before": null,
+  "opensearch_after": false,
+  "tls_after": false,
+  "rbac_after": false,
+  "ledger_after": false,
+  "rollback_tested": false
+}

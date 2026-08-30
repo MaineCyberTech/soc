@@ -1,0 +1,12 @@
+{
+  "architecture_decided": true,
+  "config_validated": false,
+  "encrypted_export": false,
+  "least_privilege": false,
+  "resource_limits": false,
+  "attribute_allowlist": false,
+  "cardinality_budget": true,
+  "sensitive_scan_clean": true,
+  "delivery_trace": false,
+  "reconciliation_trace": false
+}

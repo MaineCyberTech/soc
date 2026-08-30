@@ -1,0 +1,13 @@
+{
+  "measured_baseline": true,
+  "low_traffic_policy": true,
+  "availability_slo": true,
+  "latency_slo": true,
+  "duplicate_slo": true,
+  "deadletter_slo": true,
+  "capacity_sli": true,
+  "fast_burn_tested": false,
+  "slow_burn_tested": false,
+  "reset_tested": false,
+  "error_budget_policy": true
+}
