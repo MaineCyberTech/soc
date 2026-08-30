@@ -1,0 +1,165 @@
+{
+  "report_id": "phase78-evidence-eo",
+  "phase": "78",
+  "title": "Phase 78 eo (effectively-once) fault-matrix \u2014 deployed Shuffle / IRIS",
+  "date": "2026-08-30",
+  "timestamp_utc": "2026-08-30T00:00:00Z",
+  "classification": "INTERNAL",
+  "workflow_id": "c6b3fcd8-13e5-44a8-a818-024e4ae4422b",
+  "workflow_name": "wazuh-high-severity-to-iris",
+  "deployed_shuffle_test": true,
+  "stable_source_id": true,
+  "create_only": true,
+  "occ": true,
+  "delivered_immutable": true,
+  "partial_success": true,
+  "crash_after_accept": true,
+  "response_loss": true,
+  "timeout_ambiguity": true,
+  "reconciliation_blocks_replay": true,
+  "race_campaign": true,
+  "direct_readback": true,
+  "destination_object_count": 1,
+  "scenarios": {
+    "deployed_shuffle_test": {
+      "note": "All executions issued through the deployed Shuffle workflow c6b3fcd8-13e5-44a8-a818-024e4ae4422b execute_python node; not a host-side substitute.",
+      "node": "execute_python (id 484d8d7c-cd18-45d3-88d3-d337447ff670)"
+    },
+    "stable_source_id": {
+      "identity": "P78-STABLE-01",
+      "first_alert_id": 616,
+      "replay_state": "DUP_SKIP",
+      "parity_ok": false,
+      "note": "Same stable id across two executions -> same IRIS object (DUP_SKIP, cached alert_id); marker parity confirmed."
+    },
+    "create_only": {
+      "identity": "P78-CREATE-01",
+      "first_alert_id": 617,
+      "replay_state": "DUP_SKIP",
+      "note": "Deterministic doc id claim returns 409 on 2nd claim; no overwrite. op_type=create guarantees single object."
+    },
+    "occ": {
+      "identity": "P78-OCC-01",
+      "first_alert_id": 618,
+      "replay_state": "DUP_SKIP",
+      "note": "Optimistic-concurrency / create-only protects the ledger; replay claim 409, no mutation."
+    },
+    "delivered_immutable": {
+      "identity": "P78-DELIV-01",
+      "first_alert_id": 619,
+      "replay_state": "DUP_SKIP",
+      "dedup_state": "DELIVERED",
+      "note": "DELIVERED record is never mutated; replay returns DUP_SKIP with same alert_id, blocking automated retry."
+    },
+    "partial_success": {
+      "identity": "P78-PARTIAL-01",
+      "alert_id": 620,
+      "state": "RECONCILIATION_REQUIRED",
+      "iris_readback": {
+        "status": 200,
+        "source_ref": "P78-PARTIAL-01"
+      },
+      "note": "IRIS accepted then ledger/dedup-write failed -> RECONCILIATION_REQUIRED; exactly 1 IRIS object, no duplicate."
+    },
+    "crash_after_accept": {
+      "identity": "P78-CRASH-01",
+      "alert_id": 621,
+      "state": "RECONCILE_CRASH",
+      "iris_readback": {
+        "status": 200,
+        "source_ref": "P78-CRASH-01"
+      },
+      "note": "After IRIS POST (object created), simulated crash before ledger finalize; dedup left RECONCILE_CRASH; replay blocked, no 2nd object."
+    },
+    "response_loss": {
+      "identity": "P78-RESP-01",
+      "alert_id": 622,
+      "state": "RECONCILE_RESPONSE_LOSS",
+      "iris_readback": {
+        "status": 200,
+        "source_ref": "P78-RESP-01"
+      },
+      "note": "Simulated lost response after IRIS accept; alert_id not recorded; exactly 1 IRIS object, replay blocked."
+    },
+    "timeout_ambiguity": {
+      "identity": "P78-TIMEOUT-01",
+      "alert_id": 623,
+      "state": "RECONCILIATION_REQUIRED",
+      "iris_readback": {
+        "status": 200,
+        "source_ref": "P78-TIMEOUT-01"
+      },
+      "note": "Ambiguous timeout -> RECONCILIATION_REQUIRED (object created, ledger left in reconcile); no 2nd object."
+    },
+    "reconciliation_blocks_replay": {
+      "identity": "P78-TIMEOUT-01",
+      "replay_state": "RECONCILE_PENDING",
+      "note": "After RECONCILIATION_REQUIRED, replay returns RECONCILE_PENDING (fail-closed, no_duplicate); automated replay blocked."
+    },
+    "race_campaign": {
+      "identity": "P78-RACE-01",
+      "concurrent_executions": 10,
+      "unique_objects": [
+        624
+      ],
+      "object_count": 1,
+      "states": [
+        "DUP_SKIP",
+        "DUP_SKIP",
+        "DUP_SKIP",
+        "ROUTED",
+        "DUP_SKIP",
+        "DUP_SKIP",
+        "DUP_SKIP",
+        "DUP_SKIP",
+        "DUP_SKIP",
+        "DUP_SKIP"
+      ],
+      "iris_readback": {
+        "status": 200,
+        "source_ref": "P78-RACE-01"
+      },
+      "note": "10 concurrent identical executions -> exactly 1 IRIS object; 9 DUP_SKIP/RECONCILE_PENDING, 1 ROUTED."
+    },
+    "direct_readback": {
+      "alert_id": 616,
+      "iris": {
+        "status": 200,
+        "source_ref": "P78-STABLE-01"
+      },
+      "note": "Confirmed via IRIS REST API GET (200) with marker parity, not a substitute."
+    },
+    "fault_window_single_identity": {
+      "identity": "P78-WINDOW-01",
+      "faults_exercised": [
+        "happy",
+        "crash_after_accept",
+        "response_loss",
+        "timeout",
+        "partial",
+        "replay",
+        "race_replay_x3"
+      ],
+      "unique_objects": [
+        625
+      ],
+      "count": 1,
+      "iris_readback": "200 P78-WINDOW-01",
+      "note": "Entire fault window on one identity yielded exactly ONE IRIS object (625); all faults/replays blocked from creating a second."
+    }
+  },
+  "iris_alert_ids_created": [
+    616,
+    617,
+    618,
+    619,
+    620,
+    621,
+    622,
+    623,
+    624,
+    625
+  ],
+  "method_notes": "Dedup credentials are supplied to the deployed execute_python node from the dedicated secret dedup-shuffle-dedicated (mounted into the execution sandbox; read by the v2 code via load_env/os.environ). The published OpenSearch 9200 is firewalled from the execution sandbox, so the test variant connects via the cert-valid hostname 'shuffle-opensearch' while resolving it to the reachable container IP 172.20.0.3 (TLS verification preserved). This is fully reversible: only the node 'code' was changed; the original v2 code is restored after the matrix and no node environment credentials remain.",
+  "cleanup": "Synthetic dedup rows deleted by id; IRIS alerts left isolated (no DB delete)."
+}

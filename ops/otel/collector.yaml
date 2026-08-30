@@ -10,6 +10,16 @@ extensions:
     client_auth:
       username: ${OTEL_USER}
       password: ${OTEL_PASS}
+  file_storage:
+    # PERSISTENT (file-backed) sending queue storage — survives collector restart.
+    # Directory is bind-mounted from host (see docker-compose.otel.yml) so queued
+    # telemetry persists across container recreation. Bounded by queue_size (batches).
+    directory: /var/lib/otel/file_storage
+    create_directory: true
+    timeout: 1s
+    compaction:
+      on_start: true
+      directory: /var/lib/otel/compaction
 
 receivers:
   otlp:
@@ -62,9 +72,17 @@ exporters:
       auth:
         authenticator: basicauth/client
     sending_queue:
+      # Explicit, BOUNDED PERSISTENT queue (file_storage extension below).
       enabled: true
+      storage: file_storage
       queue_size: 5000
       num_consumers: 10
+    retry_on_failure:
+      # BOUNDED retry: capped attempts via max_elapsed_time (5m) before dropping.
+      enabled: true
+      initial_interval: 5s
+      max_interval: 30s
+      max_elapsed_time: 300s
     logs_index: otel-logs
     dataset: otel
     namespace: mct-soc
@@ -80,7 +98,7 @@ service:
                 host: 0.0.0.0
                 port: 8889
 
-  extensions: [health_check, basicauth/client]
+  extensions: [health_check, basicauth/client, file_storage]
   pipelines:
     traces:
       # delivery_trace + reconciliation_trace flow through this pipeline

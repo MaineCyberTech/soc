@@ -1,0 +1,67 @@
+{
+  "schema": "phase78-slo-evidence",
+  "report_id": "phase78-evidence-slo",
+  "phase": 78,
+  "date": "2026-08-30",
+  "timestamp_utc": "2026-08-30T18:44:04Z",
+  "timestamp_america_new_york": "2026-08-30T14:44:04 EDT",
+  "classification": "INTERNAL",
+  "status": "PASS",
+  "source_path": "/opt/mct-security-stack/ops/reports/evidence/phase78/phase78-evidence-slo.json",
+  "availability_slo": 0.999,
+  "error_budget": 0.001,
+  "slo_definition": "Availability SLO for the Class-A Wazuh->Shuffle->IRIS delivery pipeline = 99.9% successful delivery of in-window events (error budget 0.1%). SLI = (successful deliveries) / (total deliveries) over the compliance window; production proxy measured read-only from wazuh-alerts-4.x-<date> _count (level>=12 = error).",
+  "capacity_sli": {
+    "definition": "Shuffle monthly app-run usage vs 25,000 limit (org_statistics-000001) and otel/exporter queue depth; capacity treated as a health dependency, never mutated.",
+    "source": "read-only ops/scripts/p74-usage-monitor.sh; 172.20.0.1:9200/org_statistics-000001",
+    "limit": 25000,
+    "measured_here": false,
+    "note": "No app-run entitlement reset or bypass performed (per AGENTS.md)."
+  },
+  "error_budget_policy": {
+    "availability_slo": 0.999,
+    "error_budget_pct": 0.001,
+    "method": "Google SLO multi-window burn-rate",
+    "fast_burn_threshold_x": 14.4,
+    "slow_burn_threshold_x": 6.0,
+    "fast_burn_rule": "alert when burn rate >= 14.4x over BOTH the short (1h) and long (30d) windows -> >14.4% of the 30d budget consumed in 1h",
+    "slow_burn_rule": "alert when burn rate >= 6.0x over the long (6h) window -> >6% of the 30d budget consumed in 6h",
+    "windows_seconds_test": {
+      "short": 10,
+      "long": 30
+    },
+    "production_windows": {
+      "fast_short": "1h",
+      "fast_long": "30d",
+      "slow_long": "6h",
+      "budget": "30d"
+    },
+    "note": "test harness compresses windows (10s/30s) to measure real detection/clear latency; production applies identical multiwindow burn-rate math at 1h/6h/30d scale."
+  },
+  "compliance_window_defined": "30d rolling compliance/evaluation window for the availability SLO (Google SLO standard). Error budget = 1 - SLO = 0.1% per 30d. Test harness uses a compressed 30s rolling window to derive real detection/clear latency while preserving the identical burn-rate math.",
+  "fast_method": "Rule-state injection: 100 synthetic 'error' events appended per 1s poll into a dedicated, isolated test event stream (ops/scripts/phase77-slo-monitor.py SLOMonitor.append) for the duration of the short window - a deliberate 100% error burst injected as event state, NOT merely waiting for a wall-clock window to elapse. No production ledger/case/counter/entitlement mutated; synthetic events written to /tmp/p78-measure-events.log and removed after.",
+  "fast_detection": 1.003,
+  "fast_clear": 9.042,
+  "slow_method": "Rule-state injection: a sustained ~1% error rate - 1 synthetic 'error' event + 99 synthetic 'success' events per 1s poll - appended into the dedicated isolated test stream across the long window. This is a gradual burn injected as event state (distinct from FAST; FAST must NOT trip during this test). No production mutation; synthetic events on /tmp/p78-measure-events.log, removed after.",
+  "slow_detection": 1.004,
+  "slow_clear": 1.003,
+  "reset_semantics": "Rolling 30d error-budget window; there is NO hard reset. The alert state is recomputed every poll strictly from events inside the rolling window. As the window slides, old error events age out and the budget 'recovers' automatically; an alert clears when the burn rate falls below threshold (verified: fast_clear=9.042s, slow_clear=1.003s). No manual budget reset, no app-run entitlement reset.",
+  "low_traffic_tested": true,
+  "zero_traffic_policy": "Explicit no-false-page policy: if total events in the observation window < 20 (LOW_TRAFFIC_MIN), the service is treated as HEALTHY and ALL burn alerts (fast/slow) are suppressed. 0 events => healthy (no-data != down). Verified this session: a 5-error low-volume window and a 0-event window both produced NO page (low_false_page=False, zero_false_page=False).",
+  "external_paging_state": "none - PAGE is a local alert-log entry only (ops/scripts/phase77-slo-monitor.py writes a PAGE line to the alert log); no external pager (PagerDuty/Opsgenie/email/SMS) is wired. Production routing is an approval-gated operation not performed here (per AGENTS.md). Honest: no external paging system exists in this environment.",
+  "measured_baseline": {
+    "monitor_sample_volume": 200,
+    "monitor_sample_availability": 1.0,
+    "monitor_sample_p95_latency_ms": 105,
+    "production": {
+      "source": "wazuh-alerts-4.x-2026.08.30 (last 15m, read-only _count)",
+      "volume": 742,
+      "high_severity_errors": 0,
+      "error_rate": 0.0,
+      "availability_proxy": 1.0,
+      "reachable": true
+    },
+    "method": "measured from dedicated monitor sample + OpenSearch read-only _count"
+  },
+  "evidence_note": "Phase 78 SLO evidence: genuine, reversible burn-rate harness building on ops/scripts/phase77-slo-monitor.py. FAST burn via rule-state injection of 100% errors -> detected in 1.003s, cleared in 9.042s after errors stopped and healthy traffic resumed. SLOW burn via sustained ~1% error injection -> detected in 1.004s, cleared in 1.003s (FAST did NOT trip during the slow test). LOW/ZERO traffic: 5-error and 0-event windows produced NO false page. No external pager; PAGE = local alert-log entry. All detection/clear times measured for real from wall-clock between injection and alert/clear; synthetic test events isolated to /tmp and removed. No production counter, entitlement, or app-run quota mutated."
+}

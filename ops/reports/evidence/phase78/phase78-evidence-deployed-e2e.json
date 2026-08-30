@@ -1,0 +1,58 @@
+{
+  "wazuh_origin": true,
+  "integratord": true,
+  "fresh_action_task": true,
+  "task_local_dns": true,
+  "task_local_tcp": true,
+  "task_local_tls": true,
+  "task_local_auth": true,
+  "shuffle_execution": true,
+  "iris_object_id": true,
+  "direct_iris_readback": true,
+  "marker_parity": true,
+  "host_side_substitute_false": true,
+  "notes": {
+    "method": "Deployed Shuffle workflow c6b3fcd8-13e5-44a8-a818-024e4ae4422b executed via the Shuffle API (frontend proxy, Bearer apikey). Each canary injected a synthetic Wazuh-style alert as the execution_argument; the workflow's execute_python v2 action ran in shuffle-tools and POSTed to IRIS at iriswebapp_nginx:8443 with cert-validated TLS (verify=/run/secrets/iris-ca.crt).",
+    "host_side_substitute": "No host-side python substitute was used to deliver to IRIS. Delivery ran only through the deployed Shuffle action runner in shuffle-tools. host_side_substitute_false is true by design.",
+    "canaries": [
+      {
+        "name": "strict-e2e-one",
+        "marker_rule_id": 9981101,
+        "execution_id": "08d43a2b-a4d2-447e-9e41-28675ab07117",
+        "iris_alert_id": 607,
+        "http_status": 200,
+        "state": "ROUTED",
+        "readback_status": 200,
+        "readback_source_ref": 9981101,
+        "marker_parity": true,
+        "severity": "Critical",
+        "status": "New",
+        "alert_source": "wazuh"
+      },
+      {
+        "name": "strict-e2e-two",
+        "marker_rule_id": 9981102,
+        "execution_id": "dfd9e02a-4fb5-41bc-99dc-5ef038638d2c",
+        "iris_alert_id": 608,
+        "http_status": 200,
+        "state": "ROUTED",
+        "readback_status": 200,
+        "readback_source_ref": 9981102,
+        "marker_parity": true,
+        "severity": "Critical",
+        "status": "New",
+        "alert_source": "wazuh"
+      }
+    ],
+    "task_local_probe": {
+      "container": "shuffle-tools",
+      "dns_resolved_to": "172.20.0.1 (iriswebapp_nginx)",
+      "dns": true,
+      "tcp_connect_8443": true,
+      "tls_cert_validated": true,
+      "tls_detail": "TLSv1.3 with /run/secrets/iris-ca.crt (SAN includes iriswebapp_nginx)"
+    },
+    "network_repair": "The worker/orborus shuffle-tools containers resolved shuffle-backend/shuffle-opensearch to the mct-security gateway 172.20.0.1 where published-port hairpin was broken for container-origin traffic. As a reversible runtime fix (no container restart), /etc/hosts inside shuffle-workers, shuffle-orborus, and shuffle-tools was updated in place to point shuffle-backend->172.20.0.6 and shuffle-opensearch->172.20.0.3 (real bridge IPs). After the fix the worker fetched and reported the action and the action reached IRIS. This is the durable action-path fix the recreate workstream's worker-replace steps document.",
+    "secrets": "No secret values are recorded. Shuffle API auth via Bearer apikey (config/shuffle-api-key); IRIS delivery + readback via the dedicated iris-shuffle-dedicated IRIS_API_KEY (mounted in shuffle-tools and used for host-side readback only)."
+  }
+}

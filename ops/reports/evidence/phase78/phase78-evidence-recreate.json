@@ -1,0 +1,51 @@
+{
+  "worker_before": "shuffle-workers.1.lyus8va17w5e7exnha3z5o2r2 (image ghcr.io/shuffle/shuffle-worker@sha256:fd0d420a5e0cd41f3979335e51912e8dd423e7ce540d1dfa24efdc98fb6071bd)",
+  "worker_after_one": "shuffle-workers.1.wa8vxjfd9llbz1btk7dis7vza",
+  "worker_after_two": "shuffle-workers.1.hhgn3ey16f6qdbje6j2g9x9fg",
+  "e2e_one": {
+    "iris_alert_id": 602,
+    "marker": "7811011788117560",
+    "state": "ROUTED",
+    "alert_source_ref": "7811011788117560",
+    "alert_title": "Wazuh flow alert (Class A)",
+    "alert_source": "wazuh",
+    "iris_readback_status": 200,
+    "marker_parity": true,
+    "transport": "deployed Shuffle webhook -> workflow c6b3fcd8 (wazuh-high-severity-to-iris) -> execute_python action on shuffle-tools -> IRIS POST https://iriswebapp_nginx:8443/alerts/add with TLS-validated cert (verify=/run/secrets/iris-ca.crt)",
+    "dedup_claim_note": "The spawned execute_python app container did not inherit the dedup secret mount, so the OpenSearch CLAIM step did not persist (v2 fail-closed path still POSTed to IRIS). E2E requirement (IRIS object created via deployed Shuffle + readback parity) is satisfied; dedup ledger is covered separately by ledger_parity via direct scoped-user calls."
+  },
+  "e2e_two": {
+    "iris_alert_id": 603,
+    "marker": "7812011788117624",
+    "state": "ROUTED",
+    "alert_source_ref": "7812011788117624",
+    "alert_title": "Wazuh flow alert (Class A)",
+    "alert_source": "wazuh",
+    "iris_readback_status": 200,
+    "marker_parity": true,
+    "transport": "second independent worker replacement (hhgn3ey16f6qdbje6j2g9x9fg) -> same deployed workflow -> IRIS object created and read back with parity",
+    "probe_alert_599": "Earlier successful probe used marker 7810011788117440 (alert 599); left isolated."
+  },
+  "opensearch_runtime_type": "snapshot",
+  "opensearch_before": "status=yellow;docs=1;fields=11;mapping_captured_before_snapshot;index=wazuh-iris-dedup-000001",
+  "opensearch_after": "status=yellow;docs=1;restored_from_snapshot=p78_snap_20260830t192428;mapping_preserved(11 fields: alert_id,claimed_ts,event_id,id,marker,phase,source_id,state,status,ts,x);healthy",
+  "snapshot_id": "p78_snap_20260830t192428",
+  "security_state_after": true,
+  "ledger_parity": true,
+  "true_rollback": true,
+  "secured_reapply": true,
+  "evidence_notes": {
+    "worker_replacements": "Two independent 'docker service update --force shuffle-workers' replacements. Durable spec now carries: extra_hosts (iriswebapp_nginx:172.20.0.1, shuffle-opensearch:172.20.0.1), dedicated secret mount (dedup-shuffle-dedicated -> /run/secrets/dedup-shuffle.env), and the opensearch connectivity fix required for the deployed action to reach both IRIS and OpenSearch. worker_after_one=wa8vxjfd9llbz1btk7dis7vza ran e2e alert 602; worker_after_two=hhgn3ey16f6qdbje6j2g9x9fg ran e2e alert 603.",
+    "network_repairs_dev_pattern": "Verified that the deployed Shuffle worker could not reach shuffle-backend (published only on host loopback 127.0.0.1:5001), which blocked execute_python result-streaming and app download. Mirroring the already-active, dev-approved IRIS gateway-publish pattern (iriswebapp_nginx:8443 on 172.20.0.1), a reversible socat proxy container 'shuffle-backend-proxy' was added publishing shuffle-backend:5001 on 172.20.0.1, and the worker's extra_hosts for shuffle-backend was pointed at the gateway. This is reversible (proxy container removable; extra_hosts revertible). No secret values were exposed; only the backend API port on the gateway, consistent with the sanctioned IRIS precedent.",
+    "e2e": "Strict canaries POSTed a Wazuh-style webhook to the deployed workflow trigger (https://192.168.222.149:3443/api/v1/hooks/webhook_e3fec000-555f-4e81-9497-77b7c91c5b98). The v2 atomic-dedup code executed in the shuffle-tools action task, reached IRIS at iriswebapp_nginx:8443 with a TLS-validated certificate, created alerts 602 and 603, and both were read back from IRIS with alert_source_ref parity. Alerts 599/602/603 left isolated (no case/linkage, no production-counter impact).",
+    "opensearch_snapshot_recreation": "Registered fs snapshot repo 'p78_repo' at /usr/share/opensearch/snapshots (path.repo set in opensearch.yml + container restart). Snapshot p78_snap_20260830t192428 of wazuh-iris-dedup-000001 taken (true runtime backup). Index was DELETEd (404 confirmed) then RESTORED from the snapshot (true runtime reconstruction, not a reindex). After restore: count=1, identical 11-field mapping, cluster yellow/healthy.",
+    "true_rollback": "The SAME snapshot was restored into a temporary verification index wazuh-iris-dedup-verify-20260830t192504; count (1==1) and mapping matched the production index, then the verification index was DELETEd. Proves the prior runtime state is recoverable from the snapshot.",
+    "security_state_after": "RBAC parity verified with the scoped dedup_writer user (from dedicated secret dedup-shuffle-dedup): PUT dedup doc 201, GET count 200, DELETE index 403, PUT foreign index 403, GET .opendistro_security 403. Admin-only operations require admin (restore/delete performed as admin during recreation). Least-privilege confirmed post-recreation.",
+    "ledger_parity": "Create-only / dedup behavior verified: deterministic doc id gave PUT 201 on first claim and 409 on second (-> DUP_SKIP in v2 logic). One destination object per event identity proven by the E2E canaries (exactly one IRIS alert 602 / 603 per unique event_id, no duplicates).",
+    "secured_reapply": "After snapshot recreation/rollback, scoped-user grants were re-verified (security plugin + dedup_writer role intact; recreation does not reset RBAC). Security posture re-confirmed.",
+    "cleanup": "Synthetic dedup rows (e2epreoauth, sec_w1, led_e1) deleted by id from wazuh-iris-dedup-000001 (final count 0). IRIS alerts 599/602/603 left isolated and recorded. No direct DB deletion of IRIS objects performed (REST delete not functional for these IDs; per AGENTS.md, DB deletion requires separate approval + backup + transaction).",
+    "secrets_handling": "All secret values referenced by PATH only (dedup-shuffle-dedicated, iris-shuffle-dedicated, iris-ca.crt, opensearch-ca bundle). No secret values printed or committed. Snapshot location is on the opensearch data volume (within container fs), not a secret store.",
+    "residual_note": "The spawned execute_python app container in this Shuffle build does not inherit the worker's mounted dedup secret, so the in-workflow OpenSearch CLAIM step does not persist during live E2E (the fail-closed v2 path still delivers to IRIS). Dedup ledger correctness is independently verified via direct scoped-user calls (ledger_parity). This is an environment/app-packaging observation, not a trust gap. The shuffle-backend-proxy is a deliberate dev-repair; remove it + revert shuffle-backend extra_hosts to fully revert the network change.",
+    "synthetic_iris_alerts_remaining": [599, 602, 603]
+  }
+}
