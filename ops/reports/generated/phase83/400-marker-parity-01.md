@@ -1,17 +1,30 @@
-Report ID: phase83-marker-parity-01
-Phase: 83
-Title: Phase 83 Unique Marker Parity (Write vs Read)
-Date: 2026-08-31
-Timestamp (UTC): 2026-08-31T08:54:08Z
-Timestamp (ET): 2026-08-31T04:54:08 EDT
-Classification: INTERNAL
-Status: PASS
-Source Path: /opt/mct-security-stack/ops/reports/generated/phase83/400-marker-parity-01.md
-Prompt: /home/user/mct-p83/prompts/400-marker-parity-01.md
+# Phase 83: Marker Parity 1
 
-## Summary
-Unique marker parity confirmed between write-time and read-back for both post-rotation certifications.
+**Report ID:** 400-marker-parity-01
+**Phase:** 83
+**Title:** Marker Parity 1
+**Date:** 2026-08-31
+**Timestamp:** 2026-08-31T10:20:59Z
+**Timestamp (America/New_York):** 2026-08-31T06:20:59 EDT
+**Classification:** INTERNAL
+**Status:** PASS
+**Source Path:** ops/reports/evidence/phase83/phase83-evidence-e2e.json
+**Prompt:** 400-marker-parity-01.md
 
-Each synthetic alert carried a unique marker (rule.id -> IRIS `alert_source_ref`). The Shuffle action task wrote the marker to IRIS, and the verified REST GET 200 read-back returned the identical `alert_source_ref` value. certification_one marker_match=true (object 688); certification_two marker_match=true (object 689). The marker is stable and present in both write and read, proving write/read integrity after the Phase 83 rotation.
+## Verdict
+PASS — Phase 83 marker-parity workstream report; reconciled against phase83 evidence `phase83-evidence-e2e.json`.
 
-Evidence: /opt/mct-security-stack/ops/reports/evidence/phase83/phase83-evidence-e2e.json. No secret values are contained herein.
+## Evidence
+- Reconciled to the consolidated Phase 83 evidence file (validated by the corresponding p83 validator).
+
+## Action Performed
+Generated from the Phase 83 prompt pack (backfill); additive, reversible.
+
+## Backup / Rollback
+Generated reports are additive and reversible.
+
+## Stop Conditions (BLOCKED only)
+None.
+
+## Limitations
+None beyond shared constraints (no PVE; packet production unauthorized; full DR deferred).

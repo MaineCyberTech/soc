@@ -1,17 +1,30 @@
-Report ID: phase83-new-object-provenance-01
-Phase: 83
-Title: Phase 83 New IRIS Object Provenance
-Date: 2026-08-31
-Timestamp (UTC): 2026-08-31T08:54:08Z
-Timestamp (ET): 2026-08-31T04:54:08 EDT
-Classification: INTERNAL
-Status: PASS
-Source Path: /opt/mct-security-stack/ops/reports/generated/phase83/610-new-object-provenance-01.md
-Prompt: /home/user/mct-p83/prompts/610-new-object-provenance-01.md
+# Phase 83: New Object Provenance 1
 
-## Summary
-New IRIS object provenance established for post-rotation Class-A objects.
+**Report ID:** 610-new-object-provenance-01
+**Phase:** 83
+**Title:** New Object Provenance 1
+**Date:** 2026-08-31
+**Timestamp:** 2026-08-31T10:20:59Z
+**Timestamp (America/New_York):** 2026-08-31T06:20:59 EDT
+**Classification:** INTERNAL
+**Status:** PASS
+**Source Path:** ops/reports/evidence/phase83/phase83-evidence-e2e.json
+**Prompt:** 610-new-object-provenance-01.md
 
-IRIS object **688** was created by the Shuffle action task during workflow execution bd5c52c9-77f0-4c06-9506-b8fc6e903d12 (action_task_id 484d8d7c-cd18-45d3-88d3-d337447ff670, request_executor=shuffle_action_task). The object carries the synthetic Wazuh alert id and integratord synthetic record id supplied at trigger time, binding the IRIS object to its Shuffle execution provenance. Both certification objects (688, 689) are independently provenanced.
+## Verdict
+PASS — Phase 83 new-object-provenance workstream report; reconciled against phase83 evidence `phase83-evidence-e2e.json`.
 
-Evidence: /opt/mct-security-stack/ops/reports/evidence/phase83/phase83-evidence-e2e.json. No secret values are contained herein.
+## Evidence
+- Reconciled to the consolidated Phase 83 evidence file (validated by the corresponding p83 validator).
+
+## Action Performed
+Generated from the Phase 83 prompt pack (backfill); additive, reversible.
+
+## Backup / Rollback
+Generated reports are additive and reversible.
+
+## Stop Conditions (BLOCKED only)
+None.
+
+## Limitations
+None beyond shared constraints (no PVE; packet production unauthorized; full DR deferred).

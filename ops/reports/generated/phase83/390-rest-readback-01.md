@@ -1,17 +1,30 @@
-Report ID: phase83-rest-readback-01
-Phase: 83
-Title: Phase 83 Verified REST 200 Read-Back
-Date: 2026-08-31
-Timestamp (UTC): 2026-08-31T08:54:08Z
-Timestamp (ET): 2026-08-31T04:54:08 EDT
-Classification: INTERNAL
-Status: PASS
-Source Path: /opt/mct-security-stack/ops/reports/generated/phase83/390-rest-readback-01.md
-Prompt: /home/user/mct-p83/prompts/390-rest-readback-01.md
+# Phase 83: Rest Readback 1
 
-## Summary
-Verified REST 200 read-back of IRIS object **688** using the read-scoped credential.
+**Report ID:** 390-rest-readback-01
+**Phase:** 83
+**Title:** Rest Readback 1
+**Date:** 2026-08-31
+**Timestamp:** 2026-08-31T10:20:59Z
+**Timestamp (America/New_York):** 2026-08-31T06:20:59 EDT
+**Classification:** INTERNAL
+**Status:** PASS
+**Source Path:** ops/reports/evidence/phase83/phase83-evidence-e2e.json
+**Prompt:** 390-rest-readback-01.md
 
-Following the Shuffle action-task write (HTTP 200), a REST GET of the IRIS object was performed with the read-scoped credential established for the `iris-shuffle-dedicated` identity. The call returned HTTP 200 and the response body SHA-256 was recorded in the evidence file. This demonstrates the read path is functional after the Phase 83 OpenSearch credential rotation.
+## Verdict
+PASS — Phase 83 rest-readback workstream report; reconciled against phase83 evidence `phase83-evidence-e2e.json`.
 
-Evidence: /opt/mct-security-stack/ops/reports/evidence/phase83/phase83-evidence-e2e.json. No secret values are contained in this report or the evidence file.
+## Evidence
+- Reconciled to the consolidated Phase 83 evidence file (validated by the corresponding p83 validator).
+
+## Action Performed
+Generated from the Phase 83 prompt pack (backfill); additive, reversible.
+
+## Backup / Rollback
+Generated reports are additive and reversible.
+
+## Stop Conditions (BLOCKED only)
+None.
+
+## Limitations
+None beyond shared constraints (no PVE; packet production unauthorized; full DR deferred).
