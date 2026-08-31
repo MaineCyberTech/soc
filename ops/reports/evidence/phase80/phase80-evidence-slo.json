@@ -1,0 +1,16 @@
+{
+  "deployed_only_eligibility": true,
+  "fast_method": true,
+  "fast_detection_seconds": 0.251,
+  "fast_clear_seconds": 9.755,
+  "slow_method": true,
+  "slow_detection_seconds": 0.253,
+  "slow_clear_seconds": 19.765,
+  "compliance_window": true,
+  "low_traffic_tested": true,
+  "zero_traffic_policy": true,
+  "external_paging_state": "none",
+  "capacity_state": "containers_up=39; unhealthy_or_restarting=0; disk_used=64%; mem_available_mb=3803; load1=1.85",
+  "capacity_in_health": true,
+  "error_budget_policy": "30d rolling compliance window; SLO target 99.9% (error budget 0.1%). Fast-burn multiwindow 1h & 5m at 14.4x threshold; slow-burn multiwindow 6h & 30m at 6x threshold. Only deployed-eligible (Wazuh-originated) events enter the budget; host-side/ineligible events are excluded. Budget recovers as the rolling window slides (burn clears once errors age out of both windows). PAGE = LOCAL alert log only; no external pager is integrated."
+}

@@ -1,0 +1,30 @@
+{
+  "generated_utc": "2026-08-31T02:38:08.911493+00:00",
+  "eligibility_scenario_false_page": false,
+  "low_traffic_false_page": false,
+  "zero_traffic_false_page": false,
+  "fast_page_fired": true,
+  "slow_page_fired": true,
+  "live_test_windows": {
+    "fast": [
+      30.0,
+      10.0
+    ],
+    "slow": [
+      60.0,
+      20.0
+    ]
+  },
+  "production_windows": {
+    "fast": [
+      3600,
+      300
+    ],
+    "slow": [
+      21600,
+      1800
+    ]
+  },
+  "page_log": "/opt/mct-security-stack/ops/scripts/../reports/evidence/phase80/page-log.jsonl",
+  "event_log": "/opt/mct-security-stack/ops/scripts/../reports/evidence/phase80/events.jsonl"
+}

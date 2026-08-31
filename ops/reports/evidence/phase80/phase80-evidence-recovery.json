@@ -1,0 +1,16 @@
+{
+ "backend_overlay_source_hash":"e35b4938bc889b37ebe57397462f48cef91de7bcad3d64854909b138eab694c1",
+ "backend_overlay_effective_hash":"4ab4187bb1c8883426fb683e200460ded2eb35afa0cb46b9bdd5f9e596a67e0a",
+ "dependent_services_recreated":true,
+ "drift_tested":true,
+ "opensearch_runtime_type":"snapshot",
+ "opensearch_old_id":"X72eqeO1SbCXRPPPHhcJ5g",
+ "opensearch_new_id":"FnzYstGpTcCqA2TK4Pfh9w",
+ "snapshot_id":"p80_snap_20260831t000635z",
+ "snapshot_window_recorded":true,
+ "security_restored":true,
+ "ledger_parity":true,
+ "true_runtime_rollback":true,
+ "secured_reapply":true,
+ "post_reapply_e2e":true
+}

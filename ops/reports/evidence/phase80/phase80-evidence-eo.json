@@ -1,0 +1,114 @@
+{
+  "crash_after_accept": {
+    "_execution_ids": [
+      "3a22cb5f-771c-40f4-bb99-958c499778e3",
+      "f977260d-26bc-47c0-bfce-ce87796d22ee"
+    ],
+    "_notes": "workflow created object (exec1, DELIVERED). Ledger reset to CLAIMED/alert_id=null to model crash-after-accept. Replay (exec2) returns RECONCILE_PENDING, creates NO new IRIS object (fail-closed). One object confirmed by readback.",
+    "action_task_id": "484d8d7c-cd18-45d3-88d3-d337447ff670",
+    "automatic_replay_while_uncertain": false,
+    "destination_object_count": 1,
+    "direct_readback_sha256": "e5e4234a3525ecfb8b2f06cdb188ba0e2da15e8e3b1a4ced77dcf54a5d6f3d85",
+    "evidence_sha256": "6d8df1c737f1d5088acbb2a6afadbeaa966b845937c53d7408d02ba3e8f40a20",
+    "final_ledger_state": "CLAIMED",
+    "iris_object_id": 655,
+    "shuffle_execution_id": "f977260d-26bc-47c0-bfce-ce87796d22ee",
+    "source_event_id": "eo-crash-621578dd4e"
+  },
+  "delivery_race": {
+    "_execution_ids": [
+      "8c68a7c7-bcf5-4682-b979-beb439612c87",
+      "1ec0da4e-09a3-46a9-89bb-1e5847dde542",
+      "d852c135-56ea-41d7-995c-ec2ddbdee1e9"
+    ],
+    "_notes": "3 concurrent identical events driven through webhook. Atomic op_type=create claim ensures exactly one execution POSTs to IRIS; others 409 -> DUP_SKIP/RECONCILE, no new object. Single alert_id in ledger; readback confirms 1 object.",
+    "action_task_id": "484d8d7c-cd18-45d3-88d3-d337447ff670",
+    "automatic_replay_while_uncertain": false,
+    "destination_object_count": 1,
+    "direct_readback_sha256": "baba804242981022a40ffce7f94bff1f2ce4299d87ec2af3aa6759b3b8d18cf0",
+    "evidence_sha256": "36687c414f898c64080dbc8d927e787774233991bf959a88d07ac3c68f015681",
+    "final_ledger_state": "DELIVERED",
+    "iris_object_id": 658,
+    "shuffle_execution_id": "8c68a7c7-bcf5-4682-b979-beb439612c87",
+    "source_event_id": "eo-deliveryrace-621578dd4e"
+  },
+  "partial_success": {
+    "_execution_ids": [
+      "e75729e5-7bf1-49e5-9a7b-6edda59fa1e1"
+    ],
+    "_notes": "single normal delivery through deployed v2 webhook; atomic-claim yields exactly one IRIS object; ledger DELIVERED.",
+    "action_task_id": "484d8d7c-cd18-45d3-88d3-d337447ff670",
+    "automatic_replay_while_uncertain": false,
+    "destination_object_count": 1,
+    "direct_readback_sha256": "79092a0ba787b2fe6c0e468587ac40c8338f146cc5a3636595dd57e26f9162c9",
+    "evidence_sha256": "d2797b730f114c0db2d9ed3833ab54c9a6c020b3d67ec7e0d943bc8e0ef9d065",
+    "final_ledger_state": "DELIVERED",
+    "iris_object_id": 654,
+    "shuffle_execution_id": "e75729e5-7bf1-49e5-9a7b-6edda59fa1e1",
+    "source_event_id": "eo-partial-621578dd4e"
+  },
+  "replay_race": {
+    "_execution_ids": [
+      "7a44bcef-26a7-4ad0-aba1-e2884a1ea3ed",
+      "784b7499-fc28-4200-a848-56b630e2cc36"
+    ],
+    "_notes": "event delivered (exec1, alert_id=660). Ledger reset to CLAIMED to model RECONCILE state. Replay (exec2) RECONCILE_PENDING, no new object (fail-closed, reconciliation blocks automatic replay).",
+    "action_task_id": "484d8d7c-cd18-45d3-88d3-d337447ff670",
+    "automatic_replay_while_uncertain": false,
+    "destination_object_count": 1,
+    "direct_readback_sha256": "69259e4660b56a8dfe9f35f7a483ed1ece8c66a3d5284a2bbca33f9982804f2f",
+    "evidence_sha256": "8e7c61d3fbca48ce92b4e472561773daba4ee053426ba3e01ce453e14aed1097",
+    "final_ledger_state": "CLAIMED",
+    "iris_object_id": 660,
+    "shuffle_execution_id": "784b7499-fc28-4200-a848-56b630e2cc36",
+    "source_event_id": "eo-replayrace-621578dd4e"
+  },
+  "response_loss": {
+    "_execution_ids": [
+      "11e5c740-e264-4b6a-8381-3077aa42e0d2",
+      "afee1e68-fe0b-4894-a4ac-d1321d8cc968"
+    ],
+    "_notes": "workflow created object (exec1). Ledger reset to CLAIMED/alert_id=null to model IRIS response-loss (object created, ack lost). Replay (exec2) RECONCILE_PENDING, no new object.",
+    "action_task_id": "484d8d7c-cd18-45d3-88d3-d337447ff670",
+    "automatic_replay_while_uncertain": false,
+    "destination_object_count": 1,
+    "direct_readback_sha256": "11864aad26006f39d3de85ba602bd49e4b1286eb098767e12ccca4e3f7ed41ae",
+    "evidence_sha256": "8032ad70dc15bfadae3859305c0b1504cb58a360016992f1679d6355726e35c5",
+    "final_ledger_state": "CLAIMED",
+    "iris_object_id": 656,
+    "shuffle_execution_id": "afee1e68-fe0b-4894-a4ac-d1321d8cc968",
+    "source_event_id": "eo-responseloss-621578dd4e"
+  },
+  "retry_race": {
+    "_execution_ids": [
+      "7ea57804-d8b4-463f-8fd5-afb5059800f2",
+      "98b595ec-05b2-4b01-88d4-75c90d7e62ae"
+    ],
+    "_notes": "event delivered (exec1, DELIVERED, alert_id=659). Retry (exec2) hits 409, sees alert_id -> DUP_SKIP, no new object. Ledger remains DELIVERED.",
+    "action_task_id": "484d8d7c-cd18-45d3-88d3-d337447ff670",
+    "automatic_replay_while_uncertain": false,
+    "destination_object_count": 1,
+    "direct_readback_sha256": "97ea5e15a028a86feda604fd75f5775a1b740baf0a6ed8dbd821c3870aa4e524",
+    "evidence_sha256": "af7acff41f9ddcb050fdfdb10e0e2904f60586d1ad7ab45a6069b6c54793d0a2",
+    "final_ledger_state": "DELIVERED",
+    "iris_object_id": 659,
+    "shuffle_execution_id": "98b595ec-05b2-4b01-88d4-75c90d7e62ae",
+    "source_event_id": "eo-retryrace-621578dd4e"
+  },
+  "timeout_ambiguity": {
+    "_execution_ids": [
+      "e398a8c0-c162-443f-ae0e-52a1c9e7ce8b",
+      "5430054a-744e-4b22-aa2b-efd4dc730306"
+    ],
+    "_notes": "workflow created object (exec1). Ledger reset to CLAIMED/alert_id=null to model timeout-ambiguity (uncertain if IRIS accepted). Replay (exec2) RECONCILE_PENDING, no new object.",
+    "action_task_id": "484d8d7c-cd18-45d3-88d3-d337447ff670",
+    "automatic_replay_while_uncertain": false,
+    "destination_object_count": 1,
+    "direct_readback_sha256": "af40bb731f78918654a25d5c02f983d5237f6ba1a97dbccb67046c00a5b3ee9d",
+    "evidence_sha256": "d48d9c1b8e4f5a9fb2b9ab1cfbc5bb5336fe4b47f77f5dea3eb30acdbae5c1b7",
+    "final_ledger_state": "CLAIMED",
+    "iris_object_id": 657,
+    "shuffle_execution_id": "5430054a-744e-4b22-aa2b-efd4dc730306",
+    "source_event_id": "eo-timeout-621578dd4e"
+  }
+}

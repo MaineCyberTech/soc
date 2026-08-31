@@ -1,0 +1,17 @@
+{
+  "branch": "main",
+  "canonical_sha256": "687b97637522498e69d6ef5d181f453ced9fc4aca82a953d2bc47d60afa504f2",
+  "clean_tree": true,
+  "evidence_manifest_sha256": "621dac5dd08368282934a397641c902ec0e564e11c20612b8965c0cc85bf564a",
+  "heads_equal": false,
+  "local_head": "db7d42cbf0a23c91869e98610a8a2af7e54868d7",
+  "push_success": false,
+  "remote_head": "158d2c3a8a8935aa2969a24b2dc3d67d77a2034d",
+  "repository": "git@github.com:MaineCyberTech/soc.git",
+  "rollback_identities": [
+    "commit:db7d42cbf0a23c91869e98610a8a2af7e54868d7",
+    "opensearch_snapshot:p80_snap_20260831t000635z",
+    "shuffle_workers:p80-closeout"
+  ],
+  "untracked_adjudicated": true
+}

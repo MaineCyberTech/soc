@@ -1,0 +1,20 @@
+{
+ "storage_path": "/opt/mct-security-stack/data/otel-file-storage/file_storage",
+ "directory_permissions": "0750",
+ "max_size_bytes": 16777216,
+ "filesystem_budget_bytes": 74498920448,
+ "alert_threshold_bytes": 8388608,
+ "queue_capacity_items": 5000,
+ "peak_items": 100001,
+ "peak_bytes": 35012608,
+ "drop_count": "0",
+ "drain_seconds": 7,
+ "restart_survival": true,
+ "storage_full_tested": true,
+ "corruption_tested": true,
+ "classa_independent": true,
+ "authz_negative": true,
+ "cardinality_before": "memory_limiter limit_mib=256 spike_limit_mib=64; persistent sending_queue queue_size=5000 batches; batch processor (max 8192 spans/batch)",
+ "cardinality_after": "attribute allowlist (attributes/allowlist) drops sensitive/high-cardinality keys (client/source/host/net IP/port/name; .*password|secret|token|api_key|authorization|credential.*); memory_limiter limit_mib=256 spike_limit_mib=64 unchanged; queue_size=5000 bounded; batch processor bounds span aggregation",
+ "sensitive_scan_clean": true
+}

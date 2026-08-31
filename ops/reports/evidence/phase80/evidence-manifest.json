@@ -1,0 +1,38 @@
+{
+  "canonical_doc": "ops/reports/canonical/current/current-state-20260830-p80.md",
+  "files": [
+    {
+      "name": "phase80-evidence-capacity.json",
+      "sha256": "bacee8c21ab4b930d36d6148395d13668b8db7be78faaf0bb72ed23a11b43629"
+    },
+    {
+      "name": "phase80-evidence-eo.json",
+      "sha256": "d3602d78b4ad666945d9dc9a3db4ee729efa62385c9b8f79237f2af21f212f42"
+    },
+    {
+      "name": "phase80-evidence-otel.json",
+      "sha256": "6e87728ca11fd8417bf4af3b608bc22035059fa5265fe48c421b6803731ce84b"
+    },
+    {
+      "name": "phase80-evidence-provenance.json",
+      "sha256": "cf810e4b23f782d76b985fb079c82a9638d237105f6a0bfc74d7a54b150f9e11"
+    },
+    {
+      "name": "phase80-evidence-recovery.json",
+      "sha256": "3114cff4a0e22d65e5d4ac805594fb043f12d9f8bc2b266f71da363981f524fd"
+    },
+    {
+      "name": "phase80-evidence-repo.json",
+      "sha256": "462a77cf1dcd2f62456a4c02aa3b77bcc4747ac0c822e14c780d2c3dc528bcb2"
+    },
+    {
+      "name": "phase80-evidence-slo.json",
+      "sha256": "c57fc17e582daf305903176e52c69a131d924b3b6d593b7e76aebf31f37ad5ac"
+    },
+    {
+      "name": "phase80-evidence-slo.provenance.json",
+      "sha256": "b72205c7cc26cfc7dd3d7ca15879b9c0bd1cac3959a9b6b574c4755183e0ecdb"
+    }
+  ],
+  "generated": "2026-08-31T02:54:11Z"
+}

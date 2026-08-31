@@ -1,0 +1,38 @@
+{
+  "replacement_one": {
+    "wazuh_alert_id": "p80prov1-d317693a",
+    "rule_id": "100002",
+    "alert_level": "12",
+    "integratord_record_id": "p80prov1-d317693a",
+    "shuffle_execution_id": "0a97b62b-214c-4ece-a3aa-3aba4a74b854",
+    "action_task_id": "484d8d7c-cd18-45d3-88d3-d337447ff670",
+    "action_container_id": "f427c787867e",
+    "node_id": "s9zkxfoqwt4mo0dl9s1ky0h0k",
+    "network_namespace": "shuffle_swarm_executions",
+    "request_process": "shuffle_action_task_webhook",
+    "iris_tls_peer": "iriswebapp_nginx",
+    "iris_object_id": "648",
+    "direct_readback_sha256": "aeaaf3c55fdd80c022ae74e124b7eeb614afc1d6859110a92472ef18382597be",
+    "unique_marker": "p80prov1-d317693a",
+    "evidence_class": "deployed-action-task",
+    "request_executor": "shuffle_action_task"
+  },
+  "replacement_two": {
+    "wazuh_alert_id": "p80prov2-7c560cf3",
+    "rule_id": "100002",
+    "alert_level": "12",
+    "integratord_record_id": "p80prov2-7c560cf3",
+    "shuffle_execution_id": "71956f5a-5015-4fcd-b6ac-47c579a8e687",
+    "action_task_id": "484d8d7c-cd18-45d3-88d3-d337447ff670",
+    "action_container_id": "f427c787867e",
+    "node_id": "s9zkxfoqwt4mo0dl9s1ky0h0k",
+    "network_namespace": "shuffle_swarm_executions",
+    "request_process": "shuffle_action_task_webhook",
+    "iris_tls_peer": "iriswebapp_nginx",
+    "iris_object_id": "649",
+    "direct_readback_sha256": "f7eec5735ed84f05b903efbcd55f3924d11c4ea9d2e0ea39b1e442a2da238ad7",
+    "unique_marker": "p80prov2-7c560cf3",
+    "evidence_class": "deployed-action-task",
+    "request_executor": "shuffle_action_task"
+  }
+}
