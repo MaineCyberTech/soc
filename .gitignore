@@ -46,3 +46,6 @@ ops/reports/p28-portability-scan-*.txt
 
 # Pre-rebuild env snapshot contains secrets — never commit
 .env.pre-rebuild*
+
+# Phase83 rotation backups (secret material, never commit)
+ops/backups/agents/
