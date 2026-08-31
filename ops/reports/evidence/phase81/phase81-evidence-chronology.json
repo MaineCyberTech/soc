@@ -1,0 +1,10 @@
+{
+ "original_report_timestamp":"2026-08-30T23:59:00Z",
+ "snapshot_start":"2026-08-31T00:06:00Z",
+ "snapshot_complete":"2026-08-31T00:06:35Z",
+ "runtime_recreate_timestamp":"2026-08-31T00:07:00Z",
+ "rollback_timestamp":"2026-08-31T00:08:00Z",
+ "secured_reapply_timestamp":"2026-08-31T00:09:00Z",
+ "post_reapply_e2e_timestamp":"2026-08-31T00:10:00Z",
+ "superseding_report_timestamp":"2026-08-31T04:08:58Z"
+}

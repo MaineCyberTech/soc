@@ -1,0 +1,16 @@
+{
+ "production_max_size_bytes": 76222398,
+ "test_max_size_bytes": 16777216,
+ "phase79_72_6mb_classification": true,
+ "queue_sizer": true,
+ "queue_capacity": true,
+ "peak_items": 100001,
+ "peak_bytes": 35012608,
+ "storage_full_tested": true,
+ "restart_tested": true,
+ "corruption_tested": true,
+ "drop_count": "0",
+ "drain_seconds": 7,
+ "classa_independent": true,
+ "_note": "Phase 81 republish of Phase 80 OTEL storage-sizing truth. production_max_size_bytes=76222398 (Phase 79 72.6 MiB production classification; live collector.yaml defines no max_size/OTEL_STORAGE_MAX_SIZE, so the Phase 79 production value is reused). test_max_size_bytes=16777216 reused from Phase 80 evidence (max_size_bytes). peak_items/peak_bytes/storage_full/restart/corruption/drop_count/drain_seconds reused from genuine Phase 80 evidence; storage-full, restart, and corruption tests were NOT re-run destructively. classa_independent holds: 76222398 >= 35012608."
+}

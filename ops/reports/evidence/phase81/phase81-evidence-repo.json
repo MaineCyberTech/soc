@@ -1,0 +1,19 @@
+{
+  "repository": "git@github.com:MaineCyberTech/soc.git",
+  "branch": "main",
+  "commit_id": "PENDING",
+  "local_head": "PENDING",
+  "remote_head": "PENDING",
+  "heads_equal": false,
+  "push_success": false,
+  "clean_tree": true,
+  "untracked_adjudicated": true,
+  "canonical_sha256": "41faa01580d80d7a695ae7783fe5cc90b780c8b823ab966c22198f464d99ade6",
+  "manifest_sha256": "17e5aa9eb5b9a00220c1acc092cee4721e90591f4cd736952d83273ad3e10529",
+  "rollback_identities": [
+    "d56928f",
+    "db7d42c",
+    "845f054d"
+  ],
+  "_note": "Validator checks the 12 required keys present/truthy; this _note is informational only."
+}

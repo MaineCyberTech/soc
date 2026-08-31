@@ -1,0 +1,21 @@
+# Phase 81 Report: Phase 81 Provenance Two
+
+| Field | Value |
+|-------|-------|
+| Report ID | 109-provenance-two-10 |
+| Phase | 81 |
+| Title | Phase 81 Provenance Two |
+| Date | 2026-08-31 |
+| Timestamp (UTC Z) | 2026-08-31T04:14:36Z |
+| Timestamp (ET / EDT) | 2026-08-31T00:14:36 EDT |
+| Classification | INTERNAL |
+| Status | PASS |
+| Source Path | /opt/mct-security-stack/ops/reports/evidence/phase81/phase81-evidence-provenance.json |
+| Prompt | 100-provenance-two-01.md |
+
+## Result
+Complete deployed-action-task provenance reconciled from genuine Phase 80 evidence (phase80-evidence-provenance.json). All 12 provenance keys present and request_executor == shuffle_action_task (validator p81-provenance-validate.py: this object's keys PASS). iris_object_id=649. Evidence JSON: /opt/mct-security-stack/ops/reports/evidence/phase81/phase81-evidence-provenance.json.
+
+## Evidence reference
+- Evidence JSON: `/opt/mct-security-stack/ops/reports/evidence/phase81/phase81-evidence-provenance.json`
+- Validator `p81-provenance-validate.py` (per object): object_648 / object_649 PASS; object_650 BLOCKED on missing recovery-canary provenance (not fabricated).

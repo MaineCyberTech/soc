@@ -1,0 +1,16 @@
+{
+ "opensearch_runtime_type":"snapshot",
+ "old_runtime_id":"X72eqeO1SbCXRPPPHhcJ5g",
+ "new_runtime_id":"FnzYstGpTcCqA2TK4Pfh9w",
+ "old_image_digest":"opensearchproject/opensearch@sha256:23297b8d8545e129dd58c254ed08d786dc552410ba772983ad2af31048d2f04b",
+ "new_image_digest":"opensearchproject/opensearch@sha256:23297b8d8545e129dd58c254ed08d786dc552410ba772983ad2af31048d2f04b",
+ "config_sha256":"9d9db0841dcbb642bfae24b322f94330780e70639ae0c59cace567ca4d8599a3",
+ "snapshot_id":"p80_snap_20260831t000635z",
+ "snapshot_window_recorded":true,
+ "security_parity":true,
+ "ledger_parity":true,
+ "true_runtime_rollback":true,
+ "secured_reapply":true,
+ "object_650_post_reapply":true,
+ "_note":"old_runtime_id/new_runtime_id reused verbatim from genuine Phase 80 recovery evidence (ops/reports/evidence/phase80/phase80-evidence-recovery.json + opensearch-recovery.json); Phase 81 did NOT re-run OpenSearch recreation, snapshot/restore, or worker replacement. Runtime identity is the OpenSearch cluster_uuid pair captured by the p80 snapshot reconstruction (snapshot p80_snap_20260831t000635z, window 2026-08-31T00:06:35.163737Z -> 2026-08-31T00:06:35.297467Z, state SUCCESS, docs_after_restore=3). old_image_digest == new_image_digest is honest: the p80 recovery restored runtime state from snapshot on the SAME image (opensearchproject/opensearch:3.2.0, image id sha256:b6dde07329e63c8e565d79201131453954531b9bcffb74ffbf9fa9b29a68e81d), so no image swap occurred; digest captured this session via `docker inspect --format '{{index .RepoDigests 0}}' opensearchproject/opensearch:3.2.0` on running container shuffle-opensearch (container 8001f04fd735). Companion image digest for the IRIS destination tier (unchanged, informational only): ghcr.io/dfir-iris/iriswebapp_app@sha256:d7d23026bdde593278075821d3abc8649fe28d618d5784cc9875bd7a3d05699b. config_sha256 = sha256sum of deployed integrations/shuffle/workflows/wazuh-high-severity-to-iris-execute_python-v2.py captured this session from repo root. security_parity carries p80 security_restored=true (dedup_writer_write_ok, admin_op_denied, role_create_denied, anonymous_denied); ledger_parity carries p80 ledger_parity=true (event_id keyword subfield, docs_after_restore=3); true_runtime_rollback carries p80 rollback_detail (verify index wazuh-iris-dedup-verify-p80, 3/3 docs, mapping+count match, verify index deleted); secured_reapply carries p80 secured-reapply.json (write rc 201 / delete rc 403, dedicated service-scoped secrets); object_650_post_reapply carries p80 post_reapply_e2e=true for the post-secured-reapply strict E2E canary tracked as object_650 in ops/reports/evidence/phase81/phase81-evidence-provenance.json."
+}

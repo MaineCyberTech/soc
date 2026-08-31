@@ -1,0 +1,31 @@
+# Phase 81: Phase 81: Truth Baseline Documentation
+
+**Report ID:** 047-truth-baseline-08
+**Phase:** 81
+**Title:** Phase 81: Phase 81: Truth Baseline Documentation
+**Date:** 2026-08-31
+**Timestamp:** 2026-08-31T03:58:14Z
+**Timestamp (America/New_York):** 2026-08-30T23:58:14 EDT
+**Classification:** INTERNAL
+**Status:** PASS
+**Source Path:** /opt/mct-security-stack/ops/reports/generated/phase81/047-truth-baseline-08.md
+**Prompt:** 047-truth-baseline-08.md
+
+## Verdict
+PASS — Phase 81 documentation item; reconciled against the canonical current-state and carried authority. Reference: ops/reports/canonical/current/current-state-20260830-p80.md (Phase 80 all-validators-PASS; Phase 81 corrects chronology and separates app-run entitlement from storage).
+
+## Evidence (carried / documentation)
+- Truth baseline documented; Phase 80 chronology corrected and superseded by Phase 81.
+- No live stack mutation performed by this documentation report.
+
+## Action Performed
+Generated from the Phase 81 prompt pack; documentation reconciled (additive, reversible).
+
+## Backup / Rollback
+Generated reports are additive and reversible.
+
+## Stop Conditions (BLOCKED only)
+None.
+
+## Limitations
+None beyond shared constraints (no PVE; packet production unauthorized; full DR deferred).
