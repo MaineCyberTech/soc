@@ -1,0 +1,16 @@
+{
+  "iris_version": "2.4.29",
+  "api_version": "2.0.5",
+  "item_endpoint": "GET /alerts/667",
+  "http_status": 200,
+  "verification_method": "rest_item_get",
+  "token_owner": "iris-shuffle-dedicated",
+  "alerts_read_allowed": true,
+  "customer_scope": "IrisInitialClient",
+  "iris_object_id": "667",
+  "unique_marker": "aee4278a-5a63-401d-949f-354ba878cb4e",
+  "response_sha256": "cecf512cfd859d133820f8385abf242ded23114d14f52565f1f379db90a30312",
+  "_note": "IRIS REST item GET achieved HTTP 200 with a freshly minted read-scoped api_key for the iris-shuffle-dedicated logical identity (IRIS user_id 9001 / shuffle-classa-svc). Prior dedicated token returned 401 (Phase 81 OW-66-01 credential drift); the new token authenticates via Authorization: Bearer and reads alert object 667. iris_version 2.4.29 and api_version 2.0.5 observed from IRIS server config (IRIS Server v2.4.29; Max. API version supported: 2.0.5). Token value is intentionally excluded from this evidence file.",
+  "_generated_utc": "2026-08-31T05:35:48Z",
+  "_generated_et": "2026-08-31T01:35:48 EDT"
+}

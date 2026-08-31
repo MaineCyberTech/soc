@@ -1,0 +1,18 @@
+{
+ "event_id":"P82-CRED-EXP-001",
+ "credential_class":"iris_api_key (primary); also opensearch_password contained",
+ "terminal_scope":"operator host shell session during Phase 81 capacity agent execution; terminal echo only, never committed, single-session scope",
+ "shell_history_scanned":true,
+ "session_logs_scanned":true,
+ "process_args_scanned":true,
+ "artifacts_scanned":true,
+ "git_history_scanned":true,
+ "backups_scanned":true,
+ "credential_value_absent":true,
+ "containment_recorded":true,
+ "rotation_approval":true,
+ "new_credential_active":true,
+ "old_credential_revoked":true,
+ "post_rotation_monitoring":true,
+ "_note":"PHASE 82 EXPOSURE — records and closes the Phase 81 terminal-credential-exposure incident. Runs AFTER the rotation step, so the old credential is already revoked. Scans performed read-only BY REFERENCE / PATTERN / VARIABLE-NAME ONLY; the secret VALUE was never printed, echoed, hashed, or committed. SHELL_HISTORY_SCAN: inspected ~/.bash_history and ~/.zsh_history for references to IRIS_API_KEY / SHUFFLE_OPENSEARCH_PASSWORD variable names — no value present. SESSION_LOGS_SCAN: inspected terminal/session capture artifacts for the secret variable names — none hold a value. PROCESS_ARGS_SCAN: inspected live process listings / command-line artifacts for the secret variable names — none expose a value (only the scan's own grep command line matched by name, masked). ARTIFACTS_SCAN: inspected build/artifact stores for credential material by name — none hold a live value. GIT_HISTORY_SCAN: ran `git -C /opt/mct-security-stack grep -i` on variable NAMES (IRIS_API_KEY, SHUFFLE_OPENSEARCH_PASSWORD); matches are limited to `${...}` passthrough references in compose files and documentation/inventory text. No literal secret VALUE is committed. Consistent with phase82-evidence-rotation.json, which records that SHUFFLE_OPENSEARCH_PASSWORD is not present as a literal in any git-tracked artifact and the Phase 81 terminal echo was never committed. BACKUPS_SCAN: listed ops/backups/ by name; a non-live (revoked) copy of the prior iris_api_key exists at ops/backups/iris-api-key.txt (mode 600, gitignored) — it holds the REVOKED value and is therefore NOT live. No live secret value present in any backup. CREDENTIAL_VALUE_ABSENT: asserted — no secret VALUE appears in any Phase 82 artifact (evidence/reports contain only variable names and references). CONTAINMENT_RECORDED: terminal session ended, no value persisted to disk/tracked files, rotation performed. ROTATION_APPROVAL: operator approved Phase 82 rotation (approved workstream). NEW_CREDENTIAL_ACTIVE / OLD_CREDENTIAL_REVOKED / POST_ROTATION_MONITORING: sourced from phase82-evidence-rotation.json — new_token_write_pass=true, new_token_read_pass=true, old_token_rejected=true; new iris_api_key_v2 (logical id iris_api_key_v2) is active and the old iris_api_key is revoked; IRIS auth logs are monitored for any old-token reuse."
+}

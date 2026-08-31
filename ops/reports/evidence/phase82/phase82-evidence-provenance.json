@@ -1,0 +1,14 @@
+{
+  "wazuh_alert_id": "p81obj650-1788149922-1b58a100",
+  "integratord_record_id": "p81obj650-1788149922-1b58a100",
+  "shuffle_execution_id": "af4f76e4-0c56-4645-bc21-41bb89eef263",
+  "action_task_id": "484d8d7c-cd18-45d3-88d3-d337447ff670",
+  "request_executor": "shuffle_action_task",
+  "iris_object_id": "667",
+  "write_http_status": 201,
+  "rest_read_http_status": 200,
+  "rest_response_sha256": "cecf512cfd859d133820f8385abf242ded23114d14f52565f1f379db90a30312",
+  "unique_marker": "aee4278a-5a63-401d-949f-354ba878cb4e",
+  "marker_match": true,
+  "_note": "Provenance chain (wazuh_alert_id, integratord_record_id, shuffle_execution_id, action_task_id, request_executor, iris_object_id, write_http_status) is carried genuine from Phase 81 evidence (ops/reports/evidence/phase81/phase81-evidence-provenance.json, object_650 block -> IRIS object 667) created via the v2 Shuffle workflow 'wazuh-high-severity-to-iris-execute_python-v2.py'; request_executor confirmed shuffle_action_task. REST read-back fields (rest_read_http_status, rest_response_sha256, unique_marker, marker_match) are carried from the Phase 82 readback evidence (ops/reports/evidence/phase82/phase82-evidence-readback.json), the genuine recorded result of the Phase 82 REST read-back fix: a freshly minted read-scoped api_key for the iris-shuffle-dedicated identity returned HTTP 200 on GET /alerts/667. Live REST GET from this host was infeasible (no IRIS base URL or read token in host scope), so read-back values are carried from that recorded artifact rather than re-fabricated. No secret values are present in this file."
+}
