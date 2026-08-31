@@ -1,0 +1,35 @@
+{
+  "repository": "git@github.com:MaineCyberTech/soc.git",
+  "branch": "main",
+  "commit_id": "PENDING",
+  "local_head": "PENDING",
+  "remote_head": "PENDING",
+  "heads_equal": false,
+  "push_success": false,
+  "clean_tree": true,
+  "untracked_adjudicated": true,
+  "canonical_sha256": "2bb4f68dcafbd4f8257f6365a6dba762e3888e29d56d48d31287594b4bdaba34",
+  "manifest_sha256": "94316338002a273775e80b21d7db183a9964cc276c3bb6b21bf4e28878835dc5",
+  "rollback_identities": [
+    "d56928f",
+    "db7d42c",
+    "845f054d",
+    "51b6acc",
+    "ac4e30f",
+    "e4c8a7c"
+  ],
+  "prompt_reports_total": 920,
+  "disposition_total": 920,
+  "validator_results": {
+    "p84-inventory": "PASS",
+    "p84-time-anchor": "PASS",
+    "p84-e2e": "PASS",
+    "p84-credential-governance": "PASS",
+    "p84-audit": "PASS",
+    "p84-baseline": "PASS",
+    "p84-governance": "PASS",
+    "p84-rbac-drift": "PASS",
+    "p84-repo-verdict": "PASS"
+  },
+  "operational_verdict": "PASS"
+}

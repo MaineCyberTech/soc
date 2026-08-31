@@ -1,0 +1,9 @@
+{
+  "phase84-evidence-e2e.json": "d564a631a313d399151b8678674d666feb36bd01bdf394e78a9697ed9343b688",
+  "phase84-evidence-audit.json": "b833055c003be981eeeb3d78216e050500466e91a2136ec212152d39d1928511",
+  "phase84-evidence-credential-governance.json": "1e8f21339190e80adc31199a18d86792c4300fa7eca555b79aa7c992f33393ec",
+  "phase84-evidence-baseline.json": "511237e901949ac48b580f3a969a7c09e9c917e0a9fb9d4cf7a1d11c50274ebc",
+  "phase84-evidence-governance.json": "a91ed2f469a1759afff29c061db92fb2a64139b35f9cb486a5102a5e87df4889",
+  "phase84-evidence-rbac-drift.json": "5bb7519e27b0e6ebe736e94fa57092d56db5ea21161241bc06f7b8f089b5ddc0",
+  "phase84-evidence-repo.json": "f77c9786332a6c1c9c458518cfe76c82583b53e642a21b96de792fca2885d915"
+}

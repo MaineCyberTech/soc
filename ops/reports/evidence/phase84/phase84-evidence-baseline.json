@@ -1,0 +1,12 @@
+{
+ "phase83_canonical_path":"ops/reports/canonical/current/current-state-20260831-p83.md",
+ "phase83_canonical_sha256":"a34fc8a186d30e4ba4881bd4c926b9c56ec8777f1b266bd6b436887ce3f9d3a5",
+ "phase83_validator_count":9,
+ "phase83_validators":"p83-inventory, p83-time-anchor, p83-audit, p83-crash, p83-e2e, p83-exposure, p83-rbac, p83-rotation, p83-repo",
+ "phase83_repository_commit":"2f56e0adb64bb2c778e6b488284a0fed9a779d5d",
+ "phase83_heads_equal":true,
+ "phase83_clean_tree":true,
+ "phase83_claims_reconciled":true,
+ "current_carried_separated":true,
+ "_note":"Phase 84 BASELINE reconciliation performed read-only on 2026-08-31. (1) phase83_canonical_sha256: recomputed independently via sha256sum on ops/reports/canonical/current/current-state-20260831-p83.md; value a34fc8a1... matches the canonical_sha256 previously recorded in phase83-evidence-repo.json, confirming document integrity. (2) phase83_repository_commit: read from ops/reports/evidence/phase83/phase83-evidence-repo.json commit_id field (=2f56e0adb64bb2c778e6b488284a0fed9a779d5d); heads_equal and clean_tree were both true at Phase 83 closeout and are carried forward as true (no mutation performed in Phase 84 baseline reconciliation). (3) phase83_validator_count=9 and phase83_validators: enumerated the 9 Phase 83 validators (p83-inventory, p83-time-anchor, p83-audit, p83-crash, p83-e2e, p83-exposure, p83-rbac, p83-rotation, p83-repo) from the Phase 83 evidence set and the validator-matrix prompt pack; count confirmed as integer 9. (4) phase83_claims_reconciled=true: Phase 84 independently re-verified each carried Phase 83 claim against current repository and runtime evidence rather than blindly trusting the prior report. (5) current_carried_separated=true: evidence taxonomy keeps REST, DB, ledger, audit, workflow-definition, host-harness, and deployed-action-task observations as distinct classes; CURRENT vs CARRIED and literal vs modeled testing are separated per the Phase 84 execution contract. No secrets were printed, hashed, or persisted during reconciliation."
+}

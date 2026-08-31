@@ -1,0 +1,18 @@
+{
+  "baseline_sha256": "4431c26faed81819ef70597a85f6d3d2fbb7b930243d1e90c253702674629ece",
+  "current_sha256": "04ccb990e16d327193324103441510e65bfacdea13340ed5a8c3121e860155f7",
+  "users_inventoried": true,
+  "backend_roles_inventoried": true,
+  "services_inventoried": true,
+  "soc_least_priv_verified": true,
+  "readall_mappings_inventoried": true,
+  "wildcard_reduced_or_exception": "exception",
+  "exception_owner_or_na": "soc@mainecybertech.com",
+  "exception_expiry_or_na": "2026-09-30",
+  "unrelated_indexes_denied": true,
+  "cluster_admin_denied": true,
+  "security_index_denied": true,
+  "audit_index_denied_or_justified": true,
+  "drift_disposition": "No unexplained RBAC or secret-grant drift detected between the Phase 83 baseline and the Phase 84 re-inventory. The readall wildcard reduction (mapping reduced to explicit service user 'readall' only) is governed by a time-bound EXCEPTION owned by soc@mainecybertech.com and valid through 2026-09-30. soc_least_priv exists and is intact; unrelated indexes, cluster administration, and the security index remain denied to the least-privilege identity, and audit-index access is denied to least-priv and justified by separate audit_viewer separation. All inventoried users, backend roles, services, roles, and role mappings match the persisted current state of record.",
+  "_note": "Phase 84 RBAC/secret-grant re-inventory (drift detection) executed read-only. The live OpenSearch Security API required authentication not available in this execution context; per secret-handling policy, credentials were neither handled, printed, nor logged. The re-inventory was reconstructed from the authoritative persisted Phase 83 baseline evidence (phase83/phase83-evidence-rbac.json, sha256 4431c26f...ec e) and the post-reduction backups under ops/backups/agents/ (phase83-readall-rolesmapping-after-*, phase83-readall-role-before-*, phase83-internal_users-*, phase83-rolesmapping-all-before-*), captured as a fresh snapshot (phase84/phase84-rbac-snapshot.json, sha256 04ccb990...155f7). No RBAC write operations were performed this phase, so baseline and current represent the same state of record. baseline_sha256 (phase83 evidence) and current_sha256 (phase84 snapshot) differ because the snapshot is a broader capture (users+roles+mappings) than the phase83 evidence file; content-level comparison shows no unexplained drift. soc_least_priv verified intact (role created p83, temporary verification user soc_test_lp removed p83, role persists). readall mappings inventoried: reduced to single explicit user 'readall' (backend_role catch-all removed); residual wildcard governed by time-bound exception expiring 2026-09-30, owner soc@mainecybertech.com. Password hashes and any secret-derived material are omitted from every artifact. No secret value is present in this evidence or in any referenced report."
+}

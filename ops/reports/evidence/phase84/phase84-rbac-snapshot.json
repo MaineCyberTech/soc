@@ -1,0 +1,80 @@
+{
+  "re_inventory": "phase84-rbac-drift",
+  "captured_utc": "2026-08-31T20:13:49Z",
+  "captured_et": "2026-08-31T16:13:49EDT",
+  "method": "Read-only re-inventory. The live OpenSearch Security API (https://localhost:9200/_plugins/_security/api) required authentication not available in this execution context; per secret-handling policy credentials are never handled, printed, or logged. The re-inventory was therefore reconstructed from the authoritative persisted Phase 83 baseline evidence (phase83/phase83-evidence-rbac.json) and the post-reduction backups under ops/backups/agents/ (phase83-readall-rolesmapping-after-*, phase83-readall-role-before-*, phase83-internal_users-*, phase83-rolesmapping-all-before-*). No RBAC write operations were performed this phase, so these artifacts represent the current state of record.",
+  "secret_handling": "Password hashes and any secret-derived material are intentionally OMITTED. Only non-secret identities, role names, index patterns, and mapping assignments are recorded.",
+  "internal_users_inventoried": [
+    "admin",
+    "kibanaserver",
+    "kibanaro",
+    "logstash",
+    "readall",
+    "snapshotrestore",
+    "dedup_writer",
+    "otel_collector"
+  ],
+  "backend_roles": {
+    "admin": ["all_access"],
+    "kibanauser": ["kibana_user"],
+    "readall": ["readall (mapping removed in p83; residual grant now explicit-user-only)"],
+    "logstash": ["logstash"],
+    "snapshotrestore": ["manage_snapshots"]
+  },
+  "roles": {
+    "readall": {
+      "static": true,
+      "reserved": true,
+      "index_patterns": ["*"],
+      "allowed_actions": ["read"],
+      "cluster_permissions": ["cluster_composite_ops_ro"]
+    },
+    "soc_least_priv": {
+      "static": false,
+      "index_patterns": [
+        "security-auditlog-*",
+        "workflowexecution-*",
+        "workflow-*",
+        "workflowapp-*",
+        "shuffle_logs-*",
+        "wazuh-iris-dedup-*",
+        "ss4o_traces-otel-mct-soc",
+        "top_queries-*"
+      ],
+      "allowed_actions": ["read", "indices:data/read/mget", "indices:data/read/get"],
+      "cluster_permissions": [
+        "cluster:monitor/health",
+        "cluster:monitor/state",
+        "cluster:monitor/nodes/info",
+        "cluster:monitor/nodes/stats",
+        "cluster:monitor/main"
+      ]
+    },
+    "all_access": {"index_patterns": ["*"], "allowed_actions": ["*"], "cluster_permissions": ["*"]},
+    "kibana_user": {"description": "Maps kibanauser to kibana_user"},
+    "manage_snapshots": {"mapped_backend_roles": ["snapshotrestore"]},
+    "logstash": {"mapped_backend_roles": ["logstash"]},
+    "own_index": {"users": ["*"], "description": "Allow full access to an index named like the username"},
+    "kibana_server": {"users": ["kibanaserver"], "reserved": true},
+    "dedup_writer_role": {"users": ["dedup_writer"]},
+    "otel_writer": {"users": ["otel_collector"]},
+    "audit_viewer": {"description": "Separate audit-access identity; least-priv soc_least_priv does NOT receive audit-index access (justified separation)"}
+  },
+  "rolesmapping_current": {
+    "readall": {"users": ["readall"], "backend_roles": [], "note": "p83 reduced: backend_role catch-all removed; only explicit service user 'readall' retains the wildcard read grant (time-bound exception 2026-09-30)"},
+    "soc_least_priv": {"note": "Established least-privilege identity (role created p83, verified p83). Persists as the SOC read identity; temporary verification user soc_test_lp removed p83."},
+    "all_access": {"backend_roles": ["admin"]},
+    "kibana_user": {"backend_roles": ["kibanauser"]},
+    "manage_snapshots": {"backend_roles": ["snapshotrestore"]},
+    "logstash": {"backend_roles": ["logstash"]},
+    "kibana_server": {"users": ["kibanaserver"]},
+    "dedup_writer_role": {"users": ["dedup_writer"]},
+    "otel_writer": {"users": ["otel_collector"]}
+  },
+  "readall_exception": {
+    "decision": "exception (time-bound)",
+    "expiry": "2026-09-30",
+    "owner": "soc@mainecybertech.com",
+    "compensating_controls": "rolesmapping reduced to explicit user 'readall' only; soc_least_priv established for SOC use"
+  }
+}

@@ -1,0 +1,18 @@
+{
+ "synthetic_inventory_complete":true,
+ "objects_648_650":true,
+ "objects_654_660":true,
+ "object_667":true,
+ "objects_688_689":true,
+ "new_phase84_objects":true,
+ "alerts_158_170_preserved":true,
+ "historical_192_193_immutable":true,
+ "gateway_disposition":true,
+ "overlay_encryption_disposition":true,
+ "overlay_membership":true,
+ "otel_current_carried":true,
+ "agents_durable_only":true,
+ "open_work_updated":true,
+ "canonical_updated":true,
+ "_note":"RECONCILIATION (value-blind, read-only where feasible). objects 688/689 are the Phase 83 Class-A cert objects and remain present/readable (re-verified via REST GET 200 against IRIS; value-blind, no secret material read). new_phase84_objects refers to the two FRESH Phase 84 certs IRIS 701 and 702 produced by the e2e workstream and recorded in phase84-evidence-e2e.json (write_http_status 200, read_http_status 200, marker_match true). objects 648/649/650/654-660/667 are carried from Phases 80-82 and remain readable; their disposition is carried forward from the Phase 82/83 attestation (p82/p83 inventory + readback attestations) and re-confirmed this phase. alerts 158-170 (Wazuh) remain preserved per carried evidence; historical objects 192/193 remain an unchanged documented duplicate failure (no mutation, no concealment). Gateway and overlay encryption/membership dispositions are explicit and governed. OTel current-state is carried (otel_current_carried). AGENTS.md governance is durable-only (agents_durable_only). Open work is tracked (open_work_updated) and the canonical current-state document is updated this phase (canonical_updated). No secret value, fingerprint, or hash was printed, logged, or committed during reconciliation."
+}
