@@ -1,0 +1,9 @@
+{
+  "phase83-evidence-rotation.json": "3d110b8f865bd7171eba183268236f216bb7b83521194fc8398dc691242e4d06",
+  "phase83-evidence-audit.json": "188d2305bc9229f8ab850aa1027d89c585203aa66c6d7b52a5161ea8dc8e98d1",
+  "phase83-evidence-exposure.json": "f33497b74fa24d6a937c2390a3dd2ac0bc5b8f352ab19eaa9440c7133344905b",
+  "phase83-evidence-rbac.json": "4431c26faed81819ef70597a85f6d3d2fbb7b930243d1e90c253702674629ece",
+  "phase83-evidence-e2e.json": "6efe81cd54b0370e8a1a3d9691c8a086a644a192203e4c88b73b585ad362200d",
+  "phase83-evidence-crash.json": "85ec6d57041753028cdaf72f74d368d04107b9ddc694ef61f4cfb7e5352dd6c7",
+  "phase83-evidence-repo.json": "2378020ddc45d53991ceaa00f9c063f27d3b5f478c145ea0500b89b0f5952043"
+}

@@ -1,0 +1,12 @@
+{
+ "event_id":"P82-CRED-EXP-001",
+ "credential_matrix":"iris_api_key=rotated_revoked; opensearch_admin_password=rotated_revoked",
+ "opensearch_exposed":true,
+ "scope_method_value_blind":true,
+ "all_locations_scanned":true,
+ "artifact_value_absent":true,
+ "containment_active":true,
+ "branch_dispositions":{"iris_api_key":"rotated_revoked","opensearch_admin_password":"rotated_revoked"},
+ "incident_status":"closed",
+ "_note":"Incident P82-CRED-EXP-001 (Phase 81 terminal credential exposure) is CLOSED. Two exposed-credential branches, both rotated+revoked. (1) iris_api_key — rotated in Phase 82 (phase82-evidence-rotation.json: old IRIS API token revoked/returns 401, new token minted and active for service account 9001; rotation reversible via backups). Disposition = rotated_revoked. (2) opensearch_admin_password (the Wazuh indexer / OpenSearch admin credential terminal-exposed in Phase 81) — rotated in Phase 83 (phase83-evidence-rotation.json: old password rejected 401, new password works 200, filebeat consumers converged, admin grants preserved, OpenSearch security audit captured the rotation). Disposition = rotated_revoked. Exposure scope was determined by value-blind scanning (by variable name / pattern only; the literal secret value was never printed, echoed, hashed, or committed): shell history, session logs, process args, artifacts, git history, and backups were scanned in Phase 82 and re-affirmed here (all_locations_scanned). No secret VALUE appears in any Phase 82/83 artifact (artifact_value_absent). Containment active: both credentials rotated, old material revoked. Both branches rotated_revoked, so closure is valid."
+}

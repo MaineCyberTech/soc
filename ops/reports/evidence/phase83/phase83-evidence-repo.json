@@ -1,0 +1,20 @@
+{
+  "repository": "git@github.com:MaineCyberTech/soc.git",
+  "branch": "main",
+  "commit_id": "PENDING",
+  "local_head": "PENDING",
+  "remote_head": "PENDING",
+  "heads_equal": false,
+  "push_success": false,
+  "clean_tree": true,
+  "untracked_adjudicated": true,
+  "canonical_sha256": "a34fc8a186d30e4ba4881bd4c926b9c56ec8777f1b266bd6b436887ce3f9d3a5",
+  "manifest_sha256": "86580d74eb31aa82f4403ed4c312101f171cfd04a943c0ca11bfb4f8cd22c393",
+  "rollback_identities": [
+    "d56928f",
+    "db7d42c",
+    "845f054d",
+    "51b6acc",
+    "ac4e30f"
+  ]
+}

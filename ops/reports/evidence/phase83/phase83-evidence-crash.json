@@ -1,0 +1,15 @@
+{
+ "approval_or_blocker":true,
+ "isolated_lane":true,
+ "production_unaffected":true,
+ "literal_or_modeled":"modeled",
+ "kill_point":"post-accept, pre-ledger-commit simulated worker termination on an isolated synthetic execution-options scenario",
+ "source_event_id":"eo-crash-after-accept",
+ "iris_object_count":1,
+ "reconciliation_required":true,
+ "automatic_replay_blocked":true,
+ "recovery":true,
+ "cleanup_status":"complete",
+ "historical_192_193_recorded":true,
+ "_note":"A literal process crash was NOT executed and NOT fabricated. No safe isolated literal-crash lane exists in this shared environment (the Wazuh->IRIS pipeline uses a shared v2 webhook/action task, and Phase 81 established that process-level isolation is not available). Per the honesty standard carried from Phases 81-82, this is an HONEST MODELED crash (literal_or_modeled=modeled) using isolated synthetic data only; production was untouched. Historical objects 192/193 remain a documented, unfixed duplicate failure and are recorded as documentary, not success."
+}
