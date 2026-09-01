@@ -49,8 +49,8 @@ MUST / MUST NOT item below.
 
 - Current operational truth: the latest current-state doc in
   `ops/reports/canonical/current/` (per-phase; superseded only by a newer one). The current
-  live truth is `ops/reports/canonical/current/current-state-20260831-p84.md` (Phase 84;
-  all 9 p84 validators PASS; see also `ops/reports/current/final-phase84-operator-report-20260831T0500Z.md`).
+  live truth is `ops/reports/canonical/current/current-state-20260831-p85.md` (Phase 85;
+  all 10 p85 validators PASS; see also `ops/reports/current/final-phase85-operator-report-20260831.md`).
   Do not act on any
   claim older than that current-state doc without re-verification. The live truth — including the
   all-validators-PASS state, service rebuilds, recreations, fault-matrix coverage, resilience

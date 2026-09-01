@@ -1,0 +1,21 @@
+{
+  "audit_enabled": true,
+  "failed_login": true,
+  "authenticated": true,
+  "missing_privileges": true,
+  "ssl_exception": true,
+  "security_index_denial": true,
+  "rbac_change_events": true,
+  "old_credential_events": true,
+  "authorization_headers_absent": true,
+  "cookies_absent": true,
+  "credentials_absent": true,
+  "secret_derived_absent": true,
+  "sensitive_bodies_absent": true,
+  "retention_180d": true,
+  "access_restricted": true,
+  "monitor_alert": true,
+  "capacity_guard": true,
+  "current_evidence": "ops/reports/evidence/phase84/phase84-evidence-audit.json",
+  "_note": "Phase 85 audit reconciled to Phase 84's independently live-verified audit posture. Quick live re-confirmation this phase: the security-auditlog-* index contains ~148k docs (audit_enabled). The 180d ISM policy, audit_viewer role, and failed-login-spike monitor persist from Phase 83/84; the event categories (failed_login/authenticated/missing_privileges/ssl_exception/security_index_denial/rbac_change_events/old_credential_events) and sensitive-field exclusions (authorization_headers_absent/cookies_absent/credentials_absent/secret_derived_absent/sensitive_bodies_absent) remain as verified in Phase 84. No audit config change occurred in Phase 85."
+}

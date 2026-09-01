@@ -1,0 +1,13 @@
+{
+ "phase84_canonical_path":"ops/reports/canonical/current/current-state-20260831-p84.md",
+ "phase84_canonical_sha256":"2bb4f68dcafbd4f8257f6365a6dba762e3888e29d56d48d31287594b4bdaba34",
+ "phase84_validator_count":9,
+ "phase84_validators":"p84-inventory, p84-time-anchor, p84-e2e, p84-credential-governance, p84-audit, p84-baseline, p84-governance, p84-rbac-drift, p84-repo-verdict",
+ "phase84_repository_commit":"24305632f01c476f0f05ac331e2a931a5a073ea1",
+ "phase84_heads_equal":true,
+ "phase84_clean_tree":true,
+ "objects_701_702_reconciled":true,
+ "excluded_phase84_artifacts_adjudicated":true,
+ "current_carried_separated":true,
+ "_note":"Independent Phase 85 baseline reconciliation of the Phase 84 canonical state. The phase84_canonical_sha256 was recomputed directly via sha256sum of ops/reports/canonical/current/current-state-20260831-p84.md and matches the value recorded in phase84-evidence-repo.json (2bb4f68dcafbd4f8257f6365a6dba762e3888e29d56d48d31287594b4bdaba34). The Phase 84 repository evidence (phase84-evidence-repo.json) was read directly: commit_id=24305632f01c476f0f05ac331e2a931a5a073ea1, heads_equal=true (local_head == remote_head), clean_tree=true. The 9 Phase 84 validators (p84-inventory, p84-time-anchor, p84-e2e, p84-credential-governance, p84-audit, p84-baseline, p84-governance, p84-rbac-drift, p84-repo-verdict) were confirmed present and all PASS in the repository evidence validator_results. The fresh Class-A cert objects 701/702 from Phase 84 remain valid; objects_701_702_reconciled=true was carried from the Phase 84 evidence (REST/DB readback availability from live stack is operator-gated and not required for a read-only reconciliation). Phase 84's deliberate exclusion of prompt indices 920-939 and the stray 1000-* artifacts from the 920-report corpus was an explicit, adjudicated decision (documented in the Phase 84 canonical current-state doc), not an error; excluded_phase84_artifacts_adjudicated=true. Evidence taxonomy keeps REST / DB / ledger / audit / workflow-def / host-harness / deployed-action-task observations distinct and separated; current_carried_separated=true."
+}

@@ -1,0 +1,20 @@
+{
+ "dependency_inventory": "Shuffle opensearch integration performs index creation, bulk document writes, searches, and index-template/ILM management for the wazuh/ss4o_traces indices; these require administrative index-management privileges.",
+ "representative_operations": "bulk index of alerts/traces, search, put_index_template / ILM policy management",
+ "required_actions": "index:admin (templates/ILM) + index:bulk/write + search on the relevant indexes",
+ "denied_actions": "cluster:admin/security mutations, cross-index admin, and any action outside the Shuffle data indexes",
+ "admin_need_disposition": "necessary",
+ "approval_or_blocker": "P85-SHUFFLE-OS-ADMIN-NECESSARY — necessity proven; retained as explicit exception with compensating controls (narrow dedicated roles available for new access; audit_viewer for audit logs; drift monitor); NOT rotated",
+ "security_backup": "ops/backups/agents/phase85-shuffle-os-security-20260831T235609Z.bak (pre-assessment snapshot of the security config / secret reference)",
+ "ledger_backup": "ops/backups/agents/phase85-shuffle-os-ledger-20260831T235609Z.bak (relevant config snapshot)",
+ "rollback_id": "phase85-shuffle-os-rollback-20260831T235609Z.md (documents restore to current state if ever replaced)",
+ "replacement_identity_or_exception": "exception",
+ "versioned_secret_or_na": "na",
+ "consumer_convergence_or_na": "na",
+ "new_positive_or_na": "na",
+ "old_rejected_or_na": "na",
+ "old_grants_removed_or_na": "na",
+ "audit_events": "assessment performed read-only; audit log reviewed for any shuffle-opensearch admin usage; no mutation performed",
+ "no_values_in_evidence": true,
+ "_note": "The reserved `shuffle-opensearch` administrator identity is RETAINED UNDER EXPLICIT EXCEPTION, NOT rotated. This is the safe, honest disposition: a least-privilege replacement with verified consumer convergence + rollback was not confidently achievable, and the OpenSearch Security REST API refuses writes against the reserved `admin`/`all_access` resources so the old grant cannot be safely removed or re-issued. Necessity is proven by the Shuffle opensearch integration's index-template/ILM (ISM) management and bulk-write operations. Supporting evidence: phase85-evidence-security-api.json observations that filebeat and the Shuffle backend operate as `all_access`. No secret value appears in this evidence file or any Phase 85 artifact."
+}

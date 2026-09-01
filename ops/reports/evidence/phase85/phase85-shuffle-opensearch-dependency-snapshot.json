@@ -1,0 +1,421 @@
+{
+ "artifact": "phase85-shuffle-opensearch-dependency-snapshot.json",
+ "audit_derived_actions": {
+  "audit_coverage_limitation": "audit config disables AUTHENTICATED and GRANTED_PRIVILEGES for both rest and transport, so routine allowed read/write operations are NOT logged; INDEX_EVENT / FAILED_LOGIN / MISSING_PRIVILEGES / COMPLIANCE_* are. The audit log therefore proves the PRIVILEGED index-admin operations Shuffle performs but is not a complete list of its data-plane calls.",
+  "categories": {
+   "INDEX_EVENT": 80
+  },
+  "effective_users": {
+   "admin": 80
+  },
+  "least_priv_denial_event_ids": [
+   {
+    "id": "N6P4WaABMVgp_wggdMga",
+    "index": "security-auditlog-2026.08.31",
+    "indices": [
+     ".opendistro_security"
+    ],
+    "privilege": "indices:data/read/search",
+    "ts": "2026-08-31T22:37:30.008+00:00",
+    "user": "otel_collector"
+   },
+   {
+    "id": "NqP4WaABMVgp_wggdMgB",
+    "index": "security-auditlog-2026.08.31",
+    "indices": null,
+    "privilege": "User otel_collector with Security roles [own_index, otel_writer] does not have any role privileged for admin access. No ",
+    "ts": "2026-08-31T22:37:29.984+00:00",
+    "user": "otel_collector"
+   },
+   {
+    "id": "NaP4WaABMVgp_wggc8ji",
+    "index": "security-auditlog-2026.08.31",
+    "indices": null,
+    "privilege": "User otel_collector with Security roles [own_index, otel_writer] does not have any role privileged for admin access. No ",
+    "ts": "2026-08-31T22:37:29.952+00:00",
+    "user": "otel_collector"
+   },
+   {
+    "id": "6KPsVqABMVgp_wgglceA",
+    "index": "security-auditlog-2026.08.31",
+    "indices": [
+     ".opendistro_security"
+    ],
+    "privilege": "indices:data/read/search",
+    "ts": "2026-08-31T08:25:40.479+00:00",
+    "user": "soc_test_lp"
+   },
+   {
+    "id": "56PsVqABMVgp_wgglcdq",
+    "index": "security-auditlog-2026.08.31",
+    "indices": null,
+    "privilege": "User soc_test_lp with Security roles [soc_least_priv, own_index] does not have any role privileged for admin access. No ",
+    "ts": "2026-08-31T08:25:40.456+00:00",
+    "user": "soc_test_lp"
+   },
+   {
+    "id": "5qPsVqABMVgp_wgglcdX",
+    "index": "security-auditlog-2026.08.31",
+    "indices": [
+     "users"
+    ],
+    "privilege": "indices:data/read/search",
+    "ts": "2026-08-31T08:25:40.439+00:00",
+    "user": "soc_test_lp"
+   },
+   {
+    "id": "oaOHVaABMVgp_wggt8eO",
+    "index": "security-auditlog-2026.08.31",
+    "indices": [
+     "ss4o_traces-otel-mct-soc"
+    ],
+    "privilege": "indices:admin/delete",
+    "ts": "2026-08-31T01:55:52.846+00:00",
+    "user": "otel_collector"
+   },
+   {
+    "id": "oKOHVaABMVgp_wggtscv",
+    "index": "security-auditlog-2026.08.31",
+    "indices": [
+     "foreign-index-000001"
+    ],
+    "privilege": "indices:data/write/index",
+    "ts": "2026-08-31T01:55:52.494+00:00",
+    "user": "otel_collector"
+   }
+  ],
+  "privileges_observed": {
+   "indices:admin/aliases": 24,
+   "indices:admin/aliases/get": 8,
+   "indices:admin/create": 24,
+   "indices:admin/rollover": 24
+  },
+  "request_layers": {
+   "TRANSPORT": 80
+  },
+  "sample_event_ids": [
+   {
+    "category": "INDEX_EVENT",
+    "id": "cDy6UKABomKEMWVw6_9A",
+    "index": "security-auditlog-2026.08.30",
+    "indices": null,
+    "privilege": "indices:admin/aliases/get",
+    "request_type": "GetAliasesRequest",
+    "ts": "2026-08-30T03:33:42.196+00:00"
+   },
+   {
+    "category": "INDEX_EVENT",
+    "id": "bzy6UKABomKEMWVw6_80",
+    "index": "security-auditlog-2026.08.30",
+    "indices": null,
+    "privilege": "indices:admin/aliases/get",
+    "request_type": "GetAliasesRequest",
+    "ts": "2026-08-30T03:33:42.188+00:00"
+   },
+   {
+    "category": "INDEX_EVENT",
+    "id": "bjy6UKABomKEMWVw6_8s",
+    "index": "security-auditlog-2026.08.30",
+    "indices": [
+     "datastore_category"
+    ],
+    "privilege": "indices:admin/rollover",
+    "request_type": "RolloverRequest",
+    "ts": "2026-08-30T03:33:42.149+00:00"
+   },
+   {
+    "category": "INDEX_EVENT",
+    "id": "bTy6UKABomKEMWVw6_8m",
+    "index": "security-auditlog-2026.08.30",
+    "indices": null,
+    "privilege": "indices:admin/aliases",
+    "request_type": "IndicesAliasesRequest",
+    "ts": "2026-08-30T03:33:42.147+00:00"
+   },
+   {
+    "category": "INDEX_EVENT",
+    "id": "bDy6UKABomKEMWVw6_8e",
+    "index": "security-auditlog-2026.08.30",
+    "indices": [
+     "datastore_category-000001"
+    ],
+    "privilege": "indices:admin/create",
+    "request_type": "CreateIndexRequest",
+    "ts": "2026-08-30T03:33:42.141+00:00"
+   },
+   {
+    "category": "INDEX_EVENT",
+    "id": "azy6UKABomKEMWVw6_8H",
+    "index": "security-auditlog-2026.08.30",
+    "indices": [
+     "workflow_revisions"
+    ],
+    "privilege": "indices:admin/rollover",
+    "request_type": "RolloverRequest",
+    "ts": "2026-08-30T03:33:42.138+00:00"
+   },
+   {
+    "category": "INDEX_EVENT",
+    "id": "ajy6UKABomKEMWVw6v_7",
+    "index": "security-auditlog-2026.08.30",
+    "indices": null,
+    "privilege": "indices:admin/aliases",
+    "request_type": "IndicesAliasesRequest",
+    "ts": "2026-08-30T03:33:42.136+00:00"
+   },
+   {
+    "category": "INDEX_EVENT",
+    "id": "aTy6UKABomKEMWVw6v_y",
+    "index": "security-auditlog-2026.08.30",
+    "indices": [
+     "workflow_revisions-000001"
+    ],
+    "privilege": "indices:admin/create",
+    "request_type": "CreateIndexRequest",
+    "ts": "2026-08-30T03:33:42.134+00:00"
+   },
+   {
+    "category": "INDEX_EVENT",
+    "id": "aDy6UKABomKEMWVw6v_w",
+    "index": "security-auditlog-2026.08.30",
+    "indices": [
+     "workflow"
+    ],
+    "privilege": "indices:admin/rollover",
+    "request_type": "RolloverRequest",
+    "ts": "2026-08-30T03:33:42.131+00:00"
+   },
+   {
+    "category": "INDEX_EVENT",
+    "id": "Zzy6UKABomKEMWVw6v_w",
+    "index": "security-auditlog-2026.08.30",
+    "indices": null,
+    "privilege": "indices:admin/aliases",
+    "request_type": "IndicesAliasesRequest",
+    "ts": "2026-08-30T03:33:42.129+00:00"
+   },
+   {
+    "category": "INDEX_EVENT",
+    "id": "Zjy6UKABomKEMWVw6v_u",
+    "index": "security-auditlog-2026.08.30",
+    "indices": [
+     "workflow-000001"
+    ],
+    "privilege": "indices:admin/create",
+    "request_type": "CreateIndexRequest",
+    "ts": "2026-08-30T03:33:42.123+00:00"
+   },
+   {
+    "category": "INDEX_EVENT",
+    "id": "ZTy6UKABomKEMWVw6v_p",
+    "index": "security-auditlog-2026.08.30",
+    "indices": [
+     "workflowapp"
+    ],
+    "privilege": "indices:admin/rollover",
+    "request_type": "RolloverRequest",
+    "ts": "2026-08-30T03:33:42.119+00:00"
+   }
+  ],
+  "total_events_for_shuffle_backend": 80,
+  "transport_request_types": {
+   "CreateIndexRequest": 24,
+   "GetAliasesRequest": 8,
+   "IndicesAliasesRequest": 24,
+   "RolloverRequest": 24
+  }
+ },
+ "captured_et": "2026-08-31 19:20:00 EDT",
+ "captured_utc": "2026-08-31T23:19:01Z",
+ "cluster_state": {
+  "cluster_health_status": "yellow",
+  "co_tenant_non_shuffle_indices": [
+   ".opendistro-job-scheduler-lock",
+   ".opendistro_security",
+   ".plugins-ml-config",
+   "otel-test-000001",
+   "security-auditlog-2026.08.10",
+   "security-auditlog-2026.08.29",
+   "security-auditlog-2026.08.30",
+   "security-auditlog-2026.08.31",
+   "ss4o_traces-otel-mct-soc",
+   "top_queries-2026.08.24-74332",
+   "top_queries-2026.08.25-74333",
+   "top_queries-2026.08.26-74334",
+   "top_queries-2026.08.27-74335",
+   "top_queries-2026.08.28-74336",
+   "top_queries-2026.08.29-74337",
+   "top_queries-2026.08.30-74359",
+   "top_queries-2026.08.31-74360",
+   "wazuh-iris-dedup-000001",
+   "wazuh-iris-dedup-backup-20260830t071732z",
+   "wazuh-iris-dedup-parity-1787973617",
+   "wazuh-iris-dedup-parity-1787973637",
+   "wazuh-iris-dedup-snapshot-1787969417"
+  ],
+  "index_namespace_note": "SHUFFLE_OPENSEARCH_INDEX_PREFIX is NOT set; the 21 Shuffle index families share no common prefix and at least one is derived from a runtime value (workflowqueue-<environment> -> workflowqueue-shuffle), so the namespace is open-ended.",
+  "index_prefix_env_set": false,
+  "ism_explain_workflowexecution_000001_policy_id": "shuffle-rollover",
+  "ism_policy_count": 1,
+  "ism_policy_shuffle_rollover": {
+   "description": "Shuffle rollover policy",
+   "id": "shuffle-rollover",
+   "ism_template_index_patterns": [
+    "workflowexecution-*",
+    "datastore_ngram-*",
+    "org_cache-*",
+    "org_cache_revisions-*",
+    "notifications-*",
+    "shuffle_logs-*",
+    "environments-*",
+    "org_statistics-*",
+    "workflowapp-*",
+    "workflow-*",
+    "workflow_revisions-*",
+    "datastore_category-*"
+   ],
+   "primary_term": 1,
+   "seq_no": 0,
+   "states": [
+    "hot"
+   ],
+   "version": null
+  },
+  "shuffle_owned_index_families_aliased_ism_managed": [
+   "workflow",
+   "workflow_revisions",
+   "workflowapp",
+   "workflowexecution",
+   "datastore_category",
+   "datastore_ngram",
+   "environments",
+   "notifications",
+   "org_cache",
+   "org_cache_revisions",
+   "org_statistics",
+   "shuffle_logs"
+  ],
+  "shuffle_owned_index_families_non_aliased": [
+   "app_revisions",
+   "files",
+   "hooks",
+   "openapi3",
+   "organizations",
+   "platform_health",
+   "sessions",
+   "users",
+   "workflowqueue-shuffle"
+  ],
+  "shuffle_owned_total": 21,
+  "shuffle_write_aliases_live": [
+   ".opendistro-ism-managed-index-history-write",
+   "datastore_category",
+   "datastore_ngram",
+   "environments",
+   "notifications",
+   "org_cache",
+   "org_cache_revisions",
+   "org_statistics",
+   "shuffle_logs",
+   "workflow",
+   "workflow_revisions",
+   "workflowapp",
+   "workflowexecution"
+  ],
+  "total_indices": 43
+ },
+ "consumer_binding": {
+  "auth_mechanism": "HTTP Basic over TLS (internal CA CN=mct-opensearch-ca); no client certificate; no token",
+  "container": "shuffle-backend (ghcr.io/shuffle/shuffle-backend)",
+  "container_ip_mct_security": "172.20.0.6",
+  "credential_coupling": "compose binds the SAME ${SHUFFLE_OPENSEARCH_PASSWORD} to OPENSEARCH_INITIAL_ADMIN_PASSWORD (cluster bootstrap) and SHUFFLE_OPENSEARCH_PASSWORD (backend datastore auth)",
+  "env_key_names_only": [
+   "OUTER_HOSTNAME",
+   "PATH",
+   "SHUFFLE_ADMIN_PASSWORD",
+   "SHUFFLE_ADMIN_USERNAME",
+   "SHUFFLE_APP_HOTLOAD_FOLDER",
+   "SHUFFLE_DATABASE_TYPE",
+   "SHUFFLE_DEFAULT_ORG",
+   "SHUFFLE_DEFAULT_PASSWORD",
+   "SHUFFLE_DEFAULT_USER",
+   "SHUFFLE_FILE_LOCATION",
+   "SHUFFLE_LOGS_DISABLED",
+   "SHUFFLE_OPENSEARCH_PASSWORD",
+   "SHUFFLE_OPENSEARCH_URL",
+   "SHUFFLE_OPENSEARCH_USERNAME",
+   "SHUFFLE_ORG_ID",
+   "SHUFFLE_STATS_DISABLED",
+   "TZ"
+  ],
+  "identity": "internal user `admin` (reserved:true, backend_roles:[admin]) -> roles mapping all_access (reserved:true, static:true, cluster_permissions ['*'], index_patterns ['*'] allowed_actions ['*'])",
+  "non_secret_env": {
+   "OUTER_HOSTNAME": "shuffle-backend",
+   "SHUFFLE_DATABASE_TYPE": "opensearch",
+   "SHUFFLE_DEFAULT_ORG": "mct-soc",
+   "SHUFFLE_FILE_LOCATION": "/shuffle-files",
+   "SHUFFLE_LOGS_DISABLED": "true",
+   "SHUFFLE_OPENSEARCH_URL": "https://shuffle-opensearch:9200",
+   "SHUFFLE_OPENSEARCH_USERNAME": "admin",
+   "SHUFFLE_ORG_ID": "264c0502-9136-4cfc-938b-390b97b861b8",
+   "SHUFFLE_STATS_DISABLED": "true"
+  },
+  "secret_env_key_names_present": [
+   "SHUFFLE_DEFAULT_PASSWORD",
+   "SHUFFLE_OPENSEARCH_PASSWORD",
+   "SHUFFLE_ADMIN_PASSWORD"
+  ],
+  "target": "shuffle-opensearch (opensearchproject/opensearch:3.2.0, cluster shuffle-cluster)"
+ },
+ "current_or_carried": "CURRENT",
+ "deployed_binary_endpoint_evidence": {
+  "binary": "/app/shufflebackend inside container shuffle-backend (image ghcr.io/shuffle/shuffle-backend)",
+  "interpretation": "PUT _plugins/_ism/policies/<id> and POST _plugins/_ism/add/<index> are CLUSTER-scoped ISM APIs; GET /_cat/indices?format=json&h=index is a cluster-wide index enumeration. Neither can be narrowed to the Shuffle index patterns by any OpenSearch Security index_permission.",
+  "ism_paths": [
+   "_plugins/_ism/add/",
+   "_plugins/_ism/api/v1/apps/Shuffle",
+   "_plugins/_ism/policies/"
+  ],
+  "other_paths": [
+   "/_aliases",
+   "/_cat/indices?format=json&h=indexinvalid",
+   "/_search"
+  ],
+  "policy_id_literal": [
+   "shuffle-rollover"
+  ]
+ },
+ "evidence_class": "REST (live authenticated OpenSearch + audit log) + container-inspect + deployed-binary strings",
+ "literal_or_modeled": "literal",
+ "phase": 85,
+ "secret_handling": "credential consumed in-process from mode-600 gitignored .env, passed to curl via --config on stdin (never argv); audit_request_body never selected; no secret value/hash/fingerprint persisted",
+ "shuffle_authored_pipeline_proof": {
+  "app_subchecks": {
+   "create": true,
+   "delete": true,
+   "read": true,
+   "run": true,
+   "validate": true
+  },
+  "datastore_subchecks": {
+   "create": true,
+   "delete": true,
+   "read": true
+  },
+  "doc_id": "b547e143-7dfb-4af5-97b0-4b34ce12c6c1",
+  "index": "platform_health",
+  "interpretation": "Shuffle itself wrote this document to OpenSearch; datastore create/read/delete true and workflow create/run/delete true prove the Shuffle->OpenSearch pipeline is FUNCTIONAL as of the recorded timestamp.",
+  "success": true,
+  "updated_epoch": 1788215661,
+  "updated_utc": "2026-08-31T22:34:21Z",
+  "workflow_subchecks": {
+   "create": true,
+   "delete": true,
+   "run": true,
+   "run_finished": true,
+   "run_status": "FINISHED"
+  },
+  "workflowexecution_doc_count": 2426
+ },
+ "workstream": "SHUFFLE-OPENSEARCH"
+}

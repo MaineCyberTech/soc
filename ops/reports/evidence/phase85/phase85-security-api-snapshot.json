@@ -1,0 +1,1647 @@
+{
+  "phase": 85,
+  "artifact": "phase85-security-api-snapshot",
+  "captured_utc": "2026-08-31T22:40:19Z",
+  "captured_et": "2026-08-31T18:40:19 EDT",
+  "evidence_class": "REST / live authenticated OpenSearch Security API enumeration (CURRENT)",
+  "method": "All data below was obtained live via HTTP GET only against the OpenSearch Security API on two clusters. No PUT/POST/PATCH/DELETE was issued to any Security API endpoint. Cluster A (wazuh1.indexer:9200) was authenticated with the admin TLS client certificate registered in plugins.security.authcz.admin_dn; cluster B (shuffle-opensearch:9200) was authenticated with the existing internal admin identity whose credential was supplied to curl on stdin (never as an argv element, never echoed). Both calls used internal-CA validation (--cacert, ssl_verify_result=0) and hostname verification (--resolve to the certificate DNS SAN; no -k/--insecure).",
+  "secret_handling": "Password hashes (the `hash` field of every internal user) and all credential values are OMITTED. They were never printed, logged, hashed, fingerprinted, compared, or persisted. Only non-secret identity names, role names, index patterns, allowed actions and mapping assignments are recorded.",
+  "clusters": {
+    "wazuh_indexer": {
+      "endpoint": "https://wazuh1.indexer:9200 (127.0.0.1:9200 published)",
+      "container": "multi-node-wazuh1.indexer-1",
+      "product": "wazuh/wazuh-indexer:4.14.7 (OpenSearch Security plugin)",
+      "role": "Phase 84 target endpoint (https://localhost:9200/_plugins/_security/api)",
+      "authenticated_identity": "admin (X.509 client cert CN=admin,OU=Wazuh,O=Wazuh,L=California,C=US; plugins.security.authcz.admin_dn)",
+      "tls": {
+        "internal_ca_validated": true,
+        "ca_file": "config/wazuh_indexer_ssl_certs/root-ca.pem (CN/OU=Wazuh internal CA)",
+        "curl_ssl_verify_result": 0,
+        "hostname_verified": true,
+        "server_cert_subject_dn": "CN=wazuh1.indexer,OU=Wazuh,O=Wazuh,L=California,C=US",
+        "server_cert_dns_san": [
+          "wazuh1.indexer"
+        ],
+        "server_cert_not_after": "2036-08-04T04:46:21Z",
+        "enabled_protocols": [
+          "TLSv1.2"
+        ]
+      },
+      "http_status_per_endpoint": {
+        "GET /_plugins/_security/api/internalusers": 200,
+        "GET /_plugins/_security/api/roles": 200,
+        "GET /_plugins/_security/api/rolesmapping": 200,
+        "GET /_plugins/_security/api/actiongroups": 200,
+        "GET /_plugins/_security/api/tenants": 200,
+        "GET /_plugins/_security/api/securityconfig": 200,
+        "GET /_plugins/_security/api/ssl/certs": 200,
+        "GET /_plugins/_security/authinfo": 200,
+        "GET /_plugins/_security/api/account": 200,
+        "GET /_plugins/_security/api/permissionsinfo": 200,
+        "GET /_plugins/_security/api/backendroles": 400,
+        "GET /_plugins/_security/api/nodesdn": 400
+      },
+      "counts": {
+        "internal_users": 6,
+        "roles": 46,
+        "rolesmapping": 10,
+        "action_groups": 26,
+        "tenants": 2,
+        "backend_roles": 5
+      },
+      "internal_users": {
+        "logstash": {
+          "backend_roles": [
+            "logstash"
+          ],
+          "opendistro_security_roles": [],
+          "attributes": [],
+          "reserved": false,
+          "hidden": false,
+          "static": false,
+          "description": "Demo logstash user",
+          "secret_fields_omitted": [
+            "hash"
+          ]
+        },
+        "snapshotrestore": {
+          "backend_roles": [
+            "snapshotrestore"
+          ],
+          "opendistro_security_roles": [],
+          "attributes": [],
+          "reserved": false,
+          "hidden": false,
+          "static": false,
+          "description": "Demo snapshotrestore user",
+          "secret_fields_omitted": [
+            "hash"
+          ]
+        },
+        "admin": {
+          "backend_roles": [
+            "admin"
+          ],
+          "opendistro_security_roles": [],
+          "attributes": [],
+          "reserved": true,
+          "hidden": false,
+          "static": false,
+          "description": "Demo admin user",
+          "secret_fields_omitted": [
+            "hash"
+          ]
+        },
+        "kibanaserver": {
+          "backend_roles": [],
+          "opendistro_security_roles": [],
+          "attributes": [],
+          "reserved": true,
+          "hidden": false,
+          "static": false,
+          "description": "Demo kibanaserver user",
+          "secret_fields_omitted": [
+            "hash"
+          ]
+        },
+        "kibanaro": {
+          "backend_roles": [
+            "kibanauser",
+            "readall"
+          ],
+          "opendistro_security_roles": [],
+          "attributes": [
+            "attribute1",
+            "attribute2",
+            "attribute3"
+          ],
+          "reserved": false,
+          "hidden": false,
+          "static": false,
+          "description": "Demo kibanaro user",
+          "secret_fields_omitted": [
+            "hash"
+          ]
+        },
+        "readall": {
+          "backend_roles": [
+            "readall"
+          ],
+          "opendistro_security_roles": [],
+          "attributes": [],
+          "reserved": false,
+          "hidden": false,
+          "static": false,
+          "description": "Demo readall user",
+          "secret_fields_omitted": [
+            "hash"
+          ]
+        }
+      },
+      "internal_user_names": [
+        "admin",
+        "kibanaro",
+        "kibanaserver",
+        "logstash",
+        "readall",
+        "snapshotrestore"
+      ],
+      "backend_roles": [
+        "admin",
+        "kibanauser",
+        "logstash",
+        "readall",
+        "snapshotrestore"
+      ],
+      "rolesmapping": {
+        "manage_snapshots": {
+          "users": [],
+          "backend_roles": [
+            "snapshotrestore"
+          ],
+          "hosts": [],
+          "reserved": true,
+          "hidden": false
+        },
+        "logstash": {
+          "users": [],
+          "backend_roles": [
+            "logstash"
+          ],
+          "hosts": [],
+          "reserved": false,
+          "hidden": false
+        },
+        "manage_wazuh_index": {
+          "users": [
+            "kibanaserver"
+          ],
+          "backend_roles": [],
+          "hosts": [],
+          "reserved": true,
+          "hidden": false
+        },
+        "audit_viewer": {
+          "users": [],
+          "backend_roles": [],
+          "hosts": [],
+          "reserved": false,
+          "hidden": false
+        },
+        "own_index": {
+          "users": [
+            "*"
+          ],
+          "backend_roles": [],
+          "hosts": [],
+          "reserved": false,
+          "hidden": false
+        },
+        "kibana_user": {
+          "users": [],
+          "backend_roles": [
+            "kibanauser"
+          ],
+          "hosts": [],
+          "reserved": false,
+          "hidden": false
+        },
+        "p83_lowpriv_role": {
+          "users": [
+            "p83_lowpriv"
+          ],
+          "backend_roles": [],
+          "hosts": [],
+          "reserved": false,
+          "hidden": false
+        },
+        "all_access": {
+          "users": [],
+          "backend_roles": [
+            "admin"
+          ],
+          "hosts": [],
+          "reserved": true,
+          "hidden": false
+        },
+        "readall": {
+          "users": [],
+          "backend_roles": [
+            "readall"
+          ],
+          "hosts": [],
+          "reserved": true,
+          "hidden": false
+        },
+        "kibana_server": {
+          "users": [
+            "kibanaserver"
+          ],
+          "backend_roles": [],
+          "hosts": [],
+          "reserved": true,
+          "hidden": false
+        }
+      },
+      "role_names": [
+        "alerting_ack_alerts",
+        "alerting_full_access",
+        "alerting_read_access",
+        "all_access",
+        "anomaly_full_access",
+        "anomaly_read_access",
+        "asynchronous_search_full_access",
+        "asynchronous_search_read_access",
+        "audit_viewer",
+        "cross_cluster_replication_follower_full_access",
+        "cross_cluster_replication_leader_full_access",
+        "cross_cluster_search_remote_full_access",
+        "index_management_full_access",
+        "ip2geo_datasource_full_access",
+        "ip2geo_datasource_read_access",
+        "kibana_read_only",
+        "kibana_server",
+        "kibana_user",
+        "knn_full_access",
+        "knn_read_access",
+        "logstash",
+        "manage_snapshots",
+        "manage_wazuh_index",
+        "ml_full_access",
+        "ml_read_access",
+        "notebooks_full_access",
+        "notebooks_read_access",
+        "notifications_full_access",
+        "notifications_read_access",
+        "observability_full_access",
+        "observability_read_access",
+        "own_index",
+        "point_in_time_full_access",
+        "ppl_full_access",
+        "readall",
+        "readall_and_monitor",
+        "reports_full_access",
+        "reports_instances_read_access",
+        "reports_read_access",
+        "security_analytics_ack_alerts",
+        "security_analytics_full_access",
+        "security_analytics_read_access",
+        "security_rest_api_access",
+        "security_rest_api_full_access",
+        "snapshot_management_full_access",
+        "snapshot_management_read_access"
+      ],
+      "roles_detail_selected": {
+        "kibana_user": {
+          "reserved": true,
+          "hidden": false,
+          "static": true,
+          "description": "Provide the minimum permissions for a kibana user",
+          "cluster_permissions": [
+            "cluster_composite_ops"
+          ],
+          "index_permissions": [
+            {
+              "index_patterns": [
+                ".kibana",
+                ".kibana-6",
+                ".kibana_*",
+                ".opensearch_dashboards",
+                ".opensearch_dashboards-6",
+                ".opensearch_dashboards_*"
+              ],
+              "allowed_actions": [
+                "read",
+                "delete",
+                "manage",
+                "index"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            },
+            {
+              "index_patterns": [
+                ".tasks",
+                ".management-beats",
+                "*:.tasks",
+                "*:.management-beats"
+              ],
+              "allowed_actions": [
+                "indices_all"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            }
+          ],
+          "tenant_permissions": []
+        },
+        "own_index": {
+          "reserved": true,
+          "hidden": false,
+          "static": true,
+          "description": "Allow all for indices named like the current user",
+          "cluster_permissions": [
+            "cluster_composite_ops"
+          ],
+          "index_permissions": [
+            {
+              "index_patterns": [
+                "${user_name}"
+              ],
+              "allowed_actions": [
+                "indices_all"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            }
+          ],
+          "tenant_permissions": []
+        },
+        "all_access": {
+          "reserved": true,
+          "hidden": false,
+          "static": true,
+          "description": "Allow full access to all indices and all cluster APIs",
+          "cluster_permissions": [
+            "*"
+          ],
+          "index_permissions": [
+            {
+              "index_patterns": [
+                "*"
+              ],
+              "allowed_actions": [
+                "*"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            }
+          ],
+          "tenant_permissions": [
+            {
+              "tenant_patterns": [
+                "*"
+              ],
+              "allowed_actions": [
+                "kibana_all_write"
+              ]
+            }
+          ]
+        },
+        "manage_snapshots": {
+          "reserved": true,
+          "hidden": false,
+          "static": true,
+          "description": "Provide the minimum permissions for managing snapshots",
+          "cluster_permissions": [
+            "manage_snapshots"
+          ],
+          "index_permissions": [
+            {
+              "index_patterns": [
+                "*"
+              ],
+              "allowed_actions": [
+                "indices:data/write/index",
+                "indices:admin/create"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            }
+          ],
+          "tenant_permissions": []
+        },
+        "logstash": {
+          "reserved": true,
+          "hidden": false,
+          "static": true,
+          "description": "Provide the minimum permissions for logstash and beats",
+          "cluster_permissions": [
+            "cluster_monitor",
+            "cluster_composite_ops",
+            "indices:admin/template/get",
+            "indices:admin/template/put",
+            "cluster:admin/ingest/pipeline/put",
+            "cluster:admin/ingest/pipeline/get"
+          ],
+          "index_permissions": [
+            {
+              "index_patterns": [
+                "logstash-*",
+                "ecs-logstash-*"
+              ],
+              "allowed_actions": [
+                "crud",
+                "create_index"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            },
+            {
+              "index_patterns": [
+                "*beat*"
+              ],
+              "allowed_actions": [
+                "crud",
+                "create_index"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            }
+          ],
+          "tenant_permissions": []
+        },
+        "manage_wazuh_index": {
+          "reserved": true,
+          "hidden": false,
+          "static": false,
+          "description": "",
+          "cluster_permissions": [],
+          "index_permissions": [
+            {
+              "index_patterns": [
+                "wazuh-*"
+              ],
+              "allowed_actions": [
+                "read",
+                "delete",
+                "manage",
+                "index"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            }
+          ],
+          "tenant_permissions": []
+        },
+        "audit_viewer": {
+          "reserved": false,
+          "hidden": false,
+          "static": false,
+          "description": "Phase 83 read-only audit viewer: read/search on security-auditlog-* and the security config index.",
+          "cluster_permissions": [
+            "cluster_composite_ops_ro"
+          ],
+          "index_permissions": [
+            {
+              "index_patterns": [
+                "security-auditlog-*"
+              ],
+              "allowed_actions": [
+                "read",
+                "search",
+                "indices:monitor/settings/get"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            },
+            {
+              "index_patterns": [
+                ".opendistro_security"
+              ],
+              "allowed_actions": [
+                "read",
+                "search"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            }
+          ],
+          "tenant_permissions": []
+        },
+        "security_rest_api_full_access": {
+          "reserved": true,
+          "hidden": false,
+          "static": false,
+          "description": "",
+          "cluster_permissions": [
+            "restapi:admin/actiongroups",
+            "restapi:admin/allowlist",
+            "restapi:admin/config/update",
+            "restapi:admin/internalusers",
+            "restapi:admin/nodesdn",
+            "restapi:admin/roles",
+            "restapi:admin/rolesmapping",
+            "restapi:admin/ssl/certs/info",
+            "restapi:admin/ssl/certs/reload",
+            "restapi:admin/tenants"
+          ],
+          "index_permissions": [],
+          "tenant_permissions": []
+        },
+        "readall": {
+          "reserved": true,
+          "hidden": false,
+          "static": true,
+          "description": "Provide the minimum permissions for to readall indices",
+          "cluster_permissions": [
+            "cluster_composite_ops_ro"
+          ],
+          "index_permissions": [
+            {
+              "index_patterns": [
+                "*"
+              ],
+              "allowed_actions": [
+                "read"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            }
+          ],
+          "tenant_permissions": []
+        },
+        "security_rest_api_access": {
+          "reserved": true,
+          "hidden": false,
+          "static": false,
+          "description": "",
+          "cluster_permissions": [],
+          "index_permissions": [],
+          "tenant_permissions": []
+        },
+        "kibana_server": {
+          "reserved": true,
+          "hidden": false,
+          "static": true,
+          "description": "Provide the minimum permissions for the Kibana server",
+          "cluster_permissions": [
+            "cluster_monitor",
+            "cluster_composite_ops",
+            "manage_point_in_time",
+            "indices:admin/template*",
+            "indices:admin/index_template*",
+            "indices:data/read/scroll*"
+          ],
+          "index_permissions": [
+            {
+              "index_patterns": [
+                ".kibana",
+                ".opensearch_dashboards"
+              ],
+              "allowed_actions": [
+                "indices_all"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            },
+            {
+              "index_patterns": [
+                ".kibana-6",
+                ".opensearch_dashboards-6"
+              ],
+              "allowed_actions": [
+                "indices_all"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            },
+            {
+              "index_patterns": [
+                ".kibana_*",
+                ".opensearch_dashboards_*"
+              ],
+              "allowed_actions": [
+                "indices_all"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            },
+            {
+              "index_patterns": [
+                ".tasks"
+              ],
+              "allowed_actions": [
+                "indices_all"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            },
+            {
+              "index_patterns": [
+                ".management-beats*"
+              ],
+              "allowed_actions": [
+                "indices_all"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            },
+            {
+              "index_patterns": [
+                "*"
+              ],
+              "allowed_actions": [
+                "indices:admin/aliases*"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            }
+          ],
+          "tenant_permissions": []
+        }
+      },
+      "security_config_non_secret": {
+        "authc_domains": [
+          "basic_internal_auth_domain",
+          "clientcert_auth_domain",
+          "jwt_auth_domain",
+          "kerberos_auth_domain",
+          "ldap",
+          "proxy_auth_domain"
+        ],
+        "authz_domains": [
+          "roles_from_another_ldap",
+          "roles_from_myldap"
+        ],
+        "anonymous_auth_enabled": false,
+        "do_not_fail_on_forbidden": false,
+        "multitenancy_enabled": true,
+        "restapi_roles_enabled": [
+          "all_access",
+          "security_rest_api_access"
+        ],
+        "audit_type": "internal_opensearch"
+      },
+      "http_certificates_live": [
+        {
+          "subject_dn": "CN=wazuh1.indexer,OU=Wazuh,O=Wazuh,L=California,C=US",
+          "issuer_dn": "L=California,O=Wazuh,OU=Wazuh",
+          "not_before": "2026-08-07T04:46:21Z",
+          "not_after": "2036-08-04T04:46:21Z"
+        }
+      ]
+    },
+    "shuffle_opensearch": {
+      "endpoint": "https://shuffle-opensearch:9200 (172.20.0.1:9200 published)",
+      "container": "shuffle-opensearch",
+      "product": "opensearchproject/opensearch:3.2.0",
+      "role": "SOC/SOAR data plane; holds the Phase 83/84 soc_least_priv, dedup_writer and otel_collector identities",
+      "authenticated_identity": "admin (internal user, backend_role admin -> all_access; credential supplied in-process on stdin only)",
+      "tls": {
+        "internal_ca_validated": true,
+        "ca_file": "data/opensearch-tls/ca/ca.pem (CN=mct-opensearch-ca)",
+        "curl_ssl_verify_result": 0,
+        "hostname_verified": true,
+        "server_cert_subject_dn": "CN=shuffle-opensearch",
+        "server_cert_dns_san": [
+          "shuffle-opensearch",
+          "localhost"
+        ],
+        "server_cert_ip_san": [
+          "127.0.0.1",
+          "172.20.0.1"
+        ]
+      },
+      "http_status_per_endpoint": {
+        "GET /_plugins/_security/api/internalusers": 200,
+        "GET /_plugins/_security/api/roles": 200,
+        "GET /_plugins/_security/api/rolesmapping": 200,
+        "GET /_plugins/_security/authinfo": 200
+      },
+      "counts": {
+        "internal_users": 9,
+        "roles": 57,
+        "rolesmapping": 9,
+        "backend_roles": 6
+      },
+      "internal_users": {
+        "logstash": {
+          "backend_roles": [
+            "logstash"
+          ],
+          "opendistro_security_roles": [],
+          "attributes": [],
+          "reserved": false,
+          "hidden": false,
+          "static": false,
+          "description": "Demo logstash user, using external role mapping",
+          "secret_fields_omitted": [
+            "hash"
+          ]
+        },
+        "otel_collector": {
+          "backend_roles": [
+            "otel_writer"
+          ],
+          "opendistro_security_roles": [],
+          "attributes": [],
+          "reserved": false,
+          "hidden": false,
+          "static": false,
+          "description": "",
+          "secret_fields_omitted": [
+            "hash"
+          ]
+        },
+        "snapshotrestore": {
+          "backend_roles": [
+            "snapshotrestore"
+          ],
+          "opendistro_security_roles": [],
+          "attributes": [],
+          "reserved": false,
+          "hidden": false,
+          "static": false,
+          "description": "Demo snapshotrestore user, using external role mapping",
+          "secret_fields_omitted": [
+            "hash"
+          ]
+        },
+        "dedup_writer": {
+          "backend_roles": [],
+          "opendistro_security_roles": [],
+          "attributes": [],
+          "reserved": false,
+          "hidden": false,
+          "static": false,
+          "description": "scoped dedup writer",
+          "secret_fields_omitted": [
+            "hash"
+          ]
+        },
+        "admin": {
+          "backend_roles": [
+            "admin"
+          ],
+          "opendistro_security_roles": [],
+          "attributes": [],
+          "reserved": true,
+          "hidden": false,
+          "static": false,
+          "description": "Demo admin user",
+          "secret_fields_omitted": [
+            "hash"
+          ]
+        },
+        "kibanaserver": {
+          "backend_roles": [],
+          "opendistro_security_roles": [],
+          "attributes": [],
+          "reserved": true,
+          "hidden": false,
+          "static": false,
+          "description": "Demo OpenSearch Dashboards user",
+          "secret_fields_omitted": [
+            "hash"
+          ]
+        },
+        "kibanaro": {
+          "backend_roles": [
+            "kibanauser",
+            "readall"
+          ],
+          "opendistro_security_roles": [],
+          "attributes": [
+            "attribute1",
+            "attribute2",
+            "attribute3"
+          ],
+          "reserved": false,
+          "hidden": false,
+          "static": false,
+          "description": "Demo OpenSearch Dashboards read only user, using external role mapping",
+          "secret_fields_omitted": [
+            "hash"
+          ]
+        },
+        "readall": {
+          "backend_roles": [
+            "readall"
+          ],
+          "opendistro_security_roles": [],
+          "attributes": [],
+          "reserved": false,
+          "hidden": false,
+          "static": false,
+          "description": "Demo readall user, using external role mapping",
+          "secret_fields_omitted": [
+            "hash"
+          ]
+        },
+        "anomalyadmin": {
+          "backend_roles": [],
+          "opendistro_security_roles": [
+            "anomaly_full_access"
+          ],
+          "attributes": [],
+          "reserved": false,
+          "hidden": false,
+          "static": false,
+          "description": "Demo anomaly admin user, using internal role",
+          "secret_fields_omitted": [
+            "hash"
+          ]
+        }
+      },
+      "internal_user_names": [
+        "admin",
+        "anomalyadmin",
+        "dedup_writer",
+        "kibanaro",
+        "kibanaserver",
+        "logstash",
+        "otel_collector",
+        "readall",
+        "snapshotrestore"
+      ],
+      "backend_roles": [
+        "admin",
+        "kibanauser",
+        "logstash",
+        "otel_writer",
+        "readall",
+        "snapshotrestore"
+      ],
+      "rolesmapping": {
+        "manage_snapshots": {
+          "users": [],
+          "backend_roles": [
+            "snapshotrestore"
+          ],
+          "hosts": [],
+          "reserved": false,
+          "hidden": false
+        },
+        "logstash": {
+          "users": [],
+          "backend_roles": [
+            "logstash"
+          ],
+          "hosts": [],
+          "reserved": false,
+          "hidden": false
+        },
+        "own_index": {
+          "users": [
+            "*"
+          ],
+          "backend_roles": [],
+          "hosts": [],
+          "reserved": false,
+          "hidden": false
+        },
+        "kibana_user": {
+          "users": [],
+          "backend_roles": [
+            "kibanauser"
+          ],
+          "hosts": [],
+          "reserved": false,
+          "hidden": false
+        },
+        "dedup_writer_role": {
+          "users": [
+            "dedup_writer"
+          ],
+          "backend_roles": [],
+          "hosts": [],
+          "reserved": false,
+          "hidden": false
+        },
+        "all_access": {
+          "users": [],
+          "backend_roles": [
+            "admin"
+          ],
+          "hosts": [],
+          "reserved": false,
+          "hidden": false
+        },
+        "readall": {
+          "users": [
+            "readall"
+          ],
+          "backend_roles": [],
+          "hosts": [],
+          "reserved": false,
+          "hidden": false
+        },
+        "kibana_server": {
+          "users": [
+            "kibanaserver"
+          ],
+          "backend_roles": [],
+          "hosts": [],
+          "reserved": true,
+          "hidden": false
+        },
+        "otel_writer": {
+          "users": [
+            "otel_collector"
+          ],
+          "backend_roles": [],
+          "hosts": [],
+          "reserved": false,
+          "hidden": false
+        }
+      },
+      "role_names": [
+        "alerting_ack_alerts",
+        "alerting_full_access",
+        "alerting_read_access",
+        "all_access",
+        "anomaly_full_access",
+        "anomaly_read_access",
+        "asynchronous_search_full_access",
+        "asynchronous_search_read_access",
+        "cross_cluster_replication_follower_full_access",
+        "cross_cluster_replication_leader_full_access",
+        "cross_cluster_search_remote_full_access",
+        "dedup_writer_role",
+        "flow_framework_full_access",
+        "flow_framework_read_access",
+        "forecast_full_access",
+        "forecast_read_access",
+        "index_management_full_access",
+        "ip2geo_datasource_full_access",
+        "ip2geo_datasource_read_access",
+        "kibana_read_only",
+        "kibana_server",
+        "kibana_user",
+        "knn_full_access",
+        "knn_read_access",
+        "logstash",
+        "ltr_full_access",
+        "ltr_read_access",
+        "manage_snapshots",
+        "ml_full_access",
+        "ml_read_access",
+        "notebooks_full_access",
+        "notebooks_read_access",
+        "notifications_full_access",
+        "notifications_read_access",
+        "observability_full_access",
+        "observability_read_access",
+        "otel_writer",
+        "own_index",
+        "point_in_time_full_access",
+        "ppl_full_access",
+        "query_assistant_access",
+        "query_insights_full_access",
+        "readall",
+        "readall_and_monitor",
+        "reports_full_access",
+        "reports_instances_read_access",
+        "reports_read_access",
+        "search_relevance_full_access",
+        "search_relevance_read_access",
+        "security_analytics_ack_alerts",
+        "security_analytics_full_access",
+        "security_analytics_read_access",
+        "security_rest_api_access",
+        "security_rest_api_full_access",
+        "snapshot_management_full_access",
+        "snapshot_management_read_access",
+        "soc_least_priv"
+      ],
+      "roles_detail_selected": {
+        "kibana_user": {
+          "reserved": true,
+          "hidden": false,
+          "static": true,
+          "description": "Provide the minimum permissions for a kibana user",
+          "cluster_permissions": [
+            "cluster_composite_ops"
+          ],
+          "index_permissions": [
+            {
+              "index_patterns": [
+                ".kibana",
+                ".kibana-6",
+                ".kibana_*",
+                ".opensearch_dashboards",
+                ".opensearch_dashboards-6",
+                ".opensearch_dashboards_*"
+              ],
+              "allowed_actions": [
+                "delete",
+                "index",
+                "manage",
+                "read"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            },
+            {
+              "index_patterns": [
+                ".tasks",
+                ".management-beats",
+                "*:.tasks",
+                "*:.management-beats"
+              ],
+              "allowed_actions": [
+                "indices_all"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            }
+          ],
+          "tenant_permissions": []
+        },
+        "own_index": {
+          "reserved": true,
+          "hidden": false,
+          "static": true,
+          "description": "Allow all for indices named like the current user",
+          "cluster_permissions": [
+            "cluster_composite_ops"
+          ],
+          "index_permissions": [
+            {
+              "index_patterns": [
+                "${user_name}"
+              ],
+              "allowed_actions": [
+                "indices_all"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            }
+          ],
+          "tenant_permissions": []
+        },
+        "all_access": {
+          "reserved": true,
+          "hidden": false,
+          "static": true,
+          "description": "Allow full access to all indices and all cluster APIs",
+          "cluster_permissions": [
+            "*"
+          ],
+          "index_permissions": [
+            {
+              "index_patterns": [
+                "*"
+              ],
+              "allowed_actions": [
+                "*"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            }
+          ],
+          "tenant_permissions": [
+            {
+              "tenant_patterns": [
+                "*"
+              ],
+              "allowed_actions": [
+                "kibana_all_write"
+              ]
+            }
+          ]
+        },
+        "logstash": {
+          "reserved": true,
+          "hidden": false,
+          "static": true,
+          "description": "Provide the minimum permissions for logstash and beats",
+          "cluster_permissions": [
+            "cluster:admin/ingest/pipeline/get",
+            "cluster:admin/ingest/pipeline/put",
+            "cluster_composite_ops",
+            "cluster_monitor",
+            "indices:admin/template/get",
+            "indices:admin/template/put"
+          ],
+          "index_permissions": [
+            {
+              "index_patterns": [
+                "logstash-*",
+                "ecs-logstash-*"
+              ],
+              "allowed_actions": [
+                "create_index",
+                "crud"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            },
+            {
+              "index_patterns": [
+                "*beat*"
+              ],
+              "allowed_actions": [
+                "crud",
+                "create_index"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            }
+          ],
+          "tenant_permissions": []
+        },
+        "security_rest_api_full_access": {
+          "reserved": true,
+          "hidden": false,
+          "static": false,
+          "description": "",
+          "cluster_permissions": [
+            "restapi:admin/actiongroups",
+            "restapi:admin/allowlist",
+            "restapi:admin/config/update",
+            "restapi:admin/internalusers",
+            "restapi:admin/nodesdn",
+            "restapi:admin/roles",
+            "restapi:admin/rolesmapping",
+            "restapi:admin/ssl/certs/info",
+            "restapi:admin/ssl/certs/reload",
+            "restapi:admin/tenants"
+          ],
+          "index_permissions": [],
+          "tenant_permissions": []
+        },
+        "otel_writer": {
+          "reserved": false,
+          "hidden": false,
+          "static": false,
+          "description": "",
+          "cluster_permissions": [],
+          "index_permissions": [
+            {
+              "index_patterns": [
+                "ss4o_*",
+                "otel-*"
+              ],
+              "allowed_actions": [
+                "create_index",
+                "write",
+                "read",
+                "view_index_metadata",
+                "indices:admin/mapping/put"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            }
+          ],
+          "tenant_permissions": []
+        },
+        "readall": {
+          "reserved": true,
+          "hidden": false,
+          "static": true,
+          "description": "Provide the minimum permissions for to readall indices",
+          "cluster_permissions": [
+            "cluster_composite_ops_ro"
+          ],
+          "index_permissions": [
+            {
+              "index_patterns": [
+                "*"
+              ],
+              "allowed_actions": [
+                "read"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            }
+          ],
+          "tenant_permissions": []
+        },
+        "dedup_writer_role": {
+          "reserved": false,
+          "hidden": false,
+          "static": false,
+          "description": "",
+          "cluster_permissions": [
+            "cluster:monitor/main",
+            "cluster:monitor/health"
+          ],
+          "index_permissions": [
+            {
+              "index_patterns": [
+                "wazuh-iris-dedup-000001",
+                "wazuh-iris-dedup-*"
+              ],
+              "allowed_actions": [
+                "crud",
+                "create_index"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            }
+          ],
+          "tenant_permissions": []
+        },
+        "manage_snapshots": {
+          "reserved": true,
+          "hidden": false,
+          "static": true,
+          "description": "Provide the minimum permissions for managing snapshots",
+          "cluster_permissions": [
+            "manage_snapshots"
+          ],
+          "index_permissions": [
+            {
+              "index_patterns": [
+                "*"
+              ],
+              "allowed_actions": [
+                "indices:admin/create",
+                "indices:data/write/index"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            }
+          ],
+          "tenant_permissions": []
+        },
+        "soc_least_priv": {
+          "reserved": false,
+          "hidden": false,
+          "static": false,
+          "description": "Phase 83 least-privilege SOC role. Explicit index patterns only; no wildcard index patterns; no cluster admin.",
+          "cluster_permissions": [
+            "cluster:monitor/health",
+            "cluster:monitor/state",
+            "cluster:monitor/nodes/info",
+            "cluster:monitor/nodes/stats",
+            "cluster:monitor/main"
+          ],
+          "index_permissions": [
+            {
+              "index_patterns": [
+                "security-auditlog-*",
+                "workflowexecution-*",
+                "workflow-*",
+                "workflowapp-*",
+                "shuffle_logs-*",
+                "wazuh-iris-dedup-*",
+                "ss4o_traces-otel-mct-soc",
+                "top_queries-*"
+              ],
+              "allowed_actions": [
+                "read",
+                "indices:data/read/mget",
+                "indices:data/read/get"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            }
+          ],
+          "tenant_permissions": []
+        },
+        "anomaly_full_access": {
+          "reserved": true,
+          "hidden": false,
+          "static": false,
+          "description": "",
+          "cluster_permissions": [
+            "cluster:admin/ingest/pipeline/delete",
+            "cluster:admin/ingest/pipeline/put",
+            "cluster:admin/opendistro/ad/*",
+            "cluster_monitor"
+          ],
+          "index_permissions": [
+            {
+              "index_patterns": [
+                "*"
+              ],
+              "allowed_actions": [
+                "indices:admin/aliases/get",
+                "indices:admin/mappings/fields/get",
+                "indices:admin/mappings/fields/get*",
+                "indices:admin/mappings/get",
+                "indices:admin/resolve/index",
+                "indices:admin/setting/put",
+                "indices:data/read/field_caps*",
+                "indices:data/read/search",
+                "indices_monitor"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            }
+          ],
+          "tenant_permissions": []
+        },
+        "security_rest_api_access": {
+          "reserved": true,
+          "hidden": false,
+          "static": false,
+          "description": "",
+          "cluster_permissions": [],
+          "index_permissions": [],
+          "tenant_permissions": []
+        },
+        "kibana_server": {
+          "reserved": true,
+          "hidden": false,
+          "static": true,
+          "description": "Provide the minimum permissions for the Kibana server",
+          "cluster_permissions": [
+            "cluster_composite_ops",
+            "cluster_monitor",
+            "indices:admin/index_template*",
+            "indices:admin/template*",
+            "indices:data/read/scroll*",
+            "manage_point_in_time"
+          ],
+          "index_permissions": [
+            {
+              "index_patterns": [
+                ".kibana",
+                ".opensearch_dashboards"
+              ],
+              "allowed_actions": [
+                "indices_all"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            },
+            {
+              "index_patterns": [
+                ".kibana-6",
+                ".opensearch_dashboards-6"
+              ],
+              "allowed_actions": [
+                "indices_all"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            },
+            {
+              "index_patterns": [
+                ".kibana_*",
+                ".opensearch_dashboards_*"
+              ],
+              "allowed_actions": [
+                "indices_all"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            },
+            {
+              "index_patterns": [
+                ".tasks"
+              ],
+              "allowed_actions": [
+                "indices_all"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            },
+            {
+              "index_patterns": [
+                ".management-beats*"
+              ],
+              "allowed_actions": [
+                "indices_all"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            },
+            {
+              "index_patterns": [
+                "*"
+              ],
+              "allowed_actions": [
+                "indices:admin/aliases*"
+              ],
+              "dls_present": false,
+              "fls": [],
+              "masked_fields": []
+            }
+          ],
+          "tenant_permissions": []
+        }
+      }
+    }
+  },
+  "service_consumers_live": [
+    {
+      "consumer": "Wazuh manager filebeat (multi-node-wazuh.master-1 / .worker-1)",
+      "target_cluster": "wazuh indexer",
+      "endpoints": [
+        "https://wazuh1.indexer:9200",
+        "https://wazuh2.indexer:9200",
+        "https://wazuh3.indexer:9200"
+      ],
+      "identity": "admin (internal user) + mTLS client cert CN=filebeat (registered in plugins.security.nodes_dn)",
+      "tls": "ssl.verification_mode: full; ssl.certificate_authorities /etc/ssl/root-ca.pem; client cert /etc/ssl/filebeat.pem",
+      "evidence": "live read of /etc/filebeat/filebeat.yml inside multi-node-wazuh.master-1 (password line excluded from capture)",
+      "least_priv_finding": "OVER-PRIVILEGED: filebeat writes as `admin` (all_access) rather than a scoped wazuh-writer role. Recorded as an observation only; no change made this phase (credential/RBAC change gate)."
+    },
+    {
+      "consumer": "Wazuh dashboard (multi-node-wazuh.dashboard-1)",
+      "target_cluster": "wazuh indexer",
+      "identity": "kibanaserver (internal user; reserved) mapped to kibana_server + manage_wazuh_index",
+      "evidence": "live GET /_plugins/_security/api/internalusers and /rolesmapping on wazuh indexer",
+      "least_priv_finding": "SCOPED: manage_wazuh_index limited to index_patterns wazuh-*."
+    },
+    {
+      "consumer": "Shuffle backend (shuffle-backend)",
+      "target_cluster": "shuffle-opensearch",
+      "endpoints": [
+        "https://shuffle-opensearch:9200"
+      ],
+      "identity": "admin (SHUFFLE_OPENSEARCH_USERNAME=admin; backend_role admin -> all_access)",
+      "evidence": "docker inspect shuffle-backend env key names + non-secret values (SHUFFLE_OPENSEARCH_URL, SHUFFLE_OPENSEARCH_USERNAME); password value never read into any artifact",
+      "least_priv_finding": "OVER-PRIVILEGED: Shuffle backend holds all_access on its own data plane. Observation only; scoping is a separate credential/RBAC gate."
+    },
+    {
+      "consumer": "OpenTelemetry collector (mct-otel-collector)",
+      "target_cluster": "shuffle-opensearch",
+      "endpoints": [
+        "https://shuffle-opensearch:9200"
+      ],
+      "identity": "otel_collector (internal user) -> backend_role otel_writer -> role otel_writer",
+      "tls": "tls.ca_file /etc/otel/opensearch-ca.pem (CN=mct-opensearch-ca); basicauth/client extension",
+      "scope": "otel_writer: index_patterns ss4o_*, otel-*; allowed_actions create_index, write, read, view_index_metadata, indices:admin/mapping/put; no cluster permissions",
+      "evidence": "live GET /_plugins/_security/api/roles + /rolesmapping on shuffle-opensearch; live GET /_plugins/_security/authinfo as otel_collector returned roles [own_index, otel_writer]; live index ss4o_traces-otel-mct-soc present",
+      "least_priv_finding": "SCOPED / LEAST-PRIV CONFIRMED: no wildcard index pattern, no cluster admin, and the Security API is FORBIDDEN to this identity (403)."
+    },
+    {
+      "consumer": "Wazuh->IRIS dedup writer (Shuffle workflow wazuh-high-severity-to-iris-execute_python-v2)",
+      "target_cluster": "shuffle-opensearch",
+      "identity": "dedup_writer (internal user) -> role dedup_writer_role (mapped by explicit user, no backend role)",
+      "scope": "dedup_writer_role: index_patterns wazuh-iris-dedup-000001, wazuh-iris-dedup-*; allowed_actions crud, create_index; cluster_permissions cluster:monitor/main, cluster:monitor/health",
+      "evidence": "live GET /_plugins/_security/api/roles + /rolesmapping on shuffle-opensearch; live GET _cat/indices shows wazuh-iris-dedup-000001 (38 docs) plus parity/snapshot/backup indices",
+      "least_priv_finding": "SCOPED / LEAST-PRIV CONFIRMED: dedup index patterns only; no wildcard, no cluster admin, no security-index access."
+    },
+    {
+      "consumer": "logstash / snapshotrestore / kibanaro service identities",
+      "target_cluster": "both clusters",
+      "identity": "logstash -> backend_role logstash -> role logstash; snapshotrestore -> backend_role snapshotrestore -> role manage_snapshots; kibanaro -> backend_roles kibanauser, readall",
+      "evidence": "live GET /_plugins/_security/api/internalusers + /rolesmapping on both clusters",
+      "least_priv_finding": "kibanaro carries backend_role `readall` (wildcard read). Governed by the same time-bound readall exception (owner soc@mainecybertech.com, expiry 2026-09-30)."
+    }
+  ],
+  "negative_tests_read_only": [
+    {
+      "id": "N1",
+      "cluster": "wazuh indexer",
+      "request": "GET /_plugins/_security/api/internalusers with internal-CA TLS and NO client certificate and NO credentials (Phase 84 shape)",
+      "http_status": 401,
+      "ssl_verify_result": 0,
+      "verdict": "DENIED as expected - reproduces the Phase 84 401"
+    },
+    {
+      "id": "N2",
+      "cluster": "wazuh indexer",
+      "request": "GET /_plugins/_security/api/internalusers with client cert CN=wazuh.dashboard (valid cert, NOT in admin_dn)",
+      "http_status": 401,
+      "ssl_verify_result": 0,
+      "verdict": "DENIED - non-admin DN cannot use the Security API"
+    },
+    {
+      "id": "N3",
+      "cluster": "wazuh indexer",
+      "request": "GET /_plugins/_security/api/internalusers with node cert CN=wazuh1.indexer (in nodes_dn, NOT in admin_dn)",
+      "http_status": 401,
+      "ssl_verify_result": 0,
+      "verdict": "DENIED - transport node identity is not an admin identity"
+    },
+    {
+      "id": "N4",
+      "cluster": "wazuh indexer",
+      "request": "GET /_plugins/_security/api/internalusers with a non-existent username and an intentionally invalid throwaway string",
+      "http_status": 401,
+      "verdict": "DENIED - no credential enumeration leak"
+    },
+    {
+      "id": "N5",
+      "cluster": "wazuh indexer",
+      "request": "GET /_plugins/_security/api/internalusers with the admin client cert but connecting to the bare IP 127.0.0.1 under strict TLS",
+      "http_status": 0,
+      "curl_exit": 60,
+      "verdict": "TLS ABORTED before any request - proves hostname verification is genuinely enforced (server cert has DNS:wazuh1.indexer only)"
+    },
+    {
+      "id": "N6",
+      "cluster": "shuffle-opensearch",
+      "request": "GET /_plugins/_security/api/internalusers as the scoped service identity otel_collector",
+      "http_status": 403,
+      "response_status": "FORBIDDEN",
+      "response_message": "No permission to access REST API: User otel_collector with Security roles [own_index, otel_writer] does not have any role privileged for admin access.",
+      "verdict": "DENIED - admin surface refused to a scoped service identity"
+    },
+    {
+      "id": "N7",
+      "cluster": "shuffle-opensearch",
+      "request": "GET /_plugins/_security/api/roles as otel_collector",
+      "http_status": 403,
+      "verdict": "DENIED"
+    },
+    {
+      "id": "N8",
+      "cluster": "shuffle-opensearch",
+      "request": "GET /.opendistro_security/_search?size=0 as otel_collector (direct security-index read)",
+      "http_status": 403,
+      "verdict": "DENIED - security index not readable by a scoped identity"
+    },
+    {
+      "id": "N9",
+      "cluster": "shuffle-opensearch",
+      "request": "GET /_plugins/_security/api/backendroles (any identity)",
+      "http_status": 400,
+      "response": "no handler found for uri [/_plugins/_security/api/backendroles] and method [GET]",
+      "verdict": "ENDPOINT DOES NOT EXIST in this OpenSearch Security version; backend roles are attributes of internal users and role mappings and were enumerated from those two 200 responses"
+    }
+  ],
+  "mutation_attempts": {
+    "count": 0,
+    "statement": "Zero PUT, POST, PATCH or DELETE requests were issued to any Security API endpoint, index, or cluster setting during Phase 85. Admin-write capability was NOT exercised. Denial of the admin surface was proven positively via the 401/403 read-only negative tests above, not by attempting a mutation."
+  },
+  "drift_observations_vs_phase84": [
+    {
+      "observation": "Cluster attribution",
+      "detail": "The Phase 84 reconstructed inventory (8 internal users incl. dedup_writer and otel_collector, soc_least_priv role, reduced readall mapping) matches the LIVE shuffle-opensearch cluster, not the Wazuh indexer. Live shuffle-opensearch confirms 9 internal users (the 8 baseline users plus `anomalyadmin`), soc_least_priv present and byte-for-byte equivalent to the baseline definition, and readall mapped to the explicit user `readall` with backend_roles [] - exactly as Phase 84 asserted.",
+      "disposition": "Phase 84 baseline CONFIRMED against live state for shuffle-opensearch."
+    },
+    {
+      "observation": "anomalyadmin present on shuffle-opensearch but absent from the Phase 84 reconstructed list",
+      "detail": "`anomalyadmin` is an OpenSearch demo/bundled internal user with opendistro_security_roles [anomaly_full_access]; it is not mapped to any wildcard read or cluster-admin role. It was simply not captured by the Phase 84 reconstruction.",
+      "disposition": "Inventory gap in the Phase 84 reconstruction, now closed by live enumeration. Recommend review of whether anomalyadmin is required."
+    },
+    {
+      "observation": "Wazuh indexer readall mapping still uses the backend_role catch-all",
+      "detail": "On the WAZUH INDEXER, rolesmapping `readall` = {users: [], backend_roles: [readall]}, and internal users `readall` and `kibanaro` both carry backend_role `readall`. The Phase 83 reduction was applied to shuffle-opensearch only.",
+      "disposition": "Recorded as an OPEN least-privilege finding for the Wazuh indexer, covered by the existing time-bound readall exception (owner soc@mainecybertech.com, expiry 2026-09-30). No change made this phase - RBAC mutation is a separate approval gate."
+    },
+    {
+      "observation": "Orphaned Phase 83 role mapping on the Wazuh indexer",
+      "detail": "rolesmapping contains `p83_lowpriv_role` -> users [p83_lowpriv], but neither the role `p83_lowpriv_role` nor the internal user `p83_lowpriv` exists. The mapping is inert (it grants nothing, because the role it names is undefined).",
+      "disposition": "Recorded as harmless residue from the Phase 83 low-privilege verification. Cleanup is a mutation and therefore deferred to an approved change."
+    },
+    {
+      "observation": "soc_least_priv is not present on the Wazuh indexer",
+      "detail": "The Phase 83/84 least-privilege SOC role exists on shuffle-opensearch only. audit_viewer, however, exists on the Wazuh indexer (security-auditlog-* + .opendistro_security read/search).",
+      "disposition": "Recorded as an observation. Creating the role on the second cluster is a mutation and is deferred."
+    },
+    {
+      "observation": "readall exception clock",
+      "detail": "The readall wildcard-read exception expires 2026-09-30 and was NOT extended, modified, or silently renewed by Phase 85.",
+      "disposition": "Unchanged, still time-bound."
+    }
+  ],
+  "root_cause_analysis": {
+    "candidate_causes_evaluated": [
+      {
+        "cause": "TLS failure / untrusted CA",
+        "ruled_out": true,
+        "why": "The same request path returns ssl_verify_result=0 against the internal CA both before and after authentication; the 401 arrived over a fully validated TLS session."
+      },
+      {
+        "cause": "Wrong endpoint / plugin not installed",
+        "ruled_out": true,
+        "why": "The identical URL returns 200 with a full JSON body once an admin identity is presented; /_plugins/_security/api/{internalusers,roles,rolesmapping} all resolve."
+      },
+      {
+        "cause": "Service down / network unreachable",
+        "ruled_out": true,
+        "why": "The server answered with an HTTP 401 and body 'Unauthorized' - it was reachable and healthy."
+      },
+      {
+        "cause": "Expired session / token",
+        "ruled_out": true,
+        "why": "No session or token was ever established; there is no session cause because no credential or client certificate was presented at all."
+      },
+      {
+        "cause": "Insufficient permission (403 class)",
+        "ruled_out": true,
+        "why": "A permission failure by an authenticated principal returns 403 FORBIDDEN with an explanatory message (demonstrated live as negative test N6). Phase 84 received 401 with body 'Unauthorized', which is the pre-authentication class."
+      },
+      {
+        "cause": "Missing identity: no admin TLS client certificate and no credentials, with anonymous auth disabled",
+        "ruled_out": false,
+        "why": "CONFIRMED. plugins.security.anonymous_auth_enabled=false (live securityconfig GET) and plugins.security.restapi.roles_enabled=[all_access, security_rest_api_access]. A request carrying no client certificate and no Authorization header therefore has no principal to evaluate and is rejected at the authentication stage with 401 before any authorization decision. Reproduced as N1; also reproduced with a valid-but-non-admin client certificate (N2, N3)."
+      }
+    ],
+    "conclusion": "Identity/credential cause, not TLS, endpoint, permission, or session."
+  }
+}

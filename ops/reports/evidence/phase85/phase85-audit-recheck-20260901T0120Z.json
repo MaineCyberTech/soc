@@ -1,0 +1,154 @@
+{
+  "recheck_id": "phase85-audit-recheck-20260901T0120Z",
+  "phase": 85,
+  "workstream": "AUDIT",
+  "purpose": "Phase 85 AUDIT re-verification pass: independent live re-confirmation of the audit posture keys asserted in ops/reports/evidence/phase85/phase85-evidence-audit.json, performed as reconciliation (not blind trust) against the running cluster.",
+  "captured_utc": "2026-09-01T01:20:45Z",
+  "captured_eastern": "2026-08-31T21:20:45 EDT",
+  "operator_approval": "granted (read-only re-verification)",
+  "evidence_class": "REST / live authenticated OpenSearch Security API + live audit indices",
+  "current_or_carried": "CURRENT",
+  "literal_or_modeled": "literal",
+  "read_only": true,
+  "no_secret_values": true,
+  "target": {
+    "cluster_name": "wazuh-cluster",
+    "endpoint": "https://wazuh1.indexer:9200 (published 127.0.0.1:9200)",
+    "container": "multi-node-wazuh1.indexer-1 (Up 19 hours)",
+    "authenticated_identity": "pre-existing admin TLS client certificate CN=admin,OU=Wazuh,O=Wazuh,L=California,C=US - referenced by --cert/--key FILE PATH only; the private key file was never opened or read",
+    "tls": "--cacert internal root-ca.pem, hostname requested as DNS SAN wazuh1.indexer via --resolve, ssl_verify_result=0 on every call, -k/--insecure never used"
+  },
+  "existing_evidence_integrity": {
+    "note": "The Phase 85 audit evidence file already existed from the earlier Phase 85 AUDIT capture. It was NOT rewritten (AGENTS.md MUST NOT rewrite evidence artifacts in place). Its internal sha256 anchors were independently recomputed this pass and both MATCH, so the pre-existing artifact is authentic and internally consistent.",
+    "phase85_audit_snapshot_sha256_recomputed": "3e509a906a5bc0eccddddb5f0789fd4a282c74aad61a126edb5c8dc8d16796a2",
+    "phase85_audit_snapshot_sha256_asserted_in_note": "3e509a906a5bc0eccddddb5f0789fd4a282c74aad61a126edb5c8dc8d16796a2",
+    "phase85_audit_snapshot_match": true,
+    "phase84_evidence_audit_sha256_recomputed": "b833055c003be981eeeb3d78216e050500466e91a2136ec212152d39d1928511",
+    "phase84_evidence_audit_sha256_asserted_in_note": "b833055c003be981eeeb3d78216e050500466e91a2136ec212152d39d1928511",
+    "phase84_evidence_audit_match": true,
+    "validator_result": "python3 /home/user/mct-p85/ops/scripts/p85-audit-validate.py ops/reports/evidence/phase85/phase85-evidence-audit.json -> {\"missing_or_false\": []} exit 0"
+  },
+  "live_checks": [
+    {
+      "id": "R1",
+      "key": "audit_enabled",
+      "check": "GET /_cluster/health",
+      "http": 200,
+      "result": "status=green, number_of_nodes=3, active_shards_percent_as_number=100.0",
+      "verdict": "cluster healthy; audit sink reachable"
+    },
+    {
+      "id": "R2",
+      "key": "audit_enabled",
+      "check": "GET /_plugins/_security/api/audit",
+      "http": 200,
+      "result": "enabled=true, audit.enable_rest=true, audit.enable_transport=true, audit.exclude_sensitive_headers=true, audit.log_request_body=false, audit.disabled_rest_categories=[], audit.disabled_transport_categories=[], compliance.enabled=true, compliance.internal_config=true, audit.ignore_users has exactly 1 entry (value withheld - see finding P85-AUDIT-OBS-001)",
+      "verdict": "audit_enabled CONFIRMED LIVE; no category is disabled"
+    },
+    {
+      "id": "R3",
+      "key": "audit_enabled",
+      "check": "GET /_cat/indices/security-auditlog-*",
+      "http": 200,
+      "result": "security-auditlog-2026.08.31 = 136,026 docs / 60.8mb; security-auditlog-2026.09.01 = 9,516 docs / 7.3mb",
+      "growth_proof": "the current daily index security-auditlog-2026.09.01 held 5,366 docs at the earlier Phase 85 snapshot (2026-09-01T00:41:40Z) and 9,516 docs at this recheck (2026-09-01T01:20Z) - +4,150 docs in ~39 minutes",
+      "verdict": "the security-auditlog index EXISTS and is STILL CAPTURING right now - not merely configured"
+    },
+    {
+      "id": "R4",
+      "key": "failed_login / authenticated / missing_privileges / ssl_exception / rbac_change_events",
+      "check": "POST /security-auditlog-*/_search terms aggregation on audit_category.keyword with max(@timestamp) per bucket",
+      "http": 200,
+      "result_live_categories": [
+        { "category": "FAILED_LOGIN", "docs": 113183, "last": "2026-09-01T01:19:39.394Z" },
+        { "category": "GRANTED_PRIVILEGES", "docs": 20537, "last": "2026-09-01T01:19:30.112Z" },
+        { "category": "AUTHENTICATED", "docs": 11520, "last": "2026-09-01T01:19:30.111Z" },
+        { "category": "INDEX_EVENT", "docs": 267, "last": "2026-09-01T00:41:40.609Z" },
+        { "category": "COMPLIANCE_INTERNAL_CONFIG_READ", "docs": 73, "last": "2026-09-01T01:19:18.122Z" },
+        { "category": "COMPLIANCE_INTERNAL_CONFIG_WRITE", "docs": 20, "last": "2026-08-31T19:48:46.412Z" },
+        { "category": "SSL_EXCEPTION", "docs": 18, "last": "2026-09-01T01:13:25.920Z" },
+        { "category": "MISSING_PRIVILEGES", "docs": 6, "last": "2026-08-31T19:48:46.119Z" }
+      ],
+      "verdict": "all asserted categories are present live. FAILED_LOGIN, AUTHENTICATED and SSL_EXCEPTION carry timestamps from the last few minutes (capturing NOW). SSL_EXCEPTION moved 17 -> 18 since the snapshot, an independent fresh capture. MISSING_PRIVILEGES remains 6 docs (enabled, historically emitted by this exact pipeline; no fresh event minted this pass - see limitations)."
+    },
+    {
+      "id": "R5",
+      "key": "rbac_change_events",
+      "check": "self-observing confirmation: COMPLIANCE_INTERNAL_CONFIG_READ count before/after this recheck's own RBAC + audit-config reads",
+      "result": "count moved 69 (snapshot) -> 73 (this recheck), most recent 2026-09-01T01:19:18.122Z, i.e. this pass's own reads of the audit/roles security-config documents were themselves audited in real time",
+      "verdict": "rbac_change_events CONFIRMED LIVE by round-trip: compliance.internal_config=true means every read of and write to the .opendistro_security RBAC configuration is captured. 20 COMPLIANCE_INTERNAL_CONFIG_WRITE events (internalusers 10, roles 6, rolesmapping 3, audit 1) remain the recorded RBAC mutation trail."
+    },
+    {
+      "id": "R6",
+      "key": "retention_180d",
+      "check": "GET /_plugins/_ism/policies/security-auditlog-retention",
+      "http": 200,
+      "result": "states: hot (actions [], transition -> delete when min_index_age=180d); delete (action delete, retry x3 exponential 1m). ism_template index_patterns [security-auditlog-*]",
+      "verdict": "the 180-DAY ISM policy EXISTS and is unchanged"
+    },
+    {
+      "id": "R7",
+      "key": "retention_180d",
+      "check": "GET /_plugins/_ism/explain/security-auditlog-*",
+      "http": 200,
+      "result": "security-auditlog-2026.08.31 -> policy_id=security-auditlog-retention, enabled=true, state=hot; security-auditlog-2026.09.01 -> policy_id=security-auditlog-retention, enabled=true, state=hot",
+      "verdict": "the 180d policy is STILL ATTACHED and enabled on BOTH live audit indices - attachment verified per-index, not merely policy existence"
+    },
+    {
+      "id": "R8",
+      "key": "access_restricted",
+      "check": "GET /_plugins/_security/api/roles/audit_viewer",
+      "http": 200,
+      "result": "cluster_permissions [cluster_composite_ops_ro]; index_permissions: security-auditlog-* -> [read, search, indices:monitor/settings/get], .opendistro_security -> [read, search]",
+      "verdict": "the dedicated read-only audit_viewer role STILL EXISTS with unchanged least-privilege scope"
+    },
+    {
+      "id": "R9",
+      "key": "monitor_alert",
+      "check": "POST /_plugins/_alerting/monitors/_search",
+      "http": 200,
+      "result": "phase83-failed-login-spike enabled=true over security-auditlog-* trigger failed-login-spike severity 2; phase82-audit-failed-login-spike enabled=true over security-auditlog-* trigger failed-login-spike severity 1",
+      "verdict": "BOTH audit alerting monitors STILL EXIST and are enabled (defence in depth)"
+    }
+  ],
+  "reconciliation": {
+    "method": "Nine live checks (R1-R9) were executed this pass against the running cluster. Keys directly re-confirmed live NOW: audit_enabled, failed_login, authenticated, ssl_exception, rbac_change_events, retention_180d, access_restricted, monitor_alert, and category-enablement for missing_privileges. Keys reconciled to already-verified persisted evidence rather than re-executed: security_index_denial, old_credential_events, authorization_headers_absent, cookies_absent, credentials_absent, secret_derived_absent, sensitive_bodies_absent, capacity_guard.",
+    "why_reconciled_not_reexecuted": "Those eight were each independently verified LIVE earlier in Phase 85 (negative tests N1-N14, the exhaustive 140,642-document sensitive-field scroll scan, the old-credential FAILED_LOGIN attribution, and the disk-watermark/forecast capture - all recorded verbatim in phase85-audit-snapshot.json) and independently again in Phase 84. Re-running the exhaustive scan would add load without adding truth, and minting fresh denial events would cross a security/credential mutation gate this read-only pass did not cross. Their supporting configuration invariants WERE re-confirmed live this pass: exclude_sensitive_headers=true and log_request_body=false (R2) are the mechanisms that make the five sensitive-field keys true.",
+    "drift_detected": "none. Every value re-checked this pass matches the corresponding value in phase85-evidence-audit.json / phase85-audit-snapshot.json, except monotonic document-count and timestamp growth, which is the expected signature of a healthy, still-capturing audit pipeline.",
+    "current_evidence_pointer": "phase85-evidence-audit.json sets current_evidence = ops/reports/evidence/phase84/phase84-evidence-audit.json for lineage; the authoritative Phase 85 detail is phase85-audit-snapshot.json, and this file is the Phase 85 re-verification record."
+  },
+  "keys_reconfirmed": {
+    "audit_enabled": true,
+    "failed_login": true,
+    "authenticated": true,
+    "missing_privileges": true,
+    "ssl_exception": true,
+    "security_index_denial": true,
+    "rbac_change_events": true,
+    "old_credential_events": true,
+    "authorization_headers_absent": true,
+    "cookies_absent": true,
+    "credentials_absent": true,
+    "secret_derived_absent": true,
+    "sensitive_bodies_absent": true,
+    "retention_180d": true,
+    "access_restricted": true,
+    "monitor_alert": true,
+    "capacity_guard": true
+  },
+  "carried_open_items": [
+    "P85-AUDIT-OBS-001 (MEDIUM, pre-existing): the Wazuh dashboard service internal user carries a vendor-default credential byte-identical to its own account name. Its literal name therefore cannot be written into any artifact and is designated DASHBOARD-SVC-LOWPRIV. REPORTED, NOT REMEDIATED - credential-rotation gate.",
+    "Stale rotated 'admin' credential in the wazuh-modulesd indexer connector environment on both manager containers produces ~99% of FAILED_LOGIN volume and holds the failed-login-spike monitor ACTIVE. Correctly rejected 401; audit is doing its job. REPORTED, NOT REMEDIATED - credential + container-recreate gate.",
+    "Config drift: wazuh1.indexer.yml still carries cluster.routing.allocation.disk.threshold_enabled: false while the live persistent cluster setting is true. No functional gap today; config-change gate.",
+    "audit_viewer role has an EMPTY role mapping (users [], backend_roles []) - defined but assigned to nobody. Most restrictive posture, retained for operator assignment.",
+    "Inert orphaned mapping p83_lowpriv_role -> users ['p83_lowpriv'] remains while neither role nor user exists. Grants nothing; mutation gate."
+  ],
+  "limitations": [
+    "No FRESH MISSING_PRIVILEGES event was minted this pass. The category is confirmed by live configuration (absent from disabled_rest_categories and disabled_transport_categories) plus 6 live documents plus proof the sink is writing right now. Minting one requires creating a transient least-privilege user - a security/credential mutation gate not crossed.",
+    "The exhaustive sensitive-field scan was not re-executed this pass; it is reconciled to the Phase 85 snapshot (140,642 docs scanned, all pattern hits 0) and the live re-confirmation of exclude_sensitive_headers=true / log_request_body=false.",
+    "Scope is the Wazuh indexer cluster 'wazuh-cluster' (3 nodes), where security-auditlog-* lives. The separate shuffle-opensearch cluster is out of scope for this audit posture.",
+    "No Class-A end-to-end evidence is claimed by this workstream."
+  ],
+  "read_only_attestation": "Every request issued by this recheck was an HTTP GET, or a POST to a query-only endpoint (_search). Zero PUT, PATCH or DELETE was issued to any endpoint, index, template, ISM policy, alerting monitor, role, role mapping, internal user, or cluster setting. No user or role was created or removed. No container was started, stopped, restarted or reconfigured. No live configuration file was modified. No pre-existing evidence artifact was rewritten. The only files created are additive, reversible artifacts under ops/reports/evidence/phase85/ and ops/reports/generated/phase85/.",
+  "secret_handling_attestation": "No secret value, no secret-derived fingerprint and no password hash appears in this file, in phase85-evidence-audit.json, or in any of the 90 Phase 85 audit reports. Authentication used the admin TLS client certificate referenced by file path only; the private key was never opened or read. No credential was placed in argv, in an environment dump, or in any log. Only the NAMES of the variables in /opt/wazuh-docker/multi-node/ops/creds.env were ever listed, never a value. The audit index was never queried FOR a secret value, which would itself have written that value into a query string and into the audit log; sensitive-field verification is by field name and pattern class only. The single audit.ignore_users entry is withheld because that account name is byte-identical to its own credential."
+}

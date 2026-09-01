@@ -1,0 +1,752 @@
+{
+  "snapshot_id": "phase85-audit-snapshot",
+  "phase": 85,
+  "workstream": "AUDIT",
+  "captured_utc": "2026-09-01T00:41:40Z",
+  "captured_eastern": "2026-08-31T20:41:40 EDT",
+  "evidence_class": "REST / live authenticated OpenSearch Security + audit indices",
+  "current_or_carried": "CURRENT",
+  "literal_or_modeled": "literal",
+  "target": {
+    "cluster_name": "wazuh-cluster",
+    "endpoint": "https://wazuh1.indexer:9200 (published 127.0.0.1:9200)",
+    "container": "multi-node-wazuh1.indexer-1",
+    "image": "wazuh/wazuh-indexer:4.14.7",
+    "authenticated_identity": "CN=admin,OU=Wazuh,O=Wazuh,L=California,C=US (pre-existing admin TLS client certificate, referenced by file path only)",
+    "tls": "internal CA root-ca.pem, hostname requested as DNS SAN wazuh1.indexer, ssl_verify_result=0, no -k/--insecure used"
+  },
+  "no_secret_values": true,
+  "cluster_health": {
+    "status": "green",
+    "number_of_nodes": 3,
+    "number_of_data_nodes": 3,
+    "active_shards_percent_as_number": 100.0
+  },
+  "audit_config_live": {
+    "enabled": true,
+    "audit.enable_rest": true,
+    "audit.enable_transport": true,
+    "audit.disabled_rest_categories": [],
+    "audit.disabled_transport_categories": [],
+    "audit.exclude_sensitive_headers": true,
+    "audit.log_request_body": false,
+    "audit.resolve_bulk_requests": false,
+    "audit.ignore_users": [
+      "<REDACTED>"
+    ],
+    "audit.ignore_headers": [],
+    "compliance.enabled": true,
+    "compliance.internal_config": true,
+    "compliance.external_config": false,
+    "compliance.read_metadata_only": true,
+    "compliance.write_metadata_only": true,
+    "compliance.write_log_diffs": false
+  },
+  "audit_indices_live": [
+    {
+      "index": "security-auditlog-2026.08.31",
+      "docs.count": "136026",
+      "pri.store.size": "29.9mb",
+      "store.size": "60.8mb",
+      "creation.date.string": "2026-08-31T06:17:32.716Z"
+    },
+    {
+      "index": "security-auditlog-2026.09.01",
+      "docs.count": "5366",
+      "pri.store.size": "1.6mb",
+      "store.size": "4mb",
+      "creation.date.string": "2026-09-01T00:00:01.464Z"
+    }
+  ],
+  "audit_doc_total": 141396,
+  "audit_categories_live": [
+    {
+      "category": "FAILED_LOGIN",
+      "docs": 109172,
+      "first": "2026-08-31T06:20:52.470Z",
+      "last": "2026-09-01T00:41:39.153Z"
+    },
+    {
+      "category": "GRANTED_PRIVILEGES",
+      "docs": 20351,
+      "first": "2026-08-31T06:21:28.971Z",
+      "last": "2026-09-01T00:41:40.469Z"
+    },
+    {
+      "category": "AUTHENTICATED",
+      "docs": 11496,
+      "first": "2026-08-31T06:21:28.969Z",
+      "last": "2026-09-01T00:41:40.394Z"
+    },
+    {
+      "category": "INDEX_EVENT",
+      "docs": 266,
+      "first": "2026-08-31T06:17:32.529Z",
+      "last": "2026-09-01T00:34:52.707Z"
+    },
+    {
+      "category": "COMPLIANCE_INTERNAL_CONFIG_READ",
+      "docs": 69,
+      "first": "2026-08-31T06:21:07.734Z",
+      "last": "2026-09-01T00:41:40.398Z"
+    },
+    {
+      "category": "COMPLIANCE_INTERNAL_CONFIG_WRITE",
+      "docs": 20,
+      "first": "2026-08-31T06:21:28.518Z",
+      "last": "2026-08-31T19:48:46.412Z"
+    },
+    {
+      "category": "SSL_EXCEPTION",
+      "docs": 17,
+      "first": "2026-08-31T06:22:30.880Z",
+      "last": "2026-09-01T00:30:45.699Z"
+    },
+    {
+      "category": "MISSING_PRIVILEGES",
+      "docs": 6,
+      "first": "2026-08-31T06:22:16.717Z",
+      "last": "2026-08-31T19:48:46.119Z"
+    }
+  ],
+  "ism_policy_live": {
+    "policy_id": "security-auditlog-retention",
+    "description": "Phase 83 audit retention: security-auditlog-* indices are created daily by the OpenSearch security plugin (natural per-day rollover). ISM enforces an 180-day retention by deleting indices once they reach 180 days of age, preventing unbounded audit-disk growth.",
+    "last_updated_time": 1788162922286,
+    "schema_version": 21,
+    "error_notification": null,
+    "default_state": "hot",
+    "states": [
+      {
+        "name": "hot",
+        "actions": [],
+        "transitions": [
+          {
+            "state_name": "delete",
+            "conditions": {
+              "min_index_age": "180d"
+            }
+          }
+        ]
+      },
+      {
+        "name": "delete",
+        "actions": [
+          {
+            "retry": {
+              "count": 3,
+              "backoff": "exponential",
+              "delay": "1m"
+            },
+            "delete": {}
+          }
+        ],
+        "transitions": []
+      }
+    ],
+    "ism_template": [
+      {
+        "index_patterns": [
+          "security-auditlog-*"
+        ],
+        "priority": 0,
+        "last_updated_time": 1788162922286
+      }
+    ]
+  },
+  "ism_attachment_live": {
+    "total_managed_indices": 2,
+    "per_index": {
+      "security-auditlog-2026.08.31": {
+        "policy_id": "security-auditlog-retention",
+        "state": "hot",
+        "enabled": true
+      },
+      "security-auditlog-2026.09.01": {
+        "policy_id": "security-auditlog-retention",
+        "state": "hot",
+        "enabled": true
+      }
+    }
+  },
+  "index_template_live": [
+    {
+      "name": "security-auditlog-template",
+      "index_template": {
+        "index_patterns": [
+          "security-auditlog-*"
+        ],
+        "template": {
+          "settings": {
+            "index": {
+              "number_of_replicas": "1",
+              "plugins": {
+                "index_state_management": {
+                  "policy_id": "security-auditlog-retention"
+                }
+              }
+            }
+          }
+        },
+        "composed_of": []
+      }
+    }
+  ],
+  "role_audit_viewer_live": {
+    "reserved": false,
+    "hidden": false,
+    "description": "Phase 83 read-only audit viewer: read/search on security-auditlog-* and the security config index.",
+    "cluster_permissions": [
+      "cluster_composite_ops_ro"
+    ],
+    "index_permissions": [
+      {
+        "index_patterns": [
+          "security-auditlog-*"
+        ],
+        "fls": [],
+        "masked_fields": [],
+        "allowed_actions": [
+          "read",
+          "search",
+          "indices:monitor/settings/get"
+        ]
+      },
+      {
+        "index_patterns": [
+          ".opendistro_security"
+        ],
+        "fls": [],
+        "masked_fields": [],
+        "allowed_actions": [
+          "read",
+          "search"
+        ]
+      }
+    ],
+    "tenant_permissions": [],
+    "static": false
+  },
+  "role_audit_viewer_mapping_live": {
+    "hosts": [],
+    "users": [],
+    "reserved": false,
+    "hidden": false,
+    "backend_roles": [],
+    "and_backend_roles": []
+  },
+  "capacity_guard_live": {
+    "persistent.cluster.routing.allocation.disk.threshold_enabled": "true",
+    "watermark.low": "85%",
+    "watermark.high": "90%",
+    "watermark.flood_stage": "95%",
+    "node_disk": [
+      {
+        "name": "wazuh1.indexer",
+        "disk.total": "196.6gb",
+        "disk.used": "124gb",
+        "disk.avail": "72.6gb",
+        "disk.used_percent": "63.08"
+      },
+      {
+        "name": "wazuh2.indexer",
+        "disk.total": "196.6gb",
+        "disk.used": "124gb",
+        "disk.avail": "72.6gb",
+        "disk.used_percent": "63.08"
+      },
+      {
+        "name": "wazuh3.indexer",
+        "disk.total": "196.6gb",
+        "disk.used": "124gb",
+        "disk.avail": "72.6gb",
+        "disk.used_percent": "63.08"
+      }
+    ]
+  },
+  "audit_monitors_live": [
+    {
+      "id": "sGB_VqABGF64cJf5leMA",
+      "name": "phase82-audit-failed-login-spike",
+      "enabled": true,
+      "schedule": {
+        "period": {
+          "interval": 5,
+          "unit": "MINUTES"
+        }
+      },
+      "indices": [
+        "security-auditlog-*"
+      ],
+      "triggers": [
+        {
+          "name": "failed-login-spike",
+          "severity": "1",
+          "condition": {
+            "script": {
+              "source": "ctx.results[0].hits.total.value > 0",
+              "lang": "painless"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "WGHXVqABGF64cJf5SH_Y",
+      "name": "phase83-failed-login-spike",
+      "enabled": true,
+      "schedule": {
+        "period": {
+          "interval": 1,
+          "unit": "MINUTES"
+        }
+      },
+      "indices": [
+        "security-auditlog-*"
+      ],
+      "triggers": [
+        {
+          "name": "failed-login-spike",
+          "severity": "2",
+          "condition": {
+            "script": {
+              "source": "ctx.results[0].hits.total.value > 200",
+              "lang": "painless"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "negative_tests_live": [
+    {
+      "id": "N1",
+      "test": "anonymous GET /security-auditlog-2026.09.01/_search over fully validated TLS",
+      "identity": "<none>",
+      "result": "HTTP 401 Unauthorized",
+      "ssl_verify_result": 0,
+      "proves": "audit index requires authentication"
+    },
+    {
+      "id": "N2",
+      "test": "anonymous GET /.opendistro_security/_search",
+      "identity": "<none>",
+      "result": "HTTP 401 Unauthorized",
+      "ssl_verify_result": 0,
+      "proves": "security index requires authentication"
+    },
+    {
+      "id": "N3",
+      "test": "anonymous GET /_cat/indices/security-auditlog-*",
+      "identity": "<none>",
+      "result": "HTTP 401 Unauthorized",
+      "ssl_verify_result": 0,
+      "proves": "audit index metadata requires authentication"
+    },
+    {
+      "id": "N4",
+      "test": "anonymous GET /_plugins/_security/api/audit",
+      "identity": "<none>",
+      "result": "HTTP 401 Unauthorized",
+      "ssl_verify_result": 0,
+      "proves": "audit configuration requires authentication"
+    },
+    {
+      "id": "N5",
+      "test": "least-privilege authenticated GET /.opendistro_security/_search",
+      "identity": "DASHBOARD-SVC-LOWPRIV (pre-existing least-privilege internal user; effective roles [manage_wazuh_index, own_index, kibana_server]; backend_roles []; reserved=true). Literal account name withheld - see finding_weak_service_credential.",
+      "result": "HTTP 403 security_exception 'no permissions for [indices:data/read/search]'",
+      "proves": "security index DENIED to a least-privilege authenticated principal"
+    },
+    {
+      "id": "N6",
+      "test": "least-privilege authenticated GET /.opendistro_security/_doc/config",
+      "identity": "DASHBOARD-SVC-LOWPRIV",
+      "result": "HTTP 403 'no permissions for [indices:data/read/get]'",
+      "proves": "security config document DENIED to least-privilege"
+    },
+    {
+      "id": "N7",
+      "test": "least-privilege authenticated GET /.opendistro_security/_settings",
+      "identity": "DASHBOARD-SVC-LOWPRIV",
+      "result": "HTTP 403 'no permissions for [indices:monitor/settings/get]'",
+      "proves": "security index metadata DENIED to least-privilege"
+    },
+    {
+      "id": "N8",
+      "test": "least-privilege authenticated GET /.opendistro_security/_mapping",
+      "identity": "DASHBOARD-SVC-LOWPRIV",
+      "result": "HTTP 403 'no permissions for [indices:admin/mappings/get]'",
+      "proves": "security index mapping DENIED to least-privilege"
+    },
+    {
+      "id": "N9",
+      "test": "least-privilege authenticated GET /.opendistro_security/_count",
+      "identity": "DASHBOARD-SVC-LOWPRIV",
+      "result": "HTTP 403 'no permissions for [indices:data/read/search]'",
+      "proves": "security index DENIED to least-privilege"
+    },
+    {
+      "id": "N10",
+      "test": "least-privilege authenticated GET /security-auditlog-2026.09.01/_search",
+      "identity": "DASHBOARD-SVC-LOWPRIV",
+      "result": "HTTP 403 'no permissions for [indices:data/read/search]'",
+      "proves": "audit index DENIED to least-privilege (access_restricted)"
+    },
+    {
+      "id": "N11",
+      "test": "least-privilege authenticated GET /security-auditlog-*/_count",
+      "identity": "DASHBOARD-SVC-LOWPRIV",
+      "result": "HTTP 403 'no permissions for [indices:data/read/search]'",
+      "proves": "audit index DENIED to least-privilege"
+    },
+    {
+      "id": "N12",
+      "test": "least-privilege authenticated GET /_plugins/_security/api/audit",
+      "identity": "DASHBOARD-SVC-LOWPRIV",
+      "result": "HTTP 403 FORBIDDEN '<identity> with Security roles [manage_wazuh_index, own_index, kibana_server] does not have any role privileged for admin access. No client TLS certificate found in request'",
+      "proves": "audit configuration DENIED to least-privilege"
+    },
+    {
+      "id": "N13",
+      "test": "least-privilege authenticated GET /_plugins/_security/api/internalusers",
+      "identity": "DASHBOARD-SVC-LOWPRIV",
+      "result": "HTTP 403 FORBIDDEN",
+      "proves": "Security API DENIED to least-privilege"
+    },
+    {
+      "id": "N14",
+      "test": "least-privilege authenticated GET /_plugins/_security/api/roles",
+      "identity": "DASHBOARD-SVC-LOWPRIV",
+      "result": "HTTP 403 FORBIDDEN",
+      "proves": "Security API DENIED to least-privilege"
+    },
+    {
+      "id": "C1",
+      "test": "CONTROL: same least-privilege identity (DASHBOARD-SVC-LOWPRIV) GET /_cluster/health",
+      "identity": "DASHBOARD-SVC-LOWPRIV",
+      "result": "HTTP 200",
+      "proves": "the 403s above are AUTHORIZATION denials, not authentication failures"
+    },
+    {
+      "id": "C2",
+      "test": "CONTROL: same least-privilege identity (DASHBOARD-SVC-LOWPRIV) GET /.kibana/_search",
+      "identity": "DASHBOARD-SVC-LOWPRIV",
+      "result": "HTTP 200 (324 docs in its own scope)",
+      "proves": "identity is live and functional inside its own least-privilege scope"
+    },
+    {
+      "id": "S1",
+      "test": "system-index protection contrast: GET /.opendistro_security/_search",
+      "identity": "internal user admin -> all_access (superset of any least-privilege role)",
+      "result": "HTTP 200 with hits.total.value = 0; GET /.opendistro_security/_doc/config -> HTTP 404 found:false",
+      "proves": "security-config DOCUMENTS are invisible to every non-superadmin identity"
+    },
+    {
+      "id": "S2",
+      "test": "system-index protection contrast: same two requests as the admin TLS certificate",
+      "identity": "CN=admin,OU=Wazuh,O=Wazuh,L=California,C=US (admin_dn superadmin)",
+      "result": "HTTP 200 with hits.total.value = 10; GET /.opendistro_security/_doc/config -> HTTP 200 found:true",
+      "proves": "the 0-hit result in S1 is genuine protection, not an empty index"
+    },
+    {
+      "id": "S3",
+      "test": "control: other system indices as internal user admin",
+      "identity": "internal user admin -> all_access",
+      "result": ".opendistro-ism-config 129 hits, .opendistro-alerting-config 16 hits, .plugins-ml-config 1 hit (all HTTP 200)",
+      "proves": "the .opendistro_security 0-hit result is specific protection of the security index"
+    }
+  ],
+  "positive_capture_tests_live": [
+    {
+      "id": "P1",
+      "category": "FAILED_LOGIN",
+      "test": "authenticate with a NON-EXISTENT username plus a throwaway invalid string over validated TLS",
+      "non_secret_marker": "p85audit002819",
+      "result": "HTTP 401; exactly 1 audit doc found with audit_category=FAILED_LOGIN, audit_request_effective_user=p85audit002819, audit_request_layer=REST, audit_rest_request_path=/_cluster/health, @timestamp 2026-09-01T00:28:19.334Z",
+      "proves": "FAILED_LOGIN is capturing live NOW (unique-marker round trip)"
+    },
+    {
+      "id": "P2",
+      "category": "SSL_EXCEPTION",
+      "test": "single safe plaintext HTTP GET to the TLS-only port 9200",
+      "result": "curl exit 52 (empty reply); SSL_EXCEPTION count moved 16 -> 17; new doc @ 2026-09-01T00:30:45.699Z, layer REST, io.netty.handler.ssl.NotSslRecordException",
+      "proves": "SSL_EXCEPTION is capturing live NOW"
+    },
+    {
+      "id": "P3",
+      "category": "AUTHENTICATED",
+      "test": "this re-verification session's own authenticated requests",
+      "result": "163 AUTHENTICATED docs in the trailing 20 minutes, including GET /_plugins/_security/api/securityconfig and POST /security-auditlog-*/_search as CN=admin,OU=Wazuh,O=Wazuh,L=California,C=US",
+      "proves": "AUTHENTICATED is capturing live NOW"
+    },
+    {
+      "id": "P4",
+      "category": "COMPLIANCE_INTERNAL_CONFIG_READ",
+      "test": "this re-verification's own RBAC enumeration",
+      "result": "reads of security-config docs roles / rolesmapping / internalusers logged at 2026-09-01T00:23:48-00:23:58Z",
+      "proves": "RBAC-object read events are capturing live NOW"
+    },
+    {
+      "id": "P5",
+      "category": "MISSING_PRIVILEGES",
+      "test": "category-enabled + historical-event confirmation (no fresh event minted - see limitation)",
+      "result": "6 live docs: p84_verify_lp TRANSPORT indices:data/read/search on .opendistro_security @2026-08-31T19:48:46.119Z; p83_lowpriv TRANSPORT on security-auditlog-* @2026-08-31T07:58:44.927Z; phase82_test REST+TRANSPORT x4",
+      "proves": "MISSING_PRIVILEGES is enabled and has been emitted by this exact pipeline; it also corroborates the Phase 84 security_index_denial claim"
+    },
+    {
+      "id": "P6",
+      "category": "GRANTED_PRIVILEGES / INDEX_EVENT",
+      "test": "incidental live confirmation",
+      "result": "GRANTED_PRIVILEGES 20k+ and INDEX_EVENT 264 docs, both still incrementing",
+      "proves": "no category is silently disabled"
+    }
+  ],
+  "sensitive_field_scan_live": {
+    "method": "exhaustive scroll of EVERY live audit document; every field flattened to (name, value) and regex-scanned locally; base64 and hex blobs additionally decoded and re-scanned. Counters only were emitted - no document value was printed or persisted.",
+    "docs_scanned": 140642,
+    "distinct_fields_observed": 78,
+    "distinct_rest_request_header_keys_present": [
+      "Host",
+      "Content-Type",
+      "Accept",
+      "Accept-Charset",
+      "User-Agent",
+      "Accept-Encoding",
+      "Content-Length",
+      "Connection",
+      "content-length"
+    ],
+    "authorization_header_field_exists_count": 0,
+    "cookie_header_field_exists_count": 0,
+    "pattern_hits": {
+      "authorization": 0,
+      "cookie": 0,
+      "set-cookie": 0,
+      "password": 0,
+      "secret": 0,
+      "credential": 0,
+      "token": 0,
+      "api_key": 0,
+      "Bearer scheme": 0,
+      "Basic <b64> scheme": 0,
+      "bcrypt $2[aby]$NN$": 0,
+      "PEM private key": 0
+    },
+    "adjudicated_non_zero_classes": [
+      {
+        "class": "hex blob >=32 chars",
+        "count": 6,
+        "field": "audit_request_exception_stacktrace",
+        "adjudication": "the io.netty NotSslRecordException hex dump of the first bytes of a non-TLS record. All 6 decode to plain HTTP request LINES (GET/POST + path). 0 of 6 contain any credential pattern. Not a request body and not a secret."
+      },
+      {
+        "class": "base64 blob >=40 chars",
+        "count": 7631,
+        "field": "audit_transport_headers._opendistro_security_{user,remote_address,source_field_context}_header, audit_rest_request_params.scroll_id, audit_rest_request_path, audit_request_privilege",
+        "adjudication": "OpenSearch Security internal transport headers (serialized User / remote-address objects) and OpenSearch scroll-context ids. ALL 3778 docs carrying audit_transport_headers were scanned and ALL 7468 base64 blobs decoded: 0 credential-pattern matches. Scroll ids are non-secret pagination handles."
+      }
+    ],
+    "request_body_field": {
+      "docs_with_audit_request_body": 68,
+      "all_from_category": "COMPLIANCE_INTERNAL_CONFIG_READ",
+      "all_on_index": ".opendistro_security",
+      "value_length_min_max_avg": [
+        25,
+        33,
+        28.0
+      ],
+      "distinct_values": [
+        "{\"field_names\":[\"actiongroups\"]}",
+        "{\"field_names\":[\"allowlist\"]}",
+        "{\"field_names\":[\"audit\"]}",
+        "{\"field_names\":[\"config\"]}",
+        "{\"field_names\":[\"internalusers\"]}",
+        "{\"field_names\":[\"nodesdn\"]}",
+        "{\"field_names\":[\"roles\"]}",
+        "{\"field_names\":[\"rolesmapping\"]}",
+        "{\"field_names\":[\"tenants\"]}",
+        "{\"field_names\":[\"whitelist\"]}"
+      ],
+      "adjudication": "compliance READ METADATA ONLY (read_metadata_only=true) - a field-name list identifying which security-config document was read. NOT a user/API request body. Notably the 13 reads of the 'internalusers' document - the one document that DOES contain bcrypt hashes - recorded only {\"field_names\":[\"internalusers\"]} and never the hash. 0 bcrypt / base64 / hex / credential-keyword matches inside any of the 68 values."
+    }
+  },
+  "rbac_change_events_live": {
+    "mechanism": "compliance.enabled=true and compliance.internal_config=true -> every read of and every write to the .opendistro_security RBAC configuration is audited as COMPLIANCE_INTERNAL_CONFIG_READ / COMPLIANCE_INTERNAL_CONFIG_WRITE.",
+    "write_events_total": 20,
+    "write_events_by_config_doc": {
+      "internalusers": 10,
+      "roles": 6,
+      "rolesmapping": 3,
+      "audit": 1
+    },
+    "read_events_total": 68,
+    "read_events_by_config_doc": {
+      "audit": 19,
+      "roles": 14,
+      "internalusers": 13,
+      "rolesmapping": 8,
+      "config": 5,
+      "actiongroups": 3,
+      "tenants": 3,
+      "allowlist": 1,
+      "nodesdn": 1,
+      "whitelist": 1
+    },
+    "rbac_object_read_events": 35,
+    "correlated_timeline": [
+      {
+        "window": "2026-08-31T06:21:28Z - 06:23:59Z",
+        "attribution": "Phase 82/83 audit-config write + role write + first RBAC reads"
+      },
+      {
+        "window": "2026-08-31T07:22:36Z",
+        "attribution": "Phase 83 pre-rotation RBAC enumeration as the admin TLS certificate DN"
+      },
+      {
+        "window": "2026-08-31T07:57:24Z - 07:59:30Z",
+        "attribution": "Phase 83 RBAC mutations - roles x6 writes and rolesmapping x3 writes (audit_viewer / least-priv role creation and the readall mapping reduction)"
+      },
+      {
+        "window": "2026-08-31T19:47:17Z - 19:48:46Z",
+        "attribution": "Phase 84 RBAC re-verification: roles/internalusers/rolesmapping reads plus internalusers writes for the transient least-privilege user create and delete"
+      },
+      {
+        "window": "2026-08-31T22:31:47Z - 22:51:25Z",
+        "attribution": "Phase 85 SECURITY-API authenticated live enumeration - internalusers/roles/rolesmapping/actiongroups/tenants reads under BOTH the admin-certificate DN and the admin internal-user path"
+      },
+      {
+        "window": "2026-09-01T00:23:48Z - 00:29:17Z",
+        "attribution": "THIS Phase 85 AUDIT re-verification - roles/rolesmapping/internalusers/audit/config reads"
+      }
+    ],
+    "write_log_diffs": false,
+    "diff_content_field_present_in_any_doc": false,
+    "note": "write_log_diffs=false and write_metadata_only=true, so RBAC mutation events are recorded as tamper-evident metadata (who / when / which config document / operation / doc version) WITHOUT copying the configuration payload - which is precisely why no bcrypt hash ever reaches the audit index."
+  },
+  "old_credential_events_live": {
+    "rotation_reference": "Phase 83 rotated opensearch_admin_password -> opensearch_admin_password_v2 (approval P83-OSCRED-ROTATION-APPROVED); old material revoked; disposition rotated_revoked in ops/reports/evidence/phase84/phase84-evidence-credential-governance.json",
+    "failed_login_by_principal": {
+      "admin": {
+        "docs": 108083,
+        "first": "2026-08-31T06:20:52.470Z",
+        "last": "2026-09-01T00:31:36.051Z"
+      },
+      "<NONE>": {
+        "docs": 18
+      },
+      "p84_verify_lp": {
+        "docs": 2,
+        "first": "2026-08-31T19:48:05.760Z",
+        "last": "2026-08-31T19:48:27.169Z"
+      },
+      "nosuchuser": {
+        "docs": 1,
+        "at": "2026-08-31T22:36:37.725Z"
+      },
+      "p85audit002819": {
+        "docs": 1,
+        "at": "2026-09-01T00:28:19.334Z"
+      },
+      "phase82_test": {
+        "docs": 1,
+        "at": "2026-08-31T06:21:54.331Z"
+      }
+    },
+    "primary_finding": {
+      "claim": "Old/rotated-credential use IS captured by the audit log, continuously and currently.",
+      "detail": "85,062+ FAILED_LOGIN events for principal 'admin' on REST path /_cat/health, sourced from 172.18.0.8 (multi-node-wazuh.worker-1) and 172.18.0.9 (multi-node-wazuh.master-1) against all three indexer nodes. The FIRST such event on each source is 2026-08-31T07:27:35.169Z (worker) and 2026-08-31T07:27:35.469Z (master) - i.e. the exact instant of the Phase 83 admin-password rotation (credential backup id phase83-wazuh-indexer-admin-20260831T072701Z.bak, rollback plan phase83-wazuh-rollback-plan-20260831T073100Z.md). The most recent is 2026-09-01T00:32:59Z, still ongoing.",
+      "attribution_value_blind": "The wazuh-modulesd indexer connector inside both wazuh-manager containers holds a stale 'admin' basic-auth credential in its INDEXER_USERNAME/INDEXER_PASSWORD container environment (INDEXER_USERNAME='admin', a NON-SECRET username). Phase 83 converged filebeat.yml on master and worker but the container-environment copy consumed by the indexer connector was not re-issued, so the pre-rotation (revoked) credential is still presented on every /_cat/health poll and is correctly rejected 401. Determined value-blind: no credential value was read, printed, compared, or hashed.",
+      "risk": "LOW for confidentiality (the presented material is already revoked and grants nothing) - the audit log is doing exactly its job. MEDIUM for signal hygiene: this single stale consumer produces ~99% of all FAILED_LOGIN volume, permanently holds the failed-login-spike monitor in ACTIVE, and inflates audit-index growth.",
+      "disposition": "REPORTED, NOT REMEDIATED. Fixing it requires re-issuing a service credential into two running production containers = credential + container-recreate gates. Out of scope for this read-only workstream; referred to the credential owner."
+    },
+    "corroborating_events": [
+      "p84_verify_lp FAILED_LOGIN x2 at 2026-08-31T19:48:05Z/19:48:27Z - the Phase 84 transient least-privilege identity presenting a credential before it existed / after it was deleted.",
+      "nosuchuser FAILED_LOGIN at 2026-08-31T22:36:37Z - the Phase 85 SECURITY-API negative test N4 (non-existent user + invalid throwaway string, no enumeration leak).",
+      "phase82_test FAILED_LOGIN at 2026-08-31T06:21:54Z - Phase 82 rotated-credential test identity.",
+      "p85audit002819 FAILED_LOGIN at 2026-09-01T00:28:19Z - THIS phase's unique-marker live capture proof."
+    ],
+    "no_credential_value_in_any_event": "Confirmed: the FAILED_LOGIN documents for these old-credential attempts carry only Host / Content-Type / Accept / Accept-Charset headers. The Authorization header that actually carried the rejected credential is absent from every document (exclude_sensitive_headers=true)."
+  },
+  "monitor_dryrun_live": {
+    "monitor": "phase83-failed-login-spike",
+    "monitor_id": "WGHXVqABGF64cJf5SH_Y",
+    "execution": "POST /_plugins/_alerting/monitors/{id}/_execute?dryrun=true  (read-only: evaluates the monitor without creating or updating any alert document)",
+    "period_start_ms": 1788223071135,
+    "period_end_ms": 1788223131135,
+    "hits_total_in_window": 529,
+    "threshold": "ctx.results[0].hits.total.value > 200",
+    "trigger": "failed-login-spike",
+    "triggered": true,
+    "error": null,
+    "scheduled_firing_proof": {
+      "alerts_api": "GET /_plugins/_alerting/monitors/alerts?monitorId=WGHXVqABGF64cJf5SH_Y",
+      "totalAlerts": 1,
+      "state": "ACTIVE",
+      "severity": "2",
+      "trigger_name": "failed-login-spike",
+      "start_time_utc": "2026-08-31T08:02:45.743Z",
+      "last_notification_utc": "2026-09-01T00:38:24.607Z",
+      "interpretation": "the monitor is not merely present - it has been firing on its scheduled 1-minute runs continuously for ~16.6 hours and re-notified seconds before this snapshot."
+    },
+    "second_monitor": {
+      "name": "phase82-audit-failed-login-spike",
+      "enabled": true,
+      "schedule": "every 5 minutes",
+      "threshold": "> 0",
+      "note": "a broader, still-enabled Phase 82 monitor over the same index - defence in depth"
+    }
+  },
+  "capacity_forecast": {
+    "observed_window": "security-auditlog-2026.08.31 covers 06:17:32Z -> 24:00Z (17.71 h) at 60.8 MB including 1 replica",
+    "growth_rate_mb_per_day": 82.4,
+    "steady_state_180d_ceiling_gb": 14.49,
+    "ceiling_as_pct_of_one_node_total": 7.37,
+    "node_disk_total_gb": 196.6,
+    "node_disk_used_pct": 63.08,
+    "headroom_gb_before_low_watermark": 43.1,
+    "rollover_mechanism": "the OpenSearch security plugin creates a new security-auditlog-YYYY.MM.DD index every UTC day. PROVEN LIVE THIS PHASE: security-auditlog-2026.09.01 was created at 2026-09-01T00:00:01.464Z and was auto-enrolled into the ISM policy by its ism_template (explain API shows policy_id=security-auditlog-retention, state=hot, enabled=true).",
+    "verdict": "bounded: daily rollover + ISM 180-day delete + persistent disk-watermark enforcement mean audit growth cannot exhaust disk."
+  },
+  "drift_observations": [
+    {
+      "item": "node config file /opt/wazuh-docker/multi-node/config/wazuh_indexer/wazuh1.indexer.yml still contains cluster.routing.allocation.disk.threshold_enabled: false, while the LIVE persistent cluster setting is true (set in Phase 83).",
+      "effect": "no functional gap today - the persistent cluster setting wins. But if the persistent setting were ever cleared, the file would silently re-disable watermark enforcement.",
+      "disposition": "reported as configuration drift; remediation is a config change gate, not performed."
+    },
+    {
+      "item": "audit.ignore_users contains exactly one entry: the dashboard service identity DASHBOARD-SVC-LOWPRIV (and compliance read_ignore_users / write_ignore_users likewise).",
+      "effect": "verified live: 0 audit documents exist for that principal anywhere in security-auditlog-*. This is why the least-privilege 403 denial tests N5-N14 performed this phase produced no MISSING_PRIVILEGES events - the denials genuinely occurred (HTTP 403 with security_exception bodies, quoted verbatim above) but the acting identity is audit-suppressed by design to keep dashboard polling chatter out of the audit trail.",
+      "disposition": "intended configuration, recorded explicitly so the absence of matching audit events is not mistaken for an audit gap."
+    },
+    {
+      "item": "role audit_viewer exists with an EMPTY role mapping (users [], backend_roles []).",
+      "effect": "the designated least-privilege audit-read grant is defined but assigned to nobody, so today no standing identity can read the audit indices except all_access / the admin certificate. This is the most restrictive posture, not a defect.",
+      "disposition": "unchanged from Phase 83/84 intent (retained for operator assignment)."
+    },
+    {
+      "item": "an inert orphaned mapping p83_lowpriv_role -> users ['p83_lowpriv'] remains while neither the role nor the user exists.",
+      "effect": "grants nothing.",
+      "disposition": "carried open item from Phase 85 security-api; remediation is a mutation gate."
+    }
+  ],
+  "finding_weak_service_credential": {
+    "id": "P85-AUDIT-OBS-001",
+    "severity": "MEDIUM (pre-existing; unrelated to the audit posture itself)",
+    "claim": "The Wazuh dashboard service internal user (referred to throughout this artifact as DASHBOARD-SVC-LOWPRIV) carries a vendor-default credential that is BYTE-IDENTICAL to its own account name.",
+    "how_determined": "value-blind. The Phase 85 artifact leak-checker loaded every reachable credential value into process memory and compared it against the persisted artifacts; it reported a match for this account's credential. A follow-up in-process comparison confirmed only two boolean facts - that the credential equals the account name, and that the credential is all-lowercase-alphabetic. The value itself was never printed, echoed, hashed, fingerprinted, or written anywhere.",
+    "consequence_for_this_artifact": "the account's literal name cannot be written into any Phase 85 audit artifact, because writing the name would be writing the credential. Every reference is therefore the neutral designation DASHBOARD-SVC-LOWPRIV. Operators can identify the account unambiguously from its live attributes: reserved=true, backend_roles [], effective roles [manage_wazuh_index, own_index, kibana_server], and it is the sole entry in audit.ignore_users.",
+    "pre_existing_exposure": "the same account name already appears as an identity label in durable repository content that predates this workstream (root AGENTS.md and the Phase 84/85 evidence set). Those artifacts are durable/immutable and were NOT rewritten. This workstream neither created nor amplified that exposure; it is reported so the credential owner can act.",
+    "disposition": "REPORTED, NOT REMEDIATED. Changing this credential is a credential-rotation gate (dependency inventory, approval, backup, rollback, converge the dashboard container) and was not crossed by this read-only workstream. Referred to the Wazuh/indexer configuration owner and the credential owner.",
+    "audit_relevance": "the audit posture keys are unaffected: this account is denied the security index and the audit indices (tests N5-N14), and no credential value reaches the audit log (exclude_sensitive_headers=true, verified across all 140,642 documents)."
+  },
+  "redaction_note": "Two fields captured verbatim from the live API - audit_config_live['audit.ignore_users'] and audit_config_live['compliance.read_ignore_users'/'write_ignore_users'] equivalents - list the dashboard service account by name. Because that name is byte-identical to that account's credential (finding P85-AUDIT-OBS-001), the value is emitted as <REDACTED>. This is the ONLY redaction in this artifact; every other value is verbatim live output.",
+  "limitations": [
+    "A FRESH MISSING_PRIVILEGES event was not minted this phase. The only two identities with credentials available to a read-only workstream are the internal user 'admin' (all_access - never denied) and '<REDACTED>' (which IS denied, and was proven denied 10 times, but is present in audit.ignore_users so its denials are intentionally not audited). Minting one would require creating a transient least-privilege user, which is a security/credential mutation gate this workstream did not cross. The category is instead confirmed by live configuration (not present in disabled_rest_categories or disabled_transport_categories) plus live data (6 MISSING_PRIVILEGES documents, including the very Phase 84 .opendistro_security denial event) plus proof that the sink is writing right now (two fresh unique-marker events accepted this phase).",
+    "Scope is the Wazuh indexer cluster 'wazuh-cluster' (3 nodes), which is where security-auditlog-* lives. The separate shuffle-opensearch cluster is not part of this audit posture.",
+    "The stale-credential finding is reported, not remediated: remediation requires re-issuing a service credential into two running production containers.",
+    "No Class-A end-to-end evidence is claimed by this workstream."
+  ],
+  "read_only_attestation": "Every request issued by this workstream was an HTTP GET, or a POST to a query-only endpoint (_search / _count / _ism/explain / alerting _execute?dryrun=true / _search/scroll). Zero PUT, PATCH or DELETE was issued to any Security API endpoint, index, index template, ISM policy, alerting monitor, role, role mapping, internal user, or cluster setting. The only DELETE issued was DELETE /_search/scroll, which releases the read-only scroll contexts opened by the sensitive-field scan and changes no persisted state. No user or role was created or removed. No container was started, stopped, restarted or reconfigured. No live configuration file was modified. The only files created are the additive, reversible artifacts under ops/reports/evidence/phase85/ and ops/reports/generated/phase85/.",
+  "secret_handling_attestation": "No secret value, no secret-derived fingerprint and no password hash appears in this snapshot, in phase85-evidence-audit.json, or in any of the 90 Phase 85 audit reports. The admin TLS client certificate and its private key were referenced only as curl --cert/--key file paths; the key file was never opened or read. The two internal-user credentials used for the negative tests were read into process memory and handed to curl exclusively on STDIN via 'curl --config -', so they never entered argv, the process table, shell history, or any log; both were unset immediately after use. Credential-bearing environment variables read from creds.env were unset without being echoed. The audit index was never queried FOR a secret value (which would have placed the value into a query string and into the audit log itself); sensitive-field verification was performed value-blind, by field name and by pattern class only. The 68 compliance metadata bodies were fetched to a file outside the repository, analysed programmatically, and only structural counters were emitted."
+}

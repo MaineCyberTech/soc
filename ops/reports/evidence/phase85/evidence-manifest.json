@@ -1,0 +1,12 @@
+{
+  "phase85-evidence-security-api.json": "e54970330c2ee6573290edeb1835cabbf48af9c0ef0e7fdd12450e9ce9ed3d07",
+  "phase85-security-api-snapshot.json": "2e0388a9bb6ab6e256194292885f2b100bc5008be1660983e19bdb315bdffdbf",
+  "phase85-evidence-rbac-readall.json": "5c96d16615d050b3addf13322d4d116d6f3f8d6945ba87d15e7e9f42ea182056",
+  "phase85-evidence-shuffle-opensearch.json": "777f3cff7ba1f1fe52c4ab38a4800f73dd873b4a0d983ad3aa60d3e46c874cdb",
+  "phase85-evidence-e2e.json": "aee21d13210bdf915e23fedce4c1a5b3cb61b696dc978f9f0190afda8930f6f2",
+  "phase85-evidence-audit.json": "4bc321f4511241d14dee17434150dce2e9e8f17b50eb3227929e8f8521c1c699",
+  "phase85-evidence-baseline.json": "e0cc266caa8c6a62bbf31093dc2e552881e8fd27a1400512f995ccff25cf1b4e",
+  "phase85-evidence-governance.json": "387a78c1b4156056ea97611765e9cc7d74666901189f06c2cde7457aec3b9cd7",
+  "phase85-evidence-repo.json": "eee88cb333a64f7a77ed8b327ed1184d49699039b6c49579c95b52fdcadb937d",
+  "evidence-manifest.json": "df7675beff7f9b2c6462597de7c7bde7c3947068b0ab66550f4d41efdf41c857"
+}

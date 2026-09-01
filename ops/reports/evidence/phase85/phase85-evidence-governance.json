@@ -1,0 +1,18 @@
+{
+  "synthetic_inventory_complete": true,
+  "objects_688_689": true,
+  "objects_701_702": true,
+  "phase85_objects": true,
+  "alerts_158_170_preserved": true,
+  "historical_192_193_immutable": true,
+  "gateway_disposition": true,
+  "overlay_encryption": true,
+  "overlay_membership": true,
+  "network_drift": true,
+  "otel_current_carried": true,
+  "agents_durable_only": true,
+  "open_work_updated": true,
+  "canonical_updated": true,
+  "excluded_phase84_artifacts_adjudicated": true,
+  "_note": "Reconciliation: objects 688/689 are Phase 83 cert objects (CARRIED prior attestation; IRIS REST re-GET infeasible from attest host at generation time). objects 701/702 are Phase 84 fresh cert objects (CARRIED prior attestation). phase85_objects refers to the two fresh Phase 85 cert objects IRIS 712 and 713, evidenced CURRENT via REST item GET 200 in phase85-evidence-e2e.json. Historical objects 192/193 remain a documented unchanged duplicate failure. Phase 84's deliberate exclusion of prompt indices 920-939 and stray 1000-* artifacts is adjudicated: exclusions were intentional and are not canonicalized. No secret value is present in this artifact."
+}

@@ -1,0 +1,1175 @@
+{
+  "artifact": "phase85-live-rbac-snapshot",
+  "backend_roles_observed": [
+    "admin",
+    "kibanauser",
+    "logstash",
+    "readall",
+    "snapshotrestore"
+  ],
+  "captured_et": "2026-08-31T18:45:00EDT",
+  "captured_utc": "2026-08-31T22:45:00Z",
+  "consumers": [
+    {
+      "backend_roles": [
+        "logstash"
+      ],
+      "effective_roles": [
+        "logstash"
+      ],
+      "user": "logstash"
+    },
+    {
+      "backend_roles": [
+        "snapshotrestore"
+      ],
+      "effective_roles": [
+        "manage_snapshots"
+      ],
+      "user": "snapshotrestore"
+    },
+    {
+      "backend_roles": [
+        "admin"
+      ],
+      "effective_roles": [
+        "all_access"
+      ],
+      "user": "admin"
+    },
+    {
+      "backend_roles": [],
+      "effective_roles": [
+        "kibana_server",
+        "manage_wazuh_index"
+      ],
+      "user": "kibanaserver"
+    },
+    {
+      "backend_roles": [
+        "kibanauser",
+        "readall"
+      ],
+      "effective_roles": [
+        "kibana_user",
+        "readall"
+      ],
+      "user": "kibanaro"
+    },
+    {
+      "backend_roles": [
+        "readall"
+      ],
+      "effective_roles": [
+        "readall"
+      ],
+      "user": "readall"
+    }
+  ],
+  "internal_users": {
+    "admin": {
+      "attributes": {},
+      "backend_roles": [
+        "admin"
+      ],
+      "description": "Demo admin user",
+      "reserved": true
+    },
+    "kibanaro": {
+      "attributes": {
+        "attribute1": "value1",
+        "attribute2": "value2",
+        "attribute3": "value3"
+      },
+      "backend_roles": [
+        "kibanauser",
+        "readall"
+      ],
+      "description": "Demo kibanaro user",
+      "reserved": false
+    },
+    "kibanaserver": {
+      "attributes": {},
+      "backend_roles": [],
+      "description": "Demo kibanaserver user",
+      "reserved": true
+    },
+    "logstash": {
+      "attributes": {},
+      "backend_roles": [
+        "logstash"
+      ],
+      "description": "Demo logstash user",
+      "reserved": false
+    },
+    "readall": {
+      "attributes": {},
+      "backend_roles": [
+        "readall"
+      ],
+      "description": "Demo readall user",
+      "reserved": false
+    },
+    "snapshotrestore": {
+      "attributes": {},
+      "backend_roles": [
+        "snapshotrestore"
+      ],
+      "description": "Demo snapshotrestore user",
+      "reserved": false
+    }
+  },
+  "method": "Authenticated read-only GET to OpenSearch Security API (https://localhost:9200/_plugins/_security/api) using admin TLS client auth via the securityadmin credential (sourced in-process from /opt/wazuh-docker/multi-node/ops/creds.env; never printed/logged). Endpoints: internalusers, roles, rolesmapping. No write operations performed.",
+  "readall_role_definition": {
+    "cluster_permissions": [
+      "cluster_composite_ops_ro"
+    ],
+    "description": "Provide the minimum permissions for to readall indices",
+    "hidden": false,
+    "index_permissions": [
+      {
+        "allowed_actions": [
+          "read"
+        ],
+        "fls": [],
+        "index_patterns": [
+          "*"
+        ],
+        "masked_fields": []
+      }
+    ],
+    "reserved": true,
+    "static": true,
+    "tenant_permissions": []
+  },
+  "roles": {
+    "alerting_ack_alerts": {
+      "cluster_permissions": [
+        "cluster:admin/opendistro/alerting/alerts/*",
+        "cluster:admin/opendistro/alerting/chained_alerts/*",
+        "cluster:admin/opendistro/alerting/workflow_alerts/*"
+      ],
+      "hidden": false,
+      "index_permissions": [],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "alerting_full_access": {
+      "cluster_permissions": [
+        "cluster_monitor",
+        "cluster:admin/opendistro/alerting/*",
+        "cluster:admin/opensearch/alerting/*",
+        "cluster:admin/opensearch/notifications/feature/publish"
+      ],
+      "hidden": false,
+      "index_permissions": [
+        {
+          "allowed_actions": [
+            "indices_monitor",
+            "indices:admin/aliases/get",
+            "indices:admin/mappings/get"
+          ],
+          "fls": [],
+          "index_patterns": [
+            "*"
+          ],
+          "masked_fields": []
+        }
+      ],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "alerting_read_access": {
+      "cluster_permissions": [
+        "cluster:admin/opendistro/alerting/alerts/get",
+        "cluster:admin/opendistro/alerting/destination/get",
+        "cluster:admin/opendistro/alerting/monitor/get",
+        "cluster:admin/opendistro/alerting/monitor/search",
+        "cluster:admin/opensearch/alerting/findings/get",
+        "cluster:admin/opensearch/alerting/workflow/get",
+        "cluster:admin/opensearch/alerting/workflow_alerts/get"
+      ],
+      "hidden": false,
+      "index_permissions": [],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "all_access": {
+      "cluster_permissions": [
+        "*"
+      ],
+      "description": "Allow full access to all indices and all cluster APIs",
+      "hidden": false,
+      "index_permissions": [
+        {
+          "allowed_actions": [
+            "*"
+          ],
+          "fls": [],
+          "index_patterns": [
+            "*"
+          ],
+          "masked_fields": []
+        }
+      ],
+      "reserved": true,
+      "static": true,
+      "tenant_permissions": [
+        {
+          "allowed_actions": [
+            "kibana_all_write"
+          ],
+          "tenant_patterns": [
+            "*"
+          ]
+        }
+      ]
+    },
+    "anomaly_full_access": {
+      "cluster_permissions": [
+        "cluster_monitor",
+        "cluster:admin/opendistro/ad/*"
+      ],
+      "hidden": false,
+      "index_permissions": [
+        {
+          "allowed_actions": [
+            "indices_monitor",
+            "indices:admin/aliases/get",
+            "indices:admin/mappings/get"
+          ],
+          "fls": [],
+          "index_patterns": [
+            "*"
+          ],
+          "masked_fields": []
+        }
+      ],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "anomaly_read_access": {
+      "cluster_permissions": [
+        "cluster:admin/opendistro/ad/detector/info",
+        "cluster:admin/opendistro/ad/detector/search",
+        "cluster:admin/opendistro/ad/detectors/get",
+        "cluster:admin/opendistro/ad/result/search",
+        "cluster:admin/opendistro/ad/tasks/search",
+        "cluster:admin/opendistro/ad/detector/validate",
+        "cluster:admin/opendistro/ad/result/topAnomalies"
+      ],
+      "hidden": false,
+      "index_permissions": [],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "asynchronous_search_full_access": {
+      "cluster_permissions": [
+        "cluster:admin/opendistro/asynchronous_search/*"
+      ],
+      "hidden": false,
+      "index_permissions": [
+        {
+          "allowed_actions": [
+            "indices:data/read/search*"
+          ],
+          "fls": [],
+          "index_patterns": [
+            "*"
+          ],
+          "masked_fields": []
+        }
+      ],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "asynchronous_search_read_access": {
+      "cluster_permissions": [
+        "cluster:admin/opendistro/asynchronous_search/get"
+      ],
+      "hidden": false,
+      "index_permissions": [],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "audit_viewer": {
+      "cluster_permissions": [
+        "cluster_composite_ops_ro"
+      ],
+      "description": "Phase 83 read-only audit viewer: read/search on security-auditlog-* and the security config index.",
+      "hidden": false,
+      "index_permissions": [
+        {
+          "allowed_actions": [
+            "read",
+            "search",
+            "indices:monitor/settings/get"
+          ],
+          "fls": [],
+          "index_patterns": [
+            "security-auditlog-*"
+          ],
+          "masked_fields": []
+        },
+        {
+          "allowed_actions": [
+            "read",
+            "search"
+          ],
+          "fls": [],
+          "index_patterns": [
+            ".opendistro_security"
+          ],
+          "masked_fields": []
+        }
+      ],
+      "reserved": false,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "cross_cluster_replication_follower_full_access": {
+      "cluster_permissions": [
+        "cluster:admin/plugins/replication/autofollow/update"
+      ],
+      "hidden": false,
+      "index_permissions": [
+        {
+          "allowed_actions": [
+            "indices:admin/plugins/replication/index/setup/validate",
+            "indices:data/write/plugins/replication/changes",
+            "indices:admin/plugins/replication/index/start",
+            "indices:admin/plugins/replication/index/pause",
+            "indices:admin/plugins/replication/index/resume",
+            "indices:admin/plugins/replication/index/stop",
+            "indices:admin/plugins/replication/index/update",
+            "indices:admin/plugins/replication/index/status_check"
+          ],
+          "fls": [],
+          "index_patterns": [
+            "*"
+          ],
+          "masked_fields": []
+        }
+      ],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "cross_cluster_replication_leader_full_access": {
+      "cluster_permissions": [],
+      "hidden": false,
+      "index_permissions": [
+        {
+          "allowed_actions": [
+            "indices:admin/plugins/replication/index/setup/validate",
+            "indices:data/read/plugins/replication/changes",
+            "indices:data/read/plugins/replication/file_chunk"
+          ],
+          "fls": [],
+          "index_patterns": [
+            "*"
+          ],
+          "masked_fields": []
+        }
+      ],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "cross_cluster_search_remote_full_access": {
+      "cluster_permissions": [],
+      "hidden": false,
+      "index_permissions": [
+        {
+          "allowed_actions": [
+            "indices:admin/shards/search_shards",
+            "indices:data/read/search"
+          ],
+          "fls": [],
+          "index_patterns": [
+            "*"
+          ],
+          "masked_fields": []
+        }
+      ],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "index_management_full_access": {
+      "cluster_permissions": [
+        "cluster:admin/opendistro/ism/*",
+        "cluster:admin/opendistro/rollup/*",
+        "cluster:admin/opendistro/transform/*",
+        "cluster:admin/opensearch/controlcenter/lron/*",
+        "cluster:admin/opensearch/notifications/channels/get",
+        "cluster:admin/opensearch/notifications/feature/publish"
+      ],
+      "hidden": false,
+      "index_permissions": [
+        {
+          "allowed_actions": [
+            "indices:admin/opensearch/ism/*"
+          ],
+          "fls": [],
+          "index_patterns": [
+            "*"
+          ],
+          "masked_fields": []
+        }
+      ],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "ip2geo_datasource_full_access": {
+      "cluster_permissions": [
+        "cluster:admin/geospatial/datasource/*"
+      ],
+      "hidden": false,
+      "index_permissions": [],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "ip2geo_datasource_read_access": {
+      "cluster_permissions": [
+        "cluster:admin/geospatial/datasource/get"
+      ],
+      "hidden": false,
+      "index_permissions": [],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "kibana_read_only": {
+      "cluster_permissions": [],
+      "hidden": false,
+      "index_permissions": [],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "kibana_server": {
+      "cluster_permissions": [
+        "cluster_monitor",
+        "cluster_composite_ops",
+        "manage_point_in_time",
+        "indices:admin/template*",
+        "indices:admin/index_template*",
+        "indices:data/read/scroll*"
+      ],
+      "description": "Provide the minimum permissions for the Kibana server",
+      "hidden": false,
+      "index_permissions": [
+        {
+          "allowed_actions": [
+            "indices_all"
+          ],
+          "fls": [],
+          "index_patterns": [
+            ".kibana",
+            ".opensearch_dashboards"
+          ],
+          "masked_fields": []
+        },
+        {
+          "allowed_actions": [
+            "indices_all"
+          ],
+          "fls": [],
+          "index_patterns": [
+            ".kibana-6",
+            ".opensearch_dashboards-6"
+          ],
+          "masked_fields": []
+        },
+        {
+          "allowed_actions": [
+            "indices_all"
+          ],
+          "fls": [],
+          "index_patterns": [
+            ".kibana_*",
+            ".opensearch_dashboards_*"
+          ],
+          "masked_fields": []
+        },
+        {
+          "allowed_actions": [
+            "indices_all"
+          ],
+          "fls": [],
+          "index_patterns": [
+            ".tasks"
+          ],
+          "masked_fields": []
+        },
+        {
+          "allowed_actions": [
+            "indices_all"
+          ],
+          "fls": [],
+          "index_patterns": [
+            ".management-beats*"
+          ],
+          "masked_fields": []
+        },
+        {
+          "allowed_actions": [
+            "indices:admin/aliases*"
+          ],
+          "fls": [],
+          "index_patterns": [
+            "*"
+          ],
+          "masked_fields": []
+        }
+      ],
+      "reserved": true,
+      "static": true,
+      "tenant_permissions": []
+    },
+    "kibana_user": {
+      "cluster_permissions": [
+        "cluster_composite_ops"
+      ],
+      "description": "Provide the minimum permissions for a kibana user",
+      "hidden": false,
+      "index_permissions": [
+        {
+          "allowed_actions": [
+            "read",
+            "delete",
+            "manage",
+            "index"
+          ],
+          "fls": [],
+          "index_patterns": [
+            ".kibana",
+            ".kibana-6",
+            ".kibana_*",
+            ".opensearch_dashboards",
+            ".opensearch_dashboards-6",
+            ".opensearch_dashboards_*"
+          ],
+          "masked_fields": []
+        },
+        {
+          "allowed_actions": [
+            "indices_all"
+          ],
+          "fls": [],
+          "index_patterns": [
+            ".tasks",
+            ".management-beats",
+            "*:.tasks",
+            "*:.management-beats"
+          ],
+          "masked_fields": []
+        }
+      ],
+      "reserved": true,
+      "static": true,
+      "tenant_permissions": []
+    },
+    "knn_full_access": {
+      "cluster_permissions": [
+        "cluster:admin/knn_training_model_action",
+        "cluster:admin/knn_training_job_router_action",
+        "cluster:admin/knn_training_job_route_decision_info_action",
+        "cluster:admin/knn_warmup_action",
+        "cluster:admin/knn_delete_model_action",
+        "cluster:admin/knn_remove_model_from_cache_action",
+        "cluster:admin/knn_update_model_graveyard_action",
+        "cluster:admin/knn_search_model_action",
+        "cluster:admin/knn_get_model_action",
+        "cluster:admin/knn_stats_action"
+      ],
+      "hidden": false,
+      "index_permissions": [],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "knn_read_access": {
+      "cluster_permissions": [
+        "cluster:admin/knn_search_model_action",
+        "cluster:admin/knn_get_model_action",
+        "cluster:admin/knn_stats_action"
+      ],
+      "hidden": false,
+      "index_permissions": [],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "logstash": {
+      "cluster_permissions": [
+        "cluster_monitor",
+        "cluster_composite_ops",
+        "indices:admin/template/get",
+        "indices:admin/template/put",
+        "cluster:admin/ingest/pipeline/put",
+        "cluster:admin/ingest/pipeline/get"
+      ],
+      "description": "Provide the minimum permissions for logstash and beats",
+      "hidden": false,
+      "index_permissions": [
+        {
+          "allowed_actions": [
+            "crud",
+            "create_index"
+          ],
+          "fls": [],
+          "index_patterns": [
+            "logstash-*",
+            "ecs-logstash-*"
+          ],
+          "masked_fields": []
+        },
+        {
+          "allowed_actions": [
+            "crud",
+            "create_index"
+          ],
+          "fls": [],
+          "index_patterns": [
+            "*beat*"
+          ],
+          "masked_fields": []
+        }
+      ],
+      "reserved": true,
+      "static": true,
+      "tenant_permissions": []
+    },
+    "manage_snapshots": {
+      "cluster_permissions": [
+        "manage_snapshots"
+      ],
+      "description": "Provide the minimum permissions for managing snapshots",
+      "hidden": false,
+      "index_permissions": [
+        {
+          "allowed_actions": [
+            "indices:data/write/index",
+            "indices:admin/create"
+          ],
+          "fls": [],
+          "index_patterns": [
+            "*"
+          ],
+          "masked_fields": []
+        }
+      ],
+      "reserved": true,
+      "static": true,
+      "tenant_permissions": []
+    },
+    "manage_wazuh_index": {
+      "cluster_permissions": [],
+      "hidden": false,
+      "index_permissions": [
+        {
+          "allowed_actions": [
+            "read",
+            "delete",
+            "manage",
+            "index"
+          ],
+          "dls": "",
+          "fls": [],
+          "index_patterns": [
+            "wazuh-*"
+          ],
+          "masked_fields": []
+        }
+      ],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "ml_full_access": {
+      "cluster_permissions": [
+        "cluster_monitor",
+        "cluster:admin/opensearch/ml/*"
+      ],
+      "hidden": false,
+      "index_permissions": [
+        {
+          "allowed_actions": [
+            "indices_monitor"
+          ],
+          "fls": [],
+          "index_patterns": [
+            "*"
+          ],
+          "masked_fields": []
+        }
+      ],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "ml_read_access": {
+      "cluster_permissions": [
+        "cluster:admin/opensearch/ml/stats/nodes",
+        "cluster:admin/opensearch/ml/model_groups/search",
+        "cluster:admin/opensearch/ml/models/get",
+        "cluster:admin/opensearch/ml/models/search",
+        "cluster:admin/opensearch/ml/tasks/get",
+        "cluster:admin/opensearch/ml/tasks/search"
+      ],
+      "hidden": false,
+      "index_permissions": [],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "notebooks_full_access": {
+      "cluster_permissions": [
+        "cluster:admin/opendistro/notebooks/create",
+        "cluster:admin/opendistro/notebooks/update",
+        "cluster:admin/opendistro/notebooks/delete",
+        "cluster:admin/opendistro/notebooks/get",
+        "cluster:admin/opendistro/notebooks/list"
+      ],
+      "hidden": false,
+      "index_permissions": [],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "notebooks_read_access": {
+      "cluster_permissions": [
+        "cluster:admin/opendistro/notebooks/list",
+        "cluster:admin/opendistro/notebooks/get"
+      ],
+      "hidden": false,
+      "index_permissions": [],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "notifications_full_access": {
+      "cluster_permissions": [
+        "cluster:admin/opensearch/notifications/*"
+      ],
+      "hidden": false,
+      "index_permissions": [],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "notifications_read_access": {
+      "cluster_permissions": [
+        "cluster:admin/opensearch/notifications/configs/get",
+        "cluster:admin/opensearch/notifications/features",
+        "cluster:admin/opensearch/notifications/channels/get"
+      ],
+      "hidden": false,
+      "index_permissions": [],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "observability_full_access": {
+      "cluster_permissions": [
+        "cluster:admin/opensearch/observability/create",
+        "cluster:admin/opensearch/observability/update",
+        "cluster:admin/opensearch/observability/delete",
+        "cluster:admin/opensearch/observability/get"
+      ],
+      "hidden": false,
+      "index_permissions": [],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "observability_read_access": {
+      "cluster_permissions": [
+        "cluster:admin/opensearch/observability/get"
+      ],
+      "hidden": false,
+      "index_permissions": [],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "own_index": {
+      "cluster_permissions": [
+        "cluster_composite_ops"
+      ],
+      "description": "Allow all for indices named like the current user",
+      "hidden": false,
+      "index_permissions": [
+        {
+          "allowed_actions": [
+            "indices_all"
+          ],
+          "fls": [],
+          "index_patterns": [
+            "${user_name}"
+          ],
+          "masked_fields": []
+        }
+      ],
+      "reserved": true,
+      "static": true,
+      "tenant_permissions": []
+    },
+    "point_in_time_full_access": {
+      "cluster_permissions": [],
+      "hidden": false,
+      "index_permissions": [
+        {
+          "allowed_actions": [
+            "manage_point_in_time"
+          ],
+          "fls": [],
+          "index_patterns": [
+            "*"
+          ],
+          "masked_fields": []
+        }
+      ],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "ppl_full_access": {
+      "cluster_permissions": [
+        "cluster:admin/opensearch/ppl"
+      ],
+      "hidden": false,
+      "index_permissions": [
+        {
+          "allowed_actions": [
+            "indices:admin/mappings/get",
+            "indices:data/read/search*",
+            "indices:monitor/settings/get"
+          ],
+          "fls": [],
+          "index_patterns": [
+            "*"
+          ],
+          "masked_fields": []
+        }
+      ],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "readall": {
+      "cluster_permissions": [
+        "cluster_composite_ops_ro"
+      ],
+      "description": "Provide the minimum permissions for to readall indices",
+      "hidden": false,
+      "index_permissions": [
+        {
+          "allowed_actions": [
+            "read"
+          ],
+          "fls": [],
+          "index_patterns": [
+            "*"
+          ],
+          "masked_fields": []
+        }
+      ],
+      "reserved": true,
+      "static": true,
+      "tenant_permissions": []
+    },
+    "readall_and_monitor": {
+      "cluster_permissions": [
+        "cluster_monitor",
+        "cluster_composite_ops_ro"
+      ],
+      "description": "Provide the minimum permissions for to readall indices and monitor the cluster",
+      "hidden": false,
+      "index_permissions": [
+        {
+          "allowed_actions": [
+            "read"
+          ],
+          "fls": [],
+          "index_patterns": [
+            "*"
+          ],
+          "masked_fields": []
+        }
+      ],
+      "reserved": true,
+      "static": true,
+      "tenant_permissions": []
+    },
+    "reports_full_access": {
+      "cluster_permissions": [
+        "cluster:admin/opendistro/reports/definition/create",
+        "cluster:admin/opendistro/reports/definition/update",
+        "cluster:admin/opendistro/reports/definition/on_demand",
+        "cluster:admin/opendistro/reports/definition/delete",
+        "cluster:admin/opendistro/reports/definition/get",
+        "cluster:admin/opendistro/reports/definition/list",
+        "cluster:admin/opendistro/reports/instance/list",
+        "cluster:admin/opendistro/reports/instance/get",
+        "cluster:admin/opendistro/reports/menu/download"
+      ],
+      "hidden": false,
+      "index_permissions": [],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "reports_instances_read_access": {
+      "cluster_permissions": [
+        "cluster:admin/opendistro/reports/instance/list",
+        "cluster:admin/opendistro/reports/instance/get",
+        "cluster:admin/opendistro/reports/menu/download"
+      ],
+      "hidden": false,
+      "index_permissions": [],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "reports_read_access": {
+      "cluster_permissions": [
+        "cluster:admin/opendistro/reports/definition/get",
+        "cluster:admin/opendistro/reports/definition/list",
+        "cluster:admin/opendistro/reports/instance/list",
+        "cluster:admin/opendistro/reports/instance/get",
+        "cluster:admin/opendistro/reports/menu/download"
+      ],
+      "hidden": false,
+      "index_permissions": [],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "security_analytics_ack_alerts": {
+      "cluster_permissions": [
+        "cluster:admin/opensearch/securityanalytics/alerts/*"
+      ],
+      "hidden": false,
+      "index_permissions": [],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "security_analytics_full_access": {
+      "cluster_permissions": [
+        "cluster:admin/opensearch/securityanalytics/alerts/*",
+        "cluster:admin/opensearch/securityanalytics/correlations/*",
+        "cluster:admin/opensearch/securityanalytics/detector/*",
+        "cluster:admin/opensearch/securityanalytics/findings/*",
+        "cluster:admin/opensearch/securityanalytics/mapping/*",
+        "cluster:admin/opensearch/securityanalytics/rule/*"
+      ],
+      "hidden": false,
+      "index_permissions": [
+        {
+          "allowed_actions": [
+            "indices:admin/mapping/put",
+            "indices:admin/mappings/get"
+          ],
+          "fls": [],
+          "index_patterns": [
+            "*"
+          ],
+          "masked_fields": []
+        }
+      ],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "security_analytics_read_access": {
+      "cluster_permissions": [
+        "cluster:admin/opensearch/securityanalytics/alerts/get",
+        "cluster:admin/opensearch/securityanalytics/correlations/findings",
+        "cluster:admin/opensearch/securityanalytics/correlations/list",
+        "cluster:admin/opensearch/securityanalytics/detector/get",
+        "cluster:admin/opensearch/securityanalytics/detector/search",
+        "cluster:admin/opensearch/securityanalytics/findings/get",
+        "cluster:admin/opensearch/securityanalytics/mapping/get",
+        "cluster:admin/opensearch/securityanalytics/mapping/view/get",
+        "cluster:admin/opensearch/securityanalytics/rule/get",
+        "cluster:admin/opensearch/securityanalytics/rule/search"
+      ],
+      "hidden": false,
+      "index_permissions": [],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "security_rest_api_access": {
+      "cluster_permissions": [],
+      "hidden": false,
+      "index_permissions": [],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "security_rest_api_full_access": {
+      "cluster_permissions": [
+        "restapi:admin/actiongroups",
+        "restapi:admin/allowlist",
+        "restapi:admin/config/update",
+        "restapi:admin/internalusers",
+        "restapi:admin/nodesdn",
+        "restapi:admin/roles",
+        "restapi:admin/rolesmapping",
+        "restapi:admin/ssl/certs/info",
+        "restapi:admin/ssl/certs/reload",
+        "restapi:admin/tenants"
+      ],
+      "hidden": false,
+      "index_permissions": [],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "snapshot_management_full_access": {
+      "cluster_permissions": [
+        "cluster:admin/opensearch/snapshot_management/*",
+        "cluster:admin/opensearch/notifications/feature/publish",
+        "cluster:admin/repository/*",
+        "cluster:admin/snapshot/*"
+      ],
+      "hidden": false,
+      "index_permissions": [],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    },
+    "snapshot_management_read_access": {
+      "cluster_permissions": [
+        "cluster:admin/opensearch/snapshot_management/policy/get",
+        "cluster:admin/opensearch/snapshot_management/policy/search",
+        "cluster:admin/opensearch/snapshot_management/policy/explain",
+        "cluster:admin/repository/get",
+        "cluster:admin/snapshot/get"
+      ],
+      "hidden": false,
+      "index_permissions": [],
+      "reserved": true,
+      "static": false,
+      "tenant_permissions": []
+    }
+  },
+  "rolesmapping": {
+    "all_access": {
+      "and_backend_roles": [],
+      "backend_roles": [
+        "admin"
+      ],
+      "description": "Maps admin to all_access",
+      "hidden": false,
+      "hosts": [],
+      "reserved": true,
+      "users": []
+    },
+    "audit_viewer": {
+      "and_backend_roles": [],
+      "backend_roles": [],
+      "hidden": false,
+      "hosts": [],
+      "reserved": false,
+      "users": []
+    },
+    "kibana_server": {
+      "and_backend_roles": [],
+      "backend_roles": [],
+      "hidden": false,
+      "hosts": [],
+      "reserved": true,
+      "users": [
+        "kibanaserver"
+      ]
+    },
+    "kibana_user": {
+      "and_backend_roles": [],
+      "backend_roles": [
+        "kibanauser"
+      ],
+      "description": "Maps kibanauser to kibana_user",
+      "hidden": false,
+      "hosts": [],
+      "reserved": false,
+      "users": []
+    },
+    "logstash": {
+      "and_backend_roles": [],
+      "backend_roles": [
+        "logstash"
+      ],
+      "hidden": false,
+      "hosts": [],
+      "reserved": false,
+      "users": []
+    },
+    "manage_snapshots": {
+      "and_backend_roles": [],
+      "backend_roles": [
+        "snapshotrestore"
+      ],
+      "hidden": false,
+      "hosts": [],
+      "reserved": true,
+      "users": []
+    },
+    "manage_wazuh_index": {
+      "and_backend_roles": [],
+      "backend_roles": [],
+      "hidden": false,
+      "hosts": [],
+      "reserved": true,
+      "users": [
+        "kibanaserver"
+      ]
+    },
+    "own_index": {
+      "and_backend_roles": [],
+      "backend_roles": [],
+      "description": "Allow full access to an index named like the username",
+      "hidden": false,
+      "hosts": [],
+      "reserved": false,
+      "users": [
+        "*"
+      ]
+    },
+    "p83_lowpriv_role": {
+      "and_backend_roles": [],
+      "backend_roles": [],
+      "hidden": false,
+      "hosts": [],
+      "reserved": false,
+      "users": [
+        "p83_lowpriv"
+      ]
+    },
+    "readall": {
+      "and_backend_roles": [],
+      "backend_roles": [
+        "readall"
+      ],
+      "hidden": false,
+      "hosts": [],
+      "reserved": true,
+      "users": []
+    }
+  },
+  "secret_handling": "Password hashes and any secret-derived material OMITTED. Only non-secret identities, role names, index patterns, and mapping assignments are recorded."
+}
