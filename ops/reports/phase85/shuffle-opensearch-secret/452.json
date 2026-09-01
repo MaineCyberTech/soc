@@ -1,0 +1,1 @@
+{"index":452,"group":"shuffle-opensearch-secret","secret":"snapshot_repo_credentials","location":"vault:shuffle/opensearch/snapshot/s3","rotation":"quarterly"}

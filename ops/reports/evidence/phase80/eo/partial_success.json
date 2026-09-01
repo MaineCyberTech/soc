@@ -1,0 +1,15 @@
+{
+  "_execution_ids": [
+    "e75729e5-7bf1-49e5-9a7b-6edda59fa1e1"
+  ],
+  "_notes": "single normal delivery through deployed v2 webhook; atomic-claim yields exactly one IRIS object; ledger DELIVERED.",
+  "action_task_id": "484d8d7c-cd18-45d3-88d3-d337447ff670",
+  "automatic_replay_while_uncertain": false,
+  "destination_object_count": 1,
+  "direct_readback_sha256": "79092a0ba787b2fe6c0e468587ac40c8338f146cc5a3636595dd57e26f9162c9",
+  "evidence_sha256": "d2797b730f114c0db2d9ed3833ab54c9a6c020b3d67ec7e0d943bc8e0ef9d065",
+  "final_ledger_state": "DELIVERED",
+  "iris_object_id": 654,
+  "shuffle_execution_id": "e75729e5-7bf1-49e5-9a7b-6edda59fa1e1",
+  "source_event_id": "eo-partial-621578dd4e"
+}

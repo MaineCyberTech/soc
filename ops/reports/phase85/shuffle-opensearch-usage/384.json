@@ -1,0 +1,1 @@
+{"index":384,"group":"shuffle-opensearch-usage","pattern":"ILM policy put","frequency":"bootstrap","privilege":"cluster:admin/ilm","component":"shuffle-bootstrap"}

@@ -1,0 +1,1 @@
+{"index":429,"group":"shuffle-opensearch-replacement","conclusion":"No restricted role combination covers all shuffle OpenSearch operations","recommendation":"retain_admin_under_exception"}

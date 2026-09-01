@@ -1,0 +1,1 @@
+{"index":397,"group":"shuffle-opensearch-admin-need","test":"convergence_test_72h","result":"FAIL - drift detected in index patterns","evidence":"convergence_log:pattern_mismatch","conclusion":"no_safe_convergence"}

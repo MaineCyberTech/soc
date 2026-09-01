@@ -1,0 +1,1 @@
+{"index":483,"group":"shuffle-opensearch-old-negative","test":"non_admin_snapshot","input":"PUT /_snapshot/repo/snap as restricted","expected":"403_forbidden","result":"PASS - correctly denied"}

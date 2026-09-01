@@ -1,0 +1,1 @@
+{"index":381,"group":"shuffle-opensearch-usage","pattern":"Bulk document indexing","frequency":"continuous","privilege":"indices:data/write/bulk","component":"execution-handler"}

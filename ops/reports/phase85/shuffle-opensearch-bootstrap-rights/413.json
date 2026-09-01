@@ -1,0 +1,1 @@
+{"index":413,"group":"shuffle-opensearch-bootstrap-rights","right":"put_search_templates","privilege":"cluster:admin/search/template","phase":"deployment"}

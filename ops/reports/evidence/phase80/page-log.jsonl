@@ -1,0 +1,5 @@
+{"ts": 1788143826.059274, "iso": "2026-08-31T02:37:06.059274+00:00", "severity": "fast", "action": "PAGE", "external_pager": false, "note": "local-alert-log-only"}
+{"ts": 1788143826.059274, "iso": "2026-08-31T02:37:06.059274+00:00", "severity": "slow", "action": "PAGE", "external_pager": false, "note": "local-alert-log-only"}
+{"ts": 1788143835.8141758, "iso": "2026-08-31T02:37:15.814176+00:00", "severity": "fast", "action": "CLEAR", "external_pager": false, "note": "local-alert-log-only"}
+{"ts": 1788143837.068023, "iso": "2026-08-31T02:37:17.068023+00:00", "severity": "slow", "action": "PAGE", "external_pager": false, "note": "local-alert-log-only"}
+{"ts": 1788143856.8326526, "iso": "2026-08-31T02:37:36.832653+00:00", "severity": "slow", "action": "CLEAR", "external_pager": false, "note": "local-alert-log-only"}

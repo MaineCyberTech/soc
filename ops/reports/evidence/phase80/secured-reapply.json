@@ -1,0 +1,17 @@
+{
+  "secured_reapply": true,
+  "reapply_rbac_write_rc": 201,
+  "reapply_rbac_delete_rc": 403,
+  "dedicated_secrets_present": [
+    "iris-shuffle-dedicated",
+    "dedup-shuffle-dedicated",
+    "iris-ca.crt",
+    "opensearch-ca"
+  ],
+  "backend_dedicated_secret_mounts": [
+    "iris-ca.crt"
+  ],
+  "workers_swarm_secrets": [
+    "dedup-shuffle-dedicated"
+  ]
+}

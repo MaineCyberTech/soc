@@ -1,0 +1,1 @@
+{"index":400,"group":"shuffle-opensearch-steady-state","operation":"bulk_index_execution_results","privilege":"indices:data/write/bulk","frequency":"continuous","slo":"<100ms_p99"}

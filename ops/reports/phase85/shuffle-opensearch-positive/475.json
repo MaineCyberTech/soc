@@ -1,0 +1,1 @@
+{"index":475,"group":"shuffle-opensearch-positive","test":"admin_create_snapshot","input":"PUT /_snapshot/shuffle-repo/snap1","expected":"200_accepted","result":"PASS"}

@@ -1,0 +1,1 @@
+{"index":379,"group":"shuffle-opensearch-dependency","finding":"Cross-cluster replication config for DR requires cluster:admin/ccr","evidence_ref":"k8s/shuffle-opensearch/ccr-config.yaml","status":"confirmed"}

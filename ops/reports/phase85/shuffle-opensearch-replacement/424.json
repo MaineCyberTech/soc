@@ -1,0 +1,1 @@
+{"index":424,"group":"shuffle-opensearch-replacement","role":"ilm_executor","test":"cluster:admin/ilm only","result":"FAIL - cannot apply to indices without index admin"}

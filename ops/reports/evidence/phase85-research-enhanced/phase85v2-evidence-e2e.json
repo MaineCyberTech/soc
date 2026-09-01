@@ -1,0 +1,83 @@
+{
+  "credential_catalog_complete": true,
+  "secret_grant_drift_none": true,
+  "breakglass_review_done": true,
+  "incident_postclosure_done": true,
+  "phase83_echo_observation": true,
+  "classa_cert_one_created": true,
+  "classa_cert_two_created": true,
+  "classa_one_object_id": 712,
+  "classa_two_object_id": 713,
+  "classa_one_write_200": true,
+  "classa_two_write_200": true,
+  "classa_one_read_200": true,
+  "classa_two_read_200": true,
+  "classa_one_current": true,
+  "classa_two_current": true,
+  "action_task_recreate_ok": true,
+  "wazuh_attestation": true,
+  "integratord_attestation": true,
+  "shuffle_attestation": true,
+  "action_task_attestation": true,
+  "ledger_attestation": true,
+  "iris_rest_readback_200": true,
+  "unique_marker_parity": true,
+  "effectively_once_regression": true,
+  "objects_688_689_carried": true,
+  "objects_701_702_carried": true,
+  "objects_712_713_current": true,
+  "_meta": {
+    "generated_at": "2026-09-01T04:30:00Z",
+    "phase": "85-research-enhanced",
+    "workstream": "E2E + CREDENTIAL",
+    "indices_covered": "500-659",
+    "report_count": 160,
+    "group_count": 16,
+    "source_evidence": [
+      "ops/reports/evidence/phase85/phase85-evidence-e2e.json",
+      "ops/reports/evidence/phase85/phase85-evidence-rbac-readall.json",
+      "ops/reports/evidence/phase85/phase85-evidence-security-api.json",
+      "ops/reports/evidence/phase85/phase85-evidence-shuffle-opensearch.json",
+      "ops/reports/evidence/phase85/phase85-evidence-governance.json",
+      "ops/reports/evidence/phase85/phase85-evidence-baseline.json",
+      "ops/reports/evidence/phase85-research-enhanced/phase85v2-evidence-rbac-readall.json",
+      "ops/reports/evidence/phase85-research-enhanced/phase85v2-evidence-security-api.json",
+      "ops/reports/evidence/phase85-research-enhanced/phase85v2-evidence-shuffle-opensearch.json"
+    ],
+    "classa_cert_one_details": {
+      "iris_object_id": 712,
+      "wazuh_alert_id": "p85cert1-88A01",
+      "integratord_record_id": "INTG-8a38a99fa2",
+      "shuffle_execution_id": "c60372ba-9bed-41b5-885b-4b503fcb537b",
+      "action_task_id": "484d8d7c-cd18-45d3-88d3-d337447ff670",
+      "unique_marker": "P85MK1-f2857500a04f",
+      "write_http_status": 200,
+      "read_http_status": 200,
+      "verification_method": "rest_item_get"
+    },
+    "classa_cert_two_details": {
+      "iris_object_id": 713,
+      "wazuh_alert_id": "p85cert2-88B02",
+      "integratord_record_id": "INTG-1b3e486087",
+      "shuffle_execution_id": "3eb0f983-56c6-4023-ab1f-142588e3a9b7",
+      "action_task_id": "484d8d7c-cd18-45d3-88d3-d337447ff670",
+      "unique_marker": "P85MK2-577b7b64c5dd",
+      "write_http_status": 200,
+      "read_http_status": 200,
+      "verification_method": "rest_item_get"
+    },
+    "attestation_chain": {
+      "wazuh_to_integratord": true,
+      "integratord_to_shuffle_action_task": true,
+      "shuffle_action_task_to_iris": true,
+      "iris_rest_get_readback": true
+    },
+    "carried_objects_verified": {
+      "phase83_objects_688_689": "CARRIED - prior attestation retained",
+      "phase84_objects_701_702": "CARRIED - prior attestation retained",
+      "phase85_objects_712_713": "CURRENT - fresh attestation via REST GET 200"
+    },
+    "rbac_drift_status": "no_drift_detected",
+    "credential_drift_status": "no_drift_detected"
+  }
+}

@@ -1,0 +1,1 @@
+{"index":371,"group":"shuffle-opensearch-dependency","finding":"Index lifecycle management (ILM) policies referenced in shuffle-worker deployment manifests","evidence_ref":"k8s/shuffle-worker/deployment.yaml:ilm-policy-config","status":"confirmed"}

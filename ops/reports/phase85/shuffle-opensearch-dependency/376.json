@@ -1,0 +1,1 @@
+{"index":376,"group":"shuffle-opensearch-dependency","finding":"Snapshot/restore operations for backup require cluster:admin/snapshot","evidence_ref":"src/services/backup.ts:createSnapshot","status":"confirmed"}

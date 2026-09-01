@@ -1,0 +1,1 @@
+{"index":388,"group":"shuffle-opensearch-usage","pattern":"Alias add/remove","frequency":"per_rotation","privilege":"indices:admin/aliases","component":"index-management"}

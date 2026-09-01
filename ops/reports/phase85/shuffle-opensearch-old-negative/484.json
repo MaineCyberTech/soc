@@ -1,0 +1,1 @@
+{"index":484,"group":"shuffle-opensearch-old-negative","test":"non_admin_ccr","input":"PUT /_ccr/auto_follow as restricted","expected":"403_forbidden","result":"PASS - correctly denied"}

@@ -1,0 +1,1 @@
+{"index":448,"group":"shuffle-opensearch-backup","test":"cross_region_restore","date":"2026-08-30","result":"PASS - DR region restore works","status":"verified"}

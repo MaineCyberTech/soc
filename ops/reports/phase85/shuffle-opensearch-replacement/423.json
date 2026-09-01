@@ -1,0 +1,1 @@
+{"index":423,"group":"shuffle-opensearch-replacement","role":"snapshot_user","test":"cluster:admin/snapshot only","result":"FAIL - cannot create repo without cluster admin"}

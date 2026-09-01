@@ -1,0 +1,1 @@
+{"index":404,"group":"shuffle-opensearch-steady-state","operation":"rollover_write_index","privilege":"indices:admin/rollover","frequency":"size_based","slo":"automated"}

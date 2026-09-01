@@ -1,0 +1,1 @@
+{"index":492,"group":"shuffle-opensearch-grant-removal","assessment":"compensating_controls","controls":["immutable_audit_logs","privilege_use_alerting","quarterly_access_review","5min_rollback"],"status":"implemented"}

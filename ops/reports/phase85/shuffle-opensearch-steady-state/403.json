@@ -1,0 +1,1 @@
+{"index":403,"group":"shuffle-opensearch-steady-state","operation":"delete_old_execution_indices","privilege":"indices:admin/delete","frequency":"daily_ilm","slo":"automated"}

@@ -1,0 +1,1 @@
+{"index":441,"group":"shuffle-opensearch-backup","backup":"incremental_snapshot","repository":"shuffle-s3-repo","schedule":"every_4h","status":"verified"}

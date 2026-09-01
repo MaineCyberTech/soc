@@ -1,0 +1,1 @@
+{"index":370,"group":"shuffle-opensearch-dependency","finding":"Shuffle workflows declare explicit OpenSearch client dependency via @opensearch-project/client in package.json","evidence_ref":"package.json:dependencies","status":"confirmed"}

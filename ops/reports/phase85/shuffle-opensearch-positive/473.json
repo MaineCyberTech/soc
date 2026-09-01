@@ -1,0 +1,1 @@
+{"index":473,"group":"shuffle-opensearch-positive","test":"admin_put_ilm_policy","input":"PUT /_ilm/policy/shuffle-logs","expected":"200_ok","result":"PASS"}

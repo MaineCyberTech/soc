@@ -1,0 +1,1 @@
+{"index":374,"group":"shuffle-opensearch-dependency","finding":"Bulk API usage for execution result ingestion requires indices:admin/create","evidence_ref":"src/workers/execution-handler.ts:bulkInsert","status":"confirmed"}

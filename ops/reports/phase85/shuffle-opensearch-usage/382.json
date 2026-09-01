@@ -1,0 +1,1 @@
+{"index":382,"group":"shuffle-opensearch-usage","pattern":"Search executions","frequency":"high","privilege":"indices:data/read/search","component":"execution-search-api"}

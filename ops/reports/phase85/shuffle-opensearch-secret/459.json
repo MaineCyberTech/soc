@@ -1,0 +1,1 @@
+{"index":459,"group":"shuffle-opensearch-secret","summary":"Admin secret cataloged and exceptioned from rotation; all other secrets on quarterly rotation","secret_cataloged":true,"admin_exception":true}

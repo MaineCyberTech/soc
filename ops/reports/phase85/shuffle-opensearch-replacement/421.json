@@ -1,0 +1,1 @@
+{"index":421,"group":"shuffle-opensearch-replacement","role":"restricted_reader","test":"indices:data/read/* only","result":"FAIL - cannot search without index perms"}

@@ -1,0 +1,1 @@
+{"index":481,"group":"shuffle-opensearch-old-negative","test":"non_admin_put_ilm","input":"PUT /_ilm/policy/test as restricted","expected":"403_forbidden","result":"PASS - correctly denied"}

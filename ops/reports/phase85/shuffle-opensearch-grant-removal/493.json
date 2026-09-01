@@ -1,0 +1,1 @@
+{"index":493,"group":"shuffle-opensearch-grant-removal","assessment":"secret_rotation_exception","result":"admin_secret_exceptioned","reason":"rotation_breaks_bootstrap"}

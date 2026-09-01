@@ -1,0 +1,1 @@
+{"index":405,"group":"shuffle-opensearch-steady-state","operation":"update_index_settings","privilege":"indices:admin/settings/update","frequency":"weekly","slo":"maintenance_window"}

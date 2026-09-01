@@ -1,0 +1,1 @@
+{"index":494,"group":"shuffle-opensearch-grant-removal","assessment":"monitoring_coverage","result":"complete","alerts":["admin_login","privilege_escalation","unusual_index_ops"]}

@@ -1,0 +1,1 @@
+{"index":386,"group":"shuffle-opensearch-usage","pattern":"Snapshot create","frequency":"daily","privilege":"cluster:admin/snapshot","component":"backup-service"}

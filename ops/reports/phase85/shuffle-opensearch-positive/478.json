@@ -1,0 +1,1 @@
+{"index":478,"group":"shuffle-opensearch-positive","test":"admin_ccr_follow","input":"PUT /_ccr/auto_follow/shuffle-dr","expected":"200_ok","result":"PASS"}

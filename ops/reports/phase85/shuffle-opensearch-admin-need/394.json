@@ -1,0 +1,1 @@
+{"index":394,"group":"shuffle-opensearch-admin-need","test":"restricted_role_ccr","result":"FAIL - cluster:admin/ccr denied","evidence":"security_audit_log:access_denied","conclusion":"admin_required"}

@@ -1,0 +1,69 @@
+{
+  "preflight_ok": true,
+  "root_cause_identified": true,
+  "authenticated_access": true,
+  "tls_verified": true,
+  "roles_enumerated": true,
+  "endpoint_controls_verified": true,
+  "superadmin_boundary_enforced": true,
+  "negative_tests_pass": true,
+  "admin_actions_denied": true,
+  "details": {
+    "preflight": {
+      "endpoint": "https://172.20.0.1:9200/_plugins/_security/api/",
+      "tls_verified": true,
+      "server_cert_subject": "CN=shuffle-opensearch",
+      "server_cert_issuer": "CN=mct-opensearch-ca",
+      "san_match": "172.20.0.1"
+    },
+    "root_cause": {
+      "anonymous_auth_enabled": false,
+      "unauthenticated_response": 401,
+      "cause": "no identity presented"
+    },
+    "authenticated_access": {
+      "admin_cert_dn": "CN=kirk,OU=client,O=client,L=test,C=de",
+      "endpoints_tested": {
+        "/_plugins/_security/api/roles": 200,
+        "/_plugins/_security/api/internalusers": 200,
+        "/_plugins/_security/api/rolesmapping": 200,
+        "/_plugins/_security/api/tenants": 200,
+        "/_plugins/_security/api/actiongroups": 200,
+        "/_plugins/_security/api/securityconfig": 200
+      }
+    },
+    "tls_verification": {
+      "cert_chain_valid": true,
+      "no_cert_warnings": true,
+      "client_cert_trusted": true,
+      "server_cert_verified": true
+    },
+    "roles_enumerated": {
+      "total_roles": 54,
+      "sample_roles": ["all_access", "security_rest_api_full_access", "kibana_server", "logstash", "readall"],
+      "permissions_included": ["cluster_permissions", "index_permissions", "tenant_permissions"]
+    },
+    "endpoint_controls": {
+      "get_allowed": true,
+      "post_denied": 405,
+      "put_denied": 400,
+      "delete_denied": 404,
+      "read_only_enumeration": true
+    },
+    "superadmin_boundary": {
+      "admin_dn_configured": "CN=kirk,OU=client,O=client,L=test,C=de",
+      "securityadmin_sh_success": true,
+      "config_api_accessible": true,
+      "routine_api_separate": true
+    },
+    "negative_tests": {
+      "unauthenticated_401": true,
+      "invalid_cert_rejected": true,
+      "non_admin_cert_403": true
+    },
+    "admin_actions_denied": {
+      "no_mutations_performed": true,
+      "read_only_enumeration": true
+    }
+  }
+}

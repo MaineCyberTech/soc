@@ -1,0 +1,1 @@
+{"index":470,"group":"shuffle-opensearch-positive","test":"admin_create_index","input":"POST /shuffle-exec-123","expected":"200_created","result":"PASS"}

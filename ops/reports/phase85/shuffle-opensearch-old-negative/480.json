@@ -1,0 +1,1 @@
+{"index":480,"group":"shuffle-opensearch-old-negative","test":"non_admin_create_index","input":"POST /shuffle-exec-456 as restricted","expected":"403_forbidden","result":"PASS - correctly denied"}

@@ -1,0 +1,16 @@
+{
+  "dependency_identified": true,
+  "usage_patterns_cataloged": true,
+  "admin_need_proven": true,
+  "steady_state_documented": true,
+  "bootstrap_rights_enumerated": true,
+  "replacement_assessed": true,
+  "approval_obtained": true,
+  "backup_verified": true,
+  "secret_cataloged": true,
+  "cutover_plan": true,
+  "positive_tests_pass": true,
+  "old_negative_tests_pass": true,
+  "grant_removal_or_exception": "exception",
+  "admin_need_disposition": "necessary"
+}

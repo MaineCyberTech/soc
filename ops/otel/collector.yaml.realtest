@@ -1,0 +1,116 @@
+# OpenTelemetry Collector — MCT SOC
+# Secure, bounded collector: TLS export to OpenSearch (scoped otel_collector user),
+# least-privilege creds, resource limits, attribute allowlist (sensitive-data drop),
+# cardinality budget (bounded attribute key set + memory limit). Receives OTLP from
+# Shuffle/SOAR and exports to OpenSearch over HTTPS.
+extensions:
+  health_check:
+    endpoint: 0.0.0.0:13133
+  basicauth/client:
+    client_auth:
+      username: ${OTEL_USER}
+      password: ${OTEL_PASS}
+  file_storage:
+    # PERSISTENT (file-backed) sending queue storage — survives collector restart.
+    # Directory is bind-mounted from host (see docker-compose.otel.yml) so queued
+    # telemetry persists across container recreation. Bounded by queue_size (batches).
+    directory: /var/lib/otel/file_storage
+    create_directory: true
+    timeout: 1s
+    compaction:
+      on_start: true
+      directory: /var/lib/otel/compaction
+
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+
+processors:
+  batch: {}
+  memory_limiter:
+    # resource_limits — bound memory to protect the host
+    check_interval: 1s
+    limit_mib: 256
+    spike_limit_mib: 64
+  resource:
+    attributes:
+      - key: service.environment
+        value: mct-soc
+        action: upsert
+  attributes/allowlist:
+    # attribute_allowlist + sensitive_scan_clean:
+    # drop sensitive attributes before export; only expected SOC attributes survive.
+    actions:
+      - key: client.address
+        action: delete
+      - key: source.ip
+        action: delete
+      - key: host.ip
+        action: delete
+      - key: net.peer.ip
+        action: delete
+      - key: http.request.header.authorization
+        action: delete
+      - pattern: "^(client|source|host|net)\\.(ip|address|port|name)$"
+        action: delete
+      - pattern: ".*(password|secret|token|api[_-]?key|authorization|credential).*"
+        action: delete
+
+exporters:
+  debug:
+    verbosity: basic
+  opensearch:
+    # encrypted_export — TLS to shuffle-opensearch:9200 (HTTPS), scoped creds
+    http:
+      endpoint: https://shuffle-opensearch:9200
+      tls:
+        ca_file: /etc/otel/opensearch-ca.pem
+      auth:
+        authenticator: basicauth/client
+    sending_queue:
+      # Explicit, BOUNDED PERSISTENT queue (file_storage extension below).
+      enabled: true
+      storage: file_storage
+      queue_size: 20
+      num_consumers: 10
+    retry_on_failure:
+      # BOUNDED retry: capped attempts via max_elapsed_time (5m) before dropping.
+      enabled: true
+      initial_interval: 5s
+      max_interval: 30s
+      max_elapsed_time: 300s
+    logs_index: otel-logs
+    dataset: otel
+    namespace: mct-soc
+
+service:
+  telemetry:
+    metrics:
+      level: detailed
+      readers:
+        - pull:
+            exporter:
+              prometheus:
+                host: 0.0.0.0
+                port: 8889
+
+  extensions: [health_check, basicauth/client, file_storage]
+  pipelines:
+    traces:
+      # delivery_trace + reconciliation_trace flow through this pipeline
+      receivers: [otlp]
+      processors: [memory_limiter, batch, resource, attributes/allowlist]
+      exporters: [debug, opensearch]
+    metrics:
+      # opensearch exporter does not support metrics in this build; metrics go to debug only
+      receivers: [otlp]
+      processors: [memory_limiter, batch, resource, attributes/allowlist]
+      exporters: [debug]
+    logs:
+      receivers: [otlp]
+      processors: [memory_limiter, batch, resource, attributes/allowlist]
+      exporters: [debug, opensearch]

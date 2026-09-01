@@ -1,0 +1,1 @@
+{"index":373,"group":"shuffle-opensearch-dependency","finding":"Shuffle app-service requires admin for dynamic index creation during workflow execution","evidence_ref":"src/services/opensearch.ts:createIndexIfNotExists","status":"confirmed"}

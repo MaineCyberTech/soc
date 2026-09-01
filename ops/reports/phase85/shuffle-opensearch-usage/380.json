@@ -1,0 +1,1 @@
+{"index":380,"group":"shuffle-opensearch-usage","pattern":"Index creation","frequency":"per_workflow_execution","privilege":"indices:admin/create","component":"execution-handler"}

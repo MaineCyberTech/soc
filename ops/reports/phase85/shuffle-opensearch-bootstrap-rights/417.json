@@ -1,0 +1,1 @@
+{"index":417,"group":"shuffle-opensearch-bootstrap-rights","right":"update_index_settings_initial","privilege":"indices:admin/settings/update","phase":"deployment"}

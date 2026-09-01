@@ -1,0 +1,1 @@
+{"index":477,"group":"shuffle-opensearch-positive","test":"admin_manage_aliases","input":"POST /_aliases add/remove","expected":"200_ok","result":"PASS"}

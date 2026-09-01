@@ -1,0 +1,16 @@
+{
+  "_execution_ids": [
+    "e398a8c0-c162-443f-ae0e-52a1c9e7ce8b",
+    "5430054a-744e-4b22-aa2b-efd4dc730306"
+  ],
+  "_notes": "workflow created object (exec1). Ledger reset to CLAIMED/alert_id=null to model timeout-ambiguity (uncertain if IRIS accepted). Replay (exec2) RECONCILE_PENDING, no new object.",
+  "action_task_id": "484d8d7c-cd18-45d3-88d3-d337447ff670",
+  "automatic_replay_while_uncertain": false,
+  "destination_object_count": 1,
+  "direct_readback_sha256": "af40bb731f78918654a25d5c02f983d5237f6ba1a97dbccb67046c00a5b3ee9d",
+  "evidence_sha256": "d48d9c1b8e4f5a9fb2b9ab1cfbc5bb5336fe4b47f77f5dea3eb30acdbae5c1b7",
+  "final_ledger_state": "CLAIMED",
+  "iris_object_id": 657,
+  "shuffle_execution_id": "5430054a-744e-4b22-aa2b-efd4dc730306",
+  "source_event_id": "eo-timeout-621578dd4e"
+}

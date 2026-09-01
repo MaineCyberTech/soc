@@ -1,0 +1,1 @@
+{"index":415,"group":"shuffle-opensearch-bootstrap-rights","right":"configure_ccr","privilege":"cluster:admin/ccr","phase":"dr_setup"}

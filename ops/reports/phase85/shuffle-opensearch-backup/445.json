@@ -1,0 +1,1 @@
+{"index":445,"group":"shuffle-opensearch-backup","test":"partial_restore_index","date":"2026-08-20","result":"PASS - single index restore works","status":"verified"}

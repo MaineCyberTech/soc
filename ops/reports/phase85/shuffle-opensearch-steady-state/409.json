@@ -1,0 +1,1 @@
+{"index":409,"group":"shuffle-opensearch-steady-state","operation":"ccr_replication_lag_monitor","privilege":"cluster:monitor/ccr","frequency":"continuous","slo":"<60s_lag"}

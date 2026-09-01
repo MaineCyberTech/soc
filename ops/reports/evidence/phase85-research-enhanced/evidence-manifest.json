@@ -1,0 +1,43 @@
+{
+  "phase": "85-research-enhanced",
+  "generated_at": "2026-09-01T07:47:00Z",
+  "evidence_files": [
+    {
+      "name": "phase85v2-evidence-audit.json",
+      "sha256": "752dca7f708b9f9049f31405ed22805b0e4f782533161b65ed7fd2f7b71a1006",
+      "validator": "p85v2-audit"
+    },
+    {
+      "name": "phase85v2-evidence-e2e.json",
+      "sha256": "cd538a13693c3b6544af68f1925b769cca46b055cc1d31c0e000deeecc1fca03",
+      "validator": "p85v2-e2e"
+    },
+    {
+      "name": "phase85v2-evidence-governance.json",
+      "sha256": "3c705a0de196a06d1d01e70d9ce1a4f71bc87051f00ada1a75e88b054be3a655",
+      "validator": "p85v2-governance"
+    },
+    {
+      "name": "phase85v2-evidence-rbac-readall.json",
+      "sha256": "892bac5892c9664baeffb4cd60241efad1febf10ac4bd2dda1f035f690e0ba8e",
+      "validator": "p85v2-rbac-readall"
+    },
+    {
+      "name": "phase85v2-evidence-repo.json",
+      "sha256": "e5e93f49ac80b2e4ca88fbba3634c79f03457c14a39c3f3d85c6aa565b21cc2a",
+      "validator": "p85v2-repo-verdict"
+    },
+    {
+      "name": "phase85v2-evidence-security-api.json",
+      "sha256": "65a3c7a01d4e30e7fc45c54fcd7cd47622f65d9baf5d6aafa23d41123555157f",
+      "validator": "p85v2-security-api"
+    },
+    {
+      "name": "phase85v2-evidence-shuffle-opensearch.json",
+      "sha256": "f6c0e853c8c005a3017e82b8d6383eafd791c110dca834ccd3bcae27c48cf57f",
+      "validator": "p85v2-shuffle-opensearch"
+    }
+  ],
+  "total_files": 7,
+  "all_validators_pass": true
+}

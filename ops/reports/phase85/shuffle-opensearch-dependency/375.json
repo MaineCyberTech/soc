@@ -1,0 +1,1 @@
+{"index":375,"group":"shuffle-opensearch-dependency","finding":"Search templates for workflow execution queries require cluster:admin/search/template","evidence_ref":"src/api/execution-search.ts:searchTemplate","status":"confirmed"}

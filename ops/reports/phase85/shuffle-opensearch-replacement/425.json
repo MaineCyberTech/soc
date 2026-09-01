@@ -1,0 +1,1 @@
+{"index":425,"group":"shuffle-opensearch-replacement","role":"composite_restricted","test":"writer+reader+index_manager","result":"FAIL - gaps in template/ILM/CCR"}

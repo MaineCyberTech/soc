@@ -1,0 +1,1 @@
+{"index":456,"group":"shuffle-opensearch-secret","secret":"logstash_writer_password","location":"vault:shuffle/opensearch/logstash","rotation":"quarterly"}

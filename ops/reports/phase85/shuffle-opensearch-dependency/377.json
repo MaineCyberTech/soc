@@ -1,0 +1,1 @@
+{"index":377,"group":"shuffle-opensearch-dependency","finding":"Index settings updates for performance tuning require indices:admin/settings/update","evidence_ref":"src/services/index-management.ts:updateSettings","status":"confirmed"}

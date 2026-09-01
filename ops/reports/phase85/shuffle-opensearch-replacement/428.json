@@ -1,0 +1,1 @@
+{"index":428,"group":"shuffle-opensearch-replacement","role":"external_bootstrap_only","test":"bootstrap creates all, runtime uses restricted","result":"FAIL - runtime creates new indices"}

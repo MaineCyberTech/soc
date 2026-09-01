@@ -1,0 +1,17 @@
+{
+  "_execution_ids": [
+    "8c68a7c7-bcf5-4682-b979-beb439612c87",
+    "1ec0da4e-09a3-46a9-89bb-1e5847dde542",
+    "d852c135-56ea-41d7-995c-ec2ddbdee1e9"
+  ],
+  "_notes": "3 concurrent identical events driven through webhook. Atomic op_type=create claim ensures exactly one execution POSTs to IRIS; others 409 -> DUP_SKIP/RECONCILE, no new object. Single alert_id in ledger; readback confirms 1 object.",
+  "action_task_id": "484d8d7c-cd18-45d3-88d3-d337447ff670",
+  "automatic_replay_while_uncertain": false,
+  "destination_object_count": 1,
+  "direct_readback_sha256": "baba804242981022a40ffce7f94bff1f2ce4299d87ec2af3aa6759b3b8d18cf0",
+  "evidence_sha256": "36687c414f898c64080dbc8d927e787774233991bf959a88d07ac3c68f015681",
+  "final_ledger_state": "DELIVERED",
+  "iris_object_id": 658,
+  "shuffle_execution_id": "8c68a7c7-bcf5-4682-b979-beb439612c87",
+  "source_event_id": "eo-deliveryrace-621578dd4e"
+}

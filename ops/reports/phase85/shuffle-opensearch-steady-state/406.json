@@ -1,0 +1,1 @@
+{"index":406,"group":"shuffle-opensearch-steady-state","operation":"manage_aliases_for_read","privilege":"indices:admin/aliases","frequency":"per_rotation","slo":"<1s"}

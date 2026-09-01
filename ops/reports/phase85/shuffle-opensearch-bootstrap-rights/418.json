@@ -1,0 +1,1 @@
+{"index":418,"group":"shuffle-opensearch-bootstrap-rights","right":"verify_cluster_health","privilege":"cluster:monitor/health","phase":"deployment"}

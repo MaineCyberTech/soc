@@ -1,0 +1,16 @@
+{
+  "_execution_ids": [
+    "11e5c740-e264-4b6a-8381-3077aa42e0d2",
+    "afee1e68-fe0b-4894-a4ac-d1321d8cc968"
+  ],
+  "_notes": "workflow created object (exec1). Ledger reset to CLAIMED/alert_id=null to model IRIS response-loss (object created, ack lost). Replay (exec2) RECONCILE_PENDING, no new object.",
+  "action_task_id": "484d8d7c-cd18-45d3-88d3-d337447ff670",
+  "automatic_replay_while_uncertain": false,
+  "destination_object_count": 1,
+  "direct_readback_sha256": "11864aad26006f39d3de85ba602bd49e4b1286eb098767e12ccca4e3f7ed41ae",
+  "evidence_sha256": "8032ad70dc15bfadae3859305c0b1504cb58a360016992f1679d6355726e35c5",
+  "final_ledger_state": "CLAIMED",
+  "iris_object_id": 656,
+  "shuffle_execution_id": "afee1e68-fe0b-4894-a4ac-d1321d8cc968",
+  "source_event_id": "eo-responseloss-621578dd4e"
+}

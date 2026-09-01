@@ -1,0 +1,474 @@
+{
+  "Attachable": true,
+  "ConfigFrom": {
+    "Network": ""
+  },
+  "ConfigOnly": false,
+  "Containers": {
+    "044e8e7d33a659f205395300a38cc5a561e937d4d9115f90ec2419a0e133fd93": {
+      "EndpointID": "9a83c2bc55943c7d5a11a228c09314941be1fcf81b23d16560ed148a082c421a",
+      "IPv4Address": "10.224.224.50/24",
+      "IPv6Address": "",
+      "MacAddress": "02:42:0a:e0:e0:32",
+      "Name": "shuffle-tools_1-2-0.2.zkdland0lyh54czfypf181r35"
+    },
+    "104176a833e7da73191a5642a34fdbf7ac87c4292aab181d50246bfb7dcfe6f6": {
+      "EndpointID": "00f30d88c65a13af467c21281b6f1daf2182b80a8e041bfa05b2043996923936",
+      "IPv4Address": "10.224.224.17/24",
+      "IPv6Address": "",
+      "MacAddress": "02:42:0a:e0:e0:11",
+      "Name": "email_1-3-0.2.sn14op6wvx7sih3141zrtbo96"
+    },
+    "1b7f6d6ac5e7863d81ecff208fe7391d32c7a31a401c43bedfd55ad47bf267cf": {
+      "EndpointID": "582841eb5bdddc6273e68526d4bc060d631c82bdfa2d98b8bf1a694a30e54739",
+      "IPv4Address": "10.224.224.6/24",
+      "IPv6Address": "",
+      "MacAddress": "02:42:0a:e0:e0:06",
+      "Name": "email_1-3-0.1.osoerb5rwz6tyh50b9i7045w4"
+    },
+    "1e4ab63155be869ae0f3216c6fdec6b441e543aefbe68048a5df3302f44ab693": {
+      "EndpointID": "821eaa5f89bbfe563d2be2e32348c6bfbeba42605fe4d42ecd56893aba379198",
+      "IPv4Address": "10.224.224.5/24",
+      "IPv6Address": "",
+      "MacAddress": "02:42:0a:e0:e0:05",
+      "Name": "shuffle-subflow_1-1-0.1.n8ha2d3cmqc5kb26yqh89y1ni"
+    },
+    "27fdd54159638131d5f44aade90e886fff3656f56cbfad773e6a6d4647376dcb": {
+      "EndpointID": "d9782342717adbfa8318954713f782dbf274ddcac84594dca279494500c0e334",
+      "IPv4Address": "10.224.224.16/24",
+      "IPv6Address": "",
+      "MacAddress": "02:42:0a:e0:e0:10",
+      "Name": "shuffle-subflow_1-1-0.2.iz96afe4z3wp6j2lkqj9tgd3e"
+    },
+    "68c1a8b0f0acfceca36386562884ee35ece9a3b32b93e8fb510b0531634205ad": {
+      "EndpointID": "02c2e499c581ec91c256e56fbb65ebb8ea698d888d591680ccc29051511fbbe9",
+      "IPv4Address": "10.224.224.70/24",
+      "IPv6Address": "",
+      "MacAddress": "02:42:0a:e0:e0:46",
+      "Name": "shufflehealthcheck_1-1-0.2.0tfklc4dher8k5rrf6agddjj8"
+    },
+    "99bb139b80f99306cf95b61eabc998698de9d50e2f83c21dcd1b56c6562095e7": {
+      "EndpointID": "32937ef03da326ea75ff8f922aa692cc7c527fec0b54ce5a29899af26bfabc0e",
+      "IPv4Address": "10.224.224.8/24",
+      "IPv6Address": "",
+      "MacAddress": "02:42:0a:e0:e0:08",
+      "Name": "http_1-4-0.2.i23fzsyuni6nfkjvewufr5g07"
+    },
+    "9ff2fd02a76f66a2cd2c5ccbd8c6944e3cc5b4930d77b8b045657a9e93cd50e1": {
+      "EndpointID": "507158842ff6424d09983eff4291b792185fcd93748266508973d90a707a8f43",
+      "IPv4Address": "10.224.224.69/24",
+      "IPv6Address": "",
+      "MacAddress": "02:42:0a:e0:e0:45",
+      "Name": "shufflehealthcheck_1-1-0.1.4ofj1anf2gp22wk8s61g198t3"
+    },
+    "ac2b6251b8b306f20997a5df7c6a9e49179264529ffddd796b08756a475bc294": {
+      "EndpointID": "fb107eb6c8145877e9c627a0226d87bcd4371995ae1109c38f9194f4f22653a3",
+      "IPv4Address": "10.224.224.142/24",
+      "IPv6Address": "",
+      "MacAddress": "02:42:0a:e0:e0:8e",
+      "Name": "shuffle-orborus"
+    },
+    "add0e76d89b376ccf2699a03ac597ba8bf7d22cba4dc850b5339e9b4e19ec833": {
+      "EndpointID": "25689a8ab7539f9a62f3ada5a96721807e74f5da0867698ef220a69246e853e0",
+      "IPv4Address": "10.224.224.12/24",
+      "IPv6Address": "",
+      "MacAddress": "02:42:0a:e0:e0:0c",
+      "Name": "http_1-4-0.1.ppqb6c9tg40a9lxw6tvy1gjj8"
+    },
+    "d6caaa3c0db9225ea1cbc29f03d6e5faade2670cd2854c109d255caee066cf90": {
+      "EndpointID": "9f2349ea3f34a00026aacc4ade822ebcc89730bdebaebd9619bc3a3351ded3a4",
+      "IPv4Address": "10.224.224.60/24",
+      "IPv6Address": "",
+      "MacAddress": "02:42:0a:e0:e0:3c",
+      "Name": "shuffle-backend-proxy"
+    },
+    "d8db1f21586652d5041ccf461e26421deb1afdca7a25c0cb0783250b45cb3f22": {
+      "EndpointID": "9aef7456cfb6509c6490751aa75ae47fa1db1de23f126414a726a0bd903643cf",
+      "IPv4Address": "10.224.224.20/24",
+      "IPv6Address": "",
+      "MacAddress": "02:42:0a:e0:e0:14",
+      "Name": "shuffle-ai_1-1-0.1.xz5wdp57k5644zn3uxlrtcqm4"
+    },
+    "e9ec0474622562cb2dbc6e74d6afc8d91149003050c1c8f9677c5220854890e4": {
+      "EndpointID": "bd8340ef7a69b2078f403220b38ccc404af3e68dd1b53a388521f2544f308eae",
+      "IPv4Address": "10.224.224.72/24",
+      "IPv6Address": "",
+      "MacAddress": "02:42:0a:e0:e0:48",
+      "Name": "shuffle-workers.1.jn2gkqdyu944tf9iylvyw3op6"
+    },
+    "f427c787867e99e858f464e61b30d31acba3cc9cab0c1c3c765d22a3e48845f8": {
+      "EndpointID": "ade1ce633a39644df194f93b57b7b106635421adcdee8ab97f28d05a9ea99937",
+      "IPv4Address": "10.224.224.49/24",
+      "IPv6Address": "",
+      "MacAddress": "02:42:0a:e0:e0:31",
+      "Name": "shuffle-tools_1-2-0.1.5ujy1alo1hr90bkvqcladauq9"
+    },
+    "fc89eae177a1e93eff882eea269228f87e2d1ffaff63fd69ccf3b821626cc890": {
+      "EndpointID": "c24fae71bbda260b5054d111bef30eb189b68a302295eb1991da6a407bd231dc",
+      "IPv4Address": "10.224.224.19/24",
+      "IPv6Address": "",
+      "MacAddress": "02:42:0a:e0:e0:13",
+      "Name": "shuffle-ai_1-1-0.2.caqbfthmuazownb0r2knikh9w"
+    },
+    "lb-shuffle_swarm_executions": {
+      "EndpointID": "518785c93cdb16071e9e3e1cc6596c30af3dc1a9ac5b8cdbc89cfe3d3a4de1d1",
+      "IPv4Address": "10.224.224.22/24",
+      "IPv6Address": "",
+      "MacAddress": "02:42:0a:e0:e0:16",
+      "Name": "shuffle_swarm_executions-endpoint"
+    }
+  },
+  "Created": "2026-08-28T04:45:42.678729811Z",
+  "Driver": "overlay",
+  "EnableIPv4": true,
+  "EnableIPv6": false,
+  "IPAM": {
+    "Config": [
+      {
+        "Gateway": "10.224.224.1",
+        "Subnet": "10.224.224.0/24"
+      }
+    ],
+    "Driver": "default",
+    "Options": null
+  },
+  "Id": "t1rv43olc7ev4hvpjpnqzp469",
+  "Ingress": false,
+  "Internal": false,
+  "Labels": {},
+  "Name": "shuffle_swarm_executions",
+  "Options": {
+    "com.docker.network.driver.mtu": "1500",
+    "com.docker.network.driver.overlay.vxlanid_list": "4097"
+  },
+  "Peers": [
+    {
+      "IP": "172.20.0.4",
+      "Name": "e32d0c6da792"
+    }
+  ],
+  "Scope": "swarm",
+  "Status": {
+    "IPAM": {
+      "Subnets": {
+        "10.224.224.0/24": {
+          "DynamicIPsAvailable": 230,
+          "IPsInUse": 26
+        }
+      }
+    }
+  },
+  "_container_inspect_shuffle-backend_networks": {
+    "mct-security": "e640d29a50d0b1f4ddeebea93fb31860bf0a2fb1a9df737aac14fb9dab3a2e69"
+  },
+  "_service_inspect_shuffle-workers": {
+    "CreatedAt": "2026-08-29T05:14:01.532309387Z",
+    "Endpoint": {
+      "Ports": [
+        {
+          "Name": "worker-port",
+          "Protocol": "tcp",
+          "PublishMode": "ingress",
+          "PublishedPort": 33333,
+          "TargetPort": 33333
+        }
+      ],
+      "Spec": {
+        "Mode": "vip",
+        "Ports": [
+          {
+            "Name": "worker-port",
+            "Protocol": "tcp",
+            "PublishMode": "ingress",
+            "PublishedPort": 33333,
+            "TargetPort": 33333
+          }
+        ]
+      },
+      "VirtualIPs": [
+        {
+          "Addr": "10.0.0.124/24",
+          "NetworkID": "4fiax9sxq3efezb59v2qo9qci"
+        },
+        {
+          "Addr": "10.224.224.143/24",
+          "NetworkID": "t1rv43olc7ev4hvpjpnqzp469"
+        },
+        {
+          "Addr": "10.0.1.5/24",
+          "NetworkID": "lizr8kyguqqe3zlxty89hobln"
+        }
+      ]
+    },
+    "ID": "6yvaesr0l6i85q93qll9ebp1h",
+    "PreviousSpec": {
+      "EndpointSpec": {
+        "Mode": "vip",
+        "Ports": [
+          {
+            "Name": "worker-port",
+            "Protocol": "tcp",
+            "PublishMode": "ingress",
+            "PublishedPort": 33333,
+            "TargetPort": 33333
+          }
+        ]
+      },
+      "Labels": {},
+      "Mode": {
+        "Replicated": {
+          "Replicas": 1
+        }
+      },
+      "Name": "shuffle-workers",
+      "TaskTemplate": {
+        "ContainerSpec": {
+          "Env": [
+            "SHUFFLE_SWARM_CONFIG=run",
+            "SHUFFLE_SWARM_NETWORK_NAME=shuffle_swarm_executions",
+            "SHUFFLE_APP_REPLICAS=2",
+            "SHUFFLE_LOGS_DISABLED=true",
+            "DEBUG_MEMORY=",
+            "SHUFFLE_APP_SDK_TIMEOUT=300",
+            "SHUFFLE_MAX_SWARM_NODES=",
+            "SHUFFLE_BASE_IMAGE_NAME=frikky/shuffle",
+            "SHUFFLE_APP_REQUEST_TIMEOUT=",
+            "DOCKER_API_VERSION=1.44",
+            "HTTP_PROXY=",
+            "HTTPS_PROXY=",
+            "NO_PROXY=",
+            "no_proxy=",
+            "SHUFFLE_APP_HTTP_PROXY=",
+            "SHUFFLE_APP_HTTPS_PROXY=",
+            "SHUFFLE_APP_NO_PROXY=",
+            "SHUFFLE_APP_no_proxy=",
+            "SHUFFLE_PASS_APP_PROXY=true",
+            "BASE_URL=http://shuffle-backend:5001"
+          ],
+          "Hosts": [
+            "172.20.0.1 iriswebapp_nginx",
+            "172.20.0.1 shuffle-opensearch",
+            "10.224.224.60 shuffle-backend"
+          ],
+          "Image": "ghcr.io/shuffle/shuffle-worker@sha256:fd0d420a5e0cd41f3979335e51912e8dd423e7ce540d1dfa24efdc98fb6071bd",
+          "Isolation": "default",
+          "Mounts": [
+            {
+              "ReadOnly": true,
+              "Source": "/opt/mct-security-stack/data/opensearch-tls/ca/ca.pem",
+              "Target": "/opt/mct/security/opensearch-ca.pem",
+              "Type": "bind"
+            },
+            {
+              "ReadOnly": true,
+              "Source": "/opt/mct-security-stack/ops/backups/agents/iris-shuffle.env",
+              "Target": "/run/secrets/iris-shuffle.env",
+              "Type": "bind"
+            },
+            {
+              "ReadOnly": true,
+              "Source": "/opt/mct-security-stack/ops/backups/tls/20260828T234243Z/ca.crt",
+              "Target": "/run/secrets/iris-ca.crt",
+              "Type": "bind"
+            },
+            {
+              "ReadOnly": true,
+              "Source": "/opt/mct-security-stack/ops/backups/tls/ca-bundle.pem",
+              "Target": "/opt/mct/security/ca-bundle.pem",
+              "Type": "bind"
+            },
+            {
+              "Source": "/var/run/docker.sock",
+              "Target": "/var/run/docker.sock",
+              "Type": "bind"
+            }
+          ],
+          "Secrets": [
+            {
+              "File": {
+                "GID": "0",
+                "Mode": 292,
+                "Name": "dedup-shuffle.env",
+                "UID": "0"
+              },
+              "SecretID": "oj7po8ln9svihk8qmmd474vyq",
+              "SecretName": "dedup-shuffle-dedicated"
+            }
+          ]
+        },
+        "ForceUpdate": 10,
+        "LogDriver": {
+          "Name": "json-file",
+          "Options": {
+            "max-size": "10m"
+          }
+        },
+        "Networks": [
+          {
+            "Target": "lizr8kyguqqe3zlxty89hobln"
+          },
+          {
+            "Target": "t1rv43olc7ev4hvpjpnqzp469"
+          }
+        ],
+        "Placement": {},
+        "Resources": {
+          "Reservations": {}
+        },
+        "RestartPolicy": {
+          "Condition": "on-failure",
+          "MaxAttempts": 0
+        },
+        "Runtime": "container"
+      }
+    },
+    "Spec": {
+      "EndpointSpec": {
+        "Mode": "vip",
+        "Ports": [
+          {
+            "Name": "worker-port",
+            "Protocol": "tcp",
+            "PublishMode": "ingress",
+            "PublishedPort": 33333,
+            "TargetPort": 33333
+          }
+        ]
+      },
+      "Labels": {},
+      "Mode": {
+        "Replicated": {
+          "Replicas": 1
+        }
+      },
+      "Name": "shuffle-workers",
+      "RollbackConfig": {
+        "FailureAction": "pause",
+        "MaxFailureRatio": 0,
+        "Monitor": 5000000000,
+        "Order": "stop-first",
+        "Parallelism": 1
+      },
+      "TaskTemplate": {
+        "ContainerSpec": {
+          "DNSConfig": {},
+          "Env": [
+            "SHUFFLE_SWARM_CONFIG=run",
+            "SHUFFLE_SWARM_NETWORK_NAME=shuffle_swarm_executions",
+            "SHUFFLE_APP_REPLICAS=2",
+            "SHUFFLE_LOGS_DISABLED=true",
+            "DEBUG_MEMORY=",
+            "SHUFFLE_APP_SDK_TIMEOUT=300",
+            "SHUFFLE_MAX_SWARM_NODES=",
+            "SHUFFLE_BASE_IMAGE_NAME=frikky/shuffle",
+            "SHUFFLE_APP_REQUEST_TIMEOUT=",
+            "DOCKER_API_VERSION=1.44",
+            "HTTP_PROXY=",
+            "HTTPS_PROXY=",
+            "NO_PROXY=",
+            "no_proxy=",
+            "SHUFFLE_APP_HTTP_PROXY=",
+            "SHUFFLE_APP_HTTPS_PROXY=",
+            "SHUFFLE_APP_NO_PROXY=",
+            "SHUFFLE_APP_no_proxy=",
+            "SHUFFLE_PASS_APP_PROXY=true",
+            "BASE_URL=http://shuffle-backend:5001"
+          ],
+          "Hosts": [
+            "172.20.0.1 iriswebapp_nginx",
+            "172.20.0.1 shuffle-opensearch",
+            "10.224.224.60 shuffle-backend"
+          ],
+          "Image": "ghcr.io/shuffle/shuffle-worker@sha256:fd0d420a5e0cd41f3979335e51912e8dd423e7ce540d1dfa24efdc98fb6071bd",
+          "Isolation": "default",
+          "Mounts": [
+            {
+              "ReadOnly": true,
+              "Source": "/opt/mct-security-stack/data/opensearch-tls/ca/ca.pem",
+              "Target": "/opt/mct/security/opensearch-ca.pem",
+              "Type": "bind"
+            },
+            {
+              "ReadOnly": true,
+              "Source": "/opt/mct-security-stack/ops/backups/agents/iris-shuffle.env",
+              "Target": "/run/secrets/iris-shuffle.env",
+              "Type": "bind"
+            },
+            {
+              "ReadOnly": true,
+              "Source": "/opt/mct-security-stack/ops/backups/tls/20260828T234243Z/ca.crt",
+              "Target": "/run/secrets/iris-ca.crt",
+              "Type": "bind"
+            },
+            {
+              "ReadOnly": true,
+              "Source": "/opt/mct-security-stack/ops/backups/tls/ca-bundle.pem",
+              "Target": "/opt/mct/security/ca-bundle.pem",
+              "Type": "bind"
+            },
+            {
+              "Source": "/var/run/docker.sock",
+              "Target": "/var/run/docker.sock",
+              "Type": "bind"
+            }
+          ],
+          "Secrets": [
+            {
+              "File": {
+                "GID": "0",
+                "Mode": 292,
+                "Name": "dedup-shuffle.env",
+                "UID": "0"
+              },
+              "SecretID": "oj7po8ln9svihk8qmmd474vyq",
+              "SecretName": "dedup-shuffle-dedicated"
+            }
+          ],
+          "StopGracePeriod": 10000000000
+        },
+        "ForceUpdate": 11,
+        "LogDriver": {
+          "Name": "json-file",
+          "Options": {
+            "max-size": "10m"
+          }
+        },
+        "Networks": [
+          {
+            "Target": "lizr8kyguqqe3zlxty89hobln"
+          },
+          {
+            "Target": "t1rv43olc7ev4hvpjpnqzp469"
+          }
+        ],
+        "Placement": {},
+        "Resources": {
+          "Reservations": {}
+        },
+        "RestartPolicy": {
+          "Condition": "on-failure",
+          "Delay": 5000000000,
+          "MaxAttempts": 0
+        },
+        "Runtime": "container"
+      },
+      "UpdateConfig": {
+        "FailureAction": "pause",
+        "MaxFailureRatio": 0,
+        "Monitor": 5000000000,
+        "Order": "stop-first",
+        "Parallelism": 1
+      }
+    },
+    "UpdateStatus": {
+      "CompletedAt": "2026-08-30T23:50:57.485925945Z",
+      "Message": "update completed",
+      "StartedAt": "2026-08-30T23:50:47.149088857Z",
+      "State": "completed"
+    },
+    "UpdatedAt": "2026-08-30T23:50:57.485935586Z",
+    "Version": {
+      "Index": 16961
+    }
+  }
+}

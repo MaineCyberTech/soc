@@ -1,0 +1,10 @@
+{
+  "opensearch_old_id": "X72eqeO1SbCXRPPPHhcJ5g",
+  "opensearch_new_id": "FnzYstGpTcCqA2TK4Pfh9w",
+  "opensearch_runtime_type": "snapshot",
+  "snapshot_id": "p80_snap_20260831t000635z",
+  "snapshot_window_start": "2026-08-31T00:06:35.163737Z",
+  "snapshot_window_end": "2026-08-31T00:06:35.297467Z",
+  "snapshot_state": "SUCCESS",
+  "docs_after_restore": "3"
+}

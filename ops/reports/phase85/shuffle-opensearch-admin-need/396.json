@@ -1,0 +1,1 @@
+{"index":396,"group":"shuffle-opensearch-admin-need","test":"index_template_wildcard_precreate","result":"FAIL - template management still needs admin","evidence":"template_update_requires_admin","conclusion":"admin_required"}

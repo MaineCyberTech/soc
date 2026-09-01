@@ -1,0 +1,1 @@
+{"index":393,"group":"shuffle-opensearch-admin-need","test":"restricted_role_snapshot","result":"FAIL - cluster:admin/snapshot denied","evidence":"security_audit_log:access_denied","conclusion":"admin_required"}

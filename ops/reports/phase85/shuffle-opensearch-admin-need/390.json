@@ -1,0 +1,1 @@
+{"index":390,"group":"shuffle-opensearch-admin-need","test":"restricted_role_no_admin","result":"FAIL - cannot create indices dynamically","evidence":"403_forbidden_on_indices_admin_create","conclusion":"admin_required"}

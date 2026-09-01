@@ -1,0 +1,1 @@
+{"index":453,"group":"shuffle-opensearch-secret","secret":"ccr_remote_cluster_creds","location":"vault:shuffle/opensearch/ccr/remote","rotation":"quarterly"}

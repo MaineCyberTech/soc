@@ -1,0 +1,1 @@
+{"index":420,"group":"shuffle-opensearch-replacement","role":"restricted_writer","test":"indices:data/write/bulk only","result":"FAIL - cannot create indices"}

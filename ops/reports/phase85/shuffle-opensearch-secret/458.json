@@ -1,0 +1,1 @@
+{"index":458,"group":"shuffle-opensearch-secret","secret":"readonly_user_password","location":"vault:shuffle/opensearch/readonly","rotation":"quarterly"}

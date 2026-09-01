@@ -1,0 +1,16 @@
+{
+  "_execution_ids": [
+    "7ea57804-d8b4-463f-8fd5-afb5059800f2",
+    "98b595ec-05b2-4b01-88d4-75c90d7e62ae"
+  ],
+  "_notes": "event delivered (exec1, DELIVERED, alert_id=659). Retry (exec2) hits 409, sees alert_id -> DUP_SKIP, no new object. Ledger remains DELIVERED.",
+  "action_task_id": "484d8d7c-cd18-45d3-88d3-d337447ff670",
+  "automatic_replay_while_uncertain": false,
+  "destination_object_count": 1,
+  "direct_readback_sha256": "97ea5e15a028a86feda604fd75f5775a1b740baf0a6ed8dbd821c3870aa4e524",
+  "evidence_sha256": "af7acff41f9ddcb050fdfdb10e0e2904f60586d1ad7ab45a6069b6c54793d0a2",
+  "final_ledger_state": "DELIVERED",
+  "iris_object_id": 659,
+  "shuffle_execution_id": "98b595ec-05b2-4b01-88d4-75c90d7e62ae",
+  "source_event_id": "eo-retryrace-621578dd4e"
+}

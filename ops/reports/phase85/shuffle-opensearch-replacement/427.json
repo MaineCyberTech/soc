@@ -1,0 +1,1 @@
+{"index":427,"group":"shuffle-opensearch-replacement","role":"wildcard_template_approach","test":"wildcard index perms + template","result":"FAIL - template updates need admin"}

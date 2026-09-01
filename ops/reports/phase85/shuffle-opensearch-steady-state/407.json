@@ -1,0 +1,1 @@
+{"index":407,"group":"shuffle-opensearch-steady-state","operation":"monitor_cluster_health","privilege":"cluster:monitor/health","frequency":"continuous","slo":"<10s"}

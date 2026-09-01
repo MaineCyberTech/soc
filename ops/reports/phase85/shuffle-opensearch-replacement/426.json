@@ -1,0 +1,1 @@
+{"index":426,"group":"shuffle-opensearch-replacement","role":"precreated_indices_approach","test":"pre-create all indices via CI","result":"FAIL - dynamic workflow indices unpredictable"}

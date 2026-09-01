@@ -1,0 +1,1 @@
+{"index":378,"group":"shuffle-opensearch-dependency","finding":"Alias management for index rotation requires indices:admin/aliases","evidence_ref":"src/services/index-management.ts:manageAliases","status":"confirmed"}

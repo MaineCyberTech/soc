@@ -1,0 +1,24 @@
+{
+  "security_restored": true,
+  "rbac_detail": {
+    "dedup_writer_write_ok": true,
+    "admin_op_denied": true,
+    "role_create_denied": true,
+    "anonymous_denied": true
+  },
+  "ledger_parity": true,
+  "ledger_detail": {
+    "dedup_key_field": "event_id",
+    "keyword_subfield": true,
+    "docs_after_restore": 3
+  },
+  "true_runtime_rollback": true,
+  "rollback_detail": {
+    "verify_index": "wazuh-iris-dedup-verify-p80",
+    "original_docs": 3,
+    "verify_docs": 3,
+    "mapping_match": true,
+    "count_match": true,
+    "verify_index_deleted": true
+  }
+}

@@ -1,0 +1,1 @@
+{"index":391,"group":"shuffle-opensearch-admin-need","test":"restricted_role_ilm","result":"FAIL - cluster:admin/ilm denied","evidence":"security_audit_log:access_denied","conclusion":"admin_required"}

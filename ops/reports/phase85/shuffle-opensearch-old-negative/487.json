@@ -1,0 +1,1 @@
+{"index":487,"group":"shuffle-opensearch-old-negative","test":"non_admin_delete_index","input":"DELETE /shuffle-exec as restricted","expected":"403_forbidden","result":"PASS - correctly denied"}

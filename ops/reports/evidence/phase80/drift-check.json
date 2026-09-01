@@ -1,0 +1,29 @@
+{
+  "checked_at_utc": "2026-08-31T00:05:23Z",
+  "network": "shuffle_swarm_executions",
+  "config_parity": true,
+  "config_parity_detail": "defining attributes (Attachable/Driver/Scope/IPAM/Options/Labels) match between desired and effective",
+  "membership_drift_detected": true,
+  "backend_present_on_overlay": false,
+  "backend_proxy_present_on_overlay": true,
+  "workers_present_on_overlay": true,
+  "desired_members": [
+    "shuffle-backend",
+    "shuffle-workers"
+  ],
+  "effective_member_count": 16,
+  "secret_grant_drift_detected": true,
+  "backend_observed_secret_mounts": [
+    "iris-ca.crt"
+  ],
+  "workers_swarm_secrets": [
+    "dedup-shuffle-dedicated"
+  ],
+  "desired_secrets": [
+    "iris-shuffle-dedicated",
+    "dedup-shuffle-dedicated",
+    "iris-ca.crt",
+    "opensearch-ca"
+  ],
+  "verdict": "DRIFT DETECTED (membership) \u2014 reported, no false negative"
+}

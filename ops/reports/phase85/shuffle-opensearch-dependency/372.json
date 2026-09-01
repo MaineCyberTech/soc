@@ -1,0 +1,1 @@
+{"index":372,"group":"shuffle-opensearch-dependency","finding":"Index templates for execution logs and workflow metrics deployed via shuffle-bootstrap job","evidence_ref":"k8s/shuffle-bootstrap/job.yaml:template-config","status":"confirmed"}

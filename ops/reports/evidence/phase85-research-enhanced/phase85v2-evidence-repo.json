@@ -1,0 +1,29 @@
+{
+  "repository": "git@github.com:MaineCyberTech/soc.git",
+  "branch": "main",
+  "commit_id": "fb28bbdd7a854c96f479948f179a0a363636bc5f",
+  "local_head": "fb28bbdd7a854c96f479948f179a0a363636bc5f",
+  "remote_head": "fb28bbdd7a854c96f479948f179a0a363636bc5f",
+  "heads_equal": true,
+  "push_success": true,
+  "clean_tree": true,
+  "untracked_adjudicated": true,
+  "canonical_sha256": "cf0e61b974e73aae3ffa0cc6d65099767c8fb6e5ba14fe176d5be89d947524dd",
+  "manifest_sha256": "8b066ee973f2d56c95facca54a8a280b00fa268b52a6e91bbec79d71342bd93f",
+  "rollback_identities": ["d56928f","db7d42c","845f054d","51b6acc","ac4e30f","e4c8a7c","2430563","db814a5","4069525","fb28bbd"],
+  "prompt_reports_total": 920,
+  "disposition_total": 920,
+  "validator_results": {
+    "p85v2-inventory": "PASS",
+    "p85v2-time-anchor": "PASS",
+    "p85v2-security-api": "PASS",
+    "p85v2-rbac-readall": "PASS",
+    "p85v2-shuffle-opensearch": "PASS",
+    "p85v2-e2e": "PASS",
+    "p85v2-audit": "PASS",
+    "p85v2-baseline": "PASS",
+    "p85v2-governance": "PASS",
+    "p85v2-repo-verdict": "PASS"
+  },
+  "operational_verdict": "PASS"
+}

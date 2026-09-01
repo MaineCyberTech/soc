@@ -1,0 +1,15 @@
+{
+  "synthetic_inventory_complete": true,
+  "objects_688_689_readable": true,
+  "objects_701_702_readable": true,
+  "objects_712_713_readable": true,
+  "phase85_object_provenance": true,
+  "alerts_158_170_preserved": true,
+  "historical_192_193_immutable": true,
+  "gateway_overlay_disposition": true,
+  "network_drift_governed": true,
+  "otel_current_carried": true,
+  "excluded_phase84_artifacts_adjudicated": true,
+  "agents_durable_only": true,
+  "_note": "Reconciled from Phase 85 live truth: synthetic inventory complete; objects 688/689 (p83) CARRIED readable; objects 701/702 (p84) CARRIED readable; objects 712/713 (p85) CURRENT readable via REST GET 200; full provenance chain attested (Wazuh→Integratord→Shuffle→IRIS REST GET); alerts 158-170 preserved in evidence; historical 192/193 immutable duplicate failure documented; gateway/overlay disposition documented (encryption + membership); network drift governed not remediated; OTel current state carried; Phase 84 exclusions (920-939, 1000-*) adjudicated intentional; AGENTS.md durable-only pattern confirmed. No secret values present."
+}

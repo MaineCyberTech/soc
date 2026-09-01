@@ -1,0 +1,16 @@
+{
+  "_execution_ids": [
+    "7a44bcef-26a7-4ad0-aba1-e2884a1ea3ed",
+    "784b7499-fc28-4200-a848-56b630e2cc36"
+  ],
+  "_notes": "event delivered (exec1, alert_id=660). Ledger reset to CLAIMED to model RECONCILE state. Replay (exec2) RECONCILE_PENDING, no new object (fail-closed, reconciliation blocks automatic replay).",
+  "action_task_id": "484d8d7c-cd18-45d3-88d3-d337447ff670",
+  "automatic_replay_while_uncertain": false,
+  "destination_object_count": 1,
+  "direct_readback_sha256": "69259e4660b56a8dfe9f35f7a483ed1ece8c66a3d5284a2bbca33f9982804f2f",
+  "evidence_sha256": "8e7c61d3fbca48ce92b4e472561773daba4ee053426ba3e01ce453e14aed1097",
+  "final_ledger_state": "CLAIMED",
+  "iris_object_id": 660,
+  "shuffle_execution_id": "784b7499-fc28-4200-a848-56b630e2cc36",
+  "source_event_id": "eo-replayrace-621578dd4e"
+}

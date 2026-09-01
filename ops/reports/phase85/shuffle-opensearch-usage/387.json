@@ -1,0 +1,1 @@
+{"index":387,"group":"shuffle-opensearch-usage","pattern":"Index settings update","frequency":"weekly","privilege":"indices:admin/settings/update","component":"index-management"}

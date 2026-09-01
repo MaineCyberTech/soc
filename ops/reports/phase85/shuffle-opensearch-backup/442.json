@@ -1,0 +1,1 @@
+{"index":442,"group":"shuffle-opensearch-backup","backup":"config_backup","includes":["templates","ilm_policies","search_templates","index_settings"],"schedule":"on_change","status":"verified"}

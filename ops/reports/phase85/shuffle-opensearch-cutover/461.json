@@ -1,0 +1,1 @@
+{"index":461,"group":"shuffle-opensearch-cutover","step":"snapshot_before_cutover","action":"create_pre_cutover_snapshot","status":"complete"}

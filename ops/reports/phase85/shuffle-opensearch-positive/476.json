@@ -1,0 +1,1 @@
+{"index":476,"group":"shuffle-opensearch-positive","test":"admin_update_settings","input":"PUT /shuffle-exec-*/_settings","expected":"200_ok","result":"PASS"}

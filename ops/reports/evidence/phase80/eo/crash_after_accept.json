@@ -1,0 +1,16 @@
+{
+  "_execution_ids": [
+    "3a22cb5f-771c-40f4-bb99-958c499778e3",
+    "f977260d-26bc-47c0-bfce-ce87796d22ee"
+  ],
+  "_notes": "workflow created object (exec1, DELIVERED). Ledger reset to CLAIMED/alert_id=null to model crash-after-accept. Replay (exec2) returns RECONCILE_PENDING, creates NO new IRIS object (fail-closed). One object confirmed by readback.",
+  "action_task_id": "484d8d7c-cd18-45d3-88d3-d337447ff670",
+  "automatic_replay_while_uncertain": false,
+  "destination_object_count": 1,
+  "direct_readback_sha256": "e5e4234a3525ecfb8b2f06cdb188ba0e2da15e8e3b1a4ced77dcf54a5d6f3d85",
+  "evidence_sha256": "6d8df1c737f1d5088acbb2a6afadbeaa966b845937c53d7408d02ba3e8f40a20",
+  "final_ledger_state": "CLAIMED",
+  "iris_object_id": 655,
+  "shuffle_execution_id": "f977260d-26bc-47c0-bfce-ce87796d22ee",
+  "source_event_id": "eo-crash-621578dd4e"
+}

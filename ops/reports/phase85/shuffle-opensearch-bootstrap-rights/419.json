@@ -1,0 +1,1 @@
+{"index":419,"group":"shuffle-opensearch-bootstrap-rights","right":"bootstrap_complete_marker","privilege":"none","phase":"deployment","note":"writes to configmap"}

@@ -1,0 +1,1 @@
+{"index":471,"group":"shuffle-opensearch-positive","test":"admin_bulk_write","input":"POST /_bulk 1000 docs","expected":"200_ok","result":"PASS"}

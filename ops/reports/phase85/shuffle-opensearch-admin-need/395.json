@@ -1,0 +1,1 @@
+{"index":395,"group":"shuffle-opensearch-admin-need","test":"precreated_indices_workaround","result":"FAIL - workflow creates unpredictable index names","evidence":"execution_index_naming:uuid_based","conclusion":"admin_required"}

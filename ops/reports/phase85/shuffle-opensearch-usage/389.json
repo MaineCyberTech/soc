@@ -1,0 +1,1 @@
+{"index":389,"group":"shuffle-opensearch-usage","pattern":"CCR follower create","frequency":"dr_setup","privilege":"cluster:admin/ccr","component":"dr-config"}

@@ -1,0 +1,1 @@
+{"index":412,"group":"shuffle-opensearch-bootstrap-rights","right":"put_ilm_policies","privilege":"cluster:admin/ilm","phase":"deployment"}

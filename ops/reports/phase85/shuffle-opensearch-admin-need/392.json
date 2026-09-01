@@ -1,0 +1,1 @@
+{"index":392,"group":"shuffle-opensearch-admin-need","test":"restricted_role_templates","result":"FAIL - indices:admin/template denied","evidence":"security_audit_log:access_denied","conclusion":"admin_required"}

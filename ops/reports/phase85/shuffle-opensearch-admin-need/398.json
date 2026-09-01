@@ -1,0 +1,1 @@
+{"index":398,"group":"shuffle-opensearch-admin-need","test":"rollback_validation","result":"PASS - admin removal rollback tested","evidence":"rollback_drill:success_5min","conclusion":"rollback_verified"}

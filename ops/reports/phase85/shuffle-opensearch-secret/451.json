@@ -1,0 +1,1 @@
+{"index":451,"group":"shuffle-opensearch-secret","secret":"opensearch_admin_username","location":"vault:shuffle/opensearch/admin/username","value":"shuffle_admin"}
