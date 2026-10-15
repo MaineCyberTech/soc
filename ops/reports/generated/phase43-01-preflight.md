@@ -221,7 +221,7 @@
 
 | Item | Status |
 |------|--------|
-| **GH_TOKEN** | **PRESENT** in `/opt/wazuh-docker/multi-node/ops/creds.env` (`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`) |
+| **GH_TOKEN** | **PRESENT** in `/opt/wazuh-docker/multi-node/ops/creds.env` (`<REDACTED:github-pat:98bea5ab92ce>`) |
 | VT Key (master) | Present (64-char hex); container chmod 640 **APPLIED**; host chmod 640 **NEEDS SUDO** (owner item) |
 | VT Key (worker) | Not present |
 | nosniff | Single header (app owns it); proxy duplicate removed |

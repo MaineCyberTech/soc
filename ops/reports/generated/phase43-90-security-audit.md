@@ -20,7 +20,7 @@
 | VT Key (Master) | REAL (64-char hex); container 640 ✓; host 640 pending | Verified |
 | VT Key (Worker) | None | Verified |
 | Wazuh API Key | Placeholder `SHUFFLE_API_KEY_PLACEHOLDER` in ossec.conf | Verified (both nodes) |
-| GH Token | **PRESENT** in creds.env (`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`) | Verified |
+| GH Token | **PRESENT** in creds.env (`<REDACTED:github-pat:98bea5ab92ce>`) | Verified |
 | DO Spaces Keys | Present in creds.env | Verified |
 
 ---
