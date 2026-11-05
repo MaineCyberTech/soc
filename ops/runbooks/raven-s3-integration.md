@@ -4,8 +4,18 @@ Raven bucket `mct-soc` and key `mct-soc` are provisioned. This runbook adds a
 second OpenSearch snapshot repository and moves the config DR bundle to Raven
 (or dual-writes it) without disturbing the existing DO Spaces repository.
 
-Status 2026-11-05: **not deployed** — the live Wazuh host `192.168.222.149` was
-unreachable from the lab. Apply this in a change window when the host is back.
+Status 2026-11-05: the old SOC Wazuh host `192.168.222.149` is unreachable.
+The live Wazuh cluster runs on the Falcon host as
+`multi-node-wazuh{1,2,3}.indexer-1`; the SOC data path is therefore implemented
+on Falcon:
+
+- rclone remote `raven-soc` → `mct-soc/wazuh-indexer`
+- `falcon-raven-wazuh-copy.timer` daily at 04:20
+- first copy: 11,300 files, 0 differences (2026-11-05)
+
+The OpenSearch repository registration below remains the procedure for a
+separate SOC cluster if `.149` returns. The DR config bundle move is still
+pending.
 
 ## Preconditions
 
