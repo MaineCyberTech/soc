@@ -128,6 +128,11 @@ Operator sign-off, recorded in the change register, is REQUIRED before:
   are advisory and capacity is manual-watch. Operational detail lives in the canonical
   current-state doc.
 
+- Kestrel ops service accounts (separate from read-only `kestrel-access`):
+  - Wazuh API `kestrel-ops` (id 101, administrator); credential in Vaultwarden `Kestrel ops - Wazuh`; API on Falcon loopback; collector key on testnuc.
+  - IRIS uses Kestrel Identity `admins` via forward auth; local `kestrel-ops` is not API-active under `oidc_proxy`.
+  - Falcon host `user` SSH/sudo and data01 OpenSearch `kestrel-ops` are in Raven's `AGENTS.md`.
+
 ## Report Authoring Conventions
 
 - Filenames: `phaseNN-slug.md` inside `ops/reports/generated/` (digit-prefixed index to
