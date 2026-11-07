@@ -21,7 +21,7 @@ pending.
 
 - Wazuh cluster healthy; existing `do-spaces` snapshots successful.
 - Change window / rollback approval.
-- Raven reachable: `nc -z 192.168.222.120 3900`.
+- Raven reachable: `nc -z 192.168.222.120 8333`.
 - Scoped credentials available in the root-only secret store.
 
 ## Repository registration
@@ -49,10 +49,10 @@ PUT _snapshot/raven
     "bucket": "mct-soc",
     "client": "raven",
     "base_path": "snapshots",
-    "endpoint": "192.168.222.120:3900",
+    "endpoint": "192.168.222.120:8333",
     "protocol": "http",
     "path_style_access": true,
-    "region": "garage"
+    "region": "us-east-1"
   }
 }
 ```
@@ -80,6 +80,6 @@ Point the existing `dr-s3-bundle.sh` at `s3://mct-soc/dr/current` and
 
 ## Capacity
 
-Raven Garage is 558.8 GiB usable, single-node RF1. SOC's local snapshots are
+Raven SeaweedFS is 558.8 GiB usable on a single data01 node. SOC's local snapshots are
 around 15–20 GB; keep the existing 30-day S3 retention only after measuring the
 Raven bucket growth. The DO Spaces copy remains authoritative.
