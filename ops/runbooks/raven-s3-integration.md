@@ -12,6 +12,13 @@ on Falcon:
 - rclone remote `raven-soc` → `mct-soc/wazuh-indexer`
 - `falcon-raven-wazuh-copy.timer` daily at 04:20
 - first copy: 11,300 files, 0 differences (2026-11-05)
+- SeaweedFS cutover run `20261107-231819`: 11,300 files, 0 differences
+  (2026-11-07)
+- DR bundle dual-write live 2026-11-08: `/opt/wazuh-backups/run-dr-bundle.sh`
+  stages the bundle, keeps the DO Spaces copy, and syncs to
+  `s3://mct-soc/dr/current` plus `dr/history`; the Raven check reported 12
+  matching files and 0 differences. The daily cron is
+  `/etc/cron.d/wazuh-raven-dr` at 04:00.
 
 The OpenSearch repository registration below remains the procedure for a
 separate SOC cluster if `.149` returns. The DR config bundle move is still
@@ -21,8 +28,10 @@ pending.
 
 - Wazuh cluster healthy; existing `do-spaces` snapshots successful.
 - Change window / rollback approval.
-- Raven reachable: `nc -z 192.168.222.120 3900`.
+- Raven reachable: `nc -z 192.168.222.120 8333`.
 - Scoped credentials available in the root-only secret store.
+- The `soc` identity includes `WriteAcp:mct-soc`; rclone sends a canned ACL
+  header on PUT and SeaweedFS treats it as the separate `WriteAcp` action.
 
 ## Repository registration
 
@@ -32,6 +41,10 @@ Add the same settings to each indexer keystore:
 docker exec -it <indexer> bin/opensearch-keystore add -x -f s3.client.raven.access_key
 docker exec -it <indexer> bin/opensearch-keystore add -x -f s3.client.raven.secret_key
 ```
+
+Identity permissions: `Read`/`Write`/`List`/`Tagging`/`WriteAcp` on
+`mct-soc`. Without `WriteAcp`, uploads fail with `403 AccessDenied` even
+though a plain `PutObject` succeeds.
 
 Reload:
 
@@ -49,19 +62,20 @@ PUT _snapshot/raven
     "bucket": "mct-soc",
     "client": "raven",
     "base_path": "snapshots",
-    "endpoint": "192.168.222.120:3900",
+    "endpoint": "192.168.222.120:8333",
     "protocol": "http",
     "path_style_access": true,
-    "region": "garage"
+    "region": "us-east-1"
   }
 }
 ```
 
 ## DR bundle
 
-Point the existing `dr-s3-bundle.sh` at `s3://mct-soc/dr/current` and
-`dr/history`, or dual-write to Raven and DO Spaces. This fixes the current
-`403 SignatureDoesNotMatch` without waiting for new DO Spaces keys.
+The live wrapper now dual-writes: `run-dr-bundle.sh` keeps the original
+`s3://wazuh/dr` copy and uses rclone to sync the same stage to
+`s3://mct-soc/dr/current` and `dr/history`. This fixes the stale DR-bundle
+defect without waiting for new DO Spaces keys.
 
 ## Validation
 
@@ -80,6 +94,6 @@ Point the existing `dr-s3-bundle.sh` at `s3://mct-soc/dr/current` and
 
 ## Capacity
 
-Raven Garage is 558.8 GiB usable, single-node RF1. SOC's local snapshots are
+Raven SeaweedFS is 558.8 GiB usable on a single data01 node. SOC's local snapshots are
 around 15–20 GB; keep the existing 30-day S3 retention only after measuring the
 Raven bucket growth. The DO Spaces copy remains authoritative.
