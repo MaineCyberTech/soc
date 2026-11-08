@@ -14,6 +14,11 @@ on Falcon:
 - first copy: 11,300 files, 0 differences (2026-11-05)
 - SeaweedFS cutover run `20261107-231819`: 11,300 files, 0 differences
   (2026-11-07)
+- DR bundle dual-write live 2026-11-08: `/opt/wazuh-backups/run-dr-bundle.sh`
+  stages the bundle, keeps the DO Spaces copy, and syncs to
+  `s3://mct-soc/dr/current` plus `dr/history`; the Raven check reported 12
+  matching files and 0 differences. The daily cron is
+  `/etc/cron.d/wazuh-raven-dr` at 04:00.
 
 The OpenSearch repository registration below remains the procedure for a
 separate SOC cluster if `.149` returns. The DR config bundle move is still
@@ -67,9 +72,10 @@ PUT _snapshot/raven
 
 ## DR bundle
 
-Point the existing `dr-s3-bundle.sh` at `s3://mct-soc/dr/current` and
-`dr/history`, or dual-write to Raven and DO Spaces. This fixes the current
-`403 SignatureDoesNotMatch` without waiting for new DO Spaces keys.
+The live wrapper now dual-writes: `run-dr-bundle.sh` keeps the original
+`s3://wazuh/dr` copy and uses rclone to sync the same stage to
+`s3://mct-soc/dr/current` and `dr/history`. This fixes the stale DR-bundle
+defect without waiting for new DO Spaces keys.
 
 ## Validation
 
