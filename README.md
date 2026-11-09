@@ -61,6 +61,7 @@ OpenSearch low watermark, DR bundle uploading to S3, evidence archive complete (
 | Doc | Purpose |
 |---|---|
 | `docs/SECRET-HANDLING.md` | Secret inventory, rules, rotation, wazuh-docker protections |
+| `docs/kestrel-github-app.md` | GitHub App broker token path: policy, install, cutover, rollback |
 | `docs/WAZUH-DOCKER-SECRET-ABSTRACTION.md` | `${VAR}` env abstraction migration |
 | `docs/CONTAINER-IMAGE-POLICY.md` | R/F/V/C image classification + enforcement |
 | `docs/CLIENT-ARTIFACT-GOVERNANCE.md` | Client-safe vs internal artifact rules |

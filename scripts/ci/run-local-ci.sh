@@ -41,6 +41,9 @@ done
 if [ -s "$PY_TMP" ]; then cat "$PY_TMP"; FAIL=1; fi
 rm -f "$PY_TMP"
 
+step "Kestrel GitHub token helper tests"
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -p 'test_*.py' -v || FAIL=1
+
 step "powershell present check"
 PS=$(find . -path './.git' -prune -o -name '*.ps1' -type f -print | wc -l)
 echo "PowerShell files present: $PS (need endpoint/runtime validation, not run in CI)"

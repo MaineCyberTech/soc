@@ -26,6 +26,11 @@ Applies to all repos: `MaineCyberTech/soc` (this repo) and the local deployment 
 | VIRUSTOTAL_API_KEY | VT integration | ops/creds.env (rotated; see below) |
 | DO_SPACES_* | DR S3/DO Spaces | ops/creds.env |
 | WAZUH_REGISTRATION_PASSWORD | agent enrollment | ops/creds.env |
+| KESTREL_BROKER_TOKEN (SOC GitHub App consumer) | short-lived GitHub App token issuance | `/etc/soc/kestrel-broker-token-github` (0600 root, no symlink); see `docs/kestrel-github-app.md` |
+
+The legacy `GH_PAT` is rollback-only during the Kestrel GitHub App observation
+window and must not be loaded by the normal runtime path. The App private key
+stays with the GitHub organization owner/Kestrel Vault; SOC does not hold it.
 
 ## Wazuh-docker deployment (public-origin clone) - critical
 
