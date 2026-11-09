@@ -133,6 +133,8 @@ Operator sign-off, recorded in the change register, is REQUIRED before:
   - IRIS uses Kestrel Identity `admins` via forward auth; local `kestrel-ops` is not API-active under `oidc_proxy`.
   - Falcon host `user` SSH/sudo and data01 OpenSearch `kestrel-ops` are in Raven's `AGENTS.md`.
 
+## GitHub access
+Use `gh-kestrel` with `/etc/kestrel-agents/soc/broker-token`; see Kestrel `docs/runbooks/AGENT-GITHUB-ACCESS.md`. Do not use a PAT, App key or admin token.
 ## Report Authoring Conventions
 
 - Filenames: `phaseNN-slug.md` inside `ops/reports/generated/` (digit-prefixed index to
