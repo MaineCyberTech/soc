@@ -48,6 +48,24 @@ PRIVATE — do not share. Contains no secret values; track rotation status only.
 | 19 | IRIS DB password / IRIS_SECRET_KEY | /opt/mct-security-stack/data/dfir-iris/iris-web/.env (600) | Regenerate; restart iris stack | PENDING |
 | 20 | Shuffle OpenSearch password | /opt/mct-security-stack/.env SHUFFLE_OPENSEARCH_PASSWORD | Regenerate; restart shuffle-opensearch + backend | PENDING |
 
+## Kestrel GitHub App path (added 2026-11-09)
+
+The production `GH_PAT` runtime path is replaced by a short-lived GitHub App
+token from the Kestrel broker. The App/installation and broker consumer are
+owner-gated. Contract and cutover: `docs/kestrel-github-app.md`.
+
+| # | Credential / object | Location | Rotate how | Status |
+|---|---|---|---|---|
+| 21 | Kestrel broker token (GitHub App consumer `soc-release`) | `/etc/soc/kestrel-broker-token-github` (0600 root, regular file, no symlink) | Kestrel quarterly consumer rotation, or `kestrel-token-broker-admin consumer rotate soc-release --token-file ... --grace-hours 24 --apply`; zero grace on compromise | PENDING |
+| 22 | GitHub App private key / installation | GitHub App settings + Kestrel Vault; SOC has no copy | Owner-gated Kestrel App-key rotation; update Vault and broker policy, canary one issuance, then retire old key | OWNER-GATED |
+| 23 | Cached GitHub installation token | `/run/soc/kestrel-github-token-<alias>.json` (0600 root) | No manual rotation; expires in about one hour, helper refreshes at the five-minute margin. Delete and re-mint on incident | AUTOMATIC |
+| 24 | Legacy `GH_PAT` (rollback only) | Owner-controlled secret store only; not loaded after cutover | Keep until the observation window closes and no fallback use is recorded, then revoke and mark retired | ROLLBACK |
+
+Broker token rotation does not require a SOC service restart: the helper reads
+the file on every call. Never put the broker token, a minted GitHub token or the
+App private key in Git, CI logs, `argv`, a ticket or chat. If the broker is
+unavailable, fail closed; do not fall back to `GH_PAT`.
+
 ### Key files index (all mode 600, never commit)
 
 - /opt/mct-security-stack/.env — stack secrets (host)

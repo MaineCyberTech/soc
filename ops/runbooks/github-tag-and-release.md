@@ -8,6 +8,10 @@ Status: pending (requires push + operator approval)
 1. Push to main succeeded.
 2. GitHub Actions verify.yml PASSED on main.
 3. Operator approval for tag + release.
+4. Kestrel GitHub App broker path configured rather than a PAT:
+   `KESTREL_GITHUB_APP=soc-release` and
+   `KESTREL_BROKER_TOKEN_FILE=/etc/soc/kestrel-broker-token-github`
+   (see `docs/kestrel-github-app.md`).
 
 ## Steps
 
