@@ -5,7 +5,6 @@
 set -uo pipefail
 
 WAZUH=${WAZUH_STACK_ROOT:-/opt/wazuh-docker/multi-node}
-ROOT=${MCT_STACK_ROOT:-/opt/mct-security-stack}
 FAIL=0
 
 ok() { echo "[PASS] $*"; }

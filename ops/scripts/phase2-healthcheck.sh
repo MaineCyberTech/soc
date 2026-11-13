@@ -4,7 +4,6 @@
 # Never prints secret values.
 set -uo pipefail
 
-MCT_ROOT="${MCT_STACK_ROOT:-/opt/mct-security-stack}"
 WAZUH_DIR="/opt/wazuh-docker/multi-node"
 VERBOSE=0
 FAIL=0
@@ -77,7 +76,7 @@ for svc in dfir-iris velociraptor misp shuffle greenbone opencanary; do
 done
 
 # 9. Backups still running
-if ls /opt/wazuh-backups/wazuh-config-*.tar.gz 2>/dev/null | tail -1 | grep -q $(date +%Y%m); then
+if ls /opt/wazuh-backups/wazuh-config-*.tar.gz 2>/dev/null | tail -1 | grep -q "$(date +%Y%m)"; then
   ok "recent wazuh config backup present"
 else
   note "no recent config backup found (may be expected if cron window differs)"

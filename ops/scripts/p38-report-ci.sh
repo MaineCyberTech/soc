@@ -7,7 +7,6 @@ set -u
 
 GEN="/opt/mct-security-stack/ops/reports/generated"
 ERR=0; WARN=0
-declare -a SECRETS_TOTAL
 
 say()  { echo "$*"; }
 fail() { ERR=$((ERR+1)); say "FAIL: $*"; }
