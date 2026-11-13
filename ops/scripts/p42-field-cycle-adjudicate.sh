@@ -10,7 +10,6 @@ C1=$($OS "$IDX/_settings" | python3 -c "import json,sys;d=json.load(sys.stdin);p
 echo "C1 limit=$C1 $([ "$C1" = "2000" ] && echo PASS || echo FAIL)"
 C2=$($OS "$IDX/_settings" | python3 -c "import json,sys;d=json.load(sys.stdin);print(list(d.values())[0]['settings']['index'].get('plugins',{}).get('index_state_management',{}).get('policy_id','MISSING'))")
 echo "C2 ism=$C2 $([ "$C2" = "wazuh-archives-14d" ] && echo PASS || echo FAIL)"
-C3=$(docker logs multi-node-wazuh.master-1 --since 24h 2>&1 | awk '/2026-08-2[67]/' | grep -c "stats_compact" )
 FULLSTATS=$($OS "$IDX/_count?q=data.event_type:%22stats%22" 2>/dev/null | python3 -c "import json,sys;print(json.load(sys.stdin)['count'])" 2>/dev/null)
 echo "C3 full-stats docs in $IDX: ${FULLSTATS:-ERR} $([ "${FULLSTATS:-1}" = "0" ] && echo PASS || echo FAIL)"
 REJ=$(docker logs multi-node-wazuh.master-1 --since "${2:-12h}" 2>&1 | grep -c "Limit of total fields")

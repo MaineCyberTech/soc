@@ -6,6 +6,8 @@ set -uo pipefail
 TS=$(date +%Y%m%d-%H%M%S)
 MCT_ROOT="${MCT_STACK_ROOT:-/opt/mct-security-stack}"
 LOG_DIR="${MCT_ROOT}/ops/reports"
+# Provided to scripts that source this helper.
+export TS LOG_DIR
 
 log() { echo "[$(date +%H:%M:%S)] $*"; }
 warn() { echo "[$(date +%H:%M:%S)] WARN: $*" >&2; }

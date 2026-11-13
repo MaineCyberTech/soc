@@ -2,9 +2,7 @@
 # Phase 73 per-phase agents-CI: run shipped validators, report open gates honestly.
 set -u
 PACK=/home/user/mct-p73
-DEP=/opt/mct-security-stack
 GEN=$PACK/ops/reports/generated/phase73
-GEN2=$DEP/ops/reports/generated/phase73
 EV=$PACK/ops/reports/evidence/p73
 OPEN=()
 

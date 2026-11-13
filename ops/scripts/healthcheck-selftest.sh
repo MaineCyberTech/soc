@@ -37,7 +37,7 @@ probe_test() {
 probe_test
 
 # 3. indexer reachability is genuinely tested
-if curl -sk -m 8 -u admin:$(grep '^WAZUH_ADMIN_PASSWORD' "$WAZUH/ops/creds.env" | cut -d= -f2-) https://127.0.0.1:9200/_cluster/health 2>/dev/null | grep -q '"status":"green"'; then
+if curl -sk -m 8 -u "admin:$(grep '^WAZUH_ADMIN_PASSWORD' "$WAZUH/ops/creds.env" | cut -d= -f2-)" https://127.0.0.1:9200/_cluster/health 2>/dev/null | grep -q '"status":"green"'; then
   ok "indexer green (live probe)"
 else
   bad "indexer not green"

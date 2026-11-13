@@ -77,7 +77,11 @@ if [[ -f /opt/wazuh-backups/dr-s3-cron.log ]] && (( $(secs) - $(stat -c %Y /opt/
 else
   row "S3/DR bundle" "**FAIL**" "no recent DR bundle" run dr-s3-bundle.sh
 fi
-if [[ -f /opt/mct-security-stack/ops/backups/phase2-config-$(date +%Y%m%d)*.tar.gz ]] || find /opt/mct-security-stack/ops/backups -name 'phase2-config-*.tar.gz' -mmin -2880 2>/dev/null | grep -q .; then
+PHASE2_BUNDLE_FOUND=0
+for f in /opt/mct-security-stack/ops/backups/phase2-config-"$(date +%Y%m%d)"*.tar.gz; do
+  if [[ -f "$f" ]]; then PHASE2_BUNDLE_FOUND=1; break; fi
+done
+if [[ "$PHASE2_BUNDLE_FOUND" -eq 1 ]] || find /opt/mct-security-stack/ops/backups -name 'phase2-config-*.tar.gz' -mmin -2880 2>/dev/null | grep -q .; then
   row "Phase2 config backup" OK "bundle < 48h" none
 else
   row "Phase2 config backup" "**FAIL**" "no bundle < 48h" run backup-phase2-config.sh

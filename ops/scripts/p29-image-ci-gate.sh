@@ -28,5 +28,5 @@ while IFS= read -r line; do
        [ "$exception" = 1 ] && { echo "EXCEPTION (documented): $ref"; continue; }
        echo "FAIL mutable-undocumented: $ref"; FAIL=1 ;;
   esac
-done < <(find "$ROOT/compose" -name "docker-compose*.yml" 2>/dev/null | xargs grep -nE "^\s*image:" 2>/dev/null)
+done < <(find "$ROOT/compose" -name "docker-compose*.yml" -print0 2>/dev/null | xargs -0 grep -nE "^\s*image:" 2>/dev/null)
 exit "$FAIL"
