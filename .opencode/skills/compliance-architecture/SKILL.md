@@ -201,7 +201,7 @@ CORRECT:
 ### ❌ Hardcoded Secrets
 ```
 WRONG:
-const apiKey = "sk_test_123456789abcdef";  // In code or env vars
+const apiKey = "<secret-key-from-vault>";  // In code or env vars
 
 CORRECT:
 // AWS
