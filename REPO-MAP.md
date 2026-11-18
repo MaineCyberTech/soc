@@ -17,8 +17,9 @@ mct-security-stack/
   config/
     examples/               - secrets.example.env, sample configs
     wazuh_cluster/          - canonical sanitized wazuh_manager.conf (Phase 24)
-  docs/                     - governance + deep docs (17 files)
+  docs/                     - governance + deep docs
     SECRET-HANDLING.md        - secret rules + inventory
+    kestrel-github-app.md     - GitHub App broker token path, policy, cutover, rollback
     WAZUH-DOCKER-SECRET-ABSTRACTION.md
     CONTAINER-IMAGE-POLICY.md - R/F/V/C image classification
     CLIENT-ARTIFACT-GOVERNANCE.md
@@ -28,6 +29,8 @@ mct-security-stack/
     verify/                 - verify-stack-layout, verify-current-architecture,
                               verify-no-stale-phase-refs, verify-portable-repo
     endpoint-deploy/        - install/verify/uninstall kits (Linux/macOS/Windows)
+    kestrel-github-token.py - Kestrel GitHub App token helper (metadata only by default)
+    gh-broker.sh            - run gh with the helper's short-lived token
   ops/
     runbooks/               - operational runbooks (current)
     scripts/                - operational scripts (health, backup, capacity, etc.)

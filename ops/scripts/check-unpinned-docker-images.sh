@@ -17,13 +17,13 @@ mkdir -p "$REPORT_DIR"
 ALLOWED="alpine:|mariadb:|postgres:|redis:|valkey:|opensearchproject/|wazuh/wazuh-"
 
 # Compose files scanned: MCT stack compose + Wazuh multi-node compose (P21 coverage fix).
-COMPOSE_FILES=""
+COMPOSE_FILES=()
 for d in "$ROOT/compose" "$ROOT/../wazuh-docker/multi-node"; do
-  [ -d "$d" ] && COMPOSE_FILES="$COMPOSE_FILES $d"/*.yml
+  [ -d "$d" ] && COMPOSE_FILES+=("$d"/*.yml)
 done
-[ -z "$COMPOSE_FILES" ] && COMPOSE_FILES="$ROOT"/compose/*.yml
+[ ${#COMPOSE_FILES[@]} -eq 0 ] && COMPOSE_FILES=("$ROOT"/compose/*.yml)
 
-UNPINNED=$(grep -hoE "image: [^ #]+" $COMPOSE_FILES 2>/dev/null \
+UNPINNED=$(grep -hoE "image: [^ #]+" "${COMPOSE_FILES[@]}" 2>/dev/null \
   | awk '{print $2}' | grep -v "@sha256" | sort -u)
 
 VIOLATIONS=""

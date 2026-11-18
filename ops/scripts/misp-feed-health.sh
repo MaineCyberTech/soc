@@ -6,7 +6,6 @@
 set -uo pipefail
 
 ROOT=${MCT_STACK_ROOT:-/opt/mct-security-stack}
-WAZUH=${WAZUH_STACK_ROOT:-/opt/wazuh-docker/multi-node}
 TS=$(date +%Y%m%d-%H%M%S)
 REPORT="$ROOT/ops/reports/misp-feed-health-$TS.md"
 FAIL=0

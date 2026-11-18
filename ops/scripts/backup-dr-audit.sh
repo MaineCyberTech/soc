@@ -77,7 +77,6 @@ else
   FAIL=1
 fi
 echo "-- MISP DB dump freshness (VM side)"
-misp_yml=$(docker exec iriswebapp_db sh -c 'echo skip' 2>/dev/null)
 echo "[WARN] MISP/Greenbone DB dumps live on mct-soc-scan VM (192.168.222.154) - verify manually via SSH"
 echo "-- Elasticsearch snapshot repo list"
 if [[ -f "$WAZUH/ops/creds.env" ]]; then

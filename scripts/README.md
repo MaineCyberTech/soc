@@ -14,5 +14,10 @@
 ## endpoint-deploy/
 - Linux/macOS/Windows agent install/verify/uninstall kits (see endpoint-deploy/README.md)
 
+## GitHub App broker
+- `kestrel-github-token.py` - mint and cache a short-lived Kestrel GitHub App token; metadata only unless `--print-token`
+- `gh-broker.sh` - run `gh` with the helper's short-lived token (`KESTREL_GITHUB_APP` required)
+- See `docs/kestrel-github-app.md` for the owner-gated alias/policy contract and rollback.
+
 ## Usage
-All scripts: `bash <path>/<script>.sh`. Idempotent; never print secrets.
+All shell scripts: `bash <path>/<script>.sh`. Idempotent; never print secrets.

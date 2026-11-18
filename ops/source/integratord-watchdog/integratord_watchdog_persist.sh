@@ -4,11 +4,9 @@
 
 set -euo pipefail
 
-INTEGRATORD_BIN="/var/ossec/bin/wazuh-integratord"
 LOCK_DIR="/tmp/integratord_watchdog.lock"
 STATE_FILE="/tmp/integratord_watchdog.state"
 LOG_FILE="/var/log/integratord_watchdog.log"
-ALERT_WEBHOOK=""
 MAX_RESTARTS=5
 RESET_WINDOW=300
 BASE_BACKOFF=10
@@ -27,13 +25,18 @@ acquire_lock() {
         return 0
     else
         if [ -f "$LOCK_DIR/pid" ]; then
-            local pid=$(cat "$LOCK_DIR/pid" 2>/dev/null)
+            local pid
+            pid=$(cat "$LOCK_DIR/pid" 2>/dev/null)
             if [ -n "$pid" ] && kill -0 "$pid" 2>/dev/null; then
                 return 1  # Lock held by live process
             fi
         fi
         rm -rf "$LOCK_DIR"
-        return acquire_lock
+        if acquire_lock; then
+            return 0
+        else
+            return 1
+        fi
     fi
 }
 
@@ -63,14 +66,16 @@ get_integratord_pid() {
 cleanup_stale() {
     for pf in /var/ossec/var/run/wazuh-integratord-*.pid; do
         [ -f "$pf" ] || continue
-        local p=$(cat "$pf" 2>/dev/null)
+        local p
+        p=$(cat "$pf" 2>/dev/null)
         if [ -n "$p" ] && ! kill -0 "$p" 2>/dev/null; then
             rm -f "$pf"
             log "cleanup_stale: removed stale integratord pid file $pf (pid $p dead)"
         fi
     done
     if [ -f /var/ossec/var/start-script-lock/pid ]; then
-        local lp=$(cat /var/ossec/var/start-script-lock/pid 2>/dev/null)
+        local lp
+        lp=$(cat /var/ossec/var/start-script-lock/pid 2>/dev/null)
         if [ -n "$lp" ] && ! kill -0 "$lp" 2>/dev/null; then
             rm -rf /var/ossec/var/start-script-lock
             log "cleanup_stale: removed stale start-script-lock (pid $lp dead)"
@@ -83,7 +88,8 @@ start_integratord() {
     log "Starting wazuh-integratord via wazuh-control..."
     /var/ossec/bin/wazuh-control start integratord 2>&1 | while IFS= read -r line; do log "wazuh-control: $line"; done
     sleep 3
-    local pid=$(get_integratord_pid)
+    local pid
+    pid=$(get_integratord_pid)
     if [ -n "$pid" ]; then
         log "integratord started with PID $pid"
         return 0
@@ -94,14 +100,15 @@ start_integratord() {
 }
 
 check_and_restart() {
-    local pid=$(get_integratord_pid)
+    local pid
+    pid=$(get_integratord_pid)
     if [ -z "$pid" ]; then
         log "integratord is not running. Attempting restart..."
         
-        local state=( $(read_state) )
-        local restart_count=${state[0]}
-        local last_restart=${state[1]}
-        local now=$(date +%s)
+        local restart_count last_restart
+        read -r restart_count last_restart <<< "$(read_state)"
+        local now
+        now=$(date +%s)
         
         if [ $((now - last_restart)) -gt $RESET_WINDOW ]; then
             restart_count=0
@@ -148,7 +155,8 @@ main() {
         echo $$ > "$LOCK_DIR/pid"
     else
         if [ -f "$LOCK_DIR/pid" ]; then
-            local pid=$(cat "$LOCK_DIR/pid" 2>/dev/null)
+            local pid
+            pid=$(cat "$LOCK_DIR/pid" 2>/dev/null)
             if [ -n "$pid" ] && kill -0 "$pid" 2>/dev/null; then
                 echo "Another watchdog instance is running (PID $pid). Exiting."
                 exit 1
@@ -176,9 +184,7 @@ main() {
         # Check if integratord is running
         if ! pgrep -f "wazuh-integratord" >/dev/null; then
             # Check restart limits
-            state=( $(cat "/tmp/integratord_watchdog.state" 2>/dev/null || echo "0 0") )
-            restart_count=${state[0]}
-            last_restart=${state[1]}
+            read -r restart_count last_restart <<< "$(cat "/tmp/integratord_watchdog.state" 2>/dev/null || echo "0 0")"
             now=$(date +%s)
             
             if [ $((now - last_restart)) -gt 300 ]; then

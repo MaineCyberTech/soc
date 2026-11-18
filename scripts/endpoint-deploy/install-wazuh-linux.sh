@@ -106,7 +106,7 @@ while [ $# -gt 0 ]; do
     --velo-config-b64) VELO_CONFIG_B64="${2:-}"; shift 2 ;;
     --velo-config-url) VELO_CONFIG_URL="${2:-}"; shift 2 ;;
     --osquery) INSTALL_OSQUERY="${2:-}"; shift 2 ;;
-    --sysmon) INSTALL_SYSMON="${2:-}"; shift 2 ;;
+    --sysmon) shift 2 ;;  # accepted for compatibility; no Linux sysmon installer
     --dry-run) DRY_RUN=1; shift ;;
     --print-config-redacted) PRINT_CONFIG=1; shift ;;
     *) echo "ERROR: unknown argument: $1"; exit 2 ;;

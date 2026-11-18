@@ -12,9 +12,7 @@ STATE="$ROOT/ops/reports/zeek-classa-guardrail-state.log"
 LIMIT=5
 WF_ID="eb937a37-5244-46dc-95ff-62ad4c681322"
 MANAGER_CONF="/opt/wazuh-docker/multi-node/config/wazuh_cluster/wazuh_manager.conf"
-INT_MARKER="Zeek Class A (SSH/SMB/RDP)"
 MODE="${1:-check}"
-NOTIFY=""
 [ -f "$ENV_FILE" ] && set -a && source "$ENV_FILE" && set +a
 [ -f /opt/wazuh-docker/multi-node/ops/creds.env ] && set -a && source /opt/wazuh-docker/multi-node/ops/creds.env && set +a
 NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)

@@ -6,7 +6,6 @@
 set -uo pipefail
 
 ROOT="${1:-/opt/mct-security-stack}"
-[[ "${2:-}" == "--verbose" ]] && VERBOSE=1
 
 PATTERNS=(
   "password-assignment:([Pp]assword|passwd)\s*[:=]\s*[^<[:space:]]"

@@ -4,11 +4,6 @@
 # Never prints secret values.
 set -uo pipefail
 
-MCT_ROOT="${MCT_STACK_ROOT:-/opt/mct-security-stack}"
-PORTS_DOC="$MCT_ROOT/ops/reports/ports.md"
-JSON=0
-[[ "${1:-}" == "--json" ]] && JSON=1
-
 ALLOWED_PUBLIC="22 514 1514 1515 19999 8000 9443 5355 68 20241 2055 45501 48032 56329 58815 52526 8080"
 ALLOWED_LOCAL="25 53 443 4317 55000 8125 9200"
 PLANNED_LOCAL="8000 8089 8889 8443 3001 9392"
